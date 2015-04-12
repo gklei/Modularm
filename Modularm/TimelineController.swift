@@ -15,10 +15,10 @@ class TimelineController: UIViewController
    override func viewDidLoad()
    {
       super.viewDidLoad()
-      setupNavBar()
+      setupNavigationBar()
    }
 
-   private func setupNavBar()
+   private func setupNavigationBar()
    {
       self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarPosition: .Any, barMetrics: .Default)
       self.navigationController?.navigationBar.shadowImage = UIImage()
