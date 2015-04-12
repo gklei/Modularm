@@ -7,13 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8E3B22611AD9E85F001693E2 /* TimelineDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3B22601AD9E85F001693E2 /* TimelineDataSource.swift */; };
 		8EFACDB81AD837EE00279956 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFACDB71AD837EE00279956 /* AppDelegate.swift */; };
 		8EFACDBB1AD837EE00279956 /* Modularm.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8EFACDB91AD837EE00279956 /* Modularm.xcdatamodeld */; };
-		8EFACDBD1AD837EE00279956 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFACDBC1AD837EE00279956 /* ViewController.swift */; };
 		8EFACDC01AD837EE00279956 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EFACDBE1AD837EE00279956 /* Main.storyboard */; };
 		8EFACDC21AD837EE00279956 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EFACDC11AD837EE00279956 /* Images.xcassets */; };
 		8EFACDC51AD837EE00279956 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EFACDC31AD837EE00279956 /* LaunchScreen.xib */; };
 		8EFACDD11AD837EE00279956 /* ModularmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFACDD01AD837EE00279956 /* ModularmTests.swift */; };
+		8EFACDDD1AD8390F00279956 /* TimelineController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFACDDC1AD8390F00279956 /* TimelineController.swift */; };
+		8EFACDDF1AD839E900279956 /* PVSAlarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFACDDE1AD839E900279956 /* PVSAlarm.swift */; };
+		8EFACDE11AD83A1E00279956 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFACDE01AD83A1E00279956 /* CoreDataStack.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,17 +30,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8E3B22601AD9E85F001693E2 /* TimelineDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineDataSource.swift; sourceTree = "<group>"; };
 		8EFACDB21AD837EE00279956 /* Modularm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Modularm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EFACDB61AD837EE00279956 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8EFACDB71AD837EE00279956 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8EFACDBA1AD837EE00279956 /* Modularm.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Modularm.xcdatamodel; sourceTree = "<group>"; };
-		8EFACDBC1AD837EE00279956 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8EFACDBF1AD837EE00279956 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8EFACDC11AD837EE00279956 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		8EFACDC41AD837EE00279956 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		8EFACDCA1AD837EE00279956 /* ModularmTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ModularmTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EFACDCF1AD837EE00279956 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8EFACDD01AD837EE00279956 /* ModularmTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModularmTests.swift; sourceTree = "<group>"; };
+		8EFACDDC1AD8390F00279956 /* TimelineController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineController.swift; sourceTree = "<group>"; };
+		8EFACDDE1AD839E900279956 /* PVSAlarm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PVSAlarm.swift; sourceTree = "<group>"; };
+		8EFACDE01AD83A1E00279956 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,9 +85,12 @@
 		8EFACDB41AD837EE00279956 /* Modularm */ = {
 			isa = PBXGroup;
 			children = (
+				8EFACDDE1AD839E900279956 /* PVSAlarm.swift */,
+				8EFACDDC1AD8390F00279956 /* TimelineController.swift */,
+				8EFACDE01AD83A1E00279956 /* CoreDataStack.swift */,
 				8EFACDB71AD837EE00279956 /* AppDelegate.swift */,
-				8EFACDBC1AD837EE00279956 /* ViewController.swift */,
 				8EFACDBE1AD837EE00279956 /* Main.storyboard */,
+				8E3B22601AD9E85F001693E2 /* TimelineDataSource.swift */,
 				8EFACDC11AD837EE00279956 /* Images.xcassets */,
 				8EFACDC31AD837EE00279956 /* LaunchScreen.xib */,
 				8EFACDB91AD837EE00279956 /* Modularm.xcdatamodeld */,
@@ -215,9 +224,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8EFACDBD1AD837EE00279956 /* ViewController.swift in Sources */,
+				8EFACDE11AD83A1E00279956 /* CoreDataStack.swift in Sources */,
 				8EFACDBB1AD837EE00279956 /* Modularm.xcdatamodeld in Sources */,
 				8EFACDB81AD837EE00279956 /* AppDelegate.swift in Sources */,
+				8E3B22611AD9E85F001693E2 /* TimelineDataSource.swift in Sources */,
+				8EFACDDD1AD8390F00279956 /* TimelineController.swift in Sources */,
+				8EFACDDF1AD839E900279956 /* PVSAlarm.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,6 +427,7 @@
 				8EFACDD61AD837EE00279956 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8EFACDD71AD837EE00279956 /* Build configuration list for PBXNativeTarget "ModularmTests" */ = {
 			isa = XCConfigurationList;
@@ -423,6 +436,7 @@
 				8EFACDD91AD837EE00279956 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
