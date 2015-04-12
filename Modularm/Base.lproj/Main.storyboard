@@ -64,7 +64,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pyx-cQ-o5I" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <customObject id="893-Zi-iay" customClass="TimelineDataSource" customModule="Modularm" customModuleProvider="target"/>
+                <customObject id="893-Zi-iay" customClass="TimelineDataSource" customModule="Modularm" customModuleProvider="target">
+                    <connections>
+                        <outlet property="collectionView" destination="E2h-SW-S8e" id="Okj-Yr-zGT"/>
+                    </connections>
+                </customObject>
             </objects>
             <point key="canvasLocation" x="1045.5" y="342.5"/>
         </scene>

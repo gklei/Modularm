@@ -27,12 +27,9 @@ class TimelineController: UIViewController
       self.navigationController?.navigationBar.backgroundColor = UIColor(red: rgbValue, green: rgbValue, blue: rgbValue, alpha: 1)
    }
 
-   @IBAction func insertAlarm(sender: AnyObject)
-   {
-   }
-
    @IBAction func addAlarmButtonPressed()
    {
-      println("add alarm button pressed")
+      // For debugging:
+//      self.timelineDataSource.addAlarm()
    }
 }

@@ -12,7 +12,8 @@ import CoreData
 class TimelineDataSource: NSObject
 {
    // MARK: - Instance Variables
-   let coreDataStack = CoreDataStack.defaultStack
+   @IBOutlet weak var collectionView: UICollectionView!
+   private let coreDataStack = CoreDataStack.defaultStack
 
    lazy var fetchedResultsController: NSFetchedResultsController =
    {
@@ -32,6 +33,7 @@ class TimelineDataSource: NSObject
    // MARK: - Init
    override init()
    {
+      super.init()
    }
 
    // MARK: - Public
@@ -94,6 +96,6 @@ extension TimelineDataSource: NSFetchedResultsControllerDelegate
 {
    func controllerDidChangeContent(controller: NSFetchedResultsController)
    {
-      println("controller changed content!")
+      self.collectionView.reloadData()
    }
 }
