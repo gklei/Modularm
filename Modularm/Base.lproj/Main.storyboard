@@ -52,7 +52,11 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Modularm" id="Quf-Is-AO7">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="iyX-07-HgF"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="iyX-07-HgF">
+                            <connections>
+                                <action selector="addAlarmButtonPressed" destination="5Wx-Mm-Iig" id="Wgn-Yt-tmt"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>

@@ -26,4 +26,13 @@ class TimelineController: UIViewController
       let rgbValue: CGFloat = 12/255.0
       self.navigationController?.navigationBar.backgroundColor = UIColor(red: rgbValue, green: rgbValue, blue: rgbValue, alpha: 1)
    }
+
+   @IBAction func insertAlarm(sender: AnyObject)
+   {
+   }
+
+   @IBAction func addAlarmButtonPressed()
+   {
+      println("add alarm button pressed")
+   }
 }
