@@ -10,14 +10,28 @@ import UIKit
 
 class TimelineController: UIViewController
 {
+   // MARK: - Instance Variables
+   @IBOutlet weak var centerNavigationItem: UINavigationItem!
    @IBOutlet weak var timelineDataSource: TimelineDataSource!
 
+   // MARK: - Lifecycle
    override func viewDidLoad()
    {
       super.viewDidLoad()
-      setupNavigationBar()
+      self.navigationController?.navigationBar.hideBottomHairline()
    }
 
+   override func viewWillAppear(animated: Bool)
+   {
+      self.updateBackBarButtonItemWithTitle("Modularm")
+   }
+
+   override func viewWillDisappear(animated: Bool)
+   {
+      self.updateBackBarButtonItemWithTitle("Back")
+   }
+
+   // MARK: - Private
    private func setupNavigationBar()
    {
       self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarPosition: .Any, barMetrics: .Default)
@@ -27,9 +41,9 @@ class TimelineController: UIViewController
       self.navigationController?.navigationBar.backgroundColor = UIColor(red: rgbValue, green: rgbValue, blue: rgbValue, alpha: 1)
    }
 
-   @IBAction func addAlarmButtonPressed()
+   private func updateBackBarButtonItemWithTitle(title: String)
    {
-      // For debugging:
-//      self.timelineDataSource.addAlarm()
+      let barButtonItem = UIBarButtonItem(title: title, style: .Plain, target: nil, action: nil)
+      self.navigationItem.backBarButtonItem = barButtonItem
    }
 }
