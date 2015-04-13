@@ -34,24 +34,24 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		8E3B22601AD9E85F001693E2 /* TimelineDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineDataSource.swift; sourceTree = "<group>"; };
-		8E5BD3261ADB930400C42FAA /* AlarmOptionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmOptionButton.swift; sourceTree = "<group>"; };
-		8E8228E11ADB679A00F9A26E /* UINavigationBar+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationBar+Additions.swift"; sourceTree = "<group>"; };
+		8E3B22601AD9E85F001693E2 /* TimelineDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimelineDataSource.swift; path = Modularm/TimelineDataSource.swift; sourceTree = "<group>"; };
+		8E5BD3261ADB930400C42FAA /* AlarmOptionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlarmOptionButton.swift; path = Modularm/AlarmOptionButton.swift; sourceTree = "<group>"; };
+		8E8228E11ADB679A00F9A26E /* UINavigationBar+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UINavigationBar+Additions.swift"; path = "Modularm/UINavigationBar+Additions.swift"; sourceTree = "<group>"; };
 		8E8228E51ADB821C00F9A26E /* AlarmConfigurationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmConfigurationController.swift; sourceTree = "<group>"; };
 		8E8228E71ADB8AA900F9A26E /* AlarmOptionsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmOptionsController.swift; sourceTree = "<group>"; };
 		8EFACDB21AD837EE00279956 /* Modularm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Modularm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EFACDB61AD837EE00279956 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8EFACDB71AD837EE00279956 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		8EFACDB71AD837EE00279956 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Modularm/AppDelegate.swift; sourceTree = "<group>"; };
 		8EFACDBA1AD837EE00279956 /* Modularm.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Modularm.xcdatamodel; sourceTree = "<group>"; };
 		8EFACDBF1AD837EE00279956 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		8EFACDC11AD837EE00279956 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		8EFACDC11AD837EE00279956 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Modularm/Images.xcassets; sourceTree = "<group>"; };
 		8EFACDC41AD837EE00279956 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		8EFACDCA1AD837EE00279956 /* ModularmTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ModularmTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EFACDCF1AD837EE00279956 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8EFACDD01AD837EE00279956 /* ModularmTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModularmTests.swift; sourceTree = "<group>"; };
 		8EFACDDC1AD8390F00279956 /* TimelineController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineController.swift; sourceTree = "<group>"; };
-		8EFACDDE1AD839E900279956 /* PVSAlarm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PVSAlarm.swift; sourceTree = "<group>"; };
-		8EFACDE01AD83A1E00279956 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		8EFACDDE1AD839E900279956 /* PVSAlarm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PVSAlarm.swift; path = Modularm/PVSAlarm.swift; sourceTree = "<group>"; };
+		8EFACDE01AD83A1E00279956 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataStack.swift; path = Modularm/CoreDataStack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,12 +72,63 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8EC9B9C91ADB9C3A00DBF350 /* Class Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8E8228E11ADB679A00F9A26E /* UINavigationBar+Additions.swift */,
+			);
+			name = "Class Extensions";
+			sourceTree = "<group>";
+		};
+		8EC9B9CA1ADB9C4B00DBF350 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8EFACDDE1AD839E900279956 /* PVSAlarm.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		8EC9B9CB1ADB9C5600DBF350 /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				8EFACDE01AD83A1E00279956 /* CoreDataStack.swift */,
+				8E3B22601AD9E85F001693E2 /* TimelineDataSource.swift */,
+				8EFACDB91AD837EE00279956 /* Modularm.xcdatamodeld */,
+			);
+			name = "Core Data";
+			sourceTree = "<group>";
+		};
+		8EC9B9CC1ADB9C6800DBF350 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				8EFACDB71AD837EE00279956 /* AppDelegate.swift */,
+				8EFACDBE1AD837EE00279956 /* Main.storyboard */,
+				8EFACDC31AD837EE00279956 /* LaunchScreen.xib */,
+				8EFACDC11AD837EE00279956 /* Images.xcassets */,
+			);
+			name = Other;
+			sourceTree = "<group>";
+		};
+		8EC9B9CD1ADB9CBB00DBF350 /* Subclasses */ = {
+			isa = PBXGroup;
+			children = (
+				8E5BD3261ADB930400C42FAA /* AlarmOptionButton.swift */,
+			);
+			name = Subclasses;
+			sourceTree = "<group>";
+		};
 		8EFACDA91AD837EE00279956 = {
 			isa = PBXGroup;
 			children = (
-				8EFACDB41AD837EE00279956 /* Modularm */,
+				8EC9B9C91ADB9C3A00DBF350 /* Class Extensions */,
+				8EC9B9CB1ADB9C5600DBF350 /* Core Data */,
+				8EC9B9CA1ADB9C4B00DBF350 /* Model */,
 				8EFACDCD1AD837EE00279956 /* ModularmTests */,
+				8EC9B9CC1ADB9C6800DBF350 /* Other */,
 				8EFACDB31AD837EE00279956 /* Products */,
+				8EC9B9CD1ADB9CBB00DBF350 /* Subclasses */,
+				8EFACDB51AD837EE00279956 /* Supporting Files */,
+				8EFACDB41AD837EE00279956 /* View Controllers */,
 			);
 			sourceTree = "<group>";
 		};
@@ -90,24 +141,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		8EFACDB41AD837EE00279956 /* Modularm */ = {
+		8EFACDB41AD837EE00279956 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				8E8228E51ADB821C00F9A26E /* AlarmConfigurationController.swift */,
-				8EFACDDE1AD839E900279956 /* PVSAlarm.swift */,
 				8EFACDDC1AD8390F00279956 /* TimelineController.swift */,
-				8EFACDE01AD83A1E00279956 /* CoreDataStack.swift */,
-				8EFACDB71AD837EE00279956 /* AppDelegate.swift */,
-				8EFACDBE1AD837EE00279956 /* Main.storyboard */,
-				8E5BD3261ADB930400C42FAA /* AlarmOptionButton.swift */,
 				8E8228E71ADB8AA900F9A26E /* AlarmOptionsController.swift */,
-				8E8228E11ADB679A00F9A26E /* UINavigationBar+Additions.swift */,
-				8E3B22601AD9E85F001693E2 /* TimelineDataSource.swift */,
-				8EFACDC11AD837EE00279956 /* Images.xcassets */,
-				8EFACDC31AD837EE00279956 /* LaunchScreen.xib */,
-				8EFACDB91AD837EE00279956 /* Modularm.xcdatamodeld */,
-				8EFACDB51AD837EE00279956 /* Supporting Files */,
 			);
+			name = "View Controllers";
 			path = Modularm;
 			sourceTree = "<group>";
 		};
@@ -117,6 +158,7 @@
 				8EFACDB61AD837EE00279956 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			path = Modularm;
 			sourceTree = "<group>";
 		};
 		8EFACDCD1AD837EE00279956 /* ModularmTests */ = {
@@ -275,6 +317,7 @@
 				8EFACDBF1AD837EE00279956 /* Base */,
 			);
 			name = Main.storyboard;
+			path = Modularm;
 			sourceTree = "<group>";
 		};
 		8EFACDC31AD837EE00279956 /* LaunchScreen.xib */ = {
@@ -283,6 +326,7 @@
 				8EFACDC41AD837EE00279956 /* Base */,
 			);
 			name = LaunchScreen.xib;
+			path = Modularm;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -466,7 +510,8 @@
 				8EFACDBA1AD837EE00279956 /* Modularm.xcdatamodel */,
 			);
 			currentVersion = 8EFACDBA1AD837EE00279956 /* Modularm.xcdatamodel */;
-			path = Modularm.xcdatamodeld;
+			name = Modularm.xcdatamodeld;
+			path = Modularm/Modularm.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
