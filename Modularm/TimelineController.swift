@@ -32,15 +32,6 @@ class TimelineController: UIViewController
    }
 
    // MARK: - Private
-   private func setupNavigationBar()
-   {
-      self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarPosition: .Any, barMetrics: .Default)
-      self.navigationController?.navigationBar.shadowImage = UIImage()
-
-      let rgbValue: CGFloat = 12/255.0
-      self.navigationController?.navigationBar.backgroundColor = UIColor(red: rgbValue, green: rgbValue, blue: rgbValue, alpha: 1)
-   }
-
    private func updateBackBarButtonItemWithTitle(title: String)
    {
       let barButtonItem = UIBarButtonItem(title: title, style: .Plain, target: nil, action: nil)
