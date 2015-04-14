@@ -10,11 +10,11 @@ import UIKit
 
 class AlarmOptionButton: UIButton
 {
-   var circleImageView: UIImageView?
-   var activated: Bool = false
-
    @IBInspectable var activatedImage: UIImage?
    @IBInspectable var deactivatedImage: UIImage?
+
+   var circleImageView: UIImageView?
+   var activated: Bool = false
 
    override var highlighted: Bool {
       get {
