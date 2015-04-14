@@ -10,43 +10,38 @@ import UIKit
 
 class AlarmOptionButton: UIButton
 {
-   let activatedTintColor = UIColor.whiteColor()
-   let deactivatedTintColor = UIColor.blackColor()
-
-   let activatedAlphaValue: CGFloat = 1
-   let deactivatedAlphaValue: CGFloat = 0.3
-
    var circleImageView: UIImageView?
    var activated: Bool = false
 
    @IBInspectable var activatedImage: UIImage?
    @IBInspectable var deactivatedImage: UIImage?
 
+   override var highlighted: Bool {
+      get {
+         return super.highlighted
+      }
+      set {
+         if newValue {
+            self.backgroundColor = UIColor(red: 250/255.0, green: 250/255.0, blue: 250/255.0, alpha: 1)
+         }
+         else {
+            self.backgroundColor = UIColor(red: 242/255.0, green: 242/255.0, blue: 242/255.0, alpha: 1)
+         }
+         super.highlighted = newValue
+      }
+   }
+
    required init(coder aDecoder: NSCoder)
    {
       super.init(coder: aDecoder)
-
       if let image = self.imageView?.image
       {
          self.setImage(image.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
-         self.tintColor = self.deactivatedTintColor
+         self.setImage(image.imageWithRenderingMode(.AlwaysTemplate), forState: .Highlighted)
 
          self.setupCircleImageView()
          self.addTarget(self, action: "toggleActivation", forControlEvents: UIControlEvents.TouchUpInside)
       }
-   }
-
-   func toggleActivation()
-   {
-      if self.activated
-      {
-         self.deactivate()
-      }
-      else
-      {
-         self.activate()
-      }
-      self.activated = !self.activated
    }
 
    func setupCircleImageView()
@@ -70,25 +65,41 @@ class AlarmOptionButton: UIButton
       }
    }
 
+   func toggleActivation()
+   {
+      if self.activated
+      {
+         self.deactivate()
+      }
+      else
+      {
+         self.activate()
+      }
+   }
+
    func activate()
    {
-      if let image = self.activatedImage
+      if !self.activated, let image = self.activatedImage
       {
+         self.setTitleColor(UIColor.blackColor(), forState: .Normal)
          self.setImage(image, forState: .Normal)
+         self.setImage(image, forState: .Highlighted)
          self.circleImageView?.hidden = false
-         self.tintColor = self.activatedTintColor
-         self.alpha = self.activatedAlphaValue
+
+         self.activated = true
       }
    }
 
    func deactivate()
    {
-      if let image = self.deactivatedImage
+      if self.activated, let image = self.deactivatedImage
       {
+         self.setTitleColor(UIColor.darkGrayColor(), forState: .Normal)
          self.setImage(image.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+         self.setImage(image.imageWithRenderingMode(.AlwaysTemplate), forState: .Highlighted)
          self.circleImageView?.hidden = true
-         self.tintColor = self.deactivatedTintColor
-         self.alpha = self.deactivatedAlphaValue
+
+         self.activated = false
       }
    }
 }
