@@ -35,6 +35,8 @@ class AlarmOptionButton: UIButton
          self.setImage(image.imageWithRenderingMode(.AlwaysTemplate), forState: .Highlighted)
 
          self.setupCircleImageView()
+
+         // temporary
          self.addTarget(self, action: "toggleActivation", forControlEvents: UIControlEvents.TouchUpInside)
       }
    }
