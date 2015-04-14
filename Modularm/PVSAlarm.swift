@@ -14,5 +14,4 @@ class PVSAlarm: NSManagedObject
 {
     @NSManaged var date: NSTimeInterval
     @NSManaged var message: String
-
 }
