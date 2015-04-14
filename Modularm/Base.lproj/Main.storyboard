@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D105g" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="mgE-3h-zNu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="mgE-3h-zNu">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -72,7 +72,7 @@
                     </connections>
                 </customObject>
             </objects>
-            <point key="canvasLocation" x="369.5" y="414.5"/>
+            <point key="canvasLocation" x="209.5" y="398.49999999999994"/>
         </scene>
         <!--Alarm Configuration Controller-->
         <scene sceneID="pnA-SI-Rvc">
@@ -127,7 +127,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HT9-yl-Jo4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="855.5" y="408.5"/>
+            <point key="canvasLocation" x="633.5" y="398.49999999999994"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="jed-6e-O8f">
@@ -146,7 +146,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gqQ-Cz-RwX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-25" y="391"/>
+            <point key="canvasLocation" x="-207" y="399"/>
         </scene>
         <!--Alarm Options Controller-->
         <scene sceneID="2Zr-Tu-7WA">
@@ -177,6 +177,9 @@
                                     <userDefinedRuntimeAttribute type="image" keyPath="activatedImage" value="icn-snooze"/>
                                     <userDefinedRuntimeAttribute type="image" keyPath="deactivatedImage" value="icn-plus-snooze"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="aa4-SF-2ad" kind="push" id="0Mf-Vu-gB9"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IDT-cM-UAS" customClass="AlarmOptionButton" customModule="Modularm" customModuleProvider="target">
                                 <rect key="frame" x="1" y="57" width="186" height="55"/>
@@ -195,6 +198,9 @@
                                     <userDefinedRuntimeAttribute type="image" keyPath="activatedImage" value="icn-alarm-sound"/>
                                     <userDefinedRuntimeAttribute type="image" keyPath="deactivatedImage" value="icn-plus-alarm-sound"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="aa4-SF-2ad" kind="push" id="gAC-Aq-ELc"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1eM-hi-3hc" customClass="AlarmOptionButton" customModule="Modularm" customModuleProvider="target">
                                 <rect key="frame" x="188" y="57" width="186" height="55"/>
@@ -213,6 +219,9 @@
                                     <userDefinedRuntimeAttribute type="image" keyPath="activatedImage" value="icn-date"/>
                                     <userDefinedRuntimeAttribute type="image" keyPath="deactivatedImage" value="icn-plus-date"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="aa4-SF-2ad" kind="push" id="Xjq-kr-cGN"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gY3-gf-7e8">
                                 <rect key="frame" x="26" y="242" width="82" height="34"/>
@@ -239,6 +248,9 @@
                                     <userDefinedRuntimeAttribute type="image" keyPath="activatedImage" value="icn-weather"/>
                                     <userDefinedRuntimeAttribute type="image" keyPath="deactivatedImage" value="icn-plus-weather"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="aa4-SF-2ad" kind="push" id="pVt-5g-rQt"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gbN-Qj-4ad" customClass="AlarmOptionButton" customModule="Modularm" customModuleProvider="target">
                                 <rect key="frame" x="1" y="113" width="186" height="55"/>
@@ -257,6 +269,9 @@
                                     <userDefinedRuntimeAttribute type="image" keyPath="activatedImage" value="icn-music"/>
                                     <userDefinedRuntimeAttribute type="image" keyPath="deactivatedImage" value="icn-plus-music"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="aa4-SF-2ad" kind="push" id="4Ns-YU-EKe"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S3G-bQ-eaK" customClass="AlarmOptionButton" customModule="Modularm" customModuleProvider="target">
                                 <rect key="frame" x="188" y="113" width="186" height="55"/>
@@ -275,6 +290,9 @@
                                     <userDefinedRuntimeAttribute type="image" keyPath="activatedImage" value="icn-repeat"/>
                                     <userDefinedRuntimeAttribute type="image" keyPath="deactivatedImage" value="icn-plus-repeat"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="aa4-SF-2ad" kind="push" id="9gu-Yl-B7X"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xVt-i6-9Of" customClass="AlarmOptionButton" customModule="Modularm" customModuleProvider="target">
                                 <rect key="frame" x="188" y="169" width="186" height="55"/>
@@ -293,6 +311,9 @@
                                     <userDefinedRuntimeAttribute type="image" keyPath="activatedImage" value="icn-countdown"/>
                                     <userDefinedRuntimeAttribute type="image" keyPath="deactivatedImage" value="icn-plus-countdown"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="aa4-SF-2ad" kind="push" id="dms-Wd-Xyi"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KiT-TL-ADt">
                                 <rect key="frame" x="155" y="242" width="45" height="34"/>
@@ -319,6 +340,9 @@
                                     <userDefinedRuntimeAttribute type="image" keyPath="activatedImage" value="icn-message"/>
                                     <userDefinedRuntimeAttribute type="image" keyPath="deactivatedImage" value="icn-plus-message"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="aa4-SF-2ad" kind="push" id="9sQ-ef-IRX"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.90196078431372551" green="0.90196078431372551" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -366,7 +390,116 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="979-ud-6oH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1348.5" y="486"/>
+            <point key="canvasLocation" x="1060.5" y="506.99999999999994"/>
+        </scene>
+        <!--Alarm Option Settings Controller-->
+        <scene sceneID="T3j-SF-W8o">
+            <objects>
+                <viewController id="aa4-SF-2ad" customClass="AlarmOptionSettingsController" customModule="Modularm" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Gzr-Ej-twd"/>
+                        <viewControllerLayoutGuide type="bottom" id="wS1-ZR-kf1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jSE-fb-8tH">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="475"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OQu-v8-6lh">
+                                <rect key="frame" x="274" y="8" width="30" height="34"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
+                                <state key="normal" title="Set">
+                                    <color key="titleColor" red="0.74509803919999995" green="0.058823529409999999" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="dismissSelf" destination="aa4-SF-2ad" eventType="touchUpInside" id="ZPA-Oe-QSO"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="o4L-lg-MXf">
+                                <rect key="frame" x="0.0" y="50" width="320" height="425"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="tBl-3T-KdF">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tBl-3T-KdF" id="vIP-ij-h5x">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Jb7-XV-mMS">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Jb7-XV-mMS" id="NWP-0D-2fp">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="klk-82-S6c">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="klk-82-S6c" id="IFm-S3-2UP">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="8AS-IJ-aPV">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8AS-IJ-aPV" id="47e-ht-7nx">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="bYT-YX-9DI">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bYT-YX-9DI" id="gjo-3e-G1U">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="bWb-eA-HOk">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bWb-eA-HOk" id="QOW-Vh-lnq">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="LlH-uV-23H">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LlH-uV-23H" id="yBM-e3-cvc">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="667-4f-uGe">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="667-4f-uGe" id="AmS-yq-OFG">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="FoJ-fo-UlF">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FoJ-fo-UlF" id="rq1-0q-Q5V">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="ftT-E7-LXm">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ftT-E7-LXm" id="baV-J3-fui">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <sections/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="wS1-ZR-kf1" firstAttribute="top" secondItem="o4L-lg-MXf" secondAttribute="bottom" id="0ZZ-au-2d0"/>
+                            <constraint firstAttribute="trailing" secondItem="OQu-v8-6lh" secondAttribute="trailing" constant="16" id="2iN-h3-DoK"/>
+                            <constraint firstItem="o4L-lg-MXf" firstAttribute="top" secondItem="OQu-v8-6lh" secondAttribute="bottom" constant="8" id="5Su-ni-sJm"/>
+                            <constraint firstAttribute="trailing" secondItem="o4L-lg-MXf" secondAttribute="trailing" id="Rkt-fw-djj"/>
+                            <constraint firstItem="o4L-lg-MXf" firstAttribute="leading" secondItem="jSE-fb-8tH" secondAttribute="leading" id="fzD-Rf-Xfi"/>
+                            <constraint firstItem="OQu-v8-6lh" firstAttribute="top" secondItem="Gzr-Ej-twd" secondAttribute="bottom" constant="8" id="nyr-d8-cER"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="iFw-xc-B1Q"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="475"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ann-yw-AK2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1522" y="505.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="iOI-pc-oGK">
@@ -384,7 +517,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Cv-f5-owP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1400.5" y="986.5"/>
+            <point key="canvasLocation" x="1020.5" y="1046.4999999999998"/>
         </scene>
     </scenes>
     <resources>
@@ -412,4 +545,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="pVt-5g-rQt"/>
+    </inferredMetricsTieBreakers>
 </document>
