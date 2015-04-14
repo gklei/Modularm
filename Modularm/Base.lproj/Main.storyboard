@@ -167,11 +167,16 @@
                                     <constraint firstAttribute="height" constant="55" id="gSi-Qb-YdZ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="titleEdgeInsets" minX="40" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <inset key="imageEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="5 minutes" image="icn-snooze">
+                                <state key="normal" title="5 minutes" image="icn-plus-snooze">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="activatedImage" value="icn-snooze"/>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="deactivatedImage" value="icn-plus-snooze"/>
+                                </userDefinedRuntimeAttributes>
                             </button>
                             <button opaque="NO" alpha="0.30000001192092896" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IDT-cM-UAS" customClass="AlarmOptionButton" customModule="Modularm" customModuleProvider="target">
                                 <rect key="frame" x="1" y="57" width="186" height="55"/>
@@ -180,12 +185,16 @@
                                     <constraint firstAttribute="height" constant="55" id="edy-fs-aQ5"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="titleEdgeInsets" minX="40" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <inset key="imageEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="Basic" image="icn-alarm-sound">
+                                <state key="normal" title="Basic" image="icn-plus-alarm-sound">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="activatedImage" value="icn-alarm-sound"/>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="deactivatedImage" value="icn-plus-alarm-sound"/>
+                                </userDefinedRuntimeAttributes>
                             </button>
                             <button opaque="NO" alpha="0.30000001192092896" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1eM-hi-3hc" customClass="AlarmOptionButton" customModule="Modularm" customModuleProvider="target">
                                 <rect key="frame" x="188" y="57" width="186" height="55"/>
@@ -194,12 +203,16 @@
                                     <constraint firstAttribute="height" constant="55" id="yTB-9z-BSw"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="titleEdgeInsets" minX="40" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <inset key="imageEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="Date" image="icn-date">
+                                <state key="normal" title="Date" image="icn-plus-date">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="activatedImage" value="icn-date"/>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="deactivatedImage" value="icn-plus-date"/>
+                                </userDefinedRuntimeAttributes>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gY3-gf-7e8">
                                 <rect key="frame" x="26" y="242" width="82" height="34"/>
@@ -216,12 +229,16 @@
                                     <constraint firstAttribute="height" constant="55" id="Qgl-BI-nXh"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="titleEdgeInsets" minX="40" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <inset key="imageEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="Weather" image="icn-weather">
+                                <state key="normal" title="Weather" image="icn-plus-weather">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="activatedImage" value="icn-weather"/>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="deactivatedImage" value="icn-plus-weather"/>
+                                </userDefinedRuntimeAttributes>
                             </button>
                             <button opaque="NO" alpha="0.30000001192092896" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gbN-Qj-4ad" customClass="AlarmOptionButton" customModule="Modularm" customModuleProvider="target">
                                 <rect key="frame" x="1" y="113" width="186" height="55"/>
@@ -230,12 +247,16 @@
                                     <constraint firstAttribute="height" constant="55" id="ucd-kk-72u"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="titleEdgeInsets" minX="40" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <inset key="imageEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="Music" image="icn-music">
+                                <state key="normal" title="Music" image="icn-plus-music">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="activatedImage" value="icn-music"/>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="deactivatedImage" value="icn-plus-music"/>
+                                </userDefinedRuntimeAttributes>
                             </button>
                             <button opaque="NO" alpha="0.30000001192092896" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S3G-bQ-eaK" customClass="AlarmOptionButton" customModule="Modularm" customModuleProvider="target">
                                 <rect key="frame" x="188" y="113" width="186" height="55"/>
@@ -244,12 +265,16 @@
                                     <constraint firstAttribute="height" constant="55" id="kUK-t5-Ztg"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="titleEdgeInsets" minX="40" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <inset key="imageEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="Repeat" image="icn-repeat">
+                                <state key="normal" title="Repeat" image="icn-plus-repeat">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="activatedImage" value="icn-repeat"/>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="deactivatedImage" value="icn-plus-repeat"/>
+                                </userDefinedRuntimeAttributes>
                             </button>
                             <button opaque="NO" alpha="0.30000001192092896" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xVt-i6-9Of" customClass="AlarmOptionButton" customModule="Modularm" customModuleProvider="target">
                                 <rect key="frame" x="188" y="169" width="186" height="55"/>
@@ -258,12 +283,16 @@
                                     <constraint firstAttribute="height" constant="55" id="Qq8-bm-fCg"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="titleEdgeInsets" minX="40" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <inset key="imageEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="Countdown" image="icn-countdown">
+                                <state key="normal" title="Countdown" image="icn-plus-countdown">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="activatedImage" value="icn-countdown"/>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="deactivatedImage" value="icn-plus-countdown"/>
+                                </userDefinedRuntimeAttributes>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KiT-TL-ADt">
                                 <rect key="frame" x="155" y="242" width="45" height="34"/>
@@ -280,12 +309,16 @@
                                     <constraint firstAttribute="height" constant="55" id="PDL-PB-4vW"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="titleEdgeInsets" minX="40" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <inset key="imageEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="Message" image="icn-message">
+                                <state key="normal" title="Message" image="icn-plus-message">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="activatedImage" value="icn-message"/>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="deactivatedImage" value="icn-plus-message"/>
+                                </userDefinedRuntimeAttributes>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.90196078431372551" green="0.90196078431372551" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -361,6 +394,14 @@
         <image name="icn-date" width="18" height="18"/>
         <image name="icn-message" width="18" height="18"/>
         <image name="icn-music" width="18" height="18"/>
+        <image name="icn-plus-alarm-sound" width="18" height="18"/>
+        <image name="icn-plus-countdown" width="18" height="18"/>
+        <image name="icn-plus-date" width="18" height="18"/>
+        <image name="icn-plus-message" width="18" height="18"/>
+        <image name="icn-plus-music" width="18" height="18"/>
+        <image name="icn-plus-repeat" width="18" height="18"/>
+        <image name="icn-plus-snooze" width="18" height="18"/>
+        <image name="icn-plus-weather" width="18" height="18"/>
         <image name="icn-repeat" width="18" height="18"/>
         <image name="icn-sleep" width="18" height="18"/>
         <image name="icn-snooze" width="18" height="18"/>
