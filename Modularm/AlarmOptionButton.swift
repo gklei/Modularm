@@ -21,12 +21,7 @@ class AlarmOptionButton: UIButton
          return super.highlighted
       }
       set {
-         if newValue {
-            self.backgroundColor = UIColor(red: 250/255.0, green: 250/255.0, blue: 250/255.0, alpha: 1)
-         }
-         else {
-            self.backgroundColor = UIColor(red: 242/255.0, green: 242/255.0, blue: 242/255.0, alpha: 1)
-         }
+         self.backgroundColor = newValue ? UIColor.highlightedOptionButtonColor() : UIColor.normalOptionButtonColor()
          super.highlighted = newValue
       }
    }
@@ -49,7 +44,7 @@ class AlarmOptionButton: UIButton
       if let circleImage = UIImage(named: "bg-icn-plus-circle")
       {
          self.circleImageView = UIImageView(image: circleImage.imageWithRenderingMode(.AlwaysTemplate))
-         self.circleImageView?.tintColor = UIColor(red: 190/255.0, green: 15/255.0, blue: 60/255.0, alpha: 1)
+         self.circleImageView?.tintColor = UIColor.activatedCircleBackgroundColor()
 
          self.insertSubview(self.circleImageView!, belowSubview: self.imageView!)
          self.circleImageView?.hidden = true
