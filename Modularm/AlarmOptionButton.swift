@@ -35,9 +35,6 @@ class AlarmOptionButton: UIButton
          self.setImage(image.imageWithRenderingMode(.AlwaysTemplate), forState: .Highlighted)
 
          self.setupCircleImageView()
-
-         // temporary
-         self.addTarget(self, action: "toggleActivation", forControlEvents: UIControlEvents.TouchUpInside)
       }
    }
 
@@ -59,18 +56,6 @@ class AlarmOptionButton: UIButton
       if let imageViewFrame = self.imageView?.frame
       {
          self.circleImageView?.frame = imageViewFrame
-      }
-   }
-
-   func toggleActivation()
-   {
-      if self.activated
-      {
-         self.deactivate()
-      }
-      else
-      {
-         self.activate()
       }
    }
 

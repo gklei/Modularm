@@ -14,6 +14,7 @@
 		8E8228E21ADB679A00F9A26E /* UINavigationBar+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8228E11ADB679A00F9A26E /* UINavigationBar+Additions.swift */; };
 		8E8228E61ADB821C00F9A26E /* AlarmConfigurationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8228E51ADB821C00F9A26E /* AlarmConfigurationController.swift */; };
 		8E8228E81ADB8AA900F9A26E /* AlarmOptionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8228E71ADB8AA900F9A26E /* AlarmOptionsController.swift */; };
+		8ED9FF321ADF723000A9C25A /* AlarmOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED9FF311ADF723000A9C25A /* AlarmOption.swift */; };
 		8EFACDB81AD837EE00279956 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFACDB71AD837EE00279956 /* AppDelegate.swift */; };
 		8EFACDBB1AD837EE00279956 /* Modularm.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8EFACDB91AD837EE00279956 /* Modularm.xcdatamodeld */; };
 		8EFACDC01AD837EE00279956 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EFACDBE1AD837EE00279956 /* Main.storyboard */; };
@@ -43,6 +44,7 @@
 		8E8228E11ADB679A00F9A26E /* UINavigationBar+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UINavigationBar+Additions.swift"; path = "Modularm/UINavigationBar+Additions.swift"; sourceTree = "<group>"; };
 		8E8228E51ADB821C00F9A26E /* AlarmConfigurationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmConfigurationController.swift; sourceTree = "<group>"; };
 		8E8228E71ADB8AA900F9A26E /* AlarmOptionsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmOptionsController.swift; sourceTree = "<group>"; };
+		8ED9FF311ADF723000A9C25A /* AlarmOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmOption.swift; sourceTree = "<group>"; };
 		8EFACDB21AD837EE00279956 /* Modularm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Modularm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EFACDB61AD837EE00279956 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8EFACDB71AD837EE00279956 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Modularm/AppDelegate.swift; sourceTree = "<group>"; };
@@ -129,9 +131,18 @@
 			name = Subclasses;
 			sourceTree = "<group>";
 		};
+		8ED9FF301ADF722000A9C25A /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				8ED9FF311ADF723000A9C25A /* AlarmOption.swift */,
+			);
+			name = Enums;
+			sourceTree = "<group>";
+		};
 		8EFACDA91AD837EE00279956 = {
 			isa = PBXGroup;
 			children = (
+				8ED9FF301ADF722000A9C25A /* Enums */,
 				5B74FC8A1ADD72E000902484 /* UI */,
 				8EC9B9C91ADB9C3A00DBF350 /* Class Extensions */,
 				8EC9B9CB1ADB9C5600DBF350 /* Core Data */,
@@ -303,6 +314,7 @@
 				8EFACDDD1AD8390F00279956 /* TimelineController.swift in Sources */,
 				8E8228E61ADB821C00F9A26E /* AlarmConfigurationController.swift in Sources */,
 				5B74FC8C1ADD74A100902484 /* AlarmOptionSettingsController.swift in Sources */,
+				8ED9FF321ADF723000A9C25A /* AlarmOption.swift in Sources */,
 				8E8228E81ADB8AA900F9A26E /* AlarmOptionsController.swift in Sources */,
 				8EFACDDF1AD839E900279956 /* PVSAlarm.swift in Sources */,
 			);

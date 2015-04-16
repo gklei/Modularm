@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="mgE-3h-zNu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D105g" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="mgE-3h-zNu">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -53,7 +53,7 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Modularm" id="Quf-Is-AO7">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="iyX-07-HgF">
+                        <barButtonItem key="rightBarButtonItem" image="icn-add-item" id="iyX-07-HgF">
                             <connections>
                                 <segue destination="yqY-cf-tnN" kind="push" id="x6s-2e-dhd"/>
                             </connections>
@@ -178,7 +178,7 @@
                                     <userDefinedRuntimeAttribute type="image" keyPath="deactivatedImage" value="icn-plus-snooze"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="aa4-SF-2ad" kind="push" id="0Mf-Vu-gB9"/>
+                                    <segue destination="aa4-SF-2ad" kind="push" identifier="configureSnooze" id="0Mf-Vu-gB9"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IDT-cM-UAS" customClass="AlarmOptionButton" customModule="Modularm" customModuleProvider="target">
@@ -199,7 +199,7 @@
                                     <userDefinedRuntimeAttribute type="image" keyPath="deactivatedImage" value="icn-plus-alarm-sound"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="aa4-SF-2ad" kind="push" id="gAC-Aq-ELc"/>
+                                    <segue destination="aa4-SF-2ad" kind="push" identifier="configureSound" id="gAC-Aq-ELc"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1eM-hi-3hc" customClass="AlarmOptionButton" customModule="Modularm" customModuleProvider="target">
@@ -220,7 +220,7 @@
                                     <userDefinedRuntimeAttribute type="image" keyPath="deactivatedImage" value="icn-plus-date"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="aa4-SF-2ad" kind="push" id="Xjq-kr-cGN"/>
+                                    <segue destination="aa4-SF-2ad" kind="push" identifier="configureDate" id="Xjq-kr-cGN"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gY3-gf-7e8">
@@ -249,7 +249,7 @@
                                     <userDefinedRuntimeAttribute type="image" keyPath="deactivatedImage" value="icn-plus-weather"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="aa4-SF-2ad" kind="push" id="pVt-5g-rQt"/>
+                                    <segue destination="aa4-SF-2ad" kind="push" identifier="configureWeather" id="pVt-5g-rQt"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gbN-Qj-4ad" customClass="AlarmOptionButton" customModule="Modularm" customModuleProvider="target">
@@ -270,7 +270,7 @@
                                     <userDefinedRuntimeAttribute type="image" keyPath="deactivatedImage" value="icn-plus-music"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="aa4-SF-2ad" kind="push" id="4Ns-YU-EKe"/>
+                                    <segue destination="aa4-SF-2ad" kind="push" identifier="configureMusic" id="4Ns-YU-EKe"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S3G-bQ-eaK" customClass="AlarmOptionButton" customModule="Modularm" customModuleProvider="target">
@@ -291,7 +291,7 @@
                                     <userDefinedRuntimeAttribute type="image" keyPath="deactivatedImage" value="icn-plus-repeat"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="aa4-SF-2ad" kind="push" id="9gu-Yl-B7X"/>
+                                    <segue destination="aa4-SF-2ad" kind="push" identifier="configureRepeat" id="9gu-Yl-B7X"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xVt-i6-9Of" customClass="AlarmOptionButton" customModule="Modularm" customModuleProvider="target">
@@ -312,7 +312,7 @@
                                     <userDefinedRuntimeAttribute type="image" keyPath="deactivatedImage" value="icn-plus-countdown"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="aa4-SF-2ad" kind="push" id="dms-Wd-Xyi"/>
+                                    <segue destination="aa4-SF-2ad" kind="push" identifier="configureCountdown" id="dms-Wd-Xyi"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KiT-TL-ADt">
@@ -341,7 +341,7 @@
                                     <userDefinedRuntimeAttribute type="image" keyPath="deactivatedImage" value="icn-plus-message"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="aa4-SF-2ad" kind="push" id="9sQ-ef-IRX"/>
+                                    <segue destination="aa4-SF-2ad" kind="push" identifier="configureMessage" id="9sQ-ef-IRX"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -482,13 +482,22 @@
                                 </prototypes>
                                 <sections/>
                             </tableView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg-icn-plus-circle" translatesAutoresizingMaskIntoConstraints="NO" id="ptw-fy-GjJ">
+                                <rect key="frame" x="16" y="16" width="18" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="18" id="B7S-ez-fTw"/>
+                                    <constraint firstAttribute="width" constant="18" id="DBu-yc-3Mw"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="wS1-ZR-kf1" firstAttribute="top" secondItem="o4L-lg-MXf" secondAttribute="bottom" id="0ZZ-au-2d0"/>
                             <constraint firstAttribute="trailing" secondItem="OQu-v8-6lh" secondAttribute="trailing" constant="16" id="2iN-h3-DoK"/>
                             <constraint firstItem="o4L-lg-MXf" firstAttribute="top" secondItem="OQu-v8-6lh" secondAttribute="bottom" constant="8" id="5Su-ni-sJm"/>
+                            <constraint firstItem="ptw-fy-GjJ" firstAttribute="leading" secondItem="jSE-fb-8tH" secondAttribute="leading" constant="16" id="Axe-ro-I1Y"/>
                             <constraint firstAttribute="trailing" secondItem="o4L-lg-MXf" secondAttribute="trailing" id="Rkt-fw-djj"/>
+                            <constraint firstAttribute="centerY" secondItem="ptw-fy-GjJ" secondAttribute="centerY" constant="212.5" id="eLM-62-wV7"/>
                             <constraint firstItem="o4L-lg-MXf" firstAttribute="leading" secondItem="jSE-fb-8tH" secondAttribute="leading" id="fzD-Rf-Xfi"/>
                             <constraint firstItem="OQu-v8-6lh" firstAttribute="top" secondItem="Gzr-Ej-twd" secondAttribute="bottom" constant="8" id="nyr-d8-cER"/>
                         </constraints>
@@ -522,6 +531,8 @@
     </scenes>
     <resources>
         <image name="background-clearnight" width="375" height="667"/>
+        <image name="bg-icn-plus-circle" width="18" height="18"/>
+        <image name="icn-add-item" width="21" height="21"/>
         <image name="icn-alarm-sound" width="18" height="18"/>
         <image name="icn-countdown" width="18" height="18"/>
         <image name="icn-date" width="18" height="18"/>
@@ -546,6 +557,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="pVt-5g-rQt"/>
+        <segue reference="0Mf-Vu-gB9"/>
     </inferredMetricsTieBreakers>
 </document>
