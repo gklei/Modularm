@@ -482,11 +482,18 @@
                                 </prototypes>
                                 <sections/>
                             </tableView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg-icn-plus-circle" translatesAutoresizingMaskIntoConstraints="NO" id="ptw-fy-GjJ">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg-icn-plus-circle" translatesAutoresizingMaskIntoConstraints="NO" id="jMr-lg-9YG">
                                 <rect key="frame" x="16" y="16" width="18" height="18"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="18" id="B7S-ez-fTw"/>
-                                    <constraint firstAttribute="width" constant="18" id="DBu-yc-3Mw"/>
+                                    <constraint firstAttribute="width" constant="18" id="1OC-TA-es6"/>
+                                    <constraint firstAttribute="height" constant="18" id="jUw-jf-M9a"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="s1W-GH-idd">
+                                <rect key="frame" x="16" y="16" width="18" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="18" id="18U-iQ-Aqc"/>
+                                    <constraint firstAttribute="height" constant="18" id="QYT-Uf-o7v"/>
                                 </constraints>
                             </imageView>
                         </subviews>
@@ -495,16 +502,23 @@
                             <constraint firstItem="wS1-ZR-kf1" firstAttribute="top" secondItem="o4L-lg-MXf" secondAttribute="bottom" id="0ZZ-au-2d0"/>
                             <constraint firstAttribute="trailing" secondItem="OQu-v8-6lh" secondAttribute="trailing" constant="16" id="2iN-h3-DoK"/>
                             <constraint firstItem="o4L-lg-MXf" firstAttribute="top" secondItem="OQu-v8-6lh" secondAttribute="bottom" constant="8" id="5Su-ni-sJm"/>
-                            <constraint firstItem="ptw-fy-GjJ" firstAttribute="leading" secondItem="jSE-fb-8tH" secondAttribute="leading" constant="16" id="Axe-ro-I1Y"/>
+                            <constraint firstItem="jMr-lg-9YG" firstAttribute="width" secondItem="s1W-GH-idd" secondAttribute="width" id="6Vx-cX-SVK"/>
+                            <constraint firstItem="jMr-lg-9YG" firstAttribute="centerY" secondItem="OQu-v8-6lh" secondAttribute="centerY" id="A0G-m3-cuU"/>
                             <constraint firstAttribute="trailing" secondItem="o4L-lg-MXf" secondAttribute="trailing" id="Rkt-fw-djj"/>
-                            <constraint firstAttribute="centerY" secondItem="ptw-fy-GjJ" secondAttribute="centerY" constant="212.5" id="eLM-62-wV7"/>
+                            <constraint firstItem="jMr-lg-9YG" firstAttribute="height" secondItem="s1W-GH-idd" secondAttribute="height" id="T9f-2z-cVS"/>
+                            <constraint firstItem="jMr-lg-9YG" firstAttribute="centerX" secondItem="s1W-GH-idd" secondAttribute="centerX" id="W63-yW-qp4"/>
                             <constraint firstItem="o4L-lg-MXf" firstAttribute="leading" secondItem="jSE-fb-8tH" secondAttribute="leading" id="fzD-Rf-Xfi"/>
+                            <constraint firstItem="jMr-lg-9YG" firstAttribute="centerY" secondItem="s1W-GH-idd" secondAttribute="centerY" id="jz5-Rf-Zxy"/>
                             <constraint firstItem="OQu-v8-6lh" firstAttribute="top" secondItem="Gzr-Ej-twd" secondAttribute="bottom" constant="8" id="nyr-d8-cER"/>
+                            <constraint firstItem="jMr-lg-9YG" firstAttribute="leading" secondItem="jSE-fb-8tH" secondAttribute="leading" constant="16" id="pxE-We-SSS"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="iFw-xc-B1Q"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="475"/>
+                    <connections>
+                        <outlet property="iconImageView" destination="s1W-GH-idd" id="nXy-hZ-NzB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ann-yw-AK2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

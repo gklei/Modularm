@@ -10,9 +10,22 @@ import UIKit
 
 class AlarmOptionSettingsController: UIViewController
 {
+   @IBOutlet weak var iconImageView: UIImageView!
+   var iconImage: UIImage?
+
    override func viewDidLoad()
    {
       super.viewDidLoad()
+      self.iconImageView.tintColor = UIColor.activatedCircleBackgroundColor()
+   }
+
+   override func viewWillAppear(animated: Bool)
+   {
+      super.viewWillAppear(animated)
+      if let image = self.iconImage
+      {
+         self.iconImageView.image = image
+      }
    }
 
    @IBAction func dismissSelf()
@@ -44,5 +57,6 @@ class AlarmOptionSettingsController: UIViewController
       default:
          break
       }
+      self.iconImage = sender.deactivatedImage?.imageWithRenderingMode(.AlwaysTemplate)
    }
 }

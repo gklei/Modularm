@@ -35,6 +35,7 @@ class AlarmOptionButton: UIButton
          self.setImage(image.imageWithRenderingMode(.AlwaysTemplate), forState: .Highlighted)
 
          self.setupCircleImageView()
+         self.backgroundColor = UIColor.normalOptionButtonColor()
       }
    }
 
