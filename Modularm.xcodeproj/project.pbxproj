@@ -85,6 +85,7 @@
 			children = (
 				8EFACDBE1AD837EE00279956 /* Main.storyboard */,
 				8EFACDC31AD837EE00279956 /* LaunchScreen.xib */,
+				8E5BD3261ADB930400C42FAA /* AlarmOptionButton.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -126,14 +127,6 @@
 			name = Other;
 			sourceTree = "<group>";
 		};
-		8EC9B9CD1ADB9CBB00DBF350 /* Subclasses */ = {
-			isa = PBXGroup;
-			children = (
-				8E5BD3261ADB930400C42FAA /* AlarmOptionButton.swift */,
-			);
-			name = Subclasses;
-			sourceTree = "<group>";
-		};
 		8ED9FF301ADF722000A9C25A /* Enums */ = {
 			isa = PBXGroup;
 			children = (
@@ -153,7 +146,6 @@
 				8EFACDCD1AD837EE00279956 /* ModularmTests */,
 				8EC9B9CC1ADB9C6800DBF350 /* Other */,
 				8EFACDB31AD837EE00279956 /* Products */,
-				8EC9B9CD1ADB9CBB00DBF350 /* Subclasses */,
 				8EFACDB51AD837EE00279956 /* Supporting Files */,
 				8EFACDB41AD837EE00279956 /* View Controllers */,
 			);
