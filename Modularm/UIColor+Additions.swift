@@ -20,7 +20,7 @@ extension UIColor
       return UIColor(red: 242/255.0, green: 242/255.0, blue: 242/255.0, alpha: 1)
    }
 
-   class func activatedCircleBackgroundColor() -> UIColor
+   class func lipstickRedColor() -> UIColor
    {
       return UIColor(red: 190/255.0, green: 15/255.0, blue: 60/255.0, alpha: 1)
    }
