@@ -10,13 +10,16 @@ import UIKit
 
 class AlarmOptionSettingsController: UIViewController
 {
+   @IBOutlet weak var tableView: UITableView!
    @IBOutlet weak var iconImageView: UIImageView!
    var optionButton: AlarmOptionButton?
+   var tableViewDataSource: SnoozeOptionDataSource?
 
    override func viewDidLoad()
    {
       super.viewDidLoad()
       self.iconImageView.tintColor = UIColor.lipstickRedColor()
+      self.tableView.tableFooterView = UIView(frame: CGRectZero)
    }
 
    override func viewWillAppear(animated: Bool)
@@ -26,6 +29,8 @@ class AlarmOptionSettingsController: UIViewController
       {
          self.iconImageView.image = button.deactivatedImage?.templateImage
       }
+
+      self.tableViewDataSource = SnoozeOptionDataSource(tableView: self.tableView)
    }
 
    @IBAction func dismissSelf()
