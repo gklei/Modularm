@@ -30,6 +30,7 @@ class AlarmOptionSettingsController: UIViewController
 
    @IBAction func dismissSelf()
    {
+      // temporary
       self.optionButton?.toggleActivation()
       self.navigationController?.popViewControllerAnimated(true)
    }
