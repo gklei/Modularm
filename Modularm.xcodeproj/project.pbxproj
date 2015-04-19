@@ -11,6 +11,7 @@
 		8E3B22611AD9E85F001693E2 /* TimelineDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3B22601AD9E85F001693E2 /* TimelineDataSource.swift */; };
 		8E3BDC341AE4176300E1FCDC /* AlarmOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3BDC331AE4176300E1FCDC /* AlarmOption.swift */; };
 		8E3BDC361AE4176E00E1FCDC /* UIImage+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3BDC351AE4176E00E1FCDC /* UIImage+Additions.swift */; };
+		8E3BDC3B1AE430F400E1FCDC /* SnoozeOptionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3BDC3A1AE430F400E1FCDC /* SnoozeOptionDataSource.swift */; };
 		8E4511F01ADCF00B00A3E8EC /* UIColor+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4511EF1ADCF00B00A3E8EC /* UIColor+Additions.swift */; };
 		8E5BD3271ADB930400C42FAA /* AlarmOptionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5BD3261ADB930400C42FAA /* AlarmOptionButton.swift */; };
 		8E8228E21ADB679A00F9A26E /* UINavigationBar+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8228E11ADB679A00F9A26E /* UINavigationBar+Additions.swift */; };
@@ -38,10 +39,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		5B74FC8B1ADD74A100902484 /* AlarmOptionSettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmOptionSettingsController.swift; sourceTree = "<group>"; };
+		5B74FC8B1ADD74A100902484 /* AlarmOptionSettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlarmOptionSettingsController.swift; path = Modularm/AlarmOptionSettingsController.swift; sourceTree = "<group>"; };
 		8E3B22601AD9E85F001693E2 /* TimelineDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimelineDataSource.swift; path = Modularm/TimelineDataSource.swift; sourceTree = "<group>"; };
 		8E3BDC331AE4176300E1FCDC /* AlarmOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlarmOption.swift; path = Modularm/AlarmOption.swift; sourceTree = "<group>"; };
 		8E3BDC351AE4176E00E1FCDC /* UIImage+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImage+Additions.swift"; path = "Modularm/UIImage+Additions.swift"; sourceTree = "<group>"; };
+		8E3BDC3A1AE430F400E1FCDC /* SnoozeOptionDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnoozeOptionDataSource.swift; path = Modularm/SnoozeOptionDataSource.swift; sourceTree = "<group>"; };
 		8E4511EF1ADCF00B00A3E8EC /* UIColor+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIColor+Additions.swift"; path = "Modularm/UIColor+Additions.swift"; sourceTree = "<group>"; };
 		8E5BD3261ADB930400C42FAA /* AlarmOptionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlarmOptionButton.swift; path = Modularm/AlarmOptionButton.swift; sourceTree = "<group>"; };
 		8E8228E11ADB679A00F9A26E /* UINavigationBar+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UINavigationBar+Additions.swift"; path = "Modularm/UINavigationBar+Additions.swift"; sourceTree = "<group>"; };
@@ -88,6 +90,15 @@
 				8E5BD3261ADB930400C42FAA /* AlarmOptionButton.swift */,
 			);
 			name = UI;
+			sourceTree = "<group>";
+		};
+		8E3BDC371AE4308A00E1FCDC /* Option Settings */ = {
+			isa = PBXGroup;
+			children = (
+				5B74FC8B1ADD74A100902484 /* AlarmOptionSettingsController.swift */,
+				8E3BDC3A1AE430F400E1FCDC /* SnoozeOptionDataSource.swift */,
+			);
+			name = "Option Settings";
 			sourceTree = "<group>";
 		};
 		8EC9B9C91ADB9C3A00DBF350 /* Class Extensions */ = {
@@ -138,6 +149,7 @@
 		8EFACDA91AD837EE00279956 = {
 			isa = PBXGroup;
 			children = (
+				8E3BDC371AE4308A00E1FCDC /* Option Settings */,
 				8ED9FF301ADF722000A9C25A /* Enums */,
 				5B74FC8A1ADD72E000902484 /* UI */,
 				8EC9B9C91ADB9C3A00DBF350 /* Class Extensions */,
@@ -163,7 +175,6 @@
 		8EFACDB41AD837EE00279956 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				5B74FC8B1ADD74A100902484 /* AlarmOptionSettingsController.swift */,
 				8E8228E51ADB821C00F9A26E /* AlarmConfigurationController.swift */,
 				8EFACDDC1AD8390F00279956 /* TimelineController.swift */,
 				8E8228E71ADB8AA900F9A26E /* AlarmOptionsController.swift */,
@@ -299,6 +310,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E3BDC3B1AE430F400E1FCDC /* SnoozeOptionDataSource.swift in Sources */,
 				8EFACDE11AD83A1E00279956 /* CoreDataStack.swift in Sources */,
 				8EFACDBB1AD837EE00279956 /* Modularm.xcdatamodeld in Sources */,
 				8EFACDB81AD837EE00279956 /* AppDelegate.swift in Sources */,
