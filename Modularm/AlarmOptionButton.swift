@@ -14,7 +14,7 @@ class AlarmOptionButton: UIButton
    @IBInspectable var deactivatedImage: UIImage?
 
    var circleImageView: UIImageView?
-   var activated: Bool = false
+   private(set) var activated: Bool
 
    override var highlighted: Bool {
       get {
@@ -28,11 +28,12 @@ class AlarmOptionButton: UIButton
 
    required init(coder aDecoder: NSCoder)
    {
+      self.activated = false
       super.init(coder: aDecoder)
       if let image = self.imageView?.image
       {
-         self.setImage(image.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
-         self.setImage(image.imageWithRenderingMode(.AlwaysTemplate), forState: .Highlighted)
+         self.setImage(image.templateImage, forState: .Normal)
+         self.setImage(image.templateImage, forState: .Highlighted)
 
          self.setupCircleImageView()
          self.backgroundColor = UIColor.normalOptionButtonColor()
@@ -43,8 +44,8 @@ class AlarmOptionButton: UIButton
    {
       if let circleImage = UIImage(named: "bg-icn-plus-circle")
       {
-         self.circleImageView = UIImageView(image: circleImage.imageWithRenderingMode(.AlwaysTemplate))
-         self.circleImageView?.tintColor = UIColor.activatedCircleBackgroundColor()
+         self.circleImageView = UIImageView(image: circleImage.templateImage)
+         self.circleImageView?.tintColor = UIColor.lipstickRedColor()
 
          self.insertSubview(self.circleImageView!, belowSubview: self.imageView!)
          self.circleImageView?.hidden = true
@@ -78,11 +79,23 @@ class AlarmOptionButton: UIButton
       if self.activated, let image = self.deactivatedImage
       {
          self.setTitleColor(UIColor.darkGrayColor(), forState: .Normal)
-         self.setImage(image.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
-         self.setImage(image.imageWithRenderingMode(.AlwaysTemplate), forState: .Highlighted)
+         self.setImage(image.templateImage, forState: .Normal)
+         self.setImage(image.templateImage, forState: .Highlighted)
          self.circleImageView?.hidden = true
 
          self.activated = false
+      }
+   }
+
+   func toggleActivation()
+   {
+      if self.activated
+      {
+         self.deactivate()
+      }
+      else
+      {
+         self.activate()
       }
    }
 }

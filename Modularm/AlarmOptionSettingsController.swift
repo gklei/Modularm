@@ -11,25 +11,26 @@ import UIKit
 class AlarmOptionSettingsController: UIViewController
 {
    @IBOutlet weak var iconImageView: UIImageView!
-   var iconImage: UIImage?
+   var optionButton: AlarmOptionButton?
 
    override func viewDidLoad()
    {
       super.viewDidLoad()
-      self.iconImageView.tintColor = UIColor.activatedCircleBackgroundColor()
+      self.iconImageView.tintColor = UIColor.lipstickRedColor()
    }
 
    override func viewWillAppear(animated: Bool)
    {
       super.viewWillAppear(animated)
-      if let image = self.iconImage
+      if let button = self.optionButton
       {
-         self.iconImageView.image = image
+         self.iconImageView.image = button.deactivatedImage?.templateImage
       }
    }
 
    @IBAction func dismissSelf()
    {
+      self.optionButton?.toggleActivation()
       self.navigationController?.popViewControllerAnimated(true)
    }
 
@@ -57,6 +58,6 @@ class AlarmOptionSettingsController: UIViewController
       default:
          break
       }
-      self.iconImage = sender.deactivatedImage?.imageWithRenderingMode(.AlwaysTemplate)
+      self.optionButton = sender
    }
 }
