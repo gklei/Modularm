@@ -10,7 +10,6 @@ import UIKit
 
 class AlarmOptionDelegateDataSource: NSObject
 {
-   internal var numberOfSections = 0
    internal var cellLabelDictionary: [Int : Array<String>]? = nil
    internal var tableView: UITableView
    

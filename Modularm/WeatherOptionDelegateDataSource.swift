@@ -14,7 +14,7 @@ class WeatherOptionDelegateDataSource: AlarmOptionDelegateDataSource
    {
       super.init(tableView: tableView)
       self.cellLabelDictionary = [0 :["34.4ºF slightly Rainy US", "3ºC slightly Rainy EU", "slighty Rainy int"],
-         1 : ["Background photo", "Location Auto"]]
+         1 : ["Background Photo", "Location Auto"]]
    }
    
    func backgroundPhotoSwitchChanged(sender: UISwitch)

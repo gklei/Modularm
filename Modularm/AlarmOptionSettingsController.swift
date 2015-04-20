@@ -59,22 +59,19 @@ extension AlarmOptionSettingsController
          delegateDataSource = AlarmOptionDelegateDataSource(tableView: self.tableView)
          break
       case .Date:
-         delegateDataSource = AlarmOptionDelegateDataSource(tableView: self.tableView)
-         break
-      case .Message:
-         delegateDataSource = AlarmOptionDelegateDataSource(tableView: self.tableView)
+         delegateDataSource = DateOptionDelegateDataSource(tableView: self.tableView)
          break
       case .Music:
-         delegateDataSource = AlarmOptionDelegateDataSource(tableView: self.tableView)
+         delegateDataSource = MusicOptionDelegateDataSource(tableView: self.tableView)
          break
       case .Repeat:
-         delegateDataSource = AlarmOptionDelegateDataSource(tableView: self.tableView)
+         delegateDataSource = RepeatOptionDelegateDataSource(tableView: self.tableView)
          break
       case .Snooze:
          delegateDataSource = SnoozeOptionDelegateDataSource(tableView: self.tableView)
          break
       case .Sound:
-         delegateDataSource = AlarmOptionDelegateDataSource(tableView: self.tableView)
+         delegateDataSource = SoundOptionDelegateDataSource(tableView: self.tableView)
          break
       case .Weather:
          delegateDataSource = WeatherOptionDelegateDataSource(tableView: self.tableView)
