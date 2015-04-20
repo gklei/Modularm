@@ -8,11 +8,6 @@
 
 import UIKit
 
-let itunesIndex = 0
-let spotifyIndex = 1
-let rdioIndex = 2
-let fmetcIndex = 3
-
 class MusicOptionDelegateDataSource: AlarmOptionDelegateDataSource
 {
    override init(tableView: UITableView)
@@ -23,18 +18,22 @@ class MusicOptionDelegateDataSource: AlarmOptionDelegateDataSource
    
    func itunesSwitchChanged(sender: UISwitch)
    {
+      println("itunes switch changed")
    }
    
    func spotifySwitchChanged(sender: UISwitch)
    {
+      println("spotify switch changed")
    }
    
    func rdioSwitchChanged(sender: UISwitch)
    {
+      println("rdio switch changed")
    }
    
    func fmetcSwitchChanged(sender: UISwitch)
    {
+      println("fmetc switch changed")
    }
 }
 
@@ -70,10 +69,25 @@ extension MusicOptionDelegateDataSource: UITableViewDelegate
       if let selector = selectorString
       {
          switchView.addTarget(self, action: selector, forControlEvents: UIControlEvents.ValueChanged)
+         cell.accessoryView = switchView
       }
-      
-      cell.accessoryView = switchView
       
       return cell
    }
+   
+//   override func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView?
+//   {
+//      let view = super.tableView(tableView, viewForFooterInSection: section)
+//      if section == 0
+//      {
+//         let label = UILabel()
+//         label.font = UIFont(name: "Helvetica Neue", size: 16)
+//         label.text = "SOURCE"
+//         label.sizeToFit()
+//         
+//         label.center = CGPointMake(CGRectGetWidth(label.frame)*0.5 + 16, 25)
+//         view?.addSubview(label)
+//      }
+//      return view
+//   }
 }

@@ -24,7 +24,7 @@ class WeatherOptionDelegateDataSource: AlarmOptionDelegateDataSource
    
    func locationAutoSwitchChanged(sender: UISwitch)
    {
-      println("background photo on: \(sender.on)")
+      println("location auto on: \(sender.on)")
    }
 }
 
