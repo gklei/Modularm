@@ -10,11 +10,13 @@ import UIKit
 
 class AlarmOptionDelegateDataSource: NSObject
 {
+   internal var settingsControllerDelegate: AlarmOptionSettingsControllerProtocol
    internal var cellLabelDictionary: [Int : Array<String>]? = nil
    internal var tableView: UITableView
    
-   init(tableView: UITableView)
+   init(tableView: UITableView, delegate: AlarmOptionSettingsControllerProtocol)
    {
+      self.settingsControllerDelegate = delegate
       self.tableView = tableView
       super.init()
       
@@ -35,6 +37,11 @@ class AlarmOptionDelegateDataSource: NSObject
       }
       
       return cell
+   }
+   
+   internal func cancelButtonPressed()
+   {
+      self.settingsControllerDelegate.cancelButtonPressed()
    }
 }
 
@@ -83,6 +90,8 @@ extension AlarmOptionDelegateDataSource: UITableViewDelegate
       {
          let cancelButton = UIButton.cancelButtonWithTitle("cancel")
          cancelButton.center = CGPointMake(CGRectGetWidth(cancelButton.frame)*0.5 + 16, 25)
+         cancelButton.addTarget(self, action: "cancelButtonPressed", forControlEvents: UIControlEvents.TouchUpInside)
+         
          view.addSubview(cancelButton)
       }
       return view

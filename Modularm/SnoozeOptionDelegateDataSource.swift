@@ -14,9 +14,9 @@ class SnoozeOptionDelegateDataSource: AlarmOptionDelegateDataSource
    let secondMenuTitles = ["5 minutes", "10 minutes", "15 minutes", "20 minutes"]
    var isShowingFirstMenu = true
    
-   override init(tableView: UITableView)
+   override init(tableView: UITableView, delegate: AlarmOptionSettingsControllerProtocol)
    {
-      super.init(tableView: tableView)
+      super.init(tableView: tableView, delegate: delegate)
       self.cellLabelDictionary = [0 : firstMenuTitles]
    }
 }

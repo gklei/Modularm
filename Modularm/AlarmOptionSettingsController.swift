@@ -8,6 +8,11 @@
 
 import UIKit
 
+protocol AlarmOptionSettingsControllerProtocol
+{
+   func cancelButtonPressed()
+}
+
 class AlarmOptionSettingsController: UIViewController
 {
    @IBOutlet weak var setOptionButton: UIButton!
@@ -48,6 +53,14 @@ class AlarmOptionSettingsController: UIViewController
    }
 }
 
+extension AlarmOptionSettingsController: AlarmOptionSettingsControllerProtocol
+{
+   func cancelButtonPressed()
+   {
+      self.dismissSelf()
+   }
+}
+
 extension AlarmOptionSettingsController
 {
    private func delegateDataSourceForOption(option: AlarmOption) -> AlarmOptionDelegateDataSource
@@ -56,29 +69,29 @@ extension AlarmOptionSettingsController
       switch (option)
       {
       case .Countdown:
-         delegateDataSource = AlarmOptionDelegateDataSource(tableView: self.tableView)
+         delegateDataSource = AlarmOptionDelegateDataSource(tableView: self.tableView, delegate: self)
          break
       case .Date:
-         delegateDataSource = DateOptionDelegateDataSource(tableView: self.tableView)
+         delegateDataSource = DateOptionDelegateDataSource(tableView: self.tableView, delegate: self)
          break
       case .Music:
-         delegateDataSource = MusicOptionDelegateDataSource(tableView: self.tableView)
+         delegateDataSource = MusicOptionDelegateDataSource(tableView: self.tableView, delegate: self)
          break
       case .Repeat:
-         delegateDataSource = RepeatOptionDelegateDataSource(tableView: self.tableView)
+         delegateDataSource = RepeatOptionDelegateDataSource(tableView: self.tableView, delegate: self)
          break
       case .Snooze:
-         delegateDataSource = SnoozeOptionDelegateDataSource(tableView: self.tableView)
+         delegateDataSource = SnoozeOptionDelegateDataSource(tableView: self.tableView, delegate: self)
          break
       case .Sound:
-         delegateDataSource = SoundOptionDelegateDataSource(tableView: self.tableView)
+         delegateDataSource = SoundOptionDelegateDataSource(tableView: self.tableView, delegate: self)
          break
       case .Weather:
-         delegateDataSource = WeatherOptionDelegateDataSource(tableView: self.tableView)
+         delegateDataSource = WeatherOptionDelegateDataSource(tableView: self.tableView, delegate: self)
          break
          
       default:
-         delegateDataSource = AlarmOptionDelegateDataSource(tableView: self.tableView)
+         delegateDataSource = AlarmOptionDelegateDataSource(tableView: self.tableView, delegate: self)
          break
       }
       return delegateDataSource

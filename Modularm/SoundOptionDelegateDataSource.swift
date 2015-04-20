@@ -10,9 +10,9 @@ import UIKit
 
 class SoundOptionDelegateDataSource: AlarmOptionDelegateDataSource
 {
-   override init(tableView: UITableView)
+   override init(tableView: UITableView, delegate: AlarmOptionSettingsControllerProtocol)
    {
-      super.init(tableView: tableView)
+      super.init(tableView: tableView, delegate: delegate)
       self.cellLabelDictionary = [0 : ["Basic", "Silent (Vibration)", "Classic", "John Lord", "Jimmy Hendrix", "George Harrison", "Cliff", "Drama", "Beach Morning"]]
    }
 }

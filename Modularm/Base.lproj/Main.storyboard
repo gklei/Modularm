@@ -224,7 +224,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gY3-gf-7e8">
-                                <rect key="frame" x="26" y="242" width="82" height="34"/>
+                                <rect key="frame" x="16" y="234" width="82" height="34"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                                 <state key="normal" title="Test Alarm">
                                     <color key="titleColor" red="0.74509803921568629" green="0.058823529411764705" blue="0.23529411764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -316,7 +316,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KiT-TL-ADt">
-                                <rect key="frame" x="155" y="242" width="45" height="34"/>
+                                <rect key="frame" x="145" y="234" width="45" height="34"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                                 <state key="normal" title="Reset">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
@@ -351,7 +351,7 @@
                             <constraint firstItem="KiT-TL-ADt" firstAttribute="centerY" secondItem="gY3-gf-7e8" secondAttribute="centerY" id="0dW-6c-JpC"/>
                             <constraint firstItem="gbN-Qj-4ad" firstAttribute="top" secondItem="IDT-cM-UAS" secondAttribute="bottom" constant="1" id="1QF-AQ-k5Z"/>
                             <constraint firstItem="MhA-JY-UHK" firstAttribute="top" secondItem="sbn-KE-cTd" secondAttribute="bottom" constant="1" id="1lj-Qi-38U"/>
-                            <constraint firstItem="gY3-gf-7e8" firstAttribute="top" secondItem="l6H-Kw-288" secondAttribute="bottom" constant="18" id="2JH-NP-eiQ"/>
+                            <constraint firstItem="gY3-gf-7e8" firstAttribute="top" secondItem="l6H-Kw-288" secondAttribute="bottom" constant="10" id="2JH-NP-eiQ"/>
                             <constraint firstItem="gbN-Qj-4ad" firstAttribute="width" secondItem="IDT-cM-UAS" secondAttribute="width" id="5Aa-LU-oGU"/>
                             <constraint firstAttribute="trailing" secondItem="MhA-JY-UHK" secondAttribute="trailing" constant="1" id="7sz-Qw-MIz"/>
                             <constraint firstItem="l6H-Kw-288" firstAttribute="top" secondItem="gbN-Qj-4ad" secondAttribute="bottom" constant="1" id="8Kj-WH-qRf"/>
@@ -376,7 +376,7 @@
                             <constraint firstItem="S3G-bQ-eaK" firstAttribute="height" secondItem="1eM-hi-3hc" secondAttribute="height" id="nVm-QR-69x"/>
                             <constraint firstItem="1eM-hi-3hc" firstAttribute="width" secondItem="MhA-JY-UHK" secondAttribute="width" id="o8f-gZ-09K"/>
                             <constraint firstItem="KqE-Bn-D4p" firstAttribute="width" secondItem="IDT-cM-UAS" secondAttribute="width" id="qnf-lB-5Ly"/>
-                            <constraint firstItem="gY3-gf-7e8" firstAttribute="leading" secondItem="esU-yQ-Xhb" secondAttribute="leading" constant="26" id="qvg-9c-N8E"/>
+                            <constraint firstItem="gY3-gf-7e8" firstAttribute="leading" secondItem="esU-yQ-Xhb" secondAttribute="leading" constant="16" id="qvg-9c-N8E"/>
                             <constraint firstItem="xVt-i6-9Of" firstAttribute="centerX" secondItem="S3G-bQ-eaK" secondAttribute="centerX" id="tmv-CD-S2Q"/>
                             <constraint firstItem="gbN-Qj-4ad" firstAttribute="width" secondItem="l6H-Kw-288" secondAttribute="width" id="x1c-rF-2yo"/>
                             <constraint firstItem="gbN-Qj-4ad" firstAttribute="height" secondItem="IDT-cM-UAS" secondAttribute="height" id="zHX-ul-QZq"/>
