@@ -13,7 +13,7 @@ class AlarmOptionSettingsController: UIViewController
    @IBOutlet weak var tableView: UITableView!
    @IBOutlet weak var iconImageView: UIImageView!
    var optionButton: AlarmOptionButton?
-   var tableViewDataSource: SnoozeOptionDataSource?
+   var tableViewDataSource: SnoozeOptionDelegateDataSource?
 
    override func viewDidLoad()
    {
@@ -30,7 +30,7 @@ class AlarmOptionSettingsController: UIViewController
          self.iconImageView.image = button.deactivatedImage?.templateImage
       }
 
-      self.tableViewDataSource = SnoozeOptionDataSource(tableView: self.tableView)
+      self.tableViewDataSource = SnoozeOptionDelegateDataSource(tableView: self.tableView)
    }
 
    @IBAction func dismissSelf()

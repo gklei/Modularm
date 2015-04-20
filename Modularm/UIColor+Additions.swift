@@ -17,7 +17,7 @@ extension UIColor
 
    class func normalOptionButtonColor() -> UIColor
    {
-      return UIColor(red: 242/255.0, green: 242/255.0, blue: 242/255.0, alpha: 1)
+      return UIColor(white: 0.94, alpha: 1)
    }
 
    class func lipstickRedColor() -> UIColor
