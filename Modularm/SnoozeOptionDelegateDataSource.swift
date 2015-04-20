@@ -30,23 +30,40 @@ class SnoozeOptionDelegateDataSource: NSObject, UITableViewDataSource
    {
       let cell: UITableViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! UITableViewCell
 
+
+      var titleAttrs = [NSFontAttributeName : UIFont(name: "HelveticaNeue-Light", size: 19)!]
+
+      var cellLabel = ""
       if indexPath.row == 0
       {
+         cellLabel = "Snooze"
          cell.accessoryType = .DisclosureIndicator
-         cell.textLabel!.text = "Snooze Time"
       }
       else if indexPath.row == 1
       {
-         cell.textLabel!.text = "Regular"
+         cellLabel = "Regular button"
+         cell.selectionStyle = .None
+         cell.accessoryType = .Checkmark
       }
       else if indexPath.row == 2
       {
-         cell.textLabel!.text = "Big"
+         cellLabel = "Big button"
+         cell.selectionStyle = .None
+         cell.accessoryType = .Checkmark
       }
       else if indexPath.row == 3
       {
-         cell.textLabel!.text = "Shake your phone"
+         cellLabel = "Shake your phone"
+         cell.selectionStyle = .None
+         cell.accessoryType = .Checkmark
       }
+
+      cell.textLabel?.attributedText = NSAttributedString(string: cellLabel, attributes: titleAttrs);
+
+//      let imageView = UIImageView(image: UIImage(named: "icn-plus-repeat")?.templateImage)
+//      imageView.tintColor = UIColor.lipstickRedColor()
+//      cell.accessoryView = imageView
+
       return cell
    }
 }
@@ -84,6 +101,6 @@ extension SnoozeOptionDelegateDataSource: UITableViewDelegate
    }
 
    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
-   {g
+   {
    }
 }
