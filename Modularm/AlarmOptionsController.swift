@@ -10,11 +10,6 @@ import UIKit
 
 class AlarmOptionsController: UIViewController
 {
-   override func viewDidLoad()
-   {
-      super.viewDidLoad()
-   }
-
    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
    {
       let optionSettingsController = segue.destinationViewController as! AlarmOptionSettingsController
@@ -53,6 +48,7 @@ class AlarmOptionsController: UIViewController
       }
 
       var optionButton = sender as! AlarmOptionButton
-      optionSettingsController.configureWithAlarmOption(option, sender: optionButton)
+      optionButton.option = option
+      optionSettingsController.configureWithAlarmOptionButton(optionButton)
    }
 }

@@ -12,6 +12,7 @@ class AlarmOptionButton: UIButton
 {
    @IBInspectable var activatedImage: UIImage?
    @IBInspectable var deactivatedImage: UIImage?
+   var option: AlarmOption = .Unknown
 
    var circleImageView: UIImageView?
    private(set) var activated: Bool

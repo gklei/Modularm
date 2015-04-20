@@ -8,62 +8,51 @@
 
 import UIKit
 
-class SnoozeOptionDelegateDataSource: NSObject, UITableViewDataSource
+class SnoozeOptionDelegateDataSource: AlarmOptionDelegateDataSource
 {
-   var tableView: UITableView
+   let firstMenuTitles = ["Snooze", "Regular button", "Big button", "Shake your phone"]
+   let snoozeTimeTitles = ["5 minutes", "10 minutes", "15 minutes", "20 minutes"]
+   var isShowingFirstMenu = true
+}
 
-   init(tableView: UITableView)
-   {
-      self.tableView = tableView
-      super.init()
-
-      tableView.dataSource = self
-      tableView.delegate = self
-   }
-
-   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+extension SnoozeOptionDelegateDataSource: UITableViewDataSource
+{
+   override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
    {
       return 4
    }
-
-   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+   
+   override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
    {
-      let cell: UITableViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! UITableViewCell
-
-
+      let cell = super.tableView(tableView, cellForRowAtIndexPath: indexPath)
       var titleAttrs = [NSFontAttributeName : UIFont(name: "HelveticaNeue-Light", size: 19)!]
-
+      
       var cellLabel = ""
       if indexPath.row == 0
       {
          cellLabel = "Snooze"
-         cell.accessoryType = .DisclosureIndicator
+         cell.accessoryType = self.isShowingFirstMenu ? .DisclosureIndicator : .None
+         cell.selectionStyle = self.isShowingFirstMenu ? .Default : .None
       }
       else if indexPath.row == 1
       {
          cellLabel = "Regular button"
          cell.selectionStyle = .None
-         cell.accessoryType = .Checkmark
       }
       else if indexPath.row == 2
       {
          cellLabel = "Big button"
          cell.selectionStyle = .None
-         cell.accessoryType = .Checkmark
       }
       else if indexPath.row == 3
       {
          cellLabel = "Shake your phone"
          cell.selectionStyle = .None
-         cell.accessoryType = .Checkmark
       }
-
+      
+      cellLabel = self.isShowingFirstMenu ? self.firstMenuTitles[indexPath.row] : self.snoozeTimeTitles[indexPath.row]
       cell.textLabel?.attributedText = NSAttributedString(string: cellLabel, attributes: titleAttrs);
-
-//      let imageView = UIImageView(image: UIImage(named: "icn-plus-repeat")?.templateImage)
-//      imageView.tintColor = UIColor.lipstickRedColor()
-//      cell.accessoryView = imageView
-
+      
       return cell
    }
 }
@@ -75,22 +64,9 @@ extension SnoozeOptionDelegateDataSource: UITableViewDelegate
       let view = UIView()
       view.backgroundColor = UIColor.normalOptionButtonColor()
 
-      let cancelButton = UIButton()
-      var attrs = [NSFontAttributeName : UIFont(name: "HelveticaNeue-Light", size: 19)!,
-         NSForegroundColorAttributeName : UIColor.lightGrayColor()]
-      var highlightedAttrs = [NSFontAttributeName : UIFont(name: "HelveticaNeue-Light", size: 19)!,
-         NSForegroundColorAttributeName : UIColor(white: 0.8, alpha: 1)]
-
-      let normalAttrTitle = NSAttributedString(string: "cancel", attributes: attrs)
-      let hightlightedAttrTitle = NSAttributedString(string: "cancel", attributes: highlightedAttrs)
-
-      cancelButton.setAttributedTitle(normalAttrTitle, forState: .Normal)
-      cancelButton.setAttributedTitle(hightlightedAttrTitle, forState: .Highlighted)
-
-      cancelButton.sizeToFit()
-
-      view.addSubview(cancelButton)
+      let cancelButton = UIButton.cancelButtonWithTitle("cancel")
       cancelButton.center = CGPointMake(CGRectGetWidth(cancelButton.frame)*0.5 + 16, 25)
+      view.addSubview(cancelButton)
 
       return view
    }
@@ -102,5 +78,7 @@ extension SnoozeOptionDelegateDataSource: UITableViewDelegate
 
    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
    {
+      self.isShowingFirstMenu = !self.isShowingFirstMenu
+      self.tableView.reloadData()
    }
 }

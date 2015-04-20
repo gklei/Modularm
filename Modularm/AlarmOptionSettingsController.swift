@@ -13,7 +13,7 @@ class AlarmOptionSettingsController: UIViewController
    @IBOutlet weak var tableView: UITableView!
    @IBOutlet weak var iconImageView: UIImageView!
    var optionButton: AlarmOptionButton?
-   var tableViewDataSource: SnoozeOptionDelegateDataSource?
+   var delegateDataSource: AlarmOptionDelegateDataSource?
 
    override func viewDidLoad()
    {
@@ -30,40 +30,47 @@ class AlarmOptionSettingsController: UIViewController
          self.iconImageView.image = button.deactivatedImage?.templateImage
       }
 
-      self.tableViewDataSource = SnoozeOptionDelegateDataSource(tableView: self.tableView)
+      var delegateDataSource: AlarmOptionDelegateDataSource?
+      switch (self.optionButton!.option)
+      {
+      case .Countdown:
+         self.delegateDataSource = AlarmOptionDelegateDataSource(tableView: self.tableView)
+         break
+      case .Date:
+         self.delegateDataSource = AlarmOptionDelegateDataSource(tableView: self.tableView)
+         break
+      case .Message:
+         self.delegateDataSource = AlarmOptionDelegateDataSource(tableView: self.tableView)
+         break
+      case .Music:
+         self.delegateDataSource = AlarmOptionDelegateDataSource(tableView: self.tableView)
+         break
+      case .Repeat:
+         self.delegateDataSource = AlarmOptionDelegateDataSource(tableView: self.tableView)
+         break
+      case .Snooze:
+         self.delegateDataSource = SnoozeOptionDelegateDataSource(tableView: self.tableView)
+         break
+      case .Sound:
+         self.delegateDataSource = AlarmOptionDelegateDataSource(tableView: self.tableView)
+         break
+      case .Weather:
+         self.delegateDataSource = AlarmOptionDelegateDataSource(tableView: self.tableView)
+         break
+         
+      default:
+         break
+      }
    }
 
    @IBAction func dismissSelf()
    {
       // temporary
-      self.optionButton?.toggleActivation()
       self.navigationController?.popViewControllerAnimated(true)
    }
 
-   func configureWithAlarmOption(option: AlarmOption, sender: AlarmOptionButton)
+   func configureWithAlarmOptionButton(optionButton: AlarmOptionButton)
    {
-      switch (option)
-      {
-      case .Countdown:
-         break
-      case .Date:
-         break
-      case .Message:
-         break
-      case .Music:
-         break
-      case .Repeat:
-         break
-      case .Snooze:
-         break
-      case .Sound:
-         break
-      case .Weather:
-         break
-
-      default:
-         break
-      }
-      self.optionButton = sender
+      self.optionButton = optionButton
    }
 }
