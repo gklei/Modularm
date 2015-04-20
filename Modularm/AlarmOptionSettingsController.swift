@@ -29,40 +29,10 @@ class AlarmOptionSettingsController: UIViewController
       if let button = self.optionButton
       {
          self.iconImageView.image = button.deactivatedImage?.templateImage
-      }
-
-      var delegateDataSource: AlarmOptionDelegateDataSource?
-      switch (self.optionButton!.option)
-      {
-      case .Countdown:
-         self.delegateDataSource = AlarmOptionDelegateDataSource(tableView: self.tableView)
-         break
-      case .Date:
-         self.delegateDataSource = AlarmOptionDelegateDataSource(tableView: self.tableView)
-         break
-      case .Message:
-         self.delegateDataSource = AlarmOptionDelegateDataSource(tableView: self.tableView)
-         break
-      case .Music:
-         self.delegateDataSource = AlarmOptionDelegateDataSource(tableView: self.tableView)
-         break
-      case .Repeat:
-         self.delegateDataSource = AlarmOptionDelegateDataSource(tableView: self.tableView)
-         break
-      case .Snooze:
-         self.setOptionButton.setTitle("Set snooze", forState: .Normal)
-         self.delegateDataSource = SnoozeOptionDelegateDataSource(tableView: self.tableView)
-         break
-      case .Sound:
-         self.delegateDataSource = AlarmOptionDelegateDataSource(tableView: self.tableView)
-         break
-      case .Weather:
-         self.setOptionButton.setTitle("Set weather display", forState: .Normal)
-         self.delegateDataSource = WeatherOptionDelegateDataSource(tableView: self.tableView)
-         break
          
-      default:
-         break
+         let title = self.buttonTitleForOption(button.option)
+         self.setOptionButton.setTitle(title, forState: .Normal)
+         self.delegateDataSource = self.delegateDataSourceForOption(button.option)
       }
    }
 
@@ -75,5 +45,81 @@ class AlarmOptionSettingsController: UIViewController
    func configureWithAlarmOptionButton(optionButton: AlarmOptionButton)
    {
       self.optionButton = optionButton
+   }
+}
+
+extension AlarmOptionSettingsController
+{
+   private func delegateDataSourceForOption(option: AlarmOption) -> AlarmOptionDelegateDataSource
+   {
+      var delegateDataSource: AlarmOptionDelegateDataSource
+      switch (option)
+      {
+      case .Countdown:
+         delegateDataSource = AlarmOptionDelegateDataSource(tableView: self.tableView)
+         break
+      case .Date:
+         delegateDataSource = AlarmOptionDelegateDataSource(tableView: self.tableView)
+         break
+      case .Message:
+         delegateDataSource = AlarmOptionDelegateDataSource(tableView: self.tableView)
+         break
+      case .Music:
+         delegateDataSource = AlarmOptionDelegateDataSource(tableView: self.tableView)
+         break
+      case .Repeat:
+         delegateDataSource = AlarmOptionDelegateDataSource(tableView: self.tableView)
+         break
+      case .Snooze:
+         delegateDataSource = SnoozeOptionDelegateDataSource(tableView: self.tableView)
+         break
+      case .Sound:
+         delegateDataSource = AlarmOptionDelegateDataSource(tableView: self.tableView)
+         break
+      case .Weather:
+         delegateDataSource = WeatherOptionDelegateDataSource(tableView: self.tableView)
+         break
+         
+      default:
+         delegateDataSource = AlarmOptionDelegateDataSource(tableView: self.tableView)
+         break
+      }
+      return delegateDataSource
+   }
+   
+   private func buttonTitleForOption(option: AlarmOption) -> String
+   {
+      var title = ""
+      switch (option)
+      {
+      case .Countdown:
+         title = "Set countdown display"
+         break
+      case .Date:
+         title = "Set date display"
+         break
+      case .Message:
+         title = "Set message"
+         break
+      case .Music:
+         title = "Set music"
+         break
+      case .Repeat:
+         title = "Set repeat"
+         break
+      case .Snooze:
+         title = "Set snooze"
+         break
+      case .Sound:
+         title = "Set sound"
+         break
+      case .Weather:
+         title = "Set weather display"
+         break
+         
+      default:
+         break
+      }
+      return title
    }
 }

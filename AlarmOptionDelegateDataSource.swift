@@ -10,6 +10,7 @@ import UIKit
 
 class AlarmOptionDelegateDataSource: NSObject
 {
+   internal var numberOfSections = 0
    internal var cellLabelDictionary: [Int : Array<String>]? = nil
    internal var tableView: UITableView
    
@@ -42,12 +43,23 @@ extension AlarmOptionDelegateDataSource: UITableViewDataSource
 {
    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
    {
-      return 0
+      var numberOfRows = 0
+      if let dictionary = self.cellLabelDictionary
+      {
+         let labelArray = dictionary[section] as Array<String>?
+         numberOfRows = labelArray!.count
+      }
+      return numberOfRows
    }
    
    func numberOfSectionsInTableView(tableView: UITableView) -> Int
    {
-      return 1
+      var numberOfSections = 0
+      if let dictionary = self.cellLabelDictionary
+      {
+         numberOfSections = dictionary.count
+      }
+      return numberOfSections
    }
    
    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
@@ -58,4 +70,22 @@ extension AlarmOptionDelegateDataSource: UITableViewDataSource
 
 extension AlarmOptionDelegateDataSource: UITableViewDelegate
 {
+   func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat
+   {
+      return 50.0
+   }
+   
+   func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView?
+   {
+      let view = UIView()
+      view.backgroundColor = UIColor.normalOptionButtonColor()
+      
+      if section == self.numberOfSectionsInTableView(tableView) - 1
+      {
+         let cancelButton = UIButton.cancelButtonWithTitle("cancel")
+         cancelButton.center = CGPointMake(CGRectGetWidth(cancelButton.frame)*0.5 + 16, 25)
+         view.addSubview(cancelButton)
+      }
+      return view
+   }
 }

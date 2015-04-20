@@ -16,20 +16,20 @@ class WeatherOptionDelegateDataSource: AlarmOptionDelegateDataSource
       self.cellLabelDictionary = [0 :["34.4ºF slightly Rainy US", "3ºC slightly Rainy EU", "slighty Rainy int"],
          1 : ["Background photo", "Location Auto"]]
    }
+   
+   func backgroundPhotoSwitchChanged(sender: UISwitch)
+   {
+      println("background photo on: \(sender.on)")
+   }
+   
+   func locationAutoSwitchChanged(sender: UISwitch)
+   {
+      println("background photo on: \(sender.on)")
+   }
 }
 
 extension WeatherOptionDelegateDataSource: UITableViewDataSource
 {
-   override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
-   {
-      return section == 0 ? 3 : 2
-   }
-   
-   override func numberOfSectionsInTableView(tableView: UITableView) -> Int
-   {
-      return 2
-   }
-   
    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
    {
       let cell = super.tableView(tableView, cellForRowAtIndexPath: indexPath)
@@ -45,40 +45,5 @@ extension WeatherOptionDelegateDataSource: UITableViewDataSource
       }
       
       return cell
-   }
-}
-
-extension WeatherOptionDelegateDataSource: UITableViewDelegate
-{
-   func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView?
-   {
-      let view = UIView()
-      view.backgroundColor = UIColor.normalOptionButtonColor()
-      
-      if section == 1
-      {
-         let cancelButton = UIButton.cancelButtonWithTitle("cancel")
-         cancelButton.center = CGPointMake(CGRectGetWidth(cancelButton.frame)*0.5 + 16, 25)
-         view.addSubview(cancelButton)
-      }
-      return view
-   }
-   
-   func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat
-   {
-      return 50.0
-   }
-}
-
-extension WeatherOptionDelegateDataSource
-{
-   func backgroundPhotoSwitchChanged(sender: UISwitch)
-   {
-      println("background photo on: \(sender.on)")
-   }
-   
-   func locationAutoSwitchChanged(sender: UISwitch)
-   {
-      println("background photo on: \(sender.on)")
    }
 }
