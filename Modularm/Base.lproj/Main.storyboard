@@ -464,6 +464,7 @@
                     <size key="freeformSize" width="320" height="475"/>
                     <connections>
                         <outlet property="iconImageView" destination="s1W-GH-idd" id="nXy-hZ-NzB"/>
+                        <outlet property="setOptionButton" destination="OQu-v8-6lh" id="QKM-jd-hMy"/>
                         <outlet property="tableView" destination="o4L-lg-MXf" id="Tqq-Ze-IzP"/>
                     </connections>
                 </viewController>

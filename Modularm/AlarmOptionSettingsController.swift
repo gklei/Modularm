@@ -10,6 +10,7 @@ import UIKit
 
 class AlarmOptionSettingsController: UIViewController
 {
+   @IBOutlet weak var setOptionButton: UIButton!
    @IBOutlet weak var tableView: UITableView!
    @IBOutlet weak var iconImageView: UIImageView!
    var optionButton: AlarmOptionButton?
@@ -49,13 +50,15 @@ class AlarmOptionSettingsController: UIViewController
          self.delegateDataSource = AlarmOptionDelegateDataSource(tableView: self.tableView)
          break
       case .Snooze:
+         self.setOptionButton.setTitle("Set snooze", forState: .Normal)
          self.delegateDataSource = SnoozeOptionDelegateDataSource(tableView: self.tableView)
          break
       case .Sound:
          self.delegateDataSource = AlarmOptionDelegateDataSource(tableView: self.tableView)
          break
       case .Weather:
-         self.delegateDataSource = AlarmOptionDelegateDataSource(tableView: self.tableView)
+         self.setOptionButton.setTitle("Set weather display", forState: .Normal)
+         self.delegateDataSource = WeatherOptionDelegateDataSource(tableView: self.tableView)
          break
          
       default:
