@@ -14,6 +14,7 @@
 		5B1997AE1AE5B58000D1522C /* DateOptionDelegateDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1997AD1AE5B58000D1522C /* DateOptionDelegateDataSource.swift */; };
 		5B1997B01AE5B64A00D1522C /* MusicOptionDelegateDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1997AF1AE5B64A00D1522C /* MusicOptionDelegateDataSource.swift */; };
 		5B1997B31AE5B98600D1522C /* RepeatOptionDelegateDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1997B21AE5B98600D1522C /* RepeatOptionDelegateDataSource.swift */; };
+		5B1997B71AE5F79C00D1522C /* AlarmMessageSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1997B61AE5F79C00D1522C /* AlarmMessageSettingsController.swift */; };
 		5B74FC8C1ADD74A100902484 /* AlarmOptionSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B74FC8B1ADD74A100902484 /* AlarmOptionSettingsController.swift */; };
 		8E3B22611AD9E85F001693E2 /* TimelineDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3B22601AD9E85F001693E2 /* TimelineDataSource.swift */; };
 		8E3BDC341AE4176300E1FCDC /* AlarmOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3BDC331AE4176300E1FCDC /* AlarmOption.swift */; };
@@ -53,6 +54,7 @@
 		5B1997AD1AE5B58000D1522C /* DateOptionDelegateDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateOptionDelegateDataSource.swift; path = Modularm/DateOptionDelegateDataSource.swift; sourceTree = "<group>"; };
 		5B1997AF1AE5B64A00D1522C /* MusicOptionDelegateDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MusicOptionDelegateDataSource.swift; path = Modularm/MusicOptionDelegateDataSource.swift; sourceTree = "<group>"; };
 		5B1997B21AE5B98600D1522C /* RepeatOptionDelegateDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RepeatOptionDelegateDataSource.swift; path = Modularm/RepeatOptionDelegateDataSource.swift; sourceTree = "<group>"; };
+		5B1997B61AE5F79C00D1522C /* AlarmMessageSettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlarmMessageSettingsController.swift; path = Modularm/AlarmMessageSettingsController.swift; sourceTree = "<group>"; };
 		5B74FC8B1ADD74A100902484 /* AlarmOptionSettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlarmOptionSettingsController.swift; path = Modularm/AlarmOptionSettingsController.swift; sourceTree = "<group>"; };
 		8E3B22601AD9E85F001693E2 /* TimelineDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimelineDataSource.swift; path = Modularm/TimelineDataSource.swift; sourceTree = "<group>"; };
 		8E3BDC331AE4176300E1FCDC /* AlarmOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlarmOption.swift; path = Modularm/AlarmOption.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				5B1997AD1AE5B58000D1522C /* DateOptionDelegateDataSource.swift */,
 				5B1997AF1AE5B64A00D1522C /* MusicOptionDelegateDataSource.swift */,
 				5B1997B21AE5B98600D1522C /* RepeatOptionDelegateDataSource.swift */,
+				5B1997B61AE5F79C00D1522C /* AlarmMessageSettingsController.swift */,
 			);
 			name = "Delegate Data Sources";
 			sourceTree = "<group>";
@@ -351,6 +354,7 @@
 				5B1997AA1AE5765800D1522C /* WeatherOptionDelegateDataSource.swift in Sources */,
 				8E8228E21ADB679A00F9A26E /* UINavigationBar+Additions.swift in Sources */,
 				5B1997AE1AE5B58000D1522C /* DateOptionDelegateDataSource.swift in Sources */,
+				5B1997B71AE5F79C00D1522C /* AlarmMessageSettingsController.swift in Sources */,
 				8E3BDC341AE4176300E1FCDC /* AlarmOption.swift in Sources */,
 				5B1997B01AE5B64A00D1522C /* MusicOptionDelegateDataSource.swift in Sources */,
 				5B1997A41AE56CAD00D1522C /* UIButton+Extensions.swift in Sources */,
