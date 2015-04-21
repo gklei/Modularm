@@ -8,28 +8,61 @@
 
 import UIKit
 
-class AlarmMessageSettingsController: UIViewController {
+class AlarmMessageSettingsController: UIViewController
+{
+   @IBOutlet weak var iconImageView: UIImageView!
+   @IBOutlet weak var messageTextView: UITextView!
+   
+   var optionButton: AlarmOptionButton?
+   
+   override func viewDidLoad()
+   {
+      super.viewDidLoad()
+      self.iconImageView.tintColor = UIColor.lipstickRedColor()
+      self.setupMessageTextView()
+   }
+   
+   override func viewWillAppear(animated: Bool)
+   {
+      super.viewWillAppear(animated)
+      if let button = self.optionButton
+      {
+         self.iconImageView.image = button.deactivatedImage?.templateImage
+      }
+   }
+   
+   private func setupMessageTextView()
+   {
+      self.messageTextView.delegate = self
+      self.messageTextView.text = "e.g. Wake up!"
+      self.messageTextView.textColor = UIColor.lightGrayColor()
+      self.messageTextView.textContainerInset = UIEdgeInsetsMake(8, 8, 8, 8)
+   }
+   
+   @IBAction func dismissSelf()
+   {
+      self.messageTextView.endEditing(true)
+      self.navigationController?.popViewControllerAnimated(true)
+   }
+}
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+extension AlarmMessageSettingsController: AlarmOptionSettingsControllerProtocol
+{
+   func configureWithOptionButton(button: AlarmOptionButton)
+   {
+      self.optionButton = button
+   }
+   
+   func cancelButtonPressed()
+   {
+   }
+}
 
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+extension AlarmMessageSettingsController: UITextViewDelegate
+{
+   func textViewDidBeginEditing(textView: UITextView)
+   {
+      textView.text = ""
+      textView.textColor = UIColor.blackColor()
+   }
 }
