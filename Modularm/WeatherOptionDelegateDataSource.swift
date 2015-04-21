@@ -10,11 +10,20 @@ import UIKit
 
 class WeatherOptionDelegateDataSource: AlarmOptionDelegateDataSource
 {
+   let backgroundPhotoOnOffSwitch = UISwitch()
+   let locationAutoOnOffSwitch = UISwitch()
+   
    override init(tableView: UITableView, delegate: AlarmOptionSettingsControllerProtocol)
    {
       super.init(tableView: tableView, delegate: delegate)
       self.cellLabelDictionary = [0 :["34.4ºF slightly Rainy US", "3ºC slightly Rainy EU", "slighty Rainy int"],
          1 : ["Background Photo", "Location Auto"]]
+      
+      self.backgroundPhotoOnOffSwitch.setOn(true, animated: false)
+      self.backgroundPhotoOnOffSwitch.addTarget(self, action: "backgroundPhotoSwitchChanged:", forControlEvents: UIControlEvents.ValueChanged)
+      
+      self.locationAutoOnOffSwitch.setOn(true, animated: false)
+      self.locationAutoOnOffSwitch.addTarget(self, action: "locationAutoSwitchChanged:", forControlEvents: UIControlEvents.ValueChanged)
    }
    
    func backgroundPhotoSwitchChanged(sender: UISwitch)
@@ -32,16 +41,11 @@ extension WeatherOptionDelegateDataSource: UITableViewDataSource
 {
    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
    {
-      let cell = super.tableView(tableView, cellForRowAtIndexPath: indexPath)
+      var cell = super.tableView(tableView, cellForRowAtIndexPath: indexPath)
       if indexPath.section == 1
       {
-         let switchView = UISwitch()
-         switchView.setOn(true, animated: false)
-         
-         let selectorString: Selector = indexPath.row == 0 ? "backgroundPhotoSwitchChanged:" : "locationAutoSwitchChanged:"
-         switchView.addTarget(self, action: selectorString, forControlEvents: UIControlEvents.ValueChanged)
-         
-         cell.accessoryView = switchView
+         let onOffSwitch = indexPath.row == 0 ? self.backgroundPhotoOnOffSwitch : self.locationAutoOnOffSwitch
+         cell.accessoryView = onOffSwitch
       }
       
       return cell
