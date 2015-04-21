@@ -12,6 +12,9 @@ protocol AlarmOptionSettingsControllerProtocol
 {
    func configureWithOptionButton(button: AlarmOptionButton)
    func cancelButtonPressed()
+   func updateSetOptionButtonClosure(closure: (() -> ())?)
+   func updateSetOptionButtonTitle(title: String)
+   func resetSetOptionButtonTitle()
 }
 
 class AlarmOptionSettingsController: UIViewController
@@ -19,6 +22,8 @@ class AlarmOptionSettingsController: UIViewController
    @IBOutlet weak var setOptionButton: UIButton!
    @IBOutlet weak var tableView: UITableView!
    @IBOutlet weak var iconImageView: UIImageView!
+   
+   var setOptionButtonClosure: (() -> ())?
    var optionButton: AlarmOptionButton?
    var delegateDataSource: AlarmOptionDelegateDataSource?
 
@@ -48,10 +53,22 @@ class AlarmOptionSettingsController: UIViewController
       self.tableView.flashScrollIndicators()
    }
 
-   @IBAction func dismissSelf()
+   func dismissSelf()
    {
       // temporary
       self.navigationController?.popViewControllerAnimated(true)
+   }
+   
+   @IBAction func setOptionButtonPressed()
+   {
+      if let closure = self.setOptionButtonClosure
+      {
+         closure()
+      }
+      else
+      {
+         self.dismissSelf()
+      }
    }
 }
 
@@ -65,6 +82,28 @@ extension AlarmOptionSettingsController: AlarmOptionSettingsControllerProtocol
    func cancelButtonPressed()
    {
       self.dismissSelf()
+   }
+   
+   func updateSetOptionButtonClosure(closure: (() -> ())?)
+   {
+      self.setOptionButtonClosure = closure
+   }
+   
+   func updateSetOptionButtonTitle(title: String)
+   {
+      UIView.setAnimationsEnabled(false)
+      self.setOptionButton.setTitle(title, forState: .Normal)
+      self.setOptionButton.layoutIfNeeded()
+      UIView.setAnimationsEnabled(true);
+   }
+   
+   func resetSetOptionButtonTitle()
+   {
+      if let option = self.optionButton?.option
+      {
+         let title = self.buttonTitleForOption(option)
+         self.updateSetOptionButtonTitle(title)
+      }
    }
 }
 
