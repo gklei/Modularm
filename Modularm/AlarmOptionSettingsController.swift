@@ -36,9 +36,10 @@ class AlarmOptionSettingsController: UIViewController
       {
          self.iconImageView.image = button.deactivatedImage?.templateImage
          
-         let title = self.buttonTitleForOption(button.option)
+         let option = button.option
+         let title = self.buttonTitleForOption(option)
          self.setOptionButton.setTitle(title, forState: .Normal)
-         self.delegateDataSource = self.delegateDataSourceForOption(button.option)
+         self.delegateDataSource = self.delegateDataSourceForOption(option)
       }
    }
    
