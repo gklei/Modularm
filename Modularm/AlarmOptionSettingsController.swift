@@ -10,6 +10,7 @@ import UIKit
 
 protocol AlarmOptionSettingsControllerProtocol
 {
+   func configureWithOptionButton(button: AlarmOptionButton)
    func cancelButtonPressed()
 }
 
@@ -40,21 +41,26 @@ class AlarmOptionSettingsController: UIViewController
          self.delegateDataSource = self.delegateDataSourceForOption(button.option)
       }
    }
+   
+   override func viewDidAppear(animated: Bool)
+   {
+      self.tableView.flashScrollIndicators()
+   }
 
    @IBAction func dismissSelf()
    {
       // temporary
       self.navigationController?.popViewControllerAnimated(true)
    }
-
-   func configureWithAlarmOptionButton(optionButton: AlarmOptionButton)
-   {
-      self.optionButton = optionButton
-   }
 }
 
 extension AlarmOptionSettingsController: AlarmOptionSettingsControllerProtocol
 {
+   func configureWithOptionButton(optionButton: AlarmOptionButton)
+   {
+      self.optionButton = optionButton
+   }
+   
    func cancelButtonPressed()
    {
       self.dismissSelf()
