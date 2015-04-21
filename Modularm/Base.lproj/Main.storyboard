@@ -124,6 +124,9 @@
                         <barButtonItem key="rightBarButtonItem" enabled="NO" title="Set" id="WoP-ku-0xM"/>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="alarmOptionsControllerBottomVerticalSpaceConstraint" destination="jET-Dy-zoE" id="FVk-5c-Cb0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HT9-yl-Jo4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -168,7 +171,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                                 <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <inset key="titleEdgeInsets" minX="40" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="titleEdgeInsets" minX="35" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <inset key="imageEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="5 minutes" image="icn-plus-snooze">
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -189,7 +192,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                                 <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <inset key="titleEdgeInsets" minX="40" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="titleEdgeInsets" minX="35" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <inset key="imageEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="Basic" image="icn-plus-alarm-sound">
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -200,27 +203,6 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="aa4-SF-2ad" kind="push" identifier="configureSound" id="gAC-Aq-ELc"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1eM-hi-3hc" customClass="AlarmOptionButton" customModule="Modularm" customModuleProvider="target">
-                                <rect key="frame" x="188" y="57" width="186" height="55"/>
-                                <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="55" id="yTB-9z-BSw"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
-                                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <inset key="titleEdgeInsets" minX="40" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <inset key="imageEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="Date" image="icn-plus-date">
-                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="image" keyPath="activatedImage" value="icn-date"/>
-                                    <userDefinedRuntimeAttribute type="image" keyPath="deactivatedImage" value="icn-plus-date"/>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <segue destination="aa4-SF-2ad" kind="push" identifier="configureDate" id="Xjq-kr-cGN"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gY3-gf-7e8">
@@ -239,7 +221,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                                 <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <inset key="titleEdgeInsets" minX="40" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="titleEdgeInsets" minX="35" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <inset key="imageEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="Weather" image="icn-plus-weather">
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -260,7 +242,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                                 <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <inset key="titleEdgeInsets" minX="40" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="titleEdgeInsets" minX="35" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <inset key="imageEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="Music" image="icn-plus-music">
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -281,7 +263,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                                 <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <inset key="titleEdgeInsets" minX="40" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="titleEdgeInsets" minX="35" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <inset key="imageEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="Repeat" image="icn-plus-repeat">
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -302,7 +284,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                                 <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <inset key="titleEdgeInsets" minX="40" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="titleEdgeInsets" minX="35" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <inset key="imageEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="Countdown" image="icn-plus-countdown">
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -331,7 +313,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                                 <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <inset key="titleEdgeInsets" minX="40" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="titleEdgeInsets" minX="35" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <inset key="imageEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="Message" image="icn-plus-message">
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -341,7 +323,28 @@
                                     <userDefinedRuntimeAttribute type="image" keyPath="deactivatedImage" value="icn-plus-message"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="aa4-SF-2ad" kind="push" identifier="configureMessage" id="9sQ-ef-IRX"/>
+                                    <segue destination="ziJ-61-s5T" kind="push" identifier="configureMessage" id="2WY-5p-7BV"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1eM-hi-3hc" customClass="AlarmOptionButton" customModule="Modularm" customModuleProvider="target">
+                                <rect key="frame" x="188" y="57" width="186" height="55"/>
+                                <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="yTB-9z-BSw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
+                                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <inset key="titleEdgeInsets" minX="35" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Date" image="icn-plus-date">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="activatedImage" value="icn-date"/>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="deactivatedImage" value="icn-plus-date"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="aa4-SF-2ad" kind="push" identifier="configureDate" id="Xjq-kr-cGN"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -470,7 +473,107 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ann-yw-AK2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1522" y="505.5"/>
+            <point key="canvasLocation" x="1563" y="137.5"/>
+        </scene>
+        <!--Alarm Message Settings Controller-->
+        <scene sceneID="bhi-XP-Y59">
+            <objects>
+                <viewController id="ziJ-61-s5T" customClass="AlarmMessageSettingsController" customModule="Modularm" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ggc-y7-yw3"/>
+                        <viewControllerLayoutGuide type="bottom" id="hu0-DK-qo5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bGa-qs-54N">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="475"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="It7-lC-rDu">
+                                <rect key="frame" x="202" y="8" width="102" height="34"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
+                                <state key="normal" title="Set message">
+                                    <color key="titleColor" red="0.74509803919999995" green="0.058823529409999999" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="dismissSelf" destination="ziJ-61-s5T" eventType="touchUpInside" id="0lZ-fD-la9"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg-icn-plus-circle" translatesAutoresizingMaskIntoConstraints="NO" id="Tw3-6J-RX0">
+                                <rect key="frame" x="16" y="16" width="18" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="18" id="PlM-uQ-Ng5"/>
+                                    <constraint firstAttribute="height" constant="18" id="gQx-EP-CBl"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DD3-fl-jxD">
+                                <rect key="frame" x="16" y="16" width="18" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="18" id="SOY-8G-qE1"/>
+                                    <constraint firstAttribute="width" constant="18" id="zRD-uy-qE9"/>
+                                </constraints>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="81P-kZ-NUE">
+                                <rect key="frame" x="0.0" y="50" width="320" height="375"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" red="0.74509803919999995" green="0.058823529409999999" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="19"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RL2-Qz-JxP">
+                                <rect key="frame" x="16" y="433" width="54" height="34"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="dismissSelf" destination="ziJ-61-s5T" eventType="touchUpInside" id="UBx-xP-d8q"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zyv-Hs-FqF">
+                                <rect key="frame" x="114" y="433" width="190" height="34"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
+                                <state key="normal" title="Delete message settings">
+                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="dismissSelf" destination="ziJ-61-s5T" eventType="touchUpInside" id="k8X-DD-WOC"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="hu0-DK-qo5" firstAttribute="top" secondItem="81P-kZ-NUE" secondAttribute="bottom" constant="50" id="6xA-G2-S21"/>
+                            <constraint firstAttribute="trailing" secondItem="81P-kZ-NUE" secondAttribute="trailing" id="75W-Sw-zmn"/>
+                            <constraint firstItem="Tw3-6J-RX0" firstAttribute="width" secondItem="DD3-fl-jxD" secondAttribute="width" id="CaX-2h-8UK"/>
+                            <constraint firstItem="It7-lC-rDu" firstAttribute="top" secondItem="Ggc-y7-yw3" secondAttribute="bottom" constant="8" id="GlI-lI-qmc"/>
+                            <constraint firstAttribute="trailing" secondItem="It7-lC-rDu" secondAttribute="trailing" constant="16" id="Hdt-b4-BrD"/>
+                            <constraint firstItem="RL2-Qz-JxP" firstAttribute="leading" secondItem="bGa-qs-54N" secondAttribute="leading" constant="16" id="IMQ-gh-0eN"/>
+                            <constraint firstItem="Tw3-6J-RX0" firstAttribute="centerX" secondItem="DD3-fl-jxD" secondAttribute="centerX" id="Q1T-FD-YTb"/>
+                            <constraint firstItem="Tw3-6J-RX0" firstAttribute="centerY" secondItem="DD3-fl-jxD" secondAttribute="centerY" id="Q1u-tE-wKy"/>
+                            <constraint firstItem="Tw3-6J-RX0" firstAttribute="centerY" secondItem="It7-lC-rDu" secondAttribute="centerY" id="Qdh-ng-fFL"/>
+                            <constraint firstItem="hu0-DK-qo5" firstAttribute="top" secondItem="RL2-Qz-JxP" secondAttribute="bottom" constant="8" id="S2Z-rk-26h"/>
+                            <constraint firstItem="hu0-DK-qo5" firstAttribute="top" secondItem="zyv-Hs-FqF" secondAttribute="bottom" constant="8" id="dTv-lC-kh1"/>
+                            <constraint firstItem="81P-kZ-NUE" firstAttribute="leading" secondItem="bGa-qs-54N" secondAttribute="leading" id="lb2-P0-B9x"/>
+                            <constraint firstAttribute="trailing" secondItem="zyv-Hs-FqF" secondAttribute="trailing" constant="16" id="lop-YJ-URF"/>
+                            <constraint firstItem="81P-kZ-NUE" firstAttribute="top" secondItem="It7-lC-rDu" secondAttribute="bottom" constant="8" id="s7L-Hp-mxA"/>
+                            <constraint firstItem="Tw3-6J-RX0" firstAttribute="height" secondItem="DD3-fl-jxD" secondAttribute="height" id="sBh-Wk-Bto"/>
+                            <constraint firstItem="Tw3-6J-RX0" firstAttribute="leading" secondItem="bGa-qs-54N" secondAttribute="leading" constant="16" id="vi8-7a-NrO"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Epv-QA-QGI"/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="475"/>
+                    <connections>
+                        <outlet property="iconImageView" destination="DD3-fl-jxD" id="eUh-eo-2wC"/>
+                        <outlet property="messageTextView" destination="81P-kZ-NUE" id="f22-iq-AJs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QR0-tN-weO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1563" y="756.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="iOI-pc-oGK">
@@ -519,6 +622,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="0Mf-Vu-gB9"/>
+        <segue reference="dms-Wd-Xyi"/>
     </inferredMetricsTieBreakers>
 </document>
