@@ -12,10 +12,27 @@ class SnoozeOptionDelegateDataSource: AlarmOptionDelegateDataSource
 {
    let firstMenuTitles = ["Snooze", "Regular button", "Big button", "Shake your phone"]
    let secondMenuTitles = ["5 minutes", "10 minutes", "15 minutes", "20 minutes"]
-   var isShowingFirstMenu = true
+   var isShowingFirstMenu: Bool {
+      didSet {
+         if (self.isShowingFirstMenu)
+         {
+            self.settingsControllerDelegate.updateSetOptionButtonClosure(nil)
+            self.settingsControllerDelegate.resetSetOptionButtonTitle()
+         }
+         else
+         {
+            self.settingsControllerDelegate.updateSetOptionButtonTitle("Set snooze time")
+            self.settingsControllerDelegate.updateSetOptionButtonClosure({ () -> () in
+               self.isShowingFirstMenu = true
+               self.tableView.reloadData()
+            })
+         }
+      }
+   }
    
    override init(tableView: UITableView, delegate: AlarmOptionSettingsControllerProtocol)
    {
+      self.isShowingFirstMenu = true
       super.init(tableView: tableView, delegate: delegate)
       self.cellLabelDictionary = [0 : firstMenuTitles]
    }
@@ -42,7 +59,10 @@ extension SnoozeOptionDelegateDataSource: UITableViewDelegate
 {
    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
    {
-      self.isShowingFirstMenu = !self.isShowingFirstMenu
-      self.tableView.reloadData()
+      if self.isShowingFirstMenu
+      {
+         self.isShowingFirstMenu = false
+         self.tableView.reloadData()
+      }
    }
 }

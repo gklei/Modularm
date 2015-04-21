@@ -56,6 +56,18 @@ extension AlarmMessageSettingsController: AlarmOptionSettingsControllerProtocol
    func cancelButtonPressed()
    {
    }
+   
+   func updateSetOptionButtonClosure(closure: (() -> ())?)
+   {
+   }
+   
+   func updateSetOptionButtonTitle(title: String)
+   {
+   }
+   
+   func resetSetOptionButtonTitle()
+   {
+   }
 }
 
 extension AlarmMessageSettingsController: UITextViewDelegate

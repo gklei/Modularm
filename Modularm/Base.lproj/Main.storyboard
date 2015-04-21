@@ -415,7 +415,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="dismissSelf" destination="aa4-SF-2ad" eventType="touchUpInside" id="ZPA-Oe-QSO"/>
+                                    <action selector="setOptionButtonPressed" destination="aa4-SF-2ad" eventType="touchUpInside" id="DbI-Fb-Dns"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="o4L-lg-MXf">
