@@ -13,6 +13,7 @@ class MusicOptionDelegateDataSource: AlarmOptionDelegateDataSource
    override init(tableView: UITableView, delegate: AlarmOptionSettingsControllerProtocol)
    {
       super.init(tableView: tableView, delegate: delegate)
+      self.option = .Music
       self.cellLabelDictionary = [0 :["itunes", "spotify", "rdio", "fmetc"]]
    }
    

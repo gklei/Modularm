@@ -57,6 +57,10 @@ extension AlarmMessageSettingsController: AlarmOptionSettingsControllerProtocol
    {
    }
    
+   func deleteSettingsForOption(option: AlarmOption)
+   {
+   }
+   
    func updateSetOptionButtonClosure(closure: (() -> ())?)
    {
    }

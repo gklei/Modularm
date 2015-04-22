@@ -19,4 +19,18 @@ enum AlarmOption
    case Repeat
    case Countdown
    case Unknown
+   
+   var description: String {
+      switch self {
+      case Snooze: return "Snooze"
+      case Sound: return "Sound"
+      case Music: return "Music"
+      case Message: return "Message"
+      case Weather: return "Weather"
+      case Date: return "Date"
+      case Repeat: return "Repeat"
+      case Countdown: return "Countdown"
+      case Unknown: return "Unknown"
+      }
+   }
 }

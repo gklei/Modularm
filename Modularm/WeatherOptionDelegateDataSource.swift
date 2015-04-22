@@ -16,6 +16,7 @@ class WeatherOptionDelegateDataSource: AlarmOptionDelegateDataSource
    override init(tableView: UITableView, delegate: AlarmOptionSettingsControllerProtocol)
    {
       super.init(tableView: tableView, delegate: delegate)
+      self.option = .Weather
       self.cellLabelDictionary = [0 :["34.4ºF slightly Rainy US", "3ºC slightly Rainy EU", "slighty Rainy int"],
          1 : ["Background Photo", "Location Auto"]]
       

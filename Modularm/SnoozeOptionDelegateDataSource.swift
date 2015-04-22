@@ -35,6 +35,7 @@ class SnoozeOptionDelegateDataSource: AlarmOptionDelegateDataSource
       self.isShowingFirstMenu = true
       super.init(tableView: tableView, delegate: delegate)
       self.cellLabelDictionary = [0 : firstMenuTitles]
+      self.option = .Snooze
    }
 }
 
