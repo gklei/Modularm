@@ -10,11 +10,13 @@ import UIKit
 
 class AlarmOptionDelegateDataSource: NSObject
 {
+   // MARK: - Instance Variables
    internal var option: AlarmOption = .Unknown
    internal var settingsControllerDelegate: AlarmOptionSettingsControllerProtocol
    internal var cellLabelDictionary: [Int : Array<String>]? = nil
    internal var tableView: UITableView
-   
+
+   // MARK: - Init
    init(tableView: UITableView, delegate: AlarmOptionSettingsControllerProtocol)
    {
       self.settingsControllerDelegate = delegate
@@ -24,33 +26,56 @@ class AlarmOptionDelegateDataSource: NSObject
       tableView.dataSource = self
       tableView.delegate = self
    }
-   
-   func cellWithIndexPath(indexPath: NSIndexPath, identifier: String) -> UITableViewCell
+}
+
+// MARK: - Private & Internal
+extension AlarmOptionDelegateDataSource
+{
+   private func setupDeleteButtonWithSuperview(view: UIView)
+   {
+      let cancelButton = UIButton.cancelButtonWithTitle("cancel")
+      cancelButton.center = CGPointMake(CGRectGetWidth(cancelButton.frame)*0.5 + 16, 25)
+      cancelButton.addTarget(self, action: "cancelButtonPressed", forControlEvents: UIControlEvents.TouchUpInside)
+
+      view.addSubview(cancelButton)
+   }
+
+   private func setupCancelButtonWithSuperview(view: UIView)
+   {
+      let deleteSettingsButton = UIButton.cancelButtonWithTitle("delete \(self.option.description.lowercaseString) settings")
+      deleteSettingsButton.center = CGPointMake(CGRectGetWidth(self.tableView.frame) - CGRectGetWidth(deleteSettingsButton.frame)*0.5 - 16, 25)
+      deleteSettingsButton.addTarget(self, action: "cancelButtonPressed", forControlEvents: UIControlEvents.TouchUpInside)
+
+      view.addSubview(deleteSettingsButton)
+   }
+
+   internal func cancelButtonPressed()
+   {
+      self.settingsControllerDelegate.cancelButtonPressed()
+   }
+
+   internal func deleteSettingsButtonPressed()
+   {
+      self.settingsControllerDelegate.deleteSettingsForOption(self.option)
+   }
+
+   internal func cellWithIndexPath(indexPath: NSIndexPath, identifier: String) -> UITableViewCell
    {
       let cell = self.tableView.dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath) as! UITableViewCell
       var titleAttrs = [NSFontAttributeName : UIFont(name: "HelveticaNeue-Light", size: 19)!]
       let cellLabel = self.cellLabelDictionary?[indexPath.section]![indexPath.row]
-      
+
       cell.selectionStyle = .None
       if let label = cellLabel
       {
          cell.textLabel?.attributedText = NSAttributedString(string: label, attributes: titleAttrs);
       }
-      
+
       return cell
-   }
-   
-   internal func cancelButtonPressed()
-   {
-      self.settingsControllerDelegate.cancelButtonPressed()
-   }
-   
-   internal func deleteSettingsButtonPressed()
-   {
-      self.settingsControllerDelegate.deleteSettingsForOption(self.option)
    }
 }
 
+// MARK: - UITableView Data Source
 extension AlarmOptionDelegateDataSource: UITableViewDataSource
 {
    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
@@ -80,6 +105,7 @@ extension AlarmOptionDelegateDataSource: UITableViewDataSource
    }
 }
 
+// MARK: - UITableView Delegate
 extension AlarmOptionDelegateDataSource: UITableViewDelegate
 {
    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat
@@ -98,26 +124,5 @@ extension AlarmOptionDelegateDataSource: UITableViewDelegate
          self.setupDeleteButtonWithSuperview(view)
       }
       return view
-   }
-}
-
-extension AlarmOptionDelegateDataSource
-{
-   private func setupDeleteButtonWithSuperview(view: UIView)
-   {
-      let cancelButton = UIButton.cancelButtonWithTitle("cancel")
-      cancelButton.center = CGPointMake(CGRectGetWidth(cancelButton.frame)*0.5 + 16, 25)
-      cancelButton.addTarget(self, action: "cancelButtonPressed", forControlEvents: UIControlEvents.TouchUpInside)
-      
-      view.addSubview(cancelButton)
-   }
-   
-   private func setupCancelButtonWithSuperview(view: UIView)
-   {
-      let deleteSettingsButton = UIButton.cancelButtonWithTitle("delete \(self.option.description.lowercaseString) settings")
-      deleteSettingsButton.center = CGPointMake(CGRectGetWidth(self.tableView.frame) - CGRectGetWidth(deleteSettingsButton.frame)*0.5 - 16, 25)
-      deleteSettingsButton.addTarget(self, action: "cancelButtonPressed", forControlEvents: UIControlEvents.TouchUpInside)
-      
-      view.addSubview(deleteSettingsButton)
    }
 }

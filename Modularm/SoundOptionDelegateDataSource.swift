@@ -10,6 +10,7 @@ import UIKit
 
 class SoundOptionDelegateDataSource: AlarmOptionDelegateDataSource
 {
+   // MARK: - Init
    override init(tableView: UITableView, delegate: AlarmOptionSettingsControllerProtocol)
    {
       super.init(tableView: tableView, delegate: delegate)

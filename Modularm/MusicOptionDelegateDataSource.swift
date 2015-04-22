@@ -10,34 +10,40 @@ import UIKit
 
 class MusicOptionDelegateDataSource: AlarmOptionDelegateDataSource
 {
+   // MARK: - Init
    override init(tableView: UITableView, delegate: AlarmOptionSettingsControllerProtocol)
    {
       super.init(tableView: tableView, delegate: delegate)
       self.option = .Music
       self.cellLabelDictionary = [0 :["itunes", "spotify", "rdio", "fmetc"]]
    }
-   
-   func itunesSwitchChanged(sender: UISwitch)
+}
+
+// MARK: - Private
+extension MusicOptionDelegateDataSource
+{
+   private func itunesSwitchChanged(sender: UISwitch)
    {
       println("itunes switch changed")
    }
-   
-   func spotifySwitchChanged(sender: UISwitch)
+
+   private func spotifySwitchChanged(sender: UISwitch)
    {
       println("spotify switch changed")
    }
-   
-   func rdioSwitchChanged(sender: UISwitch)
+
+   private func rdioSwitchChanged(sender: UISwitch)
    {
       println("rdio switch changed")
    }
-   
-   func fmetcSwitchChanged(sender: UISwitch)
+
+   private func fmetcSwitchChanged(sender: UISwitch)
    {
       println("fmetc switch changed")
    }
 }
 
+// MARK: - UITableView Delegate
 extension MusicOptionDelegateDataSource: UITableViewDelegate
 {
    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell

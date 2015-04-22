@@ -10,6 +10,7 @@ import UIKit
 
 class SnoozeOptionDelegateDataSource: AlarmOptionDelegateDataSource
 {
+   // MARK - Instance Variables
    let firstMenuTitles = ["Snooze", "Regular button", "Big button", "Shake your phone"]
    let secondMenuTitles = ["5 minutes", "10 minutes", "15 minutes", "20 minutes"]
    var isShowingFirstMenu: Bool {
@@ -29,7 +30,8 @@ class SnoozeOptionDelegateDataSource: AlarmOptionDelegateDataSource
          }
       }
    }
-   
+
+   // MARK: - Init
    override init(tableView: UITableView, delegate: AlarmOptionSettingsControllerProtocol)
    {
       self.isShowingFirstMenu = true
@@ -39,6 +41,7 @@ class SnoozeOptionDelegateDataSource: AlarmOptionDelegateDataSource
    }
 }
 
+// MARK: - UITableView Data Source
 extension SnoozeOptionDelegateDataSource: UITableViewDataSource
 {
    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
@@ -56,6 +59,7 @@ extension SnoozeOptionDelegateDataSource: UITableViewDataSource
    }
 }
 
+// MARK: - UITableView Delegate
 extension SnoozeOptionDelegateDataSource: UITableViewDelegate
 {
    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)

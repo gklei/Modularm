@@ -10,9 +10,11 @@ import UIKit
 
 class WeatherOptionDelegateDataSource: AlarmOptionDelegateDataSource
 {
+   // MARK - Instance Variables
    let backgroundPhotoOnOffSwitch = UISwitch()
    let locationAutoOnOffSwitch = UISwitch()
-   
+
+   // MARK: - Init
    override init(tableView: UITableView, delegate: AlarmOptionSettingsControllerProtocol)
    {
       super.init(tableView: tableView, delegate: delegate)
@@ -26,18 +28,24 @@ class WeatherOptionDelegateDataSource: AlarmOptionDelegateDataSource
       self.locationAutoOnOffSwitch.setOn(true, animated: false)
       self.locationAutoOnOffSwitch.addTarget(self, action: "locationAutoSwitchChanged:", forControlEvents: UIControlEvents.ValueChanged)
    }
-   
-   func backgroundPhotoSwitchChanged(sender: UISwitch)
+}
+
+// MARK: - Private
+extension WeatherOptionDelegateDataSource
+{
+
+   private func backgroundPhotoSwitchChanged(sender: UISwitch)
    {
       println("background photo on: \(sender.on)")
    }
-   
-   func locationAutoSwitchChanged(sender: UISwitch)
+
+   private func locationAutoSwitchChanged(sender: UISwitch)
    {
       println("location auto on: \(sender.on)")
    }
 }
 
+// MARK: - UITableView Data Source
 extension WeatherOptionDelegateDataSource: UITableViewDataSource
 {
    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell

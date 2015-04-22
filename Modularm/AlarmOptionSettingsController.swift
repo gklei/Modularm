@@ -8,16 +8,6 @@
 
 import UIKit
 
-protocol AlarmOptionSettingsControllerProtocol
-{
-   func configureWithOptionButton(button: AlarmOptionButton)
-   func cancelButtonPressed()
-   func deleteSettingsForOption(option: AlarmOption)
-   func updateSetOptionButtonClosure(closure: (() -> ())?)
-   func updateSetOptionButtonTitle(title: String)
-   func resetSetOptionButtonTitle()
-}
-
 class AlarmOptionSettingsController: UIViewController
 {
    @IBOutlet weak var setOptionButton: UIButton!
@@ -142,7 +132,7 @@ extension AlarmOptionSettingsController
          delegateDataSource = WeatherOptionDelegateDataSource(tableView: self.tableView, delegate: self)
          break
          
-      default:
+      default: // Unknown
          delegateDataSource = AlarmOptionDelegateDataSource(tableView: self.tableView, delegate: self)
          break
       }
