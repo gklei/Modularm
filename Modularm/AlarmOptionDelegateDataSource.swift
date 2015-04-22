@@ -33,7 +33,7 @@ extension AlarmOptionDelegateDataSource
 {
    private func setupDeleteButtonWithSuperview(view: UIView)
    {
-      let cancelButton = UIButton.cancelButtonWithTitle("cancel")
+      let cancelButton = UIButton.cancelButtonWithTitle("Cancel")
       cancelButton.center = CGPointMake(CGRectGetWidth(cancelButton.frame)*0.5 + 16, 25)
       cancelButton.addTarget(self, action: "cancelButtonPressed", forControlEvents: UIControlEvents.TouchUpInside)
 
@@ -42,7 +42,7 @@ extension AlarmOptionDelegateDataSource
 
    private func setupCancelButtonWithSuperview(view: UIView)
    {
-      let deleteSettingsButton = UIButton.cancelButtonWithTitle("delete \(self.option.description.lowercaseString) settings")
+      let deleteSettingsButton = UIButton.cancelButtonWithTitle("Delete \(self.option.description.lowercaseString) settings")
       deleteSettingsButton.center = CGPointMake(CGRectGetWidth(self.tableView.frame) - CGRectGetWidth(deleteSettingsButton.frame)*0.5 - 16, 25)
       deleteSettingsButton.addTarget(self, action: "cancelButtonPressed", forControlEvents: UIControlEvents.TouchUpInside)
 
