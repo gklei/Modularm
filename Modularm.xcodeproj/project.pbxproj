@@ -65,7 +65,7 @@
 		8E5BD3261ADB930400C42FAA /* AlarmOptionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlarmOptionButton.swift; path = Modularm/AlarmOptionButton.swift; sourceTree = "<group>"; };
 		8E8228E11ADB679A00F9A26E /* UINavigationBar+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UINavigationBar+Additions.swift"; path = "Modularm/UINavigationBar+Additions.swift"; sourceTree = "<group>"; };
 		8E8228E51ADB821C00F9A26E /* AlarmConfigurationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmConfigurationController.swift; sourceTree = "<group>"; };
-		8E8228E71ADB8AA900F9A26E /* AlarmOptionsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlarmOptionsController.swift; path = Modularm/AlarmOptionsController.swift; sourceTree = "<group>"; };
+		8E8228E71ADB8AA900F9A26E /* AlarmOptionsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmOptionsController.swift; sourceTree = "<group>"; };
 		8EE25E141AE75E4D0018F813 /* AlarmOptionSettingsControllerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmOptionSettingsControllerProtocol.swift; sourceTree = "<group>"; };
 		8EFACDB21AD837EE00279956 /* Modularm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Modularm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EFACDB61AD837EE00279956 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -128,10 +128,8 @@
 			isa = PBXGroup;
 			children = (
 				8EE25E141AE75E4D0018F813 /* AlarmOptionSettingsControllerProtocol.swift */,
-				8E8228E71ADB8AA900F9A26E /* AlarmOptionsController.swift */,
 				5B74FC8B1ADD74A100902484 /* AlarmOptionSettingsController.swift */,
 				5B1997B61AE5F79C00D1522C /* AlarmMessageSettingsController.swift */,
-				5B1997B11AE5B64E00D1522C /* Delegate Data Sources */,
 			);
 			name = "Option Settings";
 			sourceTree = "<group>";
@@ -185,6 +183,7 @@
 		8EFACDA91AD837EE00279956 = {
 			isa = PBXGroup;
 			children = (
+				5B1997B11AE5B64E00D1522C /* Delegate Data Sources */,
 				8E3BDC371AE4308A00E1FCDC /* Option Settings */,
 				8ED9FF301ADF722000A9C25A /* Enums */,
 				5B74FC8A1ADD72E000902484 /* UI */,
@@ -211,6 +210,7 @@
 		8EFACDB41AD837EE00279956 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				8E8228E71ADB8AA900F9A26E /* AlarmOptionsController.swift */,
 				8E8228E51ADB821C00F9A26E /* AlarmConfigurationController.swift */,
 				8EFACDDC1AD8390F00279956 /* TimelineController.swift */,
 			);

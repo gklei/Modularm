@@ -10,16 +10,18 @@ import UIKit
 
 class AlarmConfigurationController: UIViewController
 {
+   // MARK: - Instance Variables
    @IBOutlet weak var alarmOptionsControllerBottomVerticalSpaceConstraint: NSLayoutConstraint!
-   private var navigationBarIsHidden = false
 
+   // MARK: - Lifecycle
    override func viewDidLoad()
    {
       super.viewDidLoad()
       NSNotificationCenter.defaultCenter().addObserver(self, selector: "moveAlarmOptionsControllerUpForNotification:", name: UIKeyboardWillShowNotification, object: nil)
       NSNotificationCenter.defaultCenter().addObserver(self, selector: "moveAlarmOptionsControllerDownForNotification:", name: UIKeyboardWillHideNotification, object: nil)
    }
-   
+
+   // MARK: - Public
    func moveAlarmOptionsControllerUpForNotification(notification: NSNotification)
    {
       if let info = notification.userInfo
@@ -27,14 +29,14 @@ class AlarmConfigurationController: UIViewController
          let keyboardBoundsValue = info[UIKeyboardFrameEndUserInfoKey] as! NSValue
          let keyboardBounds = keyboardBoundsValue.CGRectValue()
          let height = CGRectGetHeight(keyboardBounds)
-         
+
          UIView.animateWithDuration(0.25, animations: {() -> Void in
             self.alarmOptionsControllerBottomVerticalSpaceConstraint.constant = height
             self.view.layoutIfNeeded()
          })
       }
    }
-   
+
    func moveAlarmOptionsControllerDownForNotification(notification: NSNotification)
    {
       if let info = notification.userInfo
