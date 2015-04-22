@@ -60,7 +60,7 @@ extension SnoozeOptionDelegateDataSource: UITableViewDelegate
 {
    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
    {
-      if self.isShowingFirstMenu
+      if self.isShowingFirstMenu && indexPath.row == 0
       {
          self.isShowingFirstMenu = false
          self.tableView.reloadData()
