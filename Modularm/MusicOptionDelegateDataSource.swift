@@ -22,22 +22,22 @@ class MusicOptionDelegateDataSource: AlarmOptionDelegateDataSource
 // MARK: - Private
 extension MusicOptionDelegateDataSource
 {
-   private func itunesSwitchChanged(sender: UISwitch)
+   func itunesSwitchChanged(sender: UISwitch)
    {
       println("itunes switch changed")
    }
 
-   private func spotifySwitchChanged(sender: UISwitch)
+   func spotifySwitchChanged(sender: UISwitch)
    {
       println("spotify switch changed")
    }
 
-   private func rdioSwitchChanged(sender: UISwitch)
+   func rdioSwitchChanged(sender: UISwitch)
    {
       println("rdio switch changed")
    }
 
-   private func fmetcSwitchChanged(sender: UISwitch)
+   func fmetcSwitchChanged(sender: UISwitch)
    {
       println("fmetc switch changed")
    }

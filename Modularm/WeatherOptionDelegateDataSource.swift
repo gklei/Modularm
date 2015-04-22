@@ -33,13 +33,12 @@ class WeatherOptionDelegateDataSource: AlarmOptionDelegateDataSource
 // MARK: - Private
 extension WeatherOptionDelegateDataSource
 {
-
-   private func backgroundPhotoSwitchChanged(sender: UISwitch)
+   func backgroundPhotoSwitchChanged(sender: UISwitch)
    {
       println("background photo on: \(sender.on)")
    }
 
-   private func locationAutoSwitchChanged(sender: UISwitch)
+   func locationAutoSwitchChanged(sender: UISwitch)
    {
       println("location auto on: \(sender.on)")
    }
