@@ -15,7 +15,7 @@ extension UIButton
       let cancelButton = UIButton()
       var attrs = [NSFontAttributeName : UIFont(name: "HelveticaNeue-Light", size: 19)!, NSForegroundColorAttributeName : UIColor.lightGrayColor()]
       var highlightedAttrs = [NSFontAttributeName : UIFont(name: "HelveticaNeue-Light", size: 19)!,
-         NSForegroundColorAttributeName : UIColor(white: 0.8, alpha: 1)]
+         NSForegroundColorAttributeName : UIColor(white: 0.8, alpha: 0.75)]
       
       let normalAttrTitle = NSAttributedString(string: title, attributes: attrs)
       let hightlightedAttrTitle = NSAttributedString(string: title, attributes: highlightedAttrs)
