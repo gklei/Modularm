@@ -28,23 +28,21 @@ class AlarmConfigurationController: UIViewController
          let keyboardBounds = keyboardBoundsValue.CGRectValue()
          let height = CGRectGetHeight(keyboardBounds)
          
-         UIView.animateWithDuration(0.25, animations: { () -> Void in
+         UIView.animateWithDuration(0.25, animations: {() -> Void in
             self.alarmOptionsControllerBottomVerticalSpaceConstraint.constant = height
             self.view.layoutIfNeeded()
          })
       }
-      println("notification: \(notification)")
    }
    
    func moveAlarmOptionsControllerDownForNotification(notification: NSNotification)
    {
       if let info = notification.userInfo
       {
-         UIView.animateWithDuration(0.25, animations: { () -> Void in
+         UIView.animateWithDuration(0.25, animations: {() -> Void in
             self.alarmOptionsControllerBottomVerticalSpaceConstraint.constant = 0
             self.view.layoutIfNeeded()
          })
       }
-      println("notification: \(notification)")
    }
 }
