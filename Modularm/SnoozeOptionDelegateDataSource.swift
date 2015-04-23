@@ -8,12 +8,6 @@
 
 import UIKit
 
-protocol SnoozeOptionSettingStateDelegate
-{
-   var cellLabelDictionary: [Int : Array<String>]? {get set}
-   func transitionToState(state: SnoozeOptionSettingState)
-}
-
 class SnoozeOptionDelegateDataSource: AlarmOptionDelegateDataSource
 {
    var state: SnoozeOptionSettingState?
@@ -25,7 +19,6 @@ class SnoozeOptionDelegateDataSource: AlarmOptionDelegateDataSource
       self.state = SnoozeOptionSettingButtonState(delegate: self)
       self.option = .Snooze
    }
-   
    
    // MARK: - UITableView Data Source
    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
@@ -43,6 +36,15 @@ class SnoozeOptionDelegateDataSource: AlarmOptionDelegateDataSource
    }
 }
 
+
+// MARK: - SnoozeOptionSettingStateDelegate Protocol
+protocol SnoozeOptionSettingStateDelegate
+{
+   var cellLabelDictionary: [Int : Array<String>]? {get set}
+   func transitionToState(state: SnoozeOptionSettingState)
+}
+
+// MARK: - SnoozeOptionSettingStateDelegate Methods
 extension SnoozeOptionDelegateDataSource: SnoozeOptionSettingStateDelegate
 {
    func transitionToState(state: SnoozeOptionSettingState)
@@ -59,7 +61,6 @@ extension SnoozeOptionDelegateDataSource: SnoozeOptionSettingStateDelegate
             
             let snoozeOptionSettingButtonState = SnoozeOptionSettingButtonState(delegate: self)
             self.transitionToState(snoozeOptionSettingButtonState)
-            self.tableView.reloadData()
          })
       }
       
@@ -68,48 +69,39 @@ extension SnoozeOptionDelegateDataSource: SnoozeOptionSettingStateDelegate
    }
 }
 
-class SnoozeOptionSettingState
+// MARK: - SnoozeOptionSettingState Protocol -
+protocol SnoozeOptionSettingState
 {
+   var delegate: SnoozeOptionSettingStateDelegate {get}
+   func configureCell(cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath)
+   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+}
+
+// MARK: -
+struct SnoozeOptionSettingButtonState: SnoozeOptionSettingState
+{
+   private let kSnoozeTimeOptionIndex = 0
    var delegate: SnoozeOptionSettingStateDelegate
+   
    init(delegate: SnoozeOptionSettingStateDelegate)
    {
       self.delegate = delegate
+      self.delegate.cellLabelDictionary = [0 : ["Snooze", "Regular button", "Big button", "Shake your phone"]]
    }
    
    func configureCell(cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath)
    {
-   }
-   
-   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
-   {
-   }
-   
-   func cellSelectedAtIndexPath(indexPath: NSIndexPath)
-   {
-   }
-}
-
-class SnoozeOptionSettingButtonState: SnoozeOptionSettingState
-{
-   let snoozeTimeMenuRowIndex = 0
-   override init(delegate: SnoozeOptionSettingStateDelegate)
-   {
-      super.init(delegate: delegate)
-      self.delegate.cellLabelDictionary = [0 : ["Snooze", "Regular button", "Big button", "Shake your phone"]]
-   }
-   
-   override func configureCell(cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath)
-   {
-      if indexPath.row == self.snoozeTimeMenuRowIndex
+      let snoozeTimeOptionIndex = kSnoozeTimeOptionIndex
+      if indexPath.row == snoozeTimeOptionIndex
       {
          cell.accessoryType = .DisclosureIndicator
          cell.selectionStyle = .Default
       }
    }
    
-   override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
    {
-      if indexPath.row == self.snoozeTimeMenuRowIndex
+      if indexPath.row == kSnoozeTimeOptionIndex
       {
          let snoozeOptionSettingTimeState = SnoozeOptionSettingTimeState(delegate: self.delegate)
          self.delegate.transitionToState(snoozeOptionSettingTimeState)
@@ -117,19 +109,22 @@ class SnoozeOptionSettingButtonState: SnoozeOptionSettingState
    }
 }
 
-class SnoozeOptionSettingTimeState: SnoozeOptionSettingState
+// MARK: -
+struct SnoozeOptionSettingTimeState: SnoozeOptionSettingState
 {
-   override init(delegate: SnoozeOptionSettingStateDelegate)
+   var delegate: SnoozeOptionSettingStateDelegate
+   
+   init(delegate: SnoozeOptionSettingStateDelegate)
    {
-      super.init(delegate: delegate)
+      self.delegate = delegate
       self.delegate.cellLabelDictionary = [0 : ["5 minutes", "10 minutes", "15 minutes", "20 minutes"]]
    }
    
-   override func configureCell(cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath)
+   func configureCell(cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath)
    {
    }
    
-   override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
    {
    }
 }
