@@ -50,12 +50,12 @@ class TimelineDataSource: NSObject
    }
 
    // MARK: - Private
-   private func deleteAllObjects()
+   private func deleteAllObjectsWithName(name: String)
    {
       let context = CoreDataStack.defaultStack.managedObjectContext
       let fetchRequest = NSFetchRequest()
 
-      fetchRequest.entity = NSEntityDescription.entityForName("PVSAlarm", inManagedObjectContext: context!)
+      fetchRequest.entity = NSEntityDescription.entityForName(name, inManagedObjectContext: context!)
       fetchRequest.includesPropertyValues = false
 
       let error = NSErrorPointer()

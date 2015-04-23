@@ -26,7 +26,7 @@ class SnoozeModel: NSManagedObject
    @NSManaged var durationValue: Int16
    @NSManaged var typeValue: Int16
    
-   var snoozeType: SnoozeType {
+   var type: SnoozeType {
       get {
          return SnoozeType(rawValue: self.typeValue)!
       }
@@ -35,7 +35,7 @@ class SnoozeModel: NSManagedObject
       }
    }
    
-   var snoozeDuration: SnoozeDuration {
+   var duration: SnoozeDuration {
       get {
          return SnoozeDuration(rawValue: self.durationValue)!
       }
@@ -55,7 +55,7 @@ class SnoozeModel: NSManagedObject
    {
       super.awakeFromInsert()
       
-      self.snoozeType = .RegularButton
-      self.snoozeDuration = .FiveMinutes
+      self.type = .RegularButton
+      self.duration = .FiveMinutes
    }
 }

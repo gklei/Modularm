@@ -79,7 +79,7 @@
 		8EFACDCA1AD837EE00279956 /* ModularmTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ModularmTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EFACDCF1AD837EE00279956 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8EFACDD01AD837EE00279956 /* ModularmTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModularmTests.swift; sourceTree = "<group>"; };
-		8EFACDDC1AD8390F00279956 /* TimelineController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineController.swift; sourceTree = "<group>"; };
+		8EFACDDC1AD8390F00279956 /* TimelineController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimelineController.swift; path = Modularm/TimelineController.swift; sourceTree = "<group>"; };
 		8EFACDDE1AD839E900279956 /* PVSAlarm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PVSAlarm.swift; path = Modularm/PVSAlarm.swift; sourceTree = "<group>"; };
 		8EFACDE01AD83A1E00279956 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataStack.swift; path = Modularm/CoreDataStack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -129,6 +129,7 @@
 		5B7EF4581AE85BDC00472976 /* Timeline */ = {
 			isa = PBXGroup;
 			children = (
+				8EFACDDC1AD8390F00279956 /* TimelineController.swift */,
 				8E3B22601AD9E85F001693E2 /* TimelineDataSource.swift */,
 			);
 			name = Timeline;
@@ -223,7 +224,6 @@
 			children = (
 				8E8228E71ADB8AA900F9A26E /* AlarmOptionsController.swift */,
 				8E8228E51ADB821C00F9A26E /* AlarmConfigurationController.swift */,
-				8EFACDDC1AD8390F00279956 /* TimelineController.swift */,
 			);
 			name = "View Controllers";
 			path = Modularm;
