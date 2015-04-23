@@ -66,6 +66,7 @@ extension AlarmOptionDelegateDataSource
       let cellLabel = self.cellLabelDictionary?[indexPath.section]![indexPath.row]
 
       cell.selectionStyle = .None
+      cell.accessoryType = .None
       if let label = cellLabel
       {
          cell.textLabel?.attributedText = NSAttributedString(string: label, attributes: titleAttrs);
