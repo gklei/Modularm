@@ -5,8 +5,8 @@
         <attribute name="message" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="SnoozeModel" representedClassName="SnoozeModel" syncable="YES">
-        <attribute name="duration" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="snoozeTypeValue" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="durationValue" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="typeValue" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
     </entity>
     <elements>
         <element name="PVSAlarm" positionX="-281" positionY="-9" width="128" height="73"/>
