@@ -9,22 +9,22 @@
 import Foundation
 import CoreData
 
-enum SnoozeButtonType: Int16 {
-   case Small, Medium, Large
+enum SnoozeType: Int16 {
+   case RegularButton, BigButton, ShakePhone
 }
 
 @objc(SnoozeModel)
 class SnoozeModel: NSManagedObject
 {
    @NSManaged var duration: Int16
-   @NSManaged var buttonTypeValue: Int16
+   @NSManaged var snoozeTypeValue: Int16
    
-   var buttonType: SnoozeButtonType {
+   var snoozeType: SnoozeType {
       get {
-         return SnoozeButtonType(rawValue: self.buttonTypeValue)!
+         return SnoozeType(rawValue: self.snoozeTypeValue)!
       }
       set {
-         self.buttonTypeValue = newValue.rawValue
+         self.snoozeTypeValue = newValue.rawValue
       }
    }
 }
