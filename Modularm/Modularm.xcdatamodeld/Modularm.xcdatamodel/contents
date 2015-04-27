@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7549" systemVersion="14D131" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="PVSAlarm" representedClassName="PVSAlarm" syncable="YES">
+    <entity name="Alarm" representedClassName="Alarm" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="message" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="SnoozeModel" representedClassName="SnoozeModel" syncable="YES">
+    <entity name="Snooze" representedClassName="Snooze" syncable="YES">
         <attribute name="durationValue" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="typeValue" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
     </entity>
     <elements>
-        <element name="PVSAlarm" positionX="-281" positionY="-9" width="128" height="73"/>
-        <element name="SnoozeModel" positionX="-63" positionY="0" width="128" height="73"/>
+        <element name="Alarm" positionX="-281" positionY="-9" width="128" height="75"/>
+        <element name="Snooze" positionX="-63" positionY="0" width="128" height="75"/>
     </elements>
 </model>

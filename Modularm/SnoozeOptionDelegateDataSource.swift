@@ -11,14 +11,14 @@ import CoreData
 
 class SnoozeOptionDelegateDataSource: AlarmOptionDelegateDataSource
 {
-   var snoozeModel: SnoozeModel
+   var snoozeModel: Snooze
    var state: SnoozeOptionSettingState?
 
    // MARK: - Init
    override init(tableView: UITableView, delegate: AlarmOptionSettingsControllerProtocol)
    {
       let coreDataStack = CoreDataStack.defaultStack
-      self.snoozeModel = NSEntityDescription.insertNewObjectForEntityForName("SnoozeModel", inManagedObjectContext: coreDataStack.managedObjectContext!) as! SnoozeModel
+      self.snoozeModel = NSEntityDescription.insertNewObjectForEntityForName("Snooze", inManagedObjectContext: coreDataStack.managedObjectContext!) as! Snooze
 
       super.init(tableView: tableView, delegate: delegate)
       self.state = SnoozeOptionSettingButtonState(delegate: self)
@@ -45,7 +45,7 @@ class SnoozeOptionDelegateDataSource: AlarmOptionDelegateDataSource
 // MARK: - SnoozeOptionSettingStateDelegate Protocol
 protocol SnoozeOptionSettingStateDelegate
 {
-   var snoozeModel: SnoozeModel {get set}
+   var snoozeModel: Snooze {get set}
    var cellLabelDictionary: [Int : Array<String>]? {get set}
    func transitionToState(state: SnoozeOptionSettingState)
    func reloadData()

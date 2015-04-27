@@ -19,7 +19,7 @@ class TimelineDataSource: NSObject
    {
       let coreDataStack = CoreDataStack.defaultStack
 
-      let fetchRequest = NSFetchRequest(entityName: "PVSAlarm")
+      let fetchRequest = NSFetchRequest(entityName: "Alarm")
       fetchRequest.sortDescriptors = [NSSortDescriptor(key: "message", ascending: false)];
 
       let controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: coreDataStack.managedObjectContext!, sectionNameKeyPath: nil, cacheName: nil)
@@ -40,7 +40,7 @@ class TimelineDataSource: NSObject
    func addAlarm()
    {
       let coreDataStack = CoreDataStack.defaultStack
-      let alarm: PVSAlarm = NSEntityDescription.insertNewObjectForEntityForName("PVSAlarm", inManagedObjectContext: coreDataStack.managedObjectContext!) as! PVSAlarm
+      let alarm: Alarm = NSEntityDescription.insertNewObjectForEntityForName("Alarm", inManagedObjectContext: coreDataStack.managedObjectContext!) as! Alarm
 
       let count = self.fetchedResultsController.fetchedObjects?.count
       alarm.message = "Alarm \(count)"
@@ -84,7 +84,7 @@ extension TimelineDataSource: UICollectionViewDataSource
    {
       let cell: UICollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! UICollectionViewCell
 
-      let alarmEntry: PVSAlarm = self.fetchedResultsController.objectAtIndexPath(indexPath) as! PVSAlarm
+      let alarmEntry: Alarm = self.fetchedResultsController.objectAtIndexPath(indexPath) as! Alarm
       println(alarmEntry.message)
 
       return cell

@@ -9,8 +9,8 @@
 import Foundation
 import CoreData
 
-@objc(PVSAlarm)
-class PVSAlarm: NSManagedObject
+@objc(Alarm)
+class Alarm: NSManagedObject
 {
     @NSManaged var date: NSTimeInterval
     @NSManaged var message: String
