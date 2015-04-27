@@ -12,6 +12,8 @@ class AlarmConfigurationController: UIViewController
 {
    // MARK: - Instance Variables
    @IBOutlet weak var alarmOptionsControllerBottomVerticalSpaceConstraint: NSLayoutConstraint!
+   var alarmTimeController: AlarmTimeController?
+   var alarmOptionsController: AlarmOptionsController?
 
    // MARK: - Lifecycle
    override func viewDidLoad()
@@ -45,6 +47,19 @@ class AlarmConfigurationController: UIViewController
             self.alarmOptionsControllerBottomVerticalSpaceConstraint.constant = 0
             self.view.layoutIfNeeded()
          })
+      }
+   }
+   
+   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+   {
+      if segue.identifier == "alarmTimeControllerSegue"
+      {
+         self.alarmTimeController = segue.destinationViewController as? AlarmTimeController
+      }
+      else if segue.identifier == "alarmOptionsControllerSegue"
+      {
+         println("options controller: \(segue.destinationViewController)")
+         self.alarmOptionsController = segue.destinationViewController as? AlarmOptionsController
       }
    }
 }
