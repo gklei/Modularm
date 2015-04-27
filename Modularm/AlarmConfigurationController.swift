@@ -56,10 +56,10 @@ class AlarmConfigurationController: UIViewController
       {
          self.alarmTimeController = segue.destinationViewController as? AlarmTimeController
       }
-      else if segue.identifier == "alarmOptionsControllerSegue"
-      {
-         println("options controller: \(segue.destinationViewController)")
-         self.alarmOptionsController = segue.destinationViewController as? AlarmOptionsController
-      }
+//      else if segue.identifier == "alarmOptionsControllerSegue"
+//      {
+//         println("options controller: \(segue.destinationViewController)")
+//         self.alarmOptionsController = segue.destinationViewController as? AlarmOptionsController
+//      }
    }
 }
