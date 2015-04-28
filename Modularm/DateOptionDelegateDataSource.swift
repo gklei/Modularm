@@ -15,6 +15,6 @@ class DateOptionDelegateDataSource: AlarmOptionDelegateDataSource
    {
       super.init(tableView: tableView, delegate: delegate)
       self.option = .Date
-      self.cellLabelDictionary = [0 :["Tuesday 04/10 US", "10.04 Tuesday EU", "Tuesday 04/10/2015 US", "Tuesday without a date"]]
+      self.cellLabelDictionary = [0 :["Tuesday 04/10 US", "10.04 Tuesday EU", "Tuesday without a date"]]
    }
 }
