@@ -11,27 +11,48 @@ import UIKit
 class AlarmOptionDelegateDataSource: NSObject
 {
    // MARK: - Instance Variables
-   internal var option: AlarmOption = .Unknown
+   private var _option: AlarmOption
+   internal var option: AlarmOption {
+      get {
+         return _option
+      }
+      set {
+         _option = newValue
+         self.deleteSettingsButton?.removeFromSuperview()
+         self.setupDeleteButtonWithSuperview(self.tableView.tableFooterView!)
+      }
+   }
    internal var settingsControllerDelegate: AlarmOptionSettingsControllerProtocol
    internal var cellLabelDictionary: [Int : Array<String>]? = nil
    internal var tableView: UITableView
+   internal var deleteSettingsButton: UIButton?
 
    // MARK: - Init
    init(tableView: UITableView, delegate: AlarmOptionSettingsControllerProtocol)
    {
       self.settingsControllerDelegate = delegate
       self.tableView = tableView
+      self._option = .Unknown
       super.init()
       
       tableView.dataSource = self
       tableView.delegate = self
+      tableView.backgroundColor = UIColor.normalOptionButtonColor()
+      
+      let view = UIView(frame: CGRectMake(0, 0, CGRectGetWidth(tableView.frame), 50))
+      view.backgroundColor = UIColor.normalOptionButtonColor()
+      
+      self.setupDeleteButtonWithSuperview(view)
+      self.setupCancelButtonWithSuperview(view)
+      
+      tableView.tableFooterView = view
    }
 }
 
 // MARK: - Private & Internal
 extension AlarmOptionDelegateDataSource
 {
-   private func setupDeleteButtonWithSuperview(view: UIView)
+   private func setupCancelButtonWithSuperview(view: UIView)
    {
       let cancelButton = UIButton.cancelButtonWithTitle("Cancel")
       cancelButton.center = CGPointMake(CGRectGetWidth(cancelButton.frame)*0.5 + 16, 25)
@@ -40,13 +61,13 @@ extension AlarmOptionDelegateDataSource
       view.addSubview(cancelButton)
    }
 
-   private func setupCancelButtonWithSuperview(view: UIView)
+   private func setupDeleteButtonWithSuperview(view: UIView)
    {
-      let deleteSettingsButton = UIButton.cancelButtonWithTitle("Delete \(self.option.description.lowercaseString) settings")
-      deleteSettingsButton.center = CGPointMake(CGRectGetWidth(self.tableView.frame) - CGRectGetWidth(deleteSettingsButton.frame)*0.5 - 16, 25)
-      deleteSettingsButton.addTarget(self, action: "cancelButtonPressed", forControlEvents: UIControlEvents.TouchUpInside)
+      self.deleteSettingsButton = UIButton.cancelButtonWithTitle("Delete \(self.option.description.lowercaseString) settings")
+      self.deleteSettingsButton!.center = CGPointMake(CGRectGetWidth(self.tableView.frame) - CGRectGetWidth(self.deleteSettingsButton!.frame)*0.5 - 16, 25)
+      self.deleteSettingsButton!.addTarget(self, action: "cancelButtonPressed", forControlEvents: UIControlEvents.TouchUpInside)
 
-      view.addSubview(deleteSettingsButton)
+      view.addSubview(self.deleteSettingsButton!)
    }
 
    internal func cancelButtonPressed()
@@ -111,19 +132,13 @@ extension AlarmOptionDelegateDataSource: UITableViewDelegate
 {
    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat
    {
-      return 50.0
+      return section == self.cellLabelDictionary!.count - 1 ? 0.01 : 50.0
    }
    
    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView?
    {
       let view = UIView()
       view.backgroundColor = UIColor.normalOptionButtonColor()
-      
-      if section == self.numberOfSectionsInTableView(tableView) - 1
-      {
-         self.setupCancelButtonWithSuperview(view)
-         self.setupDeleteButtonWithSuperview(view)
-      }
       return view
    }
 }
