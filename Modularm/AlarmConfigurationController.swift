@@ -11,6 +11,7 @@ import UIKit
 class AlarmConfigurationController: UIViewController
 {
    // MARK: - Instance Variables
+   @IBOutlet weak var alarmOptionsHeightConstraint: NSLayoutConstraint!
    @IBOutlet weak var alarmOptionsControllerBottomVerticalSpaceConstraint: NSLayoutConstraint!
    var alarmTimeController: AlarmTimeController?
    var alarmOptionsController: AlarmOptionsController?
@@ -56,10 +57,9 @@ class AlarmConfigurationController: UIViewController
       {
          self.alarmTimeController = segue.destinationViewController as? AlarmTimeController
       }
-//      else if segue.identifier == "alarmOptionsControllerSegue"
-//      {
-//         println("options controller: \(segue.destinationViewController)")
-//         self.alarmOptionsController = segue.destinationViewController as? AlarmOptionsController
-//      }
+      else if segue.identifier == "alarmOptionsControllerSegue"
+      {
+         self.alarmOptionsController = segue.destinationViewController.childViewControllers![0] as? AlarmOptionsController
+      }
    }
 }

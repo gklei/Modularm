@@ -138,6 +138,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="alarmOptionsControllerBottomVerticalSpaceConstraint" destination="jET-Dy-zoE" id="FVk-5c-Cb0"/>
+                        <outlet property="alarmOptionsHeightConstraint" destination="FOO-Qt-PvE" id="49v-wY-Cd2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HT9-yl-Jo4" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -427,7 +428,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="setOptionButtonPressed" destination="aa4-SF-2ad" eventType="touchUpInside" id="DbI-Fb-Dns"/>
+                                    <action selector="setOptionButtonPressed" destination="aa4-SF-2ad" eventType="touchUpInside" id="rqH-ld-9t2"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="o4L-lg-MXf">
@@ -715,6 +716,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="dms-Wd-Xyi"/>
+        <segue reference="gAC-Aq-ELc"/>
     </inferredMetricsTieBreakers>
 </document>
