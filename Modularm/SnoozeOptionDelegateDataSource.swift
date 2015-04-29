@@ -46,7 +46,7 @@ class SnoozeOptionDelegateDataSource: AlarmOptionDelegateDataSource
 protocol SnoozeOptionSettingStateDelegate
 {
    var snoozeModel: Snooze {get set}
-   var cellLabelDictionary: [Int : Array<String>]? {get set}
+   var cellLabelDictionary: [Int : Array<String>] {get set}
    func transitionToState(state: SnoozeOptionSettingState)
    func reloadData()
 }

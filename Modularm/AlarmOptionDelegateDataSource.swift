@@ -23,7 +23,7 @@ class AlarmOptionDelegateDataSource: NSObject
       }
    }
    internal var settingsControllerDelegate: AlarmOptionSettingsControllerProtocol
-   internal var cellLabelDictionary: [Int : Array<String>]? = nil
+   internal var cellLabelDictionary: [Int : Array<String>] = [:]
    internal var tableView: UITableView
    internal var deleteSettingsButton: UIButton?
 
@@ -100,10 +100,8 @@ extension AlarmOptionDelegateDataSource
       cell.selectionStyle = .None
       cell.accessoryType = .None
       
-      if let label = self.cellLabelDictionary?[indexPath.section]![indexPath.row]
-      {
-         cell.textLabel?.attributedText = NSAttributedString(text: label);
-      }
+      let label = self.cellLabelDictionary[indexPath.section]![indexPath.row]
+      cell.textLabel?.attributedText = NSAttributedString(text: label);
       
       return cell
    }
@@ -115,22 +113,15 @@ extension AlarmOptionDelegateDataSource: UITableViewDataSource
    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
    {
       var numberOfRows = 0
-      if let dictionary = self.cellLabelDictionary
-      {
-         let labelArray = dictionary[section] as Array<String>?
-         numberOfRows = labelArray!.count
-      }
+      let labelArray = self.cellLabelDictionary[section] as Array<String>?
+      numberOfRows = labelArray!.count
+      
       return numberOfRows
    }
    
    func numberOfSectionsInTableView(tableView: UITableView) -> Int
    {
-      var numberOfSections = 0
-      if let dictionary = self.cellLabelDictionary
-      {
-         numberOfSections = dictionary.count
-      }
-      return numberOfSections
+      return self.cellLabelDictionary.count
    }
    
    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
