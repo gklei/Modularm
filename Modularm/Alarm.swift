@@ -14,4 +14,12 @@ class Alarm: NSManagedObject
 {
     @NSManaged var date: NSTimeInterval
     @NSManaged var message: String
+   
+   override func awakeFromInsert()
+   {
+      super.awakeFromInsert()
+      
+      self.date = NSDate().timeIntervalSince1970
+      self.message = ""
+   }
 }
