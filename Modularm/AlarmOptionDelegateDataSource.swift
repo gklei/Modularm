@@ -54,7 +54,7 @@ extension AlarmOptionDelegateDataSource
 {
    private func setupCancelButtonWithSuperview(view: UIView)
    {
-      let cancelButton = UIButton.cancelButtonWithTitle("Cancel")
+      let cancelButton = UIButton.grayButtonWithTitle("Cancel")
       cancelButton.center = CGPointMake(CGRectGetWidth(cancelButton.frame)*0.5 + 16, 25)
       cancelButton.addTarget(self, action: "cancelButtonPressed", forControlEvents: UIControlEvents.TouchUpInside)
 
@@ -63,7 +63,7 @@ extension AlarmOptionDelegateDataSource
 
    private func setupDeleteButtonWithSuperview(view: UIView)
    {
-      self.deleteSettingsButton = UIButton.cancelButtonWithTitle("Delete \(self.option.description.lowercaseString) settings")
+      self.deleteSettingsButton = UIButton.grayButtonWithTitle("Delete \(self.option.description.lowercaseString) settings")
       self.deleteSettingsButton!.center = CGPointMake(CGRectGetWidth(self.tableView.frame) - CGRectGetWidth(self.deleteSettingsButton!.frame)*0.5 - 16, 25)
       self.deleteSettingsButton!.addTarget(self, action: "cancelButtonPressed", forControlEvents: UIControlEvents.TouchUpInside)
 
@@ -83,14 +83,12 @@ extension AlarmOptionDelegateDataSource
    internal func cellWithIndexPath(indexPath: NSIndexPath, identifier: String) -> UITableViewCell
    {
       let cell = self.tableView.dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath) as! UITableViewCell
-      var titleAttrs = [NSFontAttributeName : UIFont(name: "HelveticaNeue-Light", size: 19)!]
-      let cellLabel = self.cellLabelDictionary?[indexPath.section]![indexPath.row]
-
       cell.selectionStyle = .None
       cell.accessoryType = .None
-      if let label = cellLabel
+      
+      if let label = self.cellLabelDictionary?[indexPath.section]![indexPath.row]
       {
-         cell.textLabel?.attributedText = NSAttributedString(string: label, attributes: titleAttrs);
+         cell.textLabel?.attributedText = NSAttributedString(text: label)
       }
 
       return cell
