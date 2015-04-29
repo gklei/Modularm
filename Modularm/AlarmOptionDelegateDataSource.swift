@@ -18,8 +18,8 @@ class AlarmOptionDelegateDataSource: NSObject
       }
       set {
          _option = newValue
-         self.deleteSettingsButton?.removeFromSuperview()
-         self.setupDeleteButtonWithSuperview(self.tableView.tableFooterView!)
+//         self.deleteSettingsButton?.removeFromSuperview()
+//         self.setupDeleteButtonWithSuperview(self.tableView.tableFooterView!)
       }
    }
    internal var settingsControllerDelegate: AlarmOptionSettingsControllerProtocol
@@ -39,13 +39,13 @@ class AlarmOptionDelegateDataSource: NSObject
       tableView.delegate = self
       tableView.backgroundColor = UIColor.normalOptionButtonColor()
       
-      let view = UIView(frame: CGRectMake(0, 0, CGRectGetWidth(tableView.frame), 50))
-      view.backgroundColor = UIColor.normalOptionButtonColor()
-      
-      self.setupDeleteButtonWithSuperview(view)
-      self.setupCancelButtonWithSuperview(view)
-      
-      tableView.tableFooterView = view
+//      let view = UIView(frame: CGRectMake(0, 0, CGRectGetWidth(tableView.frame), 50))
+//      view.backgroundColor = UIColor.normalOptionButtonColor()
+//      
+//      self.setupDeleteButtonWithSuperview(view)
+//      self.setupCancelButtonWithSuperview(view)
+//      
+//      tableView.tableFooterView = view
    }
 }
 
@@ -80,6 +80,20 @@ extension AlarmOptionDelegateDataSource
       self.settingsControllerDelegate.deleteSettingsForOption(self.option)
    }
 
+//   internal func cellWithIndexPath(indexPath: NSIndexPath, identifier: String) -> UITableViewCell
+//   {
+//      let cell = self.tableView.dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath) as! UITableViewCell
+//      cell.selectionStyle = .None
+//      cell.accessoryType = .None
+//      
+//      if let label = self.cellLabelDictionary?[indexPath.section]![indexPath.row]
+//      {
+//         cell.textLabel?.attributedText = NSAttributedString(text: label)
+//      }
+//
+//      return cell
+//   }
+   
    internal func cellWithIndexPath(indexPath: NSIndexPath, identifier: String) -> UITableViewCell
    {
       let cell = self.tableView.dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath) as! UITableViewCell
@@ -88,9 +102,9 @@ extension AlarmOptionDelegateDataSource
       
       if let label = self.cellLabelDictionary?[indexPath.section]![indexPath.row]
       {
-         cell.textLabel?.attributedText = NSAttributedString(text: label)
+         cell.textLabel?.attributedText = NSAttributedString(text: label);
       }
-
+      
       return cell
    }
 }
@@ -128,15 +142,33 @@ extension AlarmOptionDelegateDataSource: UITableViewDataSource
 // MARK: - UITableView Delegate
 extension AlarmOptionDelegateDataSource: UITableViewDelegate
 {
+//   func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat
+//   {
+//      return section == self.cellLabelDictionary!.count - 1 ? 0.01 : 50.0
+//   }
+//   
+//   func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView?
+//   {
+//      let view = UIView()
+//      view.backgroundColor = UIColor.normalOptionButtonColor()
+//      return view
+//   }
+   
    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat
    {
-      return section == self.cellLabelDictionary!.count - 1 ? 0.01 : 50.0
+      return 50.0
    }
    
    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView?
    {
       let view = UIView()
       view.backgroundColor = UIColor.normalOptionButtonColor()
+      
+      if section == self.numberOfSectionsInTableView(tableView) - 1
+      {
+         self.setupCancelButtonWithSuperview(view)
+         self.setupDeleteButtonWithSuperview(view)
+      }
       return view
    }
 }
