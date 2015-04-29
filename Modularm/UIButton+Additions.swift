@@ -10,15 +10,12 @@ import UIKit
 
 extension UIButton
 {
-   class func cancelButtonWithTitle(title: String) -> UIButton
+   class func grayButtonWithTitle(title: String) -> UIButton
    {
       let cancelButton = UIButton()
-      var attrs = [NSFontAttributeName : UIFont(name: "HelveticaNeue-Light", size: 19)!, NSForegroundColorAttributeName : UIColor.lightGrayColor()]
-      var highlightedAttrs = [NSFontAttributeName : UIFont(name: "HelveticaNeue-Light", size: 19)!,
-         NSForegroundColorAttributeName : UIColor(white: 0.8, alpha: 0.75)]
       
-      let normalAttrTitle = NSAttributedString(string: title, attributes: attrs)
-      let hightlightedAttrTitle = NSAttributedString(string: title, attributes: highlightedAttrs)
+      let normalAttrTitle = NSAttributedString(text: title, color: UIColor.lightGrayColor())
+      let hightlightedAttrTitle = NSAttributedString(text: title, color: UIColor(white: 0.8, alpha: 0.75))
       
       cancelButton.setAttributedTitle(normalAttrTitle, forState: .Normal)
       cancelButton.setAttributedTitle(hightlightedAttrTitle, forState: .Highlighted)
