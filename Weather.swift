@@ -9,12 +9,33 @@
 import Foundation
 import CoreData
 
+enum WeatherDisplayType: Int16 {
+   case US, EU, NoTemperature
+}
+
 @objc(Weather)
-class Weather: NSManagedObject {
+class Weather: NSManagedObject
+{
+   @NSManaged var displayTypeValue: Int16
+   @NSManaged var backgroundPhotoOn: Bool
+   @NSManaged var autoLocationOn: Bool
+   @NSManaged var alarm: Alarm
+   
+   var displayType: WeatherDisplayType {
+      get {
+         return WeatherDisplayType(rawValue: self.displayTypeValue)!
+      }
+      set {
+         self.displayTypeValue = newValue.rawValue
+      }
+   }
 
-    @NSManaged var displayType: Int16
-    @NSManaged var backgroundPhoto: Bool
-    @NSManaged var autoLocation: Int16
-    @NSManaged var alarm: Alarm
-
+   override func awakeFromInsert()
+   {
+      super.awakeFromInsert()
+      
+      self.displayType = .US
+      self.backgroundPhotoOn = false
+      self.autoLocationOn = false
+   }
 }

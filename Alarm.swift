@@ -10,15 +10,19 @@ import Foundation
 import CoreData
 
 @objc(Alarm)
-class Alarm: NSManagedObject {
-
-    @NSManaged var fireDate: NSTimeInterval
-    @NSManaged var snooze: Snooze
-    @NSManaged var countdown: NSManagedObject
-    @NSManaged var date: Date
-    @NSManaged var message: NSManagedObject
-    @NSManaged var repeat: NSManagedObject
-    @NSManaged var sound: Sound
-    @NSManaged var weather: NSManagedObject
-
+class Alarm: NSManagedObject
+{
+   @NSManaged var fireDate: NSTimeInterval
+   @NSManaged var snooze: Snooze
+   @NSManaged var countdown: NSManagedObject
+   @NSManaged var date: Date
+   @NSManaged var message: NSManagedObject
+   @NSManaged var repeat: NSManagedObject
+   @NSManaged var sound: Sound
+   @NSManaged var weather: NSManagedObject
+   
+   override func awakeFromInsert()
+   {
+      self.fireDate = NSDate().timeIntervalSince1970
+   }
 }

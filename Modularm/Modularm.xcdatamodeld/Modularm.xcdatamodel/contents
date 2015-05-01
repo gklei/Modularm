@@ -10,19 +10,19 @@
         <relationship name="sound" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Sound" inverseName="alarm" inverseEntity="Sound" syncable="YES"/>
         <relationship name="weather" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Weather" inverseName="alarm" inverseEntity="Weather" syncable="YES"/>
     </entity>
-    <entity name="Countdown" representedClassName="PRODUCT_MODULE_NAME.Countdown" syncable="YES">
+    <entity name="Countdown" representedClassName="Countdown" syncable="YES">
         <attribute name="shouldDisplay" optional="YES" attributeType="Boolean" syncable="YES"/>
         <relationship name="alarm" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Alarm" inverseName="countdown" inverseEntity="Alarm" syncable="YES"/>
     </entity>
-    <entity name="Date" representedClassName="PRODUCT_MODULE_NAME.Date" syncable="YES">
+    <entity name="Date" representedClassName="Date" syncable="YES">
         <attribute name="displayType" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="alarm" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Alarm" inverseName="date" inverseEntity="Alarm" syncable="YES"/>
     </entity>
-    <entity name="Message" representedClassName="PRODUCT_MODULE_NAME.Message" syncable="YES">
+    <entity name="Message" representedClassName="Message" syncable="YES">
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="alarm" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Alarm" inverseName="message" inverseEntity="Alarm" syncable="YES"/>
     </entity>
-    <entity name="Repeat" representedClassName="PRODUCT_MODULE_NAME.Repeat" syncable="YES">
+    <entity name="Repeat" representedClassName="Repeat" syncable="YES">
         <attribute name="dayMask" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <relationship name="alarm" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Alarm" inverseName="repeat" inverseEntity="Alarm" syncable="YES"/>
     </entity>
@@ -31,15 +31,15 @@
         <attribute name="typeValue" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="alarm" maxCount="1" deletionRule="Nullify" destinationEntity="Alarm" inverseName="snooze" inverseEntity="Alarm" syncable="YES"/>
     </entity>
-    <entity name="Sound" representedClassName="PRODUCT_MODULE_NAME.Sound" syncable="YES">
+    <entity name="Sound" representedClassName="Sound" syncable="YES">
         <attribute name="basicSoundURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="shouldVibrate" optional="YES" attributeType="Boolean" syncable="YES"/>
         <relationship name="alarm" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Alarm" inverseName="sound" inverseEntity="Alarm" syncable="YES"/>
     </entity>
-    <entity name="Weather" representedClassName="PRODUCT_MODULE_NAME.Weather" syncable="YES">
-        <attribute name="autoLocation" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="backgroundPhoto" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="displayType" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    <entity name="Weather" representedClassName="Weather" syncable="YES">
+        <attribute name="autoLocationOn" optional="YES" attributeType="Boolean" defaultValueString="0" syncable="YES"/>
+        <attribute name="backgroundPhotoOn" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="displayTypeValue" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="alarm" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Alarm" inverseName="weather" inverseEntity="Alarm" syncable="YES"/>
     </entity>
     <elements>

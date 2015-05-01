@@ -20,7 +20,7 @@ class TimelineDataSource: NSObject
       let coreDataStack = CoreDataStack.defaultStack
 
       let fetchRequest = NSFetchRequest(entityName: "Alarm")
-      fetchRequest.sortDescriptors = []//[NSSortDescriptor(key: "fireDate", ascending: false)];
+      fetchRequest.sortDescriptors = [NSSortDescriptor(key: "fireDate", ascending: false)];
 
       let controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: coreDataStack.managedObjectContext!, sectionNameKeyPath: nil, cacheName: nil)
 
