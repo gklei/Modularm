@@ -1,15 +1,55 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7549" systemVersion="14D131" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Alarm" representedClassName="Alarm" syncable="YES">
-        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="message" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fireDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="countdown" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Countdown" inverseName="alarm" inverseEntity="Countdown" syncable="YES"/>
+        <relationship name="date" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Date" inverseName="alarm" inverseEntity="Date" syncable="YES"/>
+        <relationship name="message" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Message" inverseName="alarm" inverseEntity="Message" syncable="YES"/>
+        <relationship name="repeat" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Repeat" inverseName="alarm" inverseEntity="Repeat" syncable="YES"/>
+        <relationship name="snooze" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Snooze" inverseName="alarm" inverseEntity="Snooze" syncable="YES"/>
+        <relationship name="sound" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Sound" inverseName="alarm" inverseEntity="Sound" syncable="YES"/>
+        <relationship name="weather" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Weather" inverseName="alarm" inverseEntity="Weather" syncable="YES"/>
+    </entity>
+    <entity name="Countdown" representedClassName="PRODUCT_MODULE_NAME.Countdown" syncable="YES">
+        <attribute name="shouldDisplay" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <relationship name="alarm" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Alarm" inverseName="countdown" inverseEntity="Alarm" syncable="YES"/>
+    </entity>
+    <entity name="Date" representedClassName="PRODUCT_MODULE_NAME.Date" syncable="YES">
+        <attribute name="displayType" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="alarm" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Alarm" inverseName="date" inverseEntity="Alarm" syncable="YES"/>
+    </entity>
+    <entity name="Message" representedClassName="PRODUCT_MODULE_NAME.Message" syncable="YES">
+        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="alarm" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Alarm" inverseName="message" inverseEntity="Alarm" syncable="YES"/>
+    </entity>
+    <entity name="Repeat" representedClassName="PRODUCT_MODULE_NAME.Repeat" syncable="YES">
+        <attribute name="dayMask" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <relationship name="alarm" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Alarm" inverseName="repeat" inverseEntity="Alarm" syncable="YES"/>
     </entity>
     <entity name="Snooze" representedClassName="Snooze" syncable="YES">
         <attribute name="durationValue" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="typeValue" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="alarm" maxCount="1" deletionRule="Nullify" destinationEntity="Alarm" inverseName="snooze" inverseEntity="Alarm" syncable="YES"/>
+    </entity>
+    <entity name="Sound" representedClassName="PRODUCT_MODULE_NAME.Sound" syncable="YES">
+        <attribute name="basicSoundURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="shouldVibrate" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <relationship name="alarm" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Alarm" inverseName="sound" inverseEntity="Alarm" syncable="YES"/>
+    </entity>
+    <entity name="Weather" representedClassName="PRODUCT_MODULE_NAME.Weather" syncable="YES">
+        <attribute name="autoLocation" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="backgroundPhoto" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="displayType" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="alarm" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Alarm" inverseName="weather" inverseEntity="Alarm" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Alarm" positionX="-281" positionY="-9" width="128" height="75"/>
-        <element name="Snooze" positionX="-63" positionY="0" width="128" height="75"/>
+        <element name="Alarm" positionX="-281" positionY="-9" width="128" height="165"/>
+        <element name="Snooze" positionX="-63" positionY="0" width="128" height="90"/>
+        <element name="Weather" positionX="-153" positionY="45" width="128" height="105"/>
+        <element name="Sound" positionX="-144" positionY="72" width="128" height="90"/>
+        <element name="Date" positionX="-135" positionY="90" width="128" height="75"/>
+        <element name="Repeat" positionX="-126" positionY="99" width="128" height="75"/>
+        <element name="Message" positionX="-117" positionY="108" width="128" height="75"/>
+        <element name="Countdown" positionX="-171" positionY="54" width="128" height="75"/>
     </elements>
 </model>

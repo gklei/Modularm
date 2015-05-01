@@ -1,8 +1,8 @@
 //
-//  SnoozeModel.swift
+//  Snooze.swift
 //  Modularm
 //
-//  Created by Klein, Greg on 4/22/15.
+//  Created by Klein, Greg on 5/1/15.
 //  Copyright (c) 2015 Pure Virtual Studios, LLC. All rights reserved.
 //
 

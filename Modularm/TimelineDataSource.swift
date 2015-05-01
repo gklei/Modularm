@@ -20,7 +20,7 @@ class TimelineDataSource: NSObject
       let coreDataStack = CoreDataStack.defaultStack
 
       let fetchRequest = NSFetchRequest(entityName: "Alarm")
-      fetchRequest.sortDescriptors = [NSSortDescriptor(key: "message", ascending: false)];
+      fetchRequest.sortDescriptors = []//[NSSortDescriptor(key: "fireDate", ascending: false)];
 
       let controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: coreDataStack.managedObjectContext!, sectionNameKeyPath: nil, cacheName: nil)
 
@@ -43,8 +43,6 @@ class TimelineDataSource: NSObject
       let alarm: Alarm = NSEntityDescription.insertNewObjectForEntityForName("Alarm", inManagedObjectContext: coreDataStack.managedObjectContext!) as! Alarm
 
       let count = self.fetchedResultsController.fetchedObjects?.count
-      alarm.message = "Alarm \(count)"
-      alarm.date = NSDate().timeIntervalSince1970
 
       coreDataStack.saveContext()
    }
