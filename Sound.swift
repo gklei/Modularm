@@ -10,10 +10,9 @@ import Foundation
 import CoreData
 
 @objc(Sound)
-class Sound: NSManagedObject {
-
-    @NSManaged var basicSoundURL: String
-    @NSManaged var shouldVibrate: Bool
-    @NSManaged var alarm: Alarm
-
+class Sound: NSManagedObject
+{
+   @NSManaged var basicSoundURL: String
+   @NSManaged var shouldVibrate: Bool
+   @NSManaged var alarm: Alarm
 }

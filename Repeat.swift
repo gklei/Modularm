@@ -10,9 +10,8 @@ import Foundation
 import CoreData
 
 @objc(Repeat)
-class Repeat: NSManagedObject {
-
-    @NSManaged var dayMask: Int16
-    @NSManaged var alarm: Alarm
-
+class Repeat: NSManagedObject
+{
+   @NSManaged var dayMask: Int16
+   @NSManaged var alarm: Alarm   
 }
