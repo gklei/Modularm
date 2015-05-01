@@ -307,7 +307,7 @@
                                     <userDefinedRuntimeAttribute type="image" keyPath="deactivatedImage" value="icn-plus-countdown"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="aa4-SF-2ad" kind="push" identifier="configureCountdown" id="dms-Wd-Xyi"/>
+                                    <action selector="toggleCountdown:" destination="LXP-8S-707" eventType="touchUpInside" id="8NY-ah-7qz"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l6H-Kw-288" customClass="AlarmOptionButton" customModule="Modularm" customModuleProvider="target">
@@ -716,6 +716,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="gAC-Aq-ELc"/>
+        <segue reference="9gu-Yl-B7X"/>
     </inferredMetricsTieBreakers>
 </document>

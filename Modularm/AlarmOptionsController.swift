@@ -39,9 +39,6 @@ class AlarmOptionsController: UIViewController
       case "configureMessage":
          option = .Message
          break
-      case "configureCountdown":
-         option = .Countdown
-         break
          
       default:
          option = .Unknown
@@ -50,5 +47,18 @@ class AlarmOptionsController: UIViewController
 
       optionButton.option = option
       optionSettingsController.configureWithOptionButton(optionButton)
+   }
+   
+   @IBAction func toggleCountdown(sender: AnyObject)
+   {
+      let optionButton = sender as! AlarmOptionButton
+      if optionButton.activated
+      {
+         optionButton.deactivate()
+      }
+      else
+      {
+         optionButton.activate()
+      }
    }
 }
