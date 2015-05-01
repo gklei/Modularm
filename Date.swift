@@ -9,10 +9,28 @@
 import Foundation
 import CoreData
 
+enum DateDisplayType: Int16 {
+   case US, EU, NoDate
+}
+
 @objc(Date)
-class Date: NSManagedObject {
-
-    @NSManaged var displayType: Int16
-    @NSManaged var alarm: Alarm
-
+class Date: NSManagedObject
+{
+   @NSManaged var displayTypeValue: Int16
+   @NSManaged var alarm: Alarm
+   
+   var displayType: DateDisplayType {
+      get {
+         return DateDisplayType(rawValue: self.displayTypeValue)!
+      }
+      set {
+         self.displayTypeValue = newValue.rawValue
+      }
+   }
+   
+   override func awakeFromInsert()
+   {
+      super.awakeFromInsert()
+      self.displayType = .US
+   }
 }
