@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class AlarmConfigurationController: UIViewController
 {
@@ -15,6 +16,7 @@ class AlarmConfigurationController: UIViewController
    @IBOutlet weak var alarmOptionsControllerBottomVerticalSpaceConstraint: NSLayoutConstraint!
    var alarmTimeController: AlarmTimeController?
    var alarmOptionsController: AlarmOptionsController?
+   var alarm: Alarm?
 
    // MARK: - Lifecycle
    override func viewDidLoad()
@@ -22,6 +24,14 @@ class AlarmConfigurationController: UIViewController
       super.viewDidLoad()
       NSNotificationCenter.defaultCenter().addObserver(self, selector: "moveAlarmOptionsControllerUpForNotification:", name: UIKeyboardWillShowNotification, object: nil)
       NSNotificationCenter.defaultCenter().addObserver(self, selector: "moveAlarmOptionsControllerDownForNotification:", name: UIKeyboardWillHideNotification, object: nil)
+   }
+   
+   override func viewWillAppear(animated: Bool)
+   {
+      super.viewWillAppear(animated);
+      
+      let coreDataStack = CoreDataStack.defaultStack
+      self.alarm = NSEntityDescription.insertNewObjectForEntityForName("Alarm", inManagedObjectContext: coreDataStack.managedObjectContext!) as? Alarm
    }
 
    // MARK: - Public
