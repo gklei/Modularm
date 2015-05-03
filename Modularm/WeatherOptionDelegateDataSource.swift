@@ -25,7 +25,7 @@ class WeatherOptionDelegateDataSource: AlarmOptionDelegateDataSource
       
       super.init(tableView: tableView, delegate: delegate)
       self.option = .Weather
-      self.cellLabelDictionary = [0 :["34.4ºF slightly Rainy US", "3ºC slightly Rainy EU", "slighty Rainy int"],
+      self.cellLabelDictionary = [0 :["34.4˚F Slightly Rainy", "3˚C Slightly Rainy", "Slighty Rainy"],
          1 : ["Background Photo", "Location Auto"]]
       
       self.backgroundPhotoOnOffSwitch.setOn(self.weatherModel.backgroundPhotoOn, animated: false)
@@ -33,6 +33,20 @@ class WeatherOptionDelegateDataSource: AlarmOptionDelegateDataSource
       
       self.locationAutoOnOffSwitch.setOn(self.weatherModel.autoLocationOn, animated: false)
       self.locationAutoOnOffSwitch.addTarget(self, action: "locationAutoSwitchChanged:", forControlEvents: UIControlEvents.ValueChanged)
+   }
+
+   override func cellWithIndexPath(indexPath: NSIndexPath, identifier: String) -> UITableViewCell
+   {
+      let cell = super.cellWithIndexPath(indexPath, identifier: identifier)
+      if indexPath.section == 0
+      {
+         if let type = self.weatherDisplayTypeForCellIndex(indexPath.row), boldString = self.stringForDisplayType(type)
+         {
+            let mainLabel = self.cellLabelDictionary[indexPath.section]![indexPath.row]
+            cell.textLabel?.attributedText = NSAttributedString(text: mainLabel, boldText: boldString)
+         }
+      }
+      return cell
    }
 }
 
@@ -49,6 +63,23 @@ extension WeatherOptionDelegateDataSource
    {
       println("location auto on: \(sender.on)")
       self.weatherModel.autoLocationOn = sender.on
+   }
+
+   private func stringForDisplayType(type: WeatherDisplayType) -> String?
+   {
+      var string: String?
+      switch type
+      {
+      case .US:
+         string = "US"
+         break
+      case .EU:
+         string = "EU"
+         break
+      case .NoTemperature:
+         break
+      }
+      return string
    }
 
    private func cellIndexForWeatherDisplayType(displayType: WeatherDisplayType) -> Int

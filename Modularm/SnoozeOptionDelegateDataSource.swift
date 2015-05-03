@@ -108,6 +108,7 @@ struct SnoozeOptionSettingButtonState: SnoozeOptionSettingState
       {
          cell.accessoryType = .DisclosureIndicator
          cell.selectionStyle = .Default
+         cell.textLabel?.attributedText = NSAttributedString(text: "Snooze", boldText: "\(self.delegate.snoozeModel.durationValue) minutes")
       }
       else
       {
