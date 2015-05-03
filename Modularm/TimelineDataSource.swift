@@ -83,7 +83,7 @@ extension TimelineDataSource: UICollectionViewDataSource
       let cell: UICollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! UICollectionViewCell
 
       let alarmEntry: Alarm = self.fetchedResultsController.objectAtIndexPath(indexPath) as! Alarm
-      println(alarmEntry.message)
+      println(alarmEntry.fireDate)
 
       return cell
    }
