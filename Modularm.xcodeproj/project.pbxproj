@@ -23,9 +23,9 @@
 		5BCDA1161AF3DC5900556117 /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCDA1151AF3DC5900556117 /* Alarm.swift */; };
 		5BCDA1181AF3DC5900556117 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCDA1171AF3DC5900556117 /* Message.swift */; };
 		5BCDA11A1AF3DC5900556117 /* Countdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCDA1191AF3DC5900556117 /* Countdown.swift */; };
-		5BCDA11C1AF3DC5900556117 /* Repeat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCDA11B1AF3DC5900556117 /* Repeat.swift */; };
 		5BCDA11E1AF3DC5900556117 /* Snooze.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCDA11D1AF3DC5900556117 /* Snooze.swift */; };
 		5BCDA1201AF3DC5900556117 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCDA11F1AF3DC5900556117 /* Weather.swift */; };
+		5BCDA1381AF68ACA00556117 /* Repeat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCDA1371AF68ACA00556117 /* Repeat.swift */; };
 		8E3B22611AD9E85F001693E2 /* TimelineDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3B22601AD9E85F001693E2 /* TimelineDataSource.swift */; };
 		8E3BDC341AE4176300E1FCDC /* AlarmOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3BDC331AE4176300E1FCDC /* AlarmOption.swift */; };
 		8E3BDC361AE4176E00E1FCDC /* UIImage+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3BDC351AE4176E00E1FCDC /* UIImage+Additions.swift */; };
@@ -73,9 +73,9 @@
 		5BCDA1151AF3DC5900556117 /* Alarm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
 		5BCDA1171AF3DC5900556117 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		5BCDA1191AF3DC5900556117 /* Countdown.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Countdown.swift; sourceTree = "<group>"; };
-		5BCDA11B1AF3DC5900556117 /* Repeat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repeat.swift; sourceTree = "<group>"; };
 		5BCDA11D1AF3DC5900556117 /* Snooze.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Snooze.swift; sourceTree = "<group>"; };
 		5BCDA11F1AF3DC5900556117 /* Weather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
+		5BCDA1371AF68ACA00556117 /* Repeat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repeat.swift; sourceTree = "<group>"; };
 		8E3B22601AD9E85F001693E2 /* TimelineDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimelineDataSource.swift; path = Modularm/TimelineDataSource.swift; sourceTree = "<group>"; };
 		8E3BDC331AE4176300E1FCDC /* AlarmOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlarmOption.swift; path = Modularm/AlarmOption.swift; sourceTree = "<group>"; };
 		8E3BDC351AE4176E00E1FCDC /* UIImage+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImage+Additions.swift"; path = "Modularm/UIImage+Additions.swift"; sourceTree = "<group>"; };
@@ -176,9 +176,9 @@
 		8EC9B9CA1ADB9C4B00DBF350 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				5BCDA1371AF68ACA00556117 /* Repeat.swift */,
 				5BCDA11F1AF3DC5900556117 /* Weather.swift */,
 				5BCDA11D1AF3DC5900556117 /* Snooze.swift */,
-				5BCDA11B1AF3DC5900556117 /* Repeat.swift */,
 				5BCDA1191AF3DC5900556117 /* Countdown.swift */,
 				5BCDA1171AF3DC5900556117 /* Message.swift */,
 				5BCDA1151AF3DC5900556117 /* Alarm.swift */,
@@ -384,6 +384,7 @@
 				8EFACDE11AD83A1E00279956 /* CoreDataStack.swift in Sources */,
 				5B22182F1AE60A0700D56D31 /* AlarmOptionDelegateDataSource.swift in Sources */,
 				5B1997AC1AE5B42700D1522C /* SoundOptionDelegateDataSource.swift in Sources */,
+				5BCDA1381AF68ACA00556117 /* Repeat.swift in Sources */,
 				5BCDA1181AF3DC5900556117 /* Message.swift in Sources */,
 				5BCDA11E1AF3DC5900556117 /* Snooze.swift in Sources */,
 				8EFACDBB1AD837EE00279956 /* Modularm.xcdatamodeld in Sources */,
@@ -395,7 +396,6 @@
 				5B1997AA1AE5765800D1522C /* WeatherOptionDelegateDataSource.swift in Sources */,
 				8E8228E21ADB679A00F9A26E /* UINavigationBar+Additions.swift in Sources */,
 				5B1997AE1AE5B58000D1522C /* DateOptionDelegateDataSource.swift in Sources */,
-				5BCDA11C1AF3DC5900556117 /* Repeat.swift in Sources */,
 				5BCDA1121AF3DC5800556117 /* Sound.swift in Sources */,
 				5B1997B71AE5F79C00D1522C /* AlarmMessageSettingsController.swift in Sources */,
 				8ECE15291AE8B37F00B73125 /* AlarmOptionSettingsControllerProtocol.swift in Sources */,
