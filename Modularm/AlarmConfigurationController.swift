@@ -14,6 +14,7 @@ class AlarmConfigurationController: UIViewController
    // MARK: - Instance Variables
    @IBOutlet weak var alarmOptionsHeightConstraint: NSLayoutConstraint!
    @IBOutlet weak var alarmOptionsControllerBottomVerticalSpaceConstraint: NSLayoutConstraint!
+   @IBOutlet weak var segmentedControl: UISegmentedControl!
    var alarmTimeController: AlarmTimeController?
    var alarmOptionsController: AlarmOptionsController?
    var alarm: Alarm?
@@ -29,6 +30,10 @@ class AlarmConfigurationController: UIViewController
    override func viewWillAppear(animated: Bool)
    {
       super.viewWillAppear(animated);
+
+      self.segmentedControl.selectedSegmentIndex = 1
+      self.segmentedControl.enabled = false
+      self.segmentedControl.userInteractionEnabled = false
       
       let coreDataStack = CoreDataStack.defaultStack
       self.alarm = NSEntityDescription.insertNewObjectForEntityForName("Alarm", inManagedObjectContext: coreDataStack.managedObjectContext!) as? Alarm
