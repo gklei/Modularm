@@ -46,6 +46,11 @@ class TimelineDataSource: NSObject
 
       coreDataStack.saveContext()
    }
+   
+   func reloadData()
+   {
+      self.collectionView.reloadData()
+   }
 }
 
 // MARK: - UICollectionView Data Source
@@ -73,8 +78,11 @@ extension TimelineDataSource: UICollectionViewDataSource
 // MARK: - NSFetchedResultsController Delegate
 extension TimelineDataSource: NSFetchedResultsControllerDelegate
 {
-   func controllerDidChangeContent(controller: NSFetchedResultsController)
+   func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?)
    {
-      self.collectionView.reloadData()
+      if type != NSFetchedResultsChangeType.Insert
+      {
+         self.reloadData()
+      }
    }
 }
