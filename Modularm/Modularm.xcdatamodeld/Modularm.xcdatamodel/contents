@@ -2,13 +2,13 @@
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7549" systemVersion="14D131" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Alarm" representedClassName="Alarm" syncable="YES">
         <attribute name="fireDate" optional="YES" attributeType="Date" syncable="YES"/>
-        <relationship name="countdown" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Countdown" inverseName="alarm" inverseEntity="Countdown" syncable="YES"/>
-        <relationship name="date" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Date" inverseName="alarm" inverseEntity="Date" syncable="YES"/>
-        <relationship name="message" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Message" inverseName="alarm" inverseEntity="Message" syncable="YES"/>
-        <relationship name="repeat" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Repeat" inverseName="alarm" inverseEntity="Repeat" syncable="YES"/>
-        <relationship name="snooze" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Snooze" inverseName="alarm" inverseEntity="Snooze" syncable="YES"/>
-        <relationship name="sound" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Sound" inverseName="alarm" inverseEntity="Sound" syncable="YES"/>
-        <relationship name="weather" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Weather" inverseName="alarm" inverseEntity="Weather" syncable="YES"/>
+        <relationship name="countdown" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Countdown" inverseName="alarm" inverseEntity="Countdown" syncable="YES"/>
+        <relationship name="date" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Date" inverseName="alarm" inverseEntity="Date" syncable="YES"/>
+        <relationship name="message" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Message" inverseName="alarm" inverseEntity="Message" syncable="YES"/>
+        <relationship name="repeat" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Repeat" inverseName="alarm" inverseEntity="Repeat" syncable="YES"/>
+        <relationship name="snooze" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Snooze" inverseName="alarm" inverseEntity="Snooze" syncable="YES"/>
+        <relationship name="sound" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Sound" inverseName="alarm" inverseEntity="Sound" syncable="YES"/>
+        <relationship name="weather" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Weather" inverseName="alarm" inverseEntity="Weather" syncable="YES"/>
     </entity>
     <entity name="Countdown" representedClassName="Countdown" syncable="YES">
         <attribute name="shouldDisplay" optional="YES" attributeType="Boolean" syncable="YES"/>
