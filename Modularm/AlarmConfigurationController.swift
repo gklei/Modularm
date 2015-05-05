@@ -34,9 +34,6 @@ class AlarmConfigurationController: UIViewController
       self.segmentedControl.selectedSegmentIndex = 1
       self.segmentedControl.enabled = false
       self.segmentedControl.userInteractionEnabled = false
-      
-      let coreDataStack = CoreDataStack.defaultStack
-      self.alarm = NSEntityDescription.insertNewObjectForEntityForName("Alarm", inManagedObjectContext: coreDataStack.managedObjectContext!) as? Alarm
    }
 
    // MARK: - Public
