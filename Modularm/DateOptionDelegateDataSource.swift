@@ -44,39 +44,12 @@ class DateOptionDelegateDataSource: AlarmOptionDelegateDataSource
    
    private func cellIndexForDateDisplayType(displayType: DateDisplayType) -> Int
    {
-      var index = 0
-      switch displayType
-      {
-      case .US:
-         break
-      case .EU:
-         index = 1
-         break
-      case .NoDate:
-         index = 2
-         break
-      }
-      return index
+      return Int(displayType.rawValue)
    }
    
    private func displayTypeForCellIndex(index: Int) -> DateDisplayType?
    {
-      var displayType: DateDisplayType?
-      switch index
-      {
-      case 0:
-         displayType = .US
-         break
-      case 1:
-         displayType = .EU
-         break
-      case 2:
-         displayType = .NoDate
-         break
-      default:
-         break
-      }
-      return displayType
+      return DateDisplayType(rawValue: Int16(index))
    }
 }
 

@@ -26,56 +26,12 @@ class RepeatOptionDelegateDataSource: AlarmOptionDelegateDataSource
    
    private func cellIndexForRepeatDay(day: RepeatDay) -> Int
    {
-      var index = 0
-      switch day
-      {
-      case .Monday:
-         break
-      case .Tuesday:
-         index = 1
-         break
-      case .Wednesday:
-         index = 2
-         break
-      case .Thursday:
-         index = 3
-         break
-      case .Friday:
-         index = 4
-         break
-      case .Saturday:
-         index = 5
-         break
-      case .Sunday:
-         index = 6
-         break
-      }
-      return index
+      return Int(day.rawValue)
    }
    
    private func repeatDayForCellIndex(index: Int) -> RepeatDay?
    {
-      var day: RepeatDay?
-      switch index
-      {
-      case 0:
-         day = .Monday
-      case 1:
-         day = .Tuesday
-      case 2:
-         day = .Wednesday
-      case 3:
-         day = .Thursday
-      case 4:
-         day = .Friday
-      case 5:
-         day = .Saturday
-      case 6:
-         day = .Sunday
-      default:
-         break
-      }
-      return day
+      return RepeatDay(rawValue: Int16(index))
    }
 }
 
