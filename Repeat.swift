@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 enum RepeatDay: Int16 {
-   case Monday = 0, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
+   case Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
 }
 
 @objc(Repeat)
