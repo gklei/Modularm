@@ -13,6 +13,8 @@ class TimelineController: UIViewController
    // MARK: - Instance Variables
    @IBOutlet weak var centerNavigationItem: UINavigationItem!
    @IBOutlet weak var timelineDataSource: TimelineDataSource!
+   
+   var alarmConfigurationController: AlarmConfigurationController?
 
    // MARK: - Lifecycle
    override func viewDidLoad()
@@ -23,7 +25,7 @@ class TimelineController: UIViewController
 
    override func viewWillAppear(animated: Bool)
    {
-      self.updateBackBarButtonItemWithTitle("Modularm")
+      self.timelineDataSource.reloadData()
    }
 
    override func viewWillDisappear(animated: Bool)
@@ -36,5 +38,14 @@ class TimelineController: UIViewController
    {
       let barButtonItem = UIBarButtonItem(title: title, style: .Plain, target: nil, action: nil)
       self.navigationItem.backBarButtonItem = barButtonItem
+   }
+   
+   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+   {
+      if segue.identifier == "addAlarmButtonPressed"
+      {
+         self.alarmConfigurationController = segue.destinationViewController as? AlarmConfigurationController
+         self.alarmConfigurationController?.createNewAlarm()
+      }
    }
 }
