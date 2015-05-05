@@ -2,36 +2,84 @@
 //  Repeat.swift
 //  Modularm
 //
-//  Created by Klein, Greg on 5/3/15.
+//  Created by Klein, Greg on 5/4/15.
 //  Copyright (c) 2015 Pure Virtual Studios, LLC. All rights reserved.
 //
 
 import Foundation
 import CoreData
 
-enum RepeatDay
-{
+enum RepeatDay: Int16 {
    case Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
 }
 
 @objc(Repeat)
 class Repeat: NSManagedObject
 {
-   private var mutableDaySet = Set<RepeatDay>()
+    @NSManaged var monday: Bool
+    @NSManaged var tuesday: Bool
+    @NSManaged var wednesday: Bool
+    @NSManaged var thursday: Bool
+    @NSManaged var friday: Bool
+    @NSManaged var saturday: Bool
+    @NSManaged var sunday: Bool
+    @NSManaged var alarm: Alarm
    
-   @NSManaged var dayArray: AnyObject
-   @NSManaged var alarm: Alarm
-   
-   func addDay(day: RepeatDay)
+   func enableDay(day: RepeatDay, enabled: Bool)
    {
-      if !self.mutableDaySet.contains(day)
+      switch day
       {
-         self.mutableDaySet.insert(day)
+      case .Monday:
+         self.monday = enabled
+         break
+      case .Tuesday:
+         self.tuesday = enabled
+         break
+      case .Wednesday:
+         self.wednesday = enabled
+         break
+      case .Thursday:
+         self.thursday = enabled
+         break
+      case .Friday:
+         self.friday = enabled
+         break
+      case .Saturday:
+         self.saturday = enabled
+         break
+      case .Sunday:
+         self.sunday = enabled
+         break
       }
    }
    
-   func removeDay(day: RepeatDay)
+   func dayIsEnabled(day: RepeatDay) -> Bool
    {
-      self.mutableDaySet.remove(day)
+      var enabled = false
+      switch day
+      {
+      case .Monday:
+         enabled = self.monday
+         break
+      case .Tuesday:
+         enabled = self.tuesday
+         break
+      case .Wednesday:
+         enabled = self.wednesday
+         break
+      case .Thursday:
+         enabled = self.thursday
+         break
+      case .Friday:
+         enabled = self.friday
+         break
+      case .Saturday:
+         enabled = self.saturday
+         break
+      case .Sunday:
+         enabled = self.sunday
+         break
+      }
+      return enabled
    }
 }

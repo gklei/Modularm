@@ -23,7 +23,13 @@
         <relationship name="alarm" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Alarm" inverseName="message" inverseEntity="Alarm" syncable="YES"/>
     </entity>
     <entity name="Repeat" representedClassName="Repeat" syncable="YES">
-        <attribute name="dayArray" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="friday" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="monday" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="saturday" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="sunday" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="thursday" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="tuesday" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="wednesday" optional="YES" attributeType="Boolean" syncable="YES"/>
         <relationship name="alarm" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Alarm" inverseName="repeat" inverseEntity="Alarm" syncable="YES"/>
     </entity>
     <entity name="Snooze" representedClassName="Snooze" syncable="YES">
@@ -47,7 +53,7 @@
         <element name="Countdown" positionX="-171" positionY="54" width="128" height="75"/>
         <element name="Date" positionX="-135" positionY="90" width="128" height="75"/>
         <element name="Message" positionX="-117" positionY="108" width="128" height="75"/>
-        <element name="Repeat" positionX="-126" positionY="99" width="128" height="75"/>
+        <element name="Repeat" positionX="-126" positionY="99" width="128" height="165"/>
         <element name="Snooze" positionX="-63" positionY="0" width="128" height="90"/>
         <element name="Sound" positionX="-144" positionY="72" width="128" height="90"/>
         <element name="Weather" positionX="-153" positionY="45" width="128" height="105"/>
