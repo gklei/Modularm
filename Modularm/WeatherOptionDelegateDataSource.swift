@@ -55,13 +55,11 @@ extension WeatherOptionDelegateDataSource
 {
    func backgroundPhotoSwitchChanged(sender: UISwitch)
    {
-      println("background photo on: \(sender.on)")
       self.weatherModel.backgroundPhotoOn = sender.on
    }
 
    func locationAutoSwitchChanged(sender: UISwitch)
    {
-      println("location auto on: \(sender.on)")
       self.weatherModel.autoLocationOn = sender.on
    }
 
