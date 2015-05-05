@@ -21,8 +21,13 @@ class Alarm: NSManagedObject
    @NSManaged var sound: Sound
    @NSManaged var weather: NSManagedObject
    
+   var isValid: Bool {
+      get {
+         return self.fireDate != 0
+      }
+   }
+   
    override func awakeFromInsert()
    {
-      self.fireDate = NSDate().timeIntervalSince1970
    }
 }
