@@ -11,12 +11,13 @@ import CoreData
 
 class RepeatOptionDelegateDataSource: AlarmOptionDelegateDataSource
 {
-   var repeatModel: Repeat?
+   var repeatModel: Repeat
    
    // MARK: - Init
    override init(tableView: UITableView, delegate: AlarmOptionSettingsControllerProtocol)
    {
-      CoreDataStack.defaultStack.deleteAllObjectsWithName("Repeat")
+      let coreDataStack = CoreDataStack.defaultStack
+      self.repeatModel = NSEntityDescription.insertNewObjectForEntityForName("Repeat", inManagedObjectContext: coreDataStack.managedObjectContext!) as! Repeat
       
       super.init(tableView: tableView, delegate: delegate)
       self.option = .Repeat
@@ -84,9 +85,9 @@ extension RepeatOptionDelegateDataSource: UITableViewDataSource
    {
       var cell = super.tableView(tableView, cellForRowAtIndexPath: indexPath)
       
-      if let day = self.repeatDayForCellIndex(indexPath.row), model = self.repeatModel
+      if let day = self.repeatDayForCellIndex(indexPath.row)
       {
-         cell.accessoryType = model.dayIsEnabled(day) ? .Checkmark : .None
+         cell.accessoryType = self.repeatModel.dayIsEnabled(day) ? .Checkmark : .None
       }
       return cell
    }
@@ -96,10 +97,10 @@ extension RepeatOptionDelegateDataSource: UITableViewDelegate
 {
    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
    {
-      if let day = self.repeatDayForCellIndex(indexPath.row), model = self.repeatModel
+      if let day = self.repeatDayForCellIndex(indexPath.row)
       {
-         var shouldEnable = !model.dayIsEnabled(day)
-         model.enableDay(day, enabled: shouldEnable)
+         var shouldEnable = !self.repeatModel.dayIsEnabled(day)
+         self.repeatModel.enableDay(day, enabled: shouldEnable)
          
          CoreDataStack.defaultStack.saveContext()
          self.tableView.reloadData()
