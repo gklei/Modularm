@@ -16,14 +16,14 @@ enum RepeatDay: Int16 {
 @objc(Repeat)
 class Repeat: NSManagedObject
 {
-    @NSManaged var monday: Bool
-    @NSManaged var tuesday: Bool
-    @NSManaged var wednesday: Bool
-    @NSManaged var thursday: Bool
-    @NSManaged var friday: Bool
-    @NSManaged var saturday: Bool
-    @NSManaged var sunday: Bool
-    @NSManaged var alarm: Alarm
+    @NSManaged private var monday: Bool
+    @NSManaged private var tuesday: Bool
+    @NSManaged private var wednesday: Bool
+    @NSManaged private var thursday: Bool
+    @NSManaged private var friday: Bool
+    @NSManaged private var saturday: Bool
+    @NSManaged private var sunday: Bool
+    @NSManaged private var alarm: Alarm
    
    func enableDay(day: RepeatDay, enabled: Bool)
    {
