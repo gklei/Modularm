@@ -53,7 +53,7 @@
                     <navigationItem key="navigationItem" title="Modularm" id="Quf-Is-AO7">
                         <barButtonItem key="rightBarButtonItem" image="icn-add-item" id="iyX-07-HgF">
                             <connections>
-                                <segue destination="yqY-cf-tnN" kind="push" id="x6s-2e-dhd"/>
+                                <segue destination="yqY-cf-tnN" kind="push" identifier="addAlarmButtonPressed" id="x6s-2e-dhd"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -133,18 +133,23 @@
                             </segments>
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         </segmentedControl>
-                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Set" id="WoP-ku-0xM"/>
+                        <barButtonItem key="rightBarButtonItem" title="Set" id="WoP-ku-0xM">
+                            <connections>
+                                <action selector="setButtonPressed" destination="yqY-cf-tnN" id="Wl4-ej-dHn"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="alarmOptionsControllerBottomVerticalSpaceConstraint" destination="jET-Dy-zoE" id="FVk-5c-Cb0"/>
                         <outlet property="alarmOptionsHeightConstraint" destination="FOO-Qt-PvE" id="49v-wY-Cd2"/>
                         <outlet property="segmentedControl" destination="zgV-jJ-HUe" id="FxT-s8-jdu"/>
+                        <outlet property="setBarButtonItem" destination="WoP-ku-0xM" id="4oY-6d-LEM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HT9-yl-Jo4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="633.5" y="397.5"/>
+            <point key="canvasLocation" x="653.5" y="397.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="jed-6e-O8f">
