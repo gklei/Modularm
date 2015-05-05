@@ -46,25 +46,6 @@ class TimelineDataSource: NSObject
 
       coreDataStack.saveContext()
    }
-
-   // MARK: - Private
-   private func deleteAllObjectsWithName(name: String)
-   {
-      let context = CoreDataStack.defaultStack.managedObjectContext
-      let fetchRequest = NSFetchRequest()
-
-      fetchRequest.entity = NSEntityDescription.entityForName(name, inManagedObjectContext: context!)
-      fetchRequest.includesPropertyValues = false
-
-      let error = NSErrorPointer()
-      let alarms = context?.executeFetchRequest(fetchRequest, error: error)
-
-      for alarm in alarms!
-      {
-         context?.deleteObject(alarm as! NSManagedObject)
-      }
-      context?.save(nil)
-   }
 }
 
 // MARK: - UICollectionView Data Source
