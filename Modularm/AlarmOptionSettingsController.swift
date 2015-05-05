@@ -22,7 +22,6 @@ class AlarmOptionSettingsController: UIViewController
    {
       super.viewDidLoad()
       self.iconImageView.tintColor = UIColor.lipstickRedColor()
-      self.tableView.tableFooterView = UIView(frame: CGRectZero)
    }
 
    override func viewWillAppear(animated: Bool)
