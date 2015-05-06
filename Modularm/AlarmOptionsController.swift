@@ -10,6 +10,9 @@ import UIKit
 
 class AlarmOptionsController: UIViewController
 {
+   private var alarm: Alarm?
+   
+   // MARK: Lifecycle -
    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
    {
       let optionSettingsController = segue.destinationViewController as! AlarmOptionSettingsControllerProtocol
@@ -49,6 +52,13 @@ class AlarmOptionsController: UIViewController
       optionSettingsController.configureWithOptionButton(optionButton)
    }
    
+   // MARK: - Public
+   func configureWithAlarm(alarm: Alarm)
+   {
+      self.alarm = alarm
+   }
+   
+   // MARK: - IBActions
    @IBAction func toggleCountdown(sender: AnyObject)
    {
       let optionButton = sender as! AlarmOptionButton
