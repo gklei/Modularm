@@ -121,8 +121,10 @@ class CoreDataStack: NSObject
       var alarm: Alarm?
       if let context = self.defaultStack.managedObjectContext
       {
-         let description = NSEntityDescription.entityForName("Alarm", inManagedObjectContext: context)
-         alarm = NSManagedObject(entity: description!, insertIntoManagedObjectContext: nil) as? Alarm
+         if let description = NSEntityDescription.entityForName("Alarm", inManagedObjectContext: context)
+         {
+            alarm = NSManagedObject(entity: description, insertIntoManagedObjectContext: nil) as? Alarm
+         }
       }
       return alarm
    }
