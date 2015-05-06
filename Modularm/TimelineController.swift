@@ -32,13 +32,6 @@ class TimelineController: UIViewController
    {
       self.updateBackBarButtonItemWithTitle("Back")
    }
-
-   // MARK: - Private
-   private func updateBackBarButtonItemWithTitle(title: String)
-   {
-      let barButtonItem = UIBarButtonItem(title: title, style: .Plain, target: nil, action: nil)
-      self.navigationItem.backBarButtonItem = barButtonItem
-   }
    
    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
    {
@@ -47,5 +40,12 @@ class TimelineController: UIViewController
          self.alarmConfigurationController = segue.destinationViewController as? AlarmConfigurationController
          self.alarmConfigurationController?.createNewAlarm()
       }
+   }
+
+   // MARK: - Private
+   private func updateBackBarButtonItemWithTitle(title: String)
+   {
+      let barButtonItem = UIBarButtonItem(title: title, style: .Plain, target: nil, action: nil)
+      self.navigationItem.backBarButtonItem = barButtonItem
    }
 }
