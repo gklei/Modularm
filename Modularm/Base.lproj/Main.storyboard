@@ -87,15 +87,6 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background-clearnight" translatesAutoresizingMaskIntoConstraints="NO" id="CjP-5p-saH">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sNc-40-vPD">
-                                <rect key="frame" x="0.0" y="382" width="375" height="285"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="285" id="FOO-Qt-PvE"/>
-                                </constraints>
-                                <connections>
-                                    <segue destination="uiH-fO-7BZ" kind="embed" identifier="alarmOptionsControllerSegue" id="pQi-sa-R1Z"/>
-                                </connections>
-                            </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aTa-c3-Rm4">
                                 <rect key="frame" x="0.0" y="94" width="375" height="186"/>
                                 <constraints>
@@ -103,6 +94,15 @@
                                 </constraints>
                                 <connections>
                                     <segue destination="eZc-sn-K0f" kind="embed" identifier="alarmTimeControllerSegue" id="OUi-E5-mEE"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sNc-40-vPD">
+                                <rect key="frame" x="0.0" y="382" width="375" height="285"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="285" id="FOO-Qt-PvE"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="uiH-fO-7BZ" kind="embed" identifier="alarmOptionsControllerSegue" id="pQi-sa-R1Z"/>
                                 </connections>
                             </containerView>
                         </subviews>

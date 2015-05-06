@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import CoreData
 
 class RepeatOptionDelegateDataSource: AlarmOptionDelegateDataSource
 {
@@ -16,8 +15,7 @@ class RepeatOptionDelegateDataSource: AlarmOptionDelegateDataSource
    // MARK: - Init
    override init(tableView: UITableView, delegate: AlarmOptionSettingsControllerProtocol)
    {
-      let coreDataStack = CoreDataStack.defaultStack
-      self.repeatModel = NSEntityDescription.insertNewObjectForEntityForName("Repeat", inManagedObjectContext: coreDataStack.managedObjectContext!) as! Repeat
+      self.repeatModel = CoreDataStack.newModelWithOption(.Repeat) as! Repeat
       
       super.init(tableView: tableView, delegate: delegate)
       self.option = .Repeat

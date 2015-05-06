@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import CoreData
 
 class WeatherOptionDelegateDataSource: AlarmOptionDelegateDataSource
 {
@@ -20,8 +19,7 @@ class WeatherOptionDelegateDataSource: AlarmOptionDelegateDataSource
    // MARK: - Init
    override init(tableView: UITableView, delegate: AlarmOptionSettingsControllerProtocol)
    {
-      let coreDataStack = CoreDataStack.defaultStack
-      self.weatherModel = NSEntityDescription.insertNewObjectForEntityForName("Weather", inManagedObjectContext: coreDataStack.managedObjectContext!) as! Weather
+      self.weatherModel = CoreDataStack.newModelWithOption(.Weather) as! Weather
       
       super.init(tableView: tableView, delegate: delegate)
       self.option = .Weather

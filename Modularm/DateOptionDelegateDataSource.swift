@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import CoreData
 
 class DateOptionDelegateDataSource: AlarmOptionDelegateDataSource
 {
@@ -16,8 +15,7 @@ class DateOptionDelegateDataSource: AlarmOptionDelegateDataSource
    // MARK: - Init
    override init(tableView: UITableView, delegate: AlarmOptionSettingsControllerProtocol)
    {
-      let coreDataStack = CoreDataStack.defaultStack
-      self.dateModel = NSEntityDescription.insertNewObjectForEntityForName("Date", inManagedObjectContext: coreDataStack.managedObjectContext!) as! Date
+      self.dateModel = CoreDataStack.newModelWithOption(.Date) as! Date
       
       super.init(tableView: tableView, delegate: delegate)
       self.option = .Date

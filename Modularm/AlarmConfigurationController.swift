@@ -66,21 +66,14 @@ extension AlarmConfigurationController
 {
    @IBAction func setButtonPressed()
    {
-      if let alarm = self.alarm
-      {
-         CoreDataStack.defaultStack.managedObjectContext!.insertObject(alarm)
-         CoreDataStack.defaultStack.saveContext()
-      }
-      
+      CoreDataStack.saveAlarm(self.alarm)
       self.navigationController?.popViewControllerAnimated(true)
    }
    
    // This method creates a temporary alarm by inserting into an nil context
    func createNewAlarm()
    {
-      let coreDataStack = CoreDataStack.defaultStack
-      let description = NSEntityDescription.entityForName("Alarm", inManagedObjectContext: coreDataStack.managedObjectContext!)
-      self.alarm = NSManagedObject(entity: description!, insertIntoManagedObjectContext: nil) as? Alarm
+      self.alarm = CoreDataStack.newTemporaryAlarmModel()
    }
    
    func moveAlarmOptionsControllerUpForNotification(notification: NSNotification)

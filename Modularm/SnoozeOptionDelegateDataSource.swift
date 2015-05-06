@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import CoreData
 
 class SnoozeOptionDelegateDataSource: AlarmOptionDelegateDataSource
 {
@@ -17,9 +16,8 @@ class SnoozeOptionDelegateDataSource: AlarmOptionDelegateDataSource
    // MARK: - Init
    override init(tableView: UITableView, delegate: AlarmOptionSettingsControllerProtocol)
    {
-      let coreDataStack = CoreDataStack.defaultStack
-      self.snoozeModel = NSEntityDescription.insertNewObjectForEntityForName("Snooze", inManagedObjectContext: coreDataStack.managedObjectContext!) as! Snooze
-
+      self.snoozeModel = CoreDataStack.newModelWithOption(.Snooze) as! Snooze
+      
       super.init(tableView: tableView, delegate: delegate)
       self.state = SnoozeOptionSettingButtonState(delegate: self)
       self.option = .Snooze

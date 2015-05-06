@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import CoreData
 
 class SoundOptionDelegateDataSource: AlarmOptionDelegateDataSource
 {
@@ -16,8 +15,7 @@ class SoundOptionDelegateDataSource: AlarmOptionDelegateDataSource
    // MARK: - Init
    override init(tableView: UITableView, delegate: AlarmOptionSettingsControllerProtocol)
    {
-      let coreDataStack = CoreDataStack.defaultStack
-      self.soundModel = NSEntityDescription.insertNewObjectForEntityForName("Sound", inManagedObjectContext: coreDataStack.managedObjectContext!) as! Sound
+      self.soundModel = CoreDataStack.newModelWithOption(.Sound) as! Sound
       
       super.init(tableView: tableView, delegate: delegate)
       self.option = .Sound
