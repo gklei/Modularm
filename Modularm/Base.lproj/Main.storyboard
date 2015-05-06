@@ -451,17 +451,17 @@
                                 <sections/>
                             </tableView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg-icn-plus-circle" translatesAutoresizingMaskIntoConstraints="NO" id="jMr-lg-9YG">
-                                <rect key="frame" x="16" y="16" width="18" height="18"/>
+                                <rect key="frame" x="16" y="13" width="24" height="24"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="18" id="1OC-TA-es6"/>
-                                    <constraint firstAttribute="height" constant="18" id="jUw-jf-M9a"/>
+                                    <constraint firstAttribute="width" constant="24" id="1OC-TA-es6"/>
+                                    <constraint firstAttribute="height" constant="24" id="jUw-jf-M9a"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="s1W-GH-idd">
-                                <rect key="frame" x="16" y="16" width="18" height="18"/>
+                                <rect key="frame" x="16" y="13" width="24" height="24"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="18" id="18U-iQ-Aqc"/>
-                                    <constraint firstAttribute="height" constant="18" id="QYT-Uf-o7v"/>
+                                    <constraint firstAttribute="width" constant="24" id="18U-iQ-Aqc"/>
+                                    <constraint firstAttribute="height" constant="24" id="QYT-Uf-o7v"/>
                                 </constraints>
                             </imageView>
                         </subviews>
@@ -518,17 +518,17 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg-icn-plus-circle" translatesAutoresizingMaskIntoConstraints="NO" id="Tw3-6J-RX0">
-                                <rect key="frame" x="16" y="16" width="18" height="18"/>
+                                <rect key="frame" x="16" y="13" width="24" height="24"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="18" id="PlM-uQ-Ng5"/>
-                                    <constraint firstAttribute="height" constant="18" id="gQx-EP-CBl"/>
+                                    <constraint firstAttribute="width" constant="24" id="PlM-uQ-Ng5"/>
+                                    <constraint firstAttribute="height" constant="24" id="gQx-EP-CBl"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DD3-fl-jxD">
-                                <rect key="frame" x="16" y="16" width="18" height="18"/>
+                                <rect key="frame" x="16" y="13" width="24" height="24"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="18" id="SOY-8G-qE1"/>
-                                    <constraint firstAttribute="width" constant="18" id="zRD-uy-qE9"/>
+                                    <constraint firstAttribute="height" constant="24" id="SOY-8G-qE1"/>
+                                    <constraint firstAttribute="width" constant="24" id="zRD-uy-qE9"/>
                                 </constraints>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="81P-kZ-NUE">
@@ -696,25 +696,25 @@
     </scenes>
     <resources>
         <image name="background-clearnight" width="375" height="667"/>
-        <image name="bg-icn-plus-circle" width="18" height="18"/>
+        <image name="bg-icn-plus-circle" width="24" height="24"/>
         <image name="icn-add-item" width="21" height="21"/>
-        <image name="icn-alarm-sound" width="18" height="18"/>
-        <image name="icn-countdown" width="18" height="18"/>
-        <image name="icn-date" width="18" height="18"/>
-        <image name="icn-message" width="18" height="18"/>
-        <image name="icn-music" width="18" height="18"/>
-        <image name="icn-plus-alarm-sound" width="18" height="18"/>
-        <image name="icn-plus-countdown" width="18" height="18"/>
-        <image name="icn-plus-date" width="18" height="18"/>
-        <image name="icn-plus-message" width="18" height="18"/>
-        <image name="icn-plus-music" width="18" height="18"/>
-        <image name="icn-plus-repeat" width="18" height="18"/>
-        <image name="icn-plus-snooze" width="18" height="18"/>
-        <image name="icn-plus-weather" width="18" height="18"/>
-        <image name="icn-repeat" width="18" height="18"/>
-        <image name="icn-sleep" width="18" height="18"/>
-        <image name="icn-snooze" width="18" height="18"/>
-        <image name="icn-weather" width="18" height="18"/>
+        <image name="icn-alarm-sound" width="24" height="24"/>
+        <image name="icn-countdown" width="24" height="24"/>
+        <image name="icn-date" width="24" height="24"/>
+        <image name="icn-message" width="24" height="24"/>
+        <image name="icn-music" width="24" height="24"/>
+        <image name="icn-plus-alarm-sound" width="24" height="24"/>
+        <image name="icn-plus-countdown" width="24" height="24"/>
+        <image name="icn-plus-date" width="24" height="24"/>
+        <image name="icn-plus-message" width="24" height="24"/>
+        <image name="icn-plus-music" width="24" height="24"/>
+        <image name="icn-plus-repeat" width="24" height="24"/>
+        <image name="icn-plus-snooze" width="24" height="24"/>
+        <image name="icn-plus-weather" width="24" height="24"/>
+        <image name="icn-repeat" width="24" height="24"/>
+        <image name="icn-sleep" width="24" height="24"/>
+        <image name="icn-snooze" width="24" height="24"/>
+        <image name="icn-weather" width="24" height="24"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
