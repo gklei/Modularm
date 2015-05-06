@@ -44,10 +44,8 @@ class AlarmConfigurationController: UIViewController
          self.alarmOptionsController = segue.destinationViewController.childViewControllers![0] as? AlarmOptionsController
       }
    }
-}
-
-extension AlarmConfigurationController
-{
+   
+   // MARK: - Setup
    private func setupKeboardNotifications()
    {
       NSNotificationCenter.defaultCenter().addObserver(self, selector: "moveAlarmOptionsControllerUpForNotification:", name: UIKeyboardWillShowNotification, object: nil)
@@ -60,22 +58,24 @@ extension AlarmConfigurationController
       self.segmentedControl.enabled = false
       self.segmentedControl.userInteractionEnabled = false
    }
-}
-
-extension AlarmConfigurationController
-{
-   @IBAction func setButtonPressed()
-   {
-      CoreDataStack.saveAlarm(self.alarm)
-      self.navigationController?.popViewControllerAnimated(true)
-   }
    
-   // This method creates a temporary alarm by inserting into an nil context
+   // MARK: - Public
    func createNewAlarm()
    {
       self.alarm = CoreDataStack.newTemporaryAlarmModel()
    }
    
+   // MARK: - IBActions
+   @IBAction func setButtonPressed()
+   {
+      CoreDataStack.saveAlarm(self.alarm)
+      self.navigationController?.popViewControllerAnimated(true)
+   }
+}
+
+// MARK: - NSNotificationCenter Methods
+extension AlarmConfigurationController
+{
    func moveAlarmOptionsControllerUpForNotification(notification: NSNotification)
    {
       if let info = notification.userInfo
