@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7549" systemVersion="14D131" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7549" systemVersion="14D105g" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Alarm" representedClassName="Alarm" syncable="YES">
         <attribute name="fireDate" optional="YES" attributeType="Date" syncable="YES"/>
         <relationship name="countdown" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Countdown" inverseName="alarm" inverseEntity="Countdown" syncable="YES"/>
@@ -35,7 +35,7 @@
     <entity name="Snooze" representedClassName="Snooze" syncable="YES">
         <attribute name="durationValue" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="typeValue" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <relationship name="alarm" maxCount="1" deletionRule="Nullify" destinationEntity="Alarm" inverseName="snooze" inverseEntity="Alarm" syncable="YES"/>
+        <relationship name="alarm" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Alarm" inverseName="snooze" inverseEntity="Alarm" syncable="YES"/>
     </entity>
     <entity name="Sound" representedClassName="Sound" syncable="YES">
         <attribute name="basicSoundURL" optional="YES" attributeType="String" syncable="YES"/>
