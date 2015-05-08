@@ -28,18 +28,10 @@ class AlarmOptionSettingsController: UIViewController
    override func viewWillAppear(animated: Bool)
    {
       super.viewWillAppear(animated)
-//      if let button = self.optionButton
-//      {
-//         self.iconImageView.image = button.deactivatedImage?.templateImage
-//         
-//         let option = button.option
-//         let title = self.buttonTitleForOption(option)
-//         self.setOptionButton.setTitle(title, forState: .Normal)
-//         self.delegateDataSource = self.delegateDataSourceForOption(option)
-//      }
       
       let title = self.buttonTitleForOption(self.option)
       self.setOptionButton.setTitle(title, forState: .Normal)
+      self.iconImageView.image = AlarmOptionImageProvider.iconForOption(self.option)
       
       self.delegateDataSource = self.delegateDataSourceForOption(self.option)
    }
