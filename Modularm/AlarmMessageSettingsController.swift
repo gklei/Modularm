@@ -10,6 +10,7 @@ import UIKit
 
 class AlarmMessageSettingsController: UIViewController
 {
+   var option: AlarmOption = .Message
    @IBOutlet weak var iconImageView: UIImageView!
    @IBOutlet weak var messageTextView: UITextView!
    
@@ -43,34 +44,6 @@ class AlarmMessageSettingsController: UIViewController
    {
       self.messageTextView.endEditing(true)
       self.navigationController?.popViewControllerAnimated(true)
-   }
-}
-
-extension AlarmMessageSettingsController: AlarmOptionSettingsControllerProtocol
-{
-   func configureWithOptionButton(button: AlarmOptionButton)
-   {
-      self.optionButton = button
-   }
-   
-   func cancelButtonPressed()
-   {
-   }
-   
-   func deleteSettingsForOption(option: AlarmOption)
-   {
-   }
-   
-   func updateSetOptionButtonClosure(closure: (() -> ())?)
-   {
-   }
-   
-   func updateSetOptionButtonTitle(title: String)
-   {
-   }
-   
-   func resetSetOptionButtonTitle()
-   {
    }
 }
 

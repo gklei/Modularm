@@ -14,11 +14,11 @@ class SnoozeOptionDelegateDataSource: AlarmOptionDelegateDataSource
    var state: SnoozeOptionSettingState?
 
    // MARK: - Init
-   override init(tableView: UITableView, delegate: AlarmOptionSettingsControllerProtocol)
+   override init(tableView: UITableView, delegate: AlarmOptionSettingsControllerProtocol, alarm: Alarm?)
    {
       self.snoozeModel = CoreDataStack.newModelWithOption(.Snooze) as! Snooze
       
-      super.init(tableView: tableView, delegate: delegate)
+      super.init(tableView: tableView, delegate: delegate, alarm: alarm)
       self.state = SnoozeOptionSettingButtonState(delegate: self)
       self.option = .Snooze
    }
@@ -36,6 +36,11 @@ class SnoozeOptionDelegateDataSource: AlarmOptionDelegateDataSource
    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
    {
       self.state?.tableView(tableView, didSelectRowAtIndexPath: indexPath)
+   }
+   
+   override func deleteSettings()
+   {
+      println("delete \(self.option.description)!")
    }
 }
 

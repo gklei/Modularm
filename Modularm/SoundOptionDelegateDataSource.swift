@@ -13,11 +13,11 @@ class SoundOptionDelegateDataSource: AlarmOptionDelegateDataSource
    var soundModel: Sound
    
    // MARK: - Init
-   override init(tableView: UITableView, delegate: AlarmOptionSettingsControllerProtocol)
+   override init(tableView: UITableView, delegate: AlarmOptionSettingsControllerProtocol, alarm: Alarm?)
    {
       self.soundModel = CoreDataStack.newModelWithOption(.Sound) as! Sound
       
-      super.init(tableView: tableView, delegate: delegate)
+      super.init(tableView: tableView, delegate: delegate, alarm: alarm)
       self.option = .Sound
       self.cellLabelDictionary = [0 : ["Basic", "Silent (Vibration)", "Classic", "John Lord", "Jimmy Hendrix", "George Harrison", "Cliff", "Drama", "Beach Morning"]]
       self.soundModel.basicSoundURL = "Basic"
@@ -27,6 +27,11 @@ class SoundOptionDelegateDataSource: AlarmOptionDelegateDataSource
    {
       let labels: Array<String> = self.cellLabelDictionary[0]!
       return find(labels, string)!
+   }
+   
+   override func deleteSettings()
+   {
+      println("delete \(self.option.description)!")
    }
 }
 

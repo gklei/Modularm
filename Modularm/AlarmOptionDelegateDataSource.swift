@@ -11,6 +11,7 @@ import UIKit
 class AlarmOptionDelegateDataSource: NSObject
 {
    // MARK: - Instance Variables
+   private var alarm: Alarm?
    private var _option: AlarmOption
    internal var option: AlarmOption {
       get {
@@ -28,9 +29,10 @@ class AlarmOptionDelegateDataSource: NSObject
    internal var deleteSettingsButton: UIButton?
 
    // MARK: - Init
-   init(tableView: UITableView, delegate: AlarmOptionSettingsControllerProtocol)
+   init(tableView: UITableView, delegate: AlarmOptionSettingsControllerProtocol, alarm: Alarm?)
    {
       self.settingsControllerDelegate = delegate
+      self.alarm = alarm
       self.tableView = tableView
       self._option = .Unknown
       super.init()
@@ -65,7 +67,7 @@ extension AlarmOptionDelegateDataSource
    {
       self.deleteSettingsButton = UIButton.grayButtonWithTitle("Delete \(self.option.description.lowercaseString) settings")
       self.deleteSettingsButton!.center = CGPointMake(CGRectGetWidth(self.tableView.frame) - CGRectGetWidth(self.deleteSettingsButton!.frame)*0.5 - 16, 25)
-      self.deleteSettingsButton!.addTarget(self, action: "cancelButtonPressed", forControlEvents: UIControlEvents.TouchUpInside)
+      self.deleteSettingsButton!.addTarget(self, action: "deleteSettingsButtonPressed", forControlEvents: UIControlEvents.TouchUpInside)
 
       view.addSubview(self.deleteSettingsButton!)
    }
@@ -74,10 +76,15 @@ extension AlarmOptionDelegateDataSource
    {
       self.settingsControllerDelegate.cancelButtonPressed()
    }
+   
+   internal func deleteSettings()
+   {
+   }
 
    internal func deleteSettingsButtonPressed()
    {
-      self.settingsControllerDelegate.deleteSettingsForOption(self.option)
+      self.deleteSettings()
+      self.settingsControllerDelegate.deleteSettingsButtonPressed()
    }
 
    internal func cellWithIndexPath(indexPath: NSIndexPath, identifier: String) -> UITableViewCell
@@ -91,18 +98,6 @@ extension AlarmOptionDelegateDataSource
 
       return cell
    }
-   
-//   internal func cellWithIndexPath(indexPath: NSIndexPath, identifier: String) -> UITableViewCell
-//   {
-//      let cell = self.tableView.dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath) as! UITableViewCell
-//      cell.selectionStyle = .None
-//      cell.accessoryType = .None
-//      
-//      let label = self.cellLabelDictionary[indexPath.section]![indexPath.row]
-//      cell.textLabel?.attributedText = NSAttributedString(text: label);
-//      
-//      return cell
-//   }
 }
 
 // MARK: - UITableView Data Source
@@ -142,22 +137,4 @@ extension AlarmOptionDelegateDataSource: UITableViewDelegate
       view.backgroundColor = UIColor.normalOptionButtonColor()
       return view
    }
-   
-//   func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat
-//   {
-//      return 50.0
-//   }
-//   
-//   func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView?
-//   {
-//      let view = UIView()
-//      view.backgroundColor = UIColor.normalOptionButtonColor()
-//      
-//      if section == self.numberOfSectionsInTableView(tableView) - 1
-//      {
-//         self.setupCancelButtonWithSuperview(view)
-//         self.setupDeleteButtonWithSuperview(view)
-//      }
-//      return view
-//   }
 }

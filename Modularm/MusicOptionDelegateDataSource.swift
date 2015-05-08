@@ -11,9 +11,9 @@ import UIKit
 class MusicOptionDelegateDataSource: AlarmOptionDelegateDataSource
 {
    // MARK: - Init
-   override init(tableView: UITableView, delegate: AlarmOptionSettingsControllerProtocol)
+   override init(tableView: UITableView, delegate: AlarmOptionSettingsControllerProtocol, alarm: Alarm?)
    {
-      super.init(tableView: tableView, delegate: delegate)
+      super.init(tableView: tableView, delegate: delegate, alarm: alarm)
       self.option = .Music
       self.cellLabelDictionary = [0 :["itunes", "spotify", "rdio", "fmetc"]]
    }
@@ -40,6 +40,11 @@ extension MusicOptionDelegateDataSource
    func fmetcSwitchChanged(sender: UISwitch)
    {
       println("fmetc switch changed")
+   }
+   
+   override func deleteSettings()
+   {
+      println("delete \(self.option.description)!")
    }
 }
 

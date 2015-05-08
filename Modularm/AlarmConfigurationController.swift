@@ -42,6 +42,7 @@ class AlarmConfigurationController: UIViewController
       else if segue.identifier == "alarmOptionsControllerSegue"
       {
          self.alarmOptionsController = segue.destinationViewController.childViewControllers![0] as? AlarmOptionsController
+         self.alarmOptionsController?.configureWithAlarm(self.alarm)
       }
    }
    

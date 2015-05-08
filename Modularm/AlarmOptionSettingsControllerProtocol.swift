@@ -10,9 +10,9 @@ import UIKit
 
 protocol AlarmOptionSettingsControllerProtocol
 {
-   func configureWithOptionButton(button: AlarmOptionButton)
+   func configureWithAlarm(alarm: Alarm?, option: AlarmOption)
    func cancelButtonPressed()
-   func deleteSettingsForOption(option: AlarmOption)
+   func deleteSettingsButtonPressed()
    func updateSetOptionButtonClosure(closure: (() -> ())?)
    func updateSetOptionButtonTitle(title: String)
    func resetSetOptionButtonTitle()

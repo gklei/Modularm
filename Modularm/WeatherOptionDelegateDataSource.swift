@@ -17,11 +17,11 @@ class WeatherOptionDelegateDataSource: AlarmOptionDelegateDataSource
    var weatherModel: Weather
 
    // MARK: - Init
-   override init(tableView: UITableView, delegate: AlarmOptionSettingsControllerProtocol)
+   override init(tableView: UITableView, delegate: AlarmOptionSettingsControllerProtocol, alarm: Alarm?)
    {
       self.weatherModel = CoreDataStack.newModelWithOption(.Weather) as! Weather
       
-      super.init(tableView: tableView, delegate: delegate)
+      super.init(tableView: tableView, delegate: delegate, alarm: alarm)
       self.option = .Weather
       self.cellLabelDictionary = [0 :["34.4˚F Slightly Rainy", "3˚C Slightly Rainy", "Slighty Rainy"],
          1 : ["Background Photo", "Location Auto"]]
@@ -45,6 +45,11 @@ class WeatherOptionDelegateDataSource: AlarmOptionDelegateDataSource
          }
       }
       return cell
+   }
+   
+   override func deleteSettings()
+   {
+      println("delete \(self.option.description)!")
    }
 }
 

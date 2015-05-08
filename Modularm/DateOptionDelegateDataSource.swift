@@ -13,11 +13,11 @@ class DateOptionDelegateDataSource: AlarmOptionDelegateDataSource
    var dateModel: Date
    
    // MARK: - Init
-   override init(tableView: UITableView, delegate: AlarmOptionSettingsControllerProtocol)
+   override init(tableView: UITableView, delegate: AlarmOptionSettingsControllerProtocol, alarm: Alarm?)
    {
       self.dateModel = CoreDataStack.newModelWithOption(.Date) as! Date
       
-      super.init(tableView: tableView, delegate: delegate)
+      super.init(tableView: tableView, delegate: delegate, alarm: alarm)
       self.option = .Date
       self.cellLabelDictionary = [0 :["Tuesday 04/10", "10.04 Tuesday", "Tuesday"]]
    }
@@ -48,6 +48,11 @@ class DateOptionDelegateDataSource: AlarmOptionDelegateDataSource
    private func displayTypeForCellIndex(index: Int) -> DateDisplayType?
    {
       return DateDisplayType(rawValue: Int16(index))
+   }
+   
+   override func deleteSettings()
+   {
+      println("delete \(self.option.description)!")
    }
 }
 

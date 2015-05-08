@@ -13,11 +13,11 @@ class RepeatOptionDelegateDataSource: AlarmOptionDelegateDataSource
    var repeatModel: Repeat
    
    // MARK: - Init
-   override init(tableView: UITableView, delegate: AlarmOptionSettingsControllerProtocol)
+   override init(tableView: UITableView, delegate: AlarmOptionSettingsControllerProtocol, alarm: Alarm?)
    {
       self.repeatModel = CoreDataStack.newModelWithOption(.Repeat) as! Repeat
       
-      super.init(tableView: tableView, delegate: delegate)
+      super.init(tableView: tableView, delegate: delegate, alarm: alarm)
       self.option = .Repeat
       self.cellLabelDictionary = [0 : ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]]
    }
@@ -30,6 +30,11 @@ class RepeatOptionDelegateDataSource: AlarmOptionDelegateDataSource
    private func repeatDayForCellIndex(index: Int) -> RepeatDay?
    {
       return RepeatDay(rawValue: Int16(index))
+   }
+   
+   override func deleteSettings()
+   {
+      println("delete \(self.option.description)!")
    }
 }
 

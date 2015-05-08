@@ -15,7 +15,8 @@ class AlarmOptionSettingsController: UIViewController
    @IBOutlet weak var iconImageView: UIImageView!
    
    var setOptionButtonClosure: (() -> ())?
-   var optionButton: AlarmOptionButton?
+   var alarm: Alarm?
+   var option: AlarmOption = .Unknown
    var delegateDataSource: AlarmOptionDelegateDataSource?
 
    override func viewDidLoad()
@@ -27,15 +28,20 @@ class AlarmOptionSettingsController: UIViewController
    override func viewWillAppear(animated: Bool)
    {
       super.viewWillAppear(animated)
-      if let button = self.optionButton
-      {
-         self.iconImageView.image = button.deactivatedImage?.templateImage
-         
-         let option = button.option
-         let title = self.buttonTitleForOption(option)
-         self.setOptionButton.setTitle(title, forState: .Normal)
-         self.delegateDataSource = self.delegateDataSourceForOption(option)
-      }
+//      if let button = self.optionButton
+//      {
+//         self.iconImageView.image = button.deactivatedImage?.templateImage
+//         
+//         let option = button.option
+//         let title = self.buttonTitleForOption(option)
+//         self.setOptionButton.setTitle(title, forState: .Normal)
+//         self.delegateDataSource = self.delegateDataSourceForOption(option)
+//      }
+      
+      let title = self.buttonTitleForOption(self.option)
+      self.setOptionButton.setTitle(title, forState: .Normal)
+      
+      self.delegateDataSource = self.delegateDataSourceForOption(self.option)
    }
    
    override func viewDidAppear(animated: Bool)
@@ -64,9 +70,10 @@ class AlarmOptionSettingsController: UIViewController
 
 extension AlarmOptionSettingsController: AlarmOptionSettingsControllerProtocol
 {
-   func configureWithOptionButton(optionButton: AlarmOptionButton)
+   func configureWithAlarm(alarm: Alarm?, option: AlarmOption)
    {
-      self.optionButton = optionButton
+      self.alarm = alarm
+      self.option = option
    }
    
    func cancelButtonPressed()
@@ -74,7 +81,7 @@ extension AlarmOptionSettingsController: AlarmOptionSettingsControllerProtocol
       self.dismissSelf()
    }
    
-   func deleteSettingsForOption(option: AlarmOption)
+   func deleteSettingsButtonPressed()
    {
       self.dismissSelf()
    }
@@ -94,11 +101,8 @@ extension AlarmOptionSettingsController: AlarmOptionSettingsControllerProtocol
    
    func resetSetOptionButtonTitle()
    {
-      if let option = self.optionButton?.option
-      {
-         let title = self.buttonTitleForOption(option)
-         self.updateSetOptionButtonTitle(title)
-      }
+      let title = self.buttonTitleForOption(self.option)
+      self.updateSetOptionButtonTitle(title)
    }
 }
 
@@ -110,29 +114,29 @@ extension AlarmOptionSettingsController
       switch (option)
       {
       case .Countdown:
-         delegateDataSource = AlarmOptionDelegateDataSource(tableView: self.tableView, delegate: self)
+         delegateDataSource = AlarmOptionDelegateDataSource(tableView: self.tableView, delegate: self, alarm: self.alarm)
          break
       case .Date:
-         delegateDataSource = DateOptionDelegateDataSource(tableView: self.tableView, delegate: self)
+         delegateDataSource = DateOptionDelegateDataSource(tableView: self.tableView, delegate: self, alarm: self.alarm)
          break
       case .Music:
-         delegateDataSource = MusicOptionDelegateDataSource(tableView: self.tableView, delegate: self)
+         delegateDataSource = MusicOptionDelegateDataSource(tableView: self.tableView, delegate: self, alarm: self.alarm)
          break
       case .Repeat:
-         delegateDataSource = RepeatOptionDelegateDataSource(tableView: self.tableView, delegate: self)
+         delegateDataSource = RepeatOptionDelegateDataSource(tableView: self.tableView, delegate: self, alarm: self.alarm)
          break
       case .Snooze:
-         delegateDataSource = SnoozeOptionDelegateDataSource(tableView: self.tableView, delegate: self)
+         delegateDataSource = SnoozeOptionDelegateDataSource(tableView: self.tableView, delegate: self, alarm: self.alarm)
          break
       case .Sound:
-         delegateDataSource = SoundOptionDelegateDataSource(tableView: self.tableView, delegate: self)
+         delegateDataSource = SoundOptionDelegateDataSource(tableView: self.tableView, delegate: self, alarm: self.alarm)
          break
       case .Weather:
-         delegateDataSource = WeatherOptionDelegateDataSource(tableView: self.tableView, delegate: self)
+         delegateDataSource = WeatherOptionDelegateDataSource(tableView: self.tableView, delegate: self, alarm: self.alarm)
          break
          
       default: // Unknown
-         delegateDataSource = AlarmOptionDelegateDataSource(tableView: self.tableView, delegate: self)
+         delegateDataSource = AlarmOptionDelegateDataSource(tableView: self.tableView, delegate: self, alarm: self.alarm)
          break
       }
       return delegateDataSource
