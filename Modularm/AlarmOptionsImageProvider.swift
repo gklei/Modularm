@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct AlarmOptionImageProvider
+struct AlarmOptionIconProvider
 {
    //      if let button = self.optionButton
    //      {
