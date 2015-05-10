@@ -12,7 +12,7 @@ protocol AlarmOptionSettingsControllerProtocol
 {
    func configureWithAlarm(alarm: Alarm?, option: AlarmOption)
    func cancelButtonPressed()
-   func deleteSettingsButtonPressed()
+   func deleteSettingsButtonPressedWithOption(option: AlarmOption)
    func updateSetOptionButtonClosure(closure: (() -> ())?)
    func updateSetOptionButtonTitle(title: String)
    func resetSetOptionButtonTitle()
