@@ -37,11 +37,6 @@ class SnoozeOptionDelegateDataSource: AlarmOptionDelegateDataSource
    {
       self.state?.tableView(tableView, didSelectRowAtIndexPath: indexPath)
    }
-   
-   override func deleteSettings()
-   {
-      println("delete \(self.option.description)!")
-   }
 }
 
 

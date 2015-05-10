@@ -41,11 +41,6 @@ extension MusicOptionDelegateDataSource
    {
       println("fmetc switch changed")
    }
-   
-   override func deleteSettings()
-   {
-      println("delete \(self.option.description)!")
-   }
 }
 
 // MARK: - UITableView Delegate

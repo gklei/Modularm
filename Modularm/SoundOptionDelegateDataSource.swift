@@ -28,11 +28,6 @@ class SoundOptionDelegateDataSource: AlarmOptionDelegateDataSource
       let labels: Array<String> = self.cellLabelDictionary[0]!
       return find(labels, string)!
    }
-   
-   override func deleteSettings()
-   {
-      println("delete \(self.option.description)!")
-   }
 }
 
 extension SoundOptionDelegateDataSource: UITableViewDataSource

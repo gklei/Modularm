@@ -31,11 +31,6 @@ class RepeatOptionDelegateDataSource: AlarmOptionDelegateDataSource
    {
       return RepeatDay(rawValue: Int16(index))
    }
-   
-   override func deleteSettings()
-   {
-      println("delete \(self.option.description)!")
-   }
 }
 
 extension RepeatOptionDelegateDataSource: UITableViewDataSource

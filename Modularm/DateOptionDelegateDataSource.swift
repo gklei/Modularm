@@ -49,11 +49,6 @@ class DateOptionDelegateDataSource: AlarmOptionDelegateDataSource
    {
       return DateDisplayType(rawValue: Int16(index))
    }
-   
-   override func deleteSettings()
-   {
-      println("delete \(self.option.description)!")
-   }
 }
 
 extension DateOptionDelegateDataSource: UITableViewDataSource
