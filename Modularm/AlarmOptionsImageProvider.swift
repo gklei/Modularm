@@ -10,16 +10,6 @@ import UIKit
 
 struct AlarmOptionIconProvider
 {
-   //      if let button = self.optionButton
-   //      {
-   //         self.iconImageView.image = button.deactivatedImage?.templateImage
-   //
-   //         let option = button.option
-   //         let title = self.buttonTitleForOption(option)
-   //         self.setOptionButton.setTitle(title, forState: .Normal)
-   //         self.delegateDataSource = self.delegateDataSourceForOption(option)
-   //      }
-   
    static func iconForOption(option: AlarmOption) -> UIImage
    {
       var image: UIImage = UIImage()
