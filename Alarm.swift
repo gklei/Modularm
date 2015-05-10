@@ -13,13 +13,14 @@ import CoreData
 class Alarm: NSManagedObject
 {
    @NSManaged var fireDate: NSTimeInterval
+   @NSManaged var completedSetup: Bool
    @NSManaged var snooze: Snooze
-   @NSManaged var countdown: NSManagedObject
+   @NSManaged var countdown: Countdown
    @NSManaged var date: Date
-   @NSManaged var message: NSManagedObject
-   @NSManaged var repeat: NSManagedObject
+   @NSManaged var message: Message
+   @NSManaged var repeat: Repeat
    @NSManaged var sound: Sound
-   @NSManaged var weather: NSManagedObject
+   @NSManaged var weather: Weather
    
    var isValid: Bool {
       get {
@@ -29,5 +30,6 @@ class Alarm: NSManagedObject
    
    override func awakeFromInsert()
    {
+      self.completedSetup = false
    }
 }
