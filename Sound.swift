@@ -15,4 +15,10 @@ class Sound: NSManagedObject
    @NSManaged var basicSoundURL: String
    @NSManaged var shouldVibrate: Bool
    @NSManaged var alarm: Alarm
+   
+   override func awakeFromInsert()
+   {
+      // VERY TEMPORARY!
+      self.basicSoundURL = "Basic"
+   }
 }
