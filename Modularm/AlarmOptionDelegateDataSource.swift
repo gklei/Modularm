@@ -11,7 +11,7 @@ import UIKit
 class AlarmOptionDelegateDataSource: NSObject
 {
    // MARK: - Instance Variables
-   private var alarm: Alarm?
+   internal var alarm: Alarm?
    private var _option: AlarmOption
    internal var option: AlarmOption {
       get {
@@ -56,35 +56,30 @@ extension AlarmOptionDelegateDataSource
 {
    private func setupCancelButtonWithSuperview(view: UIView)
    {
-      let cancelButton = UIButton.grayButtonWithTitle("Cancel")
+      let cancelButton = UIButton.grayButtonWithTitle("cancel")
       cancelButton.center = CGPointMake(CGRectGetWidth(cancelButton.frame)*0.5 + 16, 25)
-      cancelButton.addTarget(self, action: "cancelButtonPressed", forControlEvents: UIControlEvents.TouchUpInside)
+      cancelButton.addTarget(self, action: "cancelSettings", forControlEvents: UIControlEvents.TouchUpInside)
 
       view.addSubview(cancelButton)
    }
 
    private func setupDeleteButtonWithSuperview(view: UIView)
    {
-      self.deleteSettingsButton = UIButton.grayButtonWithTitle("Delete \(self.option.description.lowercaseString) settings")
-      self.deleteSettingsButton!.center = CGPointMake(CGRectGetWidth(self.tableView.frame) - CGRectGetWidth(self.deleteSettingsButton!.frame)*0.5 - 16, 25)
-      self.deleteSettingsButton!.addTarget(self, action: "deleteSettingsButtonPressed", forControlEvents: UIControlEvents.TouchUpInside)
+      self.deleteSettingsButton = UIButton.grayButtonWithTitle("delete \(self.option.description.lowercaseString) settings")
+      self.deleteSettingsButton!.center = CGPointMake(CGRectGetWidth(self.tableView.frame) - CGRectGetWidth(self.deleteSettingsButton!.frame)*0.5 - 24, 25)
+      self.deleteSettingsButton!.addTarget(self, action: "deleteSettings", forControlEvents: UIControlEvents.TouchUpInside)
 
       view.addSubview(self.deleteSettingsButton!)
    }
-
-   internal func cancelButtonPressed()
+   
+   internal func cancelSettings()
    {
       self.settingsControllerDelegate.cancelButtonPressed()
    }
    
    internal func deleteSettings()
    {
-   }
-
-   internal func deleteSettingsButtonPressed()
-   {
-      self.deleteSettings()
-      self.settingsControllerDelegate.deleteSettingsButtonPressed()
+      self.settingsControllerDelegate.deleteSettingsButtonPressedWithOption(self.option)
    }
 
    internal func cellWithIndexPath(indexPath: NSIndexPath, identifier: String) -> UITableViewCell
@@ -97,6 +92,10 @@ extension AlarmOptionDelegateDataSource
       cell.textLabel?.attributedText = NSAttributedString(text: label)
 
       return cell
+   }
+   
+   func saveSettings()
+   {
    }
 }
 
@@ -128,7 +127,11 @@ extension AlarmOptionDelegateDataSource: UITableViewDelegate
 {
    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat
    {
-      return section == self.cellLabelDictionary.count - 1 ? 0.01 : 50.0
+      let isLastSection = section == self.cellLabelDictionary.count - 1;
+      
+      // return 0.01 for the last section because we already set up a footer view for the
+      // cancel and delete button
+      return isLastSection ? 0.01 : 50.0
    }
    
    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView?
