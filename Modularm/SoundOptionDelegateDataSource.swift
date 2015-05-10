@@ -13,7 +13,7 @@ class SoundOptionDelegateDataSource: AlarmOptionDelegateDataSource
    var soundModel: Sound?
    
    // MARK: - Init
-   override init(tableView: UITableView, delegate: AlarmOptionSettingsControllerProtocol, alarm: Alarm?)
+   override init(tableView: UITableView, delegate: AlarmOptionSettingsControllerDelegate, alarm: Alarm?)
    {
       self.soundModel = CoreDataStack.newModelWithOption(.Sound) as? Sound
       if let sound = alarm?.sound

@@ -17,7 +17,7 @@ class WeatherOptionDelegateDataSource: AlarmOptionDelegateDataSource
    var weatherModel: Weather?
 
    // MARK: - Init
-   override init(tableView: UITableView, delegate: AlarmOptionSettingsControllerProtocol, alarm: Alarm?)
+   override init(tableView: UITableView, delegate: AlarmOptionSettingsControllerDelegate, alarm: Alarm?)
    {
       self.weatherModel = CoreDataStack.newModelWithOption(.Weather) as? Weather
       if let weather = alarm?.weather

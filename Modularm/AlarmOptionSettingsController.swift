@@ -9,43 +9,22 @@
 import UIKit
 import CoreData
 
-class AlarmOptionSettingsController: UIViewController
+class AlarmOptionSettingsController: OptionSettingsControllerBase
 {
-   @IBOutlet weak var setOptionButton: UIButton!
    @IBOutlet weak var tableView: UITableView!
-   @IBOutlet weak var iconImageView: UIImageView!
-   
-   var alarm: Alarm?
-   var option: AlarmOption = .Unknown
    var setOptionButtonClosure: (() -> ())?
    var delegateDataSource: AlarmOptionDelegateDataSource?
-
-   override func viewDidLoad()
-   {
-      super.viewDidLoad()
-      self.iconImageView.tintColor = UIColor.lipstickRedColor()
-   }
 
    override func viewWillAppear(animated: Bool)
    {
       super.viewWillAppear(animated)
-      
-      let title = self.buttonTitleForOption(self.option)
-      self.setOptionButton.setTitle(title, forState: .Normal)
-      self.iconImageView.image = AlarmOptionIconProvider.iconForOption(self.option)
-      
       self.delegateDataSource = self.delegateDataSourceForOption(self.option)
    }
    
    override func viewDidAppear(animated: Bool)
    {
+      super.viewDidAppear(animated)
       self.tableView.flashScrollIndicators()
-   }
-
-   func dismissSelf()
-   {
-      // temporary
-      self.navigationController?.popViewControllerAnimated(true)
    }
    
    @IBAction func setOptionButtonPressed()
@@ -63,14 +42,8 @@ class AlarmOptionSettingsController: UIViewController
    }
 }
 
-extension AlarmOptionSettingsController: AlarmOptionSettingsControllerProtocol
+extension AlarmOptionSettingsController: AlarmOptionSettingsControllerDelegate
 {
-   func configureWithAlarm(alarm: Alarm?, option: AlarmOption)
-   {
-      self.alarm = alarm
-      self.option = option
-   }
-   
    func cancelButtonPressed()
    {
       self.dismissSelf()
@@ -166,41 +139,5 @@ extension AlarmOptionSettingsController
          break
       }
       return delegateDataSource
-   }
-   
-   private func buttonTitleForOption(option: AlarmOption) -> String
-   {
-      var title = ""
-      switch (option)
-      {
-      case .Countdown:
-         title = "set countdown display"
-         break
-      case .Date:
-         title = "set date display"
-         break
-      case .Message:
-         title = "set message"
-         break
-      case .Music:
-         title = "set music"
-         break
-      case .Repeat:
-         title = "set repeat"
-         break
-      case .Snooze:
-         title = "set snooze"
-         break
-      case .Sound:
-         title = "set sound"
-         break
-      case .Weather:
-         title = "set weather display"
-         break
-         
-      default:
-         break
-      }
-      return title
    }
 }

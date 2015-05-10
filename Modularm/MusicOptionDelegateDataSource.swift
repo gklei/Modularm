@@ -11,7 +11,7 @@ import UIKit
 class MusicOptionDelegateDataSource: AlarmOptionDelegateDataSource
 {
    // MARK: - Init
-   override init(tableView: UITableView, delegate: AlarmOptionSettingsControllerProtocol, alarm: Alarm?)
+   override init(tableView: UITableView, delegate: AlarmOptionSettingsControllerDelegate, alarm: Alarm?)
    {
       super.init(tableView: tableView, delegate: delegate, alarm: alarm)
       self.option = .Music

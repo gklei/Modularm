@@ -8,6 +8,15 @@
 
 import UIKit
 
+protocol AlarmOptionSettingsControllerDelegate
+{
+   func cancelButtonPressed()
+   func deleteSettingsButtonPressedWithOption(option: AlarmOption)
+   func updateSetOptionButtonClosure(closure: (() -> ())?)
+   func updateSetOptionButtonTitle(title: String)
+   func resetSetOptionButtonTitle()
+}
+
 class AlarmOptionDelegateDataSource: NSObject
 {
    // MARK: - Instance Variables
@@ -23,13 +32,13 @@ class AlarmOptionDelegateDataSource: NSObject
          self.setupDeleteButtonWithSuperview(self.tableView.tableFooterView!)
       }
    }
-   internal var settingsControllerDelegate: AlarmOptionSettingsControllerProtocol
+   internal var settingsControllerDelegate: AlarmOptionSettingsControllerDelegate
    internal var cellLabelDictionary: [Int : Array<String>] = [:]
    internal var tableView: UITableView
    internal var deleteSettingsButton: UIButton?
 
    // MARK: - Init
-   init(tableView: UITableView, delegate: AlarmOptionSettingsControllerProtocol, alarm: Alarm?)
+   init(tableView: UITableView, delegate: AlarmOptionSettingsControllerDelegate, alarm: Alarm?)
    {
       self.settingsControllerDelegate = delegate
       self.alarm = alarm

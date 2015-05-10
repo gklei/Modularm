@@ -13,7 +13,7 @@ class DateOptionDelegateDataSource: AlarmOptionDelegateDataSource
    var dateModel: Date?
    
    // MARK: - Init
-   override init(tableView: UITableView, delegate: AlarmOptionSettingsControllerProtocol, alarm: Alarm?)
+   override init(tableView: UITableView, delegate: AlarmOptionSettingsControllerDelegate, alarm: Alarm?)
    {
       self.dateModel = CoreDataStack.newModelWithOption(.Date) as? Date
       if let date = alarm?.date

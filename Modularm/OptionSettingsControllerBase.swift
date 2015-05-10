@@ -8,28 +8,74 @@
 
 import UIKit
 
-class OptionSettingsControllerBase: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+class OptionSettingsControllerBase: UIViewController
+{
+   @IBOutlet weak var iconImageView: UIImageView!
+   @IBOutlet weak var setOptionButton: UIButton!
+   
+   var alarm: Alarm?
+   private(set) var option: AlarmOption = .Unknown
+   
+   override func viewDidLoad()
+   {
+      super.viewDidLoad()
+      self.iconImageView.tintColor = UIColor.lipstickRedColor()
+   }
+   
+   override func viewWillAppear(animated: Bool)
+   {
+      super.viewWillAppear(animated)
+      
+      let title = self.buttonTitleForOption(self.option)
+      self.setOptionButton.setTitle(title, forState: .Normal)
+      self.iconImageView.image = self.option.plusIcon
+   }
+   
+   func configureWithAlarm(alarm: Alarm?, option: AlarmOption)
+   {
+      self.alarm = alarm
+      self.option = option
+   }
+   
+   internal func dismissSelf()
+   {
+      // temporary
+      self.navigationController?.popViewControllerAnimated(true)
+   }
+   
+   internal func buttonTitleForOption(option: AlarmOption) -> String
+   {
+      var title = ""
+      switch (option)
+      {
+      case .Countdown:
+         title = "set countdown display"
+         break
+      case .Date:
+         title = "set date display"
+         break
+      case .Message:
+         title = "set message"
+         break
+      case .Music:
+         title = "set music"
+         break
+      case .Repeat:
+         title = "set repeat"
+         break
+      case .Snooze:
+         title = "set snooze"
+         break
+      case .Sound:
+         title = "set sound"
+         break
+      case .Weather:
+         title = "set weather display"
+         break
+         
+      default:
+         break
+      }
+      return title
+   }
 }

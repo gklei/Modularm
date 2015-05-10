@@ -14,7 +14,7 @@ class SnoozeOptionDelegateDataSource: AlarmOptionDelegateDataSource
    var state: SnoozeOptionSettingState?
 
    // MARK: - Init
-   override init(tableView: UITableView, delegate: AlarmOptionSettingsControllerProtocol, alarm: Alarm?)
+   override init(tableView: UITableView, delegate: AlarmOptionSettingsControllerDelegate, alarm: Alarm?)
    {
       self.snoozeModel = CoreDataStack.newModelWithOption(.Snooze) as? Snooze
       if let snooze = alarm?.snooze

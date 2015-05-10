@@ -15,7 +15,7 @@ class AlarmOptionsController: UIViewController
    // MARK: Lifecycle -
    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
    {
-      let optionSettingsController = segue.destinationViewController as! AlarmOptionSettingsControllerProtocol
+      let optionSettingsController = segue.destinationViewController as! OptionSettingsControllerBase
       var option: AlarmOption
 
       switch (segue.identifier!)

@@ -516,6 +516,7 @@
                                 </state>
                                 <connections>
                                     <action selector="dismissSelf" destination="ziJ-61-s5T" eventType="touchUpInside" id="0lZ-fD-la9"/>
+                                    <action selector="setMessageButtonPressed" destination="ziJ-61-s5T" eventType="touchUpInside" id="mXz-6q-Otm"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg-icn-plus-circle" translatesAutoresizingMaskIntoConstraints="NO" id="Tw3-6J-RX0">
@@ -547,6 +548,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="cancelMessageButtonPressed" destination="ziJ-61-s5T" eventType="touchUpInside" id="evV-YK-C6W"/>
                                     <action selector="dismissSelf" destination="ziJ-61-s5T" eventType="touchUpInside" id="UBx-xP-d8q"/>
                                 </connections>
                             </button>
@@ -558,6 +560,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="deleteMessageButtonPressed" destination="ziJ-61-s5T" eventType="touchUpInside" id="Rvg-xL-5Jz"/>
                                     <action selector="dismissSelf" destination="ziJ-61-s5T" eventType="touchUpInside" id="k8X-DD-WOC"/>
                                 </connections>
                             </button>
@@ -589,6 +592,7 @@
                     <connections>
                         <outlet property="iconImageView" destination="DD3-fl-jxD" id="eUh-eo-2wC"/>
                         <outlet property="messageTextView" destination="81P-kZ-NUE" id="f22-iq-AJs"/>
+                        <outlet property="setOptionButton" destination="It7-lC-rDu" id="hB3-nb-4Q5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QR0-tN-weO" userLabel="First Responder" sceneMemberID="firstResponder"/>

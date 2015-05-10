@@ -13,7 +13,7 @@ class RepeatOptionDelegateDataSource: AlarmOptionDelegateDataSource
    var repeatModel: Repeat?
    
    // MARK: - Init
-   override init(tableView: UITableView, delegate: AlarmOptionSettingsControllerProtocol, alarm: Alarm?)
+   override init(tableView: UITableView, delegate: AlarmOptionSettingsControllerDelegate, alarm: Alarm?)
    {
       self.repeatModel = CoreDataStack.newModelWithOption(.Repeat) as? Repeat
       if let repeat = alarm?.repeat

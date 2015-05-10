@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 enum AlarmOption
 {
@@ -32,5 +33,46 @@ enum AlarmOption
       case Countdown: return "Countdown"
       case Unknown: return "Unknown"
       }
+   }
+   
+   var plusIcon: UIImage {
+      var image: UIImage = UIImage()
+      var imageName = ""
+      
+      switch self
+      {
+      case .Countdown:
+         imageName = "icn-plus-countdown"
+         break
+      case .Date:
+         imageName = "icn-plus-date"
+         break
+      case .Music:
+         imageName = "icn-plus-music"
+         break
+      case .Repeat:
+         imageName = "icn-plus-repeat"
+         break
+      case .Snooze:
+         imageName = "icn-plus-snooze"
+         break
+      case .Sound:
+         imageName = "icn-plus-alarm-sound"
+         break
+      case .Weather:
+         imageName = "icn-plus-weather"
+         break
+      case .Message:
+         imageName = "icn-plus-message"
+         
+      default: // Unknown
+         break
+      }
+      
+      if let icon = UIImage(named: imageName)
+      {
+         image = icon.templateImage
+      }
+      return image
    }
 }

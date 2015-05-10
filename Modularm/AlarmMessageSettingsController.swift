@@ -8,28 +8,14 @@
 
 import UIKit
 
-class AlarmMessageSettingsController: UIViewController
+class AlarmMessageSettingsController: OptionSettingsControllerBase
 {
-   var option: AlarmOption = .Message
-   @IBOutlet weak var iconImageView: UIImageView!
    @IBOutlet weak var messageTextView: UITextView!
-   
-   var optionButton: AlarmOptionButton?
    
    override func viewDidLoad()
    {
       super.viewDidLoad()
-      self.iconImageView.tintColor = UIColor.lipstickRedColor()
       self.setupMessageTextView()
-   }
-   
-   override func viewWillAppear(animated: Bool)
-   {
-      super.viewWillAppear(animated)
-      if let button = self.optionButton
-      {
-         self.iconImageView.image = button.deactivatedImage?.templateImage
-      }
    }
    
    private func setupMessageTextView()
@@ -40,10 +26,25 @@ class AlarmMessageSettingsController: UIViewController
       self.messageTextView.textContainerInset = UIEdgeInsetsMake(8, 8, 8, 8)
    }
    
-   @IBAction func dismissSelf()
+   private func endEditingMessageAndDismissSelf()
    {
       self.messageTextView.endEditing(true)
-      self.navigationController?.popViewControllerAnimated(true)
+      self.dismissSelf()
+   }
+   
+   @IBAction func setMessageButtonPressed()
+   {
+      self.endEditingMessageAndDismissSelf()
+   }
+   
+   @IBAction func cancelMessageButtonPressed()
+   {
+      self.endEditingMessageAndDismissSelf()
+   }
+   
+   @IBAction func deleteMessageButtonPressed()
+   {
+      self.endEditingMessageAndDismissSelf()
    }
 }
 
