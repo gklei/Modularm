@@ -63,13 +63,14 @@ class AlarmConfigurationController: UIViewController
    // MARK: - Public
    func createNewAlarm()
    {
-      self.alarm = CoreDataStack.newTemporaryAlarmModel()
+      self.alarm = CoreDataStack.newAlarmModel()
    }
    
    // MARK: - IBActions
    @IBAction func setButtonPressed()
    {
-      CoreDataStack.saveAlarm(self.alarm)
+      self.alarm?.completedSetup = true
+      CoreDataStack.save()
       self.navigationController?.popViewControllerAnimated(true)
    }
 }
