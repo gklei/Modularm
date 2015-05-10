@@ -14,23 +14,34 @@ class WeatherOptionDelegateDataSource: AlarmOptionDelegateDataSource
    let backgroundPhotoOnOffSwitch = UISwitch()
    let locationAutoOnOffSwitch = UISwitch()
    
-   var weatherModel: Weather
+   var weatherModel: Weather?
 
    // MARK: - Init
    override init(tableView: UITableView, delegate: AlarmOptionSettingsControllerProtocol, alarm: Alarm?)
    {
-      self.weatherModel = CoreDataStack.newModelWithOption(.Weather) as! Weather
+      self.weatherModel = CoreDataStack.newModelWithOption(.Weather) as? Weather
+      if let weather = alarm?.weather
+      {
+         self.weatherModel?.displayType = weather.displayType
+         self.weatherModel?.autoLocationOn = weather.autoLocationOn
+         self.weatherModel?.backgroundPhotoOn = weather.backgroundPhotoOn
+      }
       
       super.init(tableView: tableView, delegate: delegate, alarm: alarm)
       self.option = .Weather
       self.cellLabelDictionary = [0 :["34.4˚F Slightly Rainy", "3˚C Slightly Rainy", "Slighty Rainy"],
          1 : ["Background Photo", "Location Auto"]]
       
-      self.backgroundPhotoOnOffSwitch.setOn(self.weatherModel.backgroundPhotoOn, animated: false)
       self.backgroundPhotoOnOffSwitch.addTarget(self, action: "backgroundPhotoSwitchChanged:", forControlEvents: UIControlEvents.ValueChanged)
+      self.backgroundPhotoOnOffSwitch.setOn(self.weatherModel!.backgroundPhotoOn, animated: false)
       
-      self.locationAutoOnOffSwitch.setOn(self.weatherModel.autoLocationOn, animated: false)
       self.locationAutoOnOffSwitch.addTarget(self, action: "locationAutoSwitchChanged:", forControlEvents: UIControlEvents.ValueChanged)
+      self.locationAutoOnOffSwitch.setOn(self.weatherModel!.autoLocationOn, animated: false)
+   }
+   
+   override func saveSettings()
+   {
+      self.alarm?.weather = self.weatherModel!
    }
 
    override func cellWithIndexPath(indexPath: NSIndexPath, identifier: String) -> UITableViewCell
@@ -46,11 +57,6 @@ class WeatherOptionDelegateDataSource: AlarmOptionDelegateDataSource
       }
       return cell
    }
-   
-   override func deleteSettings()
-   {
-      println("delete \(self.option.description)!")
-   }
 }
 
 // MARK: - Private
@@ -58,12 +64,12 @@ extension WeatherOptionDelegateDataSource
 {
    func backgroundPhotoSwitchChanged(sender: UISwitch)
    {
-      self.weatherModel.backgroundPhotoOn = sender.on
+      self.weatherModel!.backgroundPhotoOn = sender.on
    }
 
    func locationAutoSwitchChanged(sender: UISwitch)
    {
-      self.weatherModel.autoLocationOn = sender.on
+      self.weatherModel!.autoLocationOn = sender.on
    }
 
    private func stringForDisplayType(type: WeatherDisplayType) -> String?
@@ -126,7 +132,7 @@ extension WeatherOptionDelegateDataSource: UITableViewDataSource
       var cell = super.tableView(tableView, cellForRowAtIndexPath: indexPath)
       if indexPath.section == 0
       {
-         cell.accessoryType = indexPath.row == self.cellIndexForWeatherDisplayType(self.weatherModel.displayType) ? .Checkmark : .None
+         cell.accessoryType = indexPath.row == self.cellIndexForWeatherDisplayType(self.weatherModel!.displayType) ? .Checkmark : .None
       }
       else if indexPath.section == 1
       {
@@ -144,7 +150,7 @@ extension WeatherOptionDelegateDataSource: UITableViewDelegate
    {
       if indexPath.section == 0
       {
-         self.weatherModel.displayType = self.weatherDisplayTypeForCellIndex(indexPath.row)!
+         self.weatherModel!.displayType = self.weatherDisplayTypeForCellIndex(indexPath.row)!
          self.tableView.reloadData()
       }
    }
