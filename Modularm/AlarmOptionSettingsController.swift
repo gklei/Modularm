@@ -18,7 +18,8 @@ class AlarmOptionSettingsController: OptionSettingsControllerBase
    override func viewWillAppear(animated: Bool)
    {
       super.viewWillAppear(animated)
-      self.delegateDataSource = self.delegateDataSourceForOption(self.option)
+      let builder = AlarmOptionDelegateDataSourceBuilder(tableView: self.tableView, delegate: self, alarm: self.alarm)
+      self.delegateDataSource = builder.buildWithOption(option)
    }
    
    override func viewDidAppear(animated: Bool)
@@ -102,42 +103,5 @@ extension AlarmOptionSettingsController: AlarmOptionSettingsControllerDelegate
    {
       let title = self.buttonTitleForOption(self.option)
       self.updateSetOptionButtonTitle(title)
-   }
-}
-
-extension AlarmOptionSettingsController
-{
-   private func delegateDataSourceForOption(option: AlarmOption) -> AlarmOptionDelegateDataSource
-   {
-      var delegateDataSource: AlarmOptionDelegateDataSource
-      switch (option)
-      {
-      case .Countdown:
-         delegateDataSource = AlarmOptionDelegateDataSource(tableView: self.tableView, delegate: self, alarm: self.alarm)
-         break
-      case .Date:
-         delegateDataSource = DateOptionDelegateDataSource(tableView: self.tableView, delegate: self, alarm: self.alarm)
-         break
-      case .Music:
-         delegateDataSource = MusicOptionDelegateDataSource(tableView: self.tableView, delegate: self, alarm: self.alarm)
-         break
-      case .Repeat:
-         delegateDataSource = RepeatOptionDelegateDataSource(tableView: self.tableView, delegate: self, alarm: self.alarm)
-         break
-      case .Snooze:
-         delegateDataSource = SnoozeOptionDelegateDataSource(tableView: self.tableView, delegate: self, alarm: self.alarm)
-         break
-      case .Sound:
-         delegateDataSource = SoundOptionDelegateDataSource(tableView: self.tableView, delegate: self, alarm: self.alarm)
-         break
-      case .Weather:
-         delegateDataSource = WeatherOptionDelegateDataSource(tableView: self.tableView, delegate: self, alarm: self.alarm)
-         break
-         
-      case .Message, .Unknown:
-         delegateDataSource = AlarmOptionDelegateDataSource(tableView: self.tableView, delegate: self, alarm: self.alarm)
-         break
-      }
-      return delegateDataSource
    }
 }
