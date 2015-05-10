@@ -10,17 +10,27 @@ import UIKit
 
 class SnoozeOptionDelegateDataSource: AlarmOptionDelegateDataSource
 {
-   var snoozeModel: Snooze
+   var snoozeModel: Snooze?
    var state: SnoozeOptionSettingState?
 
    // MARK: - Init
    override init(tableView: UITableView, delegate: AlarmOptionSettingsControllerProtocol, alarm: Alarm?)
    {
-      self.snoozeModel = CoreDataStack.newModelWithOption(.Snooze) as! Snooze
+      self.snoozeModel = CoreDataStack.newModelWithOption(.Snooze) as? Snooze
+      if let snooze = alarm?.snooze
+      {
+         self.snoozeModel?.duration = snooze.duration
+         self.snoozeModel?.type = snooze.type
+      }
       
       super.init(tableView: tableView, delegate: delegate, alarm: alarm)
       self.state = SnoozeOptionSettingButtonState(delegate: self)
       self.option = .Snooze
+   }
+   
+   override func saveSettings()
+   {
+      self.alarm?.snooze = self.snoozeModel!
    }
    
    // MARK: - UITableView Data Source
@@ -43,7 +53,7 @@ class SnoozeOptionDelegateDataSource: AlarmOptionDelegateDataSource
 // MARK: - SnoozeOptionSettingStateDelegate Protocol
 protocol SnoozeOptionSettingStateDelegate
 {
-   var snoozeModel: Snooze {get set}
+   var snoozeModel: Snooze? {get set}
    var cellLabelDictionary: [Int : Array<String>] {get set}
    func transitionToState(state: SnoozeOptionSettingState)
    func reloadData()
@@ -61,7 +71,7 @@ extension SnoozeOptionDelegateDataSource: SnoozeOptionSettingStateDelegate
       }
       else if state is SnoozeOptionSettingTimeState
       {
-         self.settingsControllerDelegate.updateSetOptionButtonTitle("Set snooze time")
+         self.settingsControllerDelegate.updateSetOptionButtonTitle("set snooze time")
          self.settingsControllerDelegate.updateSetOptionButtonClosure({ () -> () in
             
             let snoozeOptionSettingButtonState = SnoozeOptionSettingButtonState(delegate: self)
@@ -96,7 +106,7 @@ struct SnoozeOptionSettingButtonState: SnoozeOptionSettingState
    init(delegate: SnoozeOptionSettingStateDelegate)
    {
       self.delegate = delegate
-      self.delegate.cellLabelDictionary = [0 : ["Snooze \(self.delegate.snoozeModel.durationValue) minutes", "Regular button", "Big button", "Shake your phone"]]
+      self.delegate.cellLabelDictionary = [0 : ["snooze \(self.delegate.snoozeModel!.durationValue) minutes", "regular button", "big button", "shake your phone"]]
    }
    
    func configureCell(cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath)
@@ -106,11 +116,11 @@ struct SnoozeOptionSettingButtonState: SnoozeOptionSettingState
       {
          cell.accessoryType = .DisclosureIndicator
          cell.selectionStyle = .Default
-         cell.textLabel?.attributedText = NSAttributedString(text: "Snooze", boldText: "\(self.delegate.snoozeModel.durationValue) minutes")
+         cell.textLabel?.attributedText = NSAttributedString(text: "snooze", boldText: "\(self.delegate.snoozeModel!.durationValue) minutes")
       }
       else
       {
-         cell.accessoryType = indexPath.row == self.cellIndexForSnoozeType(self.delegate.snoozeModel.type) ? .Checkmark : .None
+         cell.accessoryType = indexPath.row == self.cellIndexForSnoozeType(self.delegate.snoozeModel!.type) ? .Checkmark : .None
       }
    }
    
@@ -125,7 +135,7 @@ struct SnoozeOptionSettingButtonState: SnoozeOptionSettingState
       {
          if let type = self.snoozeTypeForCellIndex(indexPath.row)
          {
-            self.delegate.snoozeModel.type = type
+            self.delegate.snoozeModel!.type = type
             self.delegate.reloadData()
          }
       }
@@ -177,14 +187,14 @@ struct SnoozeOptionSettingTimeState: SnoozeOptionSettingState
    
    func configureCell(cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath)
    {
-      cell.accessoryType = indexPath.row == self.cellIndexForSnoozeDuration(self.delegate.snoozeModel.duration) ? .Checkmark : .None
+      cell.accessoryType = indexPath.row == self.cellIndexForSnoozeDuration(self.delegate.snoozeModel!.duration) ? .Checkmark : .None
    }
    
    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
    {
       if let duration = self.snoozeDurationForCellIndex(indexPath.row)
       {
-         self.delegate.snoozeModel.duration = duration
+         self.delegate.snoozeModel!.duration = duration
          self.delegate.reloadData()
       }
    }

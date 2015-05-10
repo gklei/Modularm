@@ -19,7 +19,7 @@ class RepeatOptionDelegateDataSource: AlarmOptionDelegateDataSource
       
       super.init(tableView: tableView, delegate: delegate, alarm: alarm)
       self.option = .Repeat
-      self.cellLabelDictionary = [0 : ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]]
+      self.cellLabelDictionary = [0 : ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]]
    }
    
    private func cellIndexForRepeatDay(day: RepeatDay) -> Int

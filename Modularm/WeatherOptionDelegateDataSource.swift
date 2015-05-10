@@ -29,8 +29,8 @@ class WeatherOptionDelegateDataSource: AlarmOptionDelegateDataSource
       
       super.init(tableView: tableView, delegate: delegate, alarm: alarm)
       self.option = .Weather
-      self.cellLabelDictionary = [0 :["34.4˚F Slightly Rainy", "3˚C Slightly Rainy", "Slighty Rainy"],
-         1 : ["Background Photo", "Location Auto"]]
+      self.cellLabelDictionary = [0 :["34.4˚F slightly Rainy", "3˚C slightly Rainy", "slighty rainy"],
+         1 : ["background photo", "location auto"]]
       
       self.backgroundPhotoOnOffSwitch.addTarget(self, action: "backgroundPhotoSwitchChanged:", forControlEvents: UIControlEvents.ValueChanged)
       self.backgroundPhotoOnOffSwitch.setOn(self.weatherModel!.backgroundPhotoOn, animated: false)

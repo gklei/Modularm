@@ -174,28 +174,28 @@ extension AlarmOptionSettingsController
       switch (option)
       {
       case .Countdown:
-         title = "Set countdown display"
+         title = "set countdown display"
          break
       case .Date:
-         title = "Set date display"
+         title = "set date display"
          break
       case .Message:
-         title = "Set message"
+         title = "set message"
          break
       case .Music:
-         title = "Set music"
+         title = "set music"
          break
       case .Repeat:
-         title = "Set repeat"
+         title = "set repeat"
          break
       case .Snooze:
-         title = "Set snooze"
+         title = "set snooze"
          break
       case .Sound:
-         title = "Set sound"
+         title = "set sound"
          break
       case .Weather:
-         title = "Set weather display"
+         title = "set weather display"
          break
          
       default:

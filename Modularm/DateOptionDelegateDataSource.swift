@@ -19,7 +19,7 @@ class DateOptionDelegateDataSource: AlarmOptionDelegateDataSource
       
       super.init(tableView: tableView, delegate: delegate, alarm: alarm)
       self.option = .Date
-      self.cellLabelDictionary = [0 :["Tuesday 04/10", "10.04 Tuesday", "Tuesday"]]
+      self.cellLabelDictionary = [0 :["tuesday 04/10", "10.04 tuesday", "tuesday"]]
    }
 
    private func stringForDisplayType(type: DateDisplayType) -> String?
