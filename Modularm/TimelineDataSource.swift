@@ -29,24 +29,22 @@ class TimelineDataSource: NSObject
 
       return controller
    }()
-
-   // MARK: - Init
-   override init()
+   
+   func removeIncompleteAlarms()
    {
-      super.init()
+      if let alarms = self.fetchedResultsController.fetchedObjects as? [Alarm]
+      {
+         for alarm in alarms
+         {
+            if !alarm.completedSetup
+            {
+               CoreDataStack.deleteObject(alarm)
+            }
+         }
+      }
    }
 
    // MARK: - Public
-   func addAlarm()
-   {
-      let coreDataStack = CoreDataStack.defaultStack
-      let alarm: Alarm = NSEntityDescription.insertNewObjectForEntityForName("Alarm", inManagedObjectContext: coreDataStack.managedObjectContext!) as! Alarm
-
-      let count = self.fetchedResultsController.fetchedObjects?.count
-
-      coreDataStack.saveContext()
-   }
-   
    func reloadData()
    {
       self.collectionView.reloadData()
@@ -60,6 +58,7 @@ extension TimelineDataSource: UICollectionViewDataSource
    {
       let objects = self.fetchedResultsController.fetchedObjects
       let count = objects?.count
+      println("\(count!) alarms")
 
       return count!
    }
@@ -69,7 +68,6 @@ extension TimelineDataSource: UICollectionViewDataSource
       let cell: UICollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! UICollectionViewCell
 
       let alarmEntry: Alarm = self.fetchedResultsController.objectAtIndexPath(indexPath) as! Alarm
-      println(alarmEntry.fireDate)
 
       return cell
    }
