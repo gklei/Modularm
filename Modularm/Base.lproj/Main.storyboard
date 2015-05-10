@@ -51,6 +51,7 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Modularm" id="Quf-Is-AO7">
+                        <barButtonItem key="leftBarButtonItem" image="icn-bar-settings" id="Ga3-f6-xVH"/>
                         <barButtonItem key="rightBarButtonItem" image="icn-add-item" id="iyX-07-HgF">
                             <connections>
                                 <segue destination="yqY-cf-tnN" kind="push" identifier="addAlarmButtonPressed" id="x6s-2e-dhd"/>
@@ -97,9 +98,9 @@
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sNc-40-vPD">
-                                <rect key="frame" x="0.0" y="382" width="375" height="285"/>
+                                <rect key="frame" x="0.0" y="327" width="375" height="340"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="285" id="FOO-Qt-PvE"/>
+                                    <constraint firstAttribute="height" constant="340" id="FOO-Qt-PvE"/>
                                 </constraints>
                                 <connections>
                                     <segue destination="uiH-fO-7BZ" kind="embed" identifier="alarmOptionsControllerSegue" id="pQi-sa-R1Z"/>
@@ -699,6 +700,7 @@
         <image name="bg-icn-plus-circle" width="24" height="24"/>
         <image name="icn-add-item" width="21" height="21"/>
         <image name="icn-alarm-sound" width="24" height="24"/>
+        <image name="icn-bar-settings" width="24" height="24"/>
         <image name="icn-countdown" width="24" height="24"/>
         <image name="icn-date" width="24" height="24"/>
         <image name="icn-message" width="24" height="24"/>
