@@ -11,6 +11,11 @@ import CoreData
 
 enum RepeatDay: Int16 {
    case Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
+   
+   static func valueArray() -> [RepeatDay]
+   {
+      return [.Monday, .Tuesday, .Wednesday, .Thursday, .Friday, .Saturday, .Sunday]
+   }
 }
 
 @objc(Repeat)
