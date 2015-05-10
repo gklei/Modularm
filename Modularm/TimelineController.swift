@@ -25,7 +25,7 @@ class TimelineController: UIViewController
 
    override func viewWillAppear(animated: Bool)
    {
-      self.timelineDataSource.reloadData()
+      self.timelineDataSource.removeIncompleteAlarms()
    }
 
    override func viewWillDisappear(animated: Bool)
