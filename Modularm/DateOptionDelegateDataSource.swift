@@ -10,16 +10,25 @@ import UIKit
 
 class DateOptionDelegateDataSource: AlarmOptionDelegateDataSource
 {
-   var dateModel: Date
+   var dateModel: Date?
    
    // MARK: - Init
    override init(tableView: UITableView, delegate: AlarmOptionSettingsControllerProtocol, alarm: Alarm?)
    {
-      self.dateModel = CoreDataStack.newModelWithOption(.Date) as! Date
+      self.dateModel = CoreDataStack.newModelWithOption(.Date) as? Date
+      if let date = alarm?.date
+      {
+         self.dateModel?.displayType = date.displayType
+      }
       
       super.init(tableView: tableView, delegate: delegate, alarm: alarm)
       self.option = .Date
       self.cellLabelDictionary = [0 :["tuesday 04/10", "10.04 tuesday", "tuesday"]]
+   }
+   
+   override func saveSettings()
+   {
+      self.alarm?.date = self.dateModel!
    }
 
    private func stringForDisplayType(type: DateDisplayType) -> String?
@@ -62,7 +71,7 @@ extension DateOptionDelegateDataSource: UITableViewDataSource
          let label = self.cellLabelDictionary[indexPath.section]![indexPath.row]
          cell.textLabel?.attributedText = NSAttributedString(text: label, boldText: boldString)
       }
-      cell.accessoryType = indexPath.row == self.cellIndexForDateDisplayType(self.dateModel.displayType) ? .Checkmark : .None
+      cell.accessoryType = indexPath.row == self.cellIndexForDateDisplayType(self.dateModel!.displayType) ? .Checkmark : .None
       
       return cell
    }
@@ -72,7 +81,7 @@ extension DateOptionDelegateDataSource: UITableViewDelegate
 {
    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
    {
-      self.dateModel.displayType = self.displayTypeForCellIndex(indexPath.row)!
+      self.dateModel!.displayType = self.displayTypeForCellIndex(indexPath.row)!
       self.tableView.reloadData()
    }
 }
