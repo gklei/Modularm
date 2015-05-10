@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class AlarmOptionSettingsController: UIViewController
 {
@@ -14,9 +15,9 @@ class AlarmOptionSettingsController: UIViewController
    @IBOutlet weak var tableView: UITableView!
    @IBOutlet weak var iconImageView: UIImageView!
    
-   var setOptionButtonClosure: (() -> ())?
    var alarm: Alarm?
    var option: AlarmOption = .Unknown
+   var setOptionButtonClosure: (() -> ())?
    var delegateDataSource: AlarmOptionDelegateDataSource?
 
    override func viewDidLoad()
@@ -31,7 +32,7 @@ class AlarmOptionSettingsController: UIViewController
       
       let title = self.buttonTitleForOption(self.option)
       self.setOptionButton.setTitle(title, forState: .Normal)
-      self.iconImageView.image = AlarmOptionImageProvider.iconForOption(self.option)
+      self.iconImageView.image = AlarmOptionIconProvider.iconForOption(self.option)
       
       self.delegateDataSource = self.delegateDataSourceForOption(self.option)
    }
@@ -55,6 +56,8 @@ class AlarmOptionSettingsController: UIViewController
       }
       else
       {
+         self.delegateDataSource?.saveSettings()
+         CoreDataStack.save()
          self.dismissSelf()
       }
    }
@@ -73,8 +76,39 @@ extension AlarmOptionSettingsController: AlarmOptionSettingsControllerProtocol
       self.dismissSelf()
    }
    
-   func deleteSettingsButtonPressed()
+   func deleteSettingsButtonPressedWithOption(option: AlarmOption)
    {
+      var alarmAttribute: NSManagedObject?
+      switch option
+      {
+      case .Countdown:
+         alarmAttribute = self.alarm?.countdown
+         break
+      case .Date:
+         alarmAttribute = self.alarm?.date
+         break
+      case .Message:
+         alarmAttribute = self.alarm?.message
+         break
+      case .Music:
+         break
+      case .Repeat:
+         alarmAttribute = self.alarm?.repeat
+         break
+      case .Snooze:
+         alarmAttribute = self.alarm?.snooze
+         break
+      case .Sound:
+         alarmAttribute = self.alarm?.sound
+         break
+      case .Weather:
+         alarmAttribute = self.alarm?.weather
+         break
+      case .Unknown:
+         break
+      }
+      
+      CoreDataStack.deleteObject(alarmAttribute)
       self.dismissSelf()
    }
    
@@ -127,7 +161,7 @@ extension AlarmOptionSettingsController
          delegateDataSource = WeatherOptionDelegateDataSource(tableView: self.tableView, delegate: self, alarm: self.alarm)
          break
          
-      default: // Unknown
+      case .Message, .Unknown:
          delegateDataSource = AlarmOptionDelegateDataSource(tableView: self.tableView, delegate: self, alarm: self.alarm)
          break
       }
