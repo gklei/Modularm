@@ -129,6 +129,51 @@ class CoreDataStack: NSObject
       return alarm
    }
    
+   class func newAlarmModel() -> Alarm?
+   {
+      var alarm: Alarm?
+      if let context = self.defaultStack.managedObjectContext
+      {
+         alarm = NSEntityDescription.insertNewObjectForEntityForName("Alarm", inManagedObjectContext: context) as? Alarm
+      }
+      return alarm
+   }
+   
+   class func newTemporaryModelWithOption(option: AlarmOption) -> AnyObject?
+   {
+      var managedObject: AnyObject?
+      if option != .Unknown
+      {
+         if let context = self.defaultStack.managedObjectContext
+         {
+            if let description = NSEntityDescription.entityForName(option.description, inManagedObjectContext: context)
+            {
+               managedObject = NSManagedObject(entity: description, insertIntoManagedObjectContext: nil) as AnyObject
+            }
+         }
+      }
+      return managedObject
+   }
+   
+   class func save()
+   {
+      if let context = self.defaultStack.managedObjectContext
+      {
+         context.save(nil)
+      }
+   }
+   
+   class func deleteObject(object: NSManagedObject?)
+   {
+      if let context = self.defaultStack.managedObjectContext
+      {
+         if object != nil
+         {
+            context.deleteObject(object!)
+         }
+      }
+   }
+   
    class func saveAlarm(alarm: Alarm?)
    {
       if let context = self.defaultStack.managedObjectContext, alarmModel = alarm
