@@ -15,7 +15,27 @@ class AlarmOptionButton: UIButton
    var option: AlarmOption = .Unknown
 
    var circleImageView: UIImageView?
-   private(set) var activated: Bool
+
+   private var _activated: Bool = false
+   var activated: Bool {
+      get {
+         return self._activated
+      }
+      set {
+         if self._activated != newValue
+         {
+            self._activated = newValue
+            if newValue == true
+            {
+               self.activate()
+            }
+            else
+            {
+               self.deactivate()
+            }
+         }
+      }
+   }
 
    override var highlighted: Bool {
       get {
@@ -29,7 +49,6 @@ class AlarmOptionButton: UIButton
 
    required init(coder aDecoder: NSCoder)
    {
-      self.activated = false
       super.init(coder: aDecoder)
       if let image = self.imageView?.image
       {
@@ -62,41 +81,25 @@ class AlarmOptionButton: UIButton
       }
    }
 
-   func activate()
+   private func activate()
    {
-      if !self.activated, let image = self.activatedImage
+      if let image = self.activatedImage
       {
          self.setTitleColor(UIColor.blackColor(), forState: .Normal)
          self.setImage(image, forState: .Normal)
          self.setImage(image, forState: .Highlighted)
          self.circleImageView?.hidden = false
-
-         self.activated = true
       }
    }
 
-   func deactivate()
+   private func deactivate()
    {
-      if self.activated, let image = self.deactivatedImage
+      if let image = self.deactivatedImage
       {
          self.setTitleColor(UIColor.darkGrayColor(), forState: .Normal)
          self.setImage(image.templateImage, forState: .Normal)
          self.setImage(image.templateImage, forState: .Highlighted)
          self.circleImageView?.hidden = true
-
-         self.activated = false
-      }
-   }
-
-   func toggleActivation()
-   {
-      if self.activated
-      {
-         self.deactivate()
-      }
-      else
-      {
-         self.activate()
       }
    }
 }
