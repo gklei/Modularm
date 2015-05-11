@@ -83,6 +83,7 @@ extension AlarmOptionSettingsController: AlarmOptionSettingsControllerDelegate
       }
       
       CoreDataStack.deleteObject(alarmAttribute)
+      CoreDataStack.save()
       self.dismissSelf()
    }
    
