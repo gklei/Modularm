@@ -22,7 +22,8 @@ enum AlarmOption
    case Unknown
    
    var description: String {
-      switch self {
+      switch self
+      {
       case Snooze: return "Snooze"
       case Sound: return "Sound"
       case Music: return "Music"
