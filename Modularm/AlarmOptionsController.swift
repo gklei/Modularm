@@ -11,8 +11,23 @@ import UIKit
 class AlarmOptionsController: UIViewController
 {
    private var alarm: Alarm?
+
+   @IBOutlet weak var snoozeButton: AlarmOptionButton!
+   @IBOutlet weak var weatherButton: AlarmOptionButton!
+   @IBOutlet weak var soundButton: AlarmOptionButton!
+   @IBOutlet weak var dateButton: AlarmOptionButton!
+   @IBOutlet weak var musicButton: AlarmOptionButton!
+   @IBOutlet weak var repeatButton: AlarmOptionButton!
+   @IBOutlet weak var messageButton: AlarmOptionButton!
+   @IBOutlet weak var countdownButton: AlarmOptionButton!
    
-   // MARK: Lifecycle -
+   // MARK: - Lifecycle
+   override func viewWillAppear(animated: Bool)
+   {
+      super.viewWillAppear(animated)
+      self.setupButtonsWithAlarm(self.alarm)
+   }
+
    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
    {
       let optionSettingsController = segue.destinationViewController as! OptionSettingsControllerBase
@@ -59,14 +74,20 @@ class AlarmOptionsController: UIViewController
    // MARK: - IBActions
    @IBAction func toggleCountdown(sender: AnyObject)
    {
-      let optionButton = sender as! AlarmOptionButton
-      if optionButton.activated
+   }
+
+   // MARK: - Private
+   private func setupButtonsWithAlarm(alarm: Alarm?)
+   {
+      if let alarmModel = alarm
       {
-         optionButton.deactivate()
-      }
-      else
-      {
-         optionButton.activate()
+         self.countdownButton.activated = alarmModel.countdown != nil
+         self.weatherButton.activated = alarmModel.weather != nil
+         self.soundButton.activated = alarmModel.sound != nil
+         self.dateButton.activated = alarmModel.date != nil
+         self.repeatButton.activated = alarmModel.repeat != nil
+         self.messageButton.activated = alarmModel.message != nil
+         self.countdownButton.activated = alarmModel.countdown != nil
       }
    }
 }

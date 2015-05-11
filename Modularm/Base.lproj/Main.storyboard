@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="mgE-3h-zNu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D105g" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="mgE-3h-zNu">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
     </dependencies>
@@ -410,6 +410,16 @@
                     <navigationItem key="navigationItem" id="Ojh-N9-Mxp"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="285"/>
+                    <connections>
+                        <outlet property="countdownButton" destination="xVt-i6-9Of" id="Jwy-jH-uMb"/>
+                        <outlet property="dateButton" destination="1eM-hi-3hc" id="7TQ-A4-GoB"/>
+                        <outlet property="messageButton" destination="l6H-Kw-288" id="mZ1-DS-9wu"/>
+                        <outlet property="musicButton" destination="gbN-Qj-4ad" id="Xxm-J0-ZD3"/>
+                        <outlet property="repeatButton" destination="S3G-bQ-eaK" id="O4p-tg-1eC"/>
+                        <outlet property="snoozeButton" destination="KqE-Bn-D4p" id="woH-Sw-pzc"/>
+                        <outlet property="soundButton" destination="IDT-cM-UAS" id="4sv-fQ-Kgc"/>
+                        <outlet property="weatherButton" destination="MhA-JY-UHK" id="MwY-Lf-9i0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="979-ud-6oH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
