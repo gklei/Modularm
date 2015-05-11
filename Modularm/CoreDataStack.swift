@@ -157,10 +157,7 @@ class CoreDataStack: NSObject
    
    class func save()
    {
-      if let context = self.defaultStack.managedObjectContext
-      {
-         context.save(nil)
-      }
+      self.defaultStack.saveContext()
    }
    
    class func deleteObject(object: NSManagedObject?)
