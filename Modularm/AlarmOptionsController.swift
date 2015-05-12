@@ -25,7 +25,7 @@ class AlarmOptionsController: UIViewController
    override func viewWillAppear(animated: Bool)
    {
       super.viewWillAppear(animated)
-      self.setupButtonsWithAlarm(self.alarm)
+      self.updateButtonsWithAlarm(self.alarm)
    }
 
    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
@@ -75,9 +75,18 @@ class AlarmOptionsController: UIViewController
    @IBAction func toggleCountdown(sender: AnyObject)
    {
    }
+   
+   @IBAction func resetAlarm()
+   {
+      for option in AlarmOption.validOptions
+      {
+         self.alarm?.deleteOption(option)
+      }
+      self.updateButtonsWithAlarm(self.alarm)
+   }
 
    // MARK: - Private
-   private func setupButtonsWithAlarm(alarm: Alarm?)
+   private func updateButtonsWithAlarm(alarm: Alarm?)
    {
       if let alarmModel = alarm
       {
