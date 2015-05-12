@@ -13,20 +13,16 @@ class TimelineController: UIViewController
    // MARK: - Instance Variables
    @IBOutlet weak var centerNavigationItem: UINavigationItem!
    @IBOutlet weak var timelineDataSource: TimelineDataSource!
-   
-   private var alarmConfigurationController: AlarmConfigurationController
-   
-   required init(coder aDecoder: NSCoder)
-   {
-      self.alarmConfigurationController = UIStoryboard.controllerWithIdentifier("AlarmConfigurationController") as! AlarmConfigurationController
-      super.init(coder: aDecoder)
-   }
+   @IBOutlet weak var collectionView: UICollectionView!
 
    // MARK: - Lifecycle
    override func viewDidLoad()
    {
       super.viewDidLoad()
       self.navigationController?.navigationBar.hideBottomHairline()
+      
+      let nib = UINib(nibName: "TimelineCollectionViewCell", bundle: nil)
+      self.collectionView.registerNib(nib, forCellWithReuseIdentifier: "timelineCell")
    }
 
    override func viewWillAppear(animated: Bool)
@@ -43,15 +39,17 @@ class TimelineController: UIViewController
    {
       if segue.identifier == "addAlarmButtonPressed"
       {
-         self.alarmConfigurationController.createNewAlarm()
+         let configurationController = segue.destinationViewController as! AlarmConfigurationController
+         configurationController.createNewAlarm()
       }
    }
    
    // MARK: - Public
    func openSettingsForAlarm(alarm: Alarm)
    {
-      self.alarmConfigurationController.configureWithAlarm(alarm)
-      self.navigationController?.pushViewController(self.alarmConfigurationController, animated: true)
+      let configurationController = UIStoryboard.controllerWithIdentifier("AlarmConfigurationController") as! AlarmConfigurationController
+      configurationController.configureWithAlarm(alarm)
+      self.navigationController?.pushViewController(configurationController, animated: true)
    }
 
    // MARK: - Private
