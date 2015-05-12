@@ -18,8 +18,7 @@ class TimelineController: UIViewController
    
    required init(coder aDecoder: NSCoder)
    {
-      let sb = UIStoryboard(name: "Main", bundle: nil)
-      self.alarmConfigurationController = sb.instantiateViewControllerWithIdentifier("AlarmConfigurationController") as! AlarmConfigurationController
+      self.alarmConfigurationController = UIStoryboard.controllerWithIdentifier("AlarmConfigurationController") as! AlarmConfigurationController
       super.init(coder: aDecoder)
    }
 
