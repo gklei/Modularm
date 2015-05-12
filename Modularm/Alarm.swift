@@ -32,4 +32,40 @@ class Alarm: NSManagedObject
    {
       self.completedSetup = false
    }
+   
+   func deleteOption(option: AlarmOption)
+   {
+      var alarmAttribute: NSManagedObject?
+      switch option
+      {
+      case .Countdown:
+         alarmAttribute = self.countdown
+         break
+      case .Date:
+         alarmAttribute = self.date
+         break
+      case .Message:
+         alarmAttribute = self.message
+         break
+      case .Music:
+         return
+      case .Repeat:
+         alarmAttribute = self.repeat
+         break
+      case .Snooze:
+         alarmAttribute = self.snooze
+         break
+      case .Sound:
+         alarmAttribute = self.sound
+         break
+      case .Weather:
+         alarmAttribute = self.weather
+         break
+      case .Unknown:
+         return
+      }
+      
+      CoreDataStack.deleteObject(alarmAttribute)
+      CoreDataStack.save()
+   }
 }
