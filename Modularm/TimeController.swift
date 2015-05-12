@@ -29,6 +29,15 @@ class TimeController: UIViewController
       super.viewDidLoad()
    }
    
+   override func viewWillAppear(animated: Bool)
+   {
+      super.viewWillAppear(animated)
+      if let alarmModel = self.alarm
+      {
+         self.timePicker.setDate(alarmModel.fireDate, animated: false)
+      }
+   }
+   
    func configureWithAlarm(alarm: Alarm?, delegate: TimeControllerDelegate)
    {
       self.alarm = alarm
@@ -62,6 +71,8 @@ class TimeController: UIViewController
          self.updateSetTimeButtonTitle("start setting time")
          self.timePicker.userInteractionEnabled = false
          self.timeControllerDelegate?.settingTimeEnded()
+         
+         self.alarm?.fireDate = self.timePicker.alarmDate
          self.logDateInformation()
       }
    }
@@ -69,7 +80,7 @@ class TimeController: UIViewController
    private func logDateInformation()
    {
       let dateFormatter = NSDateFormatter()
-      dateFormatter.dateFormat = "MMM d, hh:mm aa"
+      dateFormatter.dateFormat = "YYYY MMM d, hh:mm aa"
       
       let prettyAlarmDate = dateFormatter.stringFromDate(self.timePicker.alarmDate)
       println("Alarm date is set for: \(prettyAlarmDate)")
