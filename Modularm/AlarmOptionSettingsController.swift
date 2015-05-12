@@ -52,38 +52,7 @@ extension AlarmOptionSettingsController: AlarmOptionSettingsControllerDelegate
    
    func deleteSettingsButtonPressedWithOption(option: AlarmOption)
    {
-      var alarmAttribute: NSManagedObject?
-      switch option
-      {
-      case .Countdown:
-         alarmAttribute = self.alarm?.countdown
-         break
-      case .Date:
-         alarmAttribute = self.alarm?.date
-         break
-      case .Message:
-         alarmAttribute = self.alarm?.message
-         break
-      case .Music:
-         break
-      case .Repeat:
-         alarmAttribute = self.alarm?.repeat
-         break
-      case .Snooze:
-         alarmAttribute = self.alarm?.snooze
-         break
-      case .Sound:
-         alarmAttribute = self.alarm?.sound
-         break
-      case .Weather:
-         alarmAttribute = self.alarm?.weather
-         break
-      case .Unknown:
-         break
-      }
-      
-      CoreDataStack.deleteObject(alarmAttribute)
-      CoreDataStack.save()
+      self.alarm?.deleteOption(option)
       self.dismissSelf()
    }
    
