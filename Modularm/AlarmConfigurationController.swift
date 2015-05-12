@@ -16,8 +16,10 @@ class AlarmConfigurationController: UIViewController
    @IBOutlet weak var alarmOptionsHeightConstraint: NSLayoutConstraint!
    @IBOutlet weak var alarmOptionsControllerBottomVerticalSpaceConstraint: NSLayoutConstraint!
    @IBOutlet weak var segmentedControl: UISegmentedControl!
+   
    var alarmTimeController: AlarmTimeController?
    var alarmOptionsController: AlarmOptionsController?
+   var timeController: TimeController?
    var alarm: Alarm?
 
    // MARK: - Lifecycle
@@ -35,14 +37,24 @@ class AlarmConfigurationController: UIViewController
    
    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
    {
-      if segue.identifier == "alarmTimeControllerSegue"
+      if let identifier = segue.identifier
       {
-         self.alarmTimeController = segue.destinationViewController as? AlarmTimeController
-      }
-      else if segue.identifier == "alarmOptionsControllerSegue"
-      {
-         self.alarmOptionsController = segue.destinationViewController.childViewControllers![0] as? AlarmOptionsController
-         self.alarmOptionsController?.configureWithAlarm(self.alarm)
+         switch identifier
+         {
+         case "alarmTimeControllerSegue":
+            self.alarmTimeController = segue.destinationViewController as? AlarmTimeController
+            break
+         case "alarmOptionsControllerSegue":
+            self.alarmOptionsController = segue.destinationViewController.childViewControllers![0] as? AlarmOptionsController
+            self.alarmOptionsController?.configureWithAlarm(self.alarm)
+            break
+         case "timeController":
+            self.timeController = segue.destinationViewController as? TimeController
+            self.timeController?.configureWithAlarm(self.alarm, delegate: self)
+            break
+         default:
+            break
+         }
       }
    }
    
@@ -72,6 +84,24 @@ class AlarmConfigurationController: UIViewController
       self.alarm?.completedSetup = true
       CoreDataStack.save()
       self.navigationController?.popViewControllerAnimated(true)
+   }
+}
+
+// MARK: - TimeController Delegate
+extension AlarmConfigurationController: TimeControllerDelegate
+{
+   func settingTimeBegan()
+   {
+      UIView.animateWithDuration(0.25, animations: { () -> Void in
+         self.alarmOptionsController?.view.alpha = 0
+      })
+   }
+   
+   func settingTimeEnded()
+   {
+      UIView.animateWithDuration(0.25, animations: { () -> Void in
+         self.alarmOptionsController?.view.alpha = 1
+      })
    }
 }
 

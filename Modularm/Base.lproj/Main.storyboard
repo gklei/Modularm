@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D105g" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="mgE-3h-zNu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="mgE-3h-zNu">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
     </dependencies>
@@ -88,15 +88,6 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background-clearnight" translatesAutoresizingMaskIntoConstraints="NO" id="CjP-5p-saH">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aTa-c3-Rm4">
-                                <rect key="frame" x="0.0" y="94" width="375" height="186"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="186" id="ugF-bR-8TR"/>
-                                </constraints>
-                                <connections>
-                                    <segue destination="eZc-sn-K0f" kind="embed" identifier="alarmTimeControllerSegue" id="OUi-E5-mEE"/>
-                                </connections>
-                            </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sNc-40-vPD">
                                 <rect key="frame" x="0.0" y="327" width="375" height="340"/>
                                 <constraints>
@@ -106,18 +97,27 @@
                                     <segue destination="uiH-fO-7BZ" kind="embed" identifier="alarmOptionsControllerSegue" id="pQi-sa-R1Z"/>
                                 </connections>
                             </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fac-q0-H0S">
+                                <rect key="frame" x="0.0" y="91" width="375" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="N04-hw-epJ"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="Xpw-MT-0Lz" kind="embed" identifier="timeController" id="Eip-XX-m2T"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="sNc-40-vPD" secondAttribute="trailing" id="D2J-FW-1Mn"/>
                             <constraint firstItem="sNc-40-vPD" firstAttribute="leading" secondItem="nsS-fm-w7v" secondAttribute="leading" id="IHl-g7-Le3"/>
-                            <constraint firstItem="aTa-c3-Rm4" firstAttribute="leading" secondItem="nsS-fm-w7v" secondAttribute="leading" id="IqK-hG-4bC"/>
-                            <constraint firstAttribute="trailing" secondItem="aTa-c3-Rm4" secondAttribute="trailing" id="Jhg-YG-ExH"/>
+                            <constraint firstItem="fac-q0-H0S" firstAttribute="leading" secondItem="nsS-fm-w7v" secondAttribute="leading" id="KQc-fl-Zf4"/>
+                            <constraint firstItem="fac-q0-H0S" firstAttribute="top" secondItem="wGw-x9-ycG" secondAttribute="bottom" constant="27" id="NgL-GA-CKx"/>
+                            <constraint firstAttribute="trailing" secondItem="fac-q0-H0S" secondAttribute="trailing" id="X9Q-qV-33Q"/>
                             <constraint firstAttribute="bottom" secondItem="sNc-40-vPD" secondAttribute="bottom" id="jET-Dy-zoE"/>
                             <constraint firstAttribute="trailing" secondItem="CjP-5p-saH" secondAttribute="trailing" id="jLm-Ov-zcf"/>
                             <constraint firstAttribute="bottom" secondItem="CjP-5p-saH" secondAttribute="bottom" id="jfh-AB-cHK"/>
                             <constraint firstItem="CjP-5p-saH" firstAttribute="top" secondItem="nsS-fm-w7v" secondAttribute="top" id="oBL-zF-nc7"/>
-                            <constraint firstItem="aTa-c3-Rm4" firstAttribute="top" secondItem="wGw-x9-ycG" secondAttribute="bottom" constant="30" id="usL-AB-RI4"/>
                             <constraint firstItem="CjP-5p-saH" firstAttribute="leading" secondItem="nsS-fm-w7v" secondAttribute="leading" id="zkM-z7-LjC"/>
                         </constraints>
                     </view>
@@ -182,6 +182,11 @@
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="esU-yQ-Xhb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="285"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <userGuides>
+                            <userLayoutGuide location="260" affinity="minY"/>
+                            <userLayoutGuide location="260" affinity="minY"/>
+                            <userLayoutGuide location="260" affinity="minY"/>
+                        </userGuides>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KqE-Bn-D4p" customClass="AlarmOptionButton" customModule="Modularm" customModuleProvider="target">
                                 <rect key="frame" x="1" y="1" width="186" height="55"/>
@@ -224,14 +229,6 @@
                                 <connections>
                                     <segue destination="aa4-SF-2ad" kind="push" identifier="configureSound" id="gAC-Aq-ELc"/>
                                 </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gY3-gf-7e8">
-                                <rect key="frame" x="16" y="243" width="82" height="34"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
-                                <state key="normal" title="Test Alarm">
-                                    <color key="titleColor" red="0.74509803921568629" green="0.058823529411764705" blue="0.23529411764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MhA-JY-UHK" customClass="AlarmOptionButton" customModule="Modularm" customModuleProvider="target">
                                 <rect key="frame" x="188" y="1" width="186" height="55"/>
@@ -360,10 +357,18 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KiT-TL-ADt">
-                                <rect key="frame" x="142" y="243" width="45" height="34"/>
+                                <rect key="frame" x="137" y="243" width="39" height="34"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
-                                <state key="normal" title="Reset">
+                                <state key="normal" title="reset">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gY3-gf-7e8">
+                                <rect key="frame" x="16" y="243" width="77" height="34"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
+                                <state key="normal" title="test alarm">
+                                    <color key="titleColor" red="0.74509803921568629" green="0.058823529411764705" blue="0.23529411764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
@@ -636,23 +641,23 @@
                         <viewControllerLayoutGuide type="bottom" id="6VQ-Gu-5e4"/>
                     </layoutGuides>
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ORt-Th-zIr">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="186"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z1L-Mb-5f3">
-                                <rect key="frame" x="86" y="59" width="199" height="83"/>
+                                <rect key="frame" x="59" y="66" width="199" height="83"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=":" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZHr-wy-CGA">
                                         <rect key="frame" x="89" y="0.0" width="21" height="83"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="72"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xCH-nR-Ieh">
+                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xCH-nR-Ieh">
                                         <rect key="frame" x="0.0" y="0.0" width="81" height="83"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="72"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JwO-lU-N9V">
+                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JwO-lU-N9V">
                                         <rect key="frame" x="110" y="0.0" width="89" height="83"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="72"/>
                                         <nil key="highlightedColor"/>
@@ -673,13 +678,13 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 hour and 13 minutes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2H5-7A-ijv">
-                                <rect key="frame" x="96" y="31" width="171" height="20"/>
+                                <rect key="frame" x="69" y="38" width="171" height="20"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alarm will go off in" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0QH-Si-82m">
-                                <rect key="frame" x="96" y="7" width="133" height="21"/>
+                                <rect key="frame" x="69" y="14" width="133" height="21"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -696,6 +701,8 @@
                         </constraints>
                     </view>
                     <toolbarItems/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="200"/>
                     <connections>
                         <outlet property="alarmTimeLabel" destination="2H5-7A-ijv" id="0AD-0V-dEd"/>
                         <outlet property="alarmWillGoOffInLabel" destination="0QH-Si-82m" id="rkf-0q-toB"/>
@@ -706,7 +713,58 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3kt-OL-TFU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1122.5" y="-158"/>
+            <point key="canvasLocation" x="626" y="-187"/>
+        </scene>
+        <!--Time Controller-->
+        <scene sceneID="sOE-Yw-bRZ">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="Xpw-MT-0Lz" customClass="TimeController" customModule="Modularm" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="uXE-Uh-pVp"/>
+                        <viewControllerLayoutGuide type="bottom" id="lw6-k9-4Gn"/>
+                    </layoutGuides>
+                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="JRt-ab-gIy">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <datePicker userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="D4w-Ha-M3j">
+                                <rect key="frame" x="0.0" y="38" width="375" height="162"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="162" id="Oqp-4L-w9A"/>
+                                </constraints>
+                                <date key="date" timeIntervalSinceReferenceDate="453084713.51097798">
+                                    <!--2015-05-12 00:51:53 +0000-->
+                                </date>
+                            </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AcB-wu-GGb">
+                                <rect key="frame" x="129" y="8" width="116" height="30"/>
+                                <color key="tintColor" red="0.74509803921568629" green="0.058823529411764705" blue="0.23529411764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="start setting time">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="setTimeButtonPressed" destination="Xpw-MT-0Lz" eventType="touchUpInside" id="92K-X6-fHZ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="D4w-Ha-M3j" firstAttribute="leading" secondItem="JRt-ab-gIy" secondAttribute="leading" id="5WY-zK-v3e"/>
+                            <constraint firstAttribute="centerX" secondItem="AcB-wu-GGb" secondAttribute="centerX" constant="0.5" id="R9j-t8-pff"/>
+                            <constraint firstAttribute="trailing" secondItem="D4w-Ha-M3j" secondAttribute="trailing" id="UxR-88-OAV"/>
+                            <constraint firstItem="lw6-k9-4Gn" firstAttribute="top" secondItem="D4w-Ha-M3j" secondAttribute="bottom" id="fNV-mm-GC0"/>
+                            <constraint firstItem="D4w-Ha-M3j" firstAttribute="top" secondItem="AcB-wu-GGb" secondAttribute="bottom" id="shk-yN-pc7"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <connections>
+                        <outlet property="setTimeButton" destination="AcB-wu-GGb" id="Xqi-jq-16g"/>
+                        <outlet property="timePicker" destination="D4w-Ha-M3j" id="Pi1-VA-HUC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WZa-A6-kkg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1099.5" y="-44"/>
         </scene>
     </scenes>
     <resources>
@@ -738,6 +796,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="9gu-Yl-B7X"/>
+        <segue reference="pVt-5g-rQt"/>
     </inferredMetricsTieBreakers>
 </document>

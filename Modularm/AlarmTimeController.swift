@@ -27,5 +27,21 @@ class AlarmTimeController: UIViewController
       self.colonLabel.textColor = UIColor.whiteColor()
       self.alarmWillGoOffInLabel.textColor = UIColor.whiteColor()
       self.alarmTimeLabel.textColor = UIColor.whiteColor()
+      
+      let hourTapRecognizer = UITapGestureRecognizer(target: self, action: "hourLabelTapped")
+      let minuteTapRecognizer = UITapGestureRecognizer(target: self, action: "minuteLabelTapped")
+      
+      self.hourLabel.addGestureRecognizer(hourTapRecognizer)
+      self.minuteLabel.addGestureRecognizer(minuteTapRecognizer)
+   }
+   
+   func hourLabelTapped()
+   {
+      println("hour label tapped!")
+   }
+   
+   func minuteLabelTapped()
+   {
+      println("minute label tapped!")
    }
 }
