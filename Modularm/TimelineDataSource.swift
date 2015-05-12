@@ -13,6 +13,8 @@ class TimelineDataSource: NSObject
 {
    // MARK: - Instance Variables
    @IBOutlet weak var collectionView: UICollectionView!
+   @IBOutlet weak var timelineController: TimelineController!
+   
    private let coreDataStack = CoreDataStack.defaultStack
 
    lazy var fetchedResultsController: NSFetchedResultsController =
@@ -20,7 +22,7 @@ class TimelineDataSource: NSObject
       let coreDataStack = CoreDataStack.defaultStack
 
       let fetchRequest = NSFetchRequest(entityName: "Alarm")
-      fetchRequest.sortDescriptors = [NSSortDescriptor(key: "fireDate", ascending: false)];
+      fetchRequest.sortDescriptors = [NSSortDescriptor(key: "fireDateValue", ascending: true)];
 
       let controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: coreDataStack.managedObjectContext!, sectionNameKeyPath: nil, cacheName: nil)
 
@@ -51,6 +53,15 @@ class TimelineDataSource: NSObject
    }
 }
 
+extension TimelineDataSource: UICollectionViewDelegate
+{
+   func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath)
+   {
+      let alarmEntry: Alarm = self.fetchedResultsController.objectAtIndexPath(indexPath) as! Alarm
+      self.timelineController.openSettingsForAlarm(alarmEntry)
+   }
+}
+
 // MARK: - UICollectionView Data Source
 extension TimelineDataSource: UICollectionViewDataSource
 {
@@ -68,6 +79,13 @@ extension TimelineDataSource: UICollectionViewDataSource
       let cell: UICollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! UICollectionViewCell
 
       let alarmEntry: Alarm = self.fetchedResultsController.objectAtIndexPath(indexPath) as! Alarm
+      
+      
+      let dateFormatter = NSDateFormatter()
+      dateFormatter.dateFormat = "YYYY MMM d, hh:mm aa"
+      
+      let prettyAlarmDate = dateFormatter.stringFromDate(alarmEntry.fireDate)
+      println("Alarm date is set for: \(prettyAlarmDate)")
 
       return cell
    }

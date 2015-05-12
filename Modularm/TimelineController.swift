@@ -14,7 +14,14 @@ class TimelineController: UIViewController
    @IBOutlet weak var centerNavigationItem: UINavigationItem!
    @IBOutlet weak var timelineDataSource: TimelineDataSource!
    
-   var alarmConfigurationController: AlarmConfigurationController?
+   private var alarmConfigurationController: AlarmConfigurationController
+   
+   required init(coder aDecoder: NSCoder)
+   {
+      let sb = UIStoryboard(name: "Main", bundle: nil)
+      self.alarmConfigurationController = sb.instantiateViewControllerWithIdentifier("AlarmConfigurationController") as! AlarmConfigurationController
+      super.init(coder: aDecoder)
+   }
 
    // MARK: - Lifecycle
    override func viewDidLoad()
@@ -37,9 +44,15 @@ class TimelineController: UIViewController
    {
       if segue.identifier == "addAlarmButtonPressed"
       {
-         self.alarmConfigurationController = segue.destinationViewController as? AlarmConfigurationController
-         self.alarmConfigurationController?.createNewAlarm()
+         self.alarmConfigurationController.createNewAlarm()
       }
+   }
+   
+   // MARK: - Public
+   func openSettingsForAlarm(alarm: Alarm)
+   {
+      self.alarmConfigurationController.configureWithAlarm(alarm)
+      self.navigationController?.pushViewController(self.alarmConfigurationController, animated: true)
    }
 
    // MARK: - Private
