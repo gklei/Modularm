@@ -12,7 +12,7 @@ import CoreData
 @objc(Alarm)
 class Alarm: NSManagedObject
 {
-   @NSManaged var fireDate: NSTimeInterval
+   @NSManaged var fireDateValue: NSTimeInterval
    @NSManaged var completedSetup: Bool
    @NSManaged var snooze: Snooze?
    @NSManaged var countdown: Countdown?
@@ -24,13 +24,23 @@ class Alarm: NSManagedObject
    
    var isValid: Bool {
       get {
-         return self.fireDate != 0
+         return self.fireDateValue != 0
+      }
+   }
+   
+   var fireDate: NSDate {
+      get {
+         return NSDate(timeIntervalSince1970: self.fireDateValue)
+      }
+      set {
+         self.fireDateValue = newValue.timeIntervalSince1970
       }
    }
    
    override func awakeFromInsert()
    {
       self.completedSetup = false
+      self.sound = CoreDataStack.newModelWithOption(.Sound) as? Sound
    }
    
    func deleteOption(option: AlarmOption)
