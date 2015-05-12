@@ -45,7 +45,13 @@ class TimeController: UIViewController
    
    @IBAction func setTimeButtonPressed()
    {
-      if self.settingTime == false
+      self.updateUIForSettingTime(self.settingTime)
+      self.settingTime = !self.settingTime
+   }
+   
+   private func updateUIForSettingTime(setting: Bool)
+   {
+      if setting == false
       {
          self.updateSetTimeButtonTitle("end setting time")
          self.timePicker.userInteractionEnabled = true
@@ -57,26 +63,11 @@ class TimeController: UIViewController
          self.timePicker.userInteractionEnabled = false
          self.timeControllerDelegate?.settingTimeEnded()
          
-         self.logTimePickerAndCurrentTime()
+         print("picker --- ")
+         NSCalendar.logHourAndMinuteWithDate(self.timePicker.date)
+         
+         print("current --- ")
+         NSCalendar.logHourAndMinuteWithDate(NSDate())
       }
-      self.settingTime = !self.settingTime
-   }
-   
-   private func startSettingTime()
-   {
-   }
-   
-   private func logTimePickerAndCurrentTime()
-   {
-      let comp = NSCalendar.currentCalendar().components((.CalendarUnitHour | .CalendarUnitMinute), fromDate: self.timePicker.date)
-      let pickerHour = comp.hour
-      let pickerMinute = comp.minute
-      
-      let currentComp = NSCalendar.currentCalendar().components((.CalendarUnitHour | .CalendarUnitMinute), fromDate: NSDate())
-      let currentHour = currentComp.hour
-      let currentMinute = currentComp.minute
-      
-      println("current hour: \(currentHour) minute: \(currentMinute)")
-      println("time picker hour: \(pickerHour), minute: \(pickerMinute)")
    }
 }
