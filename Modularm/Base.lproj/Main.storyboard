@@ -7,7 +7,7 @@
         <!--Modularm-->
         <scene sceneID="YTV-A8-LvX">
             <objects>
-                <viewController title="Modularm" automaticallyAdjustsScrollViewInsets="NO" id="5Wx-Mm-Iig" customClass="TimelineController" customModule="Modularm" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TimelineController" title="Modularm" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5Wx-Mm-Iig" customClass="TimelineController" customModule="Modularm" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jXY-MO-y6G"/>
                         <viewControllerLayoutGuide type="bottom" id="ztI-NL-fWq"/>
@@ -38,6 +38,7 @@
                                 </cells>
                                 <connections>
                                     <outlet property="dataSource" destination="893-Zi-iay" id="r1h-q3-VlZ"/>
+                                    <outlet property="delegate" destination="893-Zi-iay" id="AhD-f2-YeB"/>
                                 </connections>
                             </collectionView>
                         </subviews>
@@ -68,6 +69,7 @@
                 <customObject id="893-Zi-iay" customClass="TimelineDataSource" customModule="Modularm" customModuleProvider="target">
                     <connections>
                         <outlet property="collectionView" destination="Wpd-SP-iM8" id="YMJ-Ol-etw"/>
+                        <outlet property="timelineController" destination="5Wx-Mm-Iig" id="dLr-g3-snH"/>
                     </connections>
                 </customObject>
             </objects>
@@ -76,7 +78,7 @@
         <!--Alarm Configuration Controller-->
         <scene sceneID="pnA-SI-Rvc">
             <objects>
-                <viewController id="yqY-cf-tnN" customClass="AlarmConfigurationController" customModule="Modularm" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AlarmConfigurationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="yqY-cf-tnN" customClass="AlarmConfigurationController" customModule="Modularm" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="wGw-x9-ycG"/>
                         <viewControllerLayoutGuide type="bottom" id="fau-nb-Kkl"/>
