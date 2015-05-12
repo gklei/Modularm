@@ -81,6 +81,7 @@ class AlarmOptionsController: UIViewController
    {
       if let alarmModel = alarm
       {
+         self.snoozeButton.activated = alarmModel.snooze != nil
          self.countdownButton.activated = alarmModel.countdown != nil
          self.weatherButton.activated = alarmModel.weather != nil
          self.soundButton.activated = alarmModel.sound != nil
