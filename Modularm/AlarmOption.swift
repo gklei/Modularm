@@ -36,6 +36,10 @@ enum AlarmOption
       }
    }
    
+   static var validOptions: [AlarmOption] {
+      return [.Snooze, .Sound, .Music, .Message, .Weather, .Date, .Repeat, .Countdown]
+   }
+   
    var plusIcon: UIImage {
       var image: UIImage = UIImage()
       var imageName = ""
