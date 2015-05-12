@@ -363,6 +363,9 @@
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="resetAlarm" destination="LXP-8S-707" eventType="touchUpInside" id="xIB-oJ-F62"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gY3-gf-7e8">
                                 <rect key="frame" x="16" y="243" width="77" height="34"/>
@@ -428,7 +431,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="979-ud-6oH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1099.5" y="486"/>
+            <point key="canvasLocation" x="1106.5" y="451.5"/>
         </scene>
         <!--Alarm Option Settings Controller-->
         <scene sceneID="T3j-SF-W8o">
@@ -747,7 +750,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="0.80000000000000004" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="D4w-Ha-M3j" firstAttribute="leading" secondItem="JRt-ab-gIy" secondAttribute="leading" id="5WY-zK-v3e"/>
                             <constraint firstAttribute="centerX" secondItem="AcB-wu-GGb" secondAttribute="centerX" constant="0.5" id="R9j-t8-pff"/>
