@@ -27,7 +27,7 @@
 		5B6C126E1AFFB152009617A8 /* OptionSettingsControllerBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6C126D1AFFB152009617A8 /* OptionSettingsControllerBase.swift */; };
 		5B6C12701AFFB875009617A8 /* AlarmOptionDelegateDataSourceBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6C126F1AFFB875009617A8 /* AlarmOptionDelegateDataSourceBuilder.swift */; };
 		5B6C136A1B0186C7009617A8 /* TimeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6C13691B0186C7009617A8 /* TimeController.swift */; };
-		5B6C136C1B019D02009617A8 /* UIDatePicker+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6C136B1B019D02009617A8 /* UIDatePicker+Additions.swift */; };
+		5B6C136C1B019D02009617A8 /* NSCalendar+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6C136B1B019D02009617A8 /* NSCalendar+Additions.swift */; };
 		5B74FC8C1ADD74A100902484 /* AlarmOptionSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B74FC8B1ADD74A100902484 /* AlarmOptionSettingsController.swift */; };
 		5BCDA0201AEDCF1800556117 /* AlarmTimeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCDA01F1AEDCF1800556117 /* AlarmTimeController.swift */; };
 		8E3B22611AD9E85F001693E2 /* TimelineDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3B22601AD9E85F001693E2 /* TimelineDataSource.swift */; };
@@ -80,7 +80,7 @@
 		5B6C126D1AFFB152009617A8 /* OptionSettingsControllerBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OptionSettingsControllerBase.swift; path = Modularm/OptionSettingsControllerBase.swift; sourceTree = "<group>"; };
 		5B6C126F1AFFB875009617A8 /* AlarmOptionDelegateDataSourceBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlarmOptionDelegateDataSourceBuilder.swift; path = Modularm/AlarmOptionDelegateDataSourceBuilder.swift; sourceTree = "<group>"; };
 		5B6C13691B0186C7009617A8 /* TimeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeController.swift; sourceTree = "<group>"; };
-		5B6C136B1B019D02009617A8 /* UIDatePicker+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIDatePicker+Additions.swift"; path = "Modularm/UIDatePicker+Additions.swift"; sourceTree = "<group>"; };
+		5B6C136B1B019D02009617A8 /* NSCalendar+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSCalendar+Additions.swift"; path = "Modularm/NSCalendar+Additions.swift"; sourceTree = "<group>"; };
 		5B74FC8B1ADD74A100902484 /* AlarmOptionSettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlarmOptionSettingsController.swift; path = Modularm/AlarmOptionSettingsController.swift; sourceTree = "<group>"; };
 		5BCDA01F1AEDCF1800556117 /* AlarmTimeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmTimeController.swift; sourceTree = "<group>"; };
 		8E3B22601AD9E85F001693E2 /* TimelineDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimelineDataSource.swift; path = Modularm/TimelineDataSource.swift; sourceTree = "<group>"; };
@@ -176,7 +176,7 @@
 				8E8228E11ADB679A00F9A26E /* UINavigationBar+Additions.swift */,
 				8E3BDC351AE4176E00E1FCDC /* UIImage+Additions.swift */,
 				5B2218301AE60A2400D56D31 /* UIButton+Additions.swift */,
-				5B6C136B1B019D02009617A8 /* UIDatePicker+Additions.swift */,
+				5B6C136B1B019D02009617A8 /* NSCalendar+Additions.swift */,
 			);
 			name = "Class Extensions";
 			sourceTree = "<group>";
@@ -392,7 +392,7 @@
 				8E3BDC3B1AE430F400E1FCDC /* SnoozeOptionDelegateDataSource.swift in Sources */,
 				5B6C12671AFF2841009617A8 /* Sound.swift in Sources */,
 				8EFACDE11AD83A1E00279956 /* CoreDataStack.swift in Sources */,
-				5B6C136C1B019D02009617A8 /* UIDatePicker+Additions.swift in Sources */,
+				5B6C136C1B019D02009617A8 /* NSCalendar+Additions.swift in Sources */,
 				5B22182F1AE60A0700D56D31 /* AlarmOptionDelegateDataSource.swift in Sources */,
 				5B1997AC1AE5B42700D1522C /* SoundOptionDelegateDataSource.swift in Sources */,
 				8EFACDBB1AD837EE00279956 /* Modularm.xcdatamodeld in Sources */,
