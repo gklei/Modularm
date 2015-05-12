@@ -78,6 +78,11 @@ class AlarmConfigurationController: UIViewController
       self.alarm = CoreDataStack.newAlarmModel()
    }
    
+   func configureWithAlarm(alarm: Alarm)
+   {
+      self.alarm = alarm
+   }
+   
    // MARK: - IBActions
    @IBAction func setButtonPressed()
    {
