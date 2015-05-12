@@ -62,12 +62,16 @@ class TimeController: UIViewController
          self.updateSetTimeButtonTitle("start setting time")
          self.timePicker.userInteractionEnabled = false
          self.timeControllerDelegate?.settingTimeEnded()
-         
-         print("picker --- ")
-         NSCalendar.logHourAndMinuteWithDate(self.timePicker.date)
-         
-         print("current --- ")
-         NSCalendar.logHourAndMinuteWithDate(NSDate())
+         self.logDateInformation()
       }
+   }
+   
+   private func logDateInformation()
+   {
+      let dateFormatter = NSDateFormatter()
+      dateFormatter.dateFormat = "MMM d, hh:mm aa"
+      
+      let prettyAlarmDate = dateFormatter.stringFromDate(self.timePicker.alarmDate)
+      println("Alarm date is set for: \(prettyAlarmDate)")
    }
 }
