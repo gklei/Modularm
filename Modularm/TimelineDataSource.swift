@@ -76,17 +76,16 @@ extension TimelineDataSource: UICollectionViewDataSource
 
    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell
    {
-      let cell: UICollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier("timelineCell", forIndexPath: indexPath) as! TimelineCollectionViewCell
+      let cell: TimelineCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier("timelineCell", forIndexPath: indexPath) as! TimelineCollectionViewCell
 
       let alarmEntry: Alarm = self.fetchedResultsController.objectAtIndexPath(indexPath) as! Alarm
       
-      
       let dateFormatter = NSDateFormatter()
-      dateFormatter.dateFormat = "YYYY MMM d, hh:mm aa"
+      dateFormatter.dateFormat = "MMM d, hh:mm aa"
       
       let prettyAlarmDate = dateFormatter.stringFromDate(alarmEntry.fireDate)
-      println("Alarm date is set for: \(prettyAlarmDate)")
-
+      cell.label.text = prettyAlarmDate
+      
       return cell
    }
 }

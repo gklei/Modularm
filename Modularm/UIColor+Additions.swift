@@ -11,7 +11,7 @@ import UIKit
 extension UIColor
 {
    class func highlightedOptionButtonColor() -> UIColor
-   {
+   {  
       return UIColor(red: 250/255.0, green: 250/255.0, blue: 250/255.0, alpha: 1)
    }
 

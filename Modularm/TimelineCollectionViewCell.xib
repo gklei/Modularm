@@ -12,9 +12,9 @@
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="404" height="50"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Xt-OY-ngu">
-                        <rect key="frame" x="181" y="14" width="42" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Xt-OY-ngu">
+                        <rect key="frame" x="182" y="14" width="40" height="21"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -22,7 +22,14 @@
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="centerY" secondItem="0Xt-OY-ngu" secondAttribute="centerY" constant="0.5" id="TB3-bf-oUS"/>
+                <constraint firstAttribute="centerX" secondItem="0Xt-OY-ngu" secondAttribute="centerX" id="i5y-vj-1eF"/>
+            </constraints>
             <size key="customSize" width="404" height="50"/>
+            <connections>
+                <outlet property="label" destination="0Xt-OY-ngu" id="VWr-54-Q7z"/>
+            </connections>
             <point key="canvasLocation" x="238" y="276"/>
         </collectionViewCell>
     </objects>

@@ -9,10 +9,6 @@
 import UIKit
 
 class TimelineCollectionViewCell: UICollectionViewCell {
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
+   
+   @IBOutlet weak var label: UILabel!
 }
