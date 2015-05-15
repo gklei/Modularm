@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="64" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Wpd-SP-iM8">
+                            <collectionView clipsSubviews="YES" contentMode="scaleToFill" delaysContentTouches="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Wpd-SP-iM8">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="2" minimumInteritemSpacing="2" id="wPU-pX-0BL">
                                     <size key="itemSize" width="375" height="50"/>
@@ -31,14 +31,29 @@
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vm2-hN-jTs">
+                                                    <rect key="frame" x="167" y="14" width="40" height="21"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="centerX" secondItem="Vm2-hN-jTs" secondAttribute="centerX" id="xY7-Me-xep"/>
+                                            <constraint firstAttribute="centerY" secondItem="Vm2-hN-jTs" secondAttribute="centerY" id="ys5-S0-Nbh"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="label" destination="Vm2-hN-jTs" id="8dy-mT-Q9w"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
                                     <outlet property="dataSource" destination="893-Zi-iay" id="r1h-q3-VlZ"/>
-                                    <outlet property="delegate" destination="893-Zi-iay" id="AhD-f2-YeB"/>
+                                    <outlet property="delegate" destination="cjD-9w-3Kw" id="oRB-lu-RIe"/>
                                 </connections>
                             </collectionView>
                         </subviews>
@@ -71,6 +86,12 @@
                     <connections>
                         <outlet property="collectionView" destination="Wpd-SP-iM8" id="YMJ-Ol-etw"/>
                         <outlet property="timelineController" destination="5Wx-Mm-Iig" id="dLr-g3-snH"/>
+                    </connections>
+                </customObject>
+                <customObject id="cjD-9w-3Kw" userLabel="Timeline Collection View Delegate" customClass="TimelineCollectionViewDelegate" customModule="Modularm" customModuleProvider="target">
+                    <connections>
+                        <outlet property="collectionView" destination="Wpd-SP-iM8" id="Tii-e8-CXl"/>
+                        <outlet property="timelineController" destination="5Wx-Mm-Iig" id="NU1-dK-QaC"/>
                     </connections>
                 </customObject>
             </objects>
@@ -133,7 +154,6 @@
                             <segments>
                                 <segment title="" image="icn-countdown"/>
                                 <segment title="" image="icn-alarm-sound"/>
-                                <segment title="" image="icn-sleep"/>
                             </segments>
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         </segmentedControl>
@@ -792,7 +812,6 @@
         <image name="icn-plus-snooze" width="24" height="24"/>
         <image name="icn-plus-weather" width="24" height="24"/>
         <image name="icn-repeat" width="24" height="24"/>
-        <image name="icn-sleep" width="24" height="24"/>
         <image name="icn-snooze" width="24" height="24"/>
         <image name="icn-weather" width="24" height="24"/>
     </resources>

@@ -14,15 +14,18 @@ class TimelineController: UIViewController
    @IBOutlet weak var centerNavigationItem: UINavigationItem!
    @IBOutlet weak var timelineDataSource: TimelineDataSource!
    @IBOutlet weak var collectionView: UICollectionView!
+   
+   var alarms: [Alarm]? {
+      get {
+         return self.timelineDataSource.alarms()
+      }
+   }
 
    // MARK: - Lifecycle
    override func viewDidLoad()
    {
       super.viewDidLoad()
       self.navigationController?.navigationBar.hideBottomHairline()
-      
-      let nib = UINib(nibName: "TimelineCollectionViewCell", bundle: nil)
-      self.collectionView.registerNib(nib, forCellWithReuseIdentifier: "timelineCell")
    }
 
    override func viewWillAppear(animated: Bool)

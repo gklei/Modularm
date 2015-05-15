@@ -51,14 +51,10 @@ class TimelineDataSource: NSObject
    {
       self.collectionView.reloadData()
    }
-}
-
-extension TimelineDataSource: UICollectionViewDelegate
-{
-   func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath)
+   
+   func alarms() -> [Alarm]?
    {
-      let alarmEntry: Alarm = self.fetchedResultsController.objectAtIndexPath(indexPath) as! Alarm
-      self.timelineController.openSettingsForAlarm(alarmEntry)
+      return self.fetchedResultsController.fetchedObjects as? [Alarm]
    }
 }
 
@@ -85,6 +81,8 @@ extension TimelineDataSource: UICollectionViewDataSource
       
       let prettyAlarmDate = dateFormatter.stringFromDate(alarmEntry.fireDate)
       cell.label.text = prettyAlarmDate
+      
+      println("cell index: \(indexPath.row), \(cell)")
       
       return cell
    }

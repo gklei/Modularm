@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TimelineCollectionViewCell: UICollectionViewCell {
-   
+class TimelineCollectionViewCell: UICollectionViewCell
+{
    @IBOutlet weak var label: UILabel!
 }
