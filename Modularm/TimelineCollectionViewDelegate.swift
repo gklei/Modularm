@@ -35,14 +35,12 @@ extension TimelineCollectionViewDelegate: UICollectionViewDelegate
    {
       let cell = collectionView.cellForItemAtIndexPath(indexPath) as! TimelineCollectionViewCell
       cell.backgroundColor = UIColor.lipstickRedColor()
-      cell.label.textColor = UIColor.whiteColor()
    }
    
    func collectionView(collectionView: UICollectionView, didUnhighlightItemAtIndexPath indexPath: NSIndexPath)
    {
       let cell = collectionView.cellForItemAtIndexPath(indexPath) as! TimelineCollectionViewCell
-      cell.backgroundColor = UIColor.whiteColor()
-      cell.label.textColor = UIColor.blackColor()
+      cell.backgroundColor = UIColor(white: 0.09, alpha: 1)
    }
 }
 
