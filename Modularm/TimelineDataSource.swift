@@ -76,10 +76,28 @@ extension TimelineDataSource: UICollectionViewDataSource
       let alarmEntry: Alarm = self.fetchedResultsController.objectAtIndexPath(indexPath) as! Alarm
       
       let dateFormatter = NSDateFormatter()
-      dateFormatter.dateFormat = "MMM d, hh:mm aa"
+      dateFormatter.dateFormat = "h:mm"
       
-      let prettyAlarmDate = dateFormatter.stringFromDate(alarmEntry.fireDate)
-      cell.label.text = prettyAlarmDate
+      var prettyAlarmDate = dateFormatter.stringFromDate(alarmEntry.fireDate)
+      
+      dateFormatter.dateFormat = "aa"
+      var amOrPm = dateFormatter.stringFromDate(alarmEntry.fireDate).lowercaseString
+      prettyAlarmDate += " \(amOrPm)"
+      
+      dateFormatter.dateFormat = "EEEE"
+      
+      var alarmMessage = ""
+      if alarmEntry.message != nil
+      {
+         alarmMessage = "  \(alarmEntry.message!.text)"
+      }
+      else
+      {
+         alarmMessage = "  \(dateFormatter.stringFromDate(alarmEntry.fireDate))"
+      }
+      
+      let attributedText = NSAttributedString(boldText: prettyAlarmDate, text: alarmMessage, color: UIColor.whiteColor())
+      cell.label.attributedText = attributedText
       
       return cell
    }
