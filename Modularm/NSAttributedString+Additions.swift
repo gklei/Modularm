@@ -33,4 +33,28 @@ extension NSAttributedString
       mutableAttributedString.appendAttributedString(boldAttributedString)
       self.init(attributedString: mutableAttributedString)
    }
+   
+   convenience init(boldText: String, text: String)
+   {
+      let titleAttrs = [NSFontAttributeName : UIFont(name: "HelveticaNeue-Light", size: 19)!]
+      let boldTitleAttrs = [NSFontAttributeName : UIFont(name: "HelveticaNeue-Medium", size: 19)!]
+      
+      let attributedString = NSAttributedString(string: text, attributes: titleAttrs)
+      let mutableBoldAttributedString = NSMutableAttributedString(string: " \(boldText)", attributes: boldTitleAttrs)
+      
+      mutableBoldAttributedString.appendAttributedString(attributedString)
+      self.init(attributedString: mutableBoldAttributedString)
+   }
+   
+   convenience init(boldText: String, text: String, color: UIColor)
+   {
+      let titleAttrs = [NSFontAttributeName : UIFont(name: "HelveticaNeue-Light", size: 19)!, NSForegroundColorAttributeName : color]
+      let boldTitleAttrs = [NSFontAttributeName : UIFont(name: "HelveticaNeue-Medium", size: 19)!, NSForegroundColorAttributeName : color]
+      
+      let attributedString = NSAttributedString(string: text, attributes: titleAttrs)
+      let mutableBoldAttributedString = NSMutableAttributedString(string: " \(boldText)", attributes: boldTitleAttrs)
+      
+      mutableBoldAttributedString.appendAttributedString(attributedString)
+      self.init(attributedString: mutableBoldAttributedString)
+   }
 }
