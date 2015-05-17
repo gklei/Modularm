@@ -34,6 +34,10 @@ extension NSDate
       return NSCalendar.currentCalendar().components((.CalendarUnitMinute), fromDate: self).minute
    }
    
+   var day: Int {
+      return NSCalendar.currentCalendar().components((.CalendarUnitDay), fromDate: self).day
+   }
+   
    func logHourAndMinute()
    {
       println("hour: \(self.hour) minute: \(self.minute)")
@@ -53,9 +57,14 @@ extension UIDatePicker
          let currentMinute = currentDate.minute
          
          var secondsToAdd = date.timeIntervalSinceNow
-         if timePickerHour < currentHour || (timePickerHour <= currentHour && timePickerMinute <= currentMinute)
+         if currentDate.compare(date) != .OrderedAscending
          {
             secondsToAdd += (24 * 60 * 60)
+         }
+         
+         if date.hour >= currentDate.hour && date.minute > currentDate.minute && date.day > currentDate.day
+         {
+            secondsToAdd -= (24 * 60 * 60)
          }
          
          return NSDate(timeIntervalSinceNow: secondsToAdd)
