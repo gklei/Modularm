@@ -26,11 +26,17 @@ class TimelineController: UIViewController
    {
       super.viewDidLoad()
       self.navigationController?.navigationBar.hideBottomHairline()
+
+      self.collectionView.registerNib(UINib(nibName: "TimelineHeaderView", bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "header")
    }
 
    override func viewWillAppear(animated: Bool)
    {
       self.timelineDataSource.removeIncompleteAlarms()
+
+      let headerSize = self.alarms?.count > 0 ? CGSizeMake(CGRectGetWidth(self.view.bounds), 150) : CGSizeZero
+      let flowLayout = self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+      flowLayout.headerReferenceSize = headerSize
    }
 
    override func viewWillDisappear(animated: Bool)

@@ -65,7 +65,6 @@ extension TimelineDataSource: UICollectionViewDataSource
    {
       let objects = self.fetchedResultsController.fetchedObjects
       let count = objects?.count
-      println("\(count!) alarms")
 
       return count!
    }
@@ -82,9 +81,17 @@ extension TimelineDataSource: UICollectionViewDataSource
       let prettyAlarmDate = dateFormatter.stringFromDate(alarmEntry.fireDate)
       cell.label.text = prettyAlarmDate
       
-      println("cell index: \(indexPath.row), \(cell)")
-      
       return cell
+   }
+
+   func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView
+   {
+      if (equal(kind, UICollectionElementKindSectionHeader))
+      {
+         let header = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "header", forIndexPath: indexPath) as! TimelineHeaderView
+         return header
+      }
+      return UICollectionReusableView()
    }
 }
 

@@ -45,3 +45,15 @@ extension TimelineCollectionViewDelegate: UICollectionViewDelegate
       cell.label.textColor = UIColor.blackColor()
    }
 }
+
+extension TimelineCollectionViewDelegate: UICollectionViewDelegateFlowLayout
+{
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize
+    {
+      if self.timelineController.alarms?.count > 0
+      {
+         return CGSizeMake(CGRectGetWidth(self.collectionView.bounds), 150)
+      }
+      return CGSizeZero
+   }
+}
