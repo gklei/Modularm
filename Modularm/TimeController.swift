@@ -72,7 +72,7 @@ class TimeController: UIViewController
          self.timePicker.userInteractionEnabled = false
          self.timeControllerDelegate?.settingTimeEnded()
          
-         self.alarm?.fireDate = self.timePicker.alarmDate
+         // TEMPORARY
          self.logDateInformation()
       }
    }
