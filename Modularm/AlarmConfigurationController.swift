@@ -87,6 +87,11 @@ class AlarmConfigurationController: UIViewController
    @IBAction func setButtonPressed()
    {
       self.alarm?.completedSetup = true
+      if let controller = self.timeController
+      {
+         self.alarm?.fireDate = controller.timePicker.alarmDate
+      }
+      
       CoreDataStack.save()
       self.navigationController?.popViewControllerAnimated(true)
    }
@@ -97,6 +102,7 @@ extension AlarmConfigurationController: TimeControllerDelegate
 {
    func settingTimeBegan()
    {
+      self.setBarButtonItem.enabled = false
       UIView.animateWithDuration(0.25, animations: { () -> Void in
          self.alarmOptionsController?.view.alpha = 0
       })
@@ -104,6 +110,7 @@ extension AlarmConfigurationController: TimeControllerDelegate
    
    func settingTimeEnded()
    {
+      self.setBarButtonItem.enabled = true
       UIView.animateWithDuration(0.25, animations: { () -> Void in
          self.alarmOptionsController?.view.alpha = 1
       })
