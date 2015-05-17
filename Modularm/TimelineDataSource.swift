@@ -76,7 +76,7 @@ extension TimelineDataSource: UICollectionViewDataSource
       let alarmEntry: Alarm = self.fetchedResultsController.objectAtIndexPath(indexPath) as! Alarm
       
       let dateFormatter = NSDateFormatter()
-      dateFormatter.dateFormat = "h:mm"
+      dateFormatter.dateFormat = "hh:mm"
       
       var prettyAlarmDate = dateFormatter.stringFromDate(alarmEntry.fireDate)
       

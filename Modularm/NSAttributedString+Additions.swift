@@ -48,7 +48,7 @@ extension NSAttributedString
    
    convenience init(boldText: String, text: String, color: UIColor)
    {
-      let titleAttrs = [NSFontAttributeName : UIFont(name: "HelveticaNeue-Light", size: 19)!, NSForegroundColorAttributeName : color]
+      let titleAttrs = [NSFontAttributeName : UIFont(name: "HelveticaNeue-Thin", size: 19)!, NSForegroundColorAttributeName : color]
       let boldTitleAttrs = [NSFontAttributeName : UIFont(name: "HelveticaNeue-Medium", size: 19)!, NSForegroundColorAttributeName : color]
       
       let attributedString = NSAttributedString(string: text, attributes: titleAttrs)
