@@ -39,6 +39,8 @@
 		8E3BDC3B1AE430F400E1FCDC /* SnoozeOptionDelegateDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3BDC3A1AE430F400E1FCDC /* SnoozeOptionDelegateDataSource.swift */; };
 		8E4511F01ADCF00B00A3E8EC /* UIColor+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4511EF1ADCF00B00A3E8EC /* UIColor+Additions.swift */; };
 		8E5BD3271ADB930400C42FAA /* AlarmOptionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5BD3261ADB930400C42FAA /* AlarmOptionButton.swift */; };
+		8E6094F11B08584A007F8D24 /* TimelineHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6094F01B08584A007F8D24 /* TimelineHeaderView.swift */; };
+		8E6094F31B08585E007F8D24 /* TimelineHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E6094F21B08585E007F8D24 /* TimelineHeaderView.xib */; };
 		8E8228E21ADB679A00F9A26E /* UINavigationBar+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8228E11ADB679A00F9A26E /* UINavigationBar+Additions.swift */; };
 		8E8228E61ADB821C00F9A26E /* AlarmConfigurationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8228E51ADB821C00F9A26E /* AlarmConfigurationController.swift */; };
 		8E8228E81ADB8AA900F9A26E /* AlarmOptionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8228E71ADB8AA900F9A26E /* AlarmOptionsController.swift */; };
@@ -95,6 +97,8 @@
 		8E3BDC3A1AE430F400E1FCDC /* SnoozeOptionDelegateDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnoozeOptionDelegateDataSource.swift; path = Modularm/SnoozeOptionDelegateDataSource.swift; sourceTree = "<group>"; };
 		8E4511EF1ADCF00B00A3E8EC /* UIColor+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIColor+Additions.swift"; path = "Modularm/UIColor+Additions.swift"; sourceTree = "<group>"; };
 		8E5BD3261ADB930400C42FAA /* AlarmOptionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlarmOptionButton.swift; path = Modularm/AlarmOptionButton.swift; sourceTree = "<group>"; };
+		8E6094F01B08584A007F8D24 /* TimelineHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimelineHeaderView.swift; path = Modularm/TimelineHeaderView.swift; sourceTree = "<group>"; };
+		8E6094F21B08585E007F8D24 /* TimelineHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TimelineHeaderView.xib; path = Modularm/TimelineHeaderView.xib; sourceTree = "<group>"; };
 		8E8228E11ADB679A00F9A26E /* UINavigationBar+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UINavigationBar+Additions.swift"; path = "Modularm/UINavigationBar+Additions.swift"; sourceTree = "<group>"; };
 		8E8228E51ADB821C00F9A26E /* AlarmConfigurationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmConfigurationController.swift; sourceTree = "<group>"; };
 		8E8228E71ADB8AA900F9A26E /* AlarmOptionsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmOptionsController.swift; sourceTree = "<group>"; };
@@ -151,6 +155,8 @@
 				8EFACDBE1AD837EE00279956 /* Main.storyboard */,
 				8EFACDC31AD837EE00279956 /* LaunchScreen.xib */,
 				8E5BD3261ADB930400C42FAA /* AlarmOptionButton.swift */,
+				8E6094F01B08584A007F8D24 /* TimelineHeaderView.swift */,
+				8E6094F21B08585E007F8D24 /* TimelineHeaderView.xib */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -380,6 +386,7 @@
 			files = (
 				8EFACDC01AD837EE00279956 /* Main.storyboard in Resources */,
 				8EFACDC51AD837EE00279956 /* LaunchScreen.xib in Resources */,
+				8E6094F31B08585E007F8D24 /* TimelineHeaderView.xib in Resources */,
 				8EFACDC21AD837EE00279956 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -412,6 +419,7 @@
 				5B6C12631AFF2841009617A8 /* Date.swift in Sources */,
 				8EFACDB81AD837EE00279956 /* AppDelegate.swift in Sources */,
 				8E3B22611AD9E85F001693E2 /* TimelineDataSource.swift in Sources */,
+				8E6094F11B08584A007F8D24 /* TimelineHeaderView.swift in Sources */,
 				5B6C13D21B026951009617A8 /* UIStoryboard+Additions.swift in Sources */,
 				5B6C12701AFFB875009617A8 /* AlarmOptionDelegateDataSourceBuilder.swift in Sources */,
 				8E5BD3271ADB930400C42FAA /* AlarmOptionButton.swift in Sources */,
