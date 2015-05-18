@@ -21,9 +21,17 @@ extension TimelineCollectionViewDelegate: UICollectionViewDelegate
    {
       if indexPath.section == 0
       {
-         if let alarms = self.timelineController.alarms
+         if let alarms = self.timelineController.activeAlarms
          {
             let alarm = alarms[indexPath.row + 1]
+            self.timelineController.openSettingsForAlarm(alarm)
+         }
+      }
+      else
+      {
+         if let alarms = self.timelineController.nonActiveAlarms
+         {
+            let alarm = alarms[indexPath.row]
             self.timelineController.openSettingsForAlarm(alarm)
          }
       }

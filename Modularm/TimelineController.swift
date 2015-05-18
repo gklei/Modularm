@@ -26,6 +26,12 @@ class TimelineController: UIViewController
          return self.timelineDataSource.activeAlarms()
       }
    }
+   
+   var nonActiveAlarms: [Alarm]? {
+      get {
+         return self.timelineDataSource.nonActiveAlarms()
+      }
+   }
 
    // MARK: - Lifecycle
    override func viewDidLoad()

@@ -15,6 +15,7 @@ class TimelineCollectionViewCell: UICollectionViewCell
    @IBOutlet weak var label: UILabel!
    @IBOutlet weak var innerContentView: UIView!
    @IBOutlet weak var scrollView: TapScrollView!
+   @IBOutlet weak var activateButton: UIButton!
    weak var collectionView: UICollectionView?
    weak var alarm: Alarm?
    
@@ -118,6 +119,12 @@ class TimelineCollectionViewCell: UICollectionViewCell
       })
    }
    
+   @IBAction func activateButtonPressed()
+   {
+      self.alarm?.active = true
+      CoreDataStack.save()
+   }
+   
    private func setupButtonContainer()
    {
       self.buttonContainer.frame = CGRectMake(0, 0, CGRectGetWidth(self.deleteButton.frame) + CGRectGetWidth(self.toggleButton.frame), CGRectGetHeight(self.contentView.bounds))
@@ -156,10 +163,16 @@ class TimelineCollectionViewCell: UICollectionViewCell
    func configureWithAlarm(alarm: Alarm?)
    {
       self.alarm = alarm
-      
       if alarm?.active == false
       {
-         self.innerContentView.backgroundColor = UIColor.whiteColor()
+         self.scrollView.scrollEnabled = false
+         self.activateButton.hidden = false
+         self.innerContentView.backgroundColor = UIColor.normalOptionButtonColor()
+      }
+      else
+      {
+         self.scrollView.scrollEnabled = true
+         self.activateButton.hidden = true
       }
       
       self.setupLabelWithAlarm(alarm)
@@ -187,7 +200,7 @@ class TimelineCollectionViewCell: UICollectionViewCell
             alarmMessage = "  \(dateFormatter.stringFromDate(alarmEntry.fireDate))"
          }
          
-         let textColor = alarmEntry.active ? UIColor.whiteColor() : UIColor.blackColor()
+         let textColor = alarmEntry.active ? UIColor.whiteColor() : UIColor.grayColor()
          let attributedText = NSAttributedString(boldText: prettyAlarmDate, text: alarmMessage, color: textColor)
          self.label.attributedText = attributedText
       }
@@ -201,7 +214,7 @@ extension TimelineCollectionViewCell: UIScrollViewDelegate
       self.repositionButtons()
       
       // Don't allow scrolling right
-      if scrollView.contentOffset.x < 0
+      if scrollView.contentOffset.x < 0// || self.alarm?.active == false
       {
          scrollView.contentOffset = CGPointZero;
       }

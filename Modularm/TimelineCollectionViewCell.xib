@@ -19,17 +19,30 @@
                                 <rect key="frame" x="0.0" y="0.0" width="376" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mqh-KT-mlx">
-                                        <rect key="frame" x="20" y="14" width="42" height="21"/>
+                                        <rect key="frame" x="50" y="14" width="42" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qpu-qv-0wL">
+                                        <rect key="frame" x="299" y="9" width="57" height="33"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                        <color key="tintColor" red="0.74509803919999995" green="0.058823529409999999" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="activate">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="activateButtonPressed" destination="gTV-IL-0wX" eventType="touchUpInside" id="l59-uX-Xys"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.11764705882352941" green="0.11764705882352941" blue="0.11764705882352941" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="9Jj-NX-HUX"/>
+                                    <constraint firstAttribute="trailing" secondItem="qpu-qv-0wL" secondAttribute="trailing" constant="20" id="XjK-f1-e2s"/>
                                     <constraint firstAttribute="centerY" secondItem="mqh-KT-mlx" secondAttribute="centerY" id="Yc5-Sg-Nhl"/>
-                                    <constraint firstItem="mqh-KT-mlx" firstAttribute="leading" secondItem="BP4-9l-g4g" secondAttribute="leading" constant="20" id="b33-je-UtA"/>
+                                    <constraint firstItem="mqh-KT-mlx" firstAttribute="leading" secondItem="BP4-9l-g4g" secondAttribute="leading" constant="50" id="b33-je-UtA"/>
+                                    <constraint firstItem="qpu-qv-0wL" firstAttribute="centerY" secondItem="mqh-KT-mlx" secondAttribute="centerY" constant="0.5" id="xsb-Eg-3LK"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -57,6 +70,7 @@
             </constraints>
             <size key="customSize" width="376" height="50"/>
             <connections>
+                <outlet property="activateButton" destination="qpu-qv-0wL" id="aAN-Vz-bqJ"/>
                 <outlet property="innerContentView" destination="BP4-9l-g4g" id="reZ-Xb-kOh"/>
                 <outlet property="label" destination="mqh-KT-mlx" id="FWr-aF-zbb"/>
                 <outlet property="scrollView" destination="hKC-Mj-gq8" id="fhZ-4w-jXV"/>
