@@ -9,6 +9,8 @@
 import UIKit
 import CoreData
 
+let kTotalSectionsInTimelineCollectionView = 2
+
 class TimelineDataSource: NSObject
 {
    // MARK: - Instance Variables
@@ -168,7 +170,7 @@ extension TimelineDataSource: UICollectionViewDataSource
    
    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int
    {
-      return 2
+      return kTotalSectionsInTimelineCollectionView
    }
 }
 
