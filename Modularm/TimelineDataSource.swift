@@ -10,6 +10,8 @@ import UIKit
 import CoreData
 
 let kTotalSectionsInTimelineCollectionView = 2
+let kActiveAlarmSectionIndex = 0
+let kNonActiveAlarmSectionIndex = 1
 
 class TimelineDataSource: NSObject
 {
@@ -98,7 +100,7 @@ extension TimelineDataSource: UICollectionViewDataSource
    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
    {
       var count = 0
-      if section == 0
+      if section == kActiveAlarmSectionIndex
       {
          if let alarms = self.activeAlarms()
          {
@@ -123,7 +125,7 @@ extension TimelineDataSource: UICollectionViewDataSource
       var newIndexPath = indexPath
       
       var alarm: Alarm?
-      if indexPath.section == 0
+      if indexPath.section == kActiveAlarmSectionIndex
       {
          if let alarms = self.activeAlarms()
          {
@@ -165,7 +167,11 @@ extension TimelineDataSource: UICollectionViewDataSource
          }
          return header
       }
-      return UICollectionReusableView()
+      else
+      {
+         let footer = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "footer", forIndexPath: indexPath) as! UICollectionReusableView
+         return footer
+      }
    }
    
    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int

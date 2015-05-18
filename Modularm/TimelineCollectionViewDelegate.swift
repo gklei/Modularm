@@ -48,4 +48,13 @@ extension TimelineCollectionViewDelegate: UICollectionViewDelegateFlowLayout
       }
       return CGSizeZero
    }
+   
+   func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize
+   {
+      if section != 0
+      {
+         return CGSizeMake(CGRectGetWidth(self.collectionView.bounds), 150)
+      }
+      return CGSizeZero
+   }
 }
