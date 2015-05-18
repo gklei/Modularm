@@ -19,10 +19,13 @@ extension TimelineCollectionViewDelegate: UICollectionViewDelegate
 {
    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath)
    {
-      if let alarms = self.timelineController.alarms
+      if indexPath.section == 0
       {
-         let alarm = alarms[indexPath.row + 1]
-         self.timelineController.openSettingsForAlarm(alarm)
+         if let alarms = self.timelineController.alarms
+         {
+            let alarm = alarms[indexPath.row + 1]
+            self.timelineController.openSettingsForAlarm(alarm)
+         }
       }
    }
 }
@@ -31,7 +34,7 @@ extension TimelineCollectionViewDelegate: UICollectionViewDelegateFlowLayout
 {
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize
     {
-      if self.timelineController.alarms?.count > 0
+      if self.timelineController.activeAlarms?.count > 0 && section == 0
       {
          return CGSizeMake(CGRectGetWidth(self.collectionView.bounds), 150)
       }

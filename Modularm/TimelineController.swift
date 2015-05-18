@@ -20,6 +20,12 @@ class TimelineController: UIViewController
          return self.timelineDataSource.alarms()
       }
    }
+   
+   var activeAlarms: [Alarm]? {
+      get {
+         return self.timelineDataSource.activeAlarms()
+      }
+   }
 
    // MARK: - Lifecycle
    override func viewDidLoad()
@@ -65,7 +71,10 @@ class TimelineController: UIViewController
    
    func reloadData()
    {
+//      self.collectionView.performBatchUpdates({ () -> Void in
       self.collectionView.reloadData()
+//         }, completion: { (finished: Bool) -> Void in
+//      })
    }
 
    // MARK: - Private

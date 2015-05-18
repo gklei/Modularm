@@ -23,12 +23,18 @@ class TimelineDataSource: NSObject
       let fetchRequest = NSFetchRequest(entityName: "Alarm")
       fetchRequest.sortDescriptors = [NSSortDescriptor(key: "fireDateValue", ascending: true)];
 
-      let controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: coreDataStack.managedObjectContext!, sectionNameKeyPath: nil, cacheName: nil)
+      let controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: coreDataStack.managedObjectContext!, sectionNameKeyPath: "active", cacheName: nil)
 
       controller.performFetch(nil)
       controller.delegate = self
 
       return controller
+   }()
+   
+   lazy var dateFormatter: NSDateFormatter =
+   {
+      let formatter = NSDateFormatter()
+      return formatter
    }()
    
    func removeIncompleteAlarms()
@@ -50,6 +56,38 @@ class TimelineDataSource: NSObject
    {
       return self.fetchedResultsController.fetchedObjects as? [Alarm]
    }
+   
+   func activeAlarms() -> [Alarm]?
+   {
+      var alarmArray = Array<Alarm>()
+      if let alarms = self.alarms()
+      {
+         for alarm in alarms
+         {
+            if alarm.active
+            {
+               alarmArray.append(alarm)
+            }
+         }
+      }
+      return alarmArray
+   }
+   
+   func nonActiveAlarms() -> [Alarm]?
+   {
+      var alarmArray = Array<Alarm>()
+      if let alarms = self.alarms()
+      {
+         for alarm in alarms
+         {
+            if alarm.active == false
+            {
+               alarmArray.append(alarm)
+            }
+         }
+      }
+      return alarmArray
+   }
 }
 
 // MARK: - UICollectionView Data Source
@@ -58,52 +96,60 @@ extension TimelineDataSource: UICollectionViewDataSource
    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
    {
       var count = 0
-      if let objects = self.fetchedResultsController.fetchedObjects
+      if section == 0
       {
-         count = objects.count - 1
+         if let alarms = self.activeAlarms()
+         {
+            count = alarms.count - 1
+         }
+         count = max(0, count)
       }
-
-      return max(0, count)
+      else
+      {
+         if let alarms = self.nonActiveAlarms()
+         {
+            count = alarms.count
+         }
+      }
+      return count
    }
 
    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell
    {
       let cell: TimelineCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier("timelineCell", forIndexPath: indexPath) as! TimelineCollectionViewCell
-      cell.collectionView = collectionView
-
-      let newIndexPath = NSIndexPath(forRow: indexPath.row + 1, inSection: indexPath.section)
-      let alarmEntry: Alarm = self.fetchedResultsController.objectAtIndexPath(newIndexPath) as! Alarm
       
-      let dateFormatter = NSDateFormatter()
-      dateFormatter.dateFormat = "hh:mm"
+      var newIndexPath = indexPath
       
-      var prettyAlarmDate = dateFormatter.stringFromDate(alarmEntry.fireDate)
-      
-      dateFormatter.dateFormat = "aa"
-      var amOrPm = dateFormatter.stringFromDate(alarmEntry.fireDate).lowercaseString
-      prettyAlarmDate += " \(amOrPm)"
-      
-      dateFormatter.dateFormat = "EEEE"
-      
-      var alarmMessage = ""
-      if alarmEntry.message != nil
+      var alarm: Alarm?
+      if indexPath.section == 0
       {
-         alarmMessage = "  \(alarmEntry.message!.text)"
+         if let alarms = self.activeAlarms()
+         {
+            alarm = alarms[indexPath.row + 1]
+         }
+         newIndexPath = NSIndexPath(forRow: indexPath.row + 1, inSection: indexPath.section)
       }
       else
       {
-         alarmMessage = "  \(dateFormatter.stringFromDate(alarmEntry.fireDate))"
+         if let alarms = self.nonActiveAlarms()
+         {
+            alarm = alarms[indexPath.row]
+         }
       }
       
-      let attributedText = NSAttributedString(boldText: prettyAlarmDate, text: alarmMessage, color: UIColor.whiteColor())
-      cell.label.attributedText = attributedText
+//      if let alarmEntry: Alarm = self.fetchedResultsController.objectAtIndexPath(newIndexPath) as? Alarm
+      if let alarmEntry = alarm
+      {
+         cell.collectionView = collectionView
+         cell.configureWithAlarm(alarm)
+      }
       
       return cell
    }
 
    func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView
    {
-      if (equal(kind, UICollectionElementKindSectionHeader))
+      if equal(kind, UICollectionElementKindSectionHeader)
       {
          let header = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "header", forIndexPath: indexPath) as! TimelineHeaderView
          
@@ -118,6 +164,11 @@ extension TimelineDataSource: UICollectionViewDataSource
          return header
       }
       return UICollectionReusableView()
+   }
+   
+   func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int
+   {
+      return 2
    }
 }
 

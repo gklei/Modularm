@@ -21,7 +21,12 @@ class TimelineHeaderView: UICollectionReusableView
    {
       self.alarm = alarm
       
-      let hour = alarm.fireDate.hour
+      var hour = alarm.fireDate.hour
+      if hour > 12
+      {
+         hour -= 12
+      }
+      
       let hourString = hour < 10 ? "0\(hour)" : "\(hour)"
       
       let minute = alarm.fireDate.minute

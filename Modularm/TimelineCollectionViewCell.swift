@@ -16,19 +16,32 @@ class TimelineCollectionViewCell: UICollectionViewCell
    @IBOutlet weak var innerContentView: UIView!
    @IBOutlet weak var scrollView: TapScrollView!
    weak var collectionView: UICollectionView?
+   weak var alarm: Alarm?
    
    private var deleteButton: UIButton = UIButton.buttonWithType(.Custom) as! UIButton
    private var toggleButton: UIButton = UIButton.buttonWithType(.Custom) as! UIButton
    private var buttonContainer = UIView()
    private var isOpen: Bool = false
    
+   private lazy var dateFormatter: NSDateFormatter =
+   {
+      let formatter = NSDateFormatter()
+      return formatter
+      }()
+   
    override var highlighted: Bool {
       get {
          return super.highlighted
       }
       set {
-         let whiteValue: CGFloat = newValue ? 0.15 : 0.09
-         self.innerContentView.backgroundColor = UIColor(white: whiteValue, alpha: 1)
+         if let alarm = self.alarm
+         {
+            if alarm.active == true
+            {
+               let whiteValue: CGFloat = newValue ? 0.15 : 0.09
+               self.innerContentView.backgroundColor = UIColor(white: whiteValue, alpha: 1)
+            }
+         }
          super.highlighted = newValue
       }
    }
@@ -62,6 +75,8 @@ class TimelineCollectionViewCell: UICollectionViewCell
       self.deleteButton.setAttributedTitle(title, forState: .Normal)
       self.deleteButton.backgroundColor = UIColor.darkRedLipstickColor()
       self.deleteButton.frame = CGRectMake(0, 0, 60, CGRectGetHeight(self.contentView.bounds))
+      
+      self.deleteButton.addTarget(self, action: "deletePressed", forControlEvents: .TouchUpInside)
    }
    
    private func setupToggleButton()
@@ -70,6 +85,37 @@ class TimelineCollectionViewCell: UICollectionViewCell
       self.toggleButton.setAttributedTitle(title, forState: .Normal)
       self.toggleButton.backgroundColor = UIColor.lipstickRedColor()
       self.toggleButton.frame = CGRectMake(CGRectGetWidth(self.deleteButton.frame), 0, 60, CGRectGetHeight(self.contentView.bounds))
+      
+      self.toggleButton.addTarget(self, action: "togglePressed", forControlEvents: .TouchUpInside)
+   }
+   
+   func togglePressed()
+   {
+      UIView.animateWithDuration(0.15, animations: { () -> Void in
+         self.scrollView.contentOffset = CGPointZero
+         }, completion: { (finished: Bool) -> Void in
+            
+            if let alarm = self.alarm
+            {
+               alarm.active = !alarm.active
+               CoreDataStack.save()
+            }
+      })
+   }
+   
+   func deletePressed()
+   {
+      UIView.animateWithDuration(0.15, animations: { () -> Void in
+         self.scrollView.contentOffset = CGPointZero
+         self.alpha = 0
+         }, completion: { (finished: Bool) -> Void in
+            
+            if let alarm = self.alarm
+            {
+               CoreDataStack.deleteObject(alarm)
+               CoreDataStack.save()
+            }
+      })
    }
    
    private func setupButtonContainer()
@@ -104,6 +150,46 @@ class TimelineCollectionViewCell: UICollectionViewCell
          {
             self.animateContenteOffset(CGPointZero, withDuration: 0.25)
          }
+      }
+   }
+   
+   func configureWithAlarm(alarm: Alarm?)
+   {
+      self.alarm = alarm
+      
+      if alarm?.active == false
+      {
+         self.innerContentView.backgroundColor = UIColor.whiteColor()
+      }
+      
+      self.setupLabelWithAlarm(alarm)
+   }
+   
+   private func setupLabelWithAlarm(alarm: Alarm?)
+   {
+      if let alarmEntry = alarm
+      {
+         self.dateFormatter.dateFormat = "hh:mm"
+         var prettyAlarmDate = dateFormatter.stringFromDate(alarmEntry.fireDate)
+         
+         self.dateFormatter.dateFormat = "aa"
+         var amOrPm = dateFormatter.stringFromDate(alarmEntry.fireDate).lowercaseString
+         prettyAlarmDate += " \(amOrPm)"
+         
+         var alarmMessage = ""
+         if alarmEntry.message != nil
+         {
+            alarmMessage = "  \(alarmEntry.message!.text)"
+         }
+         else
+         {
+            self.dateFormatter.dateFormat = "EEEE"
+            alarmMessage = "  \(dateFormatter.stringFromDate(alarmEntry.fireDate))"
+         }
+         
+         let textColor = alarmEntry.active ? UIColor.whiteColor() : UIColor.blackColor()
+         let attributedText = NSAttributedString(boldText: prettyAlarmDate, text: alarmMessage, color: textColor)
+         self.label.attributedText = attributedText
       }
    }
 }

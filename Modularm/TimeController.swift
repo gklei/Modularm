@@ -57,7 +57,7 @@ class TimeController: UIViewController
       self.updateUIForSettingTime(self.settingTime)
       self.settingTime = !self.settingTime
    }
-   
+
    private func updateUIForSettingTime(setting: Bool)
    {
       if setting == false

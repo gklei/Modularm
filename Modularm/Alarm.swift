@@ -14,6 +14,7 @@ class Alarm: NSManagedObject
 {
    @NSManaged var fireDateValue: NSTimeInterval
    @NSManaged var completedSetup: Bool
+   @NSManaged var active: Bool
    @NSManaged var snooze: Snooze?
    @NSManaged var countdown: Countdown?
    @NSManaged var date: Date?
@@ -42,6 +43,7 @@ class Alarm: NSManagedObject
       self.completedSetup = false
       self.sound = CoreDataStack.newModelWithOption(.Sound) as? Sound
       self.fireDateValue = NSDate().timeIntervalSince1970
+      self.active = true
    }
    
    func deleteOption(option: AlarmOption)
