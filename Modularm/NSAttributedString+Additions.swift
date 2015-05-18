@@ -57,4 +57,12 @@ extension NSAttributedString
       mutableBoldAttributedString.appendAttributedString(attributedString)
       self.init(attributedString: mutableBoldAttributedString)
    }
+   
+   convenience init(lightText: String, color: UIColor)
+   {
+      let titleAttrs = [NSFontAttributeName : UIFont(name: "HelveticaNeue-Light", size: 19)!, NSForegroundColorAttributeName : color]
+      
+      let attributedString = NSAttributedString(string: lightText, attributes: titleAttrs)
+      self.init(attributedString: attributedString)
+   }
 }

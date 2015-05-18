@@ -77,10 +77,7 @@ class TimelineController: UIViewController
    
    func reloadData()
    {
-//      self.collectionView.performBatchUpdates({ () -> Void in
       self.collectionView.reloadData()
-//         }, completion: { (finished: Bool) -> Void in
-//      })
    }
 
    // MARK: - Private
