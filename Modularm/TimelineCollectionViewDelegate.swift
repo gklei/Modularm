@@ -21,26 +21,9 @@ extension TimelineCollectionViewDelegate: UICollectionViewDelegate
    {
       if let alarms = self.timelineController.alarms
       {
-         let alarm = alarms[indexPath.row]
+         let alarm = alarms[indexPath.row + 1]
          self.timelineController.openSettingsForAlarm(alarm)
       }
-   }
-   
-   func collectionView(collectionView: UICollectionView, shouldHighlightItemAtIndexPath indexPath: NSIndexPath) -> Bool
-   {
-      return true
-   }
-   
-   func collectionView(collectionView: UICollectionView, didHighlightItemAtIndexPath indexPath: NSIndexPath)
-   {
-      let cell = collectionView.cellForItemAtIndexPath(indexPath) as! TimelineCollectionViewCell
-      cell.backgroundColor = UIColor.lipstickRedColor()
-   }
-   
-   func collectionView(collectionView: UICollectionView, didUnhighlightItemAtIndexPath indexPath: NSIndexPath)
-   {
-      let cell = collectionView.cellForItemAtIndexPath(indexPath) as! TimelineCollectionViewCell
-      cell.backgroundColor = UIColor(white: 0.09, alpha: 1)
    }
 }
 

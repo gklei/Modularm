@@ -15,7 +15,7 @@ class TimelineCollectionViewCell: UICollectionViewCell
    @IBOutlet weak var label: UILabel!
    @IBOutlet weak var innerContentView: UIView!
    @IBOutlet weak var scrollView: TapScrollView!
-   var collectionView: UICollectionView!
+   weak var collectionView: UICollectionView?
    
    private var deleteButton: UIButton = UIButton.buttonWithType(.Custom) as! UIButton
    private var toggleButton: UIButton = UIButton.buttonWithType(.Custom) as! UIButton
@@ -27,7 +27,8 @@ class TimelineCollectionViewCell: UICollectionViewCell
          return super.highlighted
       }
       set {
-         self.innerContentView.backgroundColor = newValue ? UIColor.lipstickRedColor() : UIColor(white: 0.09, alpha: 1)
+         let whiteValue: CGFloat = newValue ? 0.15 : 0.09
+         self.innerContentView.backgroundColor = UIColor(white: whiteValue, alpha: 1)
          super.highlighted = newValue
       }
    }
@@ -160,10 +161,16 @@ extension TimelineCollectionViewCell: TapScrollViewDelegate
          return;
       }
       
-      let indexPath = self.collectionView.indexPathForCell(self)
-      self.highlighted = false
-      self.collectionView .selectItemAtIndexPath(indexPath, animated: false, scrollPosition: .None)
-      self.collectionView.delegate?.collectionView!(self.collectionView, didSelectItemAtIndexPath: indexPath!)
+      if let cv = self.collectionView
+      {
+         let indexPath = cv.indexPathForCell(self)
+         self.highlighted = false
+         cv.selectItemAtIndexPath(indexPath, animated: false, scrollPosition: .None)
+         if let cvDelegate = cv.delegate
+         {
+            cvDelegate.collectionView!(cv, didSelectItemAtIndexPath: indexPath!)
+         }
+      }
       
       NSNotificationCenter.defaultCenter().postNotificationName(RevealCellDidOpenNotification, object: self)
    }

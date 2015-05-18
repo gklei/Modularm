@@ -13,10 +13,10 @@
                         <viewControllerLayoutGuide type="bottom" id="ztI-NL-fWq"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="XS9-1r-8hN">
-                        <rect key="frame" x="0.0" y="64" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Wpd-SP-iM8">
+                            <collectionView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" bounces="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Wpd-SP-iM8">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="2" minimumInteritemSpacing="2" id="wPU-pX-0BL">
                                     <size key="itemSize" width="375" height="50"/>
@@ -76,8 +76,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pyx-cQ-o5I" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <customObject id="893-Zi-iay" customClass="TimelineDataSource" customModule="Modularm" customModuleProvider="target">
                     <connections>
-                        <outlet property="collectionView" destination="Wpd-SP-iM8" id="YMJ-Ol-etw"/>
-                        <outlet property="timelineController" destination="5Wx-Mm-Iig" id="dLr-g3-snH"/>
+                        <outlet property="timelineController" destination="5Wx-Mm-Iig" id="RtH-Md-UzK"/>
                     </connections>
                 </customObject>
                 <customObject id="cjD-9w-3Kw" userLabel="Timeline Collection View Delegate" customClass="TimelineCollectionViewDelegate" customModule="Modularm" customModuleProvider="target">
@@ -98,13 +97,13 @@
                         <viewControllerLayoutGuide type="bottom" id="fau-nb-Kkl"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="nsS-fm-w7v">
-                        <rect key="frame" x="0.0" y="64" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background-clearnight" translatesAutoresizingMaskIntoConstraints="NO" id="CjP-5p-saH">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                             </imageView>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fac-q0-H0S">
+                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fac-q0-H0S">
                                 <rect key="frame" x="0.0" y="91" width="375" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="N04-hw-epJ"/>
@@ -114,7 +113,7 @@
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sNc-40-vPD">
-                                <rect key="frame" x="0.0" y="327" width="375" height="340"/>
+                                <rect key="frame" x="0.0" y="263" width="375" height="340"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="340" id="FOO-Qt-PvE"/>
                                 </constraints>
@@ -172,7 +171,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mgE-3h-zNu" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="H2n-ij-odH">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="H2n-ij-odH">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>

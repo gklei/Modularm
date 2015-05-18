@@ -62,6 +62,11 @@ class TimelineController: UIViewController
       configurationController.configureWithAlarm(alarm)
       self.navigationController?.pushViewController(configurationController, animated: true)
    }
+   
+   func reloadData()
+   {
+      self.collectionView.reloadData()
+   }
 
    // MARK: - Private
    private func updateBackBarButtonItemWithTitle(title: String)

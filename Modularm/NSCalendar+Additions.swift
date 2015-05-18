@@ -62,7 +62,7 @@ extension UIDatePicker
             secondsToAdd += (24 * 60 * 60)
          }
          
-         if date.hour >= currentDate.hour && date.minute > currentDate.minute && date.day > currentDate.day
+         if date.hour == currentDate.hour && date.minute > currentDate.minute && date.day > currentDate.day || (date.hour > currentDate.hour && date.day > currentDate.day)
          {
             secondsToAdd -= (24 * 60 * 60)
          }

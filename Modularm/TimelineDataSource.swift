@@ -12,7 +12,6 @@ import CoreData
 class TimelineDataSource: NSObject
 {
    // MARK: - Instance Variables
-   @IBOutlet weak var collectionView: UICollectionView!
    @IBOutlet weak var timelineController: TimelineController!
    
    private let coreDataStack = CoreDataStack.defaultStack
@@ -47,11 +46,6 @@ class TimelineDataSource: NSObject
    }
 
    // MARK: - Public
-   func reloadData()
-   {
-      self.collectionView.reloadData()
-   }
-   
    func alarms() -> [Alarm]?
    {
       return self.fetchedResultsController.fetchedObjects as? [Alarm]
@@ -63,10 +57,13 @@ extension TimelineDataSource: UICollectionViewDataSource
 {
    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
    {
-      let objects = self.fetchedResultsController.fetchedObjects
-      let count = objects?.count
+      var count = 0
+      if let objects = self.fetchedResultsController.fetchedObjects
+      {
+         count = objects.count - 1
+      }
 
-      return count!
+      return max(0, count)
    }
 
    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell
@@ -74,7 +71,8 @@ extension TimelineDataSource: UICollectionViewDataSource
       let cell: TimelineCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier("timelineCell", forIndexPath: indexPath) as! TimelineCollectionViewCell
       cell.collectionView = collectionView
 
-      let alarmEntry: Alarm = self.fetchedResultsController.objectAtIndexPath(indexPath) as! Alarm
+      let newIndexPath = NSIndexPath(forRow: indexPath.row + 1, inSection: indexPath.section)
+      let alarmEntry: Alarm = self.fetchedResultsController.objectAtIndexPath(newIndexPath) as! Alarm
       
       let dateFormatter = NSDateFormatter()
       dateFormatter.dateFormat = "hh:mm"
@@ -108,6 +106,15 @@ extension TimelineDataSource: UICollectionViewDataSource
       if (equal(kind, UICollectionElementKindSectionHeader))
       {
          let header = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "header", forIndexPath: indexPath) as! TimelineHeaderView
+         
+         if let alarmArray = self.alarms()
+         {
+            if alarmArray.count > 0
+            {
+               header.timelineController = self.timelineController
+               header.configureWithAlarm(alarmArray[0])
+            }
+         }
          return header
       }
       return UICollectionReusableView()
@@ -121,7 +128,7 @@ extension TimelineDataSource: NSFetchedResultsControllerDelegate
    {
       if type != NSFetchedResultsChangeType.Insert
       {
-         self.reloadData()
+         self.timelineController.reloadData()
       }
    }
 }
