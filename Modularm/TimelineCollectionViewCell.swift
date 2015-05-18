@@ -128,14 +128,21 @@ extension TimelineCollectionViewCell: UIScrollViewDelegate
    
    func scrollViewWillEndDragging(scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>)
    {
+      var contentOffset = CGPointZero
       if velocity.x > 0
       {
-         targetContentOffset.memory.x = CGRectGetWidth(self.buttonContainer.frame);
+         targetContentOffset.memory.x = CGRectGetWidth(self.buttonContainer.frame)
+         contentOffset.x = CGRectGetWidth(self.buttonContainer.frame)
       }
       else
       {
          targetContentOffset.memory.x = 0;
       }
+      dispatch_async(dispatch_get_main_queue(), { () -> Void in
+         UIView.animateWithDuration(0.25, animations: { () -> Void in
+            self.scrollView.contentOffset = contentOffset
+         })
+      })
    }
 }
 
