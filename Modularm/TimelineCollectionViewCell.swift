@@ -86,6 +86,15 @@ class TimelineCollectionViewCell: UICollectionViewCell
       self.buttonContainer.frame = frame;
    }
    
+   private func animateContenteOffset(position: CGPoint, withDuration duration: NSTimeInterval)
+   {
+      dispatch_async(dispatch_get_main_queue(), { () -> Void in
+         UIView.animateWithDuration(duration, animations: { () -> Void in
+            self.scrollView.contentOffset = position
+         })
+      })
+   }
+   
    // MARK: - Public
    func onOpen(notification: NSNotification)
    {
@@ -93,11 +102,7 @@ class TimelineCollectionViewCell: UICollectionViewCell
       {
          if object != self && self.isOpen
          {
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-               UIView.animateWithDuration(0.25, animations: { () -> Void in
-                  self.scrollView.contentOffset = CGPointZero
-               })
-            })
+            self.animateContenteOffset(CGPointZero, withDuration: 0.25)
          }
       }
    }
@@ -138,11 +143,7 @@ extension TimelineCollectionViewCell: UIScrollViewDelegate
       {
          targetContentOffset.memory.x = 0;
       }
-      dispatch_async(dispatch_get_main_queue(), { () -> Void in
-         UIView.animateWithDuration(0.25, animations: { () -> Void in
-            self.scrollView.contentOffset = contentOffset
-         })
-      })
+      self.animateContenteOffset(contentOffset, withDuration: 0.25)
    }
 }
 

@@ -16,8 +16,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" bounces="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Wpd-SP-iM8">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            <collectionView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Wpd-SP-iM8">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="2" minimumInteritemSpacing="2" id="wPU-pX-0BL">
                                     <size key="itemSize" width="375" height="50"/>
                                     <size key="headerReferenceSize" width="375" height="150"/>
@@ -49,7 +49,7 @@
                                 </connections>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" red="0.10196078431372549" green="0.10196078431372549" blue="0.10196078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.080000000000000002" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Wpd-SP-iM8" secondAttribute="trailing" id="CUi-rL-hzQ"/>
                             <constraint firstItem="Wpd-SP-iM8" firstAttribute="top" secondItem="jXY-MO-y6G" secondAttribute="bottom" id="TnT-Bf-7ab"/>
@@ -103,8 +103,8 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background-clearnight" translatesAutoresizingMaskIntoConstraints="NO" id="CjP-5p-saH">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                             </imageView>
-                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fac-q0-H0S">
-                                <rect key="frame" x="0.0" y="91" width="375" height="200"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fac-q0-H0S">
+                                <rect key="frame" x="0.0" y="27" width="375" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="N04-hw-epJ"/>
                                 </constraints>

@@ -33,6 +33,7 @@
                                 </constraints>
                             </view>
                         </subviews>
+                        <color key="backgroundColor" red="0.054901960784313725" green="0.054901960784313725" blue="0.054901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="BP4-9l-g4g" firstAttribute="top" secondItem="hKC-Mj-gq8" secondAttribute="top" id="6ot-bZ-Rga"/>
                             <constraint firstAttribute="centerX" secondItem="BP4-9l-g4g" secondAttribute="centerX" id="Afe-hN-k4Q"/>
@@ -47,7 +48,7 @@
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
-            <color key="backgroundColor" red="0.11764705882352941" green="0.11764705882352941" blue="0.11764705882352941" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="0.080000000000000002" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="hKC-Mj-gq8" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="5eX-px-eVG"/>
                 <constraint firstItem="hKC-Mj-gq8" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="dbx-sq-6fV"/>
