@@ -173,6 +173,7 @@ class TimelineCollectionViewCell: UICollectionViewCell
       {
          self.scrollView.scrollEnabled = true
          self.activateButton.hidden = true
+         self.innerContentView.backgroundColor = UIColor(white: 0.09, alpha: 1)
       }
       
       self.setupLabelWithAlarm(alarm)
@@ -201,7 +202,11 @@ class TimelineCollectionViewCell: UICollectionViewCell
          }
          
          let textColor = alarmEntry.active ? UIColor.whiteColor() : UIColor.grayColor()
-         let attributedText = NSAttributedString(boldText: prettyAlarmDate, text: alarmMessage, color: textColor)
+         var attributedText = NSAttributedString(boldText: prettyAlarmDate, text: alarmMessage, color: textColor)
+         if alarm?.active == false
+         {
+            attributedText = NSAttributedString(lightText: "\(prettyAlarmDate)\(alarmMessage)", color: textColor)
+         }
          self.label.attributedText = attributedText
       }
    }
