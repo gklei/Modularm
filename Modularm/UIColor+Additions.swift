@@ -24,4 +24,9 @@ extension UIColor
    {
       return UIColor(red: 190/255.0, green: 15/255.0, blue: 60/255.0, alpha: 1)
    }
+   
+   class func darkRedLipstickColor() -> UIColor
+   {
+      return UIColor(red: 140/255.0, green: 12/255.0, blue: 54/255.0, alpha: 1)
+   }
 }

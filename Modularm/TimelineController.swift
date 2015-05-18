@@ -28,6 +28,8 @@ class TimelineController: UIViewController
       self.navigationController?.navigationBar.hideBottomHairline()
 
       self.collectionView.registerNib(UINib(nibName: "TimelineHeaderView", bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "header")
+      
+      self.collectionView.registerNib(UINib(nibName: "TimelineCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "timelineCell")
    }
 
    override func viewWillAppear(animated: Bool)

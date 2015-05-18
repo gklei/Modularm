@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="timelineCell" id="gTV-IL-0wX" customClass="TimelineCollectionViewCell" customModule="Modularm" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="376" height="50"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="376" height="50"/>
+                <subviews>
+                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hKC-Mj-gq8" customClass="TapScrollView" customModule="Modularm" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="376" height="50"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BP4-9l-g4g">
+                                <rect key="frame" x="0.0" y="0.0" width="376" height="50"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mqh-KT-mlx">
+                                        <rect key="frame" x="20" y="14" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.11764705882352941" green="0.11764705882352941" blue="0.11764705882352941" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="9Jj-NX-HUX"/>
+                                    <constraint firstAttribute="centerY" secondItem="mqh-KT-mlx" secondAttribute="centerY" id="Yc5-Sg-Nhl"/>
+                                    <constraint firstItem="mqh-KT-mlx" firstAttribute="leading" secondItem="BP4-9l-g4g" secondAttribute="leading" constant="20" id="b33-je-UtA"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="BP4-9l-g4g" firstAttribute="top" secondItem="hKC-Mj-gq8" secondAttribute="top" id="6ot-bZ-Rga"/>
+                            <constraint firstAttribute="centerX" secondItem="BP4-9l-g4g" secondAttribute="centerX" id="Afe-hN-k4Q"/>
+                            <constraint firstItem="BP4-9l-g4g" firstAttribute="leading" secondItem="hKC-Mj-gq8" secondAttribute="leading" id="J9j-Xj-fVB"/>
+                            <constraint firstAttribute="trailing" secondItem="BP4-9l-g4g" secondAttribute="trailing" id="kJv-aE-meh"/>
+                            <constraint firstAttribute="bottom" secondItem="BP4-9l-g4g" secondAttribute="bottom" id="tDq-s4-elU"/>
+                        </constraints>
+                        <connections>
+                            <outlet property="delegate" destination="gTV-IL-0wX" id="Jb3-9X-3MH"/>
+                        </connections>
+                    </scrollView>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <color key="backgroundColor" red="0.11764705882352941" green="0.11764705882352941" blue="0.11764705882352941" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="hKC-Mj-gq8" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="5eX-px-eVG"/>
+                <constraint firstItem="hKC-Mj-gq8" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="dbx-sq-6fV"/>
+                <constraint firstAttribute="bottom" secondItem="hKC-Mj-gq8" secondAttribute="bottom" id="ksY-GK-KnN"/>
+                <constraint firstAttribute="trailing" secondItem="hKC-Mj-gq8" secondAttribute="trailing" id="qEj-HC-kcu"/>
+            </constraints>
+            <size key="customSize" width="376" height="50"/>
+            <connections>
+                <outlet property="innerContentView" destination="BP4-9l-g4g" id="reZ-Xb-kOh"/>
+                <outlet property="label" destination="mqh-KT-mlx" id="FWr-aF-zbb"/>
+                <outlet property="scrollView" destination="hKC-Mj-gq8" id="fhZ-4w-jXV"/>
+            </connections>
+            <point key="canvasLocation" x="212" y="254"/>
+        </collectionViewCell>
+    </objects>
+</document>
