@@ -162,21 +162,24 @@ class TimelineCollectionViewCell: UICollectionViewCell
    
    func configureWithAlarm(alarm: Alarm?)
    {
-      self.alarm = alarm
-      if alarm?.active == false
-      {
-         self.scrollView.scrollEnabled = false
-         self.activateButton.hidden = false
-         self.innerContentView.backgroundColor = UIColor.normalOptionButtonColor()
-      }
-      else
-      {
-         self.scrollView.scrollEnabled = true
-         self.activateButton.hidden = true
-         self.innerContentView.backgroundColor = UIColor(white: 0.09, alpha: 1)
-      }
-      
-      self.setupLabelWithAlarm(alarm)
+      dispatch_async(dispatch_get_main_queue(), { () -> Void in
+
+         self.alarm = alarm
+         if alarm?.active == false
+         {
+            self.scrollView.scrollEnabled = false
+            self.activateButton.hidden = false
+            self.innerContentView.backgroundColor = UIColor.normalOptionButtonColor()
+         }
+         else
+         {
+            self.scrollView.scrollEnabled = true
+            self.activateButton.hidden = true
+            self.innerContentView.backgroundColor = UIColor(white: 0.09, alpha: 1)
+         }
+
+         self.setupLabelWithAlarm(alarm)
+      })
    }
    
    private func setupLabelWithAlarm(alarm: Alarm?)

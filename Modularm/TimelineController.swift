@@ -42,6 +42,9 @@ class TimelineController: UIViewController
       self.collectionView.registerNib(UINib(nibName: "TimelineHeaderView", bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "header")
       
       self.collectionView.registerNib(UINib(nibName: "TimelineCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "timelineCell")
+
+      let layout = self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+      layout.itemSize = CGSizeMake(CGRectGetWidth(self.view.bounds), 50)
    }
 
    override func viewWillAppear(animated: Bool)
