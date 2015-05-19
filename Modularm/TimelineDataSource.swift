@@ -187,7 +187,9 @@ extension TimelineDataSource: NSFetchedResultsControllerDelegate
    {
       if type != NSFetchedResultsChangeType.Insert
       {
-         self.timelineController.reloadData()
+         dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            self.timelineController.reloadData()
+         })
       }
    }
 }

@@ -162,8 +162,6 @@ class TimelineCollectionViewCell: UICollectionViewCell
    
    func configureWithAlarm(alarm: Alarm?)
    {
-      dispatch_async(dispatch_get_main_queue(), { () -> Void in
-
          self.alarm = alarm
          if alarm?.active == false
          {
@@ -179,7 +177,6 @@ class TimelineCollectionViewCell: UICollectionViewCell
          }
 
          self.setupLabelWithAlarm(alarm)
-      })
    }
    
    private func setupLabelWithAlarm(alarm: Alarm?)
