@@ -16,6 +16,7 @@ class TimelineCollectionViewCell: UICollectionViewCell
    @IBOutlet weak var innerContentView: UIView!
    @IBOutlet weak var scrollView: TapScrollView!
    @IBOutlet weak var activateButton: UIButton!
+   @IBOutlet weak var separatorView: UIView!
    weak var collectionView: UICollectionView?
    weak var alarm: Alarm?
    
@@ -108,14 +109,15 @@ class TimelineCollectionViewCell: UICollectionViewCell
    {
       UIView.animateWithDuration(0.15, animations: { () -> Void in
          self.scrollView.contentOffset = CGPointZero
-         self.alpha = 0
          }, completion: { (finished: Bool) -> Void in
             
-            if let alarm = self.alarm
-            {
-               CoreDataStack.deleteObject(alarm)
-               CoreDataStack.save()
-            }
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+               if let alarm = self.alarm
+               {
+                  CoreDataStack.deleteObject(alarm)
+                  CoreDataStack.save()
+               }
+            })
       })
    }
    
@@ -168,12 +170,14 @@ class TimelineCollectionViewCell: UICollectionViewCell
             self.scrollView.scrollEnabled = false
             self.activateButton.hidden = false
             self.innerContentView.backgroundColor = UIColor.normalOptionButtonColor()
+            self.separatorView.backgroundColor = UIColor(white: 0.88, alpha: 1)
          }
          else
          {
             self.scrollView.scrollEnabled = true
             self.activateButton.hidden = true
             self.innerContentView.backgroundColor = UIColor(white: 0.09, alpha: 1)
+            self.separatorView.backgroundColor = UIColor(white: 0.13, alpha: 1)
          }
 
          self.setupLabelWithAlarm(alarm)
