@@ -20,16 +20,10 @@ class TimelineCollectionViewCell: UICollectionViewCell
    weak var collectionView: UICollectionView?
    weak var alarm: Alarm?
    
-   private var deleteButton: UIButton = UIButton.buttonWithType(.Custom) as! UIButton
-   private var toggleButton: UIButton = UIButton.buttonWithType(.Custom) as! UIButton
+   private var deleteButton: UIButton = UIButton.timelineCellDeleteButton()
+   private var toggleButton: UIButton = UIButton.timelineCellToggleButton()
    private var buttonContainer = UIView()
    private var isOpen: Bool = false
-   
-   private lazy var dateFormatter: NSDateFormatter =
-   {
-      let formatter = NSDateFormatter()
-      return formatter
-      }()
    
    override var highlighted: Bool {
       get {
@@ -51,13 +45,14 @@ class TimelineCollectionViewCell: UICollectionViewCell
    // MARK: - Lifecycle
    override func awakeFromNib()
    {
-      self.setupDeleteButton()
-      self.setupToggleButton()
-      self.setupButtonContainer()
+      self.deleteButton.frame = CGRectMake(0, 0, 60, CGRectGetHeight(self.contentView.bounds))
+      self.deleteButton.addTarget(self, action: "deletePressed", forControlEvents: .TouchUpInside)
       
-      self.scrollView.tapDelegate = self
-      self.scrollView.insertSubview(self.buttonContainer, belowSubview: self.innerContentView)
-      NSNotificationCenter.defaultCenter().addObserver(self, selector: "onOpen:", name: RevealCellDidOpenNotification, object: nil)
+      self.toggleButton.frame = CGRectMake(CGRectGetWidth(self.deleteButton.frame), 0, 60, CGRectGetHeight(self.contentView.bounds))
+      self.toggleButton.addTarget(self, action: "togglePressed", forControlEvents: .TouchUpInside)
+      
+      setupButtonContainer()
+      setupScrollViewWithButtonContainer(self.buttonContainer)
    }
    
    override func layoutSubviews()
@@ -70,61 +65,12 @@ class TimelineCollectionViewCell: UICollectionViewCell
       self.repositionButtons()
    }
    
-   // MARK: - Private
-   private func setupDeleteButton()
+   // MARK: - Setup
+   private func setupScrollViewWithButtonContainer(container: UIView)
    {
-      let title = NSAttributedString(string: "delete", attributes: [NSFontAttributeName : UIFont(name: "HelveticaNeue-Light", size: 14)!, NSForegroundColorAttributeName : UIColor.whiteColor()])
-      self.deleteButton.setAttributedTitle(title, forState: .Normal)
-      self.deleteButton.backgroundColor = UIColor.darkRedLipstickColor()
-      self.deleteButton.frame = CGRectMake(0, 0, 60, CGRectGetHeight(self.contentView.bounds))
-      
-      self.deleteButton.addTarget(self, action: "deletePressed", forControlEvents: .TouchUpInside)
-   }
-   
-   private func setupToggleButton()
-   {
-      let title = NSAttributedString(string: "toggle", attributes: [NSFontAttributeName : UIFont(name: "HelveticaNeue-Light", size: 14)!, NSForegroundColorAttributeName : UIColor.whiteColor()])
-      self.toggleButton.setAttributedTitle(title, forState: .Normal)
-      self.toggleButton.backgroundColor = UIColor.lipstickRedColor()
-      self.toggleButton.frame = CGRectMake(CGRectGetWidth(self.deleteButton.frame), 0, 60, CGRectGetHeight(self.contentView.bounds))
-      
-      self.toggleButton.addTarget(self, action: "togglePressed", forControlEvents: .TouchUpInside)
-   }
-   
-   func togglePressed()
-   {
-      UIView.animateWithDuration(0.15, animations: { () -> Void in
-         self.scrollView.contentOffset = CGPointZero
-         }, completion: { (finished: Bool) -> Void in
-            
-            if let alarm = self.alarm
-            {
-               alarm.active = !alarm.active
-               CoreDataStack.save()
-            }
-      })
-   }
-   
-   func deletePressed()
-   {
-      UIView.animateWithDuration(0.15, animations: { () -> Void in
-         self.scrollView.contentOffset = CGPointZero
-         }, completion: { (finished: Bool) -> Void in
-            
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-               if let alarm = self.alarm
-               {
-                  CoreDataStack.deleteObject(alarm)
-                  CoreDataStack.save()
-               }
-            })
-      })
-   }
-   
-   @IBAction func activateButtonPressed()
-   {
-      self.alarm?.active = true
-      CoreDataStack.save()
+      self.scrollView.tapDelegate = self
+      self.scrollView.insertSubview(container, belowSubview: self.innerContentView)
+      NSNotificationCenter.defaultCenter().addObserver(self, selector: "onOpen:", name: RevealCellDidOpenNotification, object: nil)
    }
    
    private func setupButtonContainer()
@@ -134,6 +80,28 @@ class TimelineCollectionViewCell: UICollectionViewCell
       self.buttonContainer.addSubview(self.toggleButton)
    }
    
+   // MARK: - Button Actions
+   func togglePressed()
+   {
+      self.scrollView.contentOffset = CGPointZero
+      self.alarm?.active = false
+      CoreDataStack.save()
+   }
+   
+   func deletePressed()
+   {
+      self.scrollView.contentOffset = CGPointZero
+      CoreDataStack.deleteObject(self.alarm)
+      CoreDataStack.save()
+   }
+   
+   @IBAction func activateButtonPressed()
+   {
+      self.alarm?.active = true
+      CoreDataStack.save()
+   }
+   
+   // MARK: - Private
    private func repositionButtons()
    {
       var frame = self.buttonContainer.frame;
@@ -151,6 +119,23 @@ class TimelineCollectionViewCell: UICollectionViewCell
    }
    
    // MARK: - Public
+   func configureWithAlarm(alarm: Alarm?)
+   {
+      self.alarm = alarm
+      if let alarm = self.alarm
+      {
+         var viewModel = TimelineCellAlarmViewModel(alarm: alarm)
+         
+         self.innerContentView.backgroundColor = viewModel.innerContentViewBackgroundColor
+         self.separatorView.backgroundColor = viewModel.separatorViewBackgroundColor
+         self.label.attributedText = viewModel.attributedLabelText
+         
+         self.scrollView.scrollEnabled = alarm.active
+         self.activateButton.hidden = alarm.active
+      }
+   }
+   
+   // MARK: - Notification-based Methods
    func onOpen(notification: NSNotification)
    {
       if let object = notification.object as? TimelineCollectionViewCell
@@ -159,59 +144,6 @@ class TimelineCollectionViewCell: UICollectionViewCell
          {
             self.animateContenteOffset(CGPointZero, withDuration: 0.25)
          }
-      }
-   }
-   
-   func configureWithAlarm(alarm: Alarm?)
-   {
-         self.alarm = alarm
-         if alarm?.active == false
-         {
-            self.scrollView.scrollEnabled = false
-            self.activateButton.hidden = false
-            self.innerContentView.backgroundColor = UIColor.normalOptionButtonColor()
-            self.separatorView.backgroundColor = UIColor(white: 0.88, alpha: 1)
-         }
-         else
-         {
-            self.scrollView.scrollEnabled = true
-            self.activateButton.hidden = true
-            self.innerContentView.backgroundColor = UIColor(white: 0.09, alpha: 1)
-            self.separatorView.backgroundColor = UIColor(white: 0.13, alpha: 1)
-         }
-
-         self.setupLabelWithAlarm(alarm)
-   }
-   
-   private func setupLabelWithAlarm(alarm: Alarm?)
-   {
-      if let alarmEntry = alarm
-      {
-         self.dateFormatter.dateFormat = "hh:mm"
-         var prettyAlarmDate = dateFormatter.stringFromDate(alarmEntry.fireDate)
-         
-         self.dateFormatter.dateFormat = "aa"
-         var amOrPm = dateFormatter.stringFromDate(alarmEntry.fireDate).lowercaseString
-         prettyAlarmDate += " \(amOrPm)"
-         
-         var alarmMessage = ""
-         if alarmEntry.message != nil
-         {
-            alarmMessage = "  \(alarmEntry.message!.text)"
-         }
-         else
-         {
-            self.dateFormatter.dateFormat = "EEEE"
-            alarmMessage = "  \(dateFormatter.stringFromDate(alarmEntry.fireDate))"
-         }
-         
-         let textColor = alarmEntry.active ? UIColor.whiteColor() : UIColor.grayColor()
-         var attributedText = NSAttributedString(boldText: prettyAlarmDate, text: alarmMessage, color: textColor)
-         if alarm?.active == false
-         {
-            attributedText = NSAttributedString(lightText: "\(prettyAlarmDate)\(alarmMessage)", color: textColor)
-         }
-         self.label.attributedText = attributedText
       }
    }
 }
@@ -223,7 +155,7 @@ extension TimelineCollectionViewCell: UIScrollViewDelegate
       self.repositionButtons()
       
       // Don't allow scrolling right
-      if scrollView.contentOffset.x < 0// || self.alarm?.active == false
+      if scrollView.contentOffset.x < 0
       {
          scrollView.contentOffset = CGPointZero;
       }
@@ -259,10 +191,7 @@ extension TimelineCollectionViewCell: TapScrollViewDelegate
 {
    func tapScrollView(scrollView: UIScrollView, touchesBegan touches: NSSet, withEvent event: UIEvent)
    {
-      if !isOpen
-      {
-         self.highlighted = true
-      }
+      self.highlighted = !self.isOpen
    }
    
    func tapScrollView(scrollView: UIScrollView, touchesCancelled touches: NSSet, withEvent event: UIEvent)
@@ -272,22 +201,14 @@ extension TimelineCollectionViewCell: TapScrollViewDelegate
    
    func tapScrollView(scrollView: UIScrollView, touchesEnded touches: NSSet, withEvent event: UIEvent)
    {
-      if (self.isOpen)
+      if let indexPath = self.collectionView?.indexPathForCell(self) where !self.isOpen
       {
-         return;
-      }
-      
-      if let cv = self.collectionView
-      {
-         let indexPath = cv.indexPathForCell(self)
          self.highlighted = false
-         cv.selectItemAtIndexPath(indexPath, animated: false, scrollPosition: .None)
-         if let cvDelegate = cv.delegate
-         {
-            cvDelegate.collectionView!(cv, didSelectItemAtIndexPath: indexPath!)
-         }
+         self.collectionView!.selectItemAtIndexPath(indexPath, animated: false, scrollPosition: .None)
+         self.collectionView!.delegate?.collectionView!(self.collectionView!, didSelectItemAtIndexPath: indexPath)
+         
+         NSNotificationCenter.defaultCenter().postNotificationName(RevealCellDidOpenNotification, object: self)
       }
       
-      NSNotificationCenter.defaultCenter().postNotificationName(RevealCellDidOpenNotification, object: self)
    }
 }

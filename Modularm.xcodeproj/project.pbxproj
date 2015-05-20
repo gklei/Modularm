@@ -35,6 +35,7 @@
 		5B6C142E1B09842C009617A8 /* TapScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6C142D1B09842C009617A8 /* TapScrollView.swift */; };
 		5B74FC8C1ADD74A100902484 /* AlarmOptionSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B74FC8B1ADD74A100902484 /* AlarmOptionSettingsController.swift */; };
 		5BCDA0201AEDCF1800556117 /* AlarmTimeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCDA01F1AEDCF1800556117 /* AlarmTimeController.swift */; };
+		5BD375431B0CF854000D380C /* TimelineCellAlarmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD375421B0CF854000D380C /* TimelineCellAlarmViewModel.swift */; };
 		8E3B22611AD9E85F001693E2 /* TimelineDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3B22601AD9E85F001693E2 /* TimelineDataSource.swift */; };
 		8E3BDC341AE4176300E1FCDC /* AlarmOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3BDC331AE4176300E1FCDC /* AlarmOption.swift */; };
 		8E3BDC361AE4176E00E1FCDC /* UIImage+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3BDC351AE4176E00E1FCDC /* UIImage+Additions.swift */; };
@@ -95,6 +96,7 @@
 		5B6C142D1B09842C009617A8 /* TapScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TapScrollView.swift; path = Modularm/TapScrollView.swift; sourceTree = "<group>"; };
 		5B74FC8B1ADD74A100902484 /* AlarmOptionSettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlarmOptionSettingsController.swift; path = Modularm/AlarmOptionSettingsController.swift; sourceTree = "<group>"; };
 		5BCDA01F1AEDCF1800556117 /* AlarmTimeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmTimeController.swift; sourceTree = "<group>"; };
+		5BD375421B0CF854000D380C /* TimelineCellAlarmViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimelineCellAlarmViewModel.swift; path = Modularm/TimelineCellAlarmViewModel.swift; sourceTree = "<group>"; };
 		8E3B22601AD9E85F001693E2 /* TimelineDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimelineDataSource.swift; path = Modularm/TimelineDataSource.swift; sourceTree = "<group>"; };
 		8E3BDC331AE4176300E1FCDC /* AlarmOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlarmOption.swift; path = Modularm/AlarmOption.swift; sourceTree = "<group>"; };
 		8E3BDC351AE4176E00E1FCDC /* UIImage+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImage+Additions.swift"; path = "Modularm/UIImage+Additions.swift"; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 				8E6094F01B08584A007F8D24 /* TimelineHeaderView.swift */,
 				8E6094F21B08585E007F8D24 /* TimelineHeaderView.xib */,
 				5B6C142D1B09842C009617A8 /* TapScrollView.swift */,
+				5BD375421B0CF854000D380C /* TimelineCellAlarmViewModel.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -434,6 +437,7 @@
 				8E4511F01ADCF00B00A3E8EC /* UIColor+Additions.swift in Sources */,
 				5B1997AA1AE5765800D1522C /* WeatherOptionDelegateDataSource.swift in Sources */,
 				5B6C12621AFF2841009617A8 /* Countdown.swift in Sources */,
+				5BD375431B0CF854000D380C /* TimelineCellAlarmViewModel.swift in Sources */,
 				5B6C12611AFF2841009617A8 /* Alarm.swift in Sources */,
 				5B6C12651AFF2841009617A8 /* Repeat.swift in Sources */,
 				8E8228E21ADB679A00F9A26E /* UINavigationBar+Additions.swift in Sources */,

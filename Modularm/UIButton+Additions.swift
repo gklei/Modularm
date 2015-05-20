@@ -23,4 +23,25 @@ extension UIButton
       cancelButton.sizeToFit()
       return cancelButton
    }
+   
+   class func timelineCellDeleteButton() -> UIButton
+   {
+      let deleteButton = UIButton.buttonWithType(.Custom) as! UIButton
+      
+      let title = NSAttributedString(string: "delete", attributes: [NSFontAttributeName : UIFont(name: "HelveticaNeue-Light", size: 14)!, NSForegroundColorAttributeName : UIColor.whiteColor()])
+      deleteButton.setAttributedTitle(title, forState: .Normal)
+      deleteButton.backgroundColor = UIColor.darkRedLipstickColor()
+      
+      return deleteButton
+   }
+   
+   class func timelineCellToggleButton() -> UIButton
+   {
+      let toggleButton = UIButton.buttonWithType(.Custom) as! UIButton
+      let title = NSAttributedString(string: "toggle", attributes: [NSFontAttributeName : UIFont(name: "HelveticaNeue-Light", size: 14)!, NSForegroundColorAttributeName : UIColor.whiteColor()])
+      toggleButton.setAttributedTitle(title, forState: .Normal)
+      toggleButton.backgroundColor = UIColor.lipstickRedColor()
+      
+      return toggleButton
+   }
 }
