@@ -37,6 +37,8 @@ class TimelineController: UIViewController
    override func viewDidLoad()
    {
       super.viewDidLoad()
+      
+      self.timelineDataSource.removeIncompleteAlarms()
       self.navigationController?.navigationBar.hideBottomHairline()
 
       self.collectionView.registerNib(UINib(nibName: "TimelineHeaderView", bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "header")

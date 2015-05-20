@@ -124,16 +124,14 @@ extension TimelineDataSource: UICollectionViewDataSource
    {
       let cell: TimelineCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier("timelineCell", forIndexPath: indexPath) as! TimelineCollectionViewCell
       
-      var newIndexPath = indexPath
-      
       var alarm: Alarm?
       if indexPath.section == kActiveAlarmSectionIndex
       {
          if let alarms = self.activeAlarms()
          {
+            // we use the first alarm in the list for the header view
             alarm = alarms[indexPath.row + 1]
          }
-         newIndexPath = NSIndexPath(forRow: indexPath.row + 1, inSection: indexPath.section)
       }
       else
       {
@@ -143,11 +141,8 @@ extension TimelineDataSource: UICollectionViewDataSource
          }
       }
       
-      if let alarmEntry: Alarm = self.fetchedResultsController.objectAtIndexPath(newIndexPath) as? Alarm
-      {
-         cell.collectionView = collectionView
-         cell.configureWithAlarm(alarm)
-      }
+      cell.collectionView = collectionView
+      cell.configureWithAlarm(alarm)
       
       return cell
    }
@@ -177,7 +172,8 @@ extension TimelineDataSource: UICollectionViewDataSource
    
    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int
    {
-      return kTotalSectionsInTimelineCollectionView
+//      return kTotalSectionsInTimelineCollectionView
+      return self.fetchedResultsController.sections!.count
    }
 }
 
