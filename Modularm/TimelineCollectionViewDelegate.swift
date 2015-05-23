@@ -51,10 +51,11 @@ extension TimelineCollectionViewDelegate: UICollectionViewDelegateFlowLayout
    
    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize
    {
-      if section != 0
+      var size = CGSizeZero
+      if section != 0 || self.timelineController.nonActiveAlarms?.count == 0
       {
-         return CGSizeMake(CGRectGetWidth(self.collectionView.bounds), 150)
+         size = CGSizeMake(CGRectGetWidth(self.collectionView.bounds), 150)
       }
-      return CGSizeZero
+      return size
    }
 }
