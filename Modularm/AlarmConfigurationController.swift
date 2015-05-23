@@ -16,8 +16,7 @@ class AlarmConfigurationController: UIViewController
    @IBOutlet weak var alarmOptionsHeightConstraint: NSLayoutConstraint!
    @IBOutlet weak var alarmOptionsControllerBottomVerticalSpaceConstraint: NSLayoutConstraint!
    @IBOutlet weak var segmentedControl: UISegmentedControl!
-   
-   var alarmTimeController: AlarmTimeController?
+
    var alarmOptionsController: AlarmOptionsController?
    var timeController: TimeController?
    var alarm: Alarm?
@@ -41,9 +40,6 @@ class AlarmConfigurationController: UIViewController
       {
          switch identifier
          {
-         case "alarmTimeControllerSegue":
-            self.alarmTimeController = segue.destinationViewController as? AlarmTimeController
-            break
          case "alarmOptionsControllerSegue":
             self.alarmOptionsController = segue.destinationViewController.childViewControllers![0] as? AlarmOptionsController
             self.alarmOptionsController?.configureWithAlarm(self.alarm)

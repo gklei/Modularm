@@ -24,11 +24,6 @@ class TimeController: UIViewController
    
    private var settingTime = false
    
-   override func viewDidLoad()
-   {
-      super.viewDidLoad()
-   }
-   
    override func viewWillAppear(animated: Bool)
    {
       super.viewWillAppear(animated)
@@ -71,9 +66,6 @@ class TimeController: UIViewController
          self.updateSetTimeButtonTitle("start setting time")
          self.timePicker.userInteractionEnabled = false
          self.timeControllerDelegate?.settingTimeEnded()
-         
-         // TEMPORARY
-         self.logDateInformation()
       }
    }
    
