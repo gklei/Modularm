@@ -27,7 +27,7 @@ class TimelineDataSource: NSObject
       let coreDataStack = CoreDataStack.defaultStack
 
       let fetchRequest = NSFetchRequest(entityName: "Alarm")
-      fetchRequest.sortDescriptors = [NSSortDescriptor(key: "fireDateValue", ascending: true)];
+      fetchRequest.sortDescriptors = [NSSortDescriptor(key: "active", ascending: false), NSSortDescriptor(key: "fireDateValue", ascending: true)];
 
       let controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: coreDataStack.managedObjectContext!, sectionNameKeyPath: "active", cacheName: nil)
 
@@ -101,47 +101,37 @@ extension TimelineDataSource: UICollectionViewDataSource
 {
    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
    {
-      var count = 0
-      if section == kActiveAlarmSectionIndex
+      var numberOfItems = 0
+      if self.fetchedResultsController.sections?.count > 0
       {
-         if let alarms = self.activeAlarms()
+         if let sectionInfo = self.fetchedResultsController.sections?[section] as? NSFetchedResultsSectionInfo
          {
-            count = alarms.count - 1
-         }
-         count = max(0, count)
-      }
-      else
-      {
-         if let alarms = self.nonActiveAlarms()
-         {
-            count = alarms.count
+            numberOfItems = sectionInfo.numberOfObjects
          }
       }
-      return count
+
+      if section == kActiveAlarmSectionIndex && numberOfItems > 0
+      {
+         numberOfItems--
+      }
+      
+      return numberOfItems
    }
 
    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell
    {
       let cell: TimelineCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier("timelineCell", forIndexPath: indexPath) as! TimelineCollectionViewCell
-      
-      var alarm: Alarm?
+
+      var newIndexPath = indexPath
       if indexPath.section == kActiveAlarmSectionIndex
       {
-         if let alarms = self.activeAlarms()
-         {
-            // we use the first alarm in the list for the header view
-            alarm = alarms[indexPath.row + 1]
-         }
+         // increment the row by one because the first alarm in the Active section is the header
+         newIndexPath = NSIndexPath(forRow: indexPath.row + 1, inSection: indexPath.section)
       }
-      else
-      {
-         if let alarms = self.nonActiveAlarms()
-         {
-            alarm = alarms[indexPath.row]
-         }
-      }
-      
+
       cell.collectionView = collectionView
+
+      let alarm = self.fetchedResultsController.objectAtIndexPath(newIndexPath) as? Alarm
       cell.configureWithAlarm(alarm)
       
       return cell
@@ -172,7 +162,6 @@ extension TimelineDataSource: UICollectionViewDataSource
    
    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int
    {
-//      return kTotalSectionsInTimelineCollectionView
       return self.fetchedResultsController.sections!.count
    }
 }
