@@ -71,6 +71,14 @@ class TimelineController: UIViewController
          configurationController.createNewAlarm()
       }
    }
+
+   // MARK: - IBActions
+   @IBAction func addNewAlarmButtonPressed()
+   {
+      let configurationController = UIStoryboard.controllerWithIdentifier("AlarmConfigurationController") as! AlarmConfigurationController
+      configurationController.createNewAlarm()
+      self.navigationController?.pushViewController(configurationController, animated: true)
+   }
    
    // MARK: - Public
    func openSettingsForAlarm(alarm: Alarm)
