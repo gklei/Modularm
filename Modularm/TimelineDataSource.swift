@@ -37,7 +37,7 @@ class TimelineDataSource: NSObject
       return controller
    }()
    
-   lazy var dateFormatter: NSDateFormatter =
+   private lazy var dateFormatter: NSDateFormatter =
    {
       let formatter = NSDateFormatter()
       return formatter
@@ -106,13 +106,8 @@ extension TimelineDataSource: UICollectionViewDataSource
       {
          if let sectionInfo = self.fetchedResultsController.sections?[section] as? NSFetchedResultsSectionInfo
          {
-            numberOfItems = sectionInfo.numberOfObjects
+            numberOfItems = section == kActiveAlarmSectionIndex ? max(0, sectionInfo.numberOfObjects - 1) : sectionInfo.numberOfObjects
          }
-      }
-
-      if section == kActiveAlarmSectionIndex && numberOfItems > 0
-      {
-         numberOfItems--
       }
       
       return numberOfItems
