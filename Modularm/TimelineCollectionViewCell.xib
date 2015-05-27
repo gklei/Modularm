@@ -19,7 +19,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="376" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mqh-KT-mlx">
-                                        <rect key="frame" x="50" y="14" width="42" height="21"/>
+                                        <rect key="frame" x="50" y="14" width="306" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -45,6 +45,7 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.11764705882352941" green="0.11764705882352941" blue="0.11764705882352941" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="mqh-KT-mlx" secondAttribute="trailing" constant="20" id="2Jp-xi-9Xj"/>
                                     <constraint firstAttribute="height" constant="50" id="9Jj-NX-HUX"/>
                                     <constraint firstItem="P5F-5y-Dhj" firstAttribute="top" secondItem="BP4-9l-g4g" secondAttribute="top" id="A4m-Wf-slb"/>
                                     <constraint firstItem="P5F-5y-Dhj" firstAttribute="leading" secondItem="BP4-9l-g4g" secondAttribute="leading" constant="8" id="UWv-Ig-Q9e"/>
@@ -86,7 +87,7 @@
                 <outlet property="scrollView" destination="hKC-Mj-gq8" id="fhZ-4w-jXV"/>
                 <outlet property="separatorView" destination="P5F-5y-Dhj" id="z71-5n-0e3"/>
             </connections>
-            <point key="canvasLocation" x="212" y="254"/>
+            <point key="canvasLocation" x="86" y="87"/>
         </collectionViewCell>
     </objects>
 </document>
