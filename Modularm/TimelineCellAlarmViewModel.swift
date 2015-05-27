@@ -40,9 +40,9 @@ struct TimelineCellAlarmViewModel
          prettyAlarmDate += " \(amOrPm)"
          
          var alarmMessage = ""
-         if self.alarm.message != nil
+         if let messageText = self.alarm.message?.text
          {
-            alarmMessage = "  \(self.alarm.message!.text)"
+            alarmMessage = "  \(messageText)"
          }
          else
          {
