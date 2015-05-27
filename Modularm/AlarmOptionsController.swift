@@ -8,8 +8,15 @@
 
 import UIKit
 
+protocol AlarmOptionsControllerDelegate
+{
+   func didShowSettingsForOption()
+   func didDismissSettingsForOption()
+}
+
 class AlarmOptionsController: UIViewController
 {
+   var optionsControllerDelegate: AlarmOptionsControllerDelegate?
    private var alarm: Alarm?
 
    @IBOutlet weak var snoozeButton: AlarmOptionButton!
@@ -26,6 +33,9 @@ class AlarmOptionsController: UIViewController
    {
       super.viewWillAppear(animated)
       self.updateButtonsWithAlarm(self.alarm)
+
+      // temporary
+      self.optionsControllerDelegate?.didDismissSettingsForOption()
    }
 
    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
@@ -63,12 +73,18 @@ class AlarmOptionsController: UIViewController
       }
 
       optionSettingsController.configureWithAlarm(self.alarm, option: option)
+      optionsControllerDelegate?.didShowSettingsForOption()
    }
    
    // MARK: - Public
    func configureWithAlarm(alarm: Alarm?)
    {
       self.alarm = alarm
+   }
+
+   func returnToMainOptions()
+   {
+      self.navigationController?.popToRootViewControllerAnimated(true)
    }
    
    // MARK: - IBActions

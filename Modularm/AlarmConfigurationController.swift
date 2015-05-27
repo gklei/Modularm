@@ -17,6 +17,7 @@ class AlarmConfigurationController: UIViewController
    @IBOutlet weak var alarmOptionsControllerBottomVerticalSpaceConstraint: NSLayoutConstraint!
    @IBOutlet weak var segmentedControl: UISegmentedControl!
 
+   private let customBackButton = UIButton(frame: CGRectMake(0, 0, 50, 40))
    var alarmOptionsController: AlarmOptionsController?
    var timeController: TimeController?
    var alarm: Alarm?
@@ -25,6 +26,8 @@ class AlarmConfigurationController: UIViewController
    override func viewDidLoad()
    {
       super.viewDidLoad()
+
+      self.customBackButton.backgroundColor = UIColor.clearColor()
       self.setupKeboardNotifications()
    }
    
@@ -42,7 +45,9 @@ class AlarmConfigurationController: UIViewController
          {
          case "alarmOptionsControllerSegue":
             self.alarmOptionsController = segue.destinationViewController.childViewControllers![0] as? AlarmOptionsController
+            self.alarmOptionsController?.optionsControllerDelegate = self
             self.alarmOptionsController?.configureWithAlarm(self.alarm)
+            self.customBackButton.addTarget(self.alarmOptionsController, action: "returnToMainOptions", forControlEvents: .TouchUpInside)
             break
          case "timeController":
             self.timeController = segue.destinationViewController as? TimeController
@@ -110,6 +115,19 @@ extension AlarmConfigurationController: TimeControllerDelegate
       UIView.animateWithDuration(0.25, animations: { () -> Void in
          self.alarmOptionsController?.view.alpha = 1
       })
+   }
+}
+
+extension AlarmConfigurationController: AlarmOptionsControllerDelegate
+{
+   func didShowSettingsForOption()
+   {
+      self.navigationController?.navigationBar.addSubview(self.customBackButton)
+   }
+   
+   func didDismissSettingsForOption()
+   {
+      self.customBackButton.removeFromSuperview()
    }
 }
 
