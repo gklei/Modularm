@@ -10,18 +10,32 @@ import UIKit
 
 class AlarmMessageSettingsController: OptionSettingsControllerBase
 {
+   var messageModel: Message?
    @IBOutlet weak var messageTextView: UITextView!
-   
-   override func viewDidLoad()
+
+   // MARK: Lifecycle
+   override func viewWillAppear(animated: Bool)
    {
-      super.viewDidLoad()
+      super.viewWillAppear(animated)
+
+      self.messageModel = CoreDataStack.newModelWithOption(.Message) as? Message
+      if let message = self.alarm?.message {
+         self.messageModel?.text = message.text
+      }
+
       self.setupMessageTextView()
    }
    
    private func setupMessageTextView()
    {
       self.messageTextView.delegate = self
-      self.messageTextView.text = "e.g. Wake up!"
+
+      var messageText = "e.g. Wake up!"
+      if let message = self.alarm?.message {
+         messageText = message.text
+      }
+
+      self.messageTextView.text = messageText
       self.messageTextView.textColor = UIColor.lightGrayColor()
       self.messageTextView.textContainerInset = UIEdgeInsetsMake(8, 8, 8, 8)
    }
@@ -34,6 +48,10 @@ class AlarmMessageSettingsController: OptionSettingsControllerBase
    
    @IBAction func setMessageButtonPressed()
    {
+      self.messageModel?.text = self.messageTextView.text
+      self.alarm?.message = self.messageModel!
+      CoreDataStack.save()
+
       self.endEditingMessageAndDismissSelf()
    }
    
@@ -52,7 +70,11 @@ extension AlarmMessageSettingsController: UITextViewDelegate
 {
    func textViewDidBeginEditing(textView: UITextView)
    {
-      textView.text = ""
+      var messageText = ""
+      if let message = self.alarm?.message {
+         messageText = message.text
+      }
+      textView.text = messageText
       textView.textColor = UIColor.blackColor()
    }
 }
