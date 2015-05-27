@@ -13,7 +13,7 @@ class OptionSettingsControllerBase: UIViewController
    @IBOutlet weak var iconImageView: UIImageView!
    @IBOutlet weak var setOptionButton: UIButton!
    
-   var alarm: Alarm?
+   internal var alarm: Alarm?
    private(set) var option: AlarmOption = .Unknown
    
    override func viewDidLoad()
