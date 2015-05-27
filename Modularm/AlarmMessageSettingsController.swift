@@ -8,6 +8,16 @@
 
 import UIKit
 
+extension String
+{
+   var trimmedString: String {
+      get {
+         let whitespaceCharacters = NSCharacterSet.whitespaceCharacterSet()
+         return self.stringByTrimmingCharactersInSet(whitespaceCharacters)
+      }
+   }
+}
+
 class AlarmMessageSettingsController: OptionSettingsControllerBase
 {
    private var hasEditedMessage = false
@@ -51,15 +61,14 @@ class AlarmMessageSettingsController: OptionSettingsControllerBase
    {
       if self.hasEditedMessage
       {
-         let messageText = self.messageTextView.text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+         let messageText = self.messageTextView.text.trimmedString
          if count(messageText) > 0
          {
             self.messageModel?.text = messageText
             self.alarm?.message = self.messageModel!
             CoreDataStack.save()
          }
-         else
-         {
+         else {
             self.alarm?.deleteOption(.Message)
          }
       }
