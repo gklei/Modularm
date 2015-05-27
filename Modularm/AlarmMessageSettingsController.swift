@@ -10,7 +10,8 @@ import UIKit
 
 class AlarmMessageSettingsController: OptionSettingsControllerBase
 {
-   var messageModel: Message?
+   private var hasEditedMessage = false
+   private var messageModel: Message?
    @IBOutlet weak var messageTextView: UITextView!
 
    // MARK: Lifecycle
@@ -48,9 +49,20 @@ class AlarmMessageSettingsController: OptionSettingsControllerBase
    
    @IBAction func setMessageButtonPressed()
    {
-      self.messageModel?.text = self.messageTextView.text
-      self.alarm?.message = self.messageModel!
-      CoreDataStack.save()
+      if self.hasEditedMessage
+      {
+         let messageText = self.messageTextView.text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+         if count(messageText) > 0
+         {
+            self.messageModel?.text = messageText
+            self.alarm?.message = self.messageModel!
+            CoreDataStack.save()
+         }
+         else
+         {
+            self.alarm?.deleteOption(.Message)
+         }
+      }
 
       self.endEditingMessageAndDismissSelf()
    }
@@ -62,6 +74,7 @@ class AlarmMessageSettingsController: OptionSettingsControllerBase
    
    @IBAction func deleteMessageButtonPressed()
    {
+      self.alarm?.deleteOption(self.option)
       self.endEditingMessageAndDismissSelf()
    }
 }
@@ -70,6 +83,7 @@ extension AlarmMessageSettingsController: UITextViewDelegate
 {
    func textViewDidBeginEditing(textView: UITextView)
    {
+      self.hasEditedMessage = true
       var messageText = ""
       if let message = self.alarm?.message {
          messageText = message.text

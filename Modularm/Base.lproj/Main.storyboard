@@ -489,7 +489,7 @@
                                     <action selector="setOptionButtonPressed" destination="aa4-SF-2ad" eventType="touchUpInside" id="rqH-ld-9t2"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" delaysContentTouches="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="o4L-lg-MXf">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" delaysContentTouches="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="o4L-lg-MXf">
                                 <rect key="frame" x="0.0" y="50" width="320" height="425"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
