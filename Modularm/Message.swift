@@ -15,4 +15,10 @@ class Message: NSManagedObject {
     @NSManaged var text: String
     @NSManaged var alarm: Alarm
 
+   override func awakeFromInsert()
+   {
+      super.awakeFromInsert()
+      self.text = ""
+   }
+
 }
