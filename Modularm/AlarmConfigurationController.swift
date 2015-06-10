@@ -35,6 +35,7 @@ class AlarmConfigurationController: UIViewController
       
       self.timeSetterController.delegate = self
       self.timeSetterController.transitioningDelegate = self
+      let view = self.timeSetterController.view
    }
 
    // MARK: - Lifecycle
@@ -103,31 +104,32 @@ class AlarmConfigurationController: UIViewController
       }
    }
    
+   private func showTimeSetterController()
+   {
+      self.presentViewController(self.timeSetterController, animated: true, completion: nil)
+   }
+
    // MARK: - Public
    func createNewAlarm()
    {
       self.alarm = CoreDataStack.newAlarmModel()
+      self.timeSetterController.configureWithAlarm(self.alarm)
    }
    
    func configureWithAlarm(alarm: Alarm)
    {
       self.alarm = alarm
+      self.timeSetterController.configureWithAlarm(self.alarm)
    }
    
    func hourLabelTapped(recognizer: UIGestureRecognizer)
    {
-      self.timeSetterController.configureWithAlarm(self.alarm)
-      self.presentViewController(self.timeSetterController, animated: true) { () -> Void in
-         self.timeSetterController.setNeedsStatusBarAppearanceUpdate()
-      }
+      self.showTimeSetterController()
    }
    
    func minuteLabelTapped(recognizer: UIGestureRecognizer)
    {
-      self.timeSetterController.configureWithAlarm(self.alarm)
-      self.presentViewController(self.timeSetterController, animated: true) { () -> Void in
-         self.timeSetterController.setNeedsStatusBarAppearanceUpdate()
-      }
+      self.showTimeSetterController()
    }
    
    // MARK: - IBActions
