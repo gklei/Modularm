@@ -26,15 +26,20 @@
 		5B6C126A1AFF2860009617A8 /* NSAttributedString+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6C12691AFF2860009617A8 /* NSAttributedString+Additions.swift */; };
 		5B6C126E1AFFB152009617A8 /* OptionSettingsControllerBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6C126D1AFFB152009617A8 /* OptionSettingsControllerBase.swift */; };
 		5B6C12701AFFB875009617A8 /* AlarmOptionDelegateDataSourceBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6C126F1AFFB875009617A8 /* AlarmOptionDelegateDataSourceBuilder.swift */; };
-		5B6C136A1B0186C7009617A8 /* TimeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6C13691B0186C7009617A8 /* TimeController.swift */; };
 		5B6C136C1B019D02009617A8 /* NSCalendar+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6C136B1B019D02009617A8 /* NSCalendar+Additions.swift */; };
 		5B6C13D21B026951009617A8 /* UIStoryboard+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6C13D11B026951009617A8 /* UIStoryboard+Additions.swift */; };
 		5B6C14281B0548A0009617A8 /* TimelineCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6C14271B0548A0009617A8 /* TimelineCollectionViewDelegate.swift */; };
 		5B6C142B1B094B78009617A8 /* TimelineCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6C14291B094B78009617A8 /* TimelineCollectionViewCell.swift */; };
 		5B6C142C1B094B78009617A8 /* TimelineCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B6C142A1B094B78009617A8 /* TimelineCollectionViewCell.xib */; };
 		5B6C142E1B09842C009617A8 /* TapScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6C142D1B09842C009617A8 /* TapScrollView.swift */; };
+		5B6D9A281B28AE6A00AA662A /* TimeSetterTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6D9A271B28AE6A00AA662A /* TimeSetterTransitionAnimator.swift */; };
 		5B74FC8C1ADD74A100902484 /* AlarmOptionSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B74FC8B1ADD74A100902484 /* AlarmOptionSettingsController.swift */; };
 		5BD375431B0CF854000D380C /* TimelineCellAlarmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD375421B0CF854000D380C /* TimelineCellAlarmViewModel.swift */; };
+		5BEDA3641B27782E0000983F /* String+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEDA3631B27782E0000983F /* String+Additions.swift */; };
+		5BEDA3721B277BBC0000983F /* InfiniteTimelineScrollingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEDA36E1B277BBC0000983F /* InfiniteTimelineScrollingViewController.swift */; };
+		5BEDA3731B277BBC0000983F /* InfiniteTimelineScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEDA36F1B277BBC0000983F /* InfiniteTimelineScrollView.swift */; };
+		5BEDA3741B277BBC0000983F /* TimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEDA3701B277BBC0000983F /* TimelineView.swift */; };
+		5BEDA3751B277BBC0000983F /* TimeSetterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEDA3711B277BBC0000983F /* TimeSetterViewController.swift */; };
 		8E3B22611AD9E85F001693E2 /* TimelineDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3B22601AD9E85F001693E2 /* TimelineDataSource.swift */; };
 		8E3BDC341AE4176300E1FCDC /* AlarmOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3BDC331AE4176300E1FCDC /* AlarmOption.swift */; };
 		8E3BDC361AE4176E00E1FCDC /* UIImage+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3BDC351AE4176E00E1FCDC /* UIImage+Additions.swift */; };
@@ -86,15 +91,20 @@
 		5B6C12691AFF2860009617A8 /* NSAttributedString+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSAttributedString+Additions.swift"; path = "Modularm/NSAttributedString+Additions.swift"; sourceTree = "<group>"; };
 		5B6C126D1AFFB152009617A8 /* OptionSettingsControllerBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OptionSettingsControllerBase.swift; path = Modularm/OptionSettingsControllerBase.swift; sourceTree = "<group>"; };
 		5B6C126F1AFFB875009617A8 /* AlarmOptionDelegateDataSourceBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlarmOptionDelegateDataSourceBuilder.swift; path = Modularm/AlarmOptionDelegateDataSourceBuilder.swift; sourceTree = "<group>"; };
-		5B6C13691B0186C7009617A8 /* TimeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeController.swift; sourceTree = "<group>"; };
 		5B6C136B1B019D02009617A8 /* NSCalendar+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSCalendar+Additions.swift"; path = "Modularm/NSCalendar+Additions.swift"; sourceTree = "<group>"; };
 		5B6C13D11B026951009617A8 /* UIStoryboard+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIStoryboard+Additions.swift"; path = "Modularm/UIStoryboard+Additions.swift"; sourceTree = "<group>"; };
 		5B6C14271B0548A0009617A8 /* TimelineCollectionViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimelineCollectionViewDelegate.swift; path = Modularm/TimelineCollectionViewDelegate.swift; sourceTree = "<group>"; };
 		5B6C14291B094B78009617A8 /* TimelineCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimelineCollectionViewCell.swift; path = Modularm/TimelineCollectionViewCell.swift; sourceTree = "<group>"; };
 		5B6C142A1B094B78009617A8 /* TimelineCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TimelineCollectionViewCell.xib; path = Modularm/TimelineCollectionViewCell.xib; sourceTree = "<group>"; };
 		5B6C142D1B09842C009617A8 /* TapScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TapScrollView.swift; path = Modularm/TapScrollView.swift; sourceTree = "<group>"; };
+		5B6D9A271B28AE6A00AA662A /* TimeSetterTransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeSetterTransitionAnimator.swift; path = Modularm/TimeSetterTransitionAnimator.swift; sourceTree = "<group>"; };
 		5B74FC8B1ADD74A100902484 /* AlarmOptionSettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlarmOptionSettingsController.swift; path = Modularm/AlarmOptionSettingsController.swift; sourceTree = "<group>"; };
 		5BD375421B0CF854000D380C /* TimelineCellAlarmViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimelineCellAlarmViewModel.swift; path = Modularm/TimelineCellAlarmViewModel.swift; sourceTree = "<group>"; };
+		5BEDA3631B27782E0000983F /* String+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+Additions.swift"; path = "Modularm/String+Additions.swift"; sourceTree = "<group>"; };
+		5BEDA36E1B277BBC0000983F /* InfiniteTimelineScrollingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InfiniteTimelineScrollingViewController.swift; path = Modularm/InfiniteTimelineScrollingViewController.swift; sourceTree = "<group>"; };
+		5BEDA36F1B277BBC0000983F /* InfiniteTimelineScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InfiniteTimelineScrollView.swift; path = Modularm/InfiniteTimelineScrollView.swift; sourceTree = "<group>"; };
+		5BEDA3701B277BBC0000983F /* TimelineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimelineView.swift; path = Modularm/TimelineView.swift; sourceTree = "<group>"; };
+		5BEDA3711B277BBC0000983F /* TimeSetterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeSetterViewController.swift; path = Modularm/TimeSetterViewController.swift; sourceTree = "<group>"; };
 		8E3B22601AD9E85F001693E2 /* TimelineDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimelineDataSource.swift; path = Modularm/TimelineDataSource.swift; sourceTree = "<group>"; };
 		8E3BDC331AE4176300E1FCDC /* AlarmOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlarmOption.swift; path = Modularm/AlarmOption.swift; sourceTree = "<group>"; };
 		8E3BDC351AE4176E00E1FCDC /* UIImage+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImage+Additions.swift"; path = "Modularm/UIImage+Additions.swift"; sourceTree = "<group>"; };
@@ -179,6 +189,18 @@
 			name = Timeline;
 			sourceTree = "<group>";
 		};
+		5BEDA3651B27799B0000983F /* Custom Time Setting */ = {
+			isa = PBXGroup;
+			children = (
+				5B6D9A271B28AE6A00AA662A /* TimeSetterTransitionAnimator.swift */,
+				5BEDA36E1B277BBC0000983F /* InfiniteTimelineScrollingViewController.swift */,
+				5BEDA36F1B277BBC0000983F /* InfiniteTimelineScrollView.swift */,
+				5BEDA3701B277BBC0000983F /* TimelineView.swift */,
+				5BEDA3711B277BBC0000983F /* TimeSetterViewController.swift */,
+			);
+			name = "Custom Time Setting";
+			sourceTree = "<group>";
+		};
 		8E3BDC371AE4308A00E1FCDC /* Alarm Options */ = {
 			isa = PBXGroup;
 			children = (
@@ -194,6 +216,7 @@
 		8EC9B9C91ADB9C3A00DBF350 /* Class Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				5BEDA3631B27782E0000983F /* String+Additions.swift */,
 				5B6C13D11B026951009617A8 /* UIStoryboard+Additions.swift */,
 				5B6C12691AFF2860009617A8 /* NSAttributedString+Additions.swift */,
 				8E4511EF1ADCF00B00A3E8EC /* UIColor+Additions.swift */,
@@ -241,6 +264,7 @@
 		8EFACDA91AD837EE00279956 = {
 			isa = PBXGroup;
 			children = (
+				5BEDA3651B27799B0000983F /* Custom Time Setting */,
 				5B7EF4581AE85BDC00472976 /* Timeline */,
 				8E3BDC371AE4308A00E1FCDC /* Alarm Options */,
 				5B74FC8A1ADD72E000902484 /* UI */,
@@ -268,7 +292,6 @@
 			isa = PBXGroup;
 			children = (
 				5B1997B61AE5F79C00D1522C /* AlarmMessageSettingsController.swift */,
-				5B6C13691B0186C7009617A8 /* TimeController.swift */,
 				8E8228E51ADB821C00F9A26E /* AlarmConfigurationController.swift */,
 			);
 			name = "View Controllers";
@@ -407,6 +430,7 @@
 				5B6C14281B0548A0009617A8 /* TimelineCollectionViewDelegate.swift in Sources */,
 				8E3BDC3B1AE430F400E1FCDC /* SnoozeOptionDelegateDataSource.swift in Sources */,
 				5B6C12671AFF2841009617A8 /* Sound.swift in Sources */,
+				5BEDA3721B277BBC0000983F /* InfiniteTimelineScrollingViewController.swift in Sources */,
 				8EFACDE11AD83A1E00279956 /* CoreDataStack.swift in Sources */,
 				5B6C136C1B019D02009617A8 /* NSCalendar+Additions.swift in Sources */,
 				5B22182F1AE60A0700D56D31 /* AlarmOptionDelegateDataSource.swift in Sources */,
@@ -415,9 +439,11 @@
 				5B6C12661AFF2841009617A8 /* Snooze.swift in Sources */,
 				5B6C126E1AFFB152009617A8 /* OptionSettingsControllerBase.swift in Sources */,
 				5B6C12631AFF2841009617A8 /* Date.swift in Sources */,
+				5BEDA3731B277BBC0000983F /* InfiniteTimelineScrollView.swift in Sources */,
 				8EFACDB81AD837EE00279956 /* AppDelegate.swift in Sources */,
 				8E3B22611AD9E85F001693E2 /* TimelineDataSource.swift in Sources */,
 				8E6094F11B08584A007F8D24 /* TimelineHeaderView.swift in Sources */,
+				5BEDA3641B27782E0000983F /* String+Additions.swift in Sources */,
 				5B6C13D21B026951009617A8 /* UIStoryboard+Additions.swift in Sources */,
 				5B6C12701AFFB875009617A8 /* AlarmOptionDelegateDataSourceBuilder.swift in Sources */,
 				8E5BD3271ADB930400C42FAA /* AlarmOptionButton.swift in Sources */,
@@ -437,13 +463,15 @@
 				5B6C126A1AFF2860009617A8 /* NSAttributedString+Additions.swift in Sources */,
 				5B2218311AE60A2400D56D31 /* UIButton+Additions.swift in Sources */,
 				5B1997B01AE5B64A00D1522C /* MusicOptionDelegateDataSource.swift in Sources */,
+				5BEDA3751B277BBC0000983F /* TimeSetterViewController.swift in Sources */,
 				5B6C142E1B09842C009617A8 /* TapScrollView.swift in Sources */,
 				8EFACDDD1AD8390F00279956 /* TimelineController.swift in Sources */,
 				8E8228E61ADB821C00F9A26E /* AlarmConfigurationController.swift in Sources */,
 				5B74FC8C1ADD74A100902484 /* AlarmOptionSettingsController.swift in Sources */,
-				5B6C136A1B0186C7009617A8 /* TimeController.swift in Sources */,
 				8E8228E81ADB8AA900F9A26E /* AlarmOptionsController.swift in Sources */,
 				5B6C12641AFF2841009617A8 /* Message.swift in Sources */,
+				5B6D9A281B28AE6A00AA662A /* TimeSetterTransitionAnimator.swift in Sources */,
+				5BEDA3741B277BBC0000983F /* TimelineView.swift in Sources */,
 				8E3BDC361AE4176E00E1FCDC /* UIImage+Additions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

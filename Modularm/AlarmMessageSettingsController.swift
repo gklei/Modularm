@@ -8,16 +8,6 @@
 
 import UIKit
 
-extension String
-{
-   var trimmedString: String {
-      get {
-         let whitespaceCharacters = NSCharacterSet.whitespaceCharacterSet()
-         return self.stringByTrimmingCharactersInSet(whitespaceCharacters)
-      }
-   }
-}
-
 class AlarmMessageSettingsController: OptionSettingsControllerBase
 {
    private var hasEditedMessage = false
