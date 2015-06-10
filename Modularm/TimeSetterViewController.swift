@@ -37,28 +37,20 @@ class TimeSetterViewController: UIViewController
       self.alarm = alarm
    }
    
-   override func viewDidLoad()
+   override func viewWillAppear(animated: Bool)
    {
-      super.viewDidLoad()
+      super.viewWillAppear(animated)
       
-      if let hour = self.alarm?.fireDate.hour
-      {
-         self.hourLabel.text = hour <= 9 ? "0\(hour)" : "\(hour)"
-      }
-      
-      if let minute = self.alarm?.fireDate.minute
-      {
-         self.minuteLabel.text = minute <= 9 ? "0\(minute)" : "\(minute)"
-      }
-      
-      delay(0.1, closure: { () -> () in
-         if let hour = self.alarm?.fireDate.hour
+      self.delay(0.1, closure: { () -> () in
+         if let hour = self.alarm?.fireDate.hour where self.hourLabel != nil
          {
+            self.hourLabel.text = hour <= 9 ? "0\(hour)" : "\(hour)"
             self.hourScrollViewController?.scrollToNumber(hour, animated: false)
          }
          
-         if let minute = self.alarm?.fireDate.minute
+         if let minute = self.alarm?.fireDate.minute where self.minuteLabel != nil
          {
+            self.minuteLabel.text = minute <= 9 ? "0\(minute)" : "\(minute)"
             self.minuteScrollViewController?.scrollToNumber(minute, animated: false)
          }
       })
