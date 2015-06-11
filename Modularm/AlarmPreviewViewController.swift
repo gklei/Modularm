@@ -8,12 +8,6 @@
 
 import UIKit
 
-protocol AlarmPreviewViewControllerDelegate
-{
-   func alarmPreviewHourLabelTapped()
-   func alarmPreviewMinuteLabelTapped()
-}
-
 class AlarmPreviewViewController: UIViewController
 {
    // MARK: - Properties
@@ -21,39 +15,16 @@ class AlarmPreviewViewController: UIViewController
    @IBOutlet weak var minuteLabel: UILabel!
    
    private weak var alarm: Alarm?
-   var delegate: AlarmPreviewViewControllerDelegate?
    
    // MARK: - Lifecycle
    override func viewDidLoad()
    {
       super.viewDidLoad()
       self.view.backgroundColor = UIColor.clearColor()
-
-      self.setupLabelTapRecognizers()
       self.updateHourAndMinuteLabelsWithAlarm(self.alarm)
    }
-   
-   // MARK: - Setup
-   private func setupLabelTapRecognizers()
-   {
-      let hourTapRecognizer = UITapGestureRecognizer(target: self, action: "hourLabelTapped:")
-      self.hourLabel.addGestureRecognizer(hourTapRecognizer)
-      
-      let minuteTapRecognizer = UITapGestureRecognizer(target: self, action: "minuteLabelTapped:")
-      self.minuteLabel.addGestureRecognizer(minuteTapRecognizer)
-   }
-   
+
    // MARK: Public
-   func hourLabelTapped(recognizer: UIGestureRecognizer)
-   {
-      self.delegate?.alarmPreviewHourLabelTapped()
-   }
-   
-   func minuteLabelTapped(recognizer: UIGestureRecognizer)
-   {
-      self.delegate?.alarmPreviewMinuteLabelTapped()
-   }
-   
    func configureWithAlarm(alarm: Alarm?)
    {
       self.alarm = alarm

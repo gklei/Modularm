@@ -68,8 +68,11 @@ class AlarmConfigurationController: UIViewController
    private func setupAlarmPreviewControllerWithSegue(segue: UIStoryboardSegue)
    {
       self.alarmPreviewController = segue.destinationViewController as? AlarmPreviewViewController
-      self.alarmPreviewController?.delegate = self
       self.alarmPreviewController?.configureWithAlarm(self.alarm)
+      
+      let tapRecognizer = UITapGestureRecognizer(target: self, action: "showTimeSetterController")
+      tapRecognizer.cancelsTouchesInView = false
+      self.alarmPreviewController?.view.addGestureRecognizer(tapRecognizer)
    }
    
    private func setupAlarmOptionsControllerWithSegue(segue: UIStoryboardSegue)
@@ -93,7 +96,7 @@ class AlarmConfigurationController: UIViewController
    }
    
    // MARK: - Private
-   private func showTimeSetterController()
+   func showTimeSetterController()
    {
       self.presentViewController(self.timeSetterController, animated: true, completion: nil)
    }
@@ -140,19 +143,6 @@ class AlarmConfigurationController: UIViewController
          CoreDataStack.deleteObject(self.alarm)
       }
       self.navigationController?.popViewControllerAnimated(true)
-   }
-}
-
-extension AlarmConfigurationController: AlarmPreviewViewControllerDelegate
-{
-   func alarmPreviewHourLabelTapped()
-   {
-      self.showTimeSetterController()
-   }
-   
-   func alarmPreviewMinuteLabelTapped()
-   {
-      self.showTimeSetterController()
    }
 }
 
