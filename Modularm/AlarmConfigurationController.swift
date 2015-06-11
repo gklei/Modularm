@@ -123,11 +123,9 @@ class AlarmConfigurationController: UIViewController
       {
          self.alarm?.fireDate = NSDate.alarmDateWithHour(hour, minute: minute)
       }
-      else
+      else if let originalDate = self.originalAlarmFireDate
       {
-         let hour = self.alarm?.fireDate.hour
-         let minute = self.alarm?.fireDate.minute
-         self.alarm?.fireDate = NSDate.alarmDateWithHour(hour!, minute: minute!)
+         self.alarm?.fireDate = NSDate.alarmDateWithHour(originalDate.hour, minute: originalDate.minute)
       }
       
       CoreDataStack.save()
