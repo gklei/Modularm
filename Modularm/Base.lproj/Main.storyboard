@@ -109,7 +109,7 @@
                     </connections>
                 </customObject>
             </objects>
-            <point key="canvasLocation" x="209.5" y="397.5"/>
+            <point key="canvasLocation" x="135.5" y="398.5"/>
         </scene>
         <!--Alarm Configuration Controller-->
         <scene sceneID="pnA-SI-Rvc">
@@ -215,7 +215,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HT9-yl-Jo4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="653.5" y="397.5"/>
+            <point key="canvasLocation" x="841.5" y="398.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="jed-6e-O8f">
@@ -234,7 +234,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gqQ-Cz-RwX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-207" y="399"/>
+            <point key="canvasLocation" x="-559" y="399"/>
         </scene>
         <!--Alarm Options Controller-->
         <scene sceneID="2Zr-Tu-7WA">
@@ -496,7 +496,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="979-ud-6oH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1106.5" y="451.5"/>
+            <point key="canvasLocation" x="1406.5" y="367.5"/>
         </scene>
         <!--Alarm Option Settings Controller-->
         <scene sceneID="T3j-SF-W8o">
@@ -576,7 +576,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ann-yw-AK2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1563" y="137.5"/>
+            <point key="canvasLocation" x="2049" y="-20.5"/>
         </scene>
         <!--Alarm Message Settings Controller-->
         <scene sceneID="bhi-XP-Y59">
@@ -680,7 +680,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QR0-tN-weO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1563" y="756.5"/>
+            <point key="canvasLocation" x="2049" y="950.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="iOI-pc-oGK">
@@ -698,7 +698,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Cv-f5-owP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1020.5" y="1046.4999999999998"/>
+            <point key="canvasLocation" x="836.5" y="1066"/>
         </scene>
         <!--Time Setter View Controller-->
         <scene sceneID="91i-hv-9qE">
@@ -825,7 +825,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NTN-6z-JAM" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1087" y="-273"/>
+            <point key="canvasLocation" x="823" y="-427"/>
         </scene>
         <!--Infinite Timeline Scrolling View Controller-->
         <scene sceneID="0i3-Ki-baF">
@@ -867,7 +867,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r0d-Jb-BEd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1402" y="-490.5"/>
+            <point key="canvasLocation" x="1218" y="-645"/>
         </scene>
         <!--Infinite Timeline Scrolling View Controller-->
         <scene sceneID="fMG-H9-l5o">
@@ -907,7 +907,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yvk-nZ-XjB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="809.5" y="-490.5"/>
+            <point key="canvasLocation" x="445" y="-645"/>
         </scene>
     </scenes>
     <resources>
