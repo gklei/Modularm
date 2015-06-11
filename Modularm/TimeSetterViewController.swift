@@ -37,7 +37,7 @@ class TimeSetterViewController: UIViewController
    var hourScrollViewController: InfiniteTimelineScrollingViewController?
    var minuteScrollViewController: InfiniteTimelineScrollingViewController?
    
-   var alarm: Alarm?
+   private weak var alarm: Alarm?
    var delegate: TimeSetterViewControllerDelegate?
    
    func configureWithAlarm(alarm: Alarm?)
@@ -49,7 +49,7 @@ class TimeSetterViewController: UIViewController
    {
       super.viewWillAppear(animated)
       
-      self.delay(0.1, closure: { () -> () in
+      self.delay(0.01, closure: { () -> () in
          if let hour = self.alarm?.fireDate.hour where self.hourLabel != nil
          {
             self.hourLabel.text = hour <= 9 ? "0\(hour)" : "\(hour)"

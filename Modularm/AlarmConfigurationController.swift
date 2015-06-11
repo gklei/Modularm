@@ -16,16 +16,16 @@ class AlarmConfigurationController: UIViewController
    @IBOutlet weak var alarmOptionsHeightConstraint: NSLayoutConstraint!
    @IBOutlet weak var alarmOptionsControllerBottomVerticalSpaceConstraint: NSLayoutConstraint!
    @IBOutlet weak var segmentedControl: UISegmentedControl!
-   @IBOutlet weak var hourLabel: UILabel!
-   @IBOutlet weak var minuteLabel: UILabel!
-   @IBOutlet weak var labelContainerView: UIView!
 
-   let transitionAnimator = TimeSetterTransitionAnimator()
    private let customBackButton = UIButton(frame: CGRectMake(0, 0, 50, 40))
-   var alarmOptionsController: AlarmOptionsController?
-   var timeSetterController: TimeSetterViewController
-   var alarm: Alarm?
-   var originalAlarmFireDate: NSDate?
+   
+   private var alarm: Alarm?
+   private var originalAlarmFireDate: NSDate?
+   
+   private let transitionAnimator = TimeSetterTransitionAnimator()
+   private var alarmOptionsController: AlarmOptionsController?
+   private var timeSetterController: TimeSetterViewController
+   private var alarmPreviewController: AlarmPreviewViewController?
    
    private var isSettingTime = false
    
@@ -36,29 +36,15 @@ class AlarmConfigurationController: UIViewController
       
       self.timeSetterController.delegate = self
       self.timeSetterController.transitioningDelegate = self
-      let view = self.timeSetterController.view
    }
 
    // MARK: - Lifecycle
    override func viewDidLoad()
    {
       super.viewDidLoad()
-
-      self.customBackButton.backgroundColor = UIColor.clearColor()
+      
+      self.setupCustomBackButton()
       self.setupKeboardNotifications()
-      self.updateLabelsWithAlarm(self.alarm)
-      
-      let hourTapRecognizer = UITapGestureRecognizer(target: self, action: "hourLabelTapped:")
-      self.hourLabel.addGestureRecognizer(hourTapRecognizer)
-      
-      let minuteTapRecognizer = UITapGestureRecognizer(target: self, action: "minuteLabelTapped:")
-      self.minuteLabel.addGestureRecognizer(minuteTapRecognizer)
-   }
-   
-   override func viewWillAppear(animated: Bool)
-   {
-      super.viewWillAppear(animated);
-      self.setupSegmentedControl()
    }
    
    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
@@ -68,11 +54,10 @@ class AlarmConfigurationController: UIViewController
          switch identifier
          {
          case "alarmOptionsControllerSegue":
-            self.alarmOptionsController = segue.destinationViewController.childViewControllers![0] as? AlarmOptionsController
-            self.alarmOptionsController?.optionsControllerDelegate = self
-            self.alarmOptionsController?.configureWithAlarm(self.alarm)
-            self.customBackButton.addTarget(self.alarmOptionsController, action: "dismissSelf", forControlEvents: .TouchUpInside)
-            self.navigationController?.navigationBar.addSubview(self.customBackButton)
+            self.setupAlarmOptionsControllerWithSegue(segue)
+            
+         case "alarmPreviewViewControllerSegue":
+            self.setupAlarmPreviewControllerWithSegue(segue)
          default:
             break
          }
@@ -80,42 +65,34 @@ class AlarmConfigurationController: UIViewController
    }
    
    // MARK: - Setup
+   private func setupAlarmPreviewControllerWithSegue(segue: UIStoryboardSegue)
+   {
+      self.alarmPreviewController = segue.destinationViewController as? AlarmPreviewViewController
+      self.alarmPreviewController?.delegate = self
+      self.alarmPreviewController?.configureWithAlarm(self.alarm)
+   }
+   
+   private func setupAlarmOptionsControllerWithSegue(segue: UIStoryboardSegue)
+   {
+      self.alarmOptionsController = segue.destinationViewController.childViewControllers![0] as? AlarmOptionsController
+      self.alarmOptionsController?.optionsControllerDelegate = self
+      self.alarmOptionsController?.configureWithAlarm(self.alarm)
+   }
+   
+   private func setupCustomBackButton()
+   {
+      self.customBackButton.backgroundColor = UIColor.clearColor()
+      self.customBackButton.addTarget(self.alarmOptionsController, action: "dismissSelf", forControlEvents: .TouchUpInside)
+      self.navigationController?.navigationBar.addSubview(self.customBackButton)
+   }
+   
    private func setupKeboardNotifications()
    {
       NSNotificationCenter.defaultCenter().addObserver(self, selector: "moveAlarmOptionsControllerUpForNotification:", name: UIKeyboardWillShowNotification, object: nil)
       NSNotificationCenter.defaultCenter().addObserver(self, selector: "moveAlarmOptionsControllerDownForNotification:", name: UIKeyboardWillHideNotification, object: nil)
    }
    
-   private func setupSegmentedControl()
-   {
-      self.segmentedControl.selectedSegmentIndex = 1
-      self.segmentedControl.enabled = false
-      self.segmentedControl.userInteractionEnabled = false
-   }
-   
-   private func updateLabelsWithAlarm(alarm: Alarm?)
-   {
-      if let hour = self.alarm?.fireDate.hour
-      {
-         var hourInt = (hour + 12) % 12
-         hourInt = hourInt == 0 ? 12 : hourInt
-         self.hourLabel.text = hourInt <= 9 ? "0\(hourInt)" : "\(hourInt)"
-      }
-      
-      if let minute = self.alarm?.fireDate.minute
-      {
-         self.minuteLabel.text = minute <= 9 ? "0\(minute)" : "\(minute)"
-      }
-   }
-   
-   private func updateLabelsWithHour(hour: Int, minute: Int)
-   {
-      var hourInt = (hour + 12) % 12
-      hourInt = hourInt == 0 ? 12 : hourInt
-      self.hourLabel.text = hourInt <= 9 ? "0\(hourInt)" : "\(hourInt)"
-      self.minuteLabel.text = minute <= 9 ? "0\(minute)" : "\(minute)"
-   }
-   
+   // MARK: - Private
    private func showTimeSetterController()
    {
       self.presentViewController(self.timeSetterController, animated: true, completion: nil)
@@ -127,6 +104,7 @@ class AlarmConfigurationController: UIViewController
       self.alarm = CoreDataStack.newAlarmModel()
       self.originalAlarmFireDate = self.alarm?.fireDate.copy() as? NSDate
       self.timeSetterController.configureWithAlarm(self.alarm)
+      self.alarmPreviewController?.configureWithAlarm(self.alarm)
    }
    
    func configureWithAlarm(alarm: Alarm)
@@ -134,16 +112,6 @@ class AlarmConfigurationController: UIViewController
       self.alarm = alarm
       self.originalAlarmFireDate = self.alarm?.fireDate.copy() as? NSDate
       self.timeSetterController.configureWithAlarm(self.alarm)
-   }
-   
-   func hourLabelTapped(recognizer: UIGestureRecognizer)
-   {
-      self.showTimeSetterController()
-   }
-   
-   func minuteLabelTapped(recognizer: UIGestureRecognizer)
-   {
-      self.showTimeSetterController()
    }
    
    // MARK: - IBActions
@@ -169,7 +137,24 @@ class AlarmConfigurationController: UIViewController
    func dismissSelf()
    {
       self.alarm?.fireDate = self.originalAlarmFireDate!
+      if self.alarm?.completedSetup == false
+      {
+         CoreDataStack.deleteObject(self.alarm)
+      }
       self.navigationController?.popViewControllerAnimated(true)
+   }
+}
+
+extension AlarmConfigurationController: AlarmPreviewViewControllerDelegate
+{
+   func alarmPreviewHourLabelTapped()
+   {
+      self.showTimeSetterController()
+   }
+   
+   func alarmPreviewMinuteLabelTapped()
+   {
+      self.showTimeSetterController()
    }
 }
 
@@ -178,7 +163,7 @@ extension AlarmConfigurationController: AlarmOptionsControllerDelegate
    func didShowSettingsForOption()
    {
       self.customBackButton.removeTarget(self, action: "dismissSelf", forControlEvents: .TouchUpInside)
-      self.customBackButton.addTarget(self, action: "returnToMainOptions", forControlEvents: .TouchUpInside)
+      self.customBackButton.addTarget(self.alarmOptionsController, action: "returnToMainOptions", forControlEvents: .TouchUpInside)
    }
    
    func didDismissSettingsForOption()
@@ -194,7 +179,7 @@ extension AlarmConfigurationController: TimeSetterViewControllerDelegate
    {
       if let hour = self.timeSetterController.currentHourValue, minute = self.timeSetterController.currentMinuteValue
       {
-         self.updateLabelsWithHour(hour, minute: minute)
+         self.alarmPreviewController?.updateLabelsWithHour(hour, minute: minute)
          self.alarm?.fireDate = NSDate.alarmDateWithHour(hour, minute: minute)
       }
       self.timeSetterController.dismissViewControllerAnimated(true, completion: nil)
