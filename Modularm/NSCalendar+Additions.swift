@@ -42,32 +42,34 @@ extension NSDate
    {
       println("hour: \(self.hour) minute: \(self.minute)")
    }
-}
-
-extension UIDatePicker
-{
-   var alarmDate: NSDate {
-      get {
-         let date = self.date
-         let timePickerHour = date.hour
-         let timePickerMinute = date.minute
-         
-         let currentDate = NSDate()
-         let currentHour = currentDate.hour
-         let currentMinute = currentDate.minute
-         
-         var secondsToAdd = date.timeIntervalSinceNow
-         if currentDate.compare(date) != .OrderedAscending
-         {
-            secondsToAdd += (24 * 60 * 60)
-         }
-         
-         if date.hour == currentDate.hour && date.minute > currentDate.minute && date.day > currentDate.day || (date.hour > currentDate.hour && date.day > currentDate.day)
-         {
-            secondsToAdd -= (24 * 60 * 60)
-         }
-         
-         return NSDate(timeIntervalSinceNow: secondsToAdd)
+   
+   class func alarmDateWithHour(hour: Int, minute: Int) -> NSDate
+   {
+      let currentDate = NSDate()
+      let calendar = NSCalendar.currentCalendar()
+      var components = calendar.components((.CalendarUnitDay | .CalendarUnitYear | .CalendarUnitMonth), fromDate: NSDate())
+      
+      components.hour = hour
+      components.minute = minute
+      
+      let date = calendar.dateFromComponents(components)!
+      let timePickerHour = date.hour
+      let timePickerMinute = date.minute
+      
+      let currentHour = currentDate.hour
+      let currentMinute = currentDate.minute
+      
+      var secondsToAdd = date.timeIntervalSinceNow
+      if currentDate.compare(date) != .OrderedAscending
+      {
+         secondsToAdd += (24 * 60 * 60)
       }
+      
+      if date.hour == currentDate.hour && date.minute > currentDate.minute && date.day > currentDate.day || (date.hour > currentDate.hour && date.day > currentDate.day)
+      {
+         secondsToAdd -= (24 * 60 * 60)
+      }
+      
+      return NSDate(timeIntervalSinceNow: secondsToAdd)
    }
 }

@@ -24,6 +24,14 @@ class TimeSetterViewController: UIViewController
    @IBOutlet weak var hourMarkerView: UIView!
    @IBOutlet weak var minuteMarkerView: UIView!
    
+   var currentHourValue: Int? {
+      return self.hourScrollViewController?.currentTimeValue?.value
+   }
+   
+   var currentMinuteValue: Int? {
+      return self.minuteScrollViewController?.currentTimeValue?.value
+   }
+   
    var timelineMode: TimelineMode = .Standard
    
    var hourScrollViewController: InfiniteTimelineScrollingViewController?
@@ -162,7 +170,7 @@ extension TimeSetterViewController: InfiniteTimelineScrollingViewControllerDeleg
    func infiniteScrollViewWasTapped(scrollView: InfiniteTimelineScrollView, atGlobalLocation location: CGPoint)
    {
       if self.labelContainerView.frame.contains(location)
-      {
+      {         
          self.delegate?.timeSetterViewControllerTimeWasTapped()
       }
       else

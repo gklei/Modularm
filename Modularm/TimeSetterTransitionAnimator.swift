@@ -10,7 +10,7 @@ import UIKit
 
 class TimeSetterTransitionAnimator: NSObject
 {
-   let duration = 1.0
+   let duration = 0.3
    var presenting = true
 }
 

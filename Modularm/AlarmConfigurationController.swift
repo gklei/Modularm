@@ -45,7 +45,7 @@ class AlarmConfigurationController: UIViewController
 
       self.customBackButton.backgroundColor = UIColor.clearColor()
       self.setupKeboardNotifications()
-      self.setupLabelsWithAlarm(self.alarm)
+      self.updateLabelsWithAlarm(self.alarm)
       
       let hourTapRecognizer = UITapGestureRecognizer(target: self, action: "hourLabelTapped:")
       self.hourLabel.addGestureRecognizer(hourTapRecognizer)
@@ -91,17 +91,27 @@ class AlarmConfigurationController: UIViewController
       self.segmentedControl.userInteractionEnabled = false
    }
    
-   private func setupLabelsWithAlarm(alarm: Alarm?)
+   private func updateLabelsWithAlarm(alarm: Alarm?)
    {
       if let hour = self.alarm?.fireDate.hour
       {
-         self.hourLabel.text = hour <= 9 ? "0\(hour)" : "\(hour)"
+         var hourInt = (hour + 12) % 12
+         hourInt = hourInt == 0 ? 12 : hourInt
+         self.hourLabel.text = hourInt <= 9 ? "0\(hourInt)" : "\(hourInt)"
       }
       
       if let minute = self.alarm?.fireDate.minute
       {
          self.minuteLabel.text = minute <= 9 ? "0\(minute)" : "\(minute)"
       }
+   }
+   
+   private func updateLabelsWithHour(hour: Int, minute: Int)
+   {
+      var hourInt = (hour + 12) % 12
+      hourInt = hourInt == 0 ? 12 : hourInt
+      self.hourLabel.text = hourInt <= 9 ? "0\(hourInt)" : "\(hourInt)"
+      self.minuteLabel.text = minute <= 9 ? "0\(minute)" : "\(minute)"
    }
    
    private func showTimeSetterController()
@@ -137,6 +147,17 @@ class AlarmConfigurationController: UIViewController
    {
       self.alarm?.completedSetup = true
       
+      if let hour = self.timeSetterController.currentHourValue, minute = self.timeSetterController.currentMinuteValue
+      {
+         self.alarm?.fireDate = NSDate.alarmDateWithHour(hour, minute: minute)
+      }
+      else
+      {
+         let hour = self.alarm?.fireDate.hour
+         let minute = self.alarm?.fireDate.minute
+         self.alarm?.fireDate = NSDate.alarmDateWithHour(hour!, minute: minute!)
+      }
+      
       CoreDataStack.save()
       self.navigationController?.popViewControllerAnimated(true)
    }
@@ -159,6 +180,10 @@ extension AlarmConfigurationController: TimeSetterViewControllerDelegate
 {
    func timeSetterViewControllerTimeWasTapped()
    {
+      if let hour = self.timeSetterController.currentHourValue, minute = self.timeSetterController.currentMinuteValue
+      {
+         self.updateLabelsWithHour(hour, minute: minute)
+      }
       self.timeSetterController.dismissViewControllerAnimated(true, completion: nil)
    }
 }
