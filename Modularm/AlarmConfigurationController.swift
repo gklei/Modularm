@@ -25,6 +25,7 @@ class AlarmConfigurationController: UIViewController
    var alarmOptionsController: AlarmOptionsController?
    var timeSetterController: TimeSetterViewController
    var alarm: Alarm?
+   var originalAlarmFireDate: NSDate?
    
    private var isSettingTime = false
    
@@ -70,7 +71,8 @@ class AlarmConfigurationController: UIViewController
             self.alarmOptionsController = segue.destinationViewController.childViewControllers![0] as? AlarmOptionsController
             self.alarmOptionsController?.optionsControllerDelegate = self
             self.alarmOptionsController?.configureWithAlarm(self.alarm)
-            self.customBackButton.addTarget(self.alarmOptionsController, action: "returnToMainOptions", forControlEvents: .TouchUpInside)
+            self.customBackButton.addTarget(self.alarmOptionsController, action: "dismissSelf", forControlEvents: .TouchUpInside)
+            self.navigationController?.navigationBar.addSubview(self.customBackButton)
          default:
             break
          }
@@ -123,12 +125,14 @@ class AlarmConfigurationController: UIViewController
    func createNewAlarm()
    {
       self.alarm = CoreDataStack.newAlarmModel()
+      self.originalAlarmFireDate = self.alarm?.fireDate.copy() as? NSDate
       self.timeSetterController.configureWithAlarm(self.alarm)
    }
    
    func configureWithAlarm(alarm: Alarm)
    {
       self.alarm = alarm
+      self.originalAlarmFireDate = self.alarm?.fireDate.copy() as? NSDate
       self.timeSetterController.configureWithAlarm(self.alarm)
    }
    
@@ -161,18 +165,26 @@ class AlarmConfigurationController: UIViewController
       CoreDataStack.save()
       self.navigationController?.popViewControllerAnimated(true)
    }
+   
+   func dismissSelf()
+   {
+      self.alarm?.fireDate = self.originalAlarmFireDate!
+      self.navigationController?.popViewControllerAnimated(true)
+   }
 }
 
 extension AlarmConfigurationController: AlarmOptionsControllerDelegate
 {
    func didShowSettingsForOption()
    {
-      self.navigationController?.navigationBar.addSubview(self.customBackButton)
+      self.customBackButton.removeTarget(self, action: "dismissSelf", forControlEvents: .TouchUpInside)
+      self.customBackButton.addTarget(self, action: "returnToMainOptions", forControlEvents: .TouchUpInside)
    }
    
    func didDismissSettingsForOption()
    {
-      self.customBackButton.removeFromSuperview()
+      self.customBackButton.removeTarget(self.alarmOptionsController, action: "dismissSelf", forControlEvents: .TouchUpInside)
+      self.customBackButton.addTarget(self, action: "dismissSelf", forControlEvents: .TouchUpInside)
    }
 }
 
@@ -183,6 +195,7 @@ extension AlarmConfigurationController: TimeSetterViewControllerDelegate
       if let hour = self.timeSetterController.currentHourValue, minute = self.timeSetterController.currentMinuteValue
       {
          self.updateLabelsWithHour(hour, minute: minute)
+         self.alarm?.fireDate = NSDate.alarmDateWithHour(hour, minute: minute)
       }
       self.timeSetterController.dismissViewControllerAnimated(true, completion: nil)
    }
