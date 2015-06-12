@@ -36,6 +36,9 @@ class AlarmConfigurationController: UIViewController
       
       self.timeSetterController.delegate = self
       self.timeSetterController.transitioningDelegate = self
+      
+      // load the view as soon as possible
+      let view = self.timeSetterController.view
    }
 
    // MARK: - Lifecycle
@@ -100,21 +103,27 @@ class AlarmConfigurationController: UIViewController
    {
       self.presentViewController(self.timeSetterController, animated: true, completion: nil)
    }
+   
+   func configureControllersWithAlarm(alarm: Alarm?)
+   {
+      self.timeSetterController.configureWithAlarm(alarm)
+      self.alarmPreviewController?.configureWithAlarm(alarm)
+      self.alarmOptionsController?.configureWithAlarm(alarm)
+   }
 
    // MARK: - Public
    func createNewAlarm()
    {
       self.alarm = CoreDataStack.newAlarmModel()
       self.originalAlarmFireDate = self.alarm?.fireDate.copy() as? NSDate
-      self.timeSetterController.configureWithAlarm(self.alarm)
-      self.alarmPreviewController?.configureWithAlarm(self.alarm)
+      self.configureControllersWithAlarm(self.alarm)
    }
    
    func configureWithAlarm(alarm: Alarm)
    {
       self.alarm = alarm
       self.originalAlarmFireDate = self.alarm?.fireDate.copy() as? NSDate
-      self.timeSetterController.configureWithAlarm(self.alarm)
+      self.configureControllersWithAlarm(self.alarm)
    }
    
    // MARK: - IBActions
