@@ -10,7 +10,7 @@ import UIKit
 
 class TimeSetterTransitionAnimator: NSObject
 {
-   let duration = 0.6
+   let duration = 0.4
    var presenting = true
 }
 
@@ -23,25 +23,48 @@ extension TimeSetterTransitionAnimator: UIViewControllerAnimatedTransitioning
    
    func animateTransition(transitionContext: UIViewControllerContextTransitioning)
    {
-      let containerView = transitionContext.containerView()
+      if self.presenting
+      {
+         self.animateTimeSetterInWithTransitionContext(transitionContext)
+      }
+      else
+      {
+         self.animateTimeSetterOutWithTransitionContext(transitionContext)
+      }
+   }
+   
+   private func animateTimeSetterInWithTransitionContext(context: UIViewControllerContextTransitioning)
+   {
+      let containerView = context.containerView()
+      let timeSetterView = context.viewForKey(UITransitionContextToViewKey)!
+      let configurationView = context.viewForKey(UITransitionContextFromViewKey)!
       
-      let toView = transitionContext.viewForKey(UITransitionContextToViewKey)!
-      let timeSetterView = self.presenting ? toView : transitionContext.viewForKey(UITransitionContextFromViewKey)!
+      containerView.addSubview(timeSetterView)
+      containerView.bringSubviewToFront(configurationView)
       
-      containerView.addSubview(toView)
+      UIView.animateWithDuration(self.duration, animations: { () -> Void in
+         configurationView.alpha = 0
+         }) { (finished: Bool) -> Void in
+            configurationView.alpha = 1
+            context.completeTransition(true)
+      }
+   }
+   
+   private func animateTimeSetterOutWithTransitionContext(context: UIViewControllerContextTransitioning)
+   {
+      let containerView = context.containerView()
+      
+      let timeSetterView = context.viewForKey(UITransitionContextFromViewKey)!
+      let configurationView = context.viewForKey(UITransitionContextToViewKey)!
+      
+      containerView.addSubview(configurationView)
       containerView.bringSubviewToFront(timeSetterView)
       
-      timeSetterView.alpha = self.presenting ? 0 : 1
       UIView.animateWithDuration(self.duration, animations: { () -> Void in
-         
-         timeSetterView.alpha = self.presenting ? 1 : 0
+         timeSetterView.alpha = 0
          }) { (finished: Bool) -> Void in
-            
-            if !self.presenting {
-               let controller = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey) as? UINavigationController
-               controller?.setNavigationBarHidden(false, animated: true)
-            }
-            transitionContext.completeTransition(true)
+            timeSetterView.alpha = 1
+            context.completeTransition(true)
       }
    }
 }
