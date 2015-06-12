@@ -16,7 +16,7 @@ class TimeSetterTransitionAnimator: NSObject
 
 extension TimeSetterTransitionAnimator: UIViewControllerAnimatedTransitioning
 {
-   func transitionDuration(transitionContext: UIViewControllerContextTransitioning)-> NSTimeInterval
+   func transitionDuration(transitionContext: UIViewControllerContextTransitioning) -> NSTimeInterval
    {
       return self.duration
    }
@@ -36,6 +36,11 @@ extension TimeSetterTransitionAnimator: UIViewControllerAnimatedTransitioning
          
          timeSetterView.alpha = self.presenting ? 1 : 0
          }) { (finished: Bool) -> Void in
+            
+            if !self.presenting {
+               let controller = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey) as? UINavigationController
+               controller?.setNavigationBarHidden(false, animated: true)
+            }
             transitionContext.completeTransition(true)
       }
    }
