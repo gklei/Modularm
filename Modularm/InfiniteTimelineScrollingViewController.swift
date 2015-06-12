@@ -101,6 +101,8 @@ class InfiniteTimelineScrollingViewController: UIViewController
    func scrollNumber(number: Int, underGlobalMarkerRect rect: CGRect, animated: Bool)
    {
       var possibleTimeValue: TimelineTimeValue?
+      var didScroll = false
+      
       for timelineView in self.infiniteScrollView.visibleTimelineViews
       {
          for timeValue in timelineView.timeValues
@@ -115,9 +117,15 @@ class InfiniteTimelineScrollingViewController: UIViewController
                {
                   self.currentTimeValue = timeValue
                   self.scrollLabel(timeValue.associatedLabel, underMarkerRect: rect, animated: animated)
+                  
                   possibleTimeValue = nil
+                  didScroll = true
                   break
                }
+            }
+            
+            if didScroll {
+               break
             }
          }
       }
