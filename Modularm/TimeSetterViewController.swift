@@ -20,6 +20,7 @@ class TimeSetterViewController: UIViewController
    @IBOutlet weak var hourLabel: UILabel!
    @IBOutlet weak var minuteLabel: UILabel!
    @IBOutlet weak var labelContainerView: UIView!
+   @IBOutlet weak var informativeLabel: UILabel!
    
    @IBOutlet weak var hourMarkerView: UIView!
    @IBOutlet weak var minuteMarkerView: UIView!
@@ -52,7 +53,9 @@ class TimeSetterViewController: UIViewController
       self.delay(0.01, closure: { () -> () in
          if let hour = self.alarm?.fireDate.hour where self.hourLabel != nil
          {
-            self.hourLabel.text = hour <= 9 ? "0\(hour)" : "\(hour)"
+            var hourInt = (hour + 12) % 12
+            hourInt = hourInt == 0 ? 12 : hourInt
+            self.hourLabel.text = hourInt <= 9 ? "0\(hourInt)" : "\(hourInt)"
             self.hourScrollViewController?.scrollToNumber(hour, animated: false)
          }
          
@@ -209,6 +212,40 @@ extension TimeSetterViewController: InfiniteTimelineScrollingViewControllerDeleg
       {
          scrollViewController.updateAndHideCurrentTimeValue(timeValue)
          label.text = timeValue.associatedLabel.text?.substring(0, length: 2)
+      }
+      
+      self.updateInformativeTimeLabel()
+   }
+   
+   func updateInformativeTimeLabel()
+   {
+      if self.currentHourValue != nil && self.currentMinuteValue != nil
+      {
+         let currentDate = NSDate()
+         
+         let currentHourMinute = (currentDate.hour, currentDate.minute)
+         let dateHourMinute = (self.currentHourValue!, self.currentMinuteValue!)
+         
+         var hour = dateHourMinute.0 - currentHourMinute.0
+         if dateHourMinute.0 < currentHourMinute.0 {
+            hour += 24
+         }
+         
+         var minute = dateHourMinute.1 - currentHourMinute.1
+         if dateHourMinute.1 < currentHourMinute.1 {
+            minute += 60
+            hour -= 1
+         }
+         
+         if hour == 0 && minute == 0 {
+            hour = 24
+         }
+         
+         if hour < 0 {
+            hour = 23
+         }
+         
+         self.informativeLabel.text = "\(hour) hours and \(minute) minutes"
       }
    }
 }
