@@ -13,24 +13,6 @@ let kNumberOfMinutes = 60
 let kXPadding: CGFloat = 28
 let kIntermediateTickCount: CGFloat = 5.0
 
-extension UILabel
-{
-   class func timeIntervalLabelWithText(text: String) -> UILabel
-   {
-      let hourLabel = UILabel()
-      if let font = UIFont(name: "HelveticaNeue", size: 15)
-      {
-         hourLabel.font = font
-      }
-      
-      hourLabel.text = text
-      hourLabel.textColor = UIColor.whiteColor()
-
-      hourLabel.sizeToFit()
-      return hourLabel
-   }
-}
-
 enum TimelineOrientation
 {
    case Left, Right

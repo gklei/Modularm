@@ -25,6 +25,7 @@ class SoundOptionDelegateDataSource: AlarmOptionDelegateDataSource
       super.init(tableView: tableView, delegate: delegate, alarm: alarm)
       self.option = .Sound
       self.cellLabelDictionary = [0 : ["Basic", "Silent (Vibration)", "Classic", "John Lord", "Jimmy Hendrix", "George Harrison", "Cliff", "Drama", "Beach Morning"]]
+      self.settingsControllerDelegate.updateAuxViewWithOption(self.option, tempModel: self.soundModel)
    }
    
    override func saveSettings() {

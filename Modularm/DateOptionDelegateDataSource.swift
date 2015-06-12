@@ -24,6 +24,7 @@ class DateOptionDelegateDataSource: AlarmOptionDelegateDataSource
       super.init(tableView: tableView, delegate: delegate, alarm: alarm)
       self.option = .Date
       self.cellLabelDictionary = [0 :["tuesday 04/10", "10.04 tuesday", "tuesday"]]
+      self.settingsControllerDelegate.updateAuxViewWithOption(self.option, tempModel: self.dateModel)
    }
    
    override func saveSettings()

@@ -27,6 +27,7 @@ class RepeatOptionDelegateDataSource: AlarmOptionDelegateDataSource
       super.init(tableView: tableView, delegate: delegate, alarm: alarm)
       self.option = .Repeat
       self.cellLabelDictionary = [0 : ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]]
+      self.settingsControllerDelegate.updateAuxViewWithOption(self.option, tempModel: self.repeatModel)
    }
    
    override func saveSettings()

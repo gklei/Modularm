@@ -12,6 +12,7 @@ protocol AlarmOptionsControllerDelegate
 {
    func didShowSettingsForOption()
    func didDismissSettingsForOption()
+   func optionPreviewAuxiliaryView() -> UIView?
 }
 
 class AlarmOptionsController: UIViewController
@@ -36,6 +37,14 @@ class AlarmOptionsController: UIViewController
 
       // temporary
       self.optionsControllerDelegate?.didDismissSettingsForOption()
+      
+      if let auxView = self.optionsControllerDelegate?.optionPreviewAuxiliaryView()
+      {
+         for subview in auxView.subviews
+         {
+            (subview as! UIView).removeFromSuperview()
+         }
+      }
    }
 
    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
@@ -72,8 +81,9 @@ class AlarmOptionsController: UIViewController
          break
       }
 
-      optionSettingsController.configureWithAlarm(self.alarm, option: option)
-      optionsControllerDelegate?.didShowSettingsForOption()
+      let auxView = self.optionsControllerDelegate?.optionPreviewAuxiliaryView()
+      optionSettingsController.configureWithAlarm(self.alarm, option: option, auxiliaryView: auxView)
+      self.optionsControllerDelegate?.didShowSettingsForOption()
    }
    
    // MARK: - Public

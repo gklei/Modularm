@@ -960,12 +960,20 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yM3-Gr-xAb">
+                                <rect key="frame" x="0.0" y="153" width="320" height="67"/>
+                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.11859292328042326" green="0.11859292328042326" blue="0.11859292328042326" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="EKY-BC-dbc" firstAttribute="leading" secondItem="mx4-E8-SRk" secondAttribute="leading" constant="-8" id="3dz-tE-yku"/>
+                            <constraint firstItem="yM3-Gr-xAb" firstAttribute="top" secondItem="EKY-BC-dbc" secondAttribute="bottom" id="8rz-vD-bRD"/>
+                            <constraint firstItem="Szi-Vb-Gen" firstAttribute="top" secondItem="yM3-Gr-xAb" secondAttribute="bottom" id="E2Q-Y1-DKn"/>
+                            <constraint firstAttribute="trailing" secondItem="yM3-Gr-xAb" secondAttribute="trailing" id="M05-gP-1dj"/>
                             <constraint firstItem="kvd-pe-z1H" firstAttribute="leading" secondItem="mx4-E8-SRk" secondAttribute="leading" id="ObO-Rx-5Xt"/>
                             <constraint firstItem="mx4-E8-SRk" firstAttribute="top" secondItem="kvd-pe-z1H" secondAttribute="bottom" constant="4" id="Pf2-Iz-IuB"/>
+                            <constraint firstItem="yM3-Gr-xAb" firstAttribute="leading" secondItem="fm3-li-pkK" secondAttribute="leading" id="R3Z-xl-csJ"/>
                             <constraint firstAttribute="centerX" secondItem="EKY-BC-dbc" secondAttribute="centerX" id="VAK-Gp-L2x"/>
                             <constraint firstItem="EKY-BC-dbc" firstAttribute="top" secondItem="mx4-E8-SRk" secondAttribute="bottom" constant="20" id="lVJ-hQ-8Ym"/>
                             <constraint firstAttribute="centerY" secondItem="EKY-BC-dbc" secondAttribute="centerY" id="n2a-SG-TXw"/>
@@ -976,11 +984,12 @@
                         <outlet property="hourLabel" destination="fEn-Gj-7I2" id="r6C-Dz-e4g"/>
                         <outlet property="informativeTimeLabel" destination="mx4-E8-SRk" id="LFp-Pb-m2c"/>
                         <outlet property="minuteLabel" destination="4gV-Ag-zLL" id="hPj-tJ-k0L"/>
+                        <outlet property="previewAuxiliaryView" destination="yM3-Gr-xAb" id="ko8-JE-Xem"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iDy-hs-iu1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="841.5" y="-315.5"/>
+            <point key="canvasLocation" x="841" y="-316"/>
         </scene>
     </scenes>
     <resources>

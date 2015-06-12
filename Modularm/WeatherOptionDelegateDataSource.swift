@@ -37,6 +37,8 @@ class WeatherOptionDelegateDataSource: AlarmOptionDelegateDataSource
       
       self.locationAutoOnOffSwitch.addTarget(self, action: "locationAutoSwitchChanged:", forControlEvents: UIControlEvents.ValueChanged)
       self.locationAutoOnOffSwitch.setOn(self.weatherModel!.autoLocationOn, animated: false)
+      
+      self.settingsControllerDelegate.updateAuxViewWithOption(self.option, tempModel: self.weatherModel)
    }
    
    override func saveSettings()

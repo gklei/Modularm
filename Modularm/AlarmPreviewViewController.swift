@@ -14,6 +14,7 @@ class AlarmPreviewViewController: UIViewController
    @IBOutlet weak var hourLabel: UILabel!
    @IBOutlet weak var minuteLabel: UILabel!
    @IBOutlet weak var informativeTimeLabel: UILabel!
+   @IBOutlet weak var previewAuxiliaryView: UIView!
    
    private weak var alarm: Alarm?
    

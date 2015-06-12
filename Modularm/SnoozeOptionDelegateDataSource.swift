@@ -26,6 +26,7 @@ class SnoozeOptionDelegateDataSource: AlarmOptionDelegateDataSource
       super.init(tableView: tableView, delegate: delegate, alarm: alarm)
       self.state = SnoozeOptionSettingButtonState(delegate: self)
       self.option = .Snooze
+      self.settingsControllerDelegate.updateAuxViewWithOption(self.option, tempModel: self.snoozeModel)
    }
    
    override func saveSettings()

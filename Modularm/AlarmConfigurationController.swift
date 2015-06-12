@@ -168,6 +168,11 @@ extension AlarmConfigurationController: AlarmOptionsControllerDelegate
       self.customBackButton.removeTarget(self.alarmOptionsController, action: "dismissSelf", forControlEvents: .TouchUpInside)
       self.customBackButton.addTarget(self, action: "dismissSelf", forControlEvents: .TouchUpInside)
    }
+   
+   func optionPreviewAuxiliaryView() -> UIView?
+   {
+      return self.alarmPreviewController?.previewAuxiliaryView
+   }
 }
 
 extension AlarmConfigurationController: TimeSetterViewControllerDelegate

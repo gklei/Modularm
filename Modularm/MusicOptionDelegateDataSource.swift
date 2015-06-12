@@ -16,6 +16,7 @@ class MusicOptionDelegateDataSource: AlarmOptionDelegateDataSource
       super.init(tableView: tableView, delegate: delegate, alarm: alarm)
       self.option = .Music
       self.cellLabelDictionary = [0 :["itunes", "spotify", "rdio", "fmetc"]]
+      self.settingsControllerDelegate.updateAuxViewWithOption(self.option, tempModel: nil)
    }
 }
 

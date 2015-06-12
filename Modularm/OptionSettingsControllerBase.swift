@@ -14,6 +14,8 @@ class OptionSettingsControllerBase: UIViewController
    @IBOutlet weak var setOptionButton: UIButton!
    
    internal var alarm: Alarm?
+   internal var auxiliaryView: UIView?
+   
    private(set) var option: AlarmOption = .Unknown
    
    override func viewDidLoad()
@@ -31,10 +33,11 @@ class OptionSettingsControllerBase: UIViewController
       self.iconImageView.image = self.option.plusIcon
    }
    
-   func configureWithAlarm(alarm: Alarm?, option: AlarmOption)
+   func configureWithAlarm(alarm: Alarm?, option: AlarmOption, auxiliaryView: UIView?)
    {
       self.alarm = alarm
       self.option = option
+      self.auxiliaryView = auxiliaryView
    }
    
    internal func dismissSelf()
