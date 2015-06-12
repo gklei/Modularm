@@ -171,6 +171,7 @@ extension AlarmConfigurationController: TimeSetterViewControllerDelegate
          self.alarm?.fireDate = NSDate.alarmDateWithHour(hour, minute: minute)
       }
       self.timeSetterController.dismissViewControllerAnimated(true, completion: nil)
+      self.alarmPreviewController?.updateInformativeTimeLabel()
    }
 }
 
