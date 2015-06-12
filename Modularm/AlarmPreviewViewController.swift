@@ -22,6 +22,11 @@ class AlarmPreviewViewController: UIViewController
    {
       super.viewDidLoad()
       self.view.backgroundColor = UIColor.clearColor()
+   }
+   
+   override func viewWillAppear(animated: Bool)
+   {
+      super.viewWillAppear(animated)
       self.updateHourAndMinuteLabelsWithAlarm(self.alarm)
       self.updateInformativeTimeLabel()
    }
