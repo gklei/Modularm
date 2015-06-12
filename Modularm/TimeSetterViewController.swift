@@ -25,12 +25,25 @@ class TimeSetterViewController: UIViewController
    @IBOutlet weak var hourMarkerView: UIView!
    @IBOutlet weak var minuteMarkerView: UIView!
    
+   // FIX THIS LATER
+   private var temporaryHourValue: Int?
+   private var temporaryMinuteValue: Int?
+   
    var currentHourValue: Int? {
-      return self.hourScrollViewController?.currentTimeValue?.value
+      if self.temporaryHourValue != nil {
+         return self.temporaryHourValue
+      } else {
+         return self.hourScrollViewController?.currentTimeValue?.value
+      }
    }
    
    var currentMinuteValue: Int? {
-      return self.minuteScrollViewController?.currentTimeValue?.value
+      
+      if self.temporaryMinuteValue != nil {
+         return self.temporaryMinuteValue
+      } else {
+         return self.minuteScrollViewController?.currentTimeValue?.value
+      }
    }
    
    var timelineMode: TimelineMode = .Standard
@@ -44,11 +57,16 @@ class TimeSetterViewController: UIViewController
    func configureWithAlarm(alarm: Alarm?)
    {
       self.alarm = alarm
+      self.temporaryHourValue = self.alarm?.fireDate.hour
+      self.temporaryMinuteValue = self.alarm?.fireDate.minute
    }
    
    override func viewWillAppear(animated: Bool)
    {
       super.viewWillAppear(animated)
+      
+      self.temporaryHourValue = nil
+      self.temporaryMinuteValue = nil
       
       self.delay(0.01, closure: { () -> () in
          if let hour = self.alarm?.fireDate.hour where self.hourLabel != nil

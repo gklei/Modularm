@@ -132,6 +132,7 @@ class InfiniteTimelineScrollingViewController: UIViewController
       
       if possibleTimeValue != nil
       {
+         self.currentTimeValue = possibleTimeValue
          self.scrollLabel(possibleTimeValue!.associatedLabel, underMarkerRect: rect, animated: animated)
       }
    }
