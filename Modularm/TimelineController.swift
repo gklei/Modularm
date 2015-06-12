@@ -68,7 +68,7 @@ class TimelineController: UIViewController
 
    override func viewWillDisappear(animated: Bool)
    {
-      self.updateBackBarButtonItemWithTitle("back")
+      self.updateBackBarButtonItemWithTitle("Back")
    }
    
    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
