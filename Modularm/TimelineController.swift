@@ -15,6 +15,8 @@ class TimelineController: UIViewController
    @IBOutlet weak var timelineDataSource: TimelineDataSource!
    @IBOutlet weak var collectionView: UICollectionView!
    
+   private var configurationController: AlarmConfigurationController
+   
    var alarms: [Alarm]? {
       get {
          return self.timelineDataSource.alarms()
@@ -31,6 +33,12 @@ class TimelineController: UIViewController
       get {
          return self.timelineDataSource.nonActiveAlarms()
       }
+   }
+   
+   required init(coder aDecoder: NSCoder)
+   {
+      self.configurationController = UIStoryboard.controllerWithIdentifier("AlarmConfigurationController") as! AlarmConfigurationController
+      super.init(coder: aDecoder)
    }
 
    // MARK: - Lifecycle
@@ -75,17 +83,15 @@ class TimelineController: UIViewController
    // MARK: - IBActions
    @IBAction func addNewAlarmButtonPressed()
    {
-      let configurationController = UIStoryboard.controllerWithIdentifier("AlarmConfigurationController") as! AlarmConfigurationController
-      configurationController.createNewAlarm()
-      self.navigationController?.pushViewController(configurationController, animated: true)
+      self.configurationController.createNewAlarm()
+      self.navigationController?.pushViewController(self.configurationController, animated: true)
    }
    
    // MARK: - Public
    func openSettingsForAlarm(alarm: Alarm)
    {
-      let configurationController = UIStoryboard.controllerWithIdentifier("AlarmConfigurationController") as! AlarmConfigurationController
-      configurationController.configureWithAlarm(alarm)
-      self.navigationController?.pushViewController(configurationController, animated: true)
+      self.configurationController.configureWithAlarm(alarm)
+      self.navigationController?.pushViewController(self.configurationController, animated: true)
    }
    
    func reloadData()
