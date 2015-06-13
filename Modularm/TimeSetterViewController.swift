@@ -70,15 +70,13 @@ class TimeSetterViewController: UIViewController
       self.delay(0.01, closure: { () -> () in
          if let hour = self.alarm?.fireDate.hour where self.hourLabel != nil
          {
-            var hourInt = (hour + 12) % 12
-            hourInt = hourInt == 0 ? 12 : hourInt
-            self.hourLabel.text = hourInt <= 9 ? "0\(hourInt)" : "\(hourInt)"
+            self.hourLabel.text = TimeDisplayProvider.textForHourValue(hour)
             self.hourScrollViewController?.scrollToNumber(hour, animated: false)
          }
          
          if let minute = self.alarm?.fireDate.minute where self.minuteLabel != nil
          {
-            self.minuteLabel.text = minute <= 9 ? "0\(minute)" : "\(minute)"
+            self.minuteLabel.text = TimeDisplayProvider.textForMinuteValue(minute)
             self.minuteScrollViewController?.scrollToNumber(minute, animated: false)
          }
       })

@@ -49,9 +49,7 @@ class AlarmPreviewViewController: UIViewController
    
    func updateLabelsWithHour(hour: Int, minute: Int)
    {
-      var hourInt = (hour + 12) % 12
-      hourInt = hourInt == 0 ? 12 : hourInt
-      self.hourLabel.text = hourInt <= 9 ? "0\(hourInt)" : "\(hourInt)"
+      self.hourLabel.text = TimeDisplayProvider.textForHourValue(hour)
       self.minuteLabel.text = minute <= 9 ? "0\(minute)" : "\(minute)"
    }
    
