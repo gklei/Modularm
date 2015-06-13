@@ -54,8 +54,8 @@ class TimelineCollectionViewCell: UICollectionViewCell
       self.toggleButton.frame = CGRectMake(CGRectGetWidth(self.deleteButton.frame), 0, 60, CGRectGetHeight(self.contentView.bounds))
       self.toggleButton.addTarget(self, action: "togglePressed", forControlEvents: .TouchUpInside)
       
-      setupButtonContainer()
-      setupScrollViewWithButtonContainer(self.buttonContainer)
+      self.setupButtonContainer()
+      self.setupScrollViewWithButtonContainer(self.buttonContainer)
       
       self.originalActivateButtonWidth = self.activateButtonWidthConstraint.constant
    }
@@ -85,11 +85,33 @@ class TimelineCollectionViewCell: UICollectionViewCell
       self.buttonContainer.addSubview(self.toggleButton)
    }
    
+   private func updateButtonContainerForAlarm(alarm: Alarm?)
+   {
+      if let alarm = alarm
+      {
+         if alarm.active
+         {
+            self.toggleButton.removeFromSuperview()
+            self.toggleButton.frame = CGRectMake(CGRectGetWidth(self.deleteButton.frame), 0, 60, CGRectGetHeight(self.contentView.bounds))
+            self.buttonContainer.frame = CGRectMake(0, 0, CGRectGetWidth(self.deleteButton.frame) + CGRectGetWidth(self.toggleButton.frame), CGRectGetHeight(self.contentView.bounds))
+            
+            self.buttonContainer.addSubview(self.toggleButton)
+         }
+         else
+         {
+            self.toggleButton.removeFromSuperview()
+            self.buttonContainer.frame = CGRectMake(0, 0, CGRectGetWidth(self.deleteButton.frame), CGRectGetHeight(self.contentView.bounds))
+         }
+      }
+   }
+   
    // MARK: - Button Actions
    func togglePressed()
    {
       self.scrollView.contentOffset = CGPointZero
       self.alarm?.active = false
+      
+      self.updateButtonContainerForAlarm(self.alarm)
       CoreDataStack.save()
    }
    
@@ -103,6 +125,7 @@ class TimelineCollectionViewCell: UICollectionViewCell
    @IBAction func activateButtonPressed()
    {
       self.alarm?.active = true
+      self.updateButtonContainerForAlarm(self.alarm)
       CoreDataStack.save()
    }
    
@@ -150,8 +173,8 @@ class TimelineCollectionViewCell: UICollectionViewCell
          self.separatorView.backgroundColor = viewModel.separatorViewBackgroundColor
          self.label.attributedText = viewModel.attributedLabelText
          
-         self.scrollView.scrollEnabled = alarm.active
          self.setActivateButtonHidden(alarm.active)
+         self.updateButtonContainerForAlarm(alarm)
       }
    }
    
