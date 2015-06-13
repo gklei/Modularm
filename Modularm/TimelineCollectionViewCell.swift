@@ -17,6 +17,8 @@ class TimelineCollectionViewCell: UICollectionViewCell
    @IBOutlet weak var scrollView: TapScrollView!
    @IBOutlet weak var activateButton: UIButton!
    @IBOutlet weak var separatorView: UIView!
+   @IBOutlet weak var activateButtonWidthConstraint: NSLayoutConstraint!
+   
    weak var collectionView: UICollectionView?
    weak var alarm: Alarm?
    
@@ -24,6 +26,7 @@ class TimelineCollectionViewCell: UICollectionViewCell
    private var toggleButton: UIButton = UIButton.timelineCellToggleButton()
    private var buttonContainer = UIView()
    private var isOpen: Bool = false
+   private var originalActivateButtonWidth: CGFloat = 0.0
    
    override var highlighted: Bool {
       get {
@@ -53,6 +56,8 @@ class TimelineCollectionViewCell: UICollectionViewCell
       
       setupButtonContainer()
       setupScrollViewWithButtonContainer(self.buttonContainer)
+      
+      self.originalActivateButtonWidth = self.activateButtonWidthConstraint.constant
    }
    
    override func layoutSubviews()
@@ -127,6 +132,12 @@ class TimelineCollectionViewCell: UICollectionViewCell
       })
    }
    
+   private func setActivateButtonHidden(hidden: Bool)
+   {
+      let width = hidden ? 0 : self.originalActivateButtonWidth
+      self.activateButtonWidthConstraint.constant = width
+   }
+   
    // MARK: - Public
    func configureWithAlarm(alarm: Alarm?)
    {
@@ -140,7 +151,7 @@ class TimelineCollectionViewCell: UICollectionViewCell
          self.label.attributedText = viewModel.attributedLabelText
          
          self.scrollView.scrollEnabled = alarm.active
-         self.activateButton.hidden = alarm.active
+         self.setActivateButtonHidden(alarm.active)
       }
    }
    
