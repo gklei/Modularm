@@ -38,7 +38,6 @@ class TimeSetterViewController: UIViewController
    }
    
    var currentMinuteValue: Int? {
-      
       if self.temporaryMinuteValue != nil {
          return self.temporaryMinuteValue
       } else {
