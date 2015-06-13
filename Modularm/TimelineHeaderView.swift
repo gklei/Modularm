@@ -21,24 +21,9 @@ class TimelineHeaderView: UICollectionReusableView
    {
       self.alarm = alarm
       
-      var hour = alarm.fireDate.hour
-      if hour > 12 {
-         hour -= 12
-      }
-      
-      hour = (hour == 0) ? 12 : hour
-      let hourString = hour < 10 ? "0\(hour)" : "\(hour)"
-      
-      let minute = alarm.fireDate.minute
-      let minuteString = minute < 10 ? "0\(minute)" : "\(minute)"
-      
-      let dateFormatter = NSDateFormatter()
-      dateFormatter.dateFormat = "aa"
-      let amOrPmString = dateFormatter.stringFromDate(alarm.fireDate).lowercaseString
-      
-      self.hourLabel.text = hourString
-      self.minuteLabel.text = minuteString
-      self.amOrPmLabel.text = amOrPmString
+      self.hourLabel.text = TimeDisplayProvider.textForHourValue(alarm.fireDate.hour)
+      self.minuteLabel.text = TimeDisplayProvider.textForMinuteValue(alarm.fireDate.minute)
+      self.amOrPmLabel.text = alarm.fireDate.hour < 12 ? "am" : "pm"
    }
    
    @IBAction func editButtonPressed()

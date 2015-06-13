@@ -80,6 +80,8 @@ class TimeSetterViewController: UIViewController
             self.minuteScrollViewController?.scrollToNumber(minute, animated: false)
          }
       })
+      
+      self.updateInformativeTimeLabel()
    }
    
    override func preferredStatusBarStyle() -> UIStatusBarStyle
@@ -234,33 +236,9 @@ extension TimeSetterViewController: InfiniteTimelineScrollingViewControllerDeleg
    
    func updateInformativeTimeLabel()
    {
-      if self.currentHourValue != nil && self.currentMinuteValue != nil
+      if let hour = self.currentHourValue, minute = self.currentMinuteValue
       {
-         let currentDate = NSDate()
-         
-         let currentHourMinute = (currentDate.hour, currentDate.minute)
-         let dateHourMinute = (self.currentHourValue!, self.currentMinuteValue!)
-         
-         var hour = dateHourMinute.0 - currentHourMinute.0
-         if dateHourMinute.0 < currentHourMinute.0 {
-            hour += 24
-         }
-         
-         var minute = dateHourMinute.1 - currentHourMinute.1
-         if dateHourMinute.1 < currentHourMinute.1 {
-            minute += 60
-            hour -= 1
-         }
-         
-         if hour == 0 && minute == 0 {
-            hour = 24
-         }
-         
-         if hour < 0 {
-            hour = 23
-         }
-         
-         self.informativeLabel.text = "\(hour) hours and \(minute) minutes"
+         self.informativeLabel.text = AlarmCountdownUtility.informativeCountdownTextForHour(hour, minute: minute)
       }
    }
 }

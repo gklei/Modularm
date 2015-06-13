@@ -57,31 +57,7 @@ class AlarmPreviewViewController: UIViewController
    {
       if let alarmDate = self.alarm?.fireDate
       {
-         let currentDate = NSDate()
-         
-         let currentHourMinute = (currentDate.hour, currentDate.minute)
-         let dateHourMinute = (alarmDate.hour, alarmDate.minute)
-         
-         var hour = dateHourMinute.0 - currentHourMinute.0
-         if dateHourMinute.0 < currentHourMinute.0 {
-            hour += 24
-         }
-         
-         var minute = dateHourMinute.1 - currentHourMinute.1
-         if dateHourMinute.1 < currentHourMinute.1 {
-            minute += 60
-            hour -= 1
-         }
-         
-         if hour == 0 && minute == 0 {
-            hour = 24
-         }
-         
-         if hour < 0 {
-            hour = 23
-         }
-         
-         self.informativeTimeLabel.text = "\(hour) hours and \(minute) minutes"
+         self.informativeTimeLabel.text = AlarmCountdownUtility.informativeCountdownTextForAlarmDate(alarmDate)
       }
    }
 }

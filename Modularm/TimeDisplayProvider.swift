@@ -22,3 +22,60 @@ struct TimeDisplayProvider
       return value <= 9 ? "0\(value)" : "\(value)"
    }
 }
+
+struct AlarmCountdownUtility
+{
+   static func timeUntilAlarmHour(hour: Int, minute: Int) -> (hour: Int, minute: Int)
+   {
+      let currentDate = NSDate()
+      
+      let currentHourMinute = (currentDate.hour, currentDate.minute)
+      let dateHourMinute = (hour, minute)
+      
+      var hour = dateHourMinute.0 - currentHourMinute.0
+      if dateHourMinute.0 < currentHourMinute.0 {
+         hour += 24
+      }
+      
+      var minute = dateHourMinute.1 - currentHourMinute.1
+      if dateHourMinute.1 < currentHourMinute.1 {
+         minute += 60
+         hour -= 1
+      }
+      
+      if hour == 0 && minute == 0 {
+         hour = 24
+      }
+      
+      if hour < 0 {
+         hour = 23
+      }
+      
+      return (hour, minute)
+   }
+   
+   static func hoursUntilAlarmDate(date: NSDate) -> Int
+   {
+      return self.timeUntilAlarmHour(date.hour, minute: date.minute).hour
+   }
+   
+   static func minutesUntilAlarmDate(date: NSDate) -> Int
+   {
+      return self.timeUntilAlarmHour(date.hour, minute: date.minute).minute
+   }
+   
+   static func informativeCountdownTextForHour(hour: Int, minute: Int) -> String
+   {
+      let time = self.timeUntilAlarmHour(hour, minute: minute)
+      
+      let hourWord = time.hour == 1 ? "hour" : "hours"
+      let minuteWord = time.minute == 1 ? "minute" : "minutes"
+      
+      return "\(time.hour) \(hourWord) and \(time.minute) \(minuteWord)"
+   }
+   
+   static func informativeCountdownTextForAlarmDate(date: NSDate) -> String
+   {
+      return self.informativeCountdownTextForHour(date.hour, minute: date.minute)
+   }
+}
