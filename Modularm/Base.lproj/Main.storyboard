@@ -124,7 +124,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background-clearnight" translatesAutoresizingMaskIntoConstraints="NO" id="CjP-5p-saH">
-                                <rect key="frame" x="0.0" y="-99" width="320" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sNc-40-vPD">
                                 <rect key="frame" x="0.0" y="228" width="320" height="340"/>
@@ -144,6 +144,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="CjP-5p-saH" firstAttribute="top" secondItem="nsS-fm-w7v" secondAttribute="top" id="9QI-xC-5cL"/>
                             <constraint firstAttribute="trailing" secondItem="sNc-40-vPD" secondAttribute="trailing" id="D2J-FW-1Mn"/>
                             <constraint firstItem="sNc-40-vPD" firstAttribute="leading" secondItem="nsS-fm-w7v" secondAttribute="leading" id="IHl-g7-Le3"/>
                             <constraint firstItem="qvN-Rp-IZK" firstAttribute="top" secondItem="nsS-fm-w7v" secondAttribute="topMargin" id="Tfm-Iq-H7r"/>
