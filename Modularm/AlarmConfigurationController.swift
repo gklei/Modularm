@@ -161,12 +161,16 @@ extension AlarmConfigurationController: AlarmOptionsControllerDelegate
    {
       self.customBackButton.removeTarget(self, action: "dismissSelf", forControlEvents: .TouchUpInside)
       self.customBackButton.addTarget(self.alarmOptionsController, action: "returnToMainOptions", forControlEvents: .TouchUpInside)
+      
+      self.setBarButtonItem.enabled = false
    }
    
    func didDismissSettingsForOption()
    {
       self.customBackButton.removeTarget(self.alarmOptionsController, action: "dismissSelf", forControlEvents: .TouchUpInside)
       self.customBackButton.addTarget(self, action: "dismissSelf", forControlEvents: .TouchUpInside)
+      
+      self.setBarButtonItem.enabled = true
    }
    
    func optionPreviewAuxiliaryView() -> UIView?
