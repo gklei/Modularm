@@ -17,7 +17,7 @@ class AlarmConfigurationController: UIViewController
    @IBOutlet weak var alarmOptionsControllerBottomVerticalSpaceConstraint: NSLayoutConstraint!
    @IBOutlet weak var segmentedControl: UISegmentedControl!
 
-   private let customBackButton = UIButton(frame: CGRectMake(0, 0, 50, 40))
+   private let customBackButton = UIButton(frame: CGRectMake(0, 0, 70, 40))
    
    private var alarm: Alarm?
    private var originalAlarmFireDate: NSDate?
@@ -45,9 +45,18 @@ class AlarmConfigurationController: UIViewController
    override func viewDidLoad()
    {
       super.viewDidLoad()
-      
-      self.setupCustomBackButton()
       self.setupKeboardNotifications()
+   }
+   
+   override func viewWillAppear(animated: Bool)
+   {
+      super.viewWillAppear(animated)
+      self.setupCustomBackButton()
+   }
+   
+   override func viewWillDisappear(animated: Bool)
+   {
+      self.customBackButton.removeFromSuperview()
    }
    
    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
