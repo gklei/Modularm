@@ -14,6 +14,14 @@ class TimelineHeaderView: UICollectionReusableView
    @IBOutlet weak var minuteLabel: UILabel!
    @IBOutlet weak var amOrPmLabel: UILabel!
    
+   @IBOutlet weak var innerContentView: UIView!
+   @IBOutlet weak var scrollView: TapScrollView!
+   
+   private var deleteButton: UIButton = UIButton.timelineCellDeleteButton()
+   private var toggleButton: UIButton = UIButton.timelineCellToggleButton()
+   private var buttonContainer = UIView()
+   private var isOpen: Bool = false
+   
    var alarm: Alarm?
    weak var timelineController: TimelineController?
    
