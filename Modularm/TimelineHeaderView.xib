@@ -72,7 +72,6 @@
                             </subviews>
                             <constraints>
                                 <constraint firstAttribute="centerY" secondItem="Gnc-x2-dW6" secondAttribute="centerY" id="7WZ-FZ-d0E"/>
-                                <constraint firstAttribute="centerX" secondItem="Gnc-x2-dW6" secondAttribute="centerX" id="AT1-3M-el9"/>
                                 <constraint firstAttribute="bottom" secondItem="Yp5-7c-Tp3" secondAttribute="bottom" constant="20" id="PQr-wm-UOe"/>
                                 <constraint firstItem="0eQ-P9-DfY" firstAttribute="leading" secondItem="Gnc-x2-dW6" secondAttribute="trailing" constant="-3" id="Rbu-yd-1lM"/>
                                 <constraint firstItem="Gnc-x2-dW6" firstAttribute="centerX" secondItem="pfI-DP-Eg3" secondAttribute="centerX" id="Zd5-OE-80b"/>
@@ -80,11 +79,6 @@
                                 <constraint firstAttribute="height" constant="150" id="jXc-OM-akp"/>
                                 <constraint firstAttribute="trailing" secondItem="Yp5-7c-Tp3" secondAttribute="trailing" constant="20" id="v51-H2-1PN"/>
                             </constraints>
-                            <variation key="default">
-                                <mask key="constraints">
-                                    <exclude reference="AT1-3M-el9"/>
-                                </mask>
-                            </variation>
                         </view>
                     </subviews>
                     <constraints>
