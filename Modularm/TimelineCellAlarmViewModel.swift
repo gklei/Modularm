@@ -30,6 +30,12 @@ struct TimelineCellAlarmViewModel
       }
    }
    
+   var scrollViewBackgroundColor: UIColor {
+      get {
+         return self.alarm.active ? UIColor(white: 0.05, alpha: 1) : UIColor(white: 0.88, alpha: 1)
+      }
+   }
+   
    var attributedLabelText: NSAttributedString {
       mutating get {
          self.dateFormatter.dateFormat = "hh:mm"

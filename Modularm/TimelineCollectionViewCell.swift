@@ -161,6 +161,13 @@ class TimelineCollectionViewCell: UICollectionViewCell
       self.activateButtonWidthConstraint.constant = width
    }
    
+   private func setColorsWithViewModel(model: TimelineCellAlarmViewModel)
+   {
+      self.innerContentView.backgroundColor = model.innerContentViewBackgroundColor
+      self.separatorView.backgroundColor = model.separatorViewBackgroundColor
+      self.scrollView.backgroundColor = model.scrollViewBackgroundColor
+   }
+   
    // MARK: - Public
    func configureWithAlarm(alarm: Alarm?)
    {
@@ -169,9 +176,7 @@ class TimelineCollectionViewCell: UICollectionViewCell
       {
          var viewModel = TimelineCellAlarmViewModel(alarm: alarm)
          
-         self.innerContentView.backgroundColor = viewModel.innerContentViewBackgroundColor
-         self.separatorView.backgroundColor = viewModel.separatorViewBackgroundColor
-         self.scrollView.backgroundColor = alarm.active ? UIColor(white: 0.05, alpha: 1) : UIColor(white: 0.88, alpha: 1)
+         self.setColorsWithViewModel(viewModel)
          self.label.attributedText = viewModel.attributedLabelText
          
          self.setActivateButtonHidden(alarm.active)
@@ -182,12 +187,8 @@ class TimelineCollectionViewCell: UICollectionViewCell
    // MARK: - Notification-based Methods
    func onOpen(notification: NSNotification)
    {
-      if let object = notification.object as? TimelineCollectionViewCell
-      {
-         if object != self && self.isOpen
-         {
-            self.animateContenteOffset(CGPointZero, withDuration: 0.1)
-         }
+      if let object = notification.object as? TimelineCollectionViewCell where object != self && self.isOpen {
+         self.animateContenteOffset(CGPointZero, withDuration: 0.1)
       }
    }
 }
@@ -199,8 +200,7 @@ extension TimelineCollectionViewCell: UIScrollViewDelegate
       self.repositionButtons()
       
       // Don't allow scrolling right
-      if scrollView.contentOffset.x < 0
-      {
+      if scrollView.contentOffset.x < 0 {
          scrollView.contentOffset = CGPointZero;
       }
       
