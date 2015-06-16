@@ -54,7 +54,13 @@ extension TimelineCollectionViewDelegate: UICollectionViewDelegateFlowLayout
       var size = CGSizeZero
       if section != 0 || self.timelineController.nonActiveAlarms?.count == 0
       {
-         size = CGSizeMake(CGRectGetWidth(self.collectionView.bounds), 150)
+         var height: CGFloat = 70
+         if let alarmCount = self.timelineController.alarms?.count
+         {
+            let contentHeight: CGFloat = (CGFloat(alarmCount) - 1.0) * 50.0 + 150.0
+            height = max(CGRectGetHeight(collectionView.bounds) - contentHeight + 1, height)
+         }
+         size = CGSizeMake(CGRectGetWidth(self.collectionView.bounds), height)
       }
       return size
    }
