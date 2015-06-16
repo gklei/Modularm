@@ -56,6 +56,7 @@ class AlarmConfigurationController: UIViewController
    
    override func viewWillDisappear(animated: Bool)
    {
+      super.viewWillDisappear(animated)
       self.customBackButton.removeFromSuperview()
    }
    
@@ -97,7 +98,18 @@ class AlarmConfigurationController: UIViewController
    private func setupCustomBackButton()
    {
       self.customBackButton.backgroundColor = UIColor.clearColor()
-      self.customBackButton.addTarget(self.alarmOptionsController, action: "dismissSelf", forControlEvents: .TouchUpInside)
+      
+      if self.setBarButtonItem.enabled
+      {
+         self.customBackButton.removeTarget(self.alarmOptionsController, action: "dismissSelf", forControlEvents: .TouchUpInside)
+         self.customBackButton.addTarget(self, action: "dismissSelf", forControlEvents: .TouchUpInside)
+      }
+      else
+      {
+         self.customBackButton.removeTarget(self, action: "dismissSelf", forControlEvents: .TouchUpInside)
+         self.customBackButton.addTarget(self.alarmOptionsController, action: "returnToMainOptions", forControlEvents: .TouchUpInside)
+      }
+      
       self.navigationController?.navigationBar.addSubview(self.customBackButton)
    }
    
