@@ -74,7 +74,7 @@ struct AlarmCountdownUtility
       return "\(time.hour) \(hourWord) and \(time.minute) \(minuteWord)"
    }
    
-   static func informativeCountdownTextForAlarmDate(date: NSDate) -> String
+   static func countdownTextForAlarmDate(date: NSDate) -> String
    {
       return self.informativeCountdownTextForHour(date.hour, minute: date.minute)
    }

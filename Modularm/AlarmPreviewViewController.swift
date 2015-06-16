@@ -57,7 +57,7 @@ class AlarmPreviewViewController: UIViewController
    {
       if let alarmDate = self.alarm?.fireDate
       {
-         self.informativeTimeLabel.text = AlarmCountdownUtility.informativeCountdownTextForAlarmDate(alarmDate)
+         self.informativeTimeLabel.text = AlarmCountdownUtility.countdownTextForAlarmDate(alarmDate)
       }
    }
 }
