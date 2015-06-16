@@ -171,6 +171,7 @@ class TimelineCollectionViewCell: UICollectionViewCell
          
          self.innerContentView.backgroundColor = viewModel.innerContentViewBackgroundColor
          self.separatorView.backgroundColor = viewModel.separatorViewBackgroundColor
+         self.scrollView.backgroundColor = alarm.active ? UIColor(white: 0.05, alpha: 1) : UIColor(white: 0.88, alpha: 1)
          self.label.attributedText = viewModel.attributedLabelText
          
          self.setActivateButtonHidden(alarm.active)
