@@ -52,15 +52,22 @@ extension TimelineCollectionViewDelegate: UICollectionViewDelegateFlowLayout
    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize
    {
       var size = CGSizeZero
-      if section != 0 || self.timelineController.nonActiveAlarms?.count == 0
+      if section != 0 || self.timelineController.nonActiveAlarms?.count == 0 || (section == 0 && self.timelineController.activeAlarms?.count == 0)
       {
          var height: CGFloat = 70
          if let alarmCount = self.timelineController.alarms?.count
          {
-            let contentHeight: CGFloat = (CGFloat(alarmCount) - 1.0) * 50.0 + 150.0
+            var contentHeight: CGFloat = (CGFloat(alarmCount) - 1.0) * 50.0 + 150.0
+            if self.timelineController.activeAlarms?.count == 0 {
+               contentHeight = CGFloat(alarmCount) * 50
+            }
             height = max(CGRectGetHeight(collectionView.bounds) - contentHeight + 1, height)
          }
          size = CGSizeMake(CGRectGetWidth(self.collectionView.bounds), height)
+      }
+      if self.timelineController.alarms?.count == 0
+      {
+         size = CGSizeMake(CGRectGetWidth(self.collectionView.bounds), CGRectGetHeight(self.collectionView.bounds))
       }
       return size
    }
