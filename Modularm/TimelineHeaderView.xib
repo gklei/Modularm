@@ -10,7 +10,7 @@
             <rect key="frame" x="0.0" y="0.0" width="377" height="150"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FFq-hc-7aN" customClass="TapScrollView" customModule="Modularm" customModuleProvider="target">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FFq-hc-7aN" customClass="TapScrollView" customModule="Modularm" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="377" height="150"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pfI-DP-Eg3">
@@ -88,6 +88,9 @@
                         <constraint firstAttribute="centerX" secondItem="pfI-DP-Eg3" secondAttribute="centerX" id="nvN-g2-lN8"/>
                         <constraint firstItem="pfI-DP-Eg3" firstAttribute="leading" secondItem="FFq-hc-7aN" secondAttribute="leading" id="rc6-r8-KbI"/>
                     </constraints>
+                    <connections>
+                        <outlet property="delegate" destination="iN0-l3-epB" id="UaD-rp-VIp"/>
+                    </connections>
                 </scrollView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MQ4-I8-iWs">
                     <rect key="frame" x="0.0" y="0.0" width="4" height="150"/>
