@@ -107,6 +107,10 @@ extension TimelineDataSource: UICollectionViewDataSource
          if let sectionInfo = self.fetchedResultsController.sections?[section] as? NSFetchedResultsSectionInfo
          {
             numberOfItems = section == kActiveAlarmSectionIndex ? max(0, sectionInfo.numberOfObjects - 1) : sectionInfo.numberOfObjects
+            
+            if self.activeAlarms()?.count == 0 {
+               numberOfItems = sectionInfo.numberOfObjects
+            }
          }
       }
       
@@ -118,7 +122,7 @@ extension TimelineDataSource: UICollectionViewDataSource
       let cell: TimelineCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier("timelineCell", forIndexPath: indexPath) as! TimelineCollectionViewCell
 
       var newIndexPath = indexPath
-      if indexPath.section == kActiveAlarmSectionIndex
+      if indexPath.section == kActiveAlarmSectionIndex && self.timelineController.activeAlarms?.count != 0
       {
          // increment the row by one because the first alarm in the Active section is the header
          newIndexPath = NSIndexPath(forRow: indexPath.row + 1, inSection: indexPath.section)
@@ -137,7 +141,7 @@ extension TimelineDataSource: UICollectionViewDataSource
       if equal(kind, UICollectionElementKindSectionHeader)
       {
          let header = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "header", forIndexPath: indexPath) as! TimelineHeaderView
-         
+
          if let alarmArray = self.alarms()
          {
             if alarmArray.count > 0
