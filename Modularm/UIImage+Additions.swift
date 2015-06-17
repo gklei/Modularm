@@ -15,4 +15,34 @@ extension UIImage
          return self.imageWithRenderingMode(.AlwaysTemplate)
       }
    }
+   
+   class func imageWithColor(color: UIColor) -> UIImage
+   {
+      let rect = CGRect(x: 0, y: 0, width: 1, height: 1)
+      UIGraphicsBeginImageContext(rect.size)
+      let context = UIGraphicsGetCurrentContext()
+      
+      CGContextSetFillColorWithColor(context, color.CGColor)
+      CGContextFillRect(context, rect)
+      
+      let image = UIGraphicsGetImageFromCurrentImageContext()
+      UIGraphicsEndImageContext()
+      
+      return image
+   }
+   /*
+   + (UIImage *)imageWithColor:(UIColor *)color {
+   CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);
+   UIGraphicsBeginImageContext(rect.size);
+   CGContextRef context = UIGraphicsGetCurrentContext();
+   
+   CGContextSetFillColorWithColor(context, [color CGColor]);
+   CGContextFillRect(context, rect);
+   
+   UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+   UIGraphicsEndImageContext();
+   
+   return image;
+   }
+   */
 }
