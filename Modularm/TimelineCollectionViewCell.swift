@@ -188,7 +188,10 @@ class TimelineCollectionViewCell: UICollectionViewCell
    func onOpen(notification: NSNotification)
    {
       if let object = notification.object as? TimelineCollectionViewCell where object != self && self.isOpen {
-         self.animateContenteOffset(CGPointZero, withDuration: 0.1)
+         self.animateContenteOffset(CGPoint.zeroPoint, withDuration: 0.1)
+      }
+      else if let object = notification.object as? TimelineHeaderView where self.isOpen {
+         self.animateContenteOffset(CGPoint.zeroPoint, withDuration: 0.1)
       }
    }
 }
