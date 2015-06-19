@@ -31,7 +31,7 @@ extension UIButton
       let title = NSAttributedString(string: "delete", attributes: [NSFontAttributeName : UIFont(name: "HelveticaNeue-Light", size: 14)!, NSForegroundColorAttributeName : UIColor.whiteColor()])
       deleteButton.setAttributedTitle(title, forState: .Normal)
       deleteButton.setBackgroundImage(UIImage.imageWithColor(UIColor.darkRedLipstickColor()), forState: .Normal)
-      deleteButton.setBackgroundImage(UIImage.imageWithColor(UIColor.darkRedLipstickColor().colorWithAlphaComponent(0.6)), forState: .Highlighted)
+      deleteButton.setBackgroundImage(UIImage.imageWithColor(UIColor.darkRedLipstickColor().colorWithAlphaComponent(0.8)), forState: .Highlighted)
       
       return deleteButton
    }
@@ -42,7 +42,7 @@ extension UIButton
       let title = NSAttributedString(string: "toggle", attributes: [NSFontAttributeName : UIFont(name: "HelveticaNeue-Light", size: 14)!, NSForegroundColorAttributeName : UIColor.whiteColor()])
       toggleButton.setAttributedTitle(title, forState: .Normal)
       toggleButton.setBackgroundImage(UIImage.imageWithColor(UIColor.lipstickRedColor()), forState: .Normal)
-      toggleButton.setBackgroundImage(UIImage.imageWithColor(UIColor.lipstickRedColor().colorWithAlphaComponent(0.6)), forState: .Highlighted)
+      toggleButton.setBackgroundImage(UIImage.imageWithColor(UIColor.lipstickRedColor().colorWithAlphaComponent(0.8)), forState: .Highlighted)
       
       return toggleButton
    }
