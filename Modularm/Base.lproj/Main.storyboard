@@ -83,7 +83,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Modularm" id="Quf-Is-AO7">
                         <barButtonItem key="leftBarButtonItem" image="icn-bar-settings" id="Ga3-f6-xVH"/>
-                        <barButtonItem key="rightBarButtonItem" image="icn-add-item" id="iyX-07-HgF">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="iyX-07-HgF">
                             <connections>
                                 <action selector="addNewAlarmButtonPressed" destination="5Wx-Mm-Iig" id="KDg-z9-jCB"/>
                             </connections>

@@ -19,7 +19,7 @@ extension TimelineCollectionViewDelegate: UICollectionViewDelegate
 {
    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath)
    {
-      if indexPath.section == 0
+      if indexPath.section == 0 && self.timelineController.activeAlarms?.count > 0
       {
          if let alarms = self.timelineController.activeAlarms
          {
