@@ -70,13 +70,11 @@ class TimeSetterViewController: UIViewController
       self.delay(0.01, closure: { () -> () in
          if let hour = self.alarm?.fireDate.hour where self.hourLabel != nil
          {
-            self.hourLabel.text = TimeDisplayProvider.textForHourValue(hour)
             self.hourScrollViewController?.scrollToNumber(hour, animated: false)
          }
          
          if let minute = self.alarm?.fireDate.minute where self.minuteLabel != nil
          {
-            self.minuteLabel.text = TimeDisplayProvider.textForMinuteValue(minute)
             self.minuteScrollViewController?.scrollToNumber(minute, animated: false)
          }
       })
@@ -87,6 +85,19 @@ class TimeSetterViewController: UIViewController
    override func preferredStatusBarStyle() -> UIStatusBarStyle
    {
       return .LightContent
+   }
+   
+   func updateTimeLabels()
+   {
+      if let hour = self.alarm?.fireDate.hour where self.hourLabel != nil
+      {
+         self.hourLabel.text = TimeDisplayProvider.textForHourValue(hour)
+      }
+      
+      if let minute = self.alarm?.fireDate.minute where self.minuteLabel != nil
+      {
+         self.minuteLabel.text = TimeDisplayProvider.textForMinuteValue(minute)
+      }
    }
    
    private func delay(delay: Double, closure: ()->()) {

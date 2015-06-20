@@ -36,6 +36,10 @@ extension TimeSetterTransitionAnimator: UIViewControllerAnimatedTransitioning
    private func animateTimeSetterInWithTransitionContext(context: UIViewControllerContextTransitioning)
    {
       let containerView = context.containerView()
+      
+      let timeSetterViewController = context.viewControllerForKey(UITransitionContextToViewControllerKey) as! TimeSetterViewController
+      timeSetterViewController.updateTimeLabels()
+      
       let timeSetterView = context.viewForKey(UITransitionContextToViewKey)!
       let configurationView = context.viewForKey(UITransitionContextFromViewKey)!
       
