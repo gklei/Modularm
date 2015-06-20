@@ -79,7 +79,7 @@ class TimelineHeaderView: UICollectionReusableView
       self.buttonContainer.frame = frame;
    }
    
-   private func animateContenteOffset(position: CGPoint, withDuration duration: NSTimeInterval)
+   private func animateContentOffset(position: CGPoint, withDuration duration: NSTimeInterval)
    {
       dispatch_async(dispatch_get_main_queue(), { () -> Void in
          UIView.animateWithDuration(duration, animations: { () -> Void in
@@ -133,7 +133,7 @@ class TimelineHeaderView: UICollectionReusableView
    func onOpen(notification: NSNotification)
    {
       if let object = notification.object as? TimelineCollectionViewCell where object != self && self.isOpen {
-         self.animateContenteOffset(CGPointZero, withDuration: 0.1)
+         self.animateContentOffset(CGPointZero, withDuration: 0.1)
       }
    }
    
@@ -196,7 +196,7 @@ extension TimelineHeaderView: UIScrollViewDelegate
       {
          targetContentOffset.memory.x = 0;
       }
-      self.animateContenteOffset(contentOffset, withDuration: 0.1)
+      self.animateContentOffset(contentOffset, withDuration: 0.1)
    }
 }
 
