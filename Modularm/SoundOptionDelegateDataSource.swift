@@ -44,7 +44,14 @@ extension SoundOptionDelegateDataSource: UITableViewDataSource
    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
    {
       let cell = super.tableView(tableView, cellForRowAtIndexPath: indexPath)
-      cell.accessoryType = indexPath.row == self.cellIndexForSoundString(self.soundModel!.basicSoundURL) ? .Checkmark : .None
+      
+      var accessoryImageName = "ic_radial"
+      if indexPath.row == self.cellIndexForSoundString(self.soundModel!.basicSoundURL) {
+         accessoryImageName = "ic_radial_checked"
+      }
+      
+      let accessoryImageView = UIImageView(image: UIImage(named:accessoryImageName)!)
+      cell.accessoryView = accessoryImageView
       
       return cell
    }

@@ -30,6 +30,20 @@ class Repeat: NSManagedObject
     @NSManaged private var sunday: Bool
     @NSManaged private var alarm: Alarm
    
+   var atLeastOneDayIsEnabled: Bool {
+      get {
+         var dayIsEnabeld = false
+         for day in RepeatDay.valueArray()
+         {
+            if self.dayIsEnabled(day) {
+               dayIsEnabeld = true
+               break
+            }
+         }
+         return dayIsEnabeld
+      }
+   }
+   
    func enableDay(day: RepeatDay, enabled: Bool)
    {
       switch day

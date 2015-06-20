@@ -32,7 +32,9 @@ class RepeatOptionDelegateDataSource: AlarmOptionDelegateDataSource
    
    override func saveSettings()
    {
-      self.alarm?.repeat = self.repeatModel!
+      if self.repeatModel!.atLeastOneDayIsEnabled {
+         self.alarm?.repeat = self.repeatModel!
+      }
    }
    
    private func cellIndexForRepeatDay(day: RepeatDay) -> Int
@@ -54,7 +56,16 @@ extension RepeatOptionDelegateDataSource: UITableViewDataSource
       
       if let day = self.repeatDayForCellIndex(indexPath.row)
       {
-         cell.accessoryType = self.repeatModel!.dayIsEnabled(day) ? .Checkmark : .None
+         var accessoryImageTintColor = UIColor(white: 0.95, alpha: 1)
+         if self.repeatModel!.dayIsEnabled(day) {
+            accessoryImageTintColor = UIColor.lipstickRedColor()
+         }
+         
+         let accessoryViewImage = UIImage(named:"ic_check")!
+         let accessoryImageView = UIImageView(image: accessoryViewImage)
+         cell.tintColor = accessoryImageTintColor
+         cell.selectionStyle = .None
+         cell.accessoryView = accessoryImageView
       }
       return cell
    }

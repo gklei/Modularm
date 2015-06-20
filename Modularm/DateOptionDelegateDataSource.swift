@@ -72,7 +72,14 @@ extension DateOptionDelegateDataSource: UITableViewDataSource
          let label = self.cellLabelDictionary[indexPath.section]![indexPath.row]
          cell.textLabel?.attributedText = NSAttributedString(text: label, boldText: boldString)
       }
-      cell.accessoryType = indexPath.row == self.cellIndexForDateDisplayType(self.dateModel!.displayType) ? .Checkmark : .None
+      
+      var accessoryImageName = "ic_radial"
+      if indexPath.row == self.cellIndexForDateDisplayType(self.dateModel!.displayType) {
+         accessoryImageName = "ic_radial_checked"
+      }
+      
+      let accessoryImageView = UIImageView(image: UIImage(named:accessoryImageName)!)
+      cell.accessoryView = accessoryImageView
       
       return cell
    }

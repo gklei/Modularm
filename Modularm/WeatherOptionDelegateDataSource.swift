@@ -133,8 +133,14 @@ extension WeatherOptionDelegateDataSource: UITableViewDataSource
    {
       var cell = super.tableView(tableView, cellForRowAtIndexPath: indexPath)
       if indexPath.section == 0
-      {
-         cell.accessoryType = indexPath.row == self.cellIndexForWeatherDisplayType(self.weatherModel!.displayType) ? .Checkmark : .None
+      {  
+         var accessoryImageName = "ic_radial"
+         if indexPath.row == self.cellIndexForWeatherDisplayType(self.weatherModel!.displayType) {
+            accessoryImageName = "ic_radial_checked"
+         }
+         
+         let accessoryImageView = UIImageView(image: UIImage(named:accessoryImageName)!)
+         cell.accessoryView = accessoryImageView
       }
       else if indexPath.section == 1
       {

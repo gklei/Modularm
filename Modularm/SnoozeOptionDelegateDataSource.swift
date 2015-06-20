@@ -114,13 +114,20 @@ struct SnoozeOptionSettingButtonState: SnoozeOptionSettingState
    {
       if indexPath.row == kSnoozeTimeOptionIndex
       {
+         cell.accessoryView = nil
          cell.accessoryType = .DisclosureIndicator
          cell.selectionStyle = .Default
          cell.textLabel?.attributedText = NSAttributedString(text: "snooze", boldText: "\(self.delegate.snoozeModel!.durationValue) minutes")
       }
       else
       {
-         cell.accessoryType = indexPath.row == self.cellIndexForSnoozeType(self.delegate.snoozeModel!.type) ? .Checkmark : .None
+         var accessoryImageName = "ic_radial"
+         if indexPath.row == self.cellIndexForSnoozeType(self.delegate.snoozeModel!.type) {
+            accessoryImageName = "ic_radial_checked"
+         }
+         
+         let accessoryImageView = UIImageView(image: UIImage(named:accessoryImageName)!)
+         cell.accessoryView = accessoryImageView
       }
    }
    
@@ -187,7 +194,13 @@ struct SnoozeOptionSettingTimeState: SnoozeOptionSettingState
    
    func configureCell(cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath)
    {
-      cell.accessoryType = indexPath.row == self.cellIndexForSnoozeDuration(self.delegate.snoozeModel!.duration) ? .Checkmark : .None
+      var accessoryImageName = "ic_radial"
+      if indexPath.row == self.cellIndexForSnoozeDuration(self.delegate.snoozeModel!.duration) {
+         accessoryImageName = "ic_radial_checked"
+      }
+      
+      let accessoryImageView = UIImageView(image: UIImage(named:accessoryImageName)!)
+      cell.accessoryView = accessoryImageView
    }
    
    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
