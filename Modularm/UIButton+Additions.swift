@@ -28,7 +28,7 @@ extension UIButton
    {
       let deleteButton = UIButton.buttonWithType(.Custom) as! UIButton
       
-      let title = NSAttributedString(string: "delete", attributes: [NSFontAttributeName : UIFont(name: "HelveticaNeue-Light", size: 14)!, NSForegroundColorAttributeName : UIColor.whiteColor()])
+      let title = NSAttributedString(string: "delete", attributes: [NSFontAttributeName : UIFont(name: "HelveticaNeue-Light", size: 15)!, NSForegroundColorAttributeName : UIColor.whiteColor()])
       deleteButton.setAttributedTitle(title, forState: .Normal)
       deleteButton.setBackgroundImage(UIImage.imageWithColor(UIColor.darkRedLipstickColor()), forState: .Normal)
       deleteButton.setBackgroundImage(UIImage.imageWithColor(UIColor.darkRedLipstickColor().colorWithAlphaComponent(0.8)), forState: .Highlighted)
@@ -39,8 +39,7 @@ extension UIButton
    class func timelineCellToggleButton() -> UIButton
    {
       let toggleButton = UIButton.buttonWithType(.Custom) as! UIButton
-      let title = NSAttributedString(string: "toggle", attributes: [NSFontAttributeName : UIFont(name: "HelveticaNeue-Light", size: 14)!, NSForegroundColorAttributeName : UIColor.whiteColor()])
-      toggleButton.setAttributedTitle(title, forState: .Normal)
+      toggleButton.setImage(UIImage(named:"icn-standby"), forState: .Normal)
       toggleButton.setBackgroundImage(UIImage.imageWithColor(UIColor.lipstickRedColor()), forState: .Normal)
       toggleButton.setBackgroundImage(UIImage.imageWithColor(UIColor.lipstickRedColor().colorWithAlphaComponent(0.8)), forState: .Highlighted)
       
