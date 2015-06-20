@@ -112,8 +112,7 @@ struct SnoozeOptionSettingButtonState: SnoozeOptionSettingState
    
    func configureCell(cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath)
    {
-      let snoozeTimeOptionIndex = kSnoozeTimeOptionIndex
-      if indexPath.row == snoozeTimeOptionIndex
+      if indexPath.row == kSnoozeTimeOptionIndex
       {
          cell.accessoryType = .DisclosureIndicator
          cell.selectionStyle = .Default
