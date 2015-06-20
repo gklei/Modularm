@@ -49,10 +49,10 @@ class TimelineCollectionViewCell: UICollectionViewCell
    override func awakeFromNib()
    {
       self.deleteButton.frame = CGRectMake(0, 0, 60, CGRectGetHeight(self.contentView.bounds))
-      self.deleteButton.addTarget(self, action: "deletePressed", forControlEvents: .TouchUpInside)
+      self.deleteButton.addTarget(self, action: "deletePressed", forControlEvents: .TouchDown)
       
       self.toggleButton.frame = CGRectMake(CGRectGetWidth(self.deleteButton.frame), 0, 60, CGRectGetHeight(self.contentView.bounds))
-      self.toggleButton.addTarget(self, action: "togglePressed", forControlEvents: .TouchUpInside)
+      self.toggleButton.addTarget(self, action: "togglePressed", forControlEvents: .TouchDown)
       
       self.setupButtonContainer()
       self.setupScrollViewWithButtonContainer(self.buttonContainer)

@@ -29,10 +29,10 @@ class TimelineHeaderView: UICollectionReusableView
    override func awakeFromNib()
    {
       self.deleteButton.frame = CGRectMake(0, 0, 60, CGRectGetHeight(self.bounds) * 0.5)
-      self.deleteButton.addTarget(self, action: "deletePressed", forControlEvents: .TouchUpInside)
+      self.deleteButton.addTarget(self, action: "deletePressed", forControlEvents: .TouchDown)
       
       self.toggleButton.frame = CGRectMake(0, CGRectGetHeight(self.deleteButton.frame), 60, CGRectGetHeight(self.deleteButton.frame))
-      self.toggleButton.addTarget(self, action: "togglePressed", forControlEvents: .TouchUpInside)
+      self.toggleButton.addTarget(self, action: "togglePressed", forControlEvents: .TouchDown)
       
       self.setupButtonContainer()
       self.setupScrollViewWithButtonContainer(self.buttonContainer)
