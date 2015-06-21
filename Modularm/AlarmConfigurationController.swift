@@ -27,8 +27,6 @@ class AlarmConfigurationController: UIViewController
    private var timeSetterController: TimeSetterViewController
    private var alarmPreviewController: AlarmPreviewViewController?
    
-   private var isSettingTime = false
-   
    required init(coder aDecoder: NSCoder)
    {
       self.timeSetterController = UIStoryboard.controllerWithIdentifier("TimeSetterViewController") as! TimeSetterViewController
