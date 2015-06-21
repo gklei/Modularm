@@ -53,7 +53,7 @@
                                     </constraints>
                                 </view>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="pm" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0eQ-P9-DfY">
-                                    <rect key="frame" x="266" y="44" width="30" height="25"/>
+                                    <rect key="frame" x="269" y="44" width="30" height="25"/>
                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="21"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
@@ -74,7 +74,7 @@
                                 <constraint firstItem="Gnc-x2-dW6" firstAttribute="leading" secondItem="pfI-DP-Eg3" secondAttribute="leading" constant="70" id="1fF-tr-gcT"/>
                                 <constraint firstAttribute="centerY" secondItem="Gnc-x2-dW6" secondAttribute="centerY" id="7WZ-FZ-d0E"/>
                                 <constraint firstAttribute="bottom" secondItem="Yp5-7c-Tp3" secondAttribute="bottom" constant="20" id="PQr-wm-UOe"/>
-                                <constraint firstItem="0eQ-P9-DfY" firstAttribute="leading" secondItem="Gnc-x2-dW6" secondAttribute="trailing" constant="-3" id="Rbu-yd-1lM"/>
+                                <constraint firstItem="0eQ-P9-DfY" firstAttribute="leading" secondItem="Gnc-x2-dW6" secondAttribute="trailing" id="Rbu-yd-1lM"/>
                                 <constraint firstItem="0eQ-P9-DfY" firstAttribute="top" secondItem="Gnc-x2-dW6" secondAttribute="top" constant="11" id="d24-As-OdD"/>
                                 <constraint firstAttribute="height" constant="150" id="jXc-OM-akp"/>
                                 <constraint firstAttribute="trailing" secondItem="Yp5-7c-Tp3" secondAttribute="trailing" constant="20" id="v51-H2-1PN"/>
