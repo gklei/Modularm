@@ -19,7 +19,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="376" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mqh-KT-mlx">
-                                        <rect key="frame" x="50" y="15" width="241" height="21"/>
+                                        <rect key="frame" x="68" y="15" width="223" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -45,18 +45,36 @@
                                             <constraint firstAttribute="height" constant="1" id="1W9-5o-9rK"/>
                                         </constraints>
                                     </view>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Pto-V3-cax" userLabel="Circle ImageView">
+                                        <rect key="frame" x="24" y="13" width="24" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="24" id="WpN-Gl-KqL"/>
+                                            <constraint firstAttribute="height" constant="24" id="bCp-E1-0ky"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dgI-C9-jJu" userLabel="Icon ImageVIew">
+                                        <rect key="frame" x="24" y="13" width="24" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="24" id="JdG-9g-MBE"/>
+                                            <constraint firstAttribute="width" constant="24" id="jfc-m8-0E0"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.11764705882352941" green="0.11764705882352941" blue="0.11764705882352941" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="9Jj-NX-HUX"/>
                                     <constraint firstItem="P5F-5y-Dhj" firstAttribute="top" secondItem="BP4-9l-g4g" secondAttribute="top" id="A4m-Wf-slb"/>
+                                    <constraint firstAttribute="centerY" secondItem="dgI-C9-jJu" secondAttribute="centerY" id="GUp-ht-Tg9"/>
                                     <constraint firstItem="P5F-5y-Dhj" firstAttribute="leading" secondItem="BP4-9l-g4g" secondAttribute="leading" constant="8" id="UWv-Ig-Q9e"/>
+                                    <constraint firstItem="mqh-KT-mlx" firstAttribute="leading" secondItem="Pto-V3-cax" secondAttribute="trailing" constant="20" id="X9x-IJ-T36"/>
                                     <constraint firstAttribute="trailing" secondItem="qpu-qv-0wL" secondAttribute="trailing" constant="20" id="XjK-f1-e2s"/>
                                     <constraint firstAttribute="centerY" secondItem="mqh-KT-mlx" secondAttribute="centerY" id="Yc5-Sg-Nhl"/>
-                                    <constraint firstItem="mqh-KT-mlx" firstAttribute="leading" secondItem="BP4-9l-g4g" secondAttribute="leading" constant="50" id="b33-je-UtA"/>
+                                    <constraint firstItem="Pto-V3-cax" firstAttribute="leading" secondItem="BP4-9l-g4g" secondAttribute="leading" constant="24" id="aPX-PQ-CX3"/>
+                                    <constraint firstItem="dgI-C9-jJu" firstAttribute="leading" secondItem="BP4-9l-g4g" secondAttribute="leading" constant="24" id="cVG-1S-1y3"/>
                                     <constraint firstItem="qpu-qv-0wL" firstAttribute="leading" secondItem="mqh-KT-mlx" secondAttribute="trailing" constant="8" id="gSW-Ry-J3m"/>
                                     <constraint firstAttribute="trailing" secondItem="P5F-5y-Dhj" secondAttribute="trailing" id="tcT-Gj-kd6"/>
-                                    <constraint firstItem="qpu-qv-0wL" firstAttribute="centerY" secondItem="mqh-KT-mlx" secondAttribute="centerY" constant="0.5" id="xsb-Eg-3LK"/>
+                                    <constraint firstItem="qpu-qv-0wL" firstAttribute="centerY" secondItem="mqh-KT-mlx" secondAttribute="centerY" id="xsb-Eg-3LK"/>
+                                    <constraint firstAttribute="centerY" secondItem="Pto-V3-cax" secondAttribute="centerY" id="zaQ-Ym-EJY"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -86,6 +104,8 @@
             <connections>
                 <outlet property="activateButton" destination="qpu-qv-0wL" id="aAN-Vz-bqJ"/>
                 <outlet property="activateButtonWidthConstraint" destination="zJy-FL-Cf3" id="aOc-cO-t0V"/>
+                <outlet property="alarmIconImageView" destination="dgI-C9-jJu" id="bOo-WI-7D4"/>
+                <outlet property="circleImageView" destination="Pto-V3-cax" id="CWb-EX-qYk"/>
                 <outlet property="innerContentView" destination="BP4-9l-g4g" id="reZ-Xb-kOh"/>
                 <outlet property="label" destination="mqh-KT-mlx" id="FWr-aF-zbb"/>
                 <outlet property="scrollView" destination="hKC-Mj-gq8" id="fhZ-4w-jXV"/>

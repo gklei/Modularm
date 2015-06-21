@@ -67,6 +67,34 @@ struct TimelineCellAlarmViewModel
       }
    }
    
+   var alarmIconImage: UIImage {
+      get {
+         var imageName = "icn-alarm-sound"
+         if let repeatModel = self.alarm.repeat where repeatModel.atLeastOneDayIsEnabled {
+            imageName = "icn-repeat"
+         }
+         return UIImage(named: imageName)!
+      }
+   }
+   
+   var alarmIconImageTintColor: UIColor {
+      get {
+         return UIColor.whiteColor()
+      }
+   }
+   
+   var circleBackgroundImage: UIImage {
+      get {
+         return UIImage(named: "bg-icn-plus-circle")!.templateImage
+      }
+   }
+   
+   var circleBackgroundImageTintColor: UIColor {
+      get {
+         return self.alarm.active ? UIColor.blackColor() : UIColor(white: 0.9, alpha: 1)
+      }
+   }
+   
    init(alarm: Alarm)
    {
       self.alarm = alarm

@@ -18,6 +18,8 @@ class TimelineCollectionViewCell: UICollectionViewCell
    @IBOutlet weak var activateButton: UIButton!
    @IBOutlet weak var separatorView: UIView!
    @IBOutlet weak var activateButtonWidthConstraint: NSLayoutConstraint!
+   @IBOutlet weak var circleImageView: UIImageView!
+   @IBOutlet weak var alarmIconImageView: UIImageView!
    
    weak var collectionView: UICollectionView?
    weak var alarm: Alarm?
@@ -168,6 +170,14 @@ class TimelineCollectionViewCell: UICollectionViewCell
       self.scrollView.backgroundColor = model.scrollViewBackgroundColor
    }
    
+   private func setIconsWithViewModel(model: TimelineCellAlarmViewModel)
+   {
+      self.circleImageView.image = model.circleBackgroundImage
+      self.circleImageView.tintColor = model.circleBackgroundImageTintColor
+      self.alarmIconImageView.image = model.alarmIconImage
+      self.alarmIconImageView.tintColor = model.alarmIconImageTintColor
+   }
+   
    // MARK: - Public
    func configureWithAlarm(alarm: Alarm?)
    {
@@ -177,6 +187,7 @@ class TimelineCollectionViewCell: UICollectionViewCell
          var viewModel = TimelineCellAlarmViewModel(alarm: alarm)
          
          self.setColorsWithViewModel(viewModel)
+         self.setIconsWithViewModel(viewModel)
          self.label.attributedText = viewModel.attributedLabelText
          
          self.setActivateButtonHidden(alarm.active)
