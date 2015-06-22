@@ -22,6 +22,7 @@ class Alarm: NSManagedObject
    @NSManaged var repeat: Repeat?
    @NSManaged var sound: Sound?
    @NSManaged var weather: Weather?
+   @NSManaged var identifier: String?
    
    var isValid: Bool {
       get {
@@ -44,6 +45,7 @@ class Alarm: NSManagedObject
       self.sound = CoreDataStack.newModelWithOption(.Sound) as? Sound
       self.fireDateValue = NSDate().timeIntervalSince1970
       self.active = true
+      self.identifier = NSUUID().UUIDString
    }
    
    func deleteOption(option: AlarmOption)
