@@ -43,6 +43,15 @@ extension NSDate
       println("hour: \(self.hour) minute: \(self.minute)")
    }
    
+   func prettyDateString() -> String
+   {
+      let formatter = NSDateFormatter()
+      formatter.dateStyle = NSDateFormatterStyle.LongStyle
+      formatter.timeStyle = .MediumStyle
+      
+      return formatter.stringFromDate(self)
+   }
+   
    class func alarmDateWithHour(hour: Int, minute: Int) -> NSDate
    {
       let currentDate = NSDate()
