@@ -51,6 +51,7 @@ extension NSDate
       
       components.hour = hour
       components.minute = minute
+      components.second = 0
       
       let date = calendar.dateFromComponents(components)!
       let timePickerHour = date.hour
