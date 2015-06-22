@@ -132,6 +132,7 @@ extension TimelineDataSource: UICollectionViewDataSource
 
       let alarm = self.fetchedResultsController.objectAtIndexPath(newIndexPath) as? Alarm
       cell.configureWithAlarm(alarm)
+      println("alarm date: \(alarm?.fireDate.prettyDateString()), uuid: \(alarm?.identifier)")
       
       return cell
    }
@@ -148,6 +149,9 @@ extension TimelineDataSource: UICollectionViewDataSource
             {
                header.timelineController = self.timelineController
                header.configureWithAlarm(alarmArray[0])
+               
+               let alarm: Alarm? = alarmArray[0]
+               println("alarm date: \(alarm?.fireDate.prettyDateString()), uuid: \(alarm?.identifier)")
             }
          }
          return header
