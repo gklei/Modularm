@@ -87,6 +87,11 @@ class TimelineController: UIViewController
       self.navigationController?.pushViewController(self.configurationController, animated: true)
    }
    
+   @IBAction func logCurrentScheduledNotifications()
+   {
+      AlarmScheduler.logCurrentScheduledNotifications()
+   }
+   
    // MARK: - Public
    func openSettingsForAlarm(alarm: Alarm)
    {

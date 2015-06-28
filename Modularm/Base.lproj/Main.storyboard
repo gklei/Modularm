@@ -82,7 +82,11 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Modularm" id="Quf-Is-AO7">
-                        <barButtonItem key="leftBarButtonItem" image="icn-bar-settings" id="Ga3-f6-xVH"/>
+                        <barButtonItem key="leftBarButtonItem" image="icn-bar-settings" id="Ga3-f6-xVH">
+                            <connections>
+                                <action selector="logCurrentScheduledNotifications" destination="5Wx-Mm-Iig" id="IL1-CR-r6V"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="iyX-07-HgF">
                             <connections>
                                 <action selector="addNewAlarmButtonPressed" destination="5Wx-Mm-Iig" id="KDg-z9-jCB"/>
@@ -896,6 +900,39 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yvk-nZ-XjB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-195" y="-641"/>
+        </scene>
+        <!--Alarm View Controller-->
+        <scene sceneID="6xo-XU-abt">
+            <objects>
+                <viewController storyboardIdentifier="AlarmViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="y8Q-hv-aLO" customClass="AlarmViewController" customModule="Modularm" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Fju-y0-Coe"/>
+                        <viewControllerLayoutGuide type="bottom" id="mgx-GF-un3"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ysF-7J-QSd">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alarm Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wHc-kh-ba1">
+                                <rect key="frame" x="16" y="28" width="92" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="wHc-kh-ba1" firstAttribute="top" secondItem="Fju-y0-Coe" secondAttribute="bottom" constant="8" id="KbX-E0-7Fq"/>
+                            <constraint firstItem="wHc-kh-ba1" firstAttribute="leading" secondItem="ysF-7J-QSd" secondAttribute="leading" constant="16" id="kPN-cM-VFz"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="alarmLabel" destination="wHc-kh-ba1" id="v8w-Db-efU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uhY-1s-aMd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1474" y="-726"/>
         </scene>
         <!--Alarm Preview View Controller-->
         <scene sceneID="1XY-Wt-xCe">

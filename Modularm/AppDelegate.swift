@@ -9,6 +9,8 @@
 import UIKit
 import CoreData
 
+let kModularmMinuteChangedNotification = "ModularmMinuteChangedNotification"
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate
 {
@@ -17,9 +19,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate
 
    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
    {
-      // Override point for customization after application launch.
+      let notificationSettings = UIUserNotificationSettings(forTypes: .Alert | .Sound, categories: nil)
+      UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
+      
       self.startTimerForMinuteChangedNotification()
+      
+      if let options = launchOptions {
+         if let notification = options[UIApplicationLaunchOptionsLocalNotificationKey] as? UILocalNotification {
+            if let userInfo = notification.userInfo {
+               
+               let uuid = userInfo["UUID"] as! String
+               let alertController = UIAlertController(title: uuid, message: "Alarm is going off", preferredStyle: UIAlertControllerStyle.Alert)
+               // do something neat here
+            }
+         }
+      }
       return true
+   }
+   
+   func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
+      if let userInfo = notification.userInfo {
+         let customField1 = userInfo["UUID"] as! String
+         println("didReceiveLocalNotification: \(customField1)")
+         
+         let alarmController = UIStoryboard.controllerWithIdentifier("AlarmViewController") as! AlarmViewController
+         if let navController = self.window?.rootViewController as? UINavigationController
+         {
+            navController.pushViewController(alarmController, animated: true)
+         }
+      }
    }
 
    func applicationWillResignActive(application: UIApplication)
@@ -80,7 +108,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
    
    func minuteChanged(timer: NSTimer)
    {
-      println("minute changed!")
+      NSNotificationCenter.defaultCenter().postNotificationName(kModularmMinuteChangedNotification, object: nil);
    }
 }
 
