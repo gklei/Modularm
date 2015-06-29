@@ -24,6 +24,20 @@ extension UIButton
       return cancelButton
    }
    
+   class func buttonWithTitle(title: String, color: UIColor) -> UIButton
+   {
+      let button = UIButton()
+      
+      let normalAttrTitle = NSAttributedString(text: title, color: color)
+      let hightlightedAttrTitle = NSAttributedString(text: title, color: color.colorWithAlphaComponent(0.7))
+      
+      button.setAttributedTitle(normalAttrTitle, forState: .Normal)
+      button.setAttributedTitle(hightlightedAttrTitle, forState: .Highlighted)
+      
+      button.sizeToFit()
+      return button
+   }
+   
    class func timelineCellDeleteButton() -> UIButton
    {
       let deleteButton = UIButton.buttonWithType(.Custom) as! UIButton
