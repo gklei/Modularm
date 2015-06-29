@@ -36,4 +36,11 @@ extension UINavigationBar
       }
       return nil
    }
+   
+   func makeTransparent()
+   {
+      self.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+      self.backgroundColor = UIColor.clearColor()
+      self.translucent = true
+   }
 }
