@@ -204,9 +204,19 @@ extension TimelineHeaderView: TapScrollViewDelegate
 {
    func tapScrollView(scrollView: UIScrollView, touchesEnded touches: NSSet, withEvent event: UIEvent)
    {
-      self.animateContenteOffset(CGPointZero, withDuration: 0.1, completion: { (finished: Bool) -> Void in
-         self.isOpen = false
-      })
+      if self.isOpen
+      {
+         self.animateContenteOffset(CGPointZero, withDuration: 0.1, completion: { (finished: Bool) -> Void in
+            self.isOpen = false
+         })
+      }
+      else
+      {
+         if let controller = self.timelineController, alarm = self.alarm
+         {
+            controller.showDetailsForAlarm(alarm)
+         }
+      }
    }
    
    func tapScrollView(scrollView: UIScrollView, touchesBegan touches: NSSet, withEvent event: UIEvent)
