@@ -118,12 +118,7 @@ class AlarmConfigurationController: UIViewController
    }
    
    // MARK: - Private
-   func showTimeSetterController()
-   {
-      self.presentViewController(self.timeSetterController, animated: true, completion: nil)
-   }
-   
-   func configureControllersWithAlarm(alarm: Alarm?)
+   private func configureControllersWithAlarm(alarm: Alarm?)
    {
       self.timeSetterController.configureWithAlarm(alarm)
       self.alarmPreviewController?.configureWithAlarm(alarm)
@@ -145,6 +140,11 @@ class AlarmConfigurationController: UIViewController
       self.configureControllersWithAlarm(self.alarm)
    }
    
+   func showTimeSetterController()
+   {
+      self.presentViewController(self.timeSetterController, animated: true, completion: nil)
+   }
+   
    // MARK: - IBActions
    @IBAction func setButtonPressed()
    {
@@ -160,7 +160,7 @@ class AlarmConfigurationController: UIViewController
       }
       
       CoreDataStack.save()
-      self.navigationController?.popViewControllerAnimated(true)
+      self.navigationController?.popToRootViewControllerAnimated(true)
    }
    
    func dismissSelf()
@@ -182,6 +182,10 @@ extension AlarmConfigurationController: AlarmOptionsControllerDelegate
       self.customBackButton.addTarget(self.alarmOptionsController, action: "returnToMainOptions", forControlEvents: .TouchUpInside)
       
       self.setBarButtonItem.enabled = false
+      
+      UIView.animateWithDuration(0.2, animations: { () -> Void in
+         self.segmentedControl.alpha = 0
+      })
    }
    
    func didDismissSettingsForOption()
@@ -190,6 +194,10 @@ extension AlarmConfigurationController: AlarmOptionsControllerDelegate
       self.customBackButton.addTarget(self, action: "dismissSelf", forControlEvents: .TouchUpInside)
       
       self.setBarButtonItem.enabled = true
+      
+      UIView.animateWithDuration(0.2, animations: { () -> Void in
+         self.segmentedControl.alpha = 1
+      })
    }
    
    func optionPreviewAuxiliaryView() -> UIView?
