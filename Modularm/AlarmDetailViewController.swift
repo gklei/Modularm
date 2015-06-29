@@ -49,7 +49,7 @@ class AlarmDetailViewController: UIViewController
       let font = UIFont.systemFontOfSize(20)
       let attributes = [NSFontAttributeName : font]
       barButtonItem.setTitleTextAttributes(attributes, forState: .Normal)
-      barButtonItem.setTitlePositionAdjustment(UIOffset(horizontal: -15, vertical: 0), forBarMetrics: .Default)
+      barButtonItem.setTitlePositionAdjustment(UIOffset(horizontal: -12, vertical: 0), forBarMetrics: .Default)
       
       self.navigationItem.rightBarButtonItem = barButtonItem
    }
