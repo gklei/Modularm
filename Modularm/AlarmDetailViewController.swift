@@ -27,10 +27,20 @@ class AlarmDetailViewController: UIViewController
    override func viewWillAppear(animated: Bool)
    {
       super.viewWillAppear(animated)
+      self.setupTitle()
       self.setupTimeLabels()
    }
    
    // MARK: - Private
+   private func setupTitle()
+   {
+      if let alarmDate = self.alarm?.fireDate
+      {
+         let countdownTime = AlarmCountdownUtility.timeUntilAlarmHour(alarmDate.hour, minute: alarmDate.minute)
+         self.title = "Alarm in \(countdownTime.hour)h \(countdownTime.minute)m"
+      }
+   }
+   
    private func setupTestButton()
    {
       let barButtonItem = UIBarButtonItem(title: "test", style: .Plain, target: nil, action: nil)
