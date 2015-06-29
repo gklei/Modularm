@@ -38,6 +38,7 @@
 		5BD0AF0D1B2B5CE70018A4C6 /* UILabel+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD0AF0C1B2B5CE70018A4C6 /* UILabel+Additions.swift */; };
 		5BD0AF111B2CE7A20018A4C6 /* TimeDisplayProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD0AF101B2CE7A20018A4C6 /* TimeDisplayProvider.swift */; };
 		5BD375431B0CF854000D380C /* TimelineCellAlarmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD375421B0CF854000D380C /* TimelineCellAlarmViewModel.swift */; };
+		5BDC54951B405F460060DDFA /* AlarmDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDC54941B405F460060DDFA /* AlarmDetailViewController.swift */; };
 		5BEDA3641B27782E0000983F /* String+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEDA3631B27782E0000983F /* String+Additions.swift */; };
 		5BEDA3721B277BBC0000983F /* InfiniteTimelineScrollingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEDA36E1B277BBC0000983F /* InfiniteTimelineScrollingViewController.swift */; };
 		5BEDA3731B277BBC0000983F /* InfiniteTimelineScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEDA36F1B277BBC0000983F /* InfiniteTimelineScrollView.swift */; };
@@ -106,6 +107,7 @@
 		5BD0AF0C1B2B5CE70018A4C6 /* UILabel+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UILabel+Additions.swift"; path = "Modularm/UILabel+Additions.swift"; sourceTree = "<group>"; };
 		5BD0AF101B2CE7A20018A4C6 /* TimeDisplayProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeDisplayProvider.swift; path = Modularm/TimeDisplayProvider.swift; sourceTree = "<group>"; };
 		5BD375421B0CF854000D380C /* TimelineCellAlarmViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimelineCellAlarmViewModel.swift; path = Modularm/TimelineCellAlarmViewModel.swift; sourceTree = "<group>"; };
+		5BDC54941B405F460060DDFA /* AlarmDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlarmDetailViewController.swift; path = Modularm/AlarmDetailViewController.swift; sourceTree = "<group>"; };
 		5BEDA3631B27782E0000983F /* String+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+Additions.swift"; path = "Modularm/String+Additions.swift"; sourceTree = "<group>"; };
 		5BEDA36E1B277BBC0000983F /* InfiniteTimelineScrollingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InfiniteTimelineScrollingViewController.swift; path = Modularm/InfiniteTimelineScrollingViewController.swift; sourceTree = "<group>"; };
 		5BEDA36F1B277BBC0000983F /* InfiniteTimelineScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InfiniteTimelineScrollView.swift; path = Modularm/InfiniteTimelineScrollView.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 		5B74FC8A1ADD72E000902484 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				5BDC54941B405F460060DDFA /* AlarmDetailViewController.swift */,
 				5B6C14291B094B78009617A8 /* TimelineCollectionViewCell.swift */,
 				5B6C142A1B094B78009617A8 /* TimelineCollectionViewCell.xib */,
 				8EFACDBE1AD837EE00279956 /* Main.storyboard */,
@@ -476,6 +479,7 @@
 				5B1997B01AE5B64A00D1522C /* MusicOptionDelegateDataSource.swift in Sources */,
 				5BEDA3751B277BBC0000983F /* TimeSetterViewController.swift in Sources */,
 				5B6C142E1B09842C009617A8 /* TapScrollView.swift in Sources */,
+				5BDC54951B405F460060DDFA /* AlarmDetailViewController.swift in Sources */,
 				8EFACDDD1AD8390F00279956 /* TimelineController.swift in Sources */,
 				8E8228E61ADB821C00F9A26E /* AlarmConfigurationController.swift in Sources */,
 				5B74FC8C1ADD74A100902484 /* AlarmOptionSettingsController.swift in Sources */,
