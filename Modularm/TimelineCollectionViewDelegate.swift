@@ -24,7 +24,7 @@ extension TimelineCollectionViewDelegate: UICollectionViewDelegate
          if let alarms = self.timelineController.activeAlarms
          {
             let alarm = alarms[indexPath.row + 1]
-            self.timelineController.openSettingsForAlarm(alarm)
+            self.timelineController.showDetailsForAlarm(alarm)
          }
       }
       else
@@ -32,7 +32,7 @@ extension TimelineCollectionViewDelegate: UICollectionViewDelegate
          if let alarms = self.timelineController.nonActiveAlarms
          {
             let alarm = alarms[indexPath.row]
-            self.timelineController.openSettingsForAlarm(alarm)
+            self.timelineController.showDetailsForAlarm(alarm)
          }
       }
    }
