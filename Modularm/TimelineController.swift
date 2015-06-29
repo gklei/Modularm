@@ -16,6 +16,7 @@ class TimelineController: UIViewController
    @IBOutlet weak var collectionView: UICollectionView!
    
    private var configurationController: AlarmConfigurationController
+   private var alarmDetailViewController: AlarmDetailViewController
    
    var alarms: [Alarm]? {
       get {
@@ -38,6 +39,7 @@ class TimelineController: UIViewController
    required init(coder aDecoder: NSCoder)
    {
       self.configurationController = UIStoryboard.controllerWithIdentifier("AlarmConfigurationController") as! AlarmConfigurationController
+      self.alarmDetailViewController = UIStoryboard.controllerWithIdentifier("AlarmDetailViewController") as! AlarmDetailViewController
       super.init(coder: aDecoder)
    }
 
@@ -47,7 +49,7 @@ class TimelineController: UIViewController
       super.viewDidLoad()
       
       self.timelineDataSource.removeIncompleteAlarms()
-      self.navigationController?.navigationBar.hideBottomHairline()
+      self.navigationController?.navigationBar.makeTransparent()
 
       self.collectionView.registerNib(UINib(nibName: "TimelineHeaderView", bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "header")
       
@@ -92,6 +94,12 @@ class TimelineController: UIViewController
    {
       self.configurationController.configureWithAlarm(alarm)
       self.navigationController?.pushViewController(self.configurationController, animated: true)
+   }
+   
+   func showDetailsForAlarm(alarm: Alarm)
+   {
+      self.alarmDetailViewController.configureWithAlarm(alarm)
+      self.navigationController?.pushViewController(self.alarmDetailViewController, animated: true)
    }
    
    func reloadData()
