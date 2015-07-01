@@ -185,7 +185,7 @@ extension AlarmConfigurationController: AlarmOptionsControllerDelegate
       
       UIView.animateWithDuration(0.2, animations: { () -> Void in
          self.segmentedControl.alpha = 0
-//         self.setBarButtonItem.setTitlePositionAdjustment(UIOffset(horizontal: 0, vertical: -50), forBarMetrics: .Default)
+         self.setBarButtonItem.setTitlePositionAdjustment(UIOffset(horizontal: 0, vertical: -50), forBarMetrics: .Default)
       })
    }
    
