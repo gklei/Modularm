@@ -13,9 +13,8 @@ class AlarmDetailViewController: UIViewController
    private var alarm: Alarm?
    private let testButton = UIButton.buttonWithTitle("test", color: UIColor.lipstickRedColor())
    
-   @IBOutlet weak var hourLabel: UILabel!
-   @IBOutlet weak var minuteLabel: UILabel!
    @IBOutlet weak var alarmMessageLabel: UILabel!
+   @IBOutlet weak var alarmTimeView: DigitalTimeView!
    
    // MARK: - Lifecycle
    override func viewDidLoad()
@@ -56,12 +55,9 @@ class AlarmDetailViewController: UIViewController
    
    private func setupTimeLabels()
    {
-      if let fireDate = self.alarm?.fireDate
-      {
-         self.hourLabel.text = TimeDisplayProvider.textForHourValue(fireDate.hour)
-         self.minuteLabel.text = TimeDisplayProvider.textForMinuteValue(fireDate.minute)
+      if let alarm = self.alarm {
+         self.alarmTimeView.updateTimeWithAlarm(alarm)
       }
-      
       if let message = self.alarm?.message?.text
       {
          self.alarmMessageLabel.text = message

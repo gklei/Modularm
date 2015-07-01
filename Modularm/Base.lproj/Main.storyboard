@@ -700,13 +700,13 @@
                                 </connections>
                             </containerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OYW-PA-L4K">
-                                <rect key="frame" x="69" y="92" width="42" height="20"/>
+                                <rect key="frame" x="68" y="92" width="42" height="20"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JaS-BZ-WzC">
-                                <rect key="frame" x="61" y="132" width="199" height="85"/>
+                                <rect key="frame" x="60" y="132" width="200" height="85"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=":" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YS5-2c-MUA">
                                         <rect key="frame" x="89" y="0.0" width="21" height="85"/>
@@ -721,7 +721,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wse-rt-tjd">
-                                        <rect key="frame" x="110" y="0.0" width="89" height="85"/>
+                                        <rect key="frame" x="110" y="0.0" width="81" height="85"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="72"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -730,19 +730,19 @@
                                 <color key="backgroundColor" red="0.1176470588" green="0.1176470588" blue="0.1176470588" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="YS5-2c-MUA" firstAttribute="top" secondItem="JaS-BZ-WzC" secondAttribute="top" id="GlB-LN-hHF"/>
-                                    <constraint firstAttribute="trailing" secondItem="Wse-rt-tjd" secondAttribute="trailing" id="Ibx-fl-jYg"/>
                                     <constraint firstItem="Wse-rt-tjd" firstAttribute="leading" secondItem="YS5-2c-MUA" secondAttribute="trailing" id="PzK-O6-cKg"/>
                                     <constraint firstItem="Wse-rt-tjd" firstAttribute="centerY" secondItem="YS5-2c-MUA" secondAttribute="centerY" id="ZQP-0k-NK5"/>
                                     <constraint firstAttribute="centerY" secondItem="YS5-2c-MUA" secondAttribute="centerY" id="ipc-c2-dD9"/>
                                     <constraint firstItem="Iao-Z9-Upb" firstAttribute="leading" secondItem="JaS-BZ-WzC" secondAttribute="leading" id="oXh-GA-HeC"/>
                                     <constraint firstItem="YS5-2c-MUA" firstAttribute="leading" secondItem="Iao-Z9-Upb" secondAttribute="trailing" constant="8" id="of8-fF-LvF"/>
                                     <constraint firstItem="Iao-Z9-Upb" firstAttribute="centerY" secondItem="YS5-2c-MUA" secondAttribute="centerY" id="qnI-vo-kev"/>
+                                    <constraint firstAttribute="width" constant="200" id="sE8-YR-1FB"/>
                                     <constraint firstAttribute="bottom" secondItem="YS5-2c-MUA" secondAttribute="bottom" id="uhV-iX-6GX"/>
                                     <constraint firstAttribute="centerX" secondItem="YS5-2c-MUA" secondAttribute="centerX" id="zaH-Mb-wfJ"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4zv-qe-f4t">
-                                <rect key="frame" x="9" y="182" width="42" height="1"/>
+                                <rect key="frame" x="9" y="182" width="41" height="1"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="g7w-RA-ZqM"/>
@@ -762,7 +762,7 @@
                                 </variation>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alarm will go off in" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IwY-ex-Dc2">
-                                <rect key="frame" x="69" y="67" width="133" height="21"/>
+                                <rect key="frame" x="68" y="67" width="133" height="21"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -910,40 +910,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="156"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EKY-BC-dbc">
-                                <rect key="frame" x="61" y="36" width="199" height="85"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=":" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pl8-mz-a5w">
-                                        <rect key="frame" x="89" y="0.0" width="21" height="85"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="72"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4gV-Ag-zLL">
-                                        <rect key="frame" x="110" y="0.0" width="89" height="85"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="72"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="21" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fEn-Gj-7I2">
-                                        <rect key="frame" x="0.0" y="0.0" width="81" height="85"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="72"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EKY-BC-dbc" customClass="DigitalTimeView" customModule="Modularm" customModuleProvider="target">
+                                <rect key="frame" x="60" y="36" width="200" height="85"/>
                                 <color key="backgroundColor" red="0.1176470588" green="0.1176470588" blue="0.1176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="pl8-mz-a5w" firstAttribute="leading" secondItem="fEn-Gj-7I2" secondAttribute="trailing" constant="8" id="5Qr-7l-gjh"/>
-                                    <constraint firstAttribute="bottom" secondItem="pl8-mz-a5w" secondAttribute="bottom" id="DFc-ID-q7j"/>
-                                    <constraint firstItem="fEn-Gj-7I2" firstAttribute="centerY" secondItem="pl8-mz-a5w" secondAttribute="centerY" id="EYV-A4-MtG"/>
-                                    <constraint firstItem="4gV-Ag-zLL" firstAttribute="leading" secondItem="pl8-mz-a5w" secondAttribute="trailing" id="GWX-MX-8Sg"/>
-                                    <constraint firstAttribute="centerY" secondItem="pl8-mz-a5w" secondAttribute="centerY" id="OhD-9L-4Qs"/>
-                                    <constraint firstItem="fEn-Gj-7I2" firstAttribute="leading" secondItem="EKY-BC-dbc" secondAttribute="leading" id="TTM-SD-W04"/>
-                                    <constraint firstItem="4gV-Ag-zLL" firstAttribute="centerY" secondItem="pl8-mz-a5w" secondAttribute="centerY" id="TTz-iT-uYV"/>
-                                    <constraint firstItem="pl8-mz-a5w" firstAttribute="top" secondItem="EKY-BC-dbc" secondAttribute="top" id="VsR-Zg-uCL"/>
-                                    <constraint firstAttribute="trailing" secondItem="4gV-Ag-zLL" secondAttribute="trailing" id="njW-SO-4jF"/>
-                                    <constraint firstAttribute="centerX" secondItem="pl8-mz-a5w" secondAttribute="centerX" id="rjE-om-KRk"/>
+                                    <constraint firstAttribute="height" constant="85" id="N3j-TO-2Tm"/>
+                                    <constraint firstAttribute="width" constant="200" id="aj7-4Q-3g5"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
@@ -952,13 +924,13 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mx4-E8-SRk">
-                                <rect key="frame" x="69" y="-4" width="42" height="20"/>
+                                <rect key="frame" x="68" y="-4" width="42" height="20"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alarm will go off in" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kvd-pe-z1H">
-                                <rect key="frame" x="69" y="-29" width="133" height="21"/>
+                                <rect key="frame" x="68" y="-29" width="133" height="21"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -984,9 +956,8 @@
                     </view>
                     <toolbarItems/>
                     <connections>
-                        <outlet property="hourLabel" destination="fEn-Gj-7I2" id="r6C-Dz-e4g"/>
+                        <outlet property="alarmTimeView" destination="EKY-BC-dbc" id="OyN-N7-y6v"/>
                         <outlet property="informativeTimeLabel" destination="mx4-E8-SRk" id="LFp-Pb-m2c"/>
-                        <outlet property="minuteLabel" destination="4gV-Ag-zLL" id="hPj-tJ-k0L"/>
                         <outlet property="previewAuxiliaryView" destination="yM3-Gr-xAb" id="ko8-JE-Xem"/>
                     </connections>
                 </viewController>
@@ -1009,40 +980,12 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background-clearnight" translatesAutoresizingMaskIntoConstraints="NO" id="q9G-cO-wjl">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k6f-HE-AeE">
-                                <rect key="frame" x="61" y="140" width="199" height="85"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=":" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a1a-KZ-GVE">
-                                        <rect key="frame" x="89" y="0.0" width="21" height="85"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="72"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q6k-zg-JfC">
-                                        <rect key="frame" x="110" y="0.0" width="89" height="85"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="72"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="21" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qSZ-lW-dSz">
-                                        <rect key="frame" x="0.0" y="0.0" width="81" height="85"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="72"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" red="0.1176470588" green="0.1176470588" blue="0.1176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k6f-HE-AeE" customClass="DigitalTimeView" customModule="Modularm" customModuleProvider="target">
+                                <rect key="frame" x="60" y="140" width="200" height="85"/>
+                                <color key="backgroundColor" red="0.67245636393996533" green="0.66911080989051275" blue="0.67580191798941791" alpha="0.67000000000000004" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="centerY" secondItem="a1a-KZ-GVE" secondAttribute="centerY" id="GnW-xQ-bUt"/>
-                                    <constraint firstItem="qSZ-lW-dSz" firstAttribute="centerY" secondItem="a1a-KZ-GVE" secondAttribute="centerY" id="I90-Ls-xoD"/>
-                                    <constraint firstAttribute="trailing" secondItem="q6k-zg-JfC" secondAttribute="trailing" id="IOb-MZ-93d"/>
-                                    <constraint firstAttribute="bottom" secondItem="a1a-KZ-GVE" secondAttribute="bottom" id="L6P-Ka-1q5"/>
-                                    <constraint firstItem="q6k-zg-JfC" firstAttribute="centerY" secondItem="a1a-KZ-GVE" secondAttribute="centerY" id="Qdl-sY-HT6"/>
-                                    <constraint firstItem="a1a-KZ-GVE" firstAttribute="leading" secondItem="qSZ-lW-dSz" secondAttribute="trailing" constant="8" id="RAM-fq-JPB"/>
-                                    <constraint firstItem="q6k-zg-JfC" firstAttribute="leading" secondItem="a1a-KZ-GVE" secondAttribute="trailing" id="cnH-xJ-nJo"/>
-                                    <constraint firstItem="a1a-KZ-GVE" firstAttribute="top" secondItem="k6f-HE-AeE" secondAttribute="top" id="dOF-Jl-OHA"/>
-                                    <constraint firstItem="qSZ-lW-dSz" firstAttribute="leading" secondItem="k6f-HE-AeE" secondAttribute="leading" id="dRM-Dm-Q8p"/>
-                                    <constraint firstAttribute="centerX" secondItem="a1a-KZ-GVE" secondAttribute="centerX" id="fus-eq-9DU"/>
+                                    <constraint firstAttribute="height" constant="85" id="6rN-E1-fYp"/>
+                                    <constraint firstAttribute="width" constant="200" id="xIz-LU-2UJ"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
@@ -1089,8 +1032,7 @@
                     </view>
                     <connections>
                         <outlet property="alarmMessageLabel" destination="wHL-ZH-DeC" id="Dyi-BH-A9l"/>
-                        <outlet property="hourLabel" destination="qSZ-lW-dSz" id="P7n-Zq-7pn"/>
-                        <outlet property="minuteLabel" destination="q6k-zg-JfC" id="MeF-PQ-dIr"/>
+                        <outlet property="alarmTimeView" destination="k6f-HE-AeE" id="sjV-JA-mLL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IrV-wc-th7" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -10,8 +10,7 @@ import UIKit
 
 class TimelineHeaderView: UICollectionReusableView
 {
-   @IBOutlet weak var hourLabel: UILabel!
-   @IBOutlet weak var minuteLabel: UILabel!
+   @IBOutlet weak var alarmTimeView: DigitalTimeView!
    @IBOutlet weak var amOrPmLabel: UILabel!
    
    @IBOutlet weak var innerContentView: UIView!
@@ -116,9 +115,7 @@ class TimelineHeaderView: UICollectionReusableView
    func configureWithAlarm(alarm: Alarm)
    {
       self.alarm = alarm
-      
-      self.hourLabel.text = TimeDisplayProvider.textForHourValue(alarm.fireDate.hour)
-      self.minuteLabel.text = TimeDisplayProvider.textForMinuteValue(alarm.fireDate.minute)
+      self.alarmTimeView.updateTimeWithAlarm(alarm)
       self.amOrPmLabel.text = alarm.fireDate.hour < 12 ? "am" : "pm"
       
       var viewModel = TimelineCellAlarmViewModel(alarm: alarm)

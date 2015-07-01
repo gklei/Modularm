@@ -11,8 +11,7 @@ import UIKit
 class AlarmPreviewViewController: UIViewController
 {
    // MARK: - Properties
-   @IBOutlet weak var hourLabel: UILabel!
-   @IBOutlet weak var minuteLabel: UILabel!
+   @IBOutlet weak var alarmTimeView: DigitalTimeView!
    @IBOutlet weak var informativeTimeLabel: UILabel!
    @IBOutlet weak var previewAuxiliaryView: UIView!
    
@@ -41,16 +40,15 @@ class AlarmPreviewViewController: UIViewController
    // MARK: - Private
    private func updateHourAndMinuteLabelsWithAlarm(alarm: Alarm?)
    {
-      if let date = self.alarm?.fireDate
+      if let alarm = self.alarm
       {
-         self.updateLabelsWithHour(date.hour, minute: date.minute)
+         self.alarmTimeView.updateTimeWithAlarm(alarm)
       }
    }
    
    func updateLabelsWithHour(hour: Int, minute: Int)
    {
-      self.hourLabel.text = TimeDisplayProvider.textForHourValue(hour)
-      self.minuteLabel.text = minute <= 9 ? "0\(minute)" : "\(minute)"
+      self.alarmTimeView.updateTimeWithHour(hour, minute: minute)
    }
    
    func updateInformativeTimeLabel()

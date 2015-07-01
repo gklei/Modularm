@@ -15,6 +15,7 @@
 		5B1997B71AE5F79C00D1522C /* AlarmMessageSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1997B61AE5F79C00D1522C /* AlarmMessageSettingsController.swift */; };
 		5B22182F1AE60A0700D56D31 /* AlarmOptionDelegateDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B22182E1AE60A0700D56D31 /* AlarmOptionDelegateDataSource.swift */; };
 		5B2218311AE60A2400D56D31 /* UIButton+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2218301AE60A2400D56D31 /* UIButton+Additions.swift */; };
+		5B49D74F1B4378E700896878 /* DigitalTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B49D74E1B4378E700896878 /* DigitalTimeView.swift */; };
 		5B6C12611AFF2841009617A8 /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6C12591AFF2841009617A8 /* Alarm.swift */; };
 		5B6C12621AFF2841009617A8 /* Countdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6C125A1AFF2841009617A8 /* Countdown.swift */; };
 		5B6C12631AFF2841009617A8 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6C125B1AFF2841009617A8 /* Date.swift */; };
@@ -84,6 +85,7 @@
 		5B1997B61AE5F79C00D1522C /* AlarmMessageSettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmMessageSettingsController.swift; sourceTree = "<group>"; };
 		5B22182E1AE60A0700D56D31 /* AlarmOptionDelegateDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlarmOptionDelegateDataSource.swift; path = Modularm/AlarmOptionDelegateDataSource.swift; sourceTree = "<group>"; };
 		5B2218301AE60A2400D56D31 /* UIButton+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIButton+Additions.swift"; path = "Modularm/UIButton+Additions.swift"; sourceTree = "<group>"; };
+		5B49D74E1B4378E700896878 /* DigitalTimeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DigitalTimeView.swift; path = Modularm/DigitalTimeView.swift; sourceTree = "<group>"; };
 		5B6C12591AFF2841009617A8 /* Alarm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Alarm.swift; path = Modularm/Alarm.swift; sourceTree = "<group>"; };
 		5B6C125A1AFF2841009617A8 /* Countdown.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Countdown.swift; path = Modularm/Countdown.swift; sourceTree = "<group>"; };
 		5B6C125B1AFF2841009617A8 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Date.swift; path = Modularm/Date.swift; sourceTree = "<group>"; };
@@ -171,20 +173,35 @@
 			name = "Option Delegate Data Sources";
 			sourceTree = "<group>";
 		};
-		5B74FC8A1ADD72E000902484 /* UI */ = {
+		5B49D74C1B43782300896878 /* Timeline UI */ = {
 			isa = PBXGroup;
 			children = (
-				5BDC54941B405F460060DDFA /* AlarmDetailViewController.swift */,
 				5B6C14291B094B78009617A8 /* TimelineCollectionViewCell.swift */,
 				5B6C142A1B094B78009617A8 /* TimelineCollectionViewCell.xib */,
-				8EFACDBE1AD837EE00279956 /* Main.storyboard */,
-				8EFACDC31AD837EE00279956 /* LaunchScreen.xib */,
-				8E5BD3261ADB930400C42FAA /* AlarmOptionButton.swift */,
 				8E6094F01B08584A007F8D24 /* TimelineHeaderView.swift */,
 				8E6094F21B08585E007F8D24 /* TimelineHeaderView.xib */,
 				5B6C142D1B09842C009617A8 /* TapScrollView.swift */,
 				5BD375421B0CF854000D380C /* TimelineCellAlarmViewModel.swift */,
+			);
+			name = "Timeline UI";
+			sourceTree = "<group>";
+		};
+		5B49D74D1B43783B00896878 /* Alarm UI */ = {
+			isa = PBXGroup;
+			children = (
+				5BDC54941B405F460060DDFA /* AlarmDetailViewController.swift */,
+				8E5BD3261ADB930400C42FAA /* AlarmOptionButton.swift */,
 				5BD0AF101B2CE7A20018A4C6 /* TimeDisplayProvider.swift */,
+				5B49D74E1B4378E700896878 /* DigitalTimeView.swift */,
+			);
+			name = "Alarm UI";
+			sourceTree = "<group>";
+		};
+		5B74FC8A1ADD72E000902484 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				8EFACDBE1AD837EE00279956 /* Main.storyboard */,
+				8EFACDC31AD837EE00279956 /* LaunchScreen.xib */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -275,6 +292,8 @@
 		8EFACDA91AD837EE00279956 = {
 			isa = PBXGroup;
 			children = (
+				5B49D74D1B43783B00896878 /* Alarm UI */,
+				5B49D74C1B43782300896878 /* Timeline UI */,
 				5BEDA3651B27799B0000983F /* Custom Time Setting */,
 				5B7EF4581AE85BDC00472976 /* Timeline */,
 				8E3BDC371AE4308A00E1FCDC /* Alarm Options */,
@@ -467,6 +486,7 @@
 				5B1997AA1AE5765800D1522C /* WeatherOptionDelegateDataSource.swift in Sources */,
 				5B6C12621AFF2841009617A8 /* Countdown.swift in Sources */,
 				5BD375431B0CF854000D380C /* TimelineCellAlarmViewModel.swift in Sources */,
+				5B49D74F1B4378E700896878 /* DigitalTimeView.swift in Sources */,
 				5B6C12611AFF2841009617A8 /* Alarm.swift in Sources */,
 				5B6C12651AFF2841009617A8 /* Repeat.swift in Sources */,
 				8E8228E21ADB679A00F9A26E /* UINavigationBar+Additions.swift in Sources */,

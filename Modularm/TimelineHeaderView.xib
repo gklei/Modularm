@@ -16,40 +16,12 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pfI-DP-Eg3">
                             <rect key="frame" x="0.0" y="0.0" width="377" height="150"/>
                             <subviews>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gnc-x2-dW6">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gnc-x2-dW6" customClass="DigitalTimeView" customModule="Modularm" customModuleProvider="target">
                                     <rect key="frame" x="70" y="33" width="199" height="85"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=":" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6IT-h1-RDp">
-                                            <rect key="frame" x="89" y="0.0" width="21" height="85"/>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="72"/>
-                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V1H-eJ-G1L">
-                                            <rect key="frame" x="0.0" y="0.0" width="81" height="85"/>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="72"/>
-                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EuB-lz-W0R">
-                                            <rect key="frame" x="110" y="0.0" width="89" height="85"/>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="72"/>
-                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
                                     <color key="backgroundColor" red="0.11764705882352941" green="0.11764705882352941" blue="0.11764705882352941" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
-                                        <constraint firstAttribute="centerX" secondItem="6IT-h1-RDp" secondAttribute="centerX" id="03S-mz-Zq4"/>
-                                        <constraint firstItem="6IT-h1-RDp" firstAttribute="top" secondItem="Gnc-x2-dW6" secondAttribute="top" id="6Ca-c6-Oxn"/>
-                                        <constraint firstItem="V1H-eJ-G1L" firstAttribute="centerY" secondItem="6IT-h1-RDp" secondAttribute="centerY" id="Dec-t0-D8Y"/>
-                                        <constraint firstItem="EuB-lz-W0R" firstAttribute="leading" secondItem="6IT-h1-RDp" secondAttribute="trailing" id="c3o-m0-WTl"/>
-                                        <constraint firstAttribute="trailing" secondItem="EuB-lz-W0R" secondAttribute="trailing" id="eOV-q3-4wQ"/>
-                                        <constraint firstItem="EuB-lz-W0R" firstAttribute="centerY" secondItem="6IT-h1-RDp" secondAttribute="centerY" id="fpn-vY-QqW"/>
-                                        <constraint firstItem="V1H-eJ-G1L" firstAttribute="leading" secondItem="Gnc-x2-dW6" secondAttribute="leading" id="k0V-Dm-C4x"/>
-                                        <constraint firstAttribute="bottom" secondItem="6IT-h1-RDp" secondAttribute="bottom" id="niO-Pi-6bB"/>
-                                        <constraint firstAttribute="centerY" secondItem="6IT-h1-RDp" secondAttribute="centerY" id="vvh-Sp-EWl"/>
-                                        <constraint firstItem="6IT-h1-RDp" firstAttribute="leading" secondItem="V1H-eJ-G1L" secondAttribute="trailing" constant="8" id="zE5-7m-cV9"/>
+                                        <constraint firstAttribute="height" constant="85" id="G4u-Vc-wuk"/>
+                                        <constraint firstAttribute="width" constant="199" id="iAN-6d-rG4"/>
                                     </constraints>
                                 </view>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="pm" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0eQ-P9-DfY">
@@ -113,10 +85,9 @@
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="alarmTimeView" destination="Gnc-x2-dW6" id="b9u-Fh-TS4"/>
                 <outlet property="amOrPmLabel" destination="0eQ-P9-DfY" id="kMb-iO-G0Z"/>
-                <outlet property="hourLabel" destination="V1H-eJ-G1L" id="2oq-EH-9On"/>
                 <outlet property="innerContentView" destination="pfI-DP-Eg3" id="gPD-FO-U1S"/>
-                <outlet property="minuteLabel" destination="EuB-lz-W0R" id="Wwi-JH-mE9"/>
                 <outlet property="scrollView" destination="FFq-hc-7aN" id="VCv-SF-meh"/>
             </connections>
             <point key="canvasLocation" x="275.5" y="296"/>

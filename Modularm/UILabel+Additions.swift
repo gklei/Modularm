@@ -24,4 +24,16 @@ extension UILabel
       hourLabel.sizeToFit()
       return hourLabel
    }
+   
+   class func largeTimeDisplayLabelWithAlignment(alignment: NSTextAlignment) -> UILabel
+   {
+      let label = UILabel()
+      if let font = UIFont(name: "HelveticaNeue-Thin", size: 72)
+      {
+         label.font = font
+      }
+      label.textColor = UIColor.whiteColor()
+      label.textAlignment = alignment
+      return label
+   }
 }
