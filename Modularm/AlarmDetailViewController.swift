@@ -64,8 +64,14 @@ class AlarmDetailViewController: UIViewController
       }
       else
       {
-         let soundName = self.alarm!.sound!.basicSoundURL
-         self.alarmMessageLabel.text = "Alarm sound: \(soundName)"
+         if let soundName = self.alarm?.sound?.basicSoundURL
+         {
+            self.alarmMessageLabel.text = "Alarm sound: \(soundName)"
+         }
+         else
+         {
+            self.alarmMessageLabel.text = "No sound is set!"
+         }
       }
    }
    
