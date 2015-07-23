@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DigitalTimeView: UIView
+class DigitalTimeView: TimeView
 {
    private let hourLabel = UILabel.largeTimeDisplayLabelWithAlignment(.Left)
    private let colonLabel = UILabel.largeTimeDisplayLabelWithAlignment(.Center)
@@ -52,29 +52,16 @@ class DigitalTimeView: UIView
    }
    
    // MARK: - Public
-   func updateTimeWithAlarm(alarm: Alarm)
+   override func updateTimeWithAlarm(alarm: Alarm)
    {
       let date = alarm.fireDate
       self.hourLabel.text = TimeDisplayProvider.textForHourValue(date.hour)
       self.minuteLabel.text = TimeDisplayProvider.textForMinuteValue(date.minute)
    }
    
-   func updateTimeWithHour(hour: Int, minute: Int)
+   override func updateTimeWithHour(hour: Int, minute: Int)
    {
       self.hourLabel.text = TimeDisplayProvider.textForHourValue(hour)
       self.minuteLabel.text = TimeDisplayProvider.textForMinuteValue(minute)
    }
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
 }
