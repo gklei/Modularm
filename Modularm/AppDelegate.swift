@@ -40,8 +40,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate
    func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
       if let userInfo = notification.userInfo {
          let alarmUUID = userInfo["UUID"] as! String
-         println("didReceiveLocalNotification: \(alarmUUID)")
-         
          let alarmDetailViewController = UIStoryboard.controllerWithIdentifier("AlarmDetailViewController") as! AlarmDetailViewController
          if let navController = self.window?.rootViewController as? UINavigationController
          {

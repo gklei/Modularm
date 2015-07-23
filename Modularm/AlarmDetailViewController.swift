@@ -122,7 +122,6 @@ class AlarmDetailViewController: UIViewController
    // MARK: - Public
    func configureWithAlarm(alarm: Alarm?, isFiring: Bool)
    {
-      println("alarm to show! \(alarm)")
       self.alarm = alarm
       self.alarmIsFiring = isFiring
    }
