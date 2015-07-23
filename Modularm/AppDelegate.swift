@@ -24,31 +24,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate
       
       self.startTimerForMinuteChangedNotification()
       
-      if let options = launchOptions {
-         if let notification = options[UIApplicationLaunchOptionsLocalNotificationKey] as? UILocalNotification {
-            if let userInfo = notification.userInfo {
-               
-               let uuid = userInfo["UUID"] as! String
-               let alertController = UIAlertController(title: uuid, message: "Alarm is going off", preferredStyle: UIAlertControllerStyle.Alert)
-               // do something neat here
+      if let options = launchOptions
+      {
+         if let notification = options[UIApplicationLaunchOptionsLocalNotificationKey] as? UILocalNotification
+         {
+            if let userInfo = notification.userInfo, let alarmUUID = userInfo["UUID"] as? String
+            {
+               self.showFiredAlarmWithUUID(alarmUUID)
             }
          }
       }
       return true
    }
    
-   func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
-      if let userInfo = notification.userInfo {
-         let alarmUUID = userInfo["UUID"] as! String
-         let alarmDetailViewController = UIStoryboard.controllerWithIdentifier("AlarmDetailViewController") as! AlarmDetailViewController
-         if let navController = self.window?.rootViewController as? UINavigationController
-         {
-            if let alarm = AlarmScheduler.alarmForUUID(alarmUUID)
-            {
-               alarmDetailViewController.configureWithAlarm(alarm, isFiring: true)
-            }
-            navController.pushViewController(alarmDetailViewController, animated: false)
-         }
+   func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification)
+   {
+      if let userInfo = notification.userInfo, let alarmUUID = userInfo["UUID"] as? String
+      {
+         self.showFiredAlarmWithUUID(alarmUUID)
       }
    }
 
@@ -99,6 +92,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate
          self.minuteChangedNotificationTimer = NSTimer(fireDate: fireDate, interval: 60, target: self, selector: Selector("minuteChanged:"), userInfo: nil, repeats: true)
          
          NSRunLoop.mainRunLoop().addTimer(self.minuteChangedNotificationTimer!, forMode: NSDefaultRunLoopMode)
+      }
+   }
+   
+   private func showFiredAlarmWithUUID(uuid: String)
+   {
+      let alarmDetailViewController = UIStoryboard.controllerWithIdentifier("AlarmDetailViewController") as! AlarmDetailViewController
+      if let navController = self.window?.rootViewController as? UINavigationController
+      {
+         if let alarm = AlarmScheduler.alarmForUUID(uuid)
+         {
+            alarmDetailViewController.configureWithAlarm(alarm, isFiring: true)
+         }
+         navController.pushViewController(alarmDetailViewController, animated: false)
       }
    }
    

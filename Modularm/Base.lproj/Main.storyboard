@@ -1014,29 +1014,62 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="editCancelButtonPressed" destination="elv-tN-qol" eventType="touchUpInside" id="uMc-lM-Fmn"/>
+                                    <action selector="editButtonPressed" destination="elv-tN-qol" eventType="touchUpInside" id="Auh-tX-QEy"/>
                                 </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mYN-bE-vh6" userLabel="cancel">
+                                <rect key="frame" x="272" y="45" width="26" height="26"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="26" id="FO6-VQ-Tnu"/>
+                                    <constraint firstAttribute="height" constant="26" id="fhl-0J-Z8I"/>
+                                </constraints>
+                                <color key="tintColor" red="0.74509803919999995" green="0.058823529409999999" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" image="icn-x">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelButtonPressed" destination="elv-tN-qol" eventType="touchUpInside" id="xRJ-u5-8sL"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ch-Z8-lSG">
+                                <rect key="frame" x="0.0" y="448" width="320" height="120"/>
+                                <color key="backgroundColor" red="0.74509803919999995" green="0.058823529409999999" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="fCt-g8-L3h"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
+                                <state key="normal" title="Snooze 5 minutes">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.74511035839160844" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="G69-eR-sRQ" firstAttribute="trailing" secondItem="mYN-bE-vh6" secondAttribute="trailing" id="8nb-ls-jJR"/>
                             <constraint firstAttribute="trailing" secondItem="q9G-cO-wjl" secondAttribute="trailing" id="97b-1s-ogR"/>
                             <constraint firstItem="q9G-cO-wjl" firstAttribute="leading" secondItem="BQD-C6-fiW" secondAttribute="leading" id="9Lv-QL-Qhw"/>
                             <constraint firstAttribute="centerX" secondItem="k6f-HE-AeE" secondAttribute="centerX" id="D3b-Xx-Yqm"/>
+                            <constraint firstItem="vSh-GQ-LaW" firstAttribute="top" secondItem="9ch-Z8-lSG" secondAttribute="bottom" id="H6d-cH-O1h"/>
                             <constraint firstItem="G69-eR-sRQ" firstAttribute="top" secondItem="B1t-gl-MwZ" secondAttribute="bottom" constant="20" id="Ucm-cu-FTO"/>
                             <constraint firstItem="wHL-ZH-DeC" firstAttribute="top" secondItem="G69-eR-sRQ" secondAttribute="top" id="WQr-aG-UY3"/>
                             <constraint firstItem="k6f-HE-AeE" firstAttribute="top" secondItem="wHL-ZH-DeC" secondAttribute="bottom" constant="48" id="dcr-50-02c"/>
+                            <constraint firstAttribute="trailing" secondItem="9ch-Z8-lSG" secondAttribute="trailing" id="hhG-Dt-RWe"/>
+                            <constraint firstItem="G69-eR-sRQ" firstAttribute="centerY" secondItem="mYN-bE-vh6" secondAttribute="centerY" id="lFe-Ep-3OW"/>
                             <constraint firstAttribute="trailing" secondItem="G69-eR-sRQ" secondAttribute="trailing" constant="22" id="mEi-QX-u6S"/>
                             <constraint firstItem="G69-eR-sRQ" firstAttribute="leading" secondItem="wHL-ZH-DeC" secondAttribute="trailing" constant="20" id="mY0-oz-PNZ"/>
                             <constraint firstItem="vSh-GQ-LaW" firstAttribute="top" secondItem="q9G-cO-wjl" secondAttribute="bottom" id="oTR-48-1LA"/>
                             <constraint firstItem="wHL-ZH-DeC" firstAttribute="leading" secondItem="BQD-C6-fiW" secondAttribute="leading" constant="30" id="xo2-wo-L4r"/>
+                            <constraint firstItem="9ch-Z8-lSG" firstAttribute="leading" secondItem="BQD-C6-fiW" secondAttribute="leading" id="y6p-Sr-dSb"/>
                             <constraint firstItem="q9G-cO-wjl" firstAttribute="top" secondItem="BQD-C6-fiW" secondAttribute="top" id="zE0-xy-DbI"/>
                         </constraints>
                     </view>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
                         <outlet property="alarmMessageLabel" destination="wHL-ZH-DeC" id="Dyi-BH-A9l"/>
                         <outlet property="alarmTimeView" destination="k6f-HE-AeE" id="sjV-JA-mLL"/>
-                        <outlet property="editCancelButton" destination="G69-eR-sRQ" id="XlA-de-9uH"/>
+                        <outlet property="cancelButton" destination="mYN-bE-vh6" id="dp4-B2-bK6"/>
+                        <outlet property="editButton" destination="G69-eR-sRQ" id="9WU-89-AXG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IrV-wc-th7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1065,6 +1098,7 @@
         <image name="icn-repeat" width="24" height="24"/>
         <image name="icn-snooze" width="24" height="24"/>
         <image name="icn-weather" width="24" height="24"/>
+        <image name="icn-x" width="32" height="32"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

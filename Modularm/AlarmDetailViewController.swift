@@ -14,7 +14,8 @@ class AlarmDetailViewController: UIViewController
    
    @IBOutlet weak var alarmMessageLabel: UILabel!
    @IBOutlet weak var alarmTimeView: DigitalTimeView!
-   @IBOutlet weak var editCancelButton: UIButton!
+   @IBOutlet weak var editButton: UIButton!
+   @IBOutlet weak var cancelButton: UIButton!
    
    private var alarmIsFiring = false
    
@@ -35,33 +36,26 @@ class AlarmDetailViewController: UIViewController
    override func viewWillDisappear(animated: Bool)
    {
       super.viewWillDisappear(animated)
-      self.navigationController?.navigationBarHidden = false
+      self.navigationController?.setNavigationBarHidden(false, animated: true)
    }
    
    // MARK: - Private
    private func updateUIForFiringState()
    {
-      var editCancelButtonTitle = ""
-      var editCancelButtonImage = UIImage(named: "icn-x")
-      var editCancelButtonBackgroundColor = UIColor.blackColor()
-      
       if self.alarmIsFiring
       {
+         self.editButton.hidden = true
+         self.cancelButton.hidden = false
          self.navigationController?.navigationBarHidden = true
          self.tearDownTestButton()
       }
       else
       {
-         editCancelButtonTitle = "edit"
-         editCancelButtonImage = nil
-         editCancelButtonBackgroundColor = UIColor.clearColor()
+         self.editButton.hidden = false
+         self.cancelButton.hidden = true
          self.navigationController?.navigationBarHidden = false
          self.setupTestButton()
       }
-      
-      self.editCancelButton.setTitle(editCancelButtonTitle, forState: .Normal)
-      self.editCancelButton.setBackgroundImage(editCancelButtonImage, forState: .Normal)
-      self.editCancelButton.backgroundColor = editCancelButtonBackgroundColor
    }
    
    private func setupTitle()
@@ -75,15 +69,8 @@ class AlarmDetailViewController: UIViewController
    
    private func setupTestButton()
    {
-      let barButtonItem = UIBarButtonItem(title: "test", style: .Plain, target: nil, action: nil)
-      barButtonItem.tintColor = UIColor.lipstickRedColor()
-      
-      let font = UIFont.systemFontOfSize(20)
-      let attributes = [NSFontAttributeName : font]
-      barButtonItem.setTitleTextAttributes(attributes, forState: .Normal)
-      barButtonItem.setTitlePositionAdjustment(UIOffset(horizontal: -12, vertical: 0), forBarMetrics: .Default)
-      
-      self.navigationItem.rightBarButtonItem = barButtonItem
+      let color = UIColor.lipstickRedColor()
+      self.navigationItem.rightBarButtonItem = UIBarButtonItem.rightBarButtonItemWithTitle("test", color: color)
    }
    
    private func tearDownTestButton()
@@ -113,6 +100,11 @@ class AlarmDetailViewController: UIViewController
       }
    }
    
+   override func preferredStatusBarStyle() -> UIStatusBarStyle
+   {
+      return .LightContent
+   }
+   
    private func updateBackBarButtonItemWithTitle(title: String)
    {
       let barButtonItem = UIBarButtonItem(title: title, style: .Plain, target: nil, action: nil)
@@ -127,23 +119,20 @@ class AlarmDetailViewController: UIViewController
    }
    
    // MARK: - IBActions
-   @IBAction func editCancelButtonPressed()
+   @IBAction func editButtonPressed()
    {
-      if !self.alarmIsFiring
+      let configurationController = UIStoryboard.controllerWithIdentifier("AlarmConfigurationController") as! AlarmConfigurationController
+      if let alarm = self.alarm
       {
-         let configurationController = UIStoryboard.controllerWithIdentifier("AlarmConfigurationController") as! AlarmConfigurationController
-         if let alarm = self.alarm
-         {
-            configurationController.configureWithAlarm(alarm)
-         }
-         self.navigationController?.pushViewController(configurationController, animated: true)
-         
-         self.updateBackBarButtonItemWithTitle("Back")
+         configurationController.configureWithAlarm(alarm)
       }
-      else
-      {
-         self.alarm?.active = false
-         self.navigationController?.popToRootViewControllerAnimated(true)
-      }
+      self.navigationController?.pushViewController(configurationController, animated: true)
+      self.updateBackBarButtonItemWithTitle("Back")
+   }
+   
+   @IBAction func cancelButtonPressed()
+   {
+      self.alarm?.active = false
+      self.navigationController?.popToRootViewControllerAnimated(true)
    }
 }
