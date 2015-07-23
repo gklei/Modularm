@@ -8,14 +8,16 @@
 
 import UIKit
 
-class TimeView: UIView {
-
-    /*
-    // Only override drawRect: if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func drawRect(rect: CGRect) {
-        // Drawing code
-    }
-    */
-
+class TimeView: UIView
+{
+   internal var time: (hour: Int, minute: Int) = (0, 0)
+   func updateTimeWithAlarm(alarm: Alarm)
+   {
+      self.time = (alarm.fireDate.hour, alarm.fireDate.minute)
+   }
+   
+   func updateTimeWithHour(hour: Int, minute: Int)
+   {
+      self.time = (hour, minute)
+   }
 }
