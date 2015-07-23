@@ -29,7 +29,6 @@ struct AlarmManager
       }()
    
    // MARK: - Public
-   
    static var alarms: [Alarm]? {
       return self.sharedInstance.fetchedResultsController.fetchedObjects as? [Alarm]
    }

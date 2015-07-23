@@ -17,9 +17,7 @@ class TimelineDataSource: NSObject
 {
    // MARK: - Instance Variables
    @IBOutlet weak var timelineController: TimelineController!
-   
-   private var sectionChanges = Array<Dictionary<NSFetchedResultsChangeType, Int>>()
-   private var objectChanges = Array<Dictionary<NSFetchedResultsChangeType, NSIndexPath?>>()
+
    private let coreDataStack = CoreDataStack.defaultStack
 
    lazy var fetchedResultsController: NSFetchedResultsController =
