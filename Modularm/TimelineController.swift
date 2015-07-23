@@ -13,28 +13,10 @@ class TimelineController: UIViewController
    // MARK: - Instance Variables
    @IBOutlet weak var centerNavigationItem: UINavigationItem!
    @IBOutlet weak var timelineDataSource: TimelineDataSource!
-   @IBOutlet weak var collectionView: UICollectionView!
+   @IBOutlet var collectionView: UICollectionView!
    
    private var configurationController: AlarmConfigurationController
    private var alarmDetailViewController: AlarmDetailViewController
-   
-   var alarms: [Alarm]? {
-      get {
-         return self.timelineDataSource.alarms()
-      }
-   }
-   
-   var activeAlarms: [Alarm]? {
-      get {
-         return self.timelineDataSource.activeAlarms()
-      }
-   }
-   
-   var nonActiveAlarms: [Alarm]? {
-      get {
-         return self.timelineDataSource.nonActiveAlarms()
-      }
-   }
    
    required init(coder aDecoder: NSCoder)
    {
@@ -63,7 +45,7 @@ class TimelineController: UIViewController
    {
       self.timelineDataSource.removeIncompleteAlarms()
 
-      let headerSize = self.alarms?.count > 0 ? CGSizeMake(CGRectGetWidth(self.view.bounds), 150) : CGSizeZero
+      let headerSize = AlarmManager.alarms?.count > 0 ? CGSizeMake(CGRectGetWidth(self.view.bounds), 150) : CGSizeZero
       let flowLayout = self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
       flowLayout.headerReferenceSize = headerSize
    }
@@ -89,6 +71,11 @@ class TimelineController: UIViewController
       self.navigationController?.pushViewController(self.configurationController, animated: true)
    }
    
+   @IBAction func logCurrentScheduledNotifications()
+   {
+      AlarmScheduler.logCurrentScheduledNotifications()
+   }
+   
    // MARK: - Public
    func openSettingsForAlarm(alarm: Alarm)
    {
@@ -98,7 +85,7 @@ class TimelineController: UIViewController
    
    func showDetailsForAlarm(alarm: Alarm)
    {
-      self.alarmDetailViewController.configureWithAlarm(alarm)
+      self.alarmDetailViewController.configureWithAlarm(alarm, isFiring: false)
       self.navigationController?.pushViewController(self.alarmDetailViewController, animated: true)
    }
    

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="mgE-3h-zNu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="mgE-3h-zNu">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
@@ -82,7 +82,11 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Modularm" id="Quf-Is-AO7">
-                        <barButtonItem key="leftBarButtonItem" image="icn-bar-settings" id="Ga3-f6-xVH"/>
+                        <barButtonItem key="leftBarButtonItem" image="icn-bar-settings" id="Ga3-f6-xVH">
+                            <connections>
+                                <action selector="logCurrentScheduledNotifications" destination="5Wx-Mm-Iig" id="IL1-CR-r6V"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="iyX-07-HgF">
                             <connections>
                                 <action selector="addNewAlarmButtonPressed" destination="5Wx-Mm-Iig" id="KDg-z9-jCB"/>
@@ -162,7 +166,7 @@
                     <navigationItem key="navigationItem" id="BCm-6X-lrq">
                         <nil key="title"/>
                         <segmentedControl key="titleView" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="1" id="zgV-jJ-HUe">
-                            <rect key="frame" x="122" y="7" width="77" height="30"/>
+                            <rect key="frame" x="121.5" y="7" width="77" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="" image="icn-countdown" enabled="NO"/>
@@ -1011,7 +1015,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="editButtonPressed" destination="elv-tN-qol" eventType="touchUpInside" id="r6Y-xq-MYM"/>
+                                    <action selector="editCancelButtonPressed" destination="elv-tN-qol" eventType="touchUpInside" id="uMc-lM-Fmn"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1033,11 +1037,12 @@
                     <connections>
                         <outlet property="alarmMessageLabel" destination="wHL-ZH-DeC" id="Dyi-BH-A9l"/>
                         <outlet property="alarmTimeView" destination="k6f-HE-AeE" id="sjV-JA-mLL"/>
+                        <outlet property="editCancelButton" destination="G69-eR-sRQ" id="XlA-de-9uH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IrV-wc-th7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1406" y="-381"/>
+            <point key="canvasLocation" x="1082" y="-726"/>
         </scene>
     </scenes>
     <resources>

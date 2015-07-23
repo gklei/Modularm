@@ -16,6 +16,8 @@
 		5B22182F1AE60A0700D56D31 /* AlarmOptionDelegateDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B22182E1AE60A0700D56D31 /* AlarmOptionDelegateDataSource.swift */; };
 		5B2218311AE60A2400D56D31 /* UIButton+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2218301AE60A2400D56D31 /* UIButton+Additions.swift */; };
 		5B49D74F1B4378E700896878 /* DigitalTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B49D74E1B4378E700896878 /* DigitalTimeView.swift */; };
+		5B56CB7F1B6067660000BD12 /* AlarmScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B56CB7E1B6067660000BD12 /* AlarmScheduler.swift */; };
+		5B56CB811B608DBD0000BD12 /* AlarmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B56CB801B608DBD0000BD12 /* AlarmManager.swift */; };
 		5B6C12611AFF2841009617A8 /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6C12591AFF2841009617A8 /* Alarm.swift */; };
 		5B6C12621AFF2841009617A8 /* Countdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6C125A1AFF2841009617A8 /* Countdown.swift */; };
 		5B6C12631AFF2841009617A8 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6C125B1AFF2841009617A8 /* Date.swift */; };
@@ -87,6 +89,8 @@
 		5B22182E1AE60A0700D56D31 /* AlarmOptionDelegateDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlarmOptionDelegateDataSource.swift; path = Modularm/AlarmOptionDelegateDataSource.swift; sourceTree = "<group>"; };
 		5B2218301AE60A2400D56D31 /* UIButton+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIButton+Additions.swift"; path = "Modularm/UIButton+Additions.swift"; sourceTree = "<group>"; };
 		5B49D74E1B4378E700896878 /* DigitalTimeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DigitalTimeView.swift; path = Modularm/DigitalTimeView.swift; sourceTree = "<group>"; };
+		5B56CB7E1B6067660000BD12 /* AlarmScheduler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmScheduler.swift; sourceTree = "<group>"; };
+		5B56CB801B608DBD0000BD12 /* AlarmManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmManager.swift; sourceTree = "<group>"; };
 		5B6C12591AFF2841009617A8 /* Alarm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Alarm.swift; path = Modularm/Alarm.swift; sourceTree = "<group>"; };
 		5B6C125A1AFF2841009617A8 /* Countdown.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Countdown.swift; path = Modularm/Countdown.swift; sourceTree = "<group>"; };
 		5B6C125B1AFF2841009617A8 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Date.swift; path = Modularm/Date.swift; sourceTree = "<group>"; };
@@ -277,6 +281,7 @@
 		8EC9B9CB1ADB9C5600DBF350 /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
+				5B56CB801B608DBD0000BD12 /* AlarmManager.swift */,
 				8EFACDE01AD83A1E00279956 /* CoreDataStack.swift */,
 				8EFACDB91AD837EE00279956 /* Modularm.xcdatamodeld */,
 			);
@@ -324,6 +329,7 @@
 		8EFACDB41AD837EE00279956 /* Alarm Configuration */ = {
 			isa = PBXGroup;
 			children = (
+				5B56CB7E1B6067660000BD12 /* AlarmScheduler.swift */,
 				5B1997B61AE5F79C00D1522C /* AlarmMessageSettingsController.swift */,
 				8E8228E51ADB821C00F9A26E /* AlarmConfigurationController.swift */,
 				5BD0AF0A1B2A05C80018A4C6 /* AlarmPreviewViewController.swift */,
@@ -485,6 +491,7 @@
 				8E5BD3271ADB930400C42FAA /* AlarmOptionButton.swift in Sources */,
 				5B1997B31AE5B98600D1522C /* RepeatOptionDelegateDataSource.swift in Sources */,
 				5B6C142B1B094B78009617A8 /* TimelineCollectionViewCell.swift in Sources */,
+				5B56CB7F1B6067660000BD12 /* AlarmScheduler.swift in Sources */,
 				8E4511F01ADCF00B00A3E8EC /* UIColor+Additions.swift in Sources */,
 				5B1997AA1AE5765800D1522C /* WeatherOptionDelegateDataSource.swift in Sources */,
 				5B6C12621AFF2841009617A8 /* Countdown.swift in Sources */,
@@ -503,6 +510,7 @@
 				5BEDA3751B277BBC0000983F /* TimeSetterViewController.swift in Sources */,
 				5B6C142E1B09842C009617A8 /* TapScrollView.swift in Sources */,
 				5BDC54951B405F460060DDFA /* AlarmDetailViewController.swift in Sources */,
+				5B56CB811B608DBD0000BD12 /* AlarmManager.swift in Sources */,
 				8EFACDDD1AD8390F00279956 /* TimelineController.swift in Sources */,
 				8E8228E61ADB821C00F9A26E /* AlarmConfigurationController.swift in Sources */,
 				5B74FC8C1ADD74A100902484 /* AlarmOptionSettingsController.swift in Sources */,

@@ -19,9 +19,9 @@ extension TimelineCollectionViewDelegate: UICollectionViewDelegate
 {
    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath)
    {
-      if indexPath.section == 0 && self.timelineController.activeAlarms?.count > 0
+      if indexPath.section == 0 && AlarmManager.activeAlarms?.count > 0
       {
-         if let alarms = self.timelineController.activeAlarms
+         if let alarms = AlarmManager.activeAlarms
          {
             let alarm = alarms[indexPath.row + 1]
             self.timelineController.showDetailsForAlarm(alarm)
@@ -29,7 +29,7 @@ extension TimelineCollectionViewDelegate: UICollectionViewDelegate
       }
       else
       {
-         if let alarms = self.timelineController.nonActiveAlarms
+         if let alarms = AlarmManager.nonActiveAlarms
          {
             let alarm = alarms[indexPath.row]
             self.timelineController.showDetailsForAlarm(alarm)
@@ -42,7 +42,7 @@ extension TimelineCollectionViewDelegate: UICollectionViewDelegateFlowLayout
 {
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize
     {
-      if self.timelineController.activeAlarms?.count > 0 && section == 0
+      if AlarmManager.activeAlarms?.count > 0 && section == 0
       {
          return CGSizeMake(CGRectGetWidth(self.collectionView.bounds), 150)
       }
@@ -52,20 +52,20 @@ extension TimelineCollectionViewDelegate: UICollectionViewDelegateFlowLayout
    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize
    {
       var size = CGSizeZero
-      if section != 0 || self.timelineController.nonActiveAlarms?.count == 0 || (section == 0 && self.timelineController.activeAlarms?.count == 0)
+      if section != 0 || AlarmManager.nonActiveAlarms?.count == 0 || (section == 0 && AlarmManager.activeAlarms?.count == 0)
       {
          var height: CGFloat = 70
-         if let alarmCount = self.timelineController.alarms?.count
+         if let alarmCount = AlarmManager.alarms?.count
          {
             var contentHeight: CGFloat = (CGFloat(alarmCount) - 1.0) * 50.0 + 150.0
-            if self.timelineController.activeAlarms?.count == 0 {
+            if AlarmManager.activeAlarms?.count == 0 {
                contentHeight = CGFloat(alarmCount) * 50
             }
             height = max(CGRectGetHeight(collectionView.bounds) - contentHeight + 1, height)
          }
          size = CGSizeMake(CGRectGetWidth(self.collectionView.bounds), height)
       }
-      if self.timelineController.alarms?.count == 0
+      if AlarmManager.alarms?.count == 0
       {
          size = CGSizeMake(CGRectGetWidth(self.collectionView.bounds), CGRectGetHeight(self.collectionView.bounds))
       }

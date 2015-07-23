@@ -159,6 +159,7 @@ class AlarmConfigurationController: UIViewController
          self.alarm?.fireDate = NSDate.alarmDateWithHour(originalDate.hour, minute: originalDate.minute)
       }
       
+      AlarmScheduler.scheduleAlarm(self.alarm!)
       CoreDataStack.save()
       self.navigationController?.popToRootViewControllerAnimated(true)
    }

@@ -11,26 +11,59 @@ import UIKit
 class AlarmDetailViewController: UIViewController
 {
    private var alarm: Alarm?
-   private let testButton = UIButton.buttonWithTitle("test", color: UIColor.lipstickRedColor())
    
    @IBOutlet weak var alarmMessageLabel: UILabel!
    @IBOutlet weak var alarmTimeView: DigitalTimeView!
+   @IBOutlet weak var editCancelButton: UIButton!
+   
+   private var alarmIsFiring = false
    
    // MARK: - Lifecycle
    override func viewDidLoad()
    {
       super.viewDidLoad()
-      self.setupTestButton()
    }
    
    override func viewWillAppear(animated: Bool)
    {
       super.viewWillAppear(animated)
       self.setupTitle()
-      self.setupTimeLabels()
+      self.updateTimeLabels()
+      self.updateUIForFiringState()
+   }
+   
+   override func viewWillDisappear(animated: Bool)
+   {
+      super.viewWillDisappear(animated)
+      self.navigationController?.navigationBarHidden = false
    }
    
    // MARK: - Private
+   private func updateUIForFiringState()
+   {
+      var editCancelButtonTitle = ""
+      var editCancelButtonImage = UIImage(named: "icn-x")
+      var editCancelButtonBackgroundColor = UIColor.blackColor()
+      
+      if self.alarmIsFiring
+      {
+         self.navigationController?.navigationBarHidden = true
+         self.tearDownTestButton()
+      }
+      else
+      {
+         editCancelButtonTitle = "edit"
+         editCancelButtonImage = nil
+         editCancelButtonBackgroundColor = UIColor.clearColor()
+         self.navigationController?.navigationBarHidden = false
+         self.setupTestButton()
+      }
+      
+      self.editCancelButton.setTitle(editCancelButtonTitle, forState: .Normal)
+      self.editCancelButton.setBackgroundImage(editCancelButtonImage, forState: .Normal)
+      self.editCancelButton.backgroundColor = editCancelButtonBackgroundColor
+   }
+   
    private func setupTitle()
    {
       if let alarmDate = self.alarm?.fireDate
@@ -53,7 +86,12 @@ class AlarmDetailViewController: UIViewController
       self.navigationItem.rightBarButtonItem = barButtonItem
    }
    
-   private func setupTimeLabels()
+   private func tearDownTestButton()
+   {
+      self.navigationItem.rightBarButtonItem = nil
+   }
+
+   private func updateTimeLabels()
    {
       if let alarm = self.alarm {
          self.alarmTimeView.updateTimeWithAlarm(alarm)
@@ -82,20 +120,31 @@ class AlarmDetailViewController: UIViewController
    }
    
    // MARK: - Public
-   func configureWithAlarm(alarm: Alarm?)
+   func configureWithAlarm(alarm: Alarm?, isFiring: Bool)
    {
+      println("alarm to show! \(alarm)")
       self.alarm = alarm
+      self.alarmIsFiring = isFiring
    }
    
    // MARK: - IBActions
-   @IBAction func editButtonPressed()
+   @IBAction func editCancelButtonPressed()
    {
-      if let configurationController = UIStoryboard.controllerWithIdentifier("AlarmConfigurationController") as? AlarmConfigurationController
+      if !self.alarmIsFiring
       {
-         configurationController.configureWithAlarm(self.alarm!)
+         let configurationController = UIStoryboard.controllerWithIdentifier("AlarmConfigurationController") as! AlarmConfigurationController
+         if let alarm = self.alarm
+         {
+            configurationController.configureWithAlarm(alarm)
+         }
          self.navigationController?.pushViewController(configurationController, animated: true)
          
          self.updateBackBarButtonItemWithTitle("Back")
+      }
+      else
+      {
+         self.alarm?.active = false
+         self.navigationController?.popToRootViewControllerAnimated(true)
       }
    }
 }

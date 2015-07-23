@@ -43,6 +43,15 @@ extension NSDate
       println("hour: \(self.hour) minute: \(self.minute)")
    }
    
+   func prettyDateString() -> String
+   {
+      let formatter = NSDateFormatter()
+      formatter.dateStyle = NSDateFormatterStyle.LongStyle
+      formatter.timeStyle = .MediumStyle
+      
+      return formatter.stringFromDate(self)
+   }
+   
    class func alarmDateWithHour(hour: Int, minute: Int) -> NSDate
    {
       let currentDate = NSDate()
@@ -51,6 +60,7 @@ extension NSDate
       
       components.hour = hour
       components.minute = minute
+      components.second = 0
       
       let date = calendar.dateFromComponents(components)!
       let timePickerHour = date.hour

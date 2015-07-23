@@ -24,16 +24,8 @@ class TimelineDataSource: NSObject
 
    lazy var fetchedResultsController: NSFetchedResultsController =
    {
-      let coreDataStack = CoreDataStack.defaultStack
-
-      let fetchRequest = NSFetchRequest(entityName: "Alarm")
-      fetchRequest.sortDescriptors = [NSSortDescriptor(key: "active", ascending: false), NSSortDescriptor(key: "fireDateValue", ascending: true)];
-
-      let controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: coreDataStack.managedObjectContext!, sectionNameKeyPath: "active", cacheName: nil)
-
-      controller.performFetch(nil)
+      let controller = AlarmManager.sharedInstance.fetchedResultsController
       controller.delegate = self
-
       return controller
    }()
    
@@ -56,44 +48,6 @@ class TimelineDataSource: NSObject
          }
       }
    }
-
-   // MARK: - Public
-   func alarms() -> [Alarm]?
-   {
-      return self.fetchedResultsController.fetchedObjects as? [Alarm]
-   }
-   
-   func activeAlarms() -> [Alarm]?
-   {
-      var alarmArray = Array<Alarm>()
-      if let alarms = self.alarms()
-      {
-         for alarm in alarms
-         {
-            if alarm.active
-            {
-               alarmArray.append(alarm)
-            }
-         }
-      }
-      return alarmArray
-   }
-   
-   func nonActiveAlarms() -> [Alarm]?
-   {
-      var alarmArray = Array<Alarm>()
-      if let alarms = self.alarms()
-      {
-         for alarm in alarms
-         {
-            if alarm.active == false
-            {
-               alarmArray.append(alarm)
-            }
-         }
-      }
-      return alarmArray
-   }
 }
 
 // MARK: - UICollectionView Data Source
@@ -108,7 +62,7 @@ extension TimelineDataSource: UICollectionViewDataSource
          {
             numberOfItems = section == kActiveAlarmSectionIndex ? max(0, sectionInfo.numberOfObjects - 1) : sectionInfo.numberOfObjects
             
-            if self.activeAlarms()?.count == 0 {
+            if AlarmManager.activeAlarms?.count == 0 {
                numberOfItems = sectionInfo.numberOfObjects
             }
          }
@@ -122,7 +76,7 @@ extension TimelineDataSource: UICollectionViewDataSource
       let cell: TimelineCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier("timelineCell", forIndexPath: indexPath) as! TimelineCollectionViewCell
 
       var newIndexPath = indexPath
-      if indexPath.section == kActiveAlarmSectionIndex && self.timelineController.activeAlarms?.count != 0
+      if indexPath.section == kActiveAlarmSectionIndex && AlarmManager.activeAlarms?.count != 0
       {
          // increment the row by one because the first alarm in the Active section is the header
          newIndexPath = NSIndexPath(forRow: indexPath.row + 1, inSection: indexPath.section)
@@ -132,6 +86,7 @@ extension TimelineDataSource: UICollectionViewDataSource
 
       let alarm = self.fetchedResultsController.objectAtIndexPath(newIndexPath) as? Alarm
       cell.configureWithAlarm(alarm)
+      println("alarm date: \(alarm?.fireDate.prettyDateString()), uuid: \(alarm?.identifier)")
       
       return cell
    }
@@ -142,12 +97,15 @@ extension TimelineDataSource: UICollectionViewDataSource
       {
          let header = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "header", forIndexPath: indexPath) as! TimelineHeaderView
 
-         if let alarmArray = self.alarms()
+         if let alarmArray = AlarmManager.alarms
          {
             if alarmArray.count > 0
             {
                header.timelineController = self.timelineController
                header.configureWithAlarm(alarmArray[0])
+               
+               let alarm: Alarm? = alarmArray[0]
+               println("alarm date: \(alarm?.fireDate.prettyDateString()), uuid: \(alarm?.identifier)")
             }
          }
          return header
