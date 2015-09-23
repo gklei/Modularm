@@ -150,17 +150,14 @@ class AlarmConfigurationController: UIViewController
    {
       self.alarm?.completedSetup = true
       
+      var alarmTime: (hour: Int, minute: Int) = (self.originalAlarmFireDate!.hour, self.originalAlarmFireDate!.minute)
       if let hour = self.timeSetterController.currentHourValue, minute = self.timeSetterController.currentMinuteValue
       {
-         self.alarm?.fireDate = NSDate.alarmDateWithHour(hour, minute: minute)
-      }
-      else if let originalDate = self.originalAlarmFireDate
-      {
-         self.alarm?.fireDate = NSDate.alarmDateWithHour(originalDate.hour, minute: originalDate.minute)
+         alarmTime.hour = hour
+         alarmTime.minute = minute
       }
       
-      AlarmScheduler.scheduleAlarm(self.alarm!)
-      CoreDataStack.save()
+      AlarmManager.enableAlarm(self.alarm!, withHour: alarmTime.hour, minute: alarmTime.minute)
       self.navigationController?.popToRootViewControllerAnimated(true)
    }
    

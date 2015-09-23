@@ -81,6 +81,15 @@ struct AlarmManager
       CoreDataStack.save()
    }
    
+   static func enableAlarm(alarm: Alarm, withHour hour: Int, minute: Int)
+   {
+      let fireDate = NSDate.alarmDateWithHour(hour, minute: minute)
+      alarm.fireDate = fireDate
+      AlarmScheduler.scheduleAlarm(alarm)
+      alarm.active = true
+      CoreDataStack.save()
+   }
+   
    static func deleteAlarm(alarm: Alarm)
    {
       AlarmScheduler.unscheduleAlarm(alarm)

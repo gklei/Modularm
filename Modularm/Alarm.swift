@@ -22,7 +22,7 @@ class Alarm: NSManagedObject
    @NSManaged var repeatModel: Repeat?
    @NSManaged var sound: Sound?
    @NSManaged var weather: Weather?
-   @NSManaged var identifier: String?
+   @NSManaged var identifier: String
    
    var isValid: Bool {
       get {

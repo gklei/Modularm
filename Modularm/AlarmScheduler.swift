@@ -18,17 +18,16 @@ class AlarmScheduler
       
       notification.fireDate = alarm.fireDate
       notification.soundName = UILocalNotificationDefaultSoundName
+      notification.userInfo = [NSString(string: "UUID") : alarm.identifier]
       
-      if let uuid = alarm.identifier
+      var alertBody = "\(alarm.identifier)"
+      if let text = alarm.message?.text
       {
-         notification.userInfo = [NSString(string: "UUID") : uuid]
-         notification.alertBody = "\(alarm.identifier)"
+         alertBody = text
       }
-      else
-      {
-         notification.alertBody = "No UUID for Alarm"
-      }
+      notification.alertBody = alertBody
       
+      print("scheduling alarm with time: " + alarm.fireDate.prettyDateString())
       UIApplication.sharedApplication().scheduleLocalNotification(notification)
    }
    
@@ -60,7 +59,7 @@ class AlarmScheduler
       {
          for alarm in alarms
          {
-            if let alarmUUID = alarm.identifier where alarmUUID.characters.elementsEqual(uuid.characters)
+            if alarm.identifier.characters.elementsEqual(uuid.characters)
             {
                targetAlarm = alarm
                break
