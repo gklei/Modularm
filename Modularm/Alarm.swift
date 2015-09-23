@@ -41,10 +41,8 @@ class Alarm: NSManagedObject
    
    override func awakeFromInsert()
    {
-      self.completedSetup = false
       self.sound = CoreDataStack.newModelWithOption(.Sound) as? Sound
       self.fireDateValue = NSDate().timeIntervalSince1970
-      self.active = true
       self.identifier = NSUUID().UUIDString
    }
    

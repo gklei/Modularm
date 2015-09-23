@@ -138,15 +138,13 @@ class TimelineHeaderView: UICollectionReusableView
    func togglePressed()
    {
       self.scrollView.contentOffset = CGPointZero
-      self.alarm?.active = false
-      CoreDataStack.save()
+      AlarmManager.disableAlarm(self.alarm!)
    }
    
    func deletePressed()
    {
       self.scrollView.contentOffset = CGPointZero
-      CoreDataStack.deleteObject(self.alarm)
-      CoreDataStack.save()
+      AlarmManager.deleteAlarm(self.alarm!)
    }
    
    // MARK: IBActions
