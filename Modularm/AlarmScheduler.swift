@@ -40,7 +40,6 @@ class AlarmScheduler
          {
             if alarm.identifier == alarmUUID
             {
-               print("unscheduling alarma at time: " + alarm.fireDate.prettyDateString());
                UIApplication.sharedApplication().cancelLocalNotification(notification)
                break
             }

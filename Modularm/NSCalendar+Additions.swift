@@ -63,12 +63,6 @@ extension NSDate
       components.second = 0
       
       let date = calendar.dateFromComponents(components)!
-      let timePickerHour = date.hour
-      let timePickerMinute = date.minute
-      
-      let currentHour = currentDate.hour
-      let currentMinute = currentDate.minute
-      
       var secondsToAdd = date.timeIntervalSinceNow
       if currentDate.compare(date) != .OrderedAscending
       {

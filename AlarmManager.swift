@@ -75,6 +75,7 @@ struct AlarmManager
    
    static func enableAlarm(alarm: Alarm)
    {
+      alarm.updateAlarmDate()
       AlarmScheduler.scheduleAlarm(alarm)
       alarm.active = true
       CoreDataStack.save()

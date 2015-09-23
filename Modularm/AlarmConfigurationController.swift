@@ -36,7 +36,7 @@ class AlarmConfigurationController: UIViewController
       self.timeSetterController.transitioningDelegate = self
       
       // load the view as soon as possible
-      let view = self.timeSetterController.view
+      _ = self.timeSetterController.view
    }
 
    // MARK: - Lifecycle
@@ -258,12 +258,9 @@ extension AlarmConfigurationController
    
    func moveAlarmOptionsControllerDownForNotification(notification: NSNotification)
    {
-      if let info = notification.userInfo
-      {
-         UIView.animateWithDuration(0.25, animations: {() -> Void in
-            self.alarmOptionsControllerBottomVerticalSpaceConstraint.constant = 0
-            self.view.layoutIfNeeded()
-         })
-      }
+      UIView.animateWithDuration(0.25, animations: {() -> Void in
+         self.alarmOptionsControllerBottomVerticalSpaceConstraint.constant = 0
+         self.view.layoutIfNeeded()
+      })
    }
 }

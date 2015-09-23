@@ -83,4 +83,9 @@ class Alarm: NSManagedObject
       CoreDataStack.deleteObject(alarmAttribute)
       CoreDataStack.save()
    }
+   
+   func updateAlarmDate()
+   {
+      self.fireDate = NSDate.alarmDateWithHour(self.fireDate.hour, minute: self.fireDate.minute);
+   }
 }
