@@ -99,8 +99,6 @@ extension TimelineDataSource: UICollectionViewDataSource
             {
                header.timelineController = self.timelineController
                header.configureWithAlarm(alarmArray[0])
-               
-//               let alarm: Alarm? = alarmArray[0]
             }
          }
          return header

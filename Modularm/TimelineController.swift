@@ -32,13 +32,9 @@ class TimelineController: UIViewController
       
       self.timelineDataSource.removeIncompleteAlarms()
       self.navigationController?.navigationBar.makeTransparent()
-
-      self.collectionView.registerNib(UINib(nibName: "TimelineHeaderView", bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "header")
       
-      self.collectionView.registerNib(UINib(nibName: "TimelineCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "timelineCell")
-
-      let layout = self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-      layout.itemSize = CGSizeMake(CGRectGetWidth(self.view.bounds), 50)
+      self.registerCollectionViewNibs()
+      self.setupFlowLayoutItemSize()
    }
 
    override func viewWillAppear(animated: Bool)
@@ -95,6 +91,19 @@ class TimelineController: UIViewController
    }
 
    // MARK: - Private
+   private func setupFlowLayoutItemSize()
+   {
+      let layout = self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+      layout.itemSize = CGSizeMake(CGRectGetWidth(self.view.bounds), 50)
+   }
+   
+   private func registerCollectionViewNibs()
+   {
+      self.collectionView.registerNib(UINib(nibName: "TimelineHeaderView", bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "header")
+      
+      self.collectionView.registerNib(UINib(nibName: "TimelineCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "timelineCell")
+   }
+   
    private func updateBackBarButtonItemWithTitle(title: String)
    {
       let barButtonItem = UIBarButtonItem(title: title, style: .Plain, target: nil, action: nil)
