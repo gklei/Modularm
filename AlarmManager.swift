@@ -69,17 +69,20 @@ struct AlarmManager
    static func disableAlarm(alarm: Alarm)
    {
       alarm.active = false
+      AlarmScheduler.unscheduleAlarm(alarm)
       CoreDataStack.save()
    }
    
    static func enableAlarm(alarm: Alarm)
    {
+      AlarmScheduler.scheduleAlarm(alarm)
       alarm.active = true
       CoreDataStack.save()
    }
    
    static func deleteAlarm(alarm: Alarm)
    {
+      AlarmScheduler.unscheduleAlarm(alarm)
       CoreDataStack.deleteObject(alarm)
       CoreDataStack.save()
    }
