@@ -25,27 +25,27 @@ extension MusicOptionDelegateDataSource
 {
    func itunesSwitchChanged(sender: UISwitch)
    {
-      println("itunes switch changed")
+      print("itunes switch changed")
    }
 
    func spotifySwitchChanged(sender: UISwitch)
    {
-      println("spotify switch changed")
+      print("spotify switch changed")
    }
 
    func rdioSwitchChanged(sender: UISwitch)
    {
-      println("rdio switch changed")
+      print("rdio switch changed")
    }
 
    func fmetcSwitchChanged(sender: UISwitch)
    {
-      println("fmetc switch changed")
+      print("fmetc switch changed")
    }
 }
 
 // MARK: - UITableView Delegate
-extension MusicOptionDelegateDataSource: UITableViewDelegate
+extension MusicOptionDelegateDataSource
 {
    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
    {

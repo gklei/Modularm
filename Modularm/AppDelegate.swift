@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
 
    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
    {
-      let notificationSettings = UIUserNotificationSettings(forTypes: .Alert | .Sound, categories: nil)
+      let notificationSettings = UIUserNotificationSettings(forTypes: [.Alert, .Sound], categories: nil)
       UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
       
       self.startTimerForMinuteChangedNotification()
@@ -85,7 +85,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
       if self.minuteChangedNotificationTimer == nil
       {
          let calendar = NSCalendar.autoupdatingCurrentCalendar()
-         let components = calendar.components(.CalendarUnitSecond, fromDate: NSDate())
+         let components = calendar.components(.Second, fromDate: NSDate())
          let currentSecond = components.second
          
          let fireDate = NSDate().dateByAddingTimeInterval(NSTimeInterval(60 - currentSecond + 1))

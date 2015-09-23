@@ -61,7 +61,7 @@ class DateOptionDelegateDataSource: AlarmOptionDelegateDataSource
    }
 }
 
-extension DateOptionDelegateDataSource: UITableViewDataSource
+extension DateOptionDelegateDataSource
 {
    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
    {
@@ -85,7 +85,7 @@ extension DateOptionDelegateDataSource: UITableViewDataSource
    }
 }
 
-extension DateOptionDelegateDataSource: UITableViewDelegate
+extension DateOptionDelegateDataSource
 {
    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
    {

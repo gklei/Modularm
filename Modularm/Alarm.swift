@@ -19,7 +19,7 @@ class Alarm: NSManagedObject
    @NSManaged var countdown: Countdown?
    @NSManaged var date: Date?
    @NSManaged var message: Message?
-   @NSManaged var repeat: Repeat?
+   @NSManaged var repeatModel: Repeat?
    @NSManaged var sound: Sound?
    @NSManaged var weather: Weather?
    @NSManaged var identifier: String?
@@ -65,7 +65,7 @@ class Alarm: NSManagedObject
       case .Music:
          return
       case .Repeat:
-         alarmAttribute = self.repeat
+         alarmAttribute = self.repeatModel
          break
       case .Snooze:
          alarmAttribute = self.snooze

@@ -127,11 +127,11 @@ extension WeatherOptionDelegateDataSource
 }
 
 // MARK: - UITableView Data Source
-extension WeatherOptionDelegateDataSource: UITableViewDataSource
+extension WeatherOptionDelegateDataSource
 {
    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
    {
-      var cell = super.tableView(tableView, cellForRowAtIndexPath: indexPath)
+      let cell = super.tableView(tableView, cellForRowAtIndexPath: indexPath)
       if indexPath.section == 0
       {  
          var accessoryImageName = "ic_radial"
@@ -152,7 +152,7 @@ extension WeatherOptionDelegateDataSource: UITableViewDataSource
    }
 }
 
-extension WeatherOptionDelegateDataSource: UITableViewDelegate
+extension WeatherOptionDelegateDataSource
 {
    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
    {

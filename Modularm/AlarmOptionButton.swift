@@ -47,7 +47,7 @@ class AlarmOptionButton: UIButton
       }
    }
 
-   required init(coder aDecoder: NSCoder)
+   required init?(coder aDecoder: NSCoder)
    {
       super.init(coder: aDecoder)
       if let image = self.imageView?.image

@@ -35,11 +35,11 @@ class SoundOptionDelegateDataSource: AlarmOptionDelegateDataSource
    private func cellIndexForSoundString(string: String) -> Int
    {
       let labels: Array<String> = self.cellLabelDictionary[0]!
-      return find(labels, string)!
+      return labels.indexOf(string)!
    }
 }
 
-extension SoundOptionDelegateDataSource: UITableViewDataSource
+extension SoundOptionDelegateDataSource
 {
    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
    {
@@ -57,7 +57,7 @@ extension SoundOptionDelegateDataSource: UITableViewDataSource
    }
 }
 
-extension SoundOptionDelegateDataSource: UITableViewDelegate
+extension SoundOptionDelegateDataSource
 {
    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
    {

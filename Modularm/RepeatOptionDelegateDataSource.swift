@@ -16,11 +16,11 @@ class RepeatOptionDelegateDataSource: AlarmOptionDelegateDataSource
    override init(tableView: UITableView, delegate: AlarmOptionSettingsControllerDelegate, alarm: Alarm?)
    {
       self.repeatModel = CoreDataStack.newModelWithOption(.Repeat) as? Repeat
-      if let repeat = alarm?.repeat
+      if let repeatModel = alarm?.repeatModel
       {
          for day in RepeatDay.valueArray()
          {
-            self.repeatModel?.enableDay(day, enabled: repeat.dayIsEnabled(day))
+            self.repeatModel?.enableDay(day, enabled: repeatModel.dayIsEnabled(day))
          }
       }
       
@@ -33,7 +33,7 @@ class RepeatOptionDelegateDataSource: AlarmOptionDelegateDataSource
    override func saveSettings()
    {
       if self.repeatModel!.atLeastOneDayIsEnabled {
-         self.alarm?.repeat = self.repeatModel!
+         self.alarm?.repeatModel = self.repeatModel!
       }
    }
    
@@ -48,11 +48,11 @@ class RepeatOptionDelegateDataSource: AlarmOptionDelegateDataSource
    }
 }
 
-extension RepeatOptionDelegateDataSource: UITableViewDataSource
+extension RepeatOptionDelegateDataSource
 {
    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
    {
-      var cell = super.tableView(tableView, cellForRowAtIndexPath: indexPath)
+      let cell = super.tableView(tableView, cellForRowAtIndexPath: indexPath)
       
       if let day = self.repeatDayForCellIndex(indexPath.row)
       {
@@ -71,13 +71,13 @@ extension RepeatOptionDelegateDataSource: UITableViewDataSource
    }
 }
 
-extension RepeatOptionDelegateDataSource: UITableViewDelegate
+extension RepeatOptionDelegateDataSource
 {
    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
    {
       if let day = self.repeatDayForCellIndex(indexPath.row)
       {
-         var shouldEnable = !self.repeatModel!.dayIsEnabled(day)
+         let shouldEnable = !self.repeatModel!.dayIsEnabled(day)
          self.repeatModel!.enableDay(day, enabled: shouldEnable)
          self.tableView.reloadData()
       }

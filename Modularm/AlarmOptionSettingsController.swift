@@ -80,7 +80,7 @@ extension AlarmOptionSettingsController: AlarmOptionSettingsControllerDelegate
       if let auxView = self.auxiliaryView
       {
          let title = self.buttonTitleForOption(option)
-         var label = UILabel.timeIntervalLabelWithText(title)
+         let label = UILabel.timeIntervalLabelWithText(title)
          label.center = CGPoint(x: CGRectGetMidX(auxView.bounds), y: CGRectGetHeight(label.frame) / 2.0)
          auxView.addSubview(label)
       }

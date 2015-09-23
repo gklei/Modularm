@@ -19,32 +19,32 @@ class TapScrollView: UIScrollView
 {
    var tapDelegate: TapScrollViewDelegate?
    
-   override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent)
+   override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?)
    {
       super.touchesBegan(touches, withEvent: event)
       if !self.dragging
       {
-         self.tapDelegate?.tapScrollView(self, touchesBegan: touches, withEvent: event)
+         self.tapDelegate?.tapScrollView(self, touchesBegan: touches, withEvent: event!)
       }
    }
    
-   override func touchesMoved(touches: Set<NSObject>, withEvent event: UIEvent)
+   override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?)
    {
       super.touchesMoved(touches, withEvent: event)
-      self.tapDelegate?.tapScrollView(self, touchesCancelled: touches, withEvent: event)
+      self.tapDelegate?.tapScrollView(self, touchesCancelled: touches, withEvent: event!)
    }
    
-   override func touchesCancelled(touches: Set<NSObject>!, withEvent event: UIEvent!)
+   override func touchesCancelled(touches: Set<UITouch>?, withEvent event: UIEvent?)
    {
       super.touchesCancelled(touches, withEvent: event)
-      self.tapDelegate?.tapScrollView(self, touchesCancelled: touches, withEvent: event)
+      self.tapDelegate?.tapScrollView(self, touchesCancelled: touches!, withEvent: event!)
    }
    
-   override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent)
+   override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?)
    {
       if !self.dragging
       {
-         self.tapDelegate?.tapScrollView(self, touchesEnded: touches, withEvent: event)
+         self.tapDelegate?.tapScrollView(self, touchesEnded: touches, withEvent: event!)
       }
       else
       {

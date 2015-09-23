@@ -42,7 +42,7 @@ class AlarmOptionsController: UIViewController
       {
          for subview in auxView.subviews
          {
-            (subview as! UIView).removeFromSuperview()
+            (subview ).removeFromSuperview()
          }
       }
    }
@@ -121,7 +121,7 @@ class AlarmOptionsController: UIViewController
          self.weatherButton.activated = alarmModel.weather != nil
          self.soundButton.activated = alarmModel.sound != nil
          self.dateButton.activated = alarmModel.date != nil
-         self.repeatButton.activated = alarmModel.repeat != nil
+         self.repeatButton.activated = alarmModel.repeatModel != nil
          self.messageButton.activated = alarmModel.message != nil
          self.countdownButton.activated = alarmModel.countdown != nil
       }

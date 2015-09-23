@@ -18,7 +18,7 @@ class TimelineController: UIViewController
    private var configurationController: AlarmConfigurationController
    private var alarmDetailViewController: AlarmDetailViewController
    
-   required init(coder aDecoder: NSCoder)
+   required init?(coder aDecoder: NSCoder)
    {
       self.configurationController = UIStoryboard.controllerWithIdentifier("AlarmConfigurationController") as! AlarmConfigurationController
       self.alarmDetailViewController = UIStoryboard.controllerWithIdentifier("AlarmDetailViewController") as! AlarmDetailViewController

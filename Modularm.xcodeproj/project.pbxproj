@@ -411,6 +411,8 @@
 		8EFACDAA1AD837EE00279956 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = "Pure Virtual Studios, LLC";
 				TargetAttributes = {

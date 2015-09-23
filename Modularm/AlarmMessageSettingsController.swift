@@ -52,7 +52,7 @@ class AlarmMessageSettingsController: OptionSettingsControllerBase
       if self.hasEditedMessage
       {
          let messageText = self.messageTextView.text.trimmedString
-         if count(messageText) > 0
+         if messageText.characters.count > 0
          {
             self.messageModel?.text = messageText
             self.alarm?.message = self.messageModel!

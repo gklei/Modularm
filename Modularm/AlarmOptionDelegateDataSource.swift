@@ -94,7 +94,7 @@ extension AlarmOptionDelegateDataSource
 
    internal func cellWithIndexPath(indexPath: NSIndexPath, identifier: String) -> UITableViewCell
    {
-      let cell = self.tableView.dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath) as! UITableViewCell
+      let cell = self.tableView.dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath) 
       cell.selectionStyle = .None
       cell.accessoryType = .None
       

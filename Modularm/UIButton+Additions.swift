@@ -40,7 +40,7 @@ extension UIButton
    
    class func timelineCellDeleteButton() -> UIButton
    {
-      let deleteButton = UIButton.buttonWithType(.Custom) as! UIButton
+      let deleteButton = UIButton(type: .Custom)
       
       let title = NSAttributedString(string: "delete", attributes: [NSFontAttributeName : UIFont(name: "HelveticaNeue-Light", size: 15)!, NSForegroundColorAttributeName : UIColor.whiteColor()])
       deleteButton.setAttributedTitle(title, forState: .Normal)
@@ -52,7 +52,7 @@ extension UIButton
    
    class func timelineCellToggleButton() -> UIButton
    {
-      let toggleButton = UIButton.buttonWithType(.Custom) as! UIButton
+      let toggleButton = UIButton(type: .Custom)
       toggleButton.setImage(UIImage(named:"icn-standby"), forState: .Normal)
       toggleButton.setBackgroundImage(UIImage.imageWithColor(UIColor.lipstickRedColor()), forState: .Normal)
       toggleButton.setBackgroundImage(UIImage.imageWithColor(UIColor.lipstickRedColor().colorWithAlphaComponent(0.8)), forState: .Highlighted)

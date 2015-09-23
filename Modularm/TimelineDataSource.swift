@@ -56,7 +56,7 @@ extension TimelineDataSource: UICollectionViewDataSource
       var numberOfItems = 0
       if self.fetchedResultsController.sections?.count > 0
       {
-         if let sectionInfo = self.fetchedResultsController.sections?[section] as? NSFetchedResultsSectionInfo
+         if let sectionInfo = self.fetchedResultsController.sections?[section]
          {
             numberOfItems = section == kActiveAlarmSectionIndex ? max(0, sectionInfo.numberOfObjects - 1) : sectionInfo.numberOfObjects
             
@@ -89,7 +89,7 @@ extension TimelineDataSource: UICollectionViewDataSource
 
    func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView
    {
-      if equal(kind, UICollectionElementKindSectionHeader)
+      if kind.characters.elementsEqual(UICollectionElementKindSectionHeader.characters)
       {
          let header = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "header", forIndexPath: indexPath) as! TimelineHeaderView
 
@@ -100,14 +100,14 @@ extension TimelineDataSource: UICollectionViewDataSource
                header.timelineController = self.timelineController
                header.configureWithAlarm(alarmArray[0])
                
-               let alarm: Alarm? = alarmArray[0]
+//               let alarm: Alarm? = alarmArray[0]
             }
          }
          return header
       }
       else
       {
-         let footer = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "footer", forIndexPath: indexPath) as! UICollectionReusableView
+         let footer = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "footer", forIndexPath: indexPath) 
          return footer
       }
    }

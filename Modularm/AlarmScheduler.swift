@@ -32,7 +32,7 @@ class AlarmScheduler
    class func logCurrentScheduledNotifications()
    {
       let notifications = UIApplication.sharedApplication().scheduledLocalNotifications
-      println(notifications)
+      print(notifications)
    }
    
    class func alarmForUUID(uuid: String) -> Alarm?
@@ -42,7 +42,7 @@ class AlarmScheduler
       {
          for alarm in alarms
          {
-            if let alarmUUID = alarm.identifier where equal(alarmUUID, uuid)
+            if let alarmUUID = alarm.identifier where alarmUUID.characters.elementsEqual(uuid.characters)
             {
                targetAlarm = alarm
                break

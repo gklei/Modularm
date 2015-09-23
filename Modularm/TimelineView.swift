@@ -55,7 +55,7 @@ class TimelineView: UIView
    }
    
    // MARK: - Init
-   required init(coder aDecoder: NSCoder)
+   required init?(coder aDecoder: NSCoder)
    {
       super.init(coder: aDecoder)
       self.opaque = false
@@ -102,7 +102,7 @@ class TimelineView: UIView
       case .Military:
          for hour in 0...(kNumberOfHours - 1)
          {
-            var hourText = hour <= 9 ? "0\(hour):00" : "\(hour):00"
+            let hourText = hour <= 9 ? "0\(hour):00" : "\(hour):00"
             let hourLabel = UILabel.timeIntervalLabelWithText(hourText)
             
             self.addSubview(hourLabel)
@@ -120,7 +120,7 @@ class TimelineView: UIView
             var hourInt = (hour + 12) % 12
             hourInt = hourInt == 0 ? 12 : hourInt
             
-            var hourText = hourInt <= 9 ? "0\(hourInt):00" : "\(hourInt):00"
+            let hourText = hourInt <= 9 ? "0\(hourInt):00" : "\(hourInt):00"
             let hourLabel = UILabel.timeIntervalLabelWithText(hourText)
             
             self.addSubview(hourLabel)
@@ -143,7 +143,7 @@ class TimelineView: UIView
    {
       for minute in 0...(kNumberOfMinutes - 1)
       {
-         var minuteText = minute <= 9 ? "0\(minute)" : "\(minute)"
+         let minuteText = minute <= 9 ? "0\(minute)" : "\(minute)"
          let minuteLabel = UILabel.timeIntervalLabelWithText(minuteText)
          
          self.addSubview(minuteLabel)
@@ -205,8 +205,8 @@ class TimelineView: UIView
          let timeLabel = timeValue.associatedLabel
          var timeLabelGlobalRect = self.convertRect(timeLabel.frame, toView: nil)
          
-         var insetYAmount: CGFloat = self.interval == .Minute ? -5 : -15
-         timeLabelGlobalRect.inset(dx: -10, dy: insetYAmount)
+         let insetYAmount: CGFloat = self.interval == .Minute ? -5 : -15
+         timeLabelGlobalRect.insetInPlace(dx: -10, dy: insetYAmount)
          if timeLabelGlobalRect.contains(point)
          {
             timeValueFound = timeValue

@@ -28,7 +28,7 @@ extension UINavigationBar
          return (view as! UIImageView)
       }
 
-      let subviews = (view.subviews as! [UIView])
+      let subviews = (view.subviews )
       for subview: UIView in subviews {
          if let imageView: UIImageView = hairlineImageViewInNavigationBar(subview) {
             return imageView

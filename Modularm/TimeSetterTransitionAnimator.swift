@@ -16,7 +16,7 @@ class TimeSetterTransitionAnimator: NSObject
 
 extension TimeSetterTransitionAnimator: UIViewControllerAnimatedTransitioning
 {
-   func transitionDuration(transitionContext: UIViewControllerContextTransitioning) -> NSTimeInterval
+   func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval
    {
       return self.duration
    }
@@ -43,8 +43,8 @@ extension TimeSetterTransitionAnimator: UIViewControllerAnimatedTransitioning
       let timeSetterView = context.viewForKey(UITransitionContextToViewKey)!
       let configurationView = context.viewForKey(UITransitionContextFromViewKey)!
       
-      containerView.addSubview(timeSetterView)
-      containerView.bringSubviewToFront(configurationView)
+      containerView!.addSubview(timeSetterView)
+      containerView!.bringSubviewToFront(configurationView)
       
       UIView.animateWithDuration(self.duration, animations: { () -> Void in
          configurationView.alpha = 0
@@ -61,8 +61,8 @@ extension TimeSetterTransitionAnimator: UIViewControllerAnimatedTransitioning
       let timeSetterView = context.viewForKey(UITransitionContextFromViewKey)!
       let configurationView = context.viewForKey(UITransitionContextToViewKey)!
       
-      containerView.addSubview(configurationView)
-      containerView.bringSubviewToFront(timeSetterView)
+      containerView!.addSubview(configurationView)
+      containerView!.bringSubviewToFront(timeSetterView)
       
       UIView.animateWithDuration(self.duration, animations: { () -> Void in
          timeSetterView.alpha = 0

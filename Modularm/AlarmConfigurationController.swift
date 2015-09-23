@@ -27,7 +27,7 @@ class AlarmConfigurationController: UIViewController
    private var timeSetterController: TimeSetterViewController
    private var alarmPreviewController: AlarmPreviewViewController?
    
-   required init(coder aDecoder: NSCoder)
+   required init?(coder aDecoder: NSCoder)
    {
       self.timeSetterController = UIStoryboard.controllerWithIdentifier("TimeSetterViewController") as! TimeSetterViewController
       super.init(coder: aDecoder)
@@ -88,7 +88,7 @@ class AlarmConfigurationController: UIViewController
    
    private func setupAlarmOptionsControllerWithSegue(segue: UIStoryboardSegue)
    {
-      self.alarmOptionsController = segue.destinationViewController.childViewControllers![0] as? AlarmOptionsController
+      self.alarmOptionsController = segue.destinationViewController.childViewControllers[0] as? AlarmOptionsController
       self.alarmOptionsController?.optionsControllerDelegate = self
       self.alarmOptionsController?.configureWithAlarm(self.alarm)
    }

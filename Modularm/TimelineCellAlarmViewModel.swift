@@ -42,7 +42,7 @@ struct TimelineCellAlarmViewModel
          var prettyAlarmDate = self.dateFormatter.stringFromDate(self.alarm.fireDate)
          
          self.dateFormatter.dateFormat = "aa"
-         var amOrPm = dateFormatter.stringFromDate(self.alarm.fireDate).lowercaseString
+         let amOrPm = dateFormatter.stringFromDate(self.alarm.fireDate).lowercaseString
          prettyAlarmDate += " \(amOrPm)"
          
          var alarmMessage = ""
@@ -70,7 +70,7 @@ struct TimelineCellAlarmViewModel
    var alarmIconImage: UIImage {
       get {
          var imageName = "icn-alarm-sound"
-         if let repeatModel = self.alarm.repeat where repeatModel.atLeastOneDayIsEnabled {
+         if let repeatModel = self.alarm.repeatModel where repeatModel.atLeastOneDayIsEnabled {
             imageName = "icn-repeat"
          }
          return UIImage(named: imageName)!

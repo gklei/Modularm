@@ -23,7 +23,10 @@ struct AlarmManager
       
       let controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: coreDataStack.managedObjectContext!, sectionNameKeyPath: "active", cacheName: nil)
       
-      controller.performFetch(nil)
+      do {
+         try controller.performFetch()
+      } catch _ {
+      }
       
       return controller
       }()
@@ -61,5 +64,23 @@ struct AlarmManager
          }
       }
       return alarmArray
+   }
+   
+   static func disableAlarm(alarm: Alarm)
+   {
+      alarm.active = false
+      CoreDataStack.save()
+   }
+   
+   static func enableAlarm(alarm: Alarm)
+   {
+      alarm.active = true
+      CoreDataStack.save()
+   }
+   
+   static func deleteAlarm(alarm: Alarm)
+   {
+      CoreDataStack.deleteObject(alarm)
+      CoreDataStack.save()
    }
 }

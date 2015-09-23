@@ -13,13 +13,13 @@ extension NSCalendar
 {
    static var currentHour: Int {
       get {
-         return self.currentCalendar().components((.CalendarUnitHour | .CalendarUnitHour), fromDate: NSDate()).hour
+         return self.currentCalendar().components(([.Hour, .Hour]), fromDate: NSDate()).hour
       }
    }
    
    static var currentMinute: Int {
       get {
-         return self.currentCalendar().components((.CalendarUnitHour | .CalendarUnitMinute), fromDate: NSDate()).minute
+         return self.currentCalendar().components(([.Hour, .Minute]), fromDate: NSDate()).minute
       }
    }
 }
@@ -27,20 +27,20 @@ extension NSCalendar
 extension NSDate
 {
    var hour: Int {
-      return NSCalendar.currentCalendar().components((.CalendarUnitHour), fromDate: self).hour
+      return NSCalendar.currentCalendar().components((.Hour), fromDate: self).hour
    }
    
    var minute: Int {
-      return NSCalendar.currentCalendar().components((.CalendarUnitMinute), fromDate: self).minute
+      return NSCalendar.currentCalendar().components((.Minute), fromDate: self).minute
    }
    
    var day: Int {
-      return NSCalendar.currentCalendar().components((.CalendarUnitDay), fromDate: self).day
+      return NSCalendar.currentCalendar().components((.Day), fromDate: self).day
    }
    
    func logHourAndMinute()
    {
-      println("hour: \(self.hour) minute: \(self.minute)")
+      print("hour: \(self.hour) minute: \(self.minute)")
    }
    
    func prettyDateString() -> String
@@ -56,7 +56,7 @@ extension NSDate
    {
       let currentDate = NSDate()
       let calendar = NSCalendar.currentCalendar()
-      var components = calendar.components((.CalendarUnitDay | .CalendarUnitYear | .CalendarUnitMonth), fromDate: NSDate())
+      let components = calendar.components(([.Day, .Year, .Month]), fromDate: NSDate())
       
       components.hour = hour
       components.minute = minute

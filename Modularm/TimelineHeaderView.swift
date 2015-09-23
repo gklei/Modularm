@@ -118,7 +118,7 @@ class TimelineHeaderView: UICollectionReusableView
       self.alarmTimeView.updateTimeWithAlarm(alarm)
       self.amOrPmLabel.text = alarm.fireDate.hour < 12 ? "am" : "pm"
       
-      var viewModel = TimelineCellAlarmViewModel(alarm: alarm)
+      let viewModel = TimelineCellAlarmViewModel(alarm: alarm)
       self.setColorsWithViewModel(viewModel)
       
       self.delay(0.1, closure: { () -> () in

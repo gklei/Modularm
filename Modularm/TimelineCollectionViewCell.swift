@@ -111,24 +111,19 @@ class TimelineCollectionViewCell: UICollectionViewCell
    func togglePressed()
    {
       self.scrollView.contentOffset = CGPointZero
-      self.alarm?.active = false
-      
-      self.updateButtonContainerForAlarm(self.alarm)
-      CoreDataStack.save()
+      AlarmManager.disableAlarm(self.alarm!)
    }
    
    func deletePressed()
    {
       self.scrollView.contentOffset = CGPointZero
-      CoreDataStack.deleteObject(self.alarm)
-      CoreDataStack.save()
+      AlarmManager.deleteAlarm(self.alarm!)
    }
    
    @IBAction func activateButtonPressed()
    {
-      self.alarm?.active = true
+      AlarmManager.enableAlarm(self.alarm!)
       self.updateButtonContainerForAlarm(self.alarm)
-      CoreDataStack.save()
    }
    
    // MARK: - Private
@@ -199,10 +194,10 @@ class TimelineCollectionViewCell: UICollectionViewCell
    func onOpen(notification: NSNotification)
    {
       if let object = notification.object as? TimelineCollectionViewCell where object != self && self.isOpen {
-         self.animateContenteOffset(CGPoint.zeroPoint, withDuration: 0.1)
+         self.animateContenteOffset(CGPoint.zero, withDuration: 0.1)
       }
-      else if let object = notification.object as? TimelineHeaderView where self.isOpen {
-         self.animateContenteOffset(CGPoint.zeroPoint, withDuration: 0.1)
+      else if let _ = notification.object as? TimelineHeaderView where self.isOpen {
+         self.animateContenteOffset(CGPoint.zero, withDuration: 0.1)
       }
    }
 }

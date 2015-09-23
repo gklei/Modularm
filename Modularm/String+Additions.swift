@@ -19,14 +19,14 @@ extension String
    
    subscript (r: Range<Int>) -> String {
       get {
-         let subStart = advance(self.startIndex, r.startIndex, self.endIndex)
-         let subEnd = advance(subStart, r.endIndex - r.startIndex, self.endIndex)
+         let subStart = self.startIndex.advancedBy(r.startIndex, limit: self.endIndex)
+         let subEnd = subStart.advancedBy(r.endIndex - r.startIndex, limit: self.endIndex)
          return self.substringWithRange(Range(start: subStart, end: subEnd))
       }
    }
    
    func substring(from: Int) -> String {
-      let end = count(self)
+      let end = self.characters.count
       return self[from..<end]
    }
    
