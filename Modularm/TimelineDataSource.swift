@@ -17,7 +17,6 @@ class TimelineDataSource: NSObject
 {
    // MARK: - Instance Variables
    @IBOutlet weak var timelineController: TimelineController!
-
    private let coreDataStack = CoreDataStack.defaultStack
 
    lazy var fetchedResultsController: NSFetchedResultsController =
@@ -121,9 +120,6 @@ extension TimelineDataSource: NSFetchedResultsControllerDelegate
 {
    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?)
    {
-      if type != NSFetchedResultsChangeType.Insert
-      {
          self.timelineController.reloadData()
-      }
    }
 }

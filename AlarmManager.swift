@@ -42,7 +42,7 @@ struct AlarmManager
       {
          for alarm in alarms
          {
-            if alarm.active
+            if alarm.active && alarm.completedSetup
             {
                alarmArray.append(alarm)
             }
