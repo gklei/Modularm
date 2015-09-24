@@ -82,20 +82,4 @@ extension MusicOptionDelegateDataSource
       
       return cell
    }
-   
-//   override func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView?
-//   {
-//      let view = super.tableView(tableView, viewForFooterInSection: section)
-//      if section == 0
-//      {
-//         let label = UILabel()
-//         label.font = UIFont(name: "Helvetica Neue", size: 16)
-//         label.text = "SOURCE"
-//         label.sizeToFit()
-//         
-//         label.center = CGPointMake(CGRectGetWidth(label.frame)*0.5 + 16, 25)
-//         view?.addSubview(label)
-//      }
-//      return view
-//   }
 }
