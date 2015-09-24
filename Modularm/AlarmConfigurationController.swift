@@ -23,7 +23,7 @@ class AlarmConfigurationController: UIViewController
    private var originalAlarmFireDate: NSDate?
    
    private let transitionAnimator = TimeSetterTransitionAnimator()
-   private var alarmOptionsController: AlarmOptionsController?
+   private var alarmOptionsController: AlarmOptionsViewController?
    private var timeSetterController: TimeSetterViewController
    private var alarmPreviewController: AlarmPreviewViewController?
    
@@ -88,7 +88,7 @@ class AlarmConfigurationController: UIViewController
    
    private func setupAlarmOptionsControllerWithSegue(segue: UIStoryboardSegue)
    {
-      self.alarmOptionsController = segue.destinationViewController.childViewControllers[0] as? AlarmOptionsController
+      self.alarmOptionsController = segue.destinationViewController.childViewControllers[0] as? AlarmOptionsViewController
       self.alarmOptionsController?.optionsControllerDelegate = self
       self.alarmOptionsController?.configureWithAlarm(self.alarm)
    }
