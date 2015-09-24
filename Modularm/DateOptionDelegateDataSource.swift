@@ -90,6 +90,7 @@ extension DateOptionDelegateDataSource
    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
    {
       self.dateModel!.displayType = self.displayTypeForCellIndex(indexPath.row)!
+      self.settingsControllerDelegate.updateAuxViewWithOption(self.option, tempModel: self.dateModel)
       self.tableView.reloadData()
    }
 }
