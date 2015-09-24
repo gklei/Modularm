@@ -79,9 +79,22 @@ extension AlarmOptionSettingsController: AlarmOptionSettingsControllerDelegate
    {
       if let auxView = self.auxiliaryView, title = tempModel?.humanReadableString()
       {
+         self.resetAuxView()
+         
          let label = UILabel.timeIntervalLabelWithText(title)
          label.center = CGPoint(x: CGRectGetMidX(auxView.bounds), y: CGRectGetMidY(auxView.bounds))
          auxView.addSubview(label)
+      }
+   }
+   
+   private func resetAuxView()
+   {
+      if let auxView = self.auxiliaryView
+      {
+         for subview in auxView.subviews
+         {
+            subview.removeFromSuperview()
+         }
       }
    }
 }
