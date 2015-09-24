@@ -15,7 +15,7 @@ protocol AlarmOptionsControllerDelegate
    func optionPreviewAuxiliaryView() -> UIView?
 }
 
-class AlarmOptionsController: UIViewController
+class AlarmOptionsViewController: UIViewController
 {
    var optionsControllerDelegate: AlarmOptionsControllerDelegate?
    private var alarm: Alarm?
@@ -42,7 +42,7 @@ class AlarmOptionsController: UIViewController
       {
          for subview in auxView.subviews
          {
-            (subview ).removeFromSuperview()
+            subview.removeFromSuperview()
          }
       }
    }
