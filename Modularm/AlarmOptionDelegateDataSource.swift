@@ -15,7 +15,7 @@ protocol AlarmOptionSettingsControllerDelegate
    func updateSetOptionButtonClosure(closure: (() -> ())?)
    func updateSetOptionButtonTitle(title: String)
    func resetSetOptionButtonTitle()
-   func updateAuxViewWithOption(option: AlarmOption, tempModel: AnyObject?)
+   func updateAuxViewWithOption(option: AlarmOption, tempModel: AlarmOptionModelProtocol?)
 }
 
 class AlarmOptionDelegateDataSource: NSObject

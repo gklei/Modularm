@@ -80,6 +80,7 @@ extension RepeatOptionDelegateDataSource
          let shouldEnable = !self.repeatModel!.dayIsEnabled(day)
          self.repeatModel!.enableDay(day, enabled: shouldEnable)
          self.tableView.reloadData()
+         self.settingsControllerDelegate.updateAuxViewWithOption(self.option, tempModel: self.repeatModel)
       }
    }
 }

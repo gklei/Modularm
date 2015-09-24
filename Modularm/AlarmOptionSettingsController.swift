@@ -71,15 +71,14 @@ extension AlarmOptionSettingsController: AlarmOptionSettingsControllerDelegate
    
    func resetSetOptionButtonTitle()
    {
-      let title = self.buttonTitleForOption(self.option)
+      let title = self.titleForOption(self.option)
       self.updateSetOptionButtonTitle(title)
    }
    
-   func updateAuxViewWithOption(option: AlarmOption, tempModel: AnyObject?)
+   func updateAuxViewWithOption(option: AlarmOption, tempModel: AlarmOptionModelProtocol?)
    {
-      if let auxView = self.auxiliaryView
+      if let auxView = self.auxiliaryView, title = tempModel?.humanReadableString()
       {
-         let title = self.buttonTitleForOption(option)
          let label = UILabel.timeIntervalLabelWithText(title)
          label.center = CGPoint(x: CGRectGetMidX(auxView.bounds), y: CGRectGetMidY(auxView.bounds))
          auxView.addSubview(label)
