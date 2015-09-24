@@ -9,6 +9,12 @@
 import Foundation
 import CoreData
 
+@objc(AlarmOptionModelProtocol)
+protocol AlarmOptionModelProtocol
+{
+   func humanReadableString() -> String
+}
+
 @objc(Alarm)
 class Alarm: NSManagedObject
 {
