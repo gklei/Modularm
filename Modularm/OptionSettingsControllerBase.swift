@@ -28,7 +28,7 @@ class OptionSettingsControllerBase: UIViewController
    {
       super.viewWillAppear(animated)
       
-      let title = self.buttonTitleForOption(self.option)
+      let title = self.titleForOption(self.option)
       self.setOptionButton.setTitle(title, forState: .Normal)
       self.iconImageView.image = self.option.plusIcon
    }
@@ -46,7 +46,7 @@ class OptionSettingsControllerBase: UIViewController
       self.navigationController?.popViewControllerAnimated(true)
    }
    
-   internal func buttonTitleForOption(option: AlarmOption) -> String
+   internal func titleForOption(option: AlarmOption) -> String
    {
       var title = ""
       switch (option)
