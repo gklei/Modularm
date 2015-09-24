@@ -39,6 +39,26 @@ extension Date: AlarmOptionModelProtocol
 {
    func humanReadableString() -> String
    {
-      return "DATE"
+      let currentDate = NSDate()
+      let day = currentDate.day
+      let month = currentDate.month
+      
+      let dayString = day <= 9 ? "0\(day)" : "\(day)"
+      let monthString = month <= 9 ? "0\(month)" : "\(month)"
+      
+      var dateString = ""
+      switch self.displayType
+      {
+      case .US:
+         dateString = "\(monthString)/\(dayString) \(currentDate.dayString())"
+         break
+      case .EU:
+         dateString = "\(dayString).\(monthString) \(currentDate.dayString())"
+         break
+      case .NoDate:
+         break
+      }
+      
+      return dateString
    }
 }
