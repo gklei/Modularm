@@ -213,10 +213,10 @@
             </objects>
             <point key="canvasLocation" x="-559" y="399"/>
         </scene>
-        <!--Alarm Options Controller-->
+        <!--Alarm Options View Controller-->
         <scene sceneID="2Zr-Tu-7WA">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="LXP-8S-707" customClass="AlarmOptionsController" customModule="Modularm" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="LXP-8S-707" customClass="AlarmOptionsViewController" customModule="Modularm" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="sbn-KE-cTd"/>
                         <viewControllerLayoutGuide type="bottom" id="wzX-UN-8hT"/>
