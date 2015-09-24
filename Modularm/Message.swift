@@ -20,5 +20,12 @@ class Message: NSManagedObject {
       super.awakeFromInsert()
       self.text = ""
    }
+}
 
+extension Message: AlarmOptionModelProtocol
+{
+   func humanReadableString() -> String
+   {
+      return ""
+   }
 }

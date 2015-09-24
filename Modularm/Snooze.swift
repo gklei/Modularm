@@ -59,3 +59,11 @@ class Snooze: NSManagedObject
       self.duration = .FiveMinutes
    }
 }
+
+extension Snooze: AlarmOptionModelProtocol
+{
+   func humanReadableString() -> String
+   {
+      return "SNOOZE"
+   }
+}

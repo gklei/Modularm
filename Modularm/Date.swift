@@ -34,3 +34,11 @@ class Date: NSManagedObject
       self.displayType = .US
    }
 }
+
+extension Date: AlarmOptionModelProtocol
+{
+   func humanReadableString() -> String
+   {
+      return "DATE"
+   }
+}

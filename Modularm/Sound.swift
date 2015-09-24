@@ -22,3 +22,11 @@ class Sound: NSManagedObject
       self.basicSoundURL = "Basic"
    }
 }
+
+extension Sound: AlarmOptionModelProtocol
+{
+   func humanReadableString() -> String
+   {
+      return "SOUND"
+   }
+}

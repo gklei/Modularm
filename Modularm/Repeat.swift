@@ -102,3 +102,11 @@ class Repeat: NSManagedObject
       return enabled
    }
 }
+
+extension Repeat: AlarmOptionModelProtocol
+{
+   func humanReadableString() -> String
+   {
+      return "REPEAT"
+   }
+}

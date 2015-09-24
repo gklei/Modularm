@@ -15,3 +15,11 @@ class Countdown: NSManagedObject
     @NSManaged var shouldDisplay: Bool
     @NSManaged var alarm: Alarm
 }
+
+extension Countdown: AlarmOptionModelProtocol
+{
+   func humanReadableString() -> String
+   {
+      return "COUNTDOWN"
+   }
+}

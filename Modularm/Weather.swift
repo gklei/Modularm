@@ -39,3 +39,11 @@ class Weather: NSManagedObject
       self.autoLocationOn = false
    }
 }
+
+extension Weather: AlarmOptionModelProtocol
+{
+   func humanReadableString() -> String
+   {
+      return "WEATHER"
+   }
+}
