@@ -9,6 +9,20 @@
 import Foundation
 import UIKit
 
+struct DateFormatter
+{
+   static private var sharedInstance = DateFormatter()
+   
+   static var formatter: NSDateFormatter {
+      return sharedInstance.formatter
+   }
+   
+   private lazy var formatter: NSDateFormatter = {
+      let df = NSDateFormatter()
+      return df
+      }()
+}
+
 extension NSCalendar
 {
    static var currentHour: Int {
@@ -56,16 +70,11 @@ extension NSDate
       return formatter.stringFromDate(self)
    }
    
-   // This entire method needs to change once I get off of the airplane
-   // this could not be a bigger hack
    func dayString() -> String
    {
-      let formatter = NSDateFormatter()
-      formatter.dateStyle = .FullStyle
-      
-      let dateString = formatter.stringFromDate(self)
-      let components = dateString.componentsSeparatedByString(",")
-      return components[0]
+      let formatter = DateFormatter.formatter
+      formatter.dateFormat = "EEEE"
+      return formatter.stringFromDate(self)
    }
    
    class func alarmDateWithHour(hour: Int, minute: Int) -> NSDate

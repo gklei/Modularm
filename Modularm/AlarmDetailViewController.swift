@@ -33,12 +33,6 @@ class AlarmDetailViewController: UIViewController
       self.updateUIForFiringState()
    }
    
-   override func viewWillDisappear(animated: Bool)
-   {
-      super.viewWillDisappear(animated)
-      self.navigationController?.setNavigationBarHidden(false, animated: true)
-   }
-   
    // MARK: - Private
    private func updateUIForFiringState()
    {
