@@ -9,12 +9,42 @@
 import Foundation
 import CoreData
 
-enum RepeatDay: Int16 {
+enum RepeatDay: Int16
+{
    case Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
    
    static func valueArray() -> [RepeatDay]
    {
       return [.Monday, .Tuesday, .Wednesday, .Thursday, .Friday, .Saturday, .Sunday]
+   }
+   
+   var stringValue: String {
+      var value = ""
+      switch self
+      {
+      case .Monday:
+         value = "Monday"
+         break
+      case .Tuesday:
+         value = "Tuesday"
+         break
+      case .Wednesday:
+         value = "Wednesday"
+         break
+      case .Thursday:
+         value = "Thursday"
+         break
+      case .Friday:
+         value = "Friday"
+         break
+      case .Saturday:
+         value = "Saturday"
+         break
+      case .Sunday:
+         value = "Sunday"
+         break
+      }
+      return value
    }
 }
 
@@ -42,6 +72,18 @@ class Repeat: NSManagedObject
          }
          return dayIsEnabeld
       }
+   }
+   
+   private var enabledDays: [RepeatDay] {
+      var enabled = Array<RepeatDay>()
+      for day in RepeatDay.valueArray()
+      {
+         if self.dayIsEnabled(day)
+         {
+            enabled.append(day)
+         }
+      }
+      return enabled
    }
    
    func enableDay(day: RepeatDay, enabled: Bool)
@@ -107,6 +149,25 @@ extension Repeat: AlarmOptionModelProtocol
 {
    func humanReadableString() -> String
    {
-      return "REPEAT"
+      var daysEnabledString = ""
+      let enabledDaysArray = enabledDays
+      
+      for day in enabledDaysArray
+      {
+         if day == enabledDaysArray.first
+         {
+            daysEnabledString += day.stringValue
+         }
+         else if day == enabledDaysArray.last
+         {
+            daysEnabledString += daysEnabledString.isEmpty ? day.stringValue : " and \(day.stringValue)"
+         }
+         else
+         {
+            daysEnabledString += ", \(day)"
+         }
+      }
+      
+      return daysEnabledString.isEmpty ? "None" : daysEnabledString
    }
 }
