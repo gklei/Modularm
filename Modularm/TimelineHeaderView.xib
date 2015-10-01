@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -52,35 +53,35 @@
                                 <constraint firstAttribute="trailing" secondItem="Yp5-7c-Tp3" secondAttribute="trailing" constant="20" id="v51-H2-1PN"/>
                             </constraints>
                         </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MQ4-I8-iWs">
+                            <rect key="frame" x="0.0" y="0.0" width="4" height="150"/>
+                            <color key="backgroundColor" red="0.74509803919999995" green="0.058823529409999999" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="4" id="3DP-Ia-jHs"/>
+                            </constraints>
+                        </view>
                     </subviews>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="pfI-DP-Eg3" secondAttribute="trailing" id="R29-LN-Df4"/>
+                        <constraint firstItem="MQ4-I8-iWs" firstAttribute="top" secondItem="FFq-hc-7aN" secondAttribute="top" id="Tpo-dK-FHd"/>
+                        <constraint firstItem="MQ4-I8-iWs" firstAttribute="leading" secondItem="FFq-hc-7aN" secondAttribute="leading" id="Y2n-K7-VAb"/>
                         <constraint firstAttribute="bottom" secondItem="pfI-DP-Eg3" secondAttribute="bottom" id="cQ1-q4-bfZ"/>
                         <constraint firstItem="pfI-DP-Eg3" firstAttribute="top" secondItem="FFq-hc-7aN" secondAttribute="top" id="jU5-Nl-Ldh"/>
                         <constraint firstAttribute="centerX" secondItem="pfI-DP-Eg3" secondAttribute="centerX" id="nvN-g2-lN8"/>
                         <constraint firstItem="pfI-DP-Eg3" firstAttribute="leading" secondItem="FFq-hc-7aN" secondAttribute="leading" id="rc6-r8-KbI"/>
+                        <constraint firstAttribute="bottom" secondItem="MQ4-I8-iWs" secondAttribute="bottom" id="uqL-O2-H9I"/>
                     </constraints>
                     <connections>
                         <outlet property="delegate" destination="iN0-l3-epB" id="UaD-rp-VIp"/>
                     </connections>
                 </scrollView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MQ4-I8-iWs">
-                    <rect key="frame" x="0.0" y="0.0" width="4" height="150"/>
-                    <color key="backgroundColor" red="0.74509803919999995" green="0.058823529409999999" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="4" id="3DP-Ia-jHs"/>
-                    </constraints>
-                </view>
             </subviews>
             <color key="backgroundColor" red="0.11764705882352941" green="0.11764705882352941" blue="0.11764705882352941" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="FFq-hc-7aN" secondAttribute="trailing" id="5Na-xN-vWN"/>
                 <constraint firstAttribute="bottom" secondItem="FFq-hc-7aN" secondAttribute="bottom" id="9eh-3e-1ok"/>
-                <constraint firstItem="MQ4-I8-iWs" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="AY1-1R-ykF"/>
                 <constraint firstItem="FFq-hc-7aN" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="UGU-P2-Ez0"/>
-                <constraint firstItem="MQ4-I8-iWs" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Xxf-53-YZg"/>
                 <constraint firstItem="FFq-hc-7aN" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Zhj-EV-8mj"/>
-                <constraint firstAttribute="bottom" secondItem="MQ4-I8-iWs" secondAttribute="bottom" id="svI-iK-Eg7"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
