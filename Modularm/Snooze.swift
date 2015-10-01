@@ -64,6 +64,6 @@ extension Snooze: AlarmOptionModelProtocol
 {
    func humanReadableString() -> String
    {
-      return "SNOOZE"
+      return "Snooze for \(duration.rawValue) minutes"
    }
 }
