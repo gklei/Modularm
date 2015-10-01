@@ -10,15 +10,15 @@ import Foundation
 import CoreData
 
 @objc(Message)
-class Message: NSManagedObject {
-
+class Message: NSManagedObject
+{
     @NSManaged var text: String
     @NSManaged var alarm: Alarm
 
    override func awakeFromInsert()
    {
       super.awakeFromInsert()
-      self.text = ""
+      text = ""
    }
 }
 
@@ -26,6 +26,6 @@ extension Message: AlarmOptionModelProtocol
 {
    func humanReadableString() -> String
    {
-      return ""
+      return text
    }
 }
