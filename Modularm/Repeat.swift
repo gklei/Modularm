@@ -17,35 +17,6 @@ enum RepeatDay: Int16
    {
       return [.Monday, .Tuesday, .Wednesday, .Thursday, .Friday, .Saturday, .Sunday]
    }
-   
-   var stringValue: String {
-      var value = ""
-      switch self
-      {
-      case .Monday:
-         value = "Monday"
-         break
-      case .Tuesday:
-         value = "Tuesday"
-         break
-      case .Wednesday:
-         value = "Wednesday"
-         break
-      case .Thursday:
-         value = "Thursday"
-         break
-      case .Friday:
-         value = "Friday"
-         break
-      case .Saturday:
-         value = "Saturday"
-         break
-      case .Sunday:
-         value = "Sunday"
-         break
-      }
-      return value
-   }
 }
 
 @objc(Repeat)
@@ -156,11 +127,11 @@ extension Repeat: AlarmOptionModelProtocol
       {
          if day == enabledDaysArray.first
          {
-            daysEnabledString += day.stringValue
+            daysEnabledString += "\(day)"
          }
          else if day == enabledDaysArray.last
          {
-            daysEnabledString += daysEnabledString.isEmpty ? day.stringValue : " and \(day.stringValue)"
+            daysEnabledString += daysEnabledString.isEmpty ? "\(day)" : " and \(day)"
          }
          else
          {
