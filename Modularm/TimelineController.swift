@@ -39,6 +39,11 @@ class TimelineController: UIViewController
 
    override func viewWillAppear(animated: Bool)
    {
+      if self.navigationController?.navigationBarHidden == true
+      {
+         self.navigationController?.setNavigationBarHidden(false, animated: true);
+      }
+      
       self.timelineDataSource.removeIncompleteAlarms()
 
       let headerSize = AlarmManager.alarms?.count > 0 ? CGSizeMake(CGRectGetWidth(self.view.bounds), 150) : CGSizeZero
