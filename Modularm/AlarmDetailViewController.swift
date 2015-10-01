@@ -127,6 +127,7 @@ class AlarmDetailViewController: UIViewController
    @IBAction func cancelButtonPressed()
    {
       self.alarm?.active = false
+      self.alarm?.updateAlarmDate()
       self.navigationController?.popToRootViewControllerAnimated(true)
    }
 }
