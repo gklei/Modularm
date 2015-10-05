@@ -50,6 +50,7 @@ class AlarmConfigurationController: UIViewController
    {
       super.viewWillAppear(animated)
       self.setupCustomBackButton()
+      self.navigationController?.setNavigationBarHidden(false, animated: true);
    }
    
    override func viewWillDisappear(animated: Bool)

@@ -128,6 +128,6 @@ class AlarmDetailViewController: UIViewController
    {
       self.alarm?.active = false
       self.alarm?.updateAlarmDate()
-      self.navigationController?.popToRootViewControllerAnimated(true)
+      self.navigationController?.popViewControllerAnimated(true)
    }
 }
