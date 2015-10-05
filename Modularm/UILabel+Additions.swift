@@ -20,6 +20,7 @@ extension UILabel
       
       hourLabel.text = text
       hourLabel.textColor = UIColor.whiteColor()
+      hourLabel.numberOfLines = 0;
       
       hourLabel.sizeToFit()
       return hourLabel

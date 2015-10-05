@@ -68,6 +68,7 @@
 		8EFACDDD1AD8390F00279956 /* TimelineController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFACDDC1AD8390F00279956 /* TimelineController.swift */; };
 		8EFACDE11AD83A1E00279956 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFACDE01AD83A1E00279956 /* CoreDataStack.swift */; };
 		F30823D91BBDC2D80030155D /* AlarmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30823D81BBDC2D80030155D /* AlarmManager.swift */; settings = {ASSET_TAGS = (); }; };
+		F3A43EA21BC2F86600DB0813 /* AnalogTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A43EA11BC2F86600DB0813 /* AnalogTimeView.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -146,6 +147,7 @@
 		8EFACDDC1AD8390F00279956 /* TimelineController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimelineController.swift; path = Modularm/TimelineController.swift; sourceTree = "<group>"; };
 		8EFACDE01AD83A1E00279956 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataStack.swift; path = Modularm/CoreDataStack.swift; sourceTree = "<group>"; };
 		F30823D81BBDC2D80030155D /* AlarmManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlarmManager.swift; path = Modularm/AlarmManager.swift; sourceTree = "<group>"; };
+		F3A43EA11BC2F86600DB0813 /* AnalogTimeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnalogTimeView.swift; path = Modularm/AnalogTimeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,6 +204,7 @@
 				8E5BD3261ADB930400C42FAA /* AlarmOptionButton.swift */,
 				5BD0AF101B2CE7A20018A4C6 /* TimeDisplayProvider.swift */,
 				5B49D74E1B4378E700896878 /* DigitalTimeView.swift */,
+				F3A43EA11BC2F86600DB0813 /* AnalogTimeView.swift */,
 			);
 			name = "Alarm UI";
 			sourceTree = "<group>";
@@ -523,6 +526,7 @@
 				8E8228E81ADB8AA900F9A26E /* AlarmOptionsViewController.swift in Sources */,
 				5B6C12641AFF2841009617A8 /* Message.swift in Sources */,
 				5B6D9A281B28AE6A00AA662A /* TimeSetterTransitionAnimator.swift in Sources */,
+				F3A43EA21BC2F86600DB0813 /* AnalogTimeView.swift in Sources */,
 				5BEDA3741B277BBC0000983F /* TimelineView.swift in Sources */,
 				8E3BDC361AE4176E00E1FCDC /* UIImage+Additions.swift in Sources */,
 				5BD0AF111B2CE7A20018A4C6 /* TimeDisplayProvider.swift in Sources */,

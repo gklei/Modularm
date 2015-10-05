@@ -54,6 +54,8 @@ class DigitalTimeView: TimeView
    // MARK: - Public
    override func updateTimeWithAlarm(alarm: Alarm)
    {
+      super.updateTimeWithAlarm(alarm)
+      
       let date = alarm.fireDate
       self.hourLabel.text = TimeDisplayProvider.textForHourValue(date.hour)
       self.minuteLabel.text = TimeDisplayProvider.textForMinuteValue(date.minute)
@@ -61,6 +63,8 @@ class DigitalTimeView: TimeView
    
    override func updateTimeWithHour(hour: Int, minute: Int)
    {
+      super.updateTimeWithHour(hour, minute: minute)
+      
       self.hourLabel.text = TimeDisplayProvider.textForHourValue(hour)
       self.minuteLabel.text = TimeDisplayProvider.textForMinuteValue(minute)
    }

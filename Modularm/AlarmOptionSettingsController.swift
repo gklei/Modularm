@@ -83,6 +83,8 @@ extension AlarmOptionSettingsController: AlarmOptionSettingsControllerDelegate
          
          let label = UILabel.timeIntervalLabelWithText(title)
          label.center = CGPoint(x: auxView.bounds.midX, y: auxView.bounds.midY)
+         label.frame = auxView.bounds.insetBy(dx: 40, dy: 6)
+         label.textAlignment = .Center
          auxView.addSubview(label)
       }
    }

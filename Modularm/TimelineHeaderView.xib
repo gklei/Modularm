@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
@@ -18,7 +18,8 @@
                             <rect key="frame" x="0.0" y="0.0" width="377" height="150"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gnc-x2-dW6" customClass="DigitalTimeView" customModule="Modularm" customModuleProvider="target">
-                                    <rect key="frame" x="70" y="33" width="199" height="85"/>
+                                    <rect key="frame" x="74" y="33" width="199" height="85"/>
+                                    <animations/>
                                     <color key="backgroundColor" red="0.11764705882352941" green="0.11764705882352941" blue="0.11764705882352941" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="85" id="G4u-Vc-wuk"/>
@@ -26,13 +27,15 @@
                                     </constraints>
                                 </view>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="pm" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0eQ-P9-DfY">
-                                    <rect key="frame" x="269" y="44" width="30" height="25"/>
+                                    <rect key="frame" x="273" y="44" width="30" height="25"/>
+                                    <animations/>
                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="21"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yp5-7c-Tp3">
                                     <rect key="frame" x="327" y="97" width="30" height="33"/>
+                                    <animations/>
                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                     <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <state key="normal" title="edit">
@@ -43,9 +46,10 @@
                                     </connections>
                                 </button>
                             </subviews>
+                            <animations/>
                             <constraints>
-                                <constraint firstItem="Gnc-x2-dW6" firstAttribute="leading" secondItem="pfI-DP-Eg3" secondAttribute="leading" constant="70" id="1fF-tr-gcT"/>
                                 <constraint firstAttribute="centerY" secondItem="Gnc-x2-dW6" secondAttribute="centerY" id="7WZ-FZ-d0E"/>
+                                <constraint firstItem="Gnc-x2-dW6" firstAttribute="centerX" secondItem="pfI-DP-Eg3" secondAttribute="centerX" constant="-15" id="PKV-ma-fWQ"/>
                                 <constraint firstAttribute="bottom" secondItem="Yp5-7c-Tp3" secondAttribute="bottom" constant="20" id="PQr-wm-UOe"/>
                                 <constraint firstItem="0eQ-P9-DfY" firstAttribute="leading" secondItem="Gnc-x2-dW6" secondAttribute="trailing" id="Rbu-yd-1lM"/>
                                 <constraint firstItem="0eQ-P9-DfY" firstAttribute="top" secondItem="Gnc-x2-dW6" secondAttribute="top" constant="11" id="d24-As-OdD"/>
@@ -55,12 +59,14 @@
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MQ4-I8-iWs">
                             <rect key="frame" x="0.0" y="0.0" width="4" height="150"/>
+                            <animations/>
                             <color key="backgroundColor" red="0.74509803919999995" green="0.058823529409999999" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="4" id="3DP-Ia-jHs"/>
                             </constraints>
                         </view>
                     </subviews>
+                    <animations/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="pfI-DP-Eg3" secondAttribute="trailing" id="R29-LN-Df4"/>
                         <constraint firstItem="MQ4-I8-iWs" firstAttribute="top" secondItem="FFq-hc-7aN" secondAttribute="top" id="Tpo-dK-FHd"/>
@@ -76,6 +82,7 @@
                     </connections>
                 </scrollView>
             </subviews>
+            <animations/>
             <color key="backgroundColor" red="0.11764705882352941" green="0.11764705882352941" blue="0.11764705882352941" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="FFq-hc-7aN" secondAttribute="trailing" id="5Na-xN-vWN"/>
@@ -91,7 +98,7 @@
                 <outlet property="innerContentView" destination="pfI-DP-Eg3" id="gPD-FO-U1S"/>
                 <outlet property="scrollView" destination="FFq-hc-7aN" id="VCv-SF-meh"/>
             </connections>
-            <point key="canvasLocation" x="275.5" y="296"/>
+            <point key="canvasLocation" x="321.5" y="214"/>
         </view>
     </objects>
 </document>
