@@ -26,6 +26,17 @@ extension UILabel
       return hourLabel
    }
    
+   class func amOrPmLabel() -> UILabel
+   {
+      let label = UILabel()
+      if let font = UIFont(name: "HelveticaNeue", size: 21)
+      {
+         label.font = font
+      }
+      label.textColor = UIColor.whiteColor()
+      return label
+   }
+   
    class func largeTimeDisplayLabelWithAlignment(alignment: NSTextAlignment) -> UILabel
    {
       let label = UILabel()
