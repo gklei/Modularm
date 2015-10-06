@@ -9,6 +9,9 @@
 import UIKit
 import CoreData
 
+let kAlarmSegmentedIndex = 0
+let kTimerSegmentedIndex = 1
+
 class AlarmConfigurationController: UIViewController
 {
    // MARK: - Instance Variables
@@ -125,25 +128,51 @@ class AlarmConfigurationController: UIViewController
       self.alarmPreviewController?.configureWithAlarm(alarm)
       self.alarmOptionsController?.configureWithAlarm(alarm)
    }
+   
+   private func updateUIWithAlarm(alarm: Alarm?)
+   {
+      if let alarmType = alarm?.alarmType
+      {
+         self.segmentedControl.selectedSegmentIndex = segmentedControlIndexForAlarmType(alarmType)
+      }
+   }
 
    // MARK: - Public
-   func createNewAlarm()
-   {
-      self.alarm = CoreDataStack.newAlarmModel()
-      self.originalAlarmFireDate = self.alarm?.fireDate.copy() as? NSDate
-      self.configureControllersWithAlarm(self.alarm)
-   }
-   
    func configureWithAlarm(alarm: Alarm)
    {
       self.alarm = alarm
       self.originalAlarmFireDate = self.alarm?.fireDate.copy() as? NSDate
       self.configureControllersWithAlarm(self.alarm)
+      self.updateUIWithAlarm(self.alarm)
    }
    
    func showTimeSetterController()
    {
       self.presentViewController(self.timeSetterController, animated: true, completion: nil)
+   }
+   
+   func alarmTypeForSegmentedControlIndex(index: Int) -> AlarmType
+   {
+      var type: AlarmType = .Date
+      switch index {
+      case kTimerSegmentedIndex:
+         type = .Timer
+      default:
+         break
+      }
+      return type
+   }
+   
+   func segmentedControlIndexForAlarmType(type: AlarmType) -> Int
+   {
+      var index = kAlarmSegmentedIndex
+      switch type {
+      case .Timer:
+         index = kTimerSegmentedIndex
+      default:
+         break
+      }
+      return index;
    }
    
    // MARK: - IBActions
@@ -160,6 +189,15 @@ class AlarmConfigurationController: UIViewController
       
       AlarmManager.enableAlarm(self.alarm!, withHour: alarmTime.hour, minute: alarmTime.minute)
       self.navigationController?.popToRootViewControllerAnimated(true)
+   }
+   
+   @IBAction func segmentedControlPressed(sender: UISegmentedControl)
+   {
+      let selectedIndex = sender.selectedSegmentIndex
+      if let alarmType = self.alarm?.alarmType where alarmType != alarmTypeForSegmentedControlIndex(selectedIndex)
+      {
+         self.alarm?.alarmType = alarmTypeForSegmentedControlIndex(selectedIndex)
+      }
    }
    
    func dismissSelf()
