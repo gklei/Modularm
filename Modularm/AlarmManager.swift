@@ -95,6 +95,7 @@ struct AlarmManager
    private static func scheduleAlarm(alarm: Alarm)
    {
       alarm.active = true
+      AlarmScheduler.unscheduleAlarm(alarm)
       AlarmScheduler.scheduleAlarm(alarm)
       CoreDataStack.save()
    }
