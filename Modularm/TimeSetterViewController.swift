@@ -63,24 +63,6 @@ class TimeSetterViewController: UIViewController
       temporaryMinuteValue = alarm?.fireDate.minute
    }
    
-   func amLabelTapped()
-   {
-      if let hour = self.currentHourValue where hour >= 12
-      {
-         self.hourScrollViewController?.scrollToNumber(hour - 12, animated: true)
-         giveScrollViewFocus(hourScrollViewController!.infiniteScrollView!)
-      }
-   }
-   
-   func pmLabelTapped()
-   {
-      if let hour = self.currentHourValue where hour < 12
-      {
-         self.hourScrollViewController?.scrollToNumber(hour + 12, animated: true)
-         giveScrollViewFocus(hourScrollViewController!.infiniteScrollView!)
-      }
-   }
-   
    override func viewWillAppear(animated: Bool)
    {
       super.viewWillAppear(animated)
@@ -215,6 +197,24 @@ class TimeSetterViewController: UIViewController
          self.hourMarkerView.alpha = leftBarViewAlpha
          self.minuteMarkerView.alpha = rightBarViewAlpha
       })
+   }
+   
+   private func amLabelTapped()
+   {
+      if let hour = self.currentHourValue where hour >= 12
+      {
+         self.hourScrollViewController?.scrollToNumber(hour - 12, animated: true)
+         giveScrollViewFocus(hourScrollViewController!.infiniteScrollView!)
+      }
+   }
+   
+   private func pmLabelTapped()
+   {
+      if let hour = self.currentHourValue where hour < 12
+      {
+         self.hourScrollViewController?.scrollToNumber(hour + 12, animated: true)
+         giveScrollViewFocus(hourScrollViewController!.infiniteScrollView!)
+      }
    }
 }
 
