@@ -33,18 +33,18 @@ class TimeSetterViewController: UIViewController
    private var temporaryMinuteValue: Int?
    
    var currentHourValue: Int? {
-      if self.temporaryHourValue != nil {
-         return self.temporaryHourValue
+      if temporaryHourValue != nil {
+         return temporaryHourValue
       } else {
-         return self.hourScrollViewController?.currentTimeValue?.value
+         return hourScrollViewController?.currentTimeValue?.value
       }
    }
    
    var currentMinuteValue: Int? {
-      if self.temporaryMinuteValue != nil {
-         return self.temporaryMinuteValue
+      if temporaryMinuteValue != nil {
+         return temporaryMinuteValue
       } else {
-         return self.minuteScrollViewController?.currentTimeValue?.value
+         return minuteScrollViewController?.currentTimeValue?.value
       }
    }
    
@@ -59,8 +59,8 @@ class TimeSetterViewController: UIViewController
    func configureWithAlarm(alarm: Alarm?)
    {
       self.alarm = alarm
-      self.temporaryHourValue = self.alarm?.fireDate.hour
-      self.temporaryMinuteValue = self.alarm?.fireDate.minute
+      temporaryHourValue = alarm?.fireDate.hour
+      temporaryMinuteValue = alarm?.fireDate.minute
    }
    
    func amLabelTapped()
@@ -85,10 +85,10 @@ class TimeSetterViewController: UIViewController
    {
       super.viewWillAppear(animated)
       
-      self.temporaryHourValue = nil
-      self.temporaryMinuteValue = nil
+      temporaryHourValue = nil
+      temporaryMinuteValue = nil
       
-      self.delay(0.01, closure: { () -> () in
+      delay(0.01, closure: { () -> () in
          if let hour = self.alarm?.fireDate.hour where self.hourLabel != nil
          {
             self.hourScrollViewController?.scrollToNumber(hour, animated: false)
@@ -100,7 +100,7 @@ class TimeSetterViewController: UIViewController
          }
       })
       
-      self.updateInformativeTimeLabel()
+      updateInformativeTimeLabel()
    }
    
    override func preferredStatusBarStyle() -> UIStatusBarStyle
@@ -110,15 +110,15 @@ class TimeSetterViewController: UIViewController
    
    func updateTimeLabels()
    {
-      if let hour = self.alarm?.fireDate.hour where self.hourLabel != nil
+      if let hour = alarm?.fireDate.hour where hourLabel != nil
       {
-         self.hourLabel.text = TimeDisplayProvider.textForHourValue(hour)
-         self.updateAmAndPmLabelAlphaWithHour(hour)
+         hourLabel.text = TimeDisplayProvider.textForHourValue(hour)
+         updateAmAndPmLabelAlphaWithHour(hour)
       }
       
-      if let minute = self.alarm?.fireDate.minute where self.minuteLabel != nil
+      if let minute = alarm?.fireDate.minute where minuteLabel != nil
       {
-         self.minuteLabel.text = TimeDisplayProvider.textForMinuteValue(minute)
+         minuteLabel.text = TimeDisplayProvider.textForMinuteValue(minute)
       }
    }
    
@@ -135,11 +135,11 @@ class TimeSetterViewController: UIViewController
    {
       super.viewDidLayoutSubviews()
       
-      let globalHourRect = self.view.convertRect(self.hourMarkerView.frame, toView: nil)
-      let globalMinuteRect = self.view.convertRect(self.minuteMarkerView.frame, toView: nil)
+      let globalHourRect = view.convertRect(hourMarkerView.frame, toView: nil)
+      let globalMinuteRect = view.convertRect(minuteMarkerView.frame, toView: nil)
       
-      self.hourScrollViewController?.globalMarkerRect = globalHourRect
-      self.minuteScrollViewController?.globalMarkerRect = globalMinuteRect
+      hourScrollViewController?.globalMarkerRect = globalHourRect
+      minuteScrollViewController?.globalMarkerRect = globalMinuteRect
    }
    
    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
@@ -149,10 +149,10 @@ class TimeSetterViewController: UIViewController
          switch identifier
          {
          case "hourTimelineScrollViewController":
-            self.setupHourScrollViewControllerWithSegue(segue)
+            setupHourScrollViewControllerWithSegue(segue)
             break
          case "minuteTimelineScrollViewController":
-            self.setupMinuteScrollViewControllerWithSegue(segue)
+            setupMinuteScrollViewControllerWithSegue(segue)
             break
          default:
             break
@@ -162,18 +162,18 @@ class TimeSetterViewController: UIViewController
    
    private func setupHourScrollViewControllerWithSegue(segue: UIStoryboardSegue)
    {
-      self.hourScrollViewController = segue.destinationViewController as? InfiniteTimelineScrollingViewController
-      let attributes = TimelineViewAttributes(orientation: .Left, interval: .Hour, mode: self.timelineMode)
-      self.hourScrollViewController?.timelineAttributes = attributes
-      self.hourScrollViewController?.infiniteScrollViewDelegate = self
+      hourScrollViewController = segue.destinationViewController as? InfiniteTimelineScrollingViewController
+      let attributes = TimelineViewAttributes(orientation: .Left, interval: .Hour, mode: timelineMode)
+      hourScrollViewController?.timelineAttributes = attributes
+      hourScrollViewController?.infiniteScrollViewDelegate = self
    }
    
    private func setupMinuteScrollViewControllerWithSegue(segue: UIStoryboardSegue)
    {
-      self.minuteScrollViewController = segue.destinationViewController as? InfiniteTimelineScrollingViewController
-      let attributes = TimelineViewAttributes(orientation: .Right, interval: .Minute, mode: self.timelineMode)
-      self.minuteScrollViewController?.timelineAttributes = attributes
-      self.minuteScrollViewController?.infiniteScrollViewDelegate = self
+      minuteScrollViewController = segue.destinationViewController as? InfiniteTimelineScrollingViewController
+      let attributes = TimelineViewAttributes(orientation: .Right, interval: .Minute, mode: timelineMode)
+      minuteScrollViewController?.timelineAttributes = attributes
+      minuteScrollViewController?.infiniteScrollViewDelegate = self
    }
    
    private func giveScrollViewFocus(scrollView: InfiniteTimelineScrollView)
@@ -185,7 +185,7 @@ class TimeSetterViewController: UIViewController
       var leftBarViewAlpha: CGFloat = 1
       var rightBarViewAlpha: CGFloat = 1
       
-      if self.hourScrollViewController!.infiniteScrollView.isEqual(scrollView)
+      if hourScrollViewController!.infiniteScrollView.isEqual(scrollView)
       {
          dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { () -> Void in
             self.minuteScrollViewController?.killScroll()
@@ -222,9 +222,9 @@ extension TimeSetterViewController: InfiniteTimelineScrollingViewControllerDeleg
 {
    func infiniteScrollViewWasTapped(scrollView: InfiniteTimelineScrollView, atGlobalLocation location: CGPoint)
    {
-      if self.labelContainerView.frame.contains(location)
+      if labelContainerView.frame.contains(location)
       {         
-         self.delegate?.timeSetterViewControllerTimeWasTapped()
+         delegate?.timeSetterViewControllerTimeWasTapped()
       }
       else if amLabel.frame.contains(location)
       {
@@ -236,18 +236,18 @@ extension TimeSetterViewController: InfiniteTimelineScrollingViewControllerDeleg
       }
       else
       {
-         self.giveScrollViewFocus(scrollView)
+         giveScrollViewFocus(scrollView)
       }
    }
    
    func infiniteScrollViewWillBeginDragging(scrollView: InfiniteTimelineScrollView)
    {
-      self.giveScrollViewFocus(scrollView)
+      giveScrollViewFocus(scrollView)
    }
    
    func infiniteScrollViewDidScroll(scrollView: InfiniteTimelineScrollView)
    {
-      self.updateLabelsWithScrollView(scrollView)
+      updateLabelsWithScrollView(scrollView)
    }
    
    private func updateLabelsWithScrollView(scrollView: InfiniteTimelineScrollView)
@@ -257,12 +257,12 @@ extension TimeSetterViewController: InfiniteTimelineScrollingViewControllerDeleg
       switch scrollView.timelineAttributes.interval
       {
       case .Minute:
-         scrollViewController = self.minuteScrollViewController!
-         label = self.minuteLabel!
+         scrollViewController = minuteScrollViewController!
+         label = minuteLabel!
          break
       case .Hour:
-         scrollViewController = self.hourScrollViewController!
-         label = self.hourLabel!
+         scrollViewController = hourScrollViewController!
+         label = hourLabel!
          break
       }
       
@@ -272,21 +272,21 @@ extension TimeSetterViewController: InfiniteTimelineScrollingViewControllerDeleg
          label.text = timeValue.associatedLabel.text?.substring(0, length: 2)
       }
       
-      self.updateInformativeTimeLabel()
+      updateInformativeTimeLabel()
    }
    
    private func updateAmAndPmLabelAlphaWithHour(hour: Int)
    {
-      self.amLabel.alpha = hour < 12 ? 1 : kDisabledAlphaValue
-      self.pmLabel.alpha = hour >= 12 ? 1 : kDisabledAlphaValue
+      amLabel.alpha = hour < 12 ? 1 : kDisabledAlphaValue
+      pmLabel.alpha = hour >= 12 ? 1 : kDisabledAlphaValue
    }
    
    func updateInformativeTimeLabel()
    {
-      if let hour = self.currentHourValue, minute = self.currentMinuteValue
+      if let hour = currentHourValue, minute = currentMinuteValue
       {
-         self.informativeLabel.text = AlarmCountdownUtility.informativeCountdownTextForHour(hour, minute: minute)
-         self.updateAmAndPmLabelAlphaWithHour(hour)
+         informativeLabel.text = AlarmCountdownUtility.informativeCountdownTextForHour(hour, minute: minute)
+         updateAmAndPmLabelAlphaWithHour(hour)
       }
    }
 }
