@@ -22,6 +22,9 @@ class TimeSetterViewController: UIViewController
    @IBOutlet weak var labelContainerView: UIView!
    @IBOutlet weak var informativeLabel: UILabel!
    
+   @IBOutlet weak var amLabel: UILabel!
+   @IBOutlet weak var pmLabel: UILabel!
+   
    @IBOutlet weak var hourMarkerView: UIView!
    @IBOutlet weak var minuteMarkerView: UIView!
    
@@ -60,6 +63,24 @@ class TimeSetterViewController: UIViewController
       self.temporaryMinuteValue = self.alarm?.fireDate.minute
    }
    
+   func amLabelTapped()
+   {
+      if let hour = self.currentHourValue where hour >= 12
+      {
+         self.hourScrollViewController?.scrollToNumber(hour - 12, animated: true)
+         giveScrollViewFocus(hourScrollViewController!.infiniteScrollView!)
+      }
+   }
+   
+   func pmLabelTapped()
+   {
+      if let hour = self.currentHourValue where hour < 12
+      {
+         self.hourScrollViewController?.scrollToNumber(hour + 12, animated: true)
+         giveScrollViewFocus(hourScrollViewController!.infiniteScrollView!)
+      }
+   }
+   
    override func viewWillAppear(animated: Bool)
    {
       super.viewWillAppear(animated)
@@ -92,6 +113,7 @@ class TimeSetterViewController: UIViewController
       if let hour = self.alarm?.fireDate.hour where self.hourLabel != nil
       {
          self.hourLabel.text = TimeDisplayProvider.textForHourValue(hour)
+         self.updateAmAndPmLabelAlphaWithHour(hour)
       }
       
       if let minute = self.alarm?.fireDate.minute where self.minuteLabel != nil
@@ -204,6 +226,14 @@ extension TimeSetterViewController: InfiniteTimelineScrollingViewControllerDeleg
       {         
          self.delegate?.timeSetterViewControllerTimeWasTapped()
       }
+      else if amLabel.frame.contains(location)
+      {
+         amLabelTapped()
+      }
+      else if pmLabel.frame.contains(location)
+      {
+         pmLabelTapped()
+      }
       else
       {
          self.giveScrollViewFocus(scrollView)
@@ -245,11 +275,18 @@ extension TimeSetterViewController: InfiniteTimelineScrollingViewControllerDeleg
       self.updateInformativeTimeLabel()
    }
    
+   private func updateAmAndPmLabelAlphaWithHour(hour: Int)
+   {
+      self.amLabel.alpha = hour < 12 ? 1 : kDisabledAlphaValue
+      self.pmLabel.alpha = hour >= 12 ? 1 : kDisabledAlphaValue
+   }
+   
    func updateInformativeTimeLabel()
    {
       if let hour = self.currentHourValue, minute = self.currentMinuteValue
       {
          self.informativeLabel.text = AlarmCountdownUtility.informativeCountdownTextForHour(hour, minute: minute)
+         self.updateAmAndPmLabelAlphaWithHour(hour)
       }
    }
 }
