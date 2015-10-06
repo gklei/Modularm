@@ -15,6 +15,10 @@ protocol AlarmOptionModelProtocol
    func humanReadableString() -> String
 }
 
+enum AlarmType: Int16 {
+   case Date, Timer
+}
+
 @objc(Alarm)
 class Alarm: NSManagedObject
 {
@@ -29,6 +33,7 @@ class Alarm: NSManagedObject
    @NSManaged var sound: Sound?
    @NSManaged var weather: Weather?
    @NSManaged var identifier: String
+   @NSManaged var alarmTypeValue: Int16
    
    var isValid: Bool {
       get {
@@ -45,11 +50,23 @@ class Alarm: NSManagedObject
       }
    }
    
+   var alarmType: AlarmType {
+      get {
+         return AlarmType(rawValue: self.alarmTypeValue)!
+      }
+      set {
+         self.alarmTypeValue = newValue.rawValue
+      }
+   }
+   
    override func awakeFromInsert()
    {
+      super.awakeFromInsert()
+      
       self.sound = CoreDataStack.newModelWithOption(.Sound) as? Sound
       self.fireDateValue = NSDate().timeIntervalSince1970
       self.identifier = NSUUID().UUIDString
+      self.alarmType = .Date
    }
    
    func deleteOption(option: AlarmOption)
