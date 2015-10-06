@@ -977,12 +977,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EKY-BC-dbc" customClass="DigitalTimeView" customModule="Modularm" customModuleProvider="target">
-                                <rect key="frame" x="60" y="66" width="200" height="85"/>
+                                <rect key="frame" x="45" y="66" width="230" height="85"/>
                                 <animations/>
                                 <color key="backgroundColor" red="0.1176470588" green="0.1176470588" blue="0.1176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="85" id="N3j-TO-2Tm"/>
-                                    <constraint firstAttribute="width" constant="200" id="aj7-4Q-3g5"/>
+                                    <constraint firstAttribute="width" constant="230" id="aj7-4Q-3g5"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
@@ -991,14 +991,14 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mx4-E8-SRk">
-                                <rect key="frame" x="68" y="26" width="42" height="20"/>
+                                <rect key="frame" x="53" y="26" width="42" height="20"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alarm will go off in" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kvd-pe-z1H">
-                                <rect key="frame" x="68" y="1" width="132.5" height="20.5"/>
+                                <rect key="frame" x="53" y="1" width="132.5" height="20.5"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -1053,12 +1053,12 @@
                                 <animations/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k6f-HE-AeE" customClass="DigitalTimeView" customModule="Modularm" customModuleProvider="target">
-                                <rect key="frame" x="60" y="140" width="200" height="85"/>
+                                <rect key="frame" x="45" y="140" width="230" height="85"/>
                                 <animations/>
                                 <color key="backgroundColor" red="0.67245636393996533" green="0.66911080989051275" blue="0.67580191798941791" alpha="0.67000000000000004" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="85" id="6rN-E1-fYp"/>
-                                    <constraint firstAttribute="width" constant="200" id="xIz-LU-2UJ"/>
+                                    <constraint firstAttribute="width" constant="230" id="xIz-LU-2UJ"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
