@@ -47,6 +47,11 @@ class AlarmScheduler
       }
    }
    
+   class func clearAllAlarms()
+   {
+      UIApplication.sharedApplication().cancelAllLocalNotifications()
+   }
+   
    class func logCurrentScheduledNotifications()
    {
       let notifications = UIApplication.sharedApplication().scheduledLocalNotifications
