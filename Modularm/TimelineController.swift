@@ -15,15 +15,12 @@ class TimelineController: UIViewController
    @IBOutlet weak var timelineDataSource: TimelineDataSource!
    @IBOutlet var collectionView: UICollectionView!
    
-   private var configurationController: AlarmConfigurationController
-   private var alarmDetailViewController: AlarmDetailViewController
-   
-   required init?(coder aDecoder: NSCoder)
-   {
-      self.configurationController = UIStoryboard.controllerWithIdentifier("AlarmConfigurationController") as! AlarmConfigurationController
-      self.alarmDetailViewController = UIStoryboard.controllerWithIdentifier("AlarmDetailViewController") as! AlarmDetailViewController
-      super.init(coder: aDecoder)
-   }
+   lazy private var configurationController: AlarmConfigurationController = {
+      return UIStoryboard.controllerWithIdentifier("AlarmConfigurationController") as! AlarmConfigurationController
+   }()
+   lazy private var alarmDetailViewController: AlarmDetailViewController = {
+      return UIStoryboard.controllerWithIdentifier("AlarmDetailViewController") as! AlarmDetailViewController
+   }()
 
    // MARK: - Lifecycle
    override func viewDidLoad()
@@ -39,16 +36,9 @@ class TimelineController: UIViewController
 
    override func viewWillAppear(animated: Bool)
    {
-      if self.navigationController?.navigationBarHidden == true
-      {
-         self.navigationController?.setNavigationBarHidden(false, animated: true);
-      }
-      
+      self.navigationController?.setNavigationBarHidden(false, animated: true);
       self.timelineDataSource.removeIncompleteAlarms()
-
-      let headerSize = AlarmManager.alarms?.count > 0 ? CGSizeMake(CGRectGetWidth(self.view.bounds), 150) : CGSizeZero
-      let flowLayout = self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-      flowLayout.headerReferenceSize = headerSize
+      self.updateFlowLayoutHeaderSize()
    }
 
    override func viewWillDisappear(animated: Bool)
@@ -60,16 +50,22 @@ class TimelineController: UIViewController
    {
       if segue.identifier == "addAlarmButtonPressed"
       {
-         let configurationController = segue.destinationViewController as! AlarmConfigurationController
-         configurationController.createNewAlarm()
+         if let alarm = AlarmManager.createNewAlarm()
+         {
+            let configurationController = segue.destinationViewController as! AlarmConfigurationController
+            configurationController.configureWithAlarm(alarm)
+         }
       }
    }
 
    // MARK: - IBActions
    @IBAction func addNewAlarmButtonPressed()
    {
-      self.configurationController.createNewAlarm()
-      self.navigationController?.pushViewController(self.configurationController, animated: true)
+      if let alarm = AlarmManager.createNewAlarm()
+      {
+         self.configurationController.configureWithAlarm(alarm)
+         self.navigationController?.pushViewController(self.configurationController, animated: true)
+      }
    }
    
    @IBAction func logCurrentScheduledNotifications()
@@ -113,5 +109,12 @@ class TimelineController: UIViewController
    {
       let barButtonItem = UIBarButtonItem(title: title, style: .Plain, target: nil, action: nil)
       self.navigationItem.backBarButtonItem = barButtonItem
+   }
+   
+   private func updateFlowLayoutHeaderSize()
+   {
+      let headerSize = AlarmManager.alarms?.count > 0 ? CGSizeMake(view.bounds.width, 150) : CGSizeZero
+      let flowLayout = self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+      flowLayout.headerReferenceSize = headerSize
    }
 }
