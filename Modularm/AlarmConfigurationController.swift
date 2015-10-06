@@ -36,7 +36,7 @@ class AlarmConfigurationController: UIViewController
       super.init(coder: aDecoder)
       
       self.timeSetterController.delegate = self
-      self.timeSetterController.transitioningDelegate = self
+//      self.timeSetterController.transitioningDelegate = self
       
       // load the view as soon as possible
       _ = self.timeSetterController.view
