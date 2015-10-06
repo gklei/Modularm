@@ -11,8 +11,6 @@ import UIKit
 class TimelineHeaderView: UICollectionReusableView
 {
    @IBOutlet weak var alarmTimeView: DigitalTimeView!
-   @IBOutlet weak var amOrPmLabel: UILabel!
-   
    @IBOutlet weak var innerContentView: UIView!
    @IBOutlet weak var scrollView: TapScrollView!
    
@@ -116,7 +114,6 @@ class TimelineHeaderView: UICollectionReusableView
    {
       self.alarm = alarm
       self.alarmTimeView.updateTimeWithAlarm(alarm)
-      self.amOrPmLabel.text = alarm.fireDate.hour < 12 ? "am" : "pm"
       
       let viewModel = TimelineCellAlarmViewModel(alarm: alarm)
       self.setColorsWithViewModel(viewModel)

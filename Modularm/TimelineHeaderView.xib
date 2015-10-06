@@ -18,21 +18,14 @@
                             <rect key="frame" x="0.0" y="0.0" width="377" height="150"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gnc-x2-dW6" customClass="DigitalTimeView" customModule="Modularm" customModuleProvider="target">
-                                    <rect key="frame" x="74" y="33" width="199" height="85"/>
+                                    <rect key="frame" x="58.5" y="33" width="230" height="85"/>
                                     <animations/>
                                     <color key="backgroundColor" red="0.11764705882352941" green="0.11764705882352941" blue="0.11764705882352941" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="85" id="G4u-Vc-wuk"/>
-                                        <constraint firstAttribute="width" constant="199" id="iAN-6d-rG4"/>
+                                        <constraint firstAttribute="width" constant="230" id="iAN-6d-rG4"/>
                                     </constraints>
                                 </view>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="pm" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0eQ-P9-DfY">
-                                    <rect key="frame" x="273" y="44" width="30" height="25"/>
-                                    <animations/>
-                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="21"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yp5-7c-Tp3">
                                     <rect key="frame" x="327" y="97" width="30" height="33"/>
                                     <animations/>
@@ -51,8 +44,6 @@
                                 <constraint firstAttribute="centerY" secondItem="Gnc-x2-dW6" secondAttribute="centerY" id="7WZ-FZ-d0E"/>
                                 <constraint firstItem="Gnc-x2-dW6" firstAttribute="centerX" secondItem="pfI-DP-Eg3" secondAttribute="centerX" constant="-15" id="PKV-ma-fWQ"/>
                                 <constraint firstAttribute="bottom" secondItem="Yp5-7c-Tp3" secondAttribute="bottom" constant="20" id="PQr-wm-UOe"/>
-                                <constraint firstItem="0eQ-P9-DfY" firstAttribute="leading" secondItem="Gnc-x2-dW6" secondAttribute="trailing" id="Rbu-yd-1lM"/>
-                                <constraint firstItem="0eQ-P9-DfY" firstAttribute="top" secondItem="Gnc-x2-dW6" secondAttribute="top" constant="11" id="d24-As-OdD"/>
                                 <constraint firstAttribute="height" constant="150" id="jXc-OM-akp"/>
                                 <constraint firstAttribute="trailing" secondItem="Yp5-7c-Tp3" secondAttribute="trailing" constant="20" id="v51-H2-1PN"/>
                             </constraints>
@@ -94,7 +85,6 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="alarmTimeView" destination="Gnc-x2-dW6" id="b9u-Fh-TS4"/>
-                <outlet property="amOrPmLabel" destination="0eQ-P9-DfY" id="kMb-iO-G0Z"/>
                 <outlet property="innerContentView" destination="pfI-DP-Eg3" id="gPD-FO-U1S"/>
                 <outlet property="scrollView" destination="FFq-hc-7aN" id="VCv-SF-meh"/>
             </connections>
