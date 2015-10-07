@@ -32,20 +32,18 @@ class AlarmConfigurationController: UIViewController
    
    required init?(coder aDecoder: NSCoder)
    {
-      self.timeSetterController = UIStoryboard.controllerWithIdentifier("TimeSetterViewController") as! TimeSetterViewController
+      timeSetterController = UIStoryboard.controllerWithIdentifier("TimeSetterViewController") as! TimeSetterViewController
       super.init(coder: aDecoder)
-      
-      self.timeSetterController.delegate = self
-//      self.timeSetterController.transitioningDelegate = self
-      
-      // load the view as soon as possible
-      _ = self.timeSetterController.view
    }
 
    // MARK: - Lifecycle
    override func viewDidLoad()
    {
       super.viewDidLoad()
+      
+      // load the view as soon as possible
+      _ = self.timeSetterController.view
+      self.timeSetterController.delegate = self
       self.setupKeboardNotifications()
    }
    
@@ -248,6 +246,16 @@ extension AlarmConfigurationController: AlarmOptionsControllerDelegate
 extension AlarmConfigurationController: TimeSetterViewControllerDelegate
 {
    func timeSetterViewControllerTimeWasTapped()
+   {
+      updateAlarmPreviewAndDismissTimeSetter()
+   }
+   
+   func doneButtonPressed()
+   {
+      updateAlarmPreviewAndDismissTimeSetter()
+   }
+   
+   private func updateAlarmPreviewAndDismissTimeSetter()
    {
       if let hour = self.timeSetterController.currentHourValue, minute = self.timeSetterController.currentMinuteValue
       {
