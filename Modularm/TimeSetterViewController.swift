@@ -13,6 +13,7 @@ let kDisabledAlphaValue: CGFloat = 0.35
 protocol TimeSetterViewControllerDelegate
 {
    func timeSetterViewControllerTimeWasTapped()
+   func doneButtonPressed()
 }
 
 class TimeSetterViewController: UIViewController
@@ -27,6 +28,8 @@ class TimeSetterViewController: UIViewController
    
    @IBOutlet weak var hourMarkerView: UIView!
    @IBOutlet weak var minuteMarkerView: UIView!
+   
+   @IBOutlet weak var doneButton: UIButton!
    
    // FIX THIS LATER
    private var temporaryHourValue: Int?
@@ -56,13 +59,6 @@ class TimeSetterViewController: UIViewController
    private weak var alarm: Alarm?
    var delegate: TimeSetterViewControllerDelegate?
    
-   func configureWithAlarm(alarm: Alarm?)
-   {
-      self.alarm = alarm
-      temporaryHourValue = alarm?.fireDate.hour
-      temporaryMinuteValue = alarm?.fireDate.minute
-   }
-   
    override func viewWillAppear(animated: Bool)
    {
       super.viewWillAppear(animated)
@@ -85,9 +81,32 @@ class TimeSetterViewController: UIViewController
       updateInformativeTimeLabel()
    }
    
+   override func viewDidLayoutSubviews()
+   {
+      super.viewDidLayoutSubviews()
+      
+      let globalHourRect = view.convertRect(hourMarkerView.frame, toView: nil)
+      let globalMinuteRect = view.convertRect(minuteMarkerView.frame, toView: nil)
+      
+      hourScrollViewController?.globalMarkerRect = globalHourRect
+      minuteScrollViewController?.globalMarkerRect = globalMinuteRect
+   }
+   
    override func preferredStatusBarStyle() -> UIStatusBarStyle
    {
       return .LightContent
+   }
+   
+   @IBAction func doneButtonPressed()
+   {
+      delegate?.doneButtonPressed()
+   }
+   
+   func configureWithAlarm(alarm: Alarm?)
+   {
+      self.alarm = alarm
+      temporaryHourValue = alarm?.fireDate.hour
+      temporaryMinuteValue = alarm?.fireDate.minute
    }
    
    func updateTimeLabels()
@@ -111,17 +130,6 @@ class TimeSetterViewController: UIViewController
             Int64(delay * Double(NSEC_PER_SEC))
          ),
          dispatch_get_main_queue(), closure)
-   }
-   
-   override func viewDidLayoutSubviews()
-   {
-      super.viewDidLayoutSubviews()
-      
-      let globalHourRect = view.convertRect(hourMarkerView.frame, toView: nil)
-      let globalMinuteRect = view.convertRect(minuteMarkerView.frame, toView: nil)
-      
-      hourScrollViewController?.globalMarkerRect = globalHourRect
-      minuteScrollViewController?.globalMarkerRect = globalMinuteRect
    }
    
    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
