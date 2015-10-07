@@ -73,6 +73,12 @@ class TimelineController: UIViewController
       AlarmScheduler.logCurrentScheduledNotifications()
    }
    
+   @IBAction func settingsButtonPressed()
+   {
+      let settingsViewController = SettingsViewController()
+      self.navigationController?.presentViewController(settingsViewController, animated: true, completion: nil)
+   }
+   
    // MARK: - Public
    func openSettingsForAlarm(alarm: Alarm)
    {

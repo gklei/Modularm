@@ -92,7 +92,7 @@
                     <navigationItem key="navigationItem" title="Modularm" id="Quf-Is-AO7">
                         <barButtonItem key="leftBarButtonItem" image="icn-bar-settings" id="Ga3-f6-xVH">
                             <connections>
-                                <action selector="logCurrentScheduledNotifications" destination="5Wx-Mm-Iig" id="IL1-CR-r6V"/>
+                                <action selector="settingsButtonPressed" destination="5Wx-Mm-Iig" id="2wf-oT-UbO"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="iyX-07-HgF">

@@ -68,6 +68,8 @@
 		8EFACDDD1AD8390F00279956 /* TimelineController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFACDDC1AD8390F00279956 /* TimelineController.swift */; };
 		8EFACDE11AD83A1E00279956 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFACDE01AD83A1E00279956 /* CoreDataStack.swift */; };
 		F30823D91BBDC2D80030155D /* AlarmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30823D81BBDC2D80030155D /* AlarmManager.swift */; settings = {ASSET_TAGS = (); }; };
+		F3C11E3F1BC599F60094CE71 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C11E3D1BC599F60094CE71 /* SettingsViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		F3C11E401BC599F60094CE71 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3C11E3E1BC599F60094CE71 /* SettingsViewController.xib */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -146,6 +148,8 @@
 		8EFACDDC1AD8390F00279956 /* TimelineController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimelineController.swift; path = Modularm/TimelineController.swift; sourceTree = "<group>"; };
 		8EFACDE01AD83A1E00279956 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataStack.swift; path = Modularm/CoreDataStack.swift; sourceTree = "<group>"; };
 		F30823D81BBDC2D80030155D /* AlarmManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlarmManager.swift; path = Modularm/AlarmManager.swift; sourceTree = "<group>"; };
+		F3C11E3D1BC599F60094CE71 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = Modularm/SettingsViewController.swift; sourceTree = "<group>"; };
+		F3C11E3E1BC599F60094CE71 /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SettingsViewController.xib; path = Modularm/SettingsViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -313,6 +317,7 @@
 				8EFACDCD1AD837EE00279956 /* ModularmTests */,
 				8EC9B9CC1ADB9C6800DBF350 /* Other */,
 				8EFACDB31AD837EE00279956 /* Products */,
+				F3C11E3C1BC599B00094CE71 /* Settings */,
 				8EFACDB51AD837EE00279956 /* Supporting Files */,
 				5B7EF4581AE85BDC00472976 /* Timeline */,
 				5B49D74C1B43782300896878 /* Timeline UI */,
@@ -365,6 +370,15 @@
 				8EFACDCF1AD837EE00279956 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F3C11E3C1BC599B00094CE71 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				F3C11E3D1BC599F60094CE71 /* SettingsViewController.swift */,
+				F3C11E3E1BC599F60094CE71 /* SettingsViewController.xib */,
+			);
+			name = Settings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -451,6 +465,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8EFACDC01AD837EE00279956 /* Main.storyboard in Resources */,
+				F3C11E401BC599F60094CE71 /* SettingsViewController.xib in Resources */,
 				8EFACDC51AD837EE00279956 /* LaunchScreen.xib in Resources */,
 				5B6C142C1B094B78009617A8 /* TimelineCollectionViewCell.xib in Resources */,
 				8E6094F31B08585E007F8D24 /* TimelineHeaderView.xib in Resources */,
@@ -495,6 +510,7 @@
 				5B4C10AB1B60A812006709B7 /* UIBarButtonItem+Additions.swift in Sources */,
 				F30823D91BBDC2D80030155D /* AlarmManager.swift in Sources */,
 				5B6C12701AFFB875009617A8 /* AlarmOptionDelegateDataSourceBuilder.swift in Sources */,
+				F3C11E3F1BC599F60094CE71 /* SettingsViewController.swift in Sources */,
 				8E5BD3271ADB930400C42FAA /* AlarmOptionButton.swift in Sources */,
 				5B1997B31AE5B98600D1522C /* RepeatOptionDelegateDataSource.swift in Sources */,
 				5B6C142B1B094B78009617A8 /* TimelineCollectionViewCell.swift in Sources */,
