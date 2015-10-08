@@ -72,6 +72,9 @@
 		F3C11E401BC599F60094CE71 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3C11E3E1BC599F60094CE71 /* SettingsViewController.xib */; settings = {ASSET_TAGS = (); }; };
 		F3C11E421BC5A51B0094CE71 /* SettingsTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C11E411BC5A51B0094CE71 /* SettingsTableViewDataSource.swift */; settings = {ASSET_TAGS = (); }; };
 		F3C11E441BC5B7040094CE71 /* AppSettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C11E431BC5B7040094CE71 /* AppSettingsManager.swift */; settings = {ASSET_TAGS = (); }; };
+		F3E0ADE81BC6DD8200643B67 /* AnalogTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E0ADE71BC6DD8200643B67 /* AnalogTimeView.swift */; settings = {ASSET_TAGS = (); }; };
+		F3E0ADEE1BC6DDAB00643B67 /* BEMAnalogClockView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3E0ADEA1BC6DDAB00643B67 /* BEMAnalogClockView.m */; settings = {ASSET_TAGS = (); }; };
+		F3E0ADEF1BC6DDAB00643B67 /* KSMHand.m in Sources */ = {isa = PBXBuildFile; fileRef = F3E0ADEC1BC6DDAB00643B67 /* KSMHand.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -154,6 +157,12 @@
 		F3C11E3E1BC599F60094CE71 /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SettingsViewController.xib; path = Modularm/SettingsViewController.xib; sourceTree = "<group>"; };
 		F3C11E411BC5A51B0094CE71 /* SettingsTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewDataSource.swift; sourceTree = "<group>"; };
 		F3C11E431BC5B7040094CE71 /* AppSettingsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSettingsManager.swift; sourceTree = "<group>"; };
+		F3E0ADE71BC6DD8200643B67 /* AnalogTimeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnalogTimeView.swift; path = Modularm/AnalogTimeView.swift; sourceTree = "<group>"; };
+		F3E0ADE91BC6DDAB00643B67 /* BEMAnalogClockView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEMAnalogClockView.h; path = Modularm/BEMAnalogClockView.h; sourceTree = "<group>"; };
+		F3E0ADEA1BC6DDAB00643B67 /* BEMAnalogClockView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEMAnalogClockView.m; path = Modularm/BEMAnalogClockView.m; sourceTree = "<group>"; };
+		F3E0ADEB1BC6DDAB00643B67 /* KSMHand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSMHand.h; path = Modularm/KSMHand.h; sourceTree = "<group>"; };
+		F3E0ADEC1BC6DDAB00643B67 /* KSMHand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KSMHand.m; path = Modularm/KSMHand.m; sourceTree = "<group>"; };
+		F3E0ADF01BC6DE1400643B67 /* Modularm-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Modularm-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,6 +219,7 @@
 				8E5BD3261ADB930400C42FAA /* AlarmOptionButton.swift */,
 				5BD0AF101B2CE7A20018A4C6 /* TimeDisplayProvider.swift */,
 				5B49D74E1B4378E700896878 /* DigitalTimeView.swift */,
+				F3E0ADE71BC6DD8200643B67 /* AnalogTimeView.swift */,
 			);
 			name = "Alarm UI";
 			sourceTree = "<group>";
@@ -311,6 +321,7 @@
 		8EFACDA91AD837EE00279956 = {
 			isa = PBXGroup;
 			children = (
+				F3E0ADDF1BC6DB6900643B67 /* Analog Clock */,
 				8EFACDB41AD837EE00279956 /* Alarm Configuration */,
 				8E3BDC371AE4308A00E1FCDC /* Alarm Options */,
 				5B49D74D1B43783B00896878 /* Alarm UI */,
@@ -385,6 +396,18 @@
 				F3C11E431BC5B7040094CE71 /* AppSettingsManager.swift */,
 			);
 			name = Settings;
+			sourceTree = "<group>";
+		};
+		F3E0ADDF1BC6DB6900643B67 /* Analog Clock */ = {
+			isa = PBXGroup;
+			children = (
+				F3E0ADE91BC6DDAB00643B67 /* BEMAnalogClockView.h */,
+				F3E0ADEA1BC6DDAB00643B67 /* BEMAnalogClockView.m */,
+				F3E0ADEB1BC6DDAB00643B67 /* KSMHand.h */,
+				F3E0ADEC1BC6DDAB00643B67 /* KSMHand.m */,
+				F3E0ADF01BC6DE1400643B67 /* Modularm-Bridging-Header.h */,
+			);
+			name = "Analog Clock";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -520,7 +543,9 @@
 				8E5BD3271ADB930400C42FAA /* AlarmOptionButton.swift in Sources */,
 				5B1997B31AE5B98600D1522C /* RepeatOptionDelegateDataSource.swift in Sources */,
 				5B6C142B1B094B78009617A8 /* TimelineCollectionViewCell.swift in Sources */,
+				F3E0ADEF1BC6DDAB00643B67 /* KSMHand.m in Sources */,
 				5B56CB7F1B6067660000BD12 /* AlarmScheduler.swift in Sources */,
+				F3E0ADEE1BC6DDAB00643B67 /* BEMAnalogClockView.m in Sources */,
 				8E4511F01ADCF00B00A3E8EC /* UIColor+Additions.swift in Sources */,
 				5B1997AA1AE5765800D1522C /* WeatherOptionDelegateDataSource.swift in Sources */,
 				5B6C12621AFF2841009617A8 /* Countdown.swift in Sources */,
@@ -545,6 +570,7 @@
 				8E8228E61ADB821C00F9A26E /* AlarmConfigurationController.swift in Sources */,
 				5B74FC8C1ADD74A100902484 /* AlarmOptionSettingsController.swift in Sources */,
 				8E8228E81ADB8AA900F9A26E /* AlarmOptionsViewController.swift in Sources */,
+				F3E0ADE81BC6DD8200643B67 /* AnalogTimeView.swift in Sources */,
 				5B6C12641AFF2841009617A8 /* Message.swift in Sources */,
 				5B6D9A281B28AE6A00AA662A /* TimeSetterTransitionAnimator.swift in Sources */,
 				5BEDA3741B277BBC0000983F /* TimelineView.swift in Sources */,
@@ -682,12 +708,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Modularm/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.purevirtualstudios.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Modularm-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -696,12 +725,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Modularm/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.purevirtualstudios.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Modularm-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

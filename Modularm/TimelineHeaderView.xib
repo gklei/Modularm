@@ -44,7 +44,6 @@
                                 <constraint firstAttribute="centerY" secondItem="Gnc-x2-dW6" secondAttribute="centerY" id="7WZ-FZ-d0E"/>
                                 <constraint firstItem="Gnc-x2-dW6" firstAttribute="centerX" secondItem="pfI-DP-Eg3" secondAttribute="centerX" constant="-15" id="PKV-ma-fWQ"/>
                                 <constraint firstAttribute="bottom" secondItem="Yp5-7c-Tp3" secondAttribute="bottom" constant="20" id="PQr-wm-UOe"/>
-                                <constraint firstAttribute="height" constant="150" id="jXc-OM-akp"/>
                                 <constraint firstAttribute="trailing" secondItem="Yp5-7c-Tp3" secondAttribute="trailing" constant="20" id="v51-H2-1PN"/>
                             </constraints>
                         </view>
@@ -65,6 +64,7 @@
                         <constraint firstAttribute="bottom" secondItem="pfI-DP-Eg3" secondAttribute="bottom" id="cQ1-q4-bfZ"/>
                         <constraint firstItem="pfI-DP-Eg3" firstAttribute="top" secondItem="FFq-hc-7aN" secondAttribute="top" id="jU5-Nl-Ldh"/>
                         <constraint firstAttribute="centerX" secondItem="pfI-DP-Eg3" secondAttribute="centerX" id="nvN-g2-lN8"/>
+                        <constraint firstItem="pfI-DP-Eg3" firstAttribute="height" secondItem="FFq-hc-7aN" secondAttribute="height" id="olt-Wx-UUW"/>
                         <constraint firstItem="pfI-DP-Eg3" firstAttribute="leading" secondItem="FFq-hc-7aN" secondAttribute="leading" id="rc6-r8-KbI"/>
                         <constraint firstAttribute="bottom" secondItem="MQ4-I8-iWs" secondAttribute="bottom" id="uqL-O2-H9I"/>
                     </constraints>
