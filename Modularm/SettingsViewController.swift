@@ -57,11 +57,6 @@ class SettingsViewController: UIViewController
       dismiss()
    }
    
-   @IBAction func cancelButtonPressed()
-   {
-      dismiss()
-   }
-   
    // MARK: - Private
    private func dismiss()
    {

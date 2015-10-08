@@ -25,12 +25,6 @@
                     </constraints>
                     <items>
                         <navigationItem title="Settings" id="6XL-sp-PfF">
-                            <barButtonItem key="leftBarButtonItem" title="Cancel" id="DRf-Bu-ZhO">
-                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <connections>
-                                    <action selector="cancelButtonPressed" destination="-1" id="6f6-lY-xeQ"/>
-                                </connections>
-                            </barButtonItem>
                             <barButtonItem key="rightBarButtonItem" title="Done" id="UkX-Uz-nej">
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
