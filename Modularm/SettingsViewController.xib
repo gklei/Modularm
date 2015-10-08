@@ -8,6 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingsViewController" customModule="Modularm" customModuleProvider="target">
             <connections>
                 <outlet property="navigationBar" destination="Om2-1b-ATA" id="7Uy-Jw-OqK"/>
+                <outlet property="tableView" destination="6f5-my-vIu" id="lcW-57-DJl"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -39,16 +40,26 @@
                         </navigationItem>
                     </items>
                 </navigationBar>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6f5-my-vIu">
+                    <rect key="frame" x="0.0" y="84" width="320" height="484"/>
+                    <animations/>
+                    <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <color key="separatorColor" red="0.23203843202097574" green="0.23384232954545459" blue="0.2318853295854931" alpha="1" colorSpace="calibratedRGB"/>
+                </tableView>
             </subviews>
             <animations/>
             <color key="backgroundColor" red="0.1176470588" green="0.1176470588" blue="0.1176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="Om2-1b-ATA" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="1ld-9b-j1e"/>
+                <constraint firstAttribute="bottom" secondItem="6f5-my-vIu" secondAttribute="bottom" id="6s5-hT-XJH"/>
+                <constraint firstItem="6f5-my-vIu" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ZWU-cK-FDd"/>
+                <constraint firstAttribute="trailing" secondItem="6f5-my-vIu" secondAttribute="trailing" id="cJg-MW-2t2"/>
                 <constraint firstAttribute="trailing" secondItem="Om2-1b-ATA" secondAttribute="trailing" id="dNT-jj-PWK"/>
                 <constraint firstItem="Om2-1b-ATA" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="krS-oR-O8i"/>
+                <constraint firstItem="6f5-my-vIu" firstAttribute="top" secondItem="Om2-1b-ATA" secondAttribute="bottom" constant="20" id="wyr-91-blj"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-            <point key="canvasLocation" x="267" y="360"/>
+            <point key="canvasLocation" x="458" y="324"/>
         </view>
     </objects>
 </document>

@@ -10,7 +10,13 @@ import UIKit
 
 class SettingsViewController: UIViewController
 {
+   private var tableViewDataSource: SettingsTableViewDataSource?
    @IBOutlet weak var navigationBar: UINavigationBar!
+   @IBOutlet weak var tableView: UITableView! {
+      didSet {
+         tableViewDataSource = SettingsTableViewDataSource(tableView: tableView)
+      }
+   }
    
    // MARK: - Init
    required init?(coder aDecoder: NSCoder)
@@ -33,6 +39,11 @@ class SettingsViewController: UIViewController
    {
       super.viewDidLoad()
       navigationBar.makeTransparent()
+   }
+   
+   override func viewWillDisappear(animated: Bool)
+   {
+      super.viewWillDisappear(animated)
    }
    
    override func preferredStatusBarStyle() -> UIStatusBarStyle
