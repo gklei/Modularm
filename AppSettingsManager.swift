@@ -11,11 +11,11 @@ import Foundation
 let kAlarmDisplaySettingsKey = "AlarmDisplaySettingsKey"
 let kTimeFormatSettingsKey = "TimeFormatSettingsKey"
 
-enum DisplayMode {
+enum DisplayMode: Int {
    case Analog, Digital
 }
 
-enum TimeFormat {
+enum TimeFormat: Int {
    case Standard, Military
 }
 
@@ -23,14 +23,26 @@ struct AppSettingsManager
 {
    static var displayMode: DisplayMode {
       get {
-         return .Digital
+         let displayValue = NSUserDefaults.standardUserDefaults().integerForKey(kAlarmDisplaySettingsKey) as Int
+         return DisplayMode(rawValue: displayValue)!
       }
    }
    
    static var timeFormat: TimeFormat {
       get {
-         return .Standard
+         let formatValue = NSUserDefaults.standardUserDefaults().integerForKey(kTimeFormatSettingsKey) as Int
+         return TimeFormat(rawValue: formatValue)!
       }
+   }
+
+   static func setDisplayMode(mode: DisplayMode)
+   {
+      NSUserDefaults.standardUserDefaults().setInteger(mode.rawValue, forKey: kAlarmDisplaySettingsKey)
+   }
+   
+   static func setTimeFormat(format: TimeFormat)
+   {
+      NSUserDefaults.standardUserDefaults().setInteger(format.rawValue, forKey: kTimeFormatSettingsKey)
    }
 }
 

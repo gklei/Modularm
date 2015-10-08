@@ -9,6 +9,12 @@
 import UIKit
 
 let kSettingsCellIdentifier = "settingsCellIdentifier"
+let kDisplayStyleSectionIndex = 0
+let kTimeFormatSectionIndex = 1
+let kAnalogIndex = 0
+let kDigitalIndex = 1
+let kStandardTimeIndex = 0
+let kMilitaryTimeIndex = 1
 
 class SettingsTableViewDataSource: NSObject
 {
@@ -60,13 +66,60 @@ extension SettingsTableViewDataSource : UITableViewDataSource
       cell.textLabel?.text = cellTitleDictionary[indexPath.section]![indexPath.row]
       
       var accessoryImageName = "ic_radial"
-      if indexPath.row == 0 {
-         accessoryImageName = "ic_radial_checked"
+      switch indexPath.section {
+      case kDisplayStyleSectionIndex:
+         if AppSettingsManager.displayMode == displayModeForCellIndex(indexPath.row)
+         {
+            accessoryImageName = "ic_radial_checked"
+         }
+         break
+      case kTimeFormatSectionIndex:
+         if AppSettingsManager.timeFormat == timeFormatForCellIndex(indexPath.row)
+         {
+            accessoryImageName = "ic_radial_checked"
+         }
+         break
+      default:
+         break
       }
       
       let accessoryImageView = UIImageView(image: UIImage(named:accessoryImageName)!)
       cell.accessoryView = accessoryImageView
+      cell.selectionStyle = .None
+      
       return cell
+   }
+   
+   private func displayModeForCellIndex(index: Int) -> DisplayMode
+   {
+      var mode: DisplayMode = .Analog
+      switch index {
+      case 0:
+         mode = .Analog
+         break
+      case 1:
+         mode = .Digital
+         break
+      default:
+         break
+      }
+      return mode
+   }
+   
+   private func timeFormatForCellIndex(index: Int) -> TimeFormat
+   {
+      var format: TimeFormat = .Standard
+      switch index {
+      case 0:
+         format = .Standard
+         break
+      case 1:
+         format = .Military
+         break
+      default:
+         break
+      }
+      return format
    }
 }
 
@@ -88,5 +141,22 @@ extension SettingsTableViewDataSource: UITableViewDelegate
       headerLabel.center = CGPoint(x: 12 + (headerLabel.bounds.width * 0.5), y: headerView.center.y)
       
       return headerView
+   }
+   
+   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+   {
+      switch indexPath.section {
+      case kDisplayStyleSectionIndex:
+         let mode = displayModeForCellIndex(indexPath.row)
+         AppSettingsManager.setDisplayMode(mode)
+         break
+      case kTimeFormatSectionIndex:
+         let format = timeFormatForCellIndex(indexPath.row)
+         AppSettingsManager.setTimeFormat(format)
+         break
+      default:
+         break
+      }
+      tableView.reloadData()
    }
 }

@@ -80,6 +80,7 @@ extension DateOptionDelegateDataSource
       
       let accessoryImageView = UIImageView(image: UIImage(named:accessoryImageName)!)
       cell.accessoryView = accessoryImageView
+      cell.selectionStyle = .None
       
       return cell
    }
