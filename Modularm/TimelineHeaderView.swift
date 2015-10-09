@@ -10,7 +10,10 @@ import UIKit
 
 class TimelineHeaderView: UICollectionReusableView
 {
-   @IBOutlet weak var alarmTimeView: DigitalTimeView!
+   @IBOutlet weak var timeContainerHeightConstraint: NSLayoutConstraint!
+   @IBOutlet weak var timeContainerWidthConstraint: NSLayoutConstraint!
+   
+   @IBOutlet weak var alarmTimeContainerView: UIView!
    @IBOutlet weak var innerContentView: UIView!
    @IBOutlet weak var scrollView: TapScrollView!
    
@@ -19,20 +22,19 @@ class TimelineHeaderView: UICollectionReusableView
    private var buttonContainer = UIView()
    private var isOpen: Bool = false
    
+   private var timeDisplayViewController: TimeDisplayViewController = TimeDisplayViewController()
+   
    var alarm: Alarm?
    weak var timelineController: TimelineController?
    
    // MARK: - Lifecycle
    override func awakeFromNib()
    {
-      self.toggleButton.frame = CGRectMake(0, 0, 60, CGRectGetHeight(self.bounds) * 0.6)
-      self.toggleButton.addTarget(self, action: "togglePressed", forControlEvents: .TouchDown)
+      setupToggleAndDeleteButtons()
+      setupButtonContainer()
+      setupScrollViewWithButtonContainer(self.buttonContainer)
       
-      self.deleteButton.frame = CGRectMake(0, CGRectGetHeight(self.toggleButton.frame), 60, CGRectGetHeight(self.bounds) - CGRectGetHeight(self.toggleButton.frame))
-      self.deleteButton.addTarget(self, action: "deletePressed", forControlEvents: .TouchDown)
-      
-      self.setupButtonContainer()
-      self.setupScrollViewWithButtonContainer(self.buttonContainer)
+      alarmTimeContainerView.addSubview(timeDisplayViewController.view)
       
       NSNotificationCenter.defaultCenter().addObserver(self, selector: "onOpen:", name: RevealCellDidOpenNotification, object: nil)
    }
@@ -46,9 +48,20 @@ class TimelineHeaderView: UICollectionReusableView
       self.setupButtonContainer()
       self.setupScrollViewWithButtonContainer(self.buttonContainer)
       self.repositionButtons()
+      
+      timeDisplayViewController.view.frame = alarmTimeContainerView.bounds
    }
    
    // MARK: - Setup
+   private func setupToggleAndDeleteButtons()
+   {
+      self.toggleButton.frame = CGRectMake(0, 0, 60, CGRectGetHeight(self.bounds) * 0.6)
+      self.toggleButton.addTarget(self, action: "togglePressed", forControlEvents: .TouchDown)
+      
+      self.deleteButton.frame = CGRectMake(0, CGRectGetHeight(self.toggleButton.frame), 60, CGRectGetHeight(self.bounds) - CGRectGetHeight(self.toggleButton.frame))
+      self.deleteButton.addTarget(self, action: "deletePressed", forControlEvents: .TouchDown)
+   }
+   
    private func setupScrollViewWithButtonContainer(container: UIView)
    {
       self.scrollView.tapDelegate = self
@@ -109,11 +122,30 @@ class TimelineHeaderView: UICollectionReusableView
          dispatch_get_main_queue(), closure)
    }
    
+   private func updateTimeContainerConstraintsWithDisplayMode(mode: DisplayMode)
+   {
+      var height: CGFloat = 0.0
+      switch mode {
+      case .Analog:
+         height = 230.0
+         break
+      case .Digital:
+         height = 85.0
+         break
+      }
+      timeContainerHeightConstraint.constant = height
+   }
+   
    // MARK: - Public
-   func configureWithAlarm(alarm: Alarm)
+   func configureWithAlarm(alarm: Alarm, displayMode: DisplayMode)
    {
       self.alarm = alarm
-      self.alarmTimeView.updateTimeWithAlarm(alarm)
+
+      updateTimeContainerConstraintsWithDisplayMode(displayMode)
+      
+      let time = alarm.fireDate
+      timeDisplayViewController.updateDisplayMode(displayMode)
+      timeDisplayViewController.updateTimeWithHour(time.hour, minute: time.minute)
       
       let viewModel = TimelineCellAlarmViewModel(alarm: alarm)
       self.setColorsWithViewModel(viewModel)

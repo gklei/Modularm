@@ -19,7 +19,18 @@ class DigitalTimeView: TimeView
    required init?(coder aDecoder: NSCoder)
    {
       super.init(coder: aDecoder)
-      
+      setupLabels()
+   }
+   
+   override init(frame: CGRect)
+   {
+      super.init(frame: frame)
+      setupLabels()
+   }
+   
+   // MARK: - Setup
+   private func setupLabels()
+   {
       hourLabel.text = "12"
       hourLabel.sizeToFit()
       addSubview(hourLabel)

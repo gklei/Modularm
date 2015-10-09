@@ -8,8 +8,14 @@
 
 import UIKit
 
+protocol SettingsViewControllerDelegate
+{
+   func settingsWillClose()
+}
+
 class SettingsViewController: UIViewController
 {
+   var settingsDelegate: SettingsViewControllerDelegate?
    private var tableViewDataSource: SettingsTableViewDataSource?
    @IBOutlet weak var navigationBar: UINavigationBar!
    @IBOutlet weak var tableView: UITableView! {
@@ -29,9 +35,10 @@ class SettingsViewController: UIViewController
       super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
    }
    
-   convenience init()
+   convenience init(delegate: SettingsViewControllerDelegate)
    {
       self.init(nibName: nil, bundle: nil)
+      settingsDelegate = delegate
    }
    
    // MARK: - Lifecycle
@@ -54,6 +61,7 @@ class SettingsViewController: UIViewController
    // MARK: - IBActions
    @IBAction func doneButtonPressed()
    {
+      settingsDelegate?.settingsWillClose()
       dismiss()
    }
    

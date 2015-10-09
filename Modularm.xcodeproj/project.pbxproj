@@ -68,6 +68,7 @@
 		8EFACDDD1AD8390F00279956 /* TimelineController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFACDDC1AD8390F00279956 /* TimelineController.swift */; };
 		8EFACDE11AD83A1E00279956 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFACDE01AD83A1E00279956 /* CoreDataStack.swift */; };
 		F30823D91BBDC2D80030155D /* AlarmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30823D81BBDC2D80030155D /* AlarmManager.swift */; settings = {ASSET_TAGS = (); }; };
+		F37CF32D1BC856E600938F50 /* TimeDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37CF32C1BC856E600938F50 /* TimeDisplayViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		F3C11E3F1BC599F60094CE71 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C11E3D1BC599F60094CE71 /* SettingsViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		F3C11E401BC599F60094CE71 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3C11E3E1BC599F60094CE71 /* SettingsViewController.xib */; settings = {ASSET_TAGS = (); }; };
 		F3C11E421BC5A51B0094CE71 /* SettingsTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C11E411BC5A51B0094CE71 /* SettingsTableViewDataSource.swift */; settings = {ASSET_TAGS = (); }; };
@@ -153,6 +154,7 @@
 		8EFACDDC1AD8390F00279956 /* TimelineController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimelineController.swift; path = Modularm/TimelineController.swift; sourceTree = "<group>"; };
 		8EFACDE01AD83A1E00279956 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataStack.swift; path = Modularm/CoreDataStack.swift; sourceTree = "<group>"; };
 		F30823D81BBDC2D80030155D /* AlarmManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlarmManager.swift; path = Modularm/AlarmManager.swift; sourceTree = "<group>"; };
+		F37CF32C1BC856E600938F50 /* TimeDisplayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeDisplayViewController.swift; path = Modularm/TimeDisplayViewController.swift; sourceTree = "<group>"; };
 		F3C11E3D1BC599F60094CE71 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = Modularm/SettingsViewController.swift; sourceTree = "<group>"; };
 		F3C11E3E1BC599F60094CE71 /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SettingsViewController.xib; path = Modularm/SettingsViewController.xib; sourceTree = "<group>"; };
 		F3C11E411BC5A51B0094CE71 /* SettingsTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewDataSource.swift; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 				5BD0AF101B2CE7A20018A4C6 /* TimeDisplayProvider.swift */,
 				5B49D74E1B4378E700896878 /* DigitalTimeView.swift */,
 				F3E0ADE71BC6DD8200643B67 /* AnalogTimeView.swift */,
+				F37CF32C1BC856E600938F50 /* TimeDisplayViewController.swift */,
 			);
 			name = "Alarm UI";
 			sourceTree = "<group>";
@@ -574,6 +577,7 @@
 				5B6C12641AFF2841009617A8 /* Message.swift in Sources */,
 				5B6D9A281B28AE6A00AA662A /* TimeSetterTransitionAnimator.swift in Sources */,
 				5BEDA3741B277BBC0000983F /* TimelineView.swift in Sources */,
+				F37CF32D1BC856E600938F50 /* TimeDisplayViewController.swift in Sources */,
 				8E3BDC361AE4176E00E1FCDC /* UIImage+Additions.swift in Sources */,
 				5BD0AF111B2CE7A20018A4C6 /* TimeDisplayProvider.swift in Sources */,
 				5BF33BB11B482F1A007A2C86 /* TimeView.swift in Sources */,

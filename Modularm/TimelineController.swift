@@ -21,11 +21,15 @@ class TimelineController: UIViewController
    lazy private var alarmDetailViewController: AlarmDetailViewController = {
       return UIStoryboard.controllerWithIdentifier("AlarmDetailViewController") as! AlarmDetailViewController
    }()
+   
+   private var settingsViewController: SettingsViewController?
 
    // MARK: - Lifecycle
    override func viewDidLoad()
    {
       super.viewDidLoad()
+      
+      settingsViewController = SettingsViewController(delegate: self)
       
       self.timelineDataSource.removeIncompleteAlarms()
       self.navigationController?.navigationBar.makeTransparent()
@@ -75,8 +79,10 @@ class TimelineController: UIViewController
    
    @IBAction func settingsButtonPressed()
    {
-      let settingsViewController = SettingsViewController()
-      self.navigationController?.presentViewController(settingsViewController, animated: true, completion: nil)
+      if let settingsViewController = self.settingsViewController
+      {
+         self.navigationController?.presentViewController(settingsViewController, animated: true, completion: nil)
+      }
    }
    
    // MARK: - Public
@@ -122,5 +128,13 @@ class TimelineController: UIViewController
       let headerSize = AlarmManager.alarms?.count > 0 ? CGSizeMake(view.bounds.width, 150) : CGSizeZero
       let flowLayout = self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
       flowLayout.headerReferenceSize = headerSize
+   }
+}
+
+extension TimelineController: SettingsViewControllerDelegate
+{
+   func settingsWillClose()
+   {
+      reloadData()
    }
 }

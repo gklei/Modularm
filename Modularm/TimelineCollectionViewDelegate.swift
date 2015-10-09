@@ -44,7 +44,7 @@ extension TimelineCollectionViewDelegate: UICollectionViewDelegateFlowLayout
     {
       if AlarmManager.activeAlarms?.count > 0 && section == 0
       {
-         let height: CGFloat = AppSettingsManager.displayMode == .Analog ? 400.0 : 150.0
+         let height: CGFloat = AppSettingsManager.displayMode == .Analog ? 300.0 : 150.0
          return CGSizeMake(CGRectGetWidth(self.collectionView.bounds), height)
       }
       return CGSizeZero

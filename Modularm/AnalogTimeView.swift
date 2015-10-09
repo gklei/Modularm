@@ -18,6 +18,7 @@ class AnalogTimeView: TimeView
       clockView = BEMAnalogClockView(frame: CGRect.zero)
       super.init(coder: aDecoder)
       
+      setupClockView()
       addSubview(clockView)
    }
    
@@ -26,6 +27,7 @@ class AnalogTimeView: TimeView
       clockView = BEMAnalogClockView(frame: frame)
       super.init(frame: frame)
       
+      setupClockView()
       addSubview(clockView)
    }
    

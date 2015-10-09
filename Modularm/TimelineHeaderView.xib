@@ -17,7 +17,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pfI-DP-Eg3">
                             <rect key="frame" x="0.0" y="0.0" width="377" height="150"/>
                             <subviews>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gnc-x2-dW6" customClass="DigitalTimeView" customModule="Modularm" customModuleProvider="target">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gnc-x2-dW6" userLabel="Alarm Time Container View">
                                     <rect key="frame" x="58.5" y="33" width="230" height="85"/>
                                     <animations/>
                                     <color key="backgroundColor" red="0.11764705882352941" green="0.11764705882352941" blue="0.11764705882352941" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
@@ -84,9 +84,11 @@
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="alarmTimeView" destination="Gnc-x2-dW6" id="b9u-Fh-TS4"/>
+                <outlet property="alarmTimeContainerView" destination="Gnc-x2-dW6" id="6ef-d1-wLG"/>
                 <outlet property="innerContentView" destination="pfI-DP-Eg3" id="gPD-FO-U1S"/>
                 <outlet property="scrollView" destination="FFq-hc-7aN" id="VCv-SF-meh"/>
+                <outlet property="timeContainerHeightConstraint" destination="G4u-Vc-wuk" id="iqG-K5-6KE"/>
+                <outlet property="timeContainerWidthConstraint" destination="iAN-6d-rG4" id="RGX-qL-QyZ"/>
             </connections>
             <point key="canvasLocation" x="321.5" y="214"/>
         </view>

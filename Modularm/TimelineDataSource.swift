@@ -97,7 +97,7 @@ extension TimelineDataSource: UICollectionViewDataSource
             if alarmArray.count > 0
             {
                header.timelineController = self.timelineController
-               header.configureWithAlarm(alarmArray[0])
+               header.configureWithAlarm(alarmArray[0], displayMode: AppSettingsManager.displayMode)
             }
          }
          return header
