@@ -58,8 +58,8 @@ class AnalogTimeView: TimeView
    // MARK: - Lifecycle
    override func layoutSubviews()
    {
-      super.layoutSubviews()
       clockView.frame = bounds
+      super.layoutSubviews()
    }
    
    // MARK: - Overridden

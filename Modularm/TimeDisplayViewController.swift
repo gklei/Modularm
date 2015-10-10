@@ -10,6 +10,7 @@ import UIKit
 
 class TimeDisplayViewController: UIViewController
 {
+   private var mode: DisplayMode?
    private var currentTimeView = TimeView()
    private var digitalTimeView = DigitalTimeView(frame: CGRect.zero)
    private var analogTimeView = AnalogTimeView(frame: CGRect.zero)
@@ -34,7 +35,7 @@ class TimeDisplayViewController: UIViewController
    override func viewDidLoad()
    {
       super.viewDidLoad()
-      updateDisplayMode(AppSettingsManager.displayMode)
+      updateUIForMode(AppSettingsManager.displayMode)
    }
    
    // MARK: - Overridden
@@ -47,6 +48,7 @@ class TimeDisplayViewController: UIViewController
    // MARK: - Private
    private func updateUIForMode(mode: DisplayMode)
    {
+      self.mode = mode
       currentTimeView.removeFromSuperview()
       switch mode {
       case .Analog:
@@ -57,12 +59,15 @@ class TimeDisplayViewController: UIViewController
          break
       }
       view.addSubview(currentTimeView)
+      currentTimeView.setNeedsDisplay()
    }
    
    // MARK: - Public
    func updateDisplayMode(mode: DisplayMode)
    {
-      updateUIForMode(mode)
+      if let displayMode = self.mode where displayMode != mode {
+         updateUIForMode(mode)
+      }
    }
    
    func updateTimeWithHour(hour: Int, minute: Int)
