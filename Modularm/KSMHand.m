@@ -28,11 +28,11 @@
    // the view, it will look correct.
    
    // point that is the top of the hand (closes to the edge of the clock)
-   CGPoint top = CGPointMake(self.frame.size.width / 2, self.frame.size.height / 2 - self.length);
+   CGPoint top = CGPointMake(CGRectGetWidth(self.bounds) / 2, CGRectGetHeight(self.bounds) / 2 - self.length);
    
    // point at the bottom of the hand, a total distance offsetLength away from
    // the center of rotation.
-   CGPoint bottom = CGPointMake(self.frame.size.width / 2, self.frame.size.height / 2 + self.offsetLength);
+   CGPoint bottom = CGPointMake(CGRectGetWidth(self.bounds) / 2, CGRectGetHeight(self.bounds) / 2 + self.offsetLength);
    
    // draw the line from the bottom to the top that has line width self.width.
    UIBezierPath *path = [UIBezierPath bezierPath];
@@ -50,6 +50,7 @@
 #pragma mark Class Methods
 + (void)rotateHand:(KSMHand *)hand rotationDegree:(float)degree;
 {
+   hand.degree = degree;
    [self rotateHand:hand rotationDegree:degree duration:1];
 }
 
@@ -58,6 +59,8 @@
    // animate for one second (default best time to animate - for a second hand
    // it will take exactly 1 second to move, and for the other hands it doesn't
    // really matter how long it takes to move.
+   
+   hand.degree = degree;
    [UIView animateWithDuration:duration
                     animations:^{
                        // set the angle of the hand to be how far offset the
