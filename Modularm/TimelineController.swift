@@ -42,7 +42,6 @@ class TimelineController: UIViewController
    {
       self.navigationController?.setNavigationBarHidden(false, animated: true);
       self.timelineDataSource.removeIncompleteAlarms()
-      self.updateFlowLayoutHeaderSize()
    }
 
    override func viewWillDisappear(animated: Bool)
@@ -121,13 +120,6 @@ class TimelineController: UIViewController
    {
       let barButtonItem = UIBarButtonItem(title: title, style: .Plain, target: nil, action: nil)
       self.navigationItem.backBarButtonItem = barButtonItem
-   }
-   
-   private func updateFlowLayoutHeaderSize()
-   {
-      let headerSize = AlarmManager.alarms?.count > 0 ? CGSizeMake(view.bounds.width, 150) : CGSizeZero
-      let flowLayout = self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-      flowLayout.headerReferenceSize = headerSize
    }
 }
 

@@ -59,11 +59,14 @@ extension TimelineCollectionViewDelegate: UICollectionViewDelegateFlowLayout
       if section != 0 || AlarmManager.nonActiveAlarms?.count == 0 || (section == 0 && AlarmManager.activeAlarms?.count == 0)
       {
          var height: CGFloat = 70
-         if let alarmCount = AlarmManager.alarms?.count
+         if let alarmCount = AlarmManager.alarms?.count, flowLayout = collectionViewLayout as? UICollectionViewFlowLayout
          {
-            var contentHeight: CGFloat = (CGFloat(alarmCount) - 1.0) * 50.0 + kAnalogHeaderHeight
+            let cellHeight = flowLayout.itemSize.height
+            let headerHeight: CGFloat = AppSettingsManager.displayMode == .Analog ? kAnalogHeaderHeight : kDigitalHeaderHeight
+            var contentHeight: CGFloat = (CGFloat(alarmCount) - 1.0) * cellHeight + headerHeight
+            
             if AlarmManager.activeAlarms?.count == 0 {
-               contentHeight = CGFloat(alarmCount) * 50
+               contentHeight = CGFloat(alarmCount) * cellHeight
             }
             height = max(CGRectGetHeight(collectionView.bounds) - contentHeight + 1, height)
          }
