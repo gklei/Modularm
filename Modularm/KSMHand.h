@@ -50,5 +50,6 @@
  *
  */
 + (void)rotateHand:(KSMHand *)hand rotationDegree:(float)degree;
++ (void)rotateHand:(KSMHand *)hand rotationDegree:(float)degree duration:(CGFloat)duration;
 
 @end

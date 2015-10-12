@@ -176,6 +176,7 @@
 /** Update the time on the clock.
  @param animated If the change of position of the hands should be animated or not. */
 - (void)updateTimeAnimated:(BOOL)animated;
+- (void)updateTimeWithAnimationDuration:(CGFloat)duration;
 
 /** When called, this method will set the clock to the current time on the phone.
  @param animated If the change of position of the hands should be animated or not. */

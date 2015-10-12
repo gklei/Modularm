@@ -248,24 +248,23 @@ static CGPoint _midPoint(CGPoint point1, CGPoint point2)
 }
 
 - (void)updateTimeAnimated:(BOOL)animated {
-    if ([self.delegate respondsToSelector:@selector(dateFormatterForClock:)] && [self.delegate respondsToSelector:@selector(timeForClock:)])
-        [self getTimeFromString];
-    
-    [self timeFormatVerification];
-    
-     if (animated == YES) {
-         skipOneCycle = YES;
-         [KSMHand rotateHand:self.minuteHand rotationDegree:[self degreesFromMinutes:self.minutes]];
-         [KSMHand rotateHand:self.hourHand rotationDegree:[self degreesFromHour:self.hours andMinutes:self.minutes]];
-         [KSMHand rotateHand:self.secondHand rotationDegree:[self degreesFromMinutes:self.seconds]];
-     } else {
-         self.minuteHand.transform = CGAffineTransformMakeRotation(([self degreesFromMinutes:self.minutes])*(M_PI/180));
-         self.hourHand.transform = CGAffineTransformMakeRotation(([self degreesFromHour:self.hours andMinutes:self.minutes])*(M_PI/180));
-         self.secondHand.transform = CGAffineTransformMakeRotation(([self degreesFromMinutes:self.seconds])*(M_PI/180));
-     }
-    if ([self.delegate respondsToSelector:@selector(currentTimeOnClock:Hours:Minutes:Seconds:)]) {
-     [self.delegate currentTimeOnClock:self Hours:[NSString stringWithFormat:@"%li", (long)self.hours] Minutes:[NSString stringWithFormat:@"%li", (long)self.minutes] Seconds:[NSString stringWithFormat:@"%li", (long)self.seconds]];
-    }
+}
+
+- (void)updateTimeWithAnimationDuration:(CGFloat)duration
+{
+   if ([self.delegate respondsToSelector:@selector(dateFormatterForClock:)] && [self.delegate respondsToSelector:@selector(timeForClock:)])
+      [self getTimeFromString];
+   
+   [self timeFormatVerification];
+   
+   skipOneCycle = YES;
+   [KSMHand rotateHand:self.minuteHand rotationDegree:[self degreesFromMinutes:self.minutes] duration:duration];
+   [KSMHand rotateHand:self.hourHand rotationDegree:[self degreesFromHour:self.hours andMinutes:self.minutes] duration:duration];
+   [KSMHand rotateHand:self.secondHand rotationDegree:[self degreesFromMinutes:self.seconds] duration:duration];
+   
+   if ([self.delegate respondsToSelector:@selector(currentTimeOnClock:Hours:Minutes:Seconds:)]) {
+      [self.delegate currentTimeOnClock:self Hours:[NSString stringWithFormat:@"%li", (long)self.hours] Minutes:[NSString stringWithFormat:@"%li", (long)self.minutes] Seconds:[NSString stringWithFormat:@"%li", (long)self.seconds]];
+   }
 }
 
 - (void)setClockToCurrentTimeAnimated:(BOOL)animated {

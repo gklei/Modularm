@@ -79,7 +79,7 @@ class AnalogTimeView: TimeView
    {
       clockView.hours = self.time.hour
       clockView.minutes = self.time.minute
-      clockView.updateTimeAnimated(false)
+      clockView.updateTimeWithAnimationDuration(0.4)
    }
 }
 
