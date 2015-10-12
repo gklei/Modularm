@@ -9,6 +9,9 @@
 import UIKit
 import CoreData
 
+let kAnalogHeaderHeight: CGFloat = 300.0
+let kDigitalHeaderHeight: CGFloat = 150.0
+
 class TimelineCollectionViewDelegate: NSObject
 {
    @IBOutlet weak var collectionView: UICollectionView!
@@ -44,7 +47,7 @@ extension TimelineCollectionViewDelegate: UICollectionViewDelegateFlowLayout
     {
       if AlarmManager.activeAlarms?.count > 0 && section == 0
       {
-         let height: CGFloat = AppSettingsManager.displayMode == .Analog ? 300.0 : 150.0
+         let height: CGFloat = AppSettingsManager.displayMode == .Analog ? kAnalogHeaderHeight : kDigitalHeaderHeight
          return CGSizeMake(CGRectGetWidth(self.collectionView.bounds), height)
       }
       return CGSizeZero
@@ -58,7 +61,7 @@ extension TimelineCollectionViewDelegate: UICollectionViewDelegateFlowLayout
          var height: CGFloat = 70
          if let alarmCount = AlarmManager.alarms?.count
          {
-            var contentHeight: CGFloat = (CGFloat(alarmCount) - 1.0) * 50.0 + 150.0
+            var contentHeight: CGFloat = (CGFloat(alarmCount) - 1.0) * 50.0 + kAnalogHeaderHeight
             if AlarmManager.activeAlarms?.count == 0 {
                contentHeight = CGFloat(alarmCount) * 50
             }
