@@ -25,16 +25,6 @@ class SettingsViewController: UIViewController
    }
    
    // MARK: - Init
-   required init?(coder aDecoder: NSCoder)
-   {
-      super.init(coder: aDecoder)
-   }
-
-   override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?)
-   {
-      super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-   }
-   
    convenience init(delegate: SettingsViewControllerDelegate)
    {
       self.init(nibName: nil, bundle: nil)
