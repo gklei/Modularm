@@ -17,16 +17,15 @@ class TimelineDataSource: NSObject
 {
    // MARK: - Instance Variables
    @IBOutlet weak var timelineController: TimelineController!
-   private let coreDataStack = CoreDataStack.defaultStack
-
-   lazy var fetchedResultsController: NSFetchedResultsController =
+   
+   private let _coreDataStack = CoreDataStack.defaultStack
+   private lazy var _fetchedResultsController: NSFetchedResultsController =
    {
       let controller = AlarmManager.sharedInstance.fetchedResultsController
       controller.delegate = self
       return controller
    }()
-   
-   private lazy var dateFormatter: NSDateFormatter =
+   private lazy var _dateFormatter: NSDateFormatter =
    {
       let formatter = NSDateFormatter()
       return formatter
@@ -34,7 +33,7 @@ class TimelineDataSource: NSObject
    
    func removeIncompleteAlarms()
    {
-      if let alarms = self.fetchedResultsController.fetchedObjects as? [Alarm]
+      if let alarms = _fetchedResultsController.fetchedObjects as? [Alarm]
       {
          for alarm in alarms
          {
@@ -53,9 +52,9 @@ extension TimelineDataSource: UICollectionViewDataSource
    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
    {
       var numberOfItems = 0
-      if self.fetchedResultsController.sections?.count > 0
+      if _fetchedResultsController.sections?.count > 0
       {
-         if let sectionInfo = self.fetchedResultsController.sections?[section]
+         if let sectionInfo = _fetchedResultsController.sections?[section]
          {
             numberOfItems = section == kActiveAlarmSectionIndex ? max(0, sectionInfo.numberOfObjects - 1) : sectionInfo.numberOfObjects
             
@@ -81,7 +80,7 @@ extension TimelineDataSource: UICollectionViewDataSource
 
       cell.collectionView = collectionView
 
-      let alarm = self.fetchedResultsController.objectAtIndexPath(newIndexPath) as? Alarm
+      let alarm = _fetchedResultsController.objectAtIndexPath(newIndexPath) as? Alarm
       cell.configureWithAlarm(alarm)
       return cell
    }
@@ -96,7 +95,7 @@ extension TimelineDataSource: UICollectionViewDataSource
          {
             if alarmArray.count > 0
             {
-               header.timelineController = self.timelineController
+               header.timelineController = timelineController
                header.configureWithAlarm(alarmArray[0], displayMode: AppSettingsManager.displayMode)
             }
          }
@@ -111,7 +110,7 @@ extension TimelineDataSource: UICollectionViewDataSource
    
    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int
    {
-      return self.fetchedResultsController.sections!.count
+      return _fetchedResultsController.sections!.count
    }
 }
 
@@ -120,6 +119,6 @@ extension TimelineDataSource: NSFetchedResultsControllerDelegate
 {
    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?)
    {
-         self.timelineController.reloadData()
+         timelineController.reloadData()
    }
 }
