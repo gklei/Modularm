@@ -27,11 +27,10 @@ class TimelineController: UIViewController
    override func viewDidLoad()
    {
       super.viewDidLoad()
+      navigationController?.navigationBar.makeTransparent()
       
       _settingsViewController = SettingsViewController(delegate: self)
-      
       timelineDataSource.removeIncompleteAlarms()
-      navigationController?.navigationBar.makeTransparent()
       
       registerCollectionViewNibs()
       setupFlowLayoutItemSize()
@@ -110,9 +109,8 @@ class TimelineController: UIViewController
    
    private func registerCollectionViewNibs()
    {
-      collectionView.registerNib(UINib(nibName: "TimelineHeaderView", bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "header")
-      
       collectionView.registerNib(UINib(nibName: "TimelineCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "timelineCell")
+      collectionView.registerNib(UINib(nibName: "TimelineHeaderView", bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "header")
    }
    
    private func updateBackBarButtonItemWithTitle(title: String)
