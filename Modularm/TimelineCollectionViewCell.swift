@@ -12,14 +12,14 @@ let RevealCellDidOpenNotification = "RevealCellDidOpenNotification"
 
 class TimelineCollectionViewCell: UICollectionViewCell
 {
-   @IBOutlet weak var label: UILabel!
-   @IBOutlet weak var innerContentView: UIView!
-   @IBOutlet weak var scrollView: TapScrollView!
-   @IBOutlet weak var activateButton: UIButton!
-   @IBOutlet weak var separatorView: UIView!
-   @IBOutlet weak var activateButtonWidthConstraint: NSLayoutConstraint!
-   @IBOutlet weak var circleImageView: UIImageView!
-   @IBOutlet weak var alarmIconImageView: UIImageView!
+   @IBOutlet private weak var label: UILabel!
+   @IBOutlet private weak var innerContentView: UIView!
+   @IBOutlet private weak var scrollView: TapScrollView!
+   @IBOutlet private weak var activateButton: UIButton!
+   @IBOutlet private weak var separatorView: UIView!
+   @IBOutlet private weak var activateButtonWidthConstraint: NSLayoutConstraint!
+   @IBOutlet private weak var circleImageView: UIImageView!
+   @IBOutlet private weak var alarmIconImageView: UIImageView!
    
    weak var collectionView: UICollectionView?
    weak var alarm: Alarm?
