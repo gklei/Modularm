@@ -15,38 +15,37 @@ class TimelineController: UIViewController
    @IBOutlet weak var timelineDataSource: TimelineDataSource!
    @IBOutlet var collectionView: UICollectionView!
    
-   lazy private var configurationController: AlarmConfigurationController = {
+   private var _settingsViewController: SettingsViewController?
+   lazy private var _configurationController: AlarmConfigurationController = {
       return UIStoryboard.controllerWithIdentifier("AlarmConfigurationController") as! AlarmConfigurationController
    }()
-   lazy private var alarmDetailViewController: AlarmDetailViewController = {
+   lazy private var _alarmDetailViewController: AlarmDetailViewController = {
       return UIStoryboard.controllerWithIdentifier("AlarmDetailViewController") as! AlarmDetailViewController
    }()
    
-   private var settingsViewController: SettingsViewController?
-
    // MARK: - Lifecycle
    override func viewDidLoad()
    {
       super.viewDidLoad()
       
-      settingsViewController = SettingsViewController(delegate: self)
+      _settingsViewController = SettingsViewController(delegate: self)
       
-      self.timelineDataSource.removeIncompleteAlarms()
-      self.navigationController?.navigationBar.makeTransparent()
+      timelineDataSource.removeIncompleteAlarms()
+      navigationController?.navigationBar.makeTransparent()
       
-      self.registerCollectionViewNibs()
-      self.setupFlowLayoutItemSize()
+      registerCollectionViewNibs()
+      setupFlowLayoutItemSize()
    }
 
    override func viewWillAppear(animated: Bool)
    {
-      self.navigationController?.setNavigationBarHidden(false, animated: true);
-      self.timelineDataSource.removeIncompleteAlarms()
+      navigationController?.setNavigationBarHidden(false, animated: true);
+      timelineDataSource.removeIncompleteAlarms()
    }
 
    override func viewWillDisappear(animated: Bool)
    {
-      self.updateBackBarButtonItemWithTitle("Back")
+      updateBackBarButtonItemWithTitle("Back")
    }
    
    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
@@ -66,8 +65,8 @@ class TimelineController: UIViewController
    {
       if let alarm = AlarmManager.createNewAlarm()
       {
-         self.configurationController.configureWithAlarm(alarm)
-         self.navigationController?.pushViewController(self.configurationController, animated: true)
+         _configurationController.configureWithAlarm(alarm)
+         navigationController?.pushViewController(_configurationController, animated: true)
       }
    }
    
@@ -78,48 +77,48 @@ class TimelineController: UIViewController
    
    @IBAction func settingsButtonPressed()
    {
-      if let settingsViewController = self.settingsViewController
+      if let settingsViewController = _settingsViewController
       {
-         self.navigationController?.presentViewController(settingsViewController, animated: true, completion: nil)
+         navigationController?.presentViewController(settingsViewController, animated: true, completion: nil)
       }
    }
    
    // MARK: - Public
    func openSettingsForAlarm(alarm: Alarm)
    {
-      self.configurationController.configureWithAlarm(alarm)
-      self.navigationController?.pushViewController(self.configurationController, animated: true)
+      _configurationController.configureWithAlarm(alarm)
+      navigationController?.pushViewController(_configurationController, animated: true)
    }
    
    func showDetailsForAlarm(alarm: Alarm)
    {
-      self.alarmDetailViewController.configureWithAlarm(alarm, isFiring: false)
-      self.navigationController?.pushViewController(self.alarmDetailViewController, animated: true)
+      _alarmDetailViewController.configureWithAlarm(alarm, isFiring: false)
+      navigationController?.pushViewController(_alarmDetailViewController, animated: true)
    }
    
    func reloadData()
    {
-      self.collectionView.reloadData()
+      collectionView.reloadData()
    }
 
    // MARK: - Private
    private func setupFlowLayoutItemSize()
    {
-      let layout = self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-      layout.itemSize = CGSizeMake(CGRectGetWidth(self.view.bounds), 50)
+      let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+      layout.itemSize = CGSizeMake(CGRectGetWidth(view.bounds), 50)
    }
    
    private func registerCollectionViewNibs()
    {
-      self.collectionView.registerNib(UINib(nibName: "TimelineHeaderView", bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "header")
+      collectionView.registerNib(UINib(nibName: "TimelineHeaderView", bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "header")
       
-      self.collectionView.registerNib(UINib(nibName: "TimelineCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "timelineCell")
+      collectionView.registerNib(UINib(nibName: "TimelineCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "timelineCell")
    }
    
    private func updateBackBarButtonItemWithTitle(title: String)
    {
       let barButtonItem = UIBarButtonItem(title: title, style: .Plain, target: nil, action: nil)
-      self.navigationItem.backBarButtonItem = barButtonItem
+      navigationItem.backBarButtonItem = barButtonItem
    }
 }
 
