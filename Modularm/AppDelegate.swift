@@ -34,6 +34,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate
             }
          }
       }
+    
+      //Added by Alex, start token service when app is launched.
+      SpotifyTokenRefresher.startTokenService()
+    
       return true
    }
    

@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		1F552A2A1BEBEA9200E7CAD6 /* SwiftHTTPServer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F552A291BEBEA9200E7CAD6 /* SwiftHTTPServer.framework */; };
+		1F911ED71BECE27B00B71FAC /* SpotifyConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F911ED61BECE27B00B71FAC /* SpotifyConstants.swift */; };
+		1F911EE31BED322E00B71FAC /* SpotifySessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F911EE21BED322E00B71FAC /* SpotifySessionManager.swift */; };
+		1F911EE51BED437800B71FAC /* SpotifyLoginHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F911EE41BED437800B71FAC /* SpotifyLoginHelper.swift */; };
+		1F911EE71BED48D600B71FAC /* SpotifyTokenRefreher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F911EE61BED48D600B71FAC /* SpotifyTokenRefreher.swift */; };
 		1F9955F91BEBCC760068C776 /* Spotify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F9955F81BEBCC760068C776 /* Spotify.framework */; };
 		1F9955FB1BEBCC8C0068C776 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F9955FA1BEBCC8C0068C776 /* AVFoundation.framework */; };
 		5B1997AA1AE5765800D1522C /* WeatherOptionDelegateDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1997A91AE5765800D1522C /* WeatherOptionDelegateDataSource.swift */; };
@@ -96,6 +100,10 @@
 		1F552A2C1BEBED1700E7CAD6 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		1F552A2D1BEBED1700E7CAD6 /* Cartfile.resolved */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile.resolved; sourceTree = "<group>"; };
 		1F552A301BEBEEB300E7CAD6 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		1F911ED61BECE27B00B71FAC /* SpotifyConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotifyConstants.swift; sourceTree = "<group>"; };
+		1F911EE21BED322E00B71FAC /* SpotifySessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotifySessionManager.swift; sourceTree = "<group>"; };
+		1F911EE41BED437800B71FAC /* SpotifyLoginHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotifyLoginHelper.swift; sourceTree = "<group>"; };
+		1F911EE61BED48D600B71FAC /* SpotifyTokenRefreher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotifyTokenRefreher.swift; sourceTree = "<group>"; };
 		1F9955F81BEBCC760068C776 /* Spotify.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Spotify.framework; path = "ios-sdk/Spotify.framework"; sourceTree = "<group>"; };
 		1F9955FA1BEBCC8C0068C776 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		5B1997A91AE5765800D1522C /* WeatherOptionDelegateDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeatherOptionDelegateDataSource.swift; path = Modularm/WeatherOptionDelegateDataSource.swift; sourceTree = "<group>"; };
@@ -205,6 +213,17 @@
 				1F9955F81BEBCC760068C776 /* Spotify.framework */,
 			);
 			name = ExternalFrameworks;
+			sourceTree = "<group>";
+		};
+		1FC98EA31BECD92F00665FC8 /* MusicSupport */ = {
+			isa = PBXGroup;
+			children = (
+				1F911ED61BECE27B00B71FAC /* SpotifyConstants.swift */,
+				1F911EE21BED322E00B71FAC /* SpotifySessionManager.swift */,
+				1F911EE41BED437800B71FAC /* SpotifyLoginHelper.swift */,
+				1F911EE61BED48D600B71FAC /* SpotifyTokenRefreher.swift */,
+			);
+			name = MusicSupport;
 			sourceTree = "<group>";
 		};
 		5B1997B11AE5B64E00D1522C /* Option Delegate Data Sources */ = {
@@ -366,6 +385,7 @@
 				1F552A2C1BEBED1700E7CAD6 /* Cartfile */,
 				1F552A2D1BEBED1700E7CAD6 /* Cartfile.resolved */,
 				1F552A301BEBEEB300E7CAD6 /* README.md */,
+				1FC98EA31BECD92F00665FC8 /* MusicSupport */,
 			);
 			sourceTree = "<group>";
 		};
@@ -564,8 +584,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B6C14281B0548A0009617A8 /* TimelineCollectionViewDelegate.swift in Sources */,
+				1F911EE71BED48D600B71FAC /* SpotifyTokenRefreher.swift in Sources */,
 				8E3BDC3B1AE430F400E1FCDC /* SnoozeOptionDelegateDataSource.swift in Sources */,
 				5B6C12671AFF2841009617A8 /* Sound.swift in Sources */,
+				1F911EE31BED322E00B71FAC /* SpotifySessionManager.swift in Sources */,
 				5BEDA3721B277BBC0000983F /* InfiniteTimelineScrollingViewController.swift in Sources */,
 				8EFACDE11AD83A1E00279956 /* CoreDataStack.swift in Sources */,
 				5BD0AF0B1B2A05C80018A4C6 /* AlarmPreviewViewController.swift in Sources */,
@@ -615,6 +637,7 @@
 				5BDC54951B405F460060DDFA /* AlarmDetailViewController.swift in Sources */,
 				8EFACDDD1AD8390F00279956 /* TimelineController.swift in Sources */,
 				8E8228E61ADB821C00F9A26E /* AlarmConfigurationController.swift in Sources */,
+				1F911EE51BED437800B71FAC /* SpotifyLoginHelper.swift in Sources */,
 				5B74FC8C1ADD74A100902484 /* AlarmOptionSettingsController.swift in Sources */,
 				8E8228E81ADB8AA900F9A26E /* AlarmOptionsViewController.swift in Sources */,
 				F3E0ADE81BC6DD8200643B67 /* AnalogTimeView.swift in Sources */,
@@ -625,6 +648,7 @@
 				8E3BDC361AE4176E00E1FCDC /* UIImage+Additions.swift in Sources */,
 				5BD0AF111B2CE7A20018A4C6 /* TimeDisplayProvider.swift in Sources */,
 				5BF33BB11B482F1A007A2C86 /* TimeView.swift in Sources */,
+				1F911ED71BECE27B00B71FAC /* SpotifyConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -765,6 +789,7 @@
 				);
 				INFOPLIST_FILE = Modularm/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.purevirtualstudios.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -787,6 +812,7 @@
 				);
 				INFOPLIST_FILE = Modularm/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.purevirtualstudios.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
