@@ -10,6 +10,8 @@ import UIKit
 
 class MusicOptionDelegateDataSource: AlarmOptionDelegateDataSource
 {
+//   private var _spotifyLoginHelper: SpotifyLoginHelper?
+   
    // MARK: - Init
    override init(tableView: UITableView, delegate: AlarmOptionSettingsControllerDelegate, alarm: Alarm?)
    {
@@ -30,7 +32,14 @@ extension MusicOptionDelegateDataSource
 
    func spotifySwitchChanged(sender: UISwitch)
    {
-      print("spotify switch changed")
+//      if let vcForPresentingLogin = settingsControllerDelegate.vcForPresenting()
+//      {
+//         print("spotify switch changed")
+//         _spotifyLoginHelper = SpotifyLoginHelper(callback: { (success, error) -> () in
+//            self._spotifyLoginHelper = nil
+//         })
+//         _spotifyLoginHelper?.loginFromVC(vcForPresentingLogin)
+//      }
    }
 
    func rdioSwitchChanged(sender: UISwitch)

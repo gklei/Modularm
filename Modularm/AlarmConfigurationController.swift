@@ -92,7 +92,7 @@ class AlarmConfigurationController: UIViewController
    {
       self.alarmOptionsController = segue.destinationViewController.childViewControllers[0] as? AlarmOptionsViewController
       self.alarmOptionsController?.optionsControllerDelegate = self
-      self.alarmOptionsController?.configureWithAlarm(self.alarm)
+      self.alarmOptionsController?.configureWithAlarm(self.alarm, vcForPresenting: self)
    }
    
    private func setupCustomBackButton()
@@ -124,7 +124,7 @@ class AlarmConfigurationController: UIViewController
    {
       self.timeSetterController.configureWithAlarm(alarm)
       self.alarmPreviewController?.configureWithAlarm(alarm)
-      self.alarmOptionsController?.configureWithAlarm(alarm)
+      self.alarmOptionsController?.configureWithAlarm(alarm, vcForPresenting: self)
    }
    
    private func updateUIWithAlarm(alarm: Alarm?)

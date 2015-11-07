@@ -89,6 +89,11 @@ extension AlarmOptionSettingsController: AlarmOptionSettingsControllerDelegate
       }
    }
    
+   func vcForPresenting() -> UIViewController?
+   {
+      return viewControllerForPresenting
+   }
+   
    private func resetAuxView()
    {
       if let auxView = self.auxiliaryView

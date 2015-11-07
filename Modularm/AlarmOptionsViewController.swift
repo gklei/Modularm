@@ -19,6 +19,7 @@ class AlarmOptionsViewController: UIViewController
 {
    var optionsControllerDelegate: AlarmOptionsControllerDelegate?
    private var alarm: Alarm?
+   private var vcForPresenting: UIViewController?
 
    @IBOutlet weak var snoozeButton: AlarmOptionButton!
    @IBOutlet weak var weatherButton: AlarmOptionButton!
@@ -83,13 +84,16 @@ class AlarmOptionsViewController: UIViewController
 
       let auxView = self.optionsControllerDelegate?.optionPreviewAuxiliaryView()
       optionSettingsController.configureWithAlarm(self.alarm, option: option, auxiliaryView: auxView)
+      optionSettingsController.updateViewControllerForPresenting(self.vcForPresenting)
+      
       self.optionsControllerDelegate?.didShowSettingsForOption()
    }
    
    // MARK: - Public
-   func configureWithAlarm(alarm: Alarm?)
+   func configureWithAlarm(alarm: Alarm?, vcForPresenting: UIViewController?)
    {
       self.alarm = alarm
+      self.vcForPresenting = vcForPresenting
    }
 
    func returnToMainOptions()

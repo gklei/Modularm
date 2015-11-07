@@ -15,6 +15,7 @@ class OptionSettingsControllerBase: UIViewController
    
    internal var alarm: Alarm?
    internal var auxiliaryView: UIView?
+   internal var viewControllerForPresenting: UIViewController?
    
    private(set) var option: AlarmOption = .Unknown
    
@@ -38,6 +39,11 @@ class OptionSettingsControllerBase: UIViewController
       self.alarm = alarm
       self.option = option
       self.auxiliaryView = auxiliaryView
+   }
+   
+   func updateViewControllerForPresenting(vc: UIViewController?)
+   {
+      viewControllerForPresenting = vc
    }
    
    internal func dismissSelf()
