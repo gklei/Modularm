@@ -20,8 +20,6 @@
 		1F552A2A1BEBEA9200E7CAD6 /* SwiftHTTPServer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F552A291BEBEA9200E7CAD6 /* SwiftHTTPServer.framework */; };
 		1F9955F91BEBCC760068C776 /* Spotify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F9955F81BEBCC760068C776 /* Spotify.framework */; };
 		1F9955FB1BEBCC8C0068C776 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F9955FA1BEBCC8C0068C776 /* AVFoundation.framework */; };
-		1FD2296A1BF0BF4A006BFFA5 /* GCDUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD229691BF0BF4A006BFFA5 /* GCDUtil.swift */; };
-		1FD2296C1BF0CA04006BFFA5 /* SpotifyPlaylistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD2296B1BF0CA04006BFFA5 /* SpotifyPlaylistCell.swift */; };
 		1FD229781BF0D539006BFFA5 /* spotify.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FD229771BF0D539006BFFA5 /* spotify.xcassets */; };
 		1FD2297A1BF0F0F9006BFFA5 /* MusicPlayerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD229791BF0F0F9006BFFA5 /* MusicPlayerFactory.swift */; };
 		1FD973C41BEF420100C6DE38 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FD973C31BEF420100C6DE38 /* MediaPlayer.framework */; };
@@ -125,8 +123,6 @@
 		1F552A301BEBEEB300E7CAD6 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		1F9955F81BEBCC760068C776 /* Spotify.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Spotify.framework; path = "ios-sdk/Spotify.framework"; sourceTree = "<group>"; };
 		1F9955FA1BEBCC8C0068C776 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		1FD229691BF0BF4A006BFFA5 /* GCDUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDUtil.swift; sourceTree = "<group>"; };
-		1FD2296B1BF0CA04006BFFA5 /* SpotifyPlaylistCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotifyPlaylistCell.swift; sourceTree = "<group>"; };
 		1FD229771BF0D539006BFFA5 /* spotify.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = spotify.xcassets; sourceTree = "<group>"; };
 		1FD229791BF0F0F9006BFFA5 /* MusicPlayerFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicPlayerFactory.swift; sourceTree = "<group>"; };
 		1FD973C31BEF420100C6DE38 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
@@ -247,8 +243,6 @@
 				1F2CB5071BF03CF900589BF2 /* SpotifyTokenRefreher.swift */,
 				1F2CB5081BF03CF900589BF2 /* SpotifyTrackListVC.swift */,
 				1FF8761A1BF047E00030B6C7 /* SpotifyPlaylistListVC.swift */,
-				1FD229691BF0BF4A006BFFA5 /* GCDUtil.swift */,
-				1FD2296B1BF0CA04006BFFA5 /* SpotifyPlaylistCell.swift */,
 				1FD229771BF0D539006BFFA5 /* spotify.xcassets */,
 				1FD229791BF0F0F9006BFFA5 /* MusicPlayerFactory.swift */,
 			);
@@ -659,7 +653,6 @@
 				F3C11E3F1BC599F60094CE71 /* SettingsViewController.swift in Sources */,
 				8E5BD3271ADB930400C42FAA /* AlarmOptionButton.swift in Sources */,
 				5B1997B31AE5B98600D1522C /* RepeatOptionDelegateDataSource.swift in Sources */,
-				1FD2296A1BF0BF4A006BFFA5 /* GCDUtil.swift in Sources */,
 				5B6C142B1B094B78009617A8 /* TimelineCollectionViewCell.swift in Sources */,
 				F3E0ADEF1BC6DDAB00643B67 /* KSMHand.m in Sources */,
 				5B56CB7F1B6067660000BD12 /* AlarmScheduler.swift in Sources */,
@@ -695,7 +688,6 @@
 				8E8228E81ADB8AA900F9A26E /* AlarmOptionsViewController.swift in Sources */,
 				F3E0ADE81BC6DD8200643B67 /* AnalogTimeView.swift in Sources */,
 				5B6C12641AFF2841009617A8 /* Message.swift in Sources */,
-				1FD2296C1BF0CA04006BFFA5 /* SpotifyPlaylistCell.swift in Sources */,
 				5B6D9A281B28AE6A00AA662A /* TimeSetterTransitionAnimator.swift in Sources */,
 				5BEDA3741B277BBC0000983F /* TimelineView.swift in Sources */,
 				F37CF32D1BC856E600938F50 /* TimeDisplayViewController.swift in Sources */,
