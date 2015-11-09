@@ -34,6 +34,8 @@ enum SpotifyError:ErrorType, CustomStringConvertible{
       return SingletonWrapper.singleton
    }
    
+   private let spotifyStreamingController = SPTAudioStreamingController(clientId: kSpotifyClientId)
+   
    // MARK: - Init
    override init(){
       super.init()
@@ -47,7 +49,7 @@ enum SpotifyError:ErrorType, CustomStringConvertible{
       auth.sessionUserDefaultsKey = kSpotifySessionNSUserDefaultsKey
    }
    
-   // MARK: - Renew session
+   // MARK: - Session Manage
    func renewSession(callback:SpotifyAuthCallback) throws{
       let auth = SPTAuth.defaultInstance()
       guard let session = auth.session else {
@@ -70,6 +72,14 @@ enum SpotifyError:ErrorType, CustomStringConvertible{
       }
    }
    
+   func hasSavedSession() -> Bool{
+      return SPTAuth.defaultInstance().session != nil
+   }
+   
+   func clearSession(){
+      SPTAuth.defaultInstance().session = nil
+   }
+   
    // MARK: - Return Spotify player
    func createSpotifyPlayer(callback:(SPTAudioStreamingController?, ErrorType?)->()){
       do {
@@ -79,14 +89,55 @@ enum SpotifyError:ErrorType, CustomStringConvertible{
                return
             }
             
-            // session is already exist and valid here. so try login player.
-            let player = SPTAudioStreamingController(clientId: kSpotifyClientId)
-            player.loginWithSession(SPTAuth.defaultInstance().session, callback: { (error) -> Void in
-               callback((error == nil) ? player : nil, error)
+            if !self.spotifyStreamingController.loggedIn {
+               self.spotifyStreamingController.loginWithSession(SPTAuth.defaultInstance().session, callback: { (error) -> Void in
+                  callback((error == nil) ? self.spotifyStreamingController : nil, error)
+               })
+            } else {
+               callback(self.spotifyStreamingController, nil)
+            }
+         })
+      }catch{
+         
+         callback(nil, error)
+      }
+   }
+   
+   // MARK: - Get user's playlistList
+   func fetchUserPlaylist(handler:([SPTPartialPlaylist]?,ErrorType?)->()){
+      do{
+         try renewSession({ (success, error) -> () in
+            guard success else{
+               handler(nil, error)
+               return
+            }
+            
+            SPTPlaylistList .playlistsForUserWithSession(SPTAuth.defaultInstance().session, callback: { (error, obj) -> Void in
+               handler((obj as? SPTPlaylistList)?.items as? [SPTPartialPlaylist], error)
             })
          })
       }catch{
-         callback(nil, error)
+         handler(nil, error)
+      }
+   }
+   
+   // MARK: - Get tracks of playlist List
+   func fetchTrackOfPlaylist(playlist:SPTPartialPlaylist, handler:([SPTPartialTrack]?, ErrorType?) -> ()){
+      do{
+         try renewSession({ (success, error) -> () in
+            guard success else{
+               handler(nil, error)
+               return
+            }
+            
+            SPTPlaylistSnapshot.playlistWithURI(playlist.uri, session: SPTAuth.defaultInstance().session, callback: { (error, obj) -> Void in
+               let snapshot = obj as? SPTPlaylistSnapshot
+               handler((snapshot?.firstTrackPage?.items as? [SPTPartialTrack]), error)
+            })
+            
+         })
+      }catch{
+         handler(nil, error)
       }
    }
 }

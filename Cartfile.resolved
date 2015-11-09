@@ -1,1 +1,2 @@
+github "rs/SDWebImage" "3.7.3"
 github "gregoryklein/swifter" "1.1.0"

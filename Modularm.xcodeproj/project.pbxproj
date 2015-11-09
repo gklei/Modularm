@@ -7,13 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F2CB5091BF03CF900589BF2 /* AlarmMusicPickerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2CB4FC1BF03CF900589BF2 /* AlarmMusicPickerFactory.swift */; };
+		1F2CB50B1BF03CF900589BF2 /* IPodLibraryMusicPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2CB4FE1BF03CF900589BF2 /* IPodLibraryMusicPicker.swift */; };
+		1F2CB50D1BF03CF900589BF2 /* SpotifyConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2CB5001BF03CF900589BF2 /* SpotifyConstants.swift */; };
+		1F2CB50E1BF03CF900589BF2 /* SpotifyLoginHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2CB5011BF03CF900589BF2 /* SpotifyLoginHelper.swift */; };
+		1F2CB50F1BF03CF900589BF2 /* SpotifyMusicPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2CB5021BF03CF900589BF2 /* SpotifyMusicPicker.swift */; };
+		1F2CB5101BF03CF900589BF2 /* SpotifyMusicPickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2CB5031BF03CF900589BF2 /* SpotifyMusicPickerVC.swift */; };
+		1F2CB5111BF03CF900589BF2 /* SpotifyPickerUI.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F2CB5041BF03CF900589BF2 /* SpotifyPickerUI.storyboard */; };
+		1F2CB5131BF03CF900589BF2 /* SpotifySessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2CB5061BF03CF900589BF2 /* SpotifySessionManager.swift */; };
+		1F2CB5141BF03CF900589BF2 /* SpotifyTokenRefreher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2CB5071BF03CF900589BF2 /* SpotifyTokenRefreher.swift */; };
+		1F2CB5151BF03CF900589BF2 /* SpotifyTrackListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2CB5081BF03CF900589BF2 /* SpotifyTrackListVC.swift */; };
 		1F552A2A1BEBEA9200E7CAD6 /* SwiftHTTPServer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F552A291BEBEA9200E7CAD6 /* SwiftHTTPServer.framework */; };
-		1F911ED71BECE27B00B71FAC /* SpotifyConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F911ED61BECE27B00B71FAC /* SpotifyConstants.swift */; };
-		1F911EE31BED322E00B71FAC /* SpotifySessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F911EE21BED322E00B71FAC /* SpotifySessionManager.swift */; };
-		1F911EE51BED437800B71FAC /* SpotifyLoginHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F911EE41BED437800B71FAC /* SpotifyLoginHelper.swift */; };
-		1F911EE71BED48D600B71FAC /* SpotifyTokenRefreher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F911EE61BED48D600B71FAC /* SpotifyTokenRefreher.swift */; };
 		1F9955F91BEBCC760068C776 /* Spotify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F9955F81BEBCC760068C776 /* Spotify.framework */; };
 		1F9955FB1BEBCC8C0068C776 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F9955FA1BEBCC8C0068C776 /* AVFoundation.framework */; };
+		1FD2296A1BF0BF4A006BFFA5 /* GCDUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD229691BF0BF4A006BFFA5 /* GCDUtil.swift */; };
+		1FD2296C1BF0CA04006BFFA5 /* SpotifyPlaylistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD2296B1BF0CA04006BFFA5 /* SpotifyPlaylistCell.swift */; };
+		1FD229781BF0D539006BFFA5 /* spotify.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FD229771BF0D539006BFFA5 /* spotify.xcassets */; };
+		1FD2297A1BF0F0F9006BFFA5 /* MusicPlayerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD229791BF0F0F9006BFFA5 /* MusicPlayerFactory.swift */; };
+		1FD973C41BEF420100C6DE38 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FD973C31BEF420100C6DE38 /* MediaPlayer.framework */; };
+		1FF8761B1BF047E00030B6C7 /* SpotifyPlaylistListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF8761A1BF047E00030B6C7 /* SpotifyPlaylistListVC.swift */; };
+		1FFF4D7C1BF08C1B00D32526 /* WebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FFF4D7B1BF08C1B00D32526 /* WebImage.framework */; };
 		5B1997AA1AE5765800D1522C /* WeatherOptionDelegateDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1997A91AE5765800D1522C /* WeatherOptionDelegateDataSource.swift */; };
 		5B1997AC1AE5B42700D1522C /* SoundOptionDelegateDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1997AB1AE5B42700D1522C /* SoundOptionDelegateDataSource.swift */; };
 		5B1997AE1AE5B58000D1522C /* DateOptionDelegateDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1997AD1AE5B58000D1522C /* DateOptionDelegateDataSource.swift */; };
@@ -96,16 +109,29 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1F2CB4FC1BF03CF900589BF2 /* AlarmMusicPickerFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmMusicPickerFactory.swift; sourceTree = "<group>"; };
+		1F2CB4FE1BF03CF900589BF2 /* IPodLibraryMusicPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPodLibraryMusicPicker.swift; sourceTree = "<group>"; };
+		1F2CB5001BF03CF900589BF2 /* SpotifyConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotifyConstants.swift; sourceTree = "<group>"; };
+		1F2CB5011BF03CF900589BF2 /* SpotifyLoginHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotifyLoginHelper.swift; sourceTree = "<group>"; };
+		1F2CB5021BF03CF900589BF2 /* SpotifyMusicPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotifyMusicPicker.swift; sourceTree = "<group>"; };
+		1F2CB5031BF03CF900589BF2 /* SpotifyMusicPickerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotifyMusicPickerVC.swift; sourceTree = "<group>"; };
+		1F2CB5041BF03CF900589BF2 /* SpotifyPickerUI.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SpotifyPickerUI.storyboard; sourceTree = "<group>"; };
+		1F2CB5061BF03CF900589BF2 /* SpotifySessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotifySessionManager.swift; sourceTree = "<group>"; };
+		1F2CB5071BF03CF900589BF2 /* SpotifyTokenRefreher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotifyTokenRefreher.swift; sourceTree = "<group>"; };
+		1F2CB5081BF03CF900589BF2 /* SpotifyTrackListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotifyTrackListVC.swift; sourceTree = "<group>"; };
 		1F552A291BEBEA9200E7CAD6 /* SwiftHTTPServer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftHTTPServer.framework; path = Carthage/Build/iOS/SwiftHTTPServer.framework; sourceTree = "<group>"; };
 		1F552A2C1BEBED1700E7CAD6 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		1F552A2D1BEBED1700E7CAD6 /* Cartfile.resolved */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile.resolved; sourceTree = "<group>"; };
 		1F552A301BEBEEB300E7CAD6 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		1F911ED61BECE27B00B71FAC /* SpotifyConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotifyConstants.swift; sourceTree = "<group>"; };
-		1F911EE21BED322E00B71FAC /* SpotifySessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotifySessionManager.swift; sourceTree = "<group>"; };
-		1F911EE41BED437800B71FAC /* SpotifyLoginHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotifyLoginHelper.swift; sourceTree = "<group>"; };
-		1F911EE61BED48D600B71FAC /* SpotifyTokenRefreher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotifyTokenRefreher.swift; sourceTree = "<group>"; };
 		1F9955F81BEBCC760068C776 /* Spotify.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Spotify.framework; path = "ios-sdk/Spotify.framework"; sourceTree = "<group>"; };
 		1F9955FA1BEBCC8C0068C776 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		1FD229691BF0BF4A006BFFA5 /* GCDUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDUtil.swift; sourceTree = "<group>"; };
+		1FD2296B1BF0CA04006BFFA5 /* SpotifyPlaylistCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotifyPlaylistCell.swift; sourceTree = "<group>"; };
+		1FD229771BF0D539006BFFA5 /* spotify.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = spotify.xcassets; sourceTree = "<group>"; };
+		1FD229791BF0F0F9006BFFA5 /* MusicPlayerFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicPlayerFactory.swift; sourceTree = "<group>"; };
+		1FD973C31BEF420100C6DE38 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		1FF8761A1BF047E00030B6C7 /* SpotifyPlaylistListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotifyPlaylistListVC.swift; sourceTree = "<group>"; };
+		1FFF4D7B1BF08C1B00D32526 /* WebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebImage.framework; path = Carthage/Build/iOS/WebImage.framework; sourceTree = "<group>"; };
 		5B1997A91AE5765800D1522C /* WeatherOptionDelegateDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeatherOptionDelegateDataSource.swift; path = Modularm/WeatherOptionDelegateDataSource.swift; sourceTree = "<group>"; };
 		5B1997AB1AE5B42700D1522C /* SoundOptionDelegateDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SoundOptionDelegateDataSource.swift; path = Modularm/SoundOptionDelegateDataSource.swift; sourceTree = "<group>"; };
 		5B1997AD1AE5B58000D1522C /* DateOptionDelegateDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateOptionDelegateDataSource.swift; path = Modularm/DateOptionDelegateDataSource.swift; sourceTree = "<group>"; };
@@ -174,8 +200,8 @@
 		F37CF32C1BC856E600938F50 /* TimeDisplayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeDisplayViewController.swift; path = Modularm/TimeDisplayViewController.swift; sourceTree = "<group>"; };
 		F3C11E3D1BC599F60094CE71 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = Modularm/SettingsViewController.swift; sourceTree = "<group>"; };
 		F3C11E3E1BC599F60094CE71 /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SettingsViewController.xib; path = Modularm/SettingsViewController.xib; sourceTree = "<group>"; };
-		F3C11E411BC5A51B0094CE71 /* SettingsTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewDataSource.swift; sourceTree = "<group>"; };
-		F3C11E431BC5B7040094CE71 /* AppSettingsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSettingsManager.swift; sourceTree = "<group>"; };
+		F3C11E411BC5A51B0094CE71 /* SettingsTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsTableViewDataSource.swift; path = Modularm/SettingsTableViewDataSource.swift; sourceTree = "<group>"; };
+		F3C11E431BC5B7040094CE71 /* AppSettingsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppSettingsManager.swift; path = Modularm/AppSettingsManager.swift; sourceTree = "<group>"; };
 		F3E0ADE71BC6DD8200643B67 /* AnalogTimeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnalogTimeView.swift; path = Modularm/AnalogTimeView.swift; sourceTree = "<group>"; };
 		F3E0ADE91BC6DDAB00643B67 /* BEMAnalogClockView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEMAnalogClockView.h; path = Modularm/BEMAnalogClockView.h; sourceTree = "<group>"; };
 		F3E0ADEA1BC6DDAB00643B67 /* BEMAnalogClockView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEMAnalogClockView.m; path = Modularm/BEMAnalogClockView.m; sourceTree = "<group>"; };
@@ -189,9 +215,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FD973C41BEF420100C6DE38 /* MediaPlayer.framework in Frameworks */,
 				1F9955FB1BEBCC8C0068C776 /* AVFoundation.framework in Frameworks */,
 				1F9955F91BEBCC760068C776 /* Spotify.framework in Frameworks */,
 				1F552A2A1BEBEA9200E7CAD6 /* SwiftHTTPServer.framework in Frameworks */,
+				1FFF4D7C1BF08C1B00D32526 /* WebImage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -205,25 +233,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F2CB4FB1BF03CF900589BF2 /* MusicSupport */ = {
+			isa = PBXGroup;
+			children = (
+				1F2CB4FC1BF03CF900589BF2 /* AlarmMusicPickerFactory.swift */,
+				1F2CB4FE1BF03CF900589BF2 /* IPodLibraryMusicPicker.swift */,
+				1F2CB5001BF03CF900589BF2 /* SpotifyConstants.swift */,
+				1F2CB5011BF03CF900589BF2 /* SpotifyLoginHelper.swift */,
+				1F2CB5021BF03CF900589BF2 /* SpotifyMusicPicker.swift */,
+				1F2CB5031BF03CF900589BF2 /* SpotifyMusicPickerVC.swift */,
+				1F2CB5041BF03CF900589BF2 /* SpotifyPickerUI.storyboard */,
+				1F2CB5061BF03CF900589BF2 /* SpotifySessionManager.swift */,
+				1F2CB5071BF03CF900589BF2 /* SpotifyTokenRefreher.swift */,
+				1F2CB5081BF03CF900589BF2 /* SpotifyTrackListVC.swift */,
+				1FF8761A1BF047E00030B6C7 /* SpotifyPlaylistListVC.swift */,
+				1FD229691BF0BF4A006BFFA5 /* GCDUtil.swift */,
+				1FD2296B1BF0CA04006BFFA5 /* SpotifyPlaylistCell.swift */,
+				1FD229771BF0D539006BFFA5 /* spotify.xcassets */,
+				1FD229791BF0F0F9006BFFA5 /* MusicPlayerFactory.swift */,
+			);
+			name = MusicSupport;
+			path = Modularm/MusicSupport;
+			sourceTree = "<group>";
+		};
 		1F9955F71BEBCC5E0068C776 /* ExternalFrameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1FFF4D7B1BF08C1B00D32526 /* WebImage.framework */,
+				1FD973C31BEF420100C6DE38 /* MediaPlayer.framework */,
 				1F552A291BEBEA9200E7CAD6 /* SwiftHTTPServer.framework */,
 				1F9955FA1BEBCC8C0068C776 /* AVFoundation.framework */,
 				1F9955F81BEBCC760068C776 /* Spotify.framework */,
 			);
 			name = ExternalFrameworks;
-			sourceTree = "<group>";
-		};
-		1FC98EA31BECD92F00665FC8 /* MusicSupport */ = {
-			isa = PBXGroup;
-			children = (
-				1F911ED61BECE27B00B71FAC /* SpotifyConstants.swift */,
-				1F911EE21BED322E00B71FAC /* SpotifySessionManager.swift */,
-				1F911EE41BED437800B71FAC /* SpotifyLoginHelper.swift */,
-				1F911EE61BED48D600B71FAC /* SpotifyTokenRefreher.swift */,
-			);
-			name = MusicSupport;
 			sourceTree = "<group>";
 		};
 		5B1997B11AE5B64E00D1522C /* Option Delegate Data Sources */ = {
@@ -385,7 +427,7 @@
 				1F552A2C1BEBED1700E7CAD6 /* Cartfile */,
 				1F552A2D1BEBED1700E7CAD6 /* Cartfile.resolved */,
 				1F552A301BEBEEB300E7CAD6 /* README.md */,
-				1FC98EA31BECD92F00665FC8 /* MusicSupport */,
+				1F2CB4FB1BF03CF900589BF2 /* MusicSupport */,
 			);
 			sourceTree = "<group>";
 		};
@@ -544,6 +586,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8EFACDC01AD837EE00279956 /* Main.storyboard in Resources */,
+				1F2CB5111BF03CF900589BF2 /* SpotifyPickerUI.storyboard in Resources */,
+				1FD229781BF0D539006BFFA5 /* spotify.xcassets in Resources */,
 				F3C11E401BC599F60094CE71 /* SettingsViewController.xib in Resources */,
 				8EFACDC51AD837EE00279956 /* LaunchScreen.xib in Resources */,
 				5B6C142C1B094B78009617A8 /* TimelineCollectionViewCell.xib in Resources */,
@@ -569,6 +613,7 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftHTTPServer.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/WebImage.framework",
 			);
 			outputPaths = (
 			);
@@ -584,15 +629,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B6C14281B0548A0009617A8 /* TimelineCollectionViewDelegate.swift in Sources */,
-				1F911EE71BED48D600B71FAC /* SpotifyTokenRefreher.swift in Sources */,
+				1F2CB5151BF03CF900589BF2 /* SpotifyTrackListVC.swift in Sources */,
 				8E3BDC3B1AE430F400E1FCDC /* SnoozeOptionDelegateDataSource.swift in Sources */,
 				5B6C12671AFF2841009617A8 /* Sound.swift in Sources */,
-				1F911EE31BED322E00B71FAC /* SpotifySessionManager.swift in Sources */,
+				1F2CB5131BF03CF900589BF2 /* SpotifySessionManager.swift in Sources */,
 				5BEDA3721B277BBC0000983F /* InfiniteTimelineScrollingViewController.swift in Sources */,
 				8EFACDE11AD83A1E00279956 /* CoreDataStack.swift in Sources */,
 				5BD0AF0B1B2A05C80018A4C6 /* AlarmPreviewViewController.swift in Sources */,
 				5B6C136C1B019D02009617A8 /* NSCalendar+Additions.swift in Sources */,
+				1F2CB50D1BF03CF900589BF2 /* SpotifyConstants.swift in Sources */,
 				5B22182F1AE60A0700D56D31 /* AlarmOptionDelegateDataSource.swift in Sources */,
+				1FF8761B1BF047E00030B6C7 /* SpotifyPlaylistListVC.swift in Sources */,
 				5B1997AC1AE5B42700D1522C /* SoundOptionDelegateDataSource.swift in Sources */,
 				8EFACDBB1AD837EE00279956 /* Modularm.xcdatamodeld in Sources */,
 				5BD0AF0D1B2B5CE70018A4C6 /* UILabel+Additions.swift in Sources */,
@@ -607,10 +654,12 @@
 				5B6C13D21B026951009617A8 /* UIStoryboard+Additions.swift in Sources */,
 				5B4C10AB1B60A812006709B7 /* UIBarButtonItem+Additions.swift in Sources */,
 				F30823D91BBDC2D80030155D /* AlarmManager.swift in Sources */,
+				1F2CB5091BF03CF900589BF2 /* AlarmMusicPickerFactory.swift in Sources */,
 				5B6C12701AFFB875009617A8 /* AlarmOptionDelegateDataSourceBuilder.swift in Sources */,
 				F3C11E3F1BC599F60094CE71 /* SettingsViewController.swift in Sources */,
 				8E5BD3271ADB930400C42FAA /* AlarmOptionButton.swift in Sources */,
 				5B1997B31AE5B98600D1522C /* RepeatOptionDelegateDataSource.swift in Sources */,
+				1FD2296A1BF0BF4A006BFFA5 /* GCDUtil.swift in Sources */,
 				5B6C142B1B094B78009617A8 /* TimelineCollectionViewCell.swift in Sources */,
 				F3E0ADEF1BC6DDAB00643B67 /* KSMHand.m in Sources */,
 				5B56CB7F1B6067660000BD12 /* AlarmScheduler.swift in Sources */,
@@ -620,13 +669,18 @@
 				5B6C12621AFF2841009617A8 /* Countdown.swift in Sources */,
 				5BD375431B0CF854000D380C /* TimelineCellAlarmViewModel.swift in Sources */,
 				5B49D74F1B4378E700896878 /* DigitalTimeView.swift in Sources */,
+				1FD2297A1BF0F0F9006BFFA5 /* MusicPlayerFactory.swift in Sources */,
+				1F2CB50F1BF03CF900589BF2 /* SpotifyMusicPicker.swift in Sources */,
 				5B6C12611AFF2841009617A8 /* Alarm.swift in Sources */,
 				5B6C12651AFF2841009617A8 /* Repeat.swift in Sources */,
 				8E8228E21ADB679A00F9A26E /* UINavigationBar+Additions.swift in Sources */,
 				5B6C12681AFF2841009617A8 /* Weather.swift in Sources */,
 				5B1997AE1AE5B58000D1522C /* DateOptionDelegateDataSource.swift in Sources */,
 				5B1997B71AE5F79C00D1522C /* AlarmMessageSettingsController.swift in Sources */,
+				1F2CB5101BF03CF900589BF2 /* SpotifyMusicPickerVC.swift in Sources */,
+				1F2CB5141BF03CF900589BF2 /* SpotifyTokenRefreher.swift in Sources */,
 				8E3BDC341AE4176300E1FCDC /* AlarmOption.swift in Sources */,
+				1F2CB50E1BF03CF900589BF2 /* SpotifyLoginHelper.swift in Sources */,
 				5B6C126A1AFF2860009617A8 /* NSAttributedString+Additions.swift in Sources */,
 				5B2218311AE60A2400D56D31 /* UIButton+Additions.swift in Sources */,
 				F3C11E441BC5B7040094CE71 /* AppSettingsManager.swift in Sources */,
@@ -637,18 +691,18 @@
 				5BDC54951B405F460060DDFA /* AlarmDetailViewController.swift in Sources */,
 				8EFACDDD1AD8390F00279956 /* TimelineController.swift in Sources */,
 				8E8228E61ADB821C00F9A26E /* AlarmConfigurationController.swift in Sources */,
-				1F911EE51BED437800B71FAC /* SpotifyLoginHelper.swift in Sources */,
 				5B74FC8C1ADD74A100902484 /* AlarmOptionSettingsController.swift in Sources */,
 				8E8228E81ADB8AA900F9A26E /* AlarmOptionsViewController.swift in Sources */,
 				F3E0ADE81BC6DD8200643B67 /* AnalogTimeView.swift in Sources */,
 				5B6C12641AFF2841009617A8 /* Message.swift in Sources */,
+				1FD2296C1BF0CA04006BFFA5 /* SpotifyPlaylistCell.swift in Sources */,
 				5B6D9A281B28AE6A00AA662A /* TimeSetterTransitionAnimator.swift in Sources */,
 				5BEDA3741B277BBC0000983F /* TimelineView.swift in Sources */,
 				F37CF32D1BC856E600938F50 /* TimeDisplayViewController.swift in Sources */,
 				8E3BDC361AE4176E00E1FCDC /* UIImage+Additions.swift in Sources */,
 				5BD0AF111B2CE7A20018A4C6 /* TimeDisplayProvider.swift in Sources */,
+				1F2CB50B1BF03CF900589BF2 /* IPodLibraryMusicPicker.swift in Sources */,
 				5BF33BB11B482F1A007A2C86 /* TimeView.swift in Sources */,
-				1F911ED71BECE27B00B71FAC /* SpotifyConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -790,7 +844,7 @@
 				INFOPLIST_FILE = Modularm/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.purevirtualstudios.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.purevirtualstudios.Modularm;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Modularm-Bridging-Header.h";
@@ -813,7 +867,7 @@
 				INFOPLIST_FILE = Modularm/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.purevirtualstudios.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.purevirtualstudios.Modularm;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Modularm-Bridging-Header.h";
