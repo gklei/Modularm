@@ -17,10 +17,10 @@ protocol PWeatherForecastResult{
    var temperature:(f:Double, c:Double) { get }
    var time:NSDate { get }
    var summary:String { get }
-   var summaryType:WeatherSummrayType { get }
+   var summaryType:WeatherSummaryType { get }
 }
 
-enum WeatherSummrayType {
+enum WeatherSummaryType {
    case ClearDay
    case ClearNight
    case Rain
@@ -70,7 +70,7 @@ enum WeatherSummrayType {
 }
 
 // Extension for getting resources
-extension WeatherSummrayType{
+extension WeatherSummaryType{
    var images:[UIImage]{
       switch self{
       case .ClearDay:

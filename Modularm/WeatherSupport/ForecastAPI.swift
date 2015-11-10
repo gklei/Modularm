@@ -100,7 +100,7 @@ extension WeatherForecastResult:PWeatherForecastResult{
    var time:NSDate {
       return NSDate(timeIntervalSince1970: Double(timeUTC))
    }
-   var summaryType:WeatherSummrayType {
-      return WeatherSummrayType(icon)
+   var summaryType:WeatherSummaryType {
+      return WeatherSummaryType(icon)
    }
 }
