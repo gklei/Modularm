@@ -9,34 +9,6 @@
 import Foundation
 import MediaPlayer
 
-enum AlarmMusicType{
-   case Spotify
-   case iPodLibrary
-}
-
-protocol PAlarmMusic {
-   var name:String {get}
-   var musicType:AlarmMusicType {get}
-   var url:NSURL {get}
-}
-
-typealias MusicPickerCallback = (PAlarmMusic?) -> ()
-
-protocol PAlarmMusicPicker:class{
-   func pickMusicFromVC(vc:UIViewController, callback:MusicPickerCallback)
-}
-
-class AlarmMusicPickerFactory{
-   class func createMusicPicker(type:AlarmMusicType) -> PAlarmMusicPicker{
-      switch type{
-      case .Spotify:
-         return SpotifyMusicPicker()
-      case .iPodLibrary:
-         return IPodLibraryMusicPicker()
-      }
-   }
-}
-
 //Internal Enum for picking
 enum PickedAlarmMusic{
    case Spotify(name:String, url:NSURL)

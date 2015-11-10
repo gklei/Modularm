@@ -10,23 +10,6 @@ import Foundation
 import MediaPlayer
 import AVFoundation
 
-// These are simple classes, so ...
-protocol PAlarmMusicPlayer:class{
-   func play()
-   func stop()
-}
-
-class AlarmMusicPlayerFactory{
-   class func createMusicPlayer(music:PAlarmMusic) -> PAlarmMusicPlayer{
-      switch (music.musicType){
-      case .Spotify:
-         return SpotifyMusicPlayer(url: music.url)
-      case .iPodLibrary:
-         return IPodLibraryMusicPlayer(url: music.url)
-      }
-   }
-}
-
 class IPodLibraryMusicPlayer:PAlarmMusicPlayer{
    private let url:NSURL
    private var player:AVPlayer?
