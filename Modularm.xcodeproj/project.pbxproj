@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F1511AD1BF1CF0C0010AB1C /* WeatherSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1511AC1BF1CF0C0010AB1C /* WeatherSupport.swift */; };
+		1F1511AF1BF1D4AE0010AB1C /* ForecastAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1511AE1BF1D4AE0010AB1C /* ForecastAPI.swift */; };
+		1F1511B11BF1DC700010AB1C /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1511B01BF1DC700010AB1C /* LocationManager.swift */; };
+		1F1511B31BF1E4A70010AB1C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F1511B21BF1E4A70010AB1C /* CoreLocation.framework */; };
 		1F2CB5091BF03CF900589BF2 /* PickedAlarmMusic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2CB4FC1BF03CF900589BF2 /* PickedAlarmMusic.swift */; };
 		1F2CB50B1BF03CF900589BF2 /* IPodLibraryMusicPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2CB4FE1BF03CF900589BF2 /* IPodLibraryMusicPicker.swift */; };
 		1F2CB50D1BF03CF900589BF2 /* SpotifyConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2CB5001BF03CF900589BF2 /* SpotifyConstants.swift */; };
@@ -18,6 +22,9 @@
 		1F2CB5141BF03CF900589BF2 /* SpotifyTokenRefreher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2CB5071BF03CF900589BF2 /* SpotifyTokenRefreher.swift */; };
 		1F2CB5151BF03CF900589BF2 /* SpotifyTrackListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2CB5081BF03CF900589BF2 /* SpotifyTrackListVC.swift */; };
 		1F552A2A1BEBEA9200E7CAD6 /* SwiftHTTPServer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F552A291BEBEA9200E7CAD6 /* SwiftHTTPServer.framework */; };
+		1F8815BB1BF20ED400B737FD /* GCDUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8815BA1BF20ED400B737FD /* GCDUtil.swift */; };
+		1F8815BD1BF21BB300B737FD /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F8815BC1BF21BB300B737FD /* SwiftyJSON.framework */; };
+		1F8815BF1BF24CF700B737FD /* WeatherImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F8815BE1BF24CF700B737FD /* WeatherImages.xcassets */; };
 		1F9955F91BEBCC760068C776 /* Spotify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F9955F81BEBCC760068C776 /* Spotify.framework */; };
 		1F9955FB1BEBCC8C0068C776 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F9955FA1BEBCC8C0068C776 /* AVFoundation.framework */; };
 		1FD229781BF0D539006BFFA5 /* spotify.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FD229771BF0D539006BFFA5 /* spotify.xcassets */; };
@@ -108,6 +115,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1F1511AC1BF1CF0C0010AB1C /* WeatherSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherSupport.swift; sourceTree = "<group>"; };
+		1F1511AE1BF1D4AE0010AB1C /* ForecastAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForecastAPI.swift; sourceTree = "<group>"; };
+		1F1511B01BF1DC700010AB1C /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		1F1511B21BF1E4A70010AB1C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		1F2CB4FC1BF03CF900589BF2 /* PickedAlarmMusic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickedAlarmMusic.swift; sourceTree = "<group>"; };
 		1F2CB4FE1BF03CF900589BF2 /* IPodLibraryMusicPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPodLibraryMusicPicker.swift; sourceTree = "<group>"; };
 		1F2CB5001BF03CF900589BF2 /* SpotifyConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotifyConstants.swift; sourceTree = "<group>"; };
@@ -122,6 +133,9 @@
 		1F552A2C1BEBED1700E7CAD6 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		1F552A2D1BEBED1700E7CAD6 /* Cartfile.resolved */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile.resolved; sourceTree = "<group>"; };
 		1F552A301BEBEEB300E7CAD6 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		1F8815BA1BF20ED400B737FD /* GCDUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDUtil.swift; sourceTree = "<group>"; };
+		1F8815BC1BF21BB300B737FD /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
+		1F8815BE1BF24CF700B737FD /* WeatherImages.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = WeatherImages.xcassets; sourceTree = "<group>"; };
 		1F9955F81BEBCC760068C776 /* Spotify.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Spotify.framework; path = "ios-sdk/Spotify.framework"; sourceTree = "<group>"; };
 		1F9955FA1BEBCC8C0068C776 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		1FD229771BF0D539006BFFA5 /* spotify.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = spotify.xcassets; sourceTree = "<group>"; };
@@ -213,6 +227,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F8815BD1BF21BB300B737FD /* SwiftyJSON.framework in Frameworks */,
+				1F1511B31BF1E4A70010AB1C /* CoreLocation.framework in Frameworks */,
 				1FD973C41BEF420100C6DE38 /* MediaPlayer.framework in Frameworks */,
 				1F9955FB1BEBCC8C0068C776 /* AVFoundation.framework in Frameworks */,
 				1F9955F91BEBCC760068C776 /* Spotify.framework in Frameworks */,
@@ -231,6 +247,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F1511AB1BF1CE9F0010AB1C /* WeatherSupport */ = {
+			isa = PBXGroup;
+			children = (
+				1F1511AC1BF1CF0C0010AB1C /* WeatherSupport.swift */,
+				1F1511AE1BF1D4AE0010AB1C /* ForecastAPI.swift */,
+				1F1511B01BF1DC700010AB1C /* LocationManager.swift */,
+				1F8815BA1BF20ED400B737FD /* GCDUtil.swift */,
+				1F8815BE1BF24CF700B737FD /* WeatherImages.xcassets */,
+			);
+			name = WeatherSupport;
+			path = Modularm/WeatherSupport;
+			sourceTree = "<group>";
+		};
 		1F2CB4FB1BF03CF900589BF2 /* MusicSupport */ = {
 			isa = PBXGroup;
 			children = (
@@ -256,6 +285,7 @@
 		1F9955F71BEBCC5E0068C776 /* ExternalFrameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1F1511B21BF1E4A70010AB1C /* CoreLocation.framework */,
 				1FFF4D7B1BF08C1B00D32526 /* WebImage.framework */,
 				1FD973C31BEF420100C6DE38 /* MediaPlayer.framework */,
 				1F552A291BEBEA9200E7CAD6 /* SwiftHTTPServer.framework */,
@@ -404,6 +434,7 @@
 		8EFACDA91AD837EE00279956 = {
 			isa = PBXGroup;
 			children = (
+				1F8815BC1BF21BB300B737FD /* SwiftyJSON.framework */,
 				1F9955F71BEBCC5E0068C776 /* ExternalFrameworks */,
 				F3E0ADDF1BC6DB6900643B67 /* Analog Clock */,
 				8EFACDB41AD837EE00279956 /* Alarm Configuration */,
@@ -425,6 +456,7 @@
 				1F552A2D1BEBED1700E7CAD6 /* Cartfile.resolved */,
 				1F552A301BEBEEB300E7CAD6 /* README.md */,
 				1F2CB4FB1BF03CF900589BF2 /* MusicSupport */,
+				1F1511AB1BF1CE9F0010AB1C /* WeatherSupport */,
 			);
 			sourceTree = "<group>";
 		};
@@ -585,6 +617,7 @@
 				8EFACDC01AD837EE00279956 /* Main.storyboard in Resources */,
 				1F2CB5111BF03CF900589BF2 /* SpotifyPickerUI.storyboard in Resources */,
 				1FD229781BF0D539006BFFA5 /* spotify.xcassets in Resources */,
+				1F8815BF1BF24CF700B737FD /* WeatherImages.xcassets in Resources */,
 				F3C11E401BC599F60094CE71 /* SettingsViewController.xib in Resources */,
 				8EFACDC51AD837EE00279956 /* LaunchScreen.xib in Resources */,
 				5B6C142C1B094B78009617A8 /* TimelineCollectionViewCell.xib in Resources */,
@@ -611,6 +644,7 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftHTTPServer.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/WebImage.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
 			);
 			outputPaths = (
 			);
@@ -628,6 +662,7 @@
 				5B6C14281B0548A0009617A8 /* TimelineCollectionViewDelegate.swift in Sources */,
 				1F2CB5151BF03CF900589BF2 /* SpotifyTrackListVC.swift in Sources */,
 				8E3BDC3B1AE430F400E1FCDC /* SnoozeOptionDelegateDataSource.swift in Sources */,
+				1F1511B11BF1DC700010AB1C /* LocationManager.swift in Sources */,
 				5B6C12671AFF2841009617A8 /* Sound.swift in Sources */,
 				1F2CB5131BF03CF900589BF2 /* SpotifySessionManager.swift in Sources */,
 				5BEDA3721B277BBC0000983F /* InfiniteTimelineScrollingViewController.swift in Sources */,
@@ -662,9 +697,11 @@
 				5B56CB7F1B6067660000BD12 /* AlarmScheduler.swift in Sources */,
 				F3E0ADEE1BC6DDAB00643B67 /* BEMAnalogClockView.m in Sources */,
 				8E4511F01ADCF00B00A3E8EC /* UIColor+Additions.swift in Sources */,
+				1F1511AF1BF1D4AE0010AB1C /* ForecastAPI.swift in Sources */,
 				5B1997AA1AE5765800D1522C /* WeatherOptionDelegateDataSource.swift in Sources */,
 				5B6C12621AFF2841009617A8 /* Countdown.swift in Sources */,
 				5BD375431B0CF854000D380C /* TimelineCellAlarmViewModel.swift in Sources */,
+				1F8815BB1BF20ED400B737FD /* GCDUtil.swift in Sources */,
 				5B49D74F1B4378E700896878 /* DigitalTimeView.swift in Sources */,
 				1FD2297A1BF0F0F9006BFFA5 /* MusicPlayerImpl.swift in Sources */,
 				1F2CB50F1BF03CF900589BF2 /* SpotifyMusicPicker.swift in Sources */,
@@ -674,6 +711,7 @@
 				5B6C12681AFF2841009617A8 /* Weather.swift in Sources */,
 				5B1997AE1AE5B58000D1522C /* DateOptionDelegateDataSource.swift in Sources */,
 				5B1997B71AE5F79C00D1522C /* AlarmMessageSettingsController.swift in Sources */,
+				1F1511AD1BF1CF0C0010AB1C /* WeatherSupport.swift in Sources */,
 				1F2CB5101BF03CF900589BF2 /* SpotifyMusicPickerVC.swift in Sources */,
 				1F2CB5141BF03CF900589BF2 /* SpotifyTokenRefreher.swift in Sources */,
 				8E3BDC341AE4176300E1FCDC /* AlarmOption.swift in Sources */,

@@ -1,2 +1,3 @@
 github "rs/SDWebImage" "3.7.3"
+github "SwiftyJSON/SwiftyJSON" "2.3.1"
 github "gregoryklein/swifter" "1.1.0"
