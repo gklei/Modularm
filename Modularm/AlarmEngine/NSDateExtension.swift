@@ -21,7 +21,7 @@ extension NSDate{
    
    func dayOfWeek() -> Int{
       let calendar = NSCalendar.currentCalendar()
-      return calendar.components([.Day], fromDate: self).day
+      return calendar.components([.Weekday], fromDate: self).weekday
    }
    
    func nextDay() -> NSDate{
