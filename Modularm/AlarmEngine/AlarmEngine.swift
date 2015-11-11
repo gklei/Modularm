@@ -1,0 +1,67 @@
+//
+//  AlarmEngine.swift
+//  Modularm
+//
+//  Created by Alex Hong on 11/11/2015.
+//  Copyright © 2015 Pure Virtual Studios, LLC. All rights reserved.
+//
+
+import Foundation
+
+// MARK: - PAlarmEngine implementation
+class AlarmEngine :PAlarmEngine {
+   static let sharedInstance:PAlarmEngine = AlarmEngine()
+   private let application = UIApplication.sharedApplication()
+   
+   // MARK: - Register User Notification Settings
+   func registerAlarmNotificationSettings(){
+      let snoozeAction = UIMutableUserNotificationAction()
+      snoozeAction.identifier = kAlarmNotificationSnoozeActionIdentifier
+      snoozeAction.title = kAlarmNotificationSnoozeActionTitle
+      snoozeAction.activationMode = .Background
+      snoozeAction.authenticationRequired = false
+      
+      let alarmCategory = UIMutableUserNotificationCategory()
+      alarmCategory.identifier = kAlarmNotificationSnoozeCategoryIdentifier
+      alarmCategory.setActions([snoozeAction], forContext: .Default)
+      
+      let settings = UIUserNotificationSettings(forTypes: [.Alert, .Sound], categories: [alarmCategory])
+      application.registerUserNotificationSettings(settings)
+   }
+   
+   // MARK: - AlarmEngine
+   func isScheduledAlarm(alarm:PAlarm) -> Bool{    //Check if this is already scheduled alarm, used to update UI.
+      let matched = application.scheduledLocalNotifications?.filter{$0 == alarm}
+      return (matched?.count ?? 0) > 0
+   }
+   
+   func scheduleAlarm(alarm:PAlarm){    //Schedule Alarm
+      //first, cancel alarm
+      cancelAlarm(alarm)
+      
+      //Generate notification object and schedule alarm
+      let notifications = alarm.buildNotifications()
+      for notification in notifications {
+         application.scheduleLocalNotification(notification)
+      }
+   }
+   
+   func cancelAlarm(alarm:PAlarm){      //Cancel alarm if existed. (used when started editing a alarm)
+      let matched:[UILocalNotification] = application.scheduledLocalNotifications?.filter{$0 == alarm} ?? []
+      for notification in matched{
+         application.cancelLocalNotification(notification)
+      }
+   }
+   
+   func snoozeAlarm(alarm:PAlarm, afterMinutes minutes:Int)  //Snooze alarm after several minutes
+   {
+      //First check alarm identifier is available.
+      guard alarm.alarmIdentifier != "" else {
+         return
+      }
+      
+      let fireDate = NSDate().dateByAddingTimeInterval((NSTimeInterval)(minutes * 60))
+      let notification = alarm.buildTemplateNotification(fireDate)
+      application.scheduleLocalNotification(notification)
+   }
+}

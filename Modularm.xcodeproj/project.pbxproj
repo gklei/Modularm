@@ -21,7 +21,20 @@
 		1F2CB5131BF03CF900589BF2 /* SpotifySessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2CB5061BF03CF900589BF2 /* SpotifySessionManager.swift */; };
 		1F2CB5141BF03CF900589BF2 /* SpotifyTokenRefreher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2CB5071BF03CF900589BF2 /* SpotifyTokenRefreher.swift */; };
 		1F2CB5151BF03CF900589BF2 /* SpotifyTrackListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2CB5081BF03CF900589BF2 /* SpotifyTrackListVC.swift */; };
+		1F3D74B91BF32DDD0087FC23 /* PAlarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3D74B81BF32DDD0087FC23 /* PAlarm.swift */; };
+		1F3D74BB1BF3338F0087FC23 /* AlarmEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3D74BA1BF3338F0087FC23 /* AlarmEngine.swift */; };
 		1F552A2A1BEBEA9200E7CAD6 /* SwiftHTTPServer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F552A291BEBEA9200E7CAD6 /* SwiftHTTPServer.framework */; };
+		1F851C2B1BF367D500D06383 /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F851C2A1BF367D500D06383 /* NSDateExtension.swift */; };
+		1F851C2D1BF367F400D06383 /* AppDelegateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F851C2C1BF367F400D06383 /* AppDelegateExtension.swift */; };
+		1F851C2F1BF3686D00D06383 /* AlarmConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F851C2E1BF3686D00D06383 /* AlarmConstants.swift */; };
+		1F851C311BF36B3F00D06383 /* PAlarmExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F851C301BF36B3F00D06383 /* PAlarmExtension.swift */; };
+		1F851C391BF3747E00D06383 /* AlarmSound.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1F851C331BF3747700D06383 /* AlarmSound.caf */; };
+		1F851C3A1BF3747E00D06383 /* ElectroAlarmPrint.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1F851C341BF3747700D06383 /* ElectroAlarmPrint.caf */; };
+		1F851C3B1BF3747E00D06383 /* HappyDay.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1F851C351BF3747700D06383 /* HappyDay.caf */; };
+		1F851C3C1BF3747E00D06383 /* HipHopAlarm.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1F851C361BF3747700D06383 /* HipHopAlarm.caf */; };
+		1F851C3D1BF3747E00D06383 /* HurryUpWakeUp.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1F851C371BF3747700D06383 /* HurryUpWakeUp.caf */; };
+		1F851C3E1BF3747E00D06383 /* SimpleAlarm.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1F851C381BF3747700D06383 /* SimpleAlarm.caf */; };
+		1F851C401BF3749700D06383 /* AlarmSoundStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F851C3F1BF3749700D06383 /* AlarmSoundStore.swift */; };
 		1F8815BB1BF20ED400B737FD /* GCDUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8815BA1BF20ED400B737FD /* GCDUtil.swift */; };
 		1F8815BD1BF21BB300B737FD /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F8815BC1BF21BB300B737FD /* SwiftyJSON.framework */; };
 		1F8815BF1BF24CF700B737FD /* WeatherImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F8815BE1BF24CF700B737FD /* WeatherImages.xcassets */; };
@@ -129,10 +142,23 @@
 		1F2CB5061BF03CF900589BF2 /* SpotifySessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotifySessionManager.swift; sourceTree = "<group>"; };
 		1F2CB5071BF03CF900589BF2 /* SpotifyTokenRefreher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotifyTokenRefreher.swift; sourceTree = "<group>"; };
 		1F2CB5081BF03CF900589BF2 /* SpotifyTrackListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotifyTrackListVC.swift; sourceTree = "<group>"; };
+		1F3D74B81BF32DDD0087FC23 /* PAlarm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PAlarm.swift; sourceTree = "<group>"; };
+		1F3D74BA1BF3338F0087FC23 /* AlarmEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmEngine.swift; sourceTree = "<group>"; };
 		1F552A291BEBEA9200E7CAD6 /* SwiftHTTPServer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftHTTPServer.framework; path = Carthage/Build/iOS/SwiftHTTPServer.framework; sourceTree = "<group>"; };
 		1F552A2C1BEBED1700E7CAD6 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		1F552A2D1BEBED1700E7CAD6 /* Cartfile.resolved */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile.resolved; sourceTree = "<group>"; };
 		1F552A301BEBEEB300E7CAD6 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		1F851C2A1BF367D500D06383 /* NSDateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExtension.swift; sourceTree = "<group>"; };
+		1F851C2C1BF367F400D06383 /* AppDelegateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegateExtension.swift; sourceTree = "<group>"; };
+		1F851C2E1BF3686D00D06383 /* AlarmConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmConstants.swift; sourceTree = "<group>"; };
+		1F851C301BF36B3F00D06383 /* PAlarmExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PAlarmExtension.swift; sourceTree = "<group>"; };
+		1F851C331BF3747700D06383 /* AlarmSound.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AlarmSound.caf; sourceTree = "<group>"; };
+		1F851C341BF3747700D06383 /* ElectroAlarmPrint.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ElectroAlarmPrint.caf; sourceTree = "<group>"; };
+		1F851C351BF3747700D06383 /* HappyDay.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HappyDay.caf; sourceTree = "<group>"; };
+		1F851C361BF3747700D06383 /* HipHopAlarm.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HipHopAlarm.caf; sourceTree = "<group>"; };
+		1F851C371BF3747700D06383 /* HurryUpWakeUp.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HurryUpWakeUp.caf; sourceTree = "<group>"; };
+		1F851C381BF3747700D06383 /* SimpleAlarm.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SimpleAlarm.caf; sourceTree = "<group>"; };
+		1F851C3F1BF3749700D06383 /* AlarmSoundStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmSoundStore.swift; sourceTree = "<group>"; };
 		1F8815BA1BF20ED400B737FD /* GCDUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDUtil.swift; sourceTree = "<group>"; };
 		1F8815BC1BF21BB300B737FD /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		1F8815BE1BF24CF700B737FD /* WeatherImages.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = WeatherImages.xcassets; sourceTree = "<group>"; };
@@ -282,9 +308,39 @@
 			path = Modularm/MusicSupport;
 			sourceTree = "<group>";
 		};
+		1F3D74B71BF32DD00087FC23 /* AlarmEngine */ = {
+			isa = PBXGroup;
+			children = (
+				1F3D74B81BF32DDD0087FC23 /* PAlarm.swift */,
+				1F851C2E1BF3686D00D06383 /* AlarmConstants.swift */,
+				1F3D74BA1BF3338F0087FC23 /* AlarmEngine.swift */,
+				1F851C2A1BF367D500D06383 /* NSDateExtension.swift */,
+				1F851C301BF36B3F00D06383 /* PAlarmExtension.swift */,
+				1F851C2C1BF367F400D06383 /* AppDelegateExtension.swift */,
+			);
+			name = AlarmEngine;
+			path = Modularm/AlarmEngine;
+			sourceTree = "<group>";
+		};
+		1F851C321BF3744700D06383 /* AlarmSound */ = {
+			isa = PBXGroup;
+			children = (
+				1F851C331BF3747700D06383 /* AlarmSound.caf */,
+				1F851C341BF3747700D06383 /* ElectroAlarmPrint.caf */,
+				1F851C351BF3747700D06383 /* HappyDay.caf */,
+				1F851C361BF3747700D06383 /* HipHopAlarm.caf */,
+				1F851C371BF3747700D06383 /* HurryUpWakeUp.caf */,
+				1F851C381BF3747700D06383 /* SimpleAlarm.caf */,
+				1F851C3F1BF3749700D06383 /* AlarmSoundStore.swift */,
+			);
+			name = AlarmSound;
+			path = Modularm/AlarmSound;
+			sourceTree = "<group>";
+		};
 		1F9955F71BEBCC5E0068C776 /* ExternalFrameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1F8815BC1BF21BB300B737FD /* SwiftyJSON.framework */,
 				1F1511B21BF1E4A70010AB1C /* CoreLocation.framework */,
 				1FFF4D7B1BF08C1B00D32526 /* WebImage.framework */,
 				1FD973C31BEF420100C6DE38 /* MediaPlayer.framework */,
@@ -434,7 +490,6 @@
 		8EFACDA91AD837EE00279956 = {
 			isa = PBXGroup;
 			children = (
-				1F8815BC1BF21BB300B737FD /* SwiftyJSON.framework */,
 				1F9955F71BEBCC5E0068C776 /* ExternalFrameworks */,
 				F3E0ADDF1BC6DB6900643B67 /* Analog Clock */,
 				8EFACDB41AD837EE00279956 /* Alarm Configuration */,
@@ -457,6 +512,8 @@
 				1F552A301BEBEEB300E7CAD6 /* README.md */,
 				1F2CB4FB1BF03CF900589BF2 /* MusicSupport */,
 				1F1511AB1BF1CE9F0010AB1C /* WeatherSupport */,
+				1F3D74B71BF32DD00087FC23 /* AlarmEngine */,
+				1F851C321BF3744700D06383 /* AlarmSound */,
 			);
 			sourceTree = "<group>";
 		};
@@ -618,10 +675,16 @@
 				1F2CB5111BF03CF900589BF2 /* SpotifyPickerUI.storyboard in Resources */,
 				1FD229781BF0D539006BFFA5 /* spotify.xcassets in Resources */,
 				1F8815BF1BF24CF700B737FD /* WeatherImages.xcassets in Resources */,
+				1F851C3E1BF3747E00D06383 /* SimpleAlarm.caf in Resources */,
 				F3C11E401BC599F60094CE71 /* SettingsViewController.xib in Resources */,
 				8EFACDC51AD837EE00279956 /* LaunchScreen.xib in Resources */,
 				5B6C142C1B094B78009617A8 /* TimelineCollectionViewCell.xib in Resources */,
 				8E6094F31B08585E007F8D24 /* TimelineHeaderView.xib in Resources */,
+				1F851C3B1BF3747E00D06383 /* HappyDay.caf in Resources */,
+				1F851C3D1BF3747E00D06383 /* HurryUpWakeUp.caf in Resources */,
+				1F851C391BF3747E00D06383 /* AlarmSound.caf in Resources */,
+				1F851C3A1BF3747E00D06383 /* ElectroAlarmPrint.caf in Resources */,
+				1F851C3C1BF3747E00D06383 /* HipHopAlarm.caf in Resources */,
 				8EFACDC21AD837EE00279956 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -660,6 +723,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B6C14281B0548A0009617A8 /* TimelineCollectionViewDelegate.swift in Sources */,
+				1F851C311BF36B3F00D06383 /* PAlarmExtension.swift in Sources */,
 				1F2CB5151BF03CF900589BF2 /* SpotifyTrackListVC.swift in Sources */,
 				8E3BDC3B1AE430F400E1FCDC /* SnoozeOptionDelegateDataSource.swift in Sources */,
 				1F1511B11BF1DC700010AB1C /* LocationManager.swift in Sources */,
@@ -677,6 +741,7 @@
 				8EFACDBB1AD837EE00279956 /* Modularm.xcdatamodeld in Sources */,
 				5BD0AF0D1B2B5CE70018A4C6 /* UILabel+Additions.swift in Sources */,
 				5B6C12661AFF2841009617A8 /* Snooze.swift in Sources */,
+				1F851C2D1BF367F400D06383 /* AppDelegateExtension.swift in Sources */,
 				5B6C126E1AFFB152009617A8 /* OptionSettingsControllerBase.swift in Sources */,
 				5B6C12631AFF2841009617A8 /* Date.swift in Sources */,
 				5BEDA3731B277BBC0000983F /* InfiniteTimelineScrollView.swift in Sources */,
@@ -686,6 +751,7 @@
 				5BEDA3641B27782E0000983F /* String+Additions.swift in Sources */,
 				5B6C13D21B026951009617A8 /* UIStoryboard+Additions.swift in Sources */,
 				5B4C10AB1B60A812006709B7 /* UIBarButtonItem+Additions.swift in Sources */,
+				1F851C2F1BF3686D00D06383 /* AlarmConstants.swift in Sources */,
 				F30823D91BBDC2D80030155D /* AlarmManager.swift in Sources */,
 				1F2CB5091BF03CF900589BF2 /* PickedAlarmMusic.swift in Sources */,
 				5B6C12701AFFB875009617A8 /* AlarmOptionDelegateDataSourceBuilder.swift in Sources */,
@@ -696,6 +762,7 @@
 				F3E0ADEF1BC6DDAB00643B67 /* KSMHand.m in Sources */,
 				5B56CB7F1B6067660000BD12 /* AlarmScheduler.swift in Sources */,
 				F3E0ADEE1BC6DDAB00643B67 /* BEMAnalogClockView.m in Sources */,
+				1F3D74B91BF32DDD0087FC23 /* PAlarm.swift in Sources */,
 				8E4511F01ADCF00B00A3E8EC /* UIColor+Additions.swift in Sources */,
 				1F1511AF1BF1D4AE0010AB1C /* ForecastAPI.swift in Sources */,
 				5B1997AA1AE5765800D1522C /* WeatherOptionDelegateDataSource.swift in Sources */,
@@ -709,6 +776,7 @@
 				5B6C12651AFF2841009617A8 /* Repeat.swift in Sources */,
 				8E8228E21ADB679A00F9A26E /* UINavigationBar+Additions.swift in Sources */,
 				5B6C12681AFF2841009617A8 /* Weather.swift in Sources */,
+				1F851C2B1BF367D500D06383 /* NSDateExtension.swift in Sources */,
 				5B1997AE1AE5B58000D1522C /* DateOptionDelegateDataSource.swift in Sources */,
 				5B1997B71AE5F79C00D1522C /* AlarmMessageSettingsController.swift in Sources */,
 				1F1511AD1BF1CF0C0010AB1C /* WeatherSupport.swift in Sources */,
@@ -733,10 +801,12 @@
 				5B6D9A281B28AE6A00AA662A /* TimeSetterTransitionAnimator.swift in Sources */,
 				5BEDA3741B277BBC0000983F /* TimelineView.swift in Sources */,
 				F37CF32D1BC856E600938F50 /* TimeDisplayViewController.swift in Sources */,
+				1F851C401BF3749700D06383 /* AlarmSoundStore.swift in Sources */,
 				8E3BDC361AE4176E00E1FCDC /* UIImage+Additions.swift in Sources */,
 				5BD0AF111B2CE7A20018A4C6 /* TimeDisplayProvider.swift in Sources */,
 				1F2CB50B1BF03CF900589BF2 /* IPodLibraryMusicPicker.swift in Sources */,
 				5BF33BB11B482F1A007A2C86 /* TimeView.swift in Sources */,
+				1F3D74BB1BF3338F0087FC23 /* AlarmEngine.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
