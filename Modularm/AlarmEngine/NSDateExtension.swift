@@ -12,7 +12,7 @@ import Foundation
 extension NSDate{
    func changedHour(hour:Int, minute:Int) -> NSDate{
       let calendar = NSCalendar.currentCalendar()
-      let components = calendar.components([.Year, .Month, .Day, .Hour, .Minute], fromDate: NSDate())
+      let components = calendar.components([.Year, .Month, .Day, .Hour, .Minute], fromDate: self)
       components.hour = hour
       components.minute = minute
       components.second = 0
