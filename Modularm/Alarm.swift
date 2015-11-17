@@ -110,3 +110,45 @@ class Alarm: NSManagedObject
       self.fireDate = NSDate.alarmDateWithHour(self.fireDate.hour, minute: self.fireDate.minute);
    }
 }
+
+extension Alarm: PAlarm
+{
+   var alarmIdentifier:String {
+      return self.identifier
+   }
+   
+   var alarmBody:String {
+      return self.message?.text ?? "No message"
+   }
+   
+   var alarmHour:Int {
+      return self.fireDate.hour
+   }
+   
+   var alarmMinute:Int {
+      return self.fireDate.minute
+   }
+   
+   var alarmWeekDays:[Int]? {
+      return self.repeatModel?.intArray()
+   }
+   
+   var alarmSound:String {
+      return "ElectorAlarmPrint"
+   }
+   
+   var snoozeMinute:Int {
+      var minute: Int = 0
+      if let duration = self.snooze?.duration {
+         minute = Int(duration.rawValue)
+      }
+      return minute
+   }
+}
+
+extension Alarm: PWeatherForecastRequestParam
+{
+   var time: NSDate {
+      return self.fireDate
+   }
+}

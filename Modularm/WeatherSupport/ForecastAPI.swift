@@ -15,13 +15,15 @@ private let kWeatherForecastAPIKey = "ceef665dc6534b474bcf4e8f1115d624"
 private let kForecastURLEndPoint = "https://api.forecast.io/forecast/" + kWeatherForecastAPIKey + "/"
 
 // This represent "current" key in response from forecast.io
-private struct WeatherForecastResult{
+private struct WeatherForecastResult
+{
    private let f_t:Double     //temperature in farenhite
    private let timeUTC:Int       //Time interval from 1970.1.1
    let summary:String //Summary string
    private let icon:String    //Icon String
    
-   private init(_ json:JSON){
+   private init(_ json:JSON)
+   {
       f_t = json["temperature"].doubleValue
       timeUTC = json["time"].intValue
       summary = json["summary"].stringValue
@@ -35,11 +37,13 @@ extension NSDate : PWeatherForecastRequestParam{
    }
 }
 
-class WeatherForecastAPI {
+class WeatherForecastAPI
+{
    // MARK: - API for requesting WeatherForecast
    class func requestFor(param:PWeatherForecastRequestParam, callback:WeatherForecastCallback){
       dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
-         do {
+         do
+         {
             let req = NSURLRequest(URL: try self.urlForRequest(param))
             NSURLSession.sharedSession().dataTaskWithRequest(req) { (data, _, error) in
                guard error == nil && data != nil else {
@@ -55,8 +59,10 @@ class WeatherForecastAPI {
                   callback(result: result, error: nil)
                }
             }.resume()
-         }catch{
-            GCDUtil.runOnMainAsync{
+         }
+         catch
+         {
+            GCDUtil.runOnMainAsync {
                callback(result: nil, error: error)
             }
          }

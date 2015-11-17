@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "305CF1756DCC77FCB4F9B11DCB1DDA40E3114A5F",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "305CF1756DCC77FCB4F9B11DCB1DDA40E3114A5F" : 0,
+    "2F24C7ABC659AFF86BEF70BD7DCAF0EF1B9AD29C" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "5285168A-E0AB-4B68-8EC1-128240EA3B77",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "305CF1756DCC77FCB4F9B11DCB1DDA40E3114A5F" : "Modularm\/",
+    "2F24C7ABC659AFF86BEF70BD7DCAF0EF1B9AD29C" : "Modularm\/ios-sdk\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Modularm",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Modularm.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:spotify\/ios-sdk.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "2F24C7ABC659AFF86BEF70BD7DCAF0EF1B9AD29C"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:gregoryklein\/Modularm.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "305CF1756DCC77FCB4F9B11DCB1DDA40E3114A5F"
+    }
+  ]
+}

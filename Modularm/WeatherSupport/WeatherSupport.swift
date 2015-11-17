@@ -13,14 +13,16 @@ protocol PWeatherForecastRequestParam{
    var time:NSDate { get }
 }
 
-protocol PWeatherForecastResult{
+protocol PWeatherForecastResult
+{
    var temperature:(f:Double, c:Double) { get }
    var time:NSDate { get }
    var summary:String { get }
    var summaryType:WeatherSummaryType { get }
 }
 
-enum WeatherSummaryType {
+enum WeatherSummaryType
+{
    case ClearDay
    case ClearNight
    case Rain
@@ -36,7 +38,8 @@ enum WeatherSummaryType {
    case Tornado
    case Unknown
    
-   init(_ raw:String){
+   init(_ raw:String)
+   {
       if raw == "clear-day"{
          self = ClearDay
       }else if raw == "clear-night"{
@@ -70,7 +73,8 @@ enum WeatherSummaryType {
 }
 
 // Extension for getting resources
-extension WeatherSummaryType{
+extension WeatherSummaryType
+{
    var images:[UIImage]{
       switch self{
       case .ClearDay:

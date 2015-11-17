@@ -9,12 +9,14 @@
 import Foundation
 
 // MARK: - PAlarmEngine implementation
-class AlarmEngine :PAlarmEngine {
+class AlarmEngine :PAlarmEngine
+{
    static let sharedInstance:PAlarmEngine = AlarmEngine()
    private let application = UIApplication.sharedApplication()
    
    // MARK: - Register User Notification Settings
-   func registerAlarmNotificationSettings(){
+   func registerAlarmNotificationSettings()
+   {
       let snoozeAction = UIMutableUserNotificationAction()
       snoozeAction.identifier = kAlarmNotificationSnoozeActionIdentifier
       snoozeAction.title = kAlarmNotificationSnoozeActionTitle
@@ -30,12 +32,17 @@ class AlarmEngine :PAlarmEngine {
    }
    
    // MARK: - AlarmEngine
-   func isScheduledAlarm(alarm:PAlarm) -> Bool{    //Check if this is already scheduled alarm, used to update UI.
+   func isScheduledAlarm(alarm:PAlarm) -> Bool
+   {
+      //Check if this is already scheduled alarm, used to update UI.
       let matched = application.scheduledLocalNotifications?.filter{$0 == alarm}
       return (matched?.count ?? 0) > 0
    }
    
-   func scheduleAlarm(alarm:PAlarm){    //Schedule Alarm
+   func scheduleAlarm(alarm:PAlarm)
+   {
+      let alarmDate = NSDate.alarmDateWithHour(alarm.alarmHour, minute: alarm.alarmMinute)
+      print("AlarmEngine: scheduling alarm: \(alarmDate.prettyDateString())")
       //first, cancel alarm
       cancelAlarm(alarm)
       
@@ -46,9 +53,16 @@ class AlarmEngine :PAlarmEngine {
       }
    }
    
-   func cancelAlarm(alarm:PAlarm){      //Cancel alarm if existed. (used when started editing a alarm)
+   func cancelAlarm(alarm:PAlarm)
+   {
+      //Cancel alarm if existed. (used when started editing a alarm)
       let matched:[UILocalNotification] = application.scheduledLocalNotifications?.filter{$0 == alarm} ?? []
-      for notification in matched{
+      for notification in matched
+      {
+         if let fireDate = notification.fireDate
+         {
+            print("AlarmEngine: unscheduling notification with fireDate: \(fireDate.prettyDateString())")
+         }
          application.cancelLocalNotification(notification)
       }
    }
@@ -63,5 +77,22 @@ class AlarmEngine :PAlarmEngine {
       let fireDate = NSDate().dateByAddingTimeInterval((NSTimeInterval)(minutes * 60))
       let notification = alarm.buildTemplateNotification(fireDate)
       application.scheduleLocalNotification(notification)
+   }
+   
+   func alarmForUUID(uuid: String) -> Alarm?
+   {
+      var targetAlarm: Alarm?
+      if let alarms = AlarmManager.alarms
+      {
+         for alarm in alarms
+         {
+            if alarm.identifier.characters.elementsEqual(uuid.characters)
+            {
+               targetAlarm = alarm
+               break
+            }
+         }
+      }
+      return targetAlarm
    }
 }

@@ -16,6 +16,7 @@ class AlarmDetailViewController: UIViewController
    @IBOutlet weak var alarmTimeView: DigitalTimeView!
    @IBOutlet weak var editButton: UIButton!
    @IBOutlet weak var cancelButton: UIButton!
+   @IBOutlet private weak var _backgroundImageView: UIImageView!
    
    private var alarmIsFiring = false
    
@@ -31,6 +32,24 @@ class AlarmDetailViewController: UIViewController
       self.setupTitle()
       self.updateTimeLabels()
       self.updateUIForFiringState()
+      
+      if let alarm = self.alarm
+      {
+         print("requesting weather!")
+         WeatherForecastAPI.requestFor(alarm, callback: { (result:PWeatherForecastResult?, error:ErrorType?) -> () in
+            
+            if let forecastResult = result
+            {
+               print("summary: \(forecastResult.summary)")
+               let images = forecastResult.summaryType.images
+               self._backgroundImageView.image = images[0]
+            }
+            else
+            {
+               print("error: \(error.debugDescription)")
+            }
+         })
+      }
    }
    
    // MARK: - Private

@@ -70,7 +70,7 @@ struct AlarmManager
    {
       alarm.active = false
       alarm.updateAlarmDate()
-      AlarmScheduler.unscheduleAlarm(alarm)
+      AlarmEngine.sharedInstance.cancelAlarm(alarm)
       CoreDataStack.save()
    }
    
@@ -93,7 +93,7 @@ struct AlarmManager
    
    static func deleteAlarm(alarm: Alarm)
    {
-      AlarmScheduler.unscheduleAlarm(alarm)
+      AlarmEngine.sharedInstance.cancelAlarm(alarm)
       CoreDataStack.deleteObject(alarm)
       CoreDataStack.save()
    }
@@ -101,8 +101,7 @@ struct AlarmManager
    private static func scheduleAlarm(alarm: Alarm)
    {
       alarm.active = true
-      AlarmScheduler.unscheduleAlarm(alarm)
-      AlarmScheduler.scheduleAlarm(alarm)
+      AlarmEngine.sharedInstance.scheduleAlarm(alarm)
       CoreDataStack.save()
    }
 }

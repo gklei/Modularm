@@ -71,7 +71,7 @@ class TimelineController: UIViewController
    
    @IBAction func logCurrentScheduledNotifications()
    {
-      AlarmScheduler.logCurrentScheduledNotifications()
+//      AlarmScheduler.logCurrentScheduledNotifications()
    }
    
    @IBAction func settingsButtonPressed()

@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import CoreLocation
 
 let kModularmMinuteChangedNotification = "ModularmMinuteChangedNotification"
 
@@ -16,9 +17,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate
 {
    var window: UIWindow?
    var minuteChangedNotificationTimer: NSTimer?
+   private let _locationManager = CLLocationManager()
 
    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
    {
+      _locationManager.delegate = self
+      if CLLocationManager.locationServicesEnabled() {
+         _locationManager.startUpdatingLocation()
+      }
+      
       let notificationSettings = UIUserNotificationSettings(forTypes: [.Alert, .Sound], categories: nil)
       UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
       
@@ -37,6 +44,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate
       
       //Added by Alex, start token service when app is launched.
       SpotifyTokenRefresher.startTokenService()
+      
+      if CLLocationManager.authorizationStatus() == .NotDetermined {
+         _locationManager.requestWhenInUseAuthorization()
+      }
       
       return true
    }
@@ -104,7 +115,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
       let alarmDetailViewController = UIStoryboard.controllerWithIdentifier("AlarmDetailViewController") as! AlarmDetailViewController
       if let navController = self.window?.rootViewController as? UINavigationController
       {
-         if let alarm = AlarmScheduler.alarmForUUID(uuid)
+         if let alarm = AlarmEngine.sharedInstance.alarmForUUID(uuid)
          {
             alarmDetailViewController.configureWithAlarm(alarm, isFiring: true)
          }
@@ -121,6 +132,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate
    func minuteChanged(timer: NSTimer)
    {
       NSNotificationCenter.defaultCenter().postNotificationName(kModularmMinuteChangedNotification, object: nil);
+   }
+}
+
+extension AppDelegate: CLLocationManagerDelegate
+{
+   func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus)
+   {
+      if status == .AuthorizedAlways || status == .AuthorizedWhenInUse {
+         _locationManager.startUpdatingLocation()
+      }
    }
 }
 

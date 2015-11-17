@@ -37,6 +37,7 @@ class InfiniteTimelineScrollView: UIScrollView
       super.layoutSubviews()
       recenterIfNecessary()
       
+      self.contentSize = CGSizeMake(CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds) * 4)
       let minimumVisibleY = CGRectGetMinY(self.bounds)
       let maximumVisibleY = CGRectGetMaxY(self.bounds)
       self.tileTimelineViewsFromMinY(minimumVisibleY, toMaxY: maximumVisibleY)

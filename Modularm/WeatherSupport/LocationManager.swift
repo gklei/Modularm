@@ -19,8 +19,8 @@ typealias LocationCallback = (location:CLLocationCoordinate2D?, error:ErrorType?
    /*
    The reason for setting declare as var is to set to nil as quick as possible.
    */
-   private var callback:LocationCallback
-   private var locationManager:CLLocationManager = CLLocationManager()
+   private var callback: LocationCallback
+   private var locationManager = CLLocationManager()
    
    private init(callback:LocationCallback){
       self.callback = callback
@@ -28,17 +28,20 @@ typealias LocationCallback = (location:CLLocationCoordinate2D?, error:ErrorType?
    }
    
    // MARK: - Retrieve Location
-   private func startLocationUpdate(){
+   private func startLocationUpdate() {
       locationManager.delegate = self
       locationManager.distanceFilter = kCLDistanceFilterNone
       locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
       
       let authStatus = CLLocationManager.authorizationStatus()
-      switch(authStatus){
+      switch(authStatus)
+      {
       case .AuthorizedAlways, .AuthorizedWhenInUse:
          locationManager.startUpdatingLocation()
+         break
       case .NotDetermined:
          locationManager.requestWhenInUseAuthorization()
+         break
       default:
          callback(location: nil, error: WeatherForecastError.LocationServiceDisabled)
       }
@@ -74,7 +77,7 @@ typealias LocationCallback = (location:CLLocationCoordinate2D?, error:ErrorType?
    // MARK: - Class function
    // Usage: When calling this function, result of this should be hold strong
    // Unless it will be destroyed.
-   class func retrieveLocation(callback:LocationCallback) -> Any{
+   class func retrieveLocation(callback:LocationCallback) -> Any {
       //To hold variable.
       var result:Any?
       //run synchronously on main thread because location update manager should run on main thread.
