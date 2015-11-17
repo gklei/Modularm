@@ -1,1 +1,3 @@
 github "gregoryklein/swifter"
+github "rs/SDWebImage"
+github "SwiftyJSON/SwiftyJSON"

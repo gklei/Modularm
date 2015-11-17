@@ -30,4 +30,12 @@ extension UIImage
       
       return image
    }
+   
+   class func imageWithImage(image:UIImage, scaledToSize size:CGSize) -> UIImage{
+      UIGraphicsBeginImageContext(size)
+      image.drawInRect(CGRectMake(0, 0, size.width, size.height))
+      let result = UIGraphicsGetImageFromCurrentImageContext()
+      UIGraphicsEndImageContext()
+      return result
+   }
 }

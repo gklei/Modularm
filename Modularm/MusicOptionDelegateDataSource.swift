@@ -10,7 +10,7 @@ import UIKit
 
 class MusicOptionDelegateDataSource: AlarmOptionDelegateDataSource
 {
-//   private var _spotifyLoginHelper: SpotifyLoginHelper?
+   private var musicPicker: PAlarmMusicPicker?
    
    // MARK: - Init
    override init(tableView: UITableView, delegate: AlarmOptionSettingsControllerDelegate, alarm: Alarm?)
@@ -27,19 +27,20 @@ extension MusicOptionDelegateDataSource
 {
    func itunesSwitchChanged(sender: UISwitch)
    {
-      print("itunes switch changed")
+      musicPicker = AlarmMusicPickerFactory.createMusicPicker(.iPodLibrary)
+      musicPicker?.pickMusicFromVC(settingsControllerDelegate.vcForPresenting()!, callback: { (music) -> () in
+         //Process retrieved music here.
+         self.musicPicker = nil
+      })
    }
 
    func spotifySwitchChanged(sender: UISwitch)
    {
-//      if let vcForPresentingLogin = settingsControllerDelegate.vcForPresenting()
-//      {
-//         print("spotify switch changed")
-//         _spotifyLoginHelper = SpotifyLoginHelper(callback: { (success, error) -> () in
-//            self._spotifyLoginHelper = nil
-//         })
-//         _spotifyLoginHelper?.loginFromVC(vcForPresentingLogin)
-//      }
+      musicPicker = AlarmMusicPickerFactory.createMusicPicker(.Spotify)
+      musicPicker?.pickMusicFromVC(settingsControllerDelegate.vcForPresenting()!, callback: { (music) -> () in
+         //Process retrieved music here.
+         self.musicPicker = nil
+      })
    }
 
    func rdioSwitchChanged(sender: UISwitch)
