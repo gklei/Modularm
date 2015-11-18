@@ -81,6 +81,12 @@ class AnalogTimeView: TimeView
       clockView.minutes = self.time.minute
       clockView.updateTimeWithAnimationDuration(0.4)
    }
+   
+   override func updateColor(color: UIColor)
+   {
+      clockView.digitColor = color
+      clockView.hubColor = color
+   }
 }
 
 extension AnalogTimeView: BEMAnalogClockDelegate

@@ -20,4 +20,8 @@ class TimeView: UIView
    {
       self.time = (hour, minute)
    }
+   
+   func updateColor(color: UIColor)
+   {
+   }
 }

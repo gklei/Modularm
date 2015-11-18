@@ -18,6 +18,11 @@ class Weather: NSManagedObject
 {
    @NSManaged var alarm: Alarm
    @NSManaged var readableTextSummary: String
+   @NSManaged var fahrenheitTemperature: Double
+   
+   var celciusTemperature: Double {
+      return (fahrenheitTemperature - 32) * 5 / 9
+   }
 
    override func awakeFromInsert()
    {

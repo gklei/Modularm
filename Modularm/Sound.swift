@@ -18,10 +18,11 @@ class Sound: NSManagedObject
    
    var alarmSound: PAlarmSound?
    {
+      let soundName = NSURL(string: soundURL)?.lastPathComponent!
       var found: PAlarmSound?
       for sound in AlarmSoundStore.sharedInstance.fetchAlarmSounds()
       {
-         if let path = sound.url.path where path == self.soundURL {
+         if soundName == sound.nameInMainBundle {
             found = sound
             break
          }

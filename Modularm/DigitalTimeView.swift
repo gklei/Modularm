@@ -15,6 +15,10 @@ class DigitalTimeView: TimeView
    private let minuteLabel = UILabel.largeTimeDisplayLabelWithAlignment(.Right)
    private let amOrPmLabel = UILabel.amOrPmLabel()
    
+   private var _labels: [UILabel] {
+      return [hourLabel, colonLabel, minuteLabel, amOrPmLabel]
+   }
+   
    // MARK: - Init
    required init?(coder aDecoder: NSCoder)
    {
@@ -92,5 +96,12 @@ class DigitalTimeView: TimeView
       minuteLabel.text = TimeDisplayProvider.textForMinuteValue(minute)
       amOrPmLabel.text = hour < 12 ? "am" : "pm"
       amOrPmLabel.sizeToFit()
+   }
+   
+   override func updateColor(color: UIColor)
+   {
+      for label in _labels {
+         label.textColor = color
+      }
    }
 }

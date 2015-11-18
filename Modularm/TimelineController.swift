@@ -91,7 +91,7 @@ class TimelineController: UIViewController
    
    func showDetailsForAlarm(alarm: Alarm)
    {
-      _alarmDetailViewController.configureWithAlarm(alarm, isFiring: false)
+      _alarmDetailViewController.configureWithAlarm(alarm, isFiring: false, displayMode: AppSettingsManager.displayMode)
       navigationController?.pushViewController(_alarmDetailViewController, animated: true)
    }
    

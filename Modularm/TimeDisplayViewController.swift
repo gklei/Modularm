@@ -16,16 +16,6 @@ class TimeDisplayViewController: UIViewController
    private var analogTimeView = AnalogTimeView(frame: CGRect.zero)
    
    // MARK: - Init
-   required init?(coder aDecoder: NSCoder)
-   {
-      super.init(coder: aDecoder)
-   }
-   
-   override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?)
-   {
-      super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-   }
-   
    convenience init()
    {
       self.init(nibName: nil, bundle: nil)

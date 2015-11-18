@@ -12,18 +12,24 @@ class AlarmDetailViewController: UIViewController
 {
    private var alarm: Alarm?
    
+   @IBOutlet weak private var _alarmTimeContainerWidthConstraint: NSLayoutConstraint!
+   @IBOutlet weak private var _alarmTimeContainerHeightConstraint: NSLayoutConstraint!
+   @IBOutlet weak var alarmTimeContainerView: UIView!
+   
    @IBOutlet weak var alarmMessageLabel: UILabel!
-   @IBOutlet weak var alarmTimeView: DigitalTimeView!
    @IBOutlet weak var editButton: UIButton!
    @IBOutlet weak var cancelButton: UIButton!
    @IBOutlet private weak var _backgroundImageView: UIImageView!
    
    private var alarmIsFiring = false
+   private var _timeDisplayViewController = TimeDisplayViewController()
    
    // MARK: - Lifecycle
    override func viewDidLoad()
    {
       super.viewDidLoad()
+      
+      alarmTimeContainerView.addSubview(_timeDisplayViewController.view)
    }
    
    override func viewWillAppear(animated: Bool)
@@ -33,6 +39,14 @@ class AlarmDetailViewController: UIViewController
       self.updateTimeLabels()
       self.updateUIForFiringState()
       self.updateBackgroundImage()
+      
+      updateTimeContainerConstraintsWithDisplayMode(AppSettingsManager.displayMode)
+   }
+   
+   override func viewDidLayoutSubviews()
+   {
+      super.viewDidLayoutSubviews()
+      _timeDisplayViewController.view.frame = alarmTimeContainerView.bounds
    }
    
    // MARK: - Private
@@ -92,8 +106,11 @@ class AlarmDetailViewController: UIViewController
 
    private func updateTimeLabels()
    {
-      if let alarm = self.alarm {
-         self.alarmTimeView.updateTimeWithAlarm(alarm)
+      if let alarm = self.alarm
+      {
+         let time = alarm.fireDate
+         _timeDisplayViewController.updateDisplayMode(AppSettingsManager.displayMode)
+         _timeDisplayViewController.updateTimeWithHour(time.hour, minute: time.minute)
       }
       if let message = self.alarm?.message?.text
       {
@@ -112,6 +129,21 @@ class AlarmDetailViewController: UIViewController
       }
    }
    
+   
+   private func updateTimeContainerConstraintsWithDisplayMode(mode: DisplayMode)
+   {
+      var height: CGFloat = 0.0
+      switch mode {
+      case .Analog:
+         height = 230.0
+         break
+      case .Digital:
+         height = 85.0
+         break
+      }
+      _alarmTimeContainerHeightConstraint.constant = height
+   }
+   
    override func preferredStatusBarStyle() -> UIStatusBarStyle
    {
       return .LightContent
@@ -124,10 +156,14 @@ class AlarmDetailViewController: UIViewController
    }
    
    // MARK: - Public
-   func configureWithAlarm(alarm: Alarm?, isFiring: Bool)
+   func configureWithAlarm(alarm: Alarm?, isFiring: Bool, displayMode: DisplayMode)
    {
       self.alarm = alarm
       self.alarmIsFiring = isFiring
+      
+      let time = alarm!.fireDate
+      _timeDisplayViewController.updateDisplayMode(displayMode)
+      _timeDisplayViewController.updateTimeWithHour(time.hour, minute: time.minute)
    }
    
    func testButtonPressed(sender: UIBarButtonItem)

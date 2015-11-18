@@ -22,7 +22,7 @@ class TimelineHeaderView: UICollectionReusableView
    private var buttonContainer = UIView()
    private var isOpen: Bool = false
    
-   private var timeDisplayViewController: TimeDisplayViewController = TimeDisplayViewController()
+   private var timeDisplayViewController = TimeDisplayViewController()
    
    var alarm: Alarm?
    weak var timelineController: TimelineController?

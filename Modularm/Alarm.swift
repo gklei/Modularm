@@ -113,6 +113,7 @@ class Alarm: NSManagedObject
             if let forecastResult = result
             {
                weather.readableTextSummary = forecastResult.readableTextSummary
+               weather.fahrenheitTemperature = forecastResult.temperature.f
             }
          })
       }
