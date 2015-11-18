@@ -53,7 +53,7 @@ extension SoundOptionDelegateDataSource
       let cell = super.tableView(tableView, cellForRowAtIndexPath: indexPath)
       
       var accessoryImageName = "ic_radial"
-      if indexPath.row == self.cellIndexForSoundString(self.soundModel!.alarmMusic!.name) {
+      if indexPath.row == self.cellIndexForSoundString(self.soundModel!.alarmSound!.name) {
          accessoryImageName = "ic_radial_checked"
       }
       

@@ -60,9 +60,6 @@ class AlarmOptionsViewController: UIViewController
       case "configureSound":
          option = .Sound
          break
-      case "configureMusic":
-         option = .Music
-         break
       case "configureRepeat":
          option = .Repeat
          break
@@ -110,7 +107,15 @@ class AlarmOptionsViewController: UIViewController
    
    @IBAction func weatherButtonPressed(sender: AnyObject)
    {
-      self.weatherButton.activated = !self.weatherButton.activated
+      if let alarm = self.alarm {
+         if alarm.weather != nil {
+            alarm.deleteOption(.Weather)
+         }
+         else {
+            alarm.weather = CoreDataStack.newModelWithOption(.Weather) as? Weather
+         }
+      }
+      updateButtonsWithAlarm(self.alarm)
    }
    
    @IBAction func testAlarm()
@@ -121,8 +126,7 @@ class AlarmOptionsViewController: UIViewController
    {
       for option in AlarmOption.validOptions
       {
-         if (option != .Sound)
-         {
+         if (option != .Sound) {
             self.alarm?.deleteOption(option)
          }
          self.alarm?.sound?.gradual = false
@@ -137,9 +141,11 @@ class AlarmOptionsViewController: UIViewController
       {
          self.snoozeButton.activated = alarmModel.snooze != nil
          self.weatherButton.activated = alarmModel.weather != nil
-         self.soundButton.activated = alarmModel.sound != nil
          self.repeatButton.activated = alarmModel.repeatModel != nil
          self.messageButton.activated = alarmModel.message != nil
+         
+         // the sound button should always be activated because the sound model should never be nil
+         self.soundButton.activated = alarmModel.sound != nil
          self.vibrateButton.activated = alarmModel.sound!.gradual
       }
    }

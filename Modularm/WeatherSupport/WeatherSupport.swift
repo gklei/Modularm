@@ -15,6 +15,7 @@ protocol PWeatherForecastRequestParam{
 
 protocol PWeatherForecastResult
 {
+   var readableTextSummary: String { get }
    var temperature:(f:Double, c:Double) { get }
    var time:NSDate { get }
    var summary:String { get }
@@ -75,37 +76,48 @@ enum WeatherSummaryType
 // Extension for getting resources
 extension WeatherSummaryType
 {
-   var images:[UIImage]{
-      switch self{
+   var images:[UIImage] {
+      var imageArray = [UIImage]()
+      for name in self.imageNames
+      {
+         imageArray.append(UIImage(named: name)!)
+      }
+      return imageArray
+   }
+   
+   var imageNames:[String] {
+      switch self
+      {
       case .ClearDay:
-         return [UIImage(named: "clear-day")!, UIImage(named: "clear-day2")!]
+         return ["clear-day", "clear-day2"]
       case .ClearNight:
-         return [UIImage(named: "clear-night")!]
+         return ["clear-night"]
       case .Cloudy:
-         return [UIImage(named: "cloudy")!]
+         return ["cloudy"]
       case Rain:
-         return [UIImage(named: "rain")!]
+         return ["rain"]
       case Snow:
-         return [UIImage(named: "snow")!]
+         return ["snow"]
       case Sleet:
-         return [UIImage(named: "sleet")!]
+         return ["sleet"]
       case Wind:
-         return [UIImage(named: "wind")!, UIImage(named: "wind2")!]
+         return ["wind", "wind2"]
       case Fog:
-         return [UIImage(named: "fog")!]
+         return ["fog"]
       case PartlyCloudyDay:
-         return [UIImage(named: "partly-cloudy-day")!]
+         return ["partly-cloudy-day"]
       case PartlyCloudyNight:
-         return [UIImage(named: "partly-cloudy-night")!]
+         return ["partly-cloudy-night"]
       case Thunderstorm:
-         return [UIImage(named: "thunderstorm")!]
+         return ["thunderstorm"]
       default:
          return []
       }
    }
    
-   var icon:UIImage?{
-      switch self {
+   var icon:UIImage? {
+      switch self
+      {
       case .ClearDay:
          return UIImage(named: "clear-day-icn")
       case .ClearNight:

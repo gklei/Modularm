@@ -47,6 +47,7 @@
         <relationship name="alarm" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Alarm" inverseName="sound" inverseEntity="Alarm" syncable="YES"/>
     </entity>
     <entity name="Weather" representedClassName="Weather" syncable="YES">
+        <attribute name="readableTextSummary" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="alarm" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Alarm" inverseName="weather" inverseEntity="Alarm" syncable="YES"/>
     </entity>
     <elements>
@@ -57,6 +58,6 @@
         <element name="Repeat" positionX="-126" positionY="99" width="128" height="165"/>
         <element name="Snooze" positionX="-63" positionY="0" width="128" height="90"/>
         <element name="Sound" positionX="-144" positionY="72" width="128" height="90"/>
-        <element name="Weather" positionX="-153" positionY="45" width="128" height="60"/>
+        <element name="Weather" positionX="-153" positionY="45" width="128" height="75"/>
     </elements>
 </model>

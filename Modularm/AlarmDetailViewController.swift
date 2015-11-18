@@ -32,27 +32,22 @@ class AlarmDetailViewController: UIViewController
       self.setupTitle()
       self.updateTimeLabels()
       self.updateUIForFiringState()
-      
-//      if let alarm = self.alarm
-//      {
-//         print("requesting weather!")
-//         WeatherForecastAPI.requestFor(alarm, callback: { (result:PWeatherForecastResult?, error:ErrorType?) -> () in
-//            
-//            if let forecastResult = result
-//            {
-//               print("summary: \(forecastResult.summary)")
-//               let images = forecastResult.summaryType.images
-//               self._backgroundImageView.image = images[0]
-//            }
-//            else
-//            {
-//               print("error: \(error.debugDescription)")
-//            }
-//         })
-//      }
+      self.updateBackgroundImage()
    }
    
    // MARK: - Private
+   private func updateBackgroundImage()
+   {
+      if let alarm = self.alarm where alarm.weather != nil
+      {
+         _backgroundImageView.image = UIImage(named: alarm.weather!.readableTextSummary)
+      }
+      else
+      {
+         _backgroundImageView.image = UIImage(named: "clear-night")
+      }
+   }
+   
    private func updateUIForFiringState()
    {
       if self.alarmIsFiring
@@ -106,7 +101,7 @@ class AlarmDetailViewController: UIViewController
       }
       else
       {
-         if let soundName = self.alarm?.sound?.soundURL
+         if let soundName = self.alarm?.sound?.alarmSound?.name
          {
             self.alarmMessageLabel.text = "Alarm sound: \(soundName)"
          }
@@ -137,7 +132,6 @@ class AlarmDetailViewController: UIViewController
    
    func testButtonPressed(sender: UIBarButtonItem)
    {
-      print("test button pressed")
    }
    
    // MARK: - IBActions

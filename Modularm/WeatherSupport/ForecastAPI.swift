@@ -20,7 +20,7 @@ private struct WeatherForecastResult
    private let f_t:Double     //temperature in farenhite
    private let timeUTC:Int       //Time interval from 1970.1.1
    let summary:String //Summary string
-   private let icon:String    //Icon String
+   let icon:String    //Icon String
    
    private init(_ json:JSON)
    {
@@ -96,7 +96,7 @@ class WeatherForecastAPI
    }
 }
 
-extension WeatherForecastResult:PWeatherForecastResult{
+extension WeatherForecastResult: PWeatherForecastResult {
    var temperature:(f:Double, c:Double){
       //calculate celsius
       let c = (f_t - 32) * 5 / 9
@@ -108,5 +108,9 @@ extension WeatherForecastResult:PWeatherForecastResult{
    }
    var summaryType:WeatherSummaryType {
       return WeatherSummaryType(icon)
+   }
+   
+   var readableTextSummary: String {
+      return icon
    }
 }

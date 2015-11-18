@@ -11,7 +11,7 @@ import Foundation
 // MARK: - AppDelegate extension for snooze action
 extension AppDelegate {
    func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forLocalNotification notification: UILocalNotification, completionHandler: () -> Void) {
-      if identifier == kAlarmNotificationSnoozeActionIdentifier && notification.isSnoozeEnabled{
+      if identifier == kAlarmNotificationSnoozeActionIdentifier && notification.isSnoozeEnabled {
          AlarmEngine.sharedInstance.snoozeAlarm(notification, afterMinutes: notification.snoozeMinute)
       }
       completionHandler()

@@ -16,17 +16,17 @@ class Sound: NSManagedObject
    @NSManaged var gradual: Bool
    @NSManaged var alarm: Alarm
    
-   var alarmMusic: PAlarmMusic?
+   var alarmSound: PAlarmSound?
    {
-      var foundMusic: PAlarmMusic?
+      var found: PAlarmSound?
       for sound in AlarmSoundStore.sharedInstance.fetchAlarmSounds()
       {
          if let path = sound.url.path where path == self.soundURL {
-            foundMusic = sound
+            found = sound
             break
          }
       }
-      return foundMusic
+      return found
    }
    
    override func awakeFromInsert()

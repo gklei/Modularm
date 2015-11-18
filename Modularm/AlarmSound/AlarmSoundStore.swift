@@ -10,7 +10,7 @@ import Foundation
 
 // MARK: - PAlarmSound
 protocol PAlarmSound:PAlarmMusic{
-   var alarmSound:String { get }       //Sound name in main bundle
+   var nameInMainBundle: String { get }       //Sound name in main bundle
    var name: String { get }
 }
 
@@ -44,17 +44,17 @@ class AlarmSoundStore:PAlarmSoundStore{
    
    private struct AlarmSound:PAlarmSound
    {
-      var alarmSound:String
+      var nameInMainBundle:String
       var name:String
       
       init(_ fileName: String, _ name: String? = nil)
       {
-         alarmSound = fileName
+         nameInMainBundle = fileName
          self.name = name ?? (fileName as NSString).stringByDeletingPathExtension
       }
       
-      var url:NSURL{
-         return NSBundle.mainBundle().URLForResource(alarmSound, withExtension: nil) ?? NSURL()
+      var url:NSURL {
+         return NSBundle.mainBundle().URLForResource(nameInMainBundle, withExtension: nil) ?? NSURL()
       }
    }
 }

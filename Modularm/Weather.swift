@@ -17,10 +17,12 @@ enum WeatherDisplayType: Int16 {
 class Weather: NSManagedObject
 {
    @NSManaged var alarm: Alarm
+   @NSManaged var readableTextSummary: String
 
    override func awakeFromInsert()
    {
       super.awakeFromInsert()
+      readableTextSummary = "clear-night"
    }
 }
 

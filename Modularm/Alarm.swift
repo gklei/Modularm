@@ -105,6 +105,19 @@ class Alarm: NSManagedObject
       CoreDataStack.save()
    }
    
+   func updateWeatherInfo()
+   {
+      if let weather = self.weather
+      {
+         WeatherForecastAPI.requestFor(self, callback: { (result:PWeatherForecastResult?, error:ErrorType?) -> () in
+            if let forecastResult = result
+            {
+               weather.readableTextSummary = forecastResult.readableTextSummary
+            }
+         })
+      }
+   }
+   
    func updateAlarmDate()
    {
       self.fireDate = NSDate.alarmDateWithHour(self.fireDate.hour, minute: self.fireDate.minute);
@@ -134,7 +147,8 @@ extension Alarm: PAlarm
    }
    
    var alarmSound: String {
-      return "AlarmSound.caf"
+      // Used for UILocalNotification
+      return self.sound!.alarmSound!.nameInMainBundle
    }
    
    var snoozeMinute: Int {

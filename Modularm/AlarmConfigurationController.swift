@@ -185,6 +185,7 @@ class AlarmConfigurationController: UIViewController
          alarmTime.minute = minute
       }
       
+      self.alarm?.updateWeatherInfo()
       AlarmManager.enableAlarm(self.alarm!, withHour: alarmTime.hour, minute: alarmTime.minute)
       self.navigationController?.popToRootViewControllerAnimated(true)
    }
