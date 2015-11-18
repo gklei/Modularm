@@ -11,6 +11,7 @@ import UIKit
 class SoundOptionDelegateDataSource: AlarmOptionDelegateDataSource
 {
    var soundModel: Sound?
+   let _alarmSounds = AlarmSoundStore.sharedInstance.fetchAlarmSounds()
    
    // MARK: - Init
    override init(tableView: UITableView, delegate: AlarmOptionSettingsControllerDelegate, alarm: Alarm?)
@@ -18,13 +19,19 @@ class SoundOptionDelegateDataSource: AlarmOptionDelegateDataSource
       self.soundModel = CoreDataStack.newModelWithOption(.Sound) as? Sound
       if let sound = alarm?.sound
       {
-         self.soundModel?.basicSoundURL = sound.basicSoundURL
-         self.soundModel?.shouldVibrate = sound.shouldVibrate
+         self.soundModel?.soundURL = sound.soundURL
+         self.soundModel?.gradual = sound.gradual
       }
       
       super.init(tableView: tableView, delegate: delegate, alarm: alarm)
       self.option = .Sound
-      self.cellLabelDictionary = [0 : ["Basic", "Silent (Vibration)", "Classic", "John Lord", "Jimmy Hendrix", "George Harrison", "Cliff", "Drama", "Beach Morning"]]
+      
+      var soundNames = [String]()
+      for alarmSound in _alarmSounds {
+         soundNames.append(alarmSound.name)
+      }
+      
+      self.cellLabelDictionary = [0 : soundNames]
       self.settingsControllerDelegate.updateAuxViewWithOption(self.option, tempModel: self.soundModel)
    }
    
@@ -46,7 +53,7 @@ extension SoundOptionDelegateDataSource
       let cell = super.tableView(tableView, cellForRowAtIndexPath: indexPath)
       
       var accessoryImageName = "ic_radial"
-      if indexPath.row == self.cellIndexForSoundString(self.soundModel!.basicSoundURL) {
+      if indexPath.row == self.cellIndexForSoundString(self.soundModel!.alarmMusic!.name) {
          accessoryImageName = "ic_radial_checked"
       }
       
@@ -61,7 +68,9 @@ extension SoundOptionDelegateDataSource
 {
    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
    {
-      self.soundModel!.basicSoundURL = self.cellLabelDictionary[0]![indexPath.row]
+      let alarmSound = _alarmSounds[indexPath.row]
+      
+      self.soundModel!.soundURL = alarmSound.url.path!
       self.tableView.reloadData()
    }
 }

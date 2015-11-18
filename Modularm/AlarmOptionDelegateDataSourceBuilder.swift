@@ -27,15 +27,6 @@ struct AlarmOptionDelegateDataSourceBuilder
       var delegateDataSource: AlarmOptionDelegateDataSource
       switch (option)
       {
-      case .Countdown:
-         delegateDataSource = AlarmOptionDelegateDataSource(tableView: self.tableView, delegate: self.delegate, alarm: self.alarm)
-         break
-      case .Date:
-         delegateDataSource = DateOptionDelegateDataSource(tableView: self.tableView, delegate: self.delegate, alarm: self.alarm)
-         break
-      case .Music:
-         delegateDataSource = MusicOptionDelegateDataSource(tableView: self.tableView, delegate: self.delegate, alarm: self.alarm)
-         break
       case .Repeat:
          delegateDataSource = RepeatOptionDelegateDataSource(tableView: self.tableView, delegate: self.delegate, alarm: self.alarm)
          break
@@ -45,11 +36,8 @@ struct AlarmOptionDelegateDataSourceBuilder
       case .Sound:
          delegateDataSource = SoundOptionDelegateDataSource(tableView: self.tableView, delegate: self.delegate, alarm: self.alarm)
          break
-      case .Weather:
-         delegateDataSource = WeatherOptionDelegateDataSource(tableView: self.tableView, delegate: self.delegate, alarm: self.alarm)
-         break
          
-      case .Message, .Unknown:
+      case .Message, .Unknown, .Countdown, .Weather, .Date, .Music:
          delegateDataSource = AlarmOptionDelegateDataSource(tableView: self.tableView, delegate: self.delegate, alarm: self.alarm)
          break
       }

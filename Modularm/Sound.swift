@@ -12,14 +12,26 @@ import CoreData
 @objc(Sound)
 class Sound: NSManagedObject
 {
-   @NSManaged var basicSoundURL: String
-   @NSManaged var shouldVibrate: Bool
+   @NSManaged var soundURL: String
+   @NSManaged var gradual: Bool
    @NSManaged var alarm: Alarm
+   
+   var alarmMusic: PAlarmMusic?
+   {
+      var foundMusic: PAlarmMusic?
+      for sound in AlarmSoundStore.sharedInstance.fetchAlarmSounds()
+      {
+         if let path = sound.url.path where path == self.soundURL {
+            foundMusic = sound
+            break
+         }
+      }
+      return foundMusic
+   }
    
    override func awakeFromInsert()
    {
-      // VERY TEMPORARY!
-      self.basicSoundURL = "Basic"
+      self.soundURL = AlarmSoundStore.sharedInstance.fetchAlarmSounds()[0].url.path!
    }
 }
 

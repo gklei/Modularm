@@ -144,17 +144,17 @@
                                 <animations/>
                             </imageView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qvN-Rp-IZK">
-                                <rect key="frame" x="0.0" y="64" width="320" height="196"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="216"/>
                                 <animations/>
                                 <connections>
                                     <segue destination="Cra-w5-pbt" kind="embed" identifier="alarmPreviewViewControllerSegue" id="ZLK-Ys-iMr"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sNc-40-vPD">
-                                <rect key="frame" x="0.0" y="268" width="320" height="300"/>
+                                <rect key="frame" x="0.0" y="288" width="320" height="280"/>
                                 <animations/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="300" id="FOO-Qt-PvE"/>
+                                    <constraint firstAttribute="height" constant="280" id="FOO-Qt-PvE"/>
                                 </constraints>
                                 <connections>
                                     <segue destination="uiH-fO-7BZ" kind="embed" identifier="alarmOptionsControllerSegue" id="pQi-sa-R1Z"/>
@@ -241,7 +241,7 @@
                         <viewControllerLayoutGuide type="bottom" id="wzX-UN-8hT"/>
                     </layoutGuides>
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="esU-yQ-Xhb">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="285"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="230"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <userGuides>
                             <userLayoutGuide location="260" affinity="minY"/>
@@ -312,29 +312,7 @@
                                     <userDefinedRuntimeAttribute type="image" keyPath="deactivatedImage" value="icn-plus-weather"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="aa4-SF-2ad" kind="push" identifier="configureWeather" id="pVt-5g-rQt"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gbN-Qj-4ad" customClass="AlarmOptionButton" customModule="Modularm" customModuleProvider="target">
-                                <rect key="frame" x="1" y="113" width="186" height="55"/>
-                                <animations/>
-                                <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="55" id="ucd-kk-72u"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
-                                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <inset key="titleEdgeInsets" minX="30" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <inset key="imageEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="Music" image="icn-plus-music">
-                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="image" keyPath="activatedImage" value="icn-music"/>
-                                    <userDefinedRuntimeAttribute type="image" keyPath="deactivatedImage" value="icn-plus-music"/>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <segue destination="aa4-SF-2ad" kind="push" identifier="configureMusic" id="4Ns-YU-EKe"/>
+                                    <action selector="weatherButtonPressed:" destination="LXP-8S-707" eventType="touchUpInside" id="PQi-Us-hjm"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S3G-bQ-eaK" customClass="AlarmOptionButton" customModule="Modularm" customModuleProvider="target">
@@ -359,30 +337,8 @@
                                     <segue destination="aa4-SF-2ad" kind="push" identifier="configureRepeat" id="9gu-Yl-B7X"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xVt-i6-9Of" customClass="AlarmOptionButton" customModule="Modularm" customModuleProvider="target">
-                                <rect key="frame" x="188" y="169" width="186" height="55"/>
-                                <animations/>
-                                <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="55" id="Qq8-bm-fCg"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
-                                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <inset key="titleEdgeInsets" minX="30" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <inset key="imageEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="Countdown" image="icn-plus-countdown">
-                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="image" keyPath="activatedImage" value="icn-countdown"/>
-                                    <userDefinedRuntimeAttribute type="image" keyPath="deactivatedImage" value="icn-plus-countdown"/>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="toggleCountdown:" destination="LXP-8S-707" eventType="touchUpInside" id="8NY-ah-7qz"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l6H-Kw-288" customClass="AlarmOptionButton" customModule="Modularm" customModuleProvider="target">
-                                <rect key="frame" x="1" y="169" width="186" height="55"/>
+                                <rect key="frame" x="1" y="113" width="186" height="55"/>
                                 <animations/>
                                 <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -403,30 +359,8 @@
                                     <segue destination="ziJ-61-s5T" kind="push" identifier="configureMessage" id="2WY-5p-7BV"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1eM-hi-3hc" customClass="AlarmOptionButton" customModule="Modularm" customModuleProvider="target">
-                                <rect key="frame" x="188" y="57" width="186" height="55"/>
-                                <animations/>
-                                <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="55" id="yTB-9z-BSw"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
-                                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <inset key="titleEdgeInsets" minX="30" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <inset key="imageEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="Date" image="icn-plus-date">
-                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="image" keyPath="activatedImage" value="icn-date"/>
-                                    <userDefinedRuntimeAttribute type="image" keyPath="deactivatedImage" value="icn-plus-date"/>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <segue destination="aa4-SF-2ad" kind="push" identifier="configureDate" id="Xjq-kr-cGN"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KiT-TL-ADt">
-                                <rect key="frame" x="137" y="243" width="39" height="34"/>
+                                <rect key="frame" x="137" y="188" width="39" height="34"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                                 <state key="normal" title="reset">
@@ -438,13 +372,38 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gY3-gf-7e8">
-                                <rect key="frame" x="16" y="243" width="77" height="34"/>
+                                <rect key="frame" x="16" y="188" width="77" height="34"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                                 <state key="normal" title="test alarm">
                                     <color key="titleColor" red="0.74509803921568629" green="0.058823529411764705" blue="0.23529411764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="testAlarm" destination="LXP-8S-707" eventType="touchUpInside" id="JoZ-bB-0fS"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gbN-Qj-4ad" userLabel="Vibrate Button" customClass="AlarmOptionButton" customModule="Modularm" customModuleProvider="target">
+                                <rect key="frame" x="188" y="57" width="186" height="55"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="ucd-kk-72u"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
+                                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <inset key="titleEdgeInsets" minX="30" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Gradual" image="icn-plus-music">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="activatedImage" value="icn-music"/>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="deactivatedImage" value="icn-plus-music"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="gradualButtonPressed:" destination="LXP-8S-707" eventType="touchUpInside" id="5hm-dQ-pRP"/>
+                                </connections>
                             </button>
                         </subviews>
                         <animations/>
@@ -452,35 +411,26 @@
                         <constraints>
                             <constraint firstItem="KqE-Bn-D4p" firstAttribute="height" secondItem="IDT-cM-UAS" secondAttribute="height" id="0V6-UO-GqV"/>
                             <constraint firstItem="KiT-TL-ADt" firstAttribute="centerY" secondItem="gY3-gf-7e8" secondAttribute="centerY" id="0dW-6c-JpC"/>
-                            <constraint firstItem="gbN-Qj-4ad" firstAttribute="top" secondItem="IDT-cM-UAS" secondAttribute="bottom" constant="1" id="1QF-AQ-k5Z"/>
                             <constraint firstItem="MhA-JY-UHK" firstAttribute="top" secondItem="sbn-KE-cTd" secondAttribute="bottom" constant="1" id="1lj-Qi-38U"/>
+                            <constraint firstItem="l6H-Kw-288" firstAttribute="top" secondItem="IDT-cM-UAS" secondAttribute="bottom" constant="1" id="1z9-eg-1NA"/>
                             <constraint firstItem="gbN-Qj-4ad" firstAttribute="width" secondItem="IDT-cM-UAS" secondAttribute="width" id="5Aa-LU-oGU"/>
                             <constraint firstAttribute="trailing" secondItem="MhA-JY-UHK" secondAttribute="trailing" constant="1" id="7sz-Qw-MIz"/>
-                            <constraint firstItem="l6H-Kw-288" firstAttribute="top" secondItem="gbN-Qj-4ad" secondAttribute="bottom" constant="1" id="8Kj-WH-qRf"/>
                             <constraint firstItem="MhA-JY-UHK" firstAttribute="leading" secondItem="KqE-Bn-D4p" secondAttribute="trailing" constant="1" id="8WK-pi-sC6"/>
-                            <constraint firstItem="gbN-Qj-4ad" firstAttribute="centerX" secondItem="l6H-Kw-288" secondAttribute="centerX" id="8o6-b6-X2g"/>
-                            <constraint firstItem="1eM-hi-3hc" firstAttribute="top" secondItem="MhA-JY-UHK" secondAttribute="bottom" constant="1" id="9S2-yl-s8D"/>
+                            <constraint firstItem="S3G-bQ-eaK" firstAttribute="width" secondItem="l6H-Kw-288" secondAttribute="width" id="FbZ-Q6-nrV"/>
                             <constraint firstItem="KiT-TL-ADt" firstAttribute="leading" secondItem="gY3-gf-7e8" secondAttribute="trailing" constant="44" id="G0M-o1-RNV"/>
+                            <constraint firstItem="l6H-Kw-288" firstAttribute="centerX" secondItem="IDT-cM-UAS" secondAttribute="centerX" id="G1M-lQ-lLZ"/>
                             <constraint firstItem="KqE-Bn-D4p" firstAttribute="leading" secondItem="esU-yQ-Xhb" secondAttribute="leading" constant="1" id="LAy-wu-1iF"/>
-                            <constraint firstItem="xVt-i6-9Of" firstAttribute="width" secondItem="S3G-bQ-eaK" secondAttribute="width" id="Mm2-32-gjN"/>
                             <constraint firstItem="KqE-Bn-D4p" firstAttribute="top" secondItem="sbn-KE-cTd" secondAttribute="bottom" constant="1" id="Qfv-QT-aML"/>
-                            <constraint firstItem="S3G-bQ-eaK" firstAttribute="width" secondItem="1eM-hi-3hc" secondAttribute="width" id="XZO-Gz-nrX"/>
-                            <constraint firstItem="gbN-Qj-4ad" firstAttribute="centerX" secondItem="IDT-cM-UAS" secondAttribute="centerX" id="ZIo-oN-PNy"/>
-                            <constraint firstItem="xVt-i6-9Of" firstAttribute="height" secondItem="S3G-bQ-eaK" secondAttribute="height" id="Zh2-w2-4uZ"/>
                             <constraint firstItem="IDT-cM-UAS" firstAttribute="top" secondItem="KqE-Bn-D4p" secondAttribute="bottom" constant="1" id="bNK-WH-nMS"/>
-                            <constraint firstItem="S3G-bQ-eaK" firstAttribute="centerX" secondItem="1eM-hi-3hc" secondAttribute="centerX" id="d9L-WT-cbO"/>
                             <constraint firstItem="KqE-Bn-D4p" firstAttribute="width" secondItem="MhA-JY-UHK" secondAttribute="width" id="dDb-BK-pMp"/>
-                            <constraint firstItem="xVt-i6-9Of" firstAttribute="top" secondItem="S3G-bQ-eaK" secondAttribute="bottom" constant="1" id="dfC-Fb-IHi"/>
+                            <constraint firstItem="S3G-bQ-eaK" firstAttribute="centerX" secondItem="gbN-Qj-4ad" secondAttribute="centerX" id="fJ9-Oi-TZh"/>
                             <constraint firstItem="wzX-UN-8hT" firstAttribute="top" secondItem="gY3-gf-7e8" secondAttribute="bottom" constant="8" id="fag-Mo-FVj"/>
-                            <constraint firstItem="1eM-hi-3hc" firstAttribute="centerX" secondItem="MhA-JY-UHK" secondAttribute="centerX" id="gg7-n8-a6S"/>
                             <constraint firstItem="gbN-Qj-4ad" firstAttribute="height" secondItem="l6H-Kw-288" secondAttribute="height" id="hLk-g2-aHH"/>
-                            <constraint firstItem="S3G-bQ-eaK" firstAttribute="top" secondItem="1eM-hi-3hc" secondAttribute="bottom" constant="1" id="mQI-AQ-XGK"/>
-                            <constraint firstItem="1eM-hi-3hc" firstAttribute="height" secondItem="MhA-JY-UHK" secondAttribute="height" id="nRj-Rn-RWC"/>
-                            <constraint firstItem="S3G-bQ-eaK" firstAttribute="height" secondItem="1eM-hi-3hc" secondAttribute="height" id="nVm-QR-69x"/>
-                            <constraint firstItem="1eM-hi-3hc" firstAttribute="width" secondItem="MhA-JY-UHK" secondAttribute="width" id="o8f-gZ-09K"/>
+                            <constraint firstItem="gbN-Qj-4ad" firstAttribute="centerX" secondItem="MhA-JY-UHK" secondAttribute="centerX" id="hbH-ya-RWI"/>
                             <constraint firstItem="KqE-Bn-D4p" firstAttribute="width" secondItem="IDT-cM-UAS" secondAttribute="width" id="qnf-lB-5Ly"/>
                             <constraint firstItem="gY3-gf-7e8" firstAttribute="leading" secondItem="esU-yQ-Xhb" secondAttribute="leading" constant="16" id="qvg-9c-N8E"/>
-                            <constraint firstItem="xVt-i6-9Of" firstAttribute="centerX" secondItem="S3G-bQ-eaK" secondAttribute="centerX" id="tmv-CD-S2Q"/>
+                            <constraint firstItem="S3G-bQ-eaK" firstAttribute="centerY" secondItem="l6H-Kw-288" secondAttribute="centerY" id="rul-dn-J2p"/>
+                            <constraint firstItem="gbN-Qj-4ad" firstAttribute="centerY" secondItem="IDT-cM-UAS" secondAttribute="centerY" id="vJG-8h-7EM"/>
                             <constraint firstItem="gbN-Qj-4ad" firstAttribute="width" secondItem="l6H-Kw-288" secondAttribute="width" id="x1c-rF-2yo"/>
                             <constraint firstItem="gbN-Qj-4ad" firstAttribute="height" secondItem="IDT-cM-UAS" secondAttribute="height" id="zHX-ul-QZq"/>
                             <constraint firstItem="KqE-Bn-D4p" firstAttribute="centerX" secondItem="IDT-cM-UAS" secondAttribute="centerX" id="zeE-ei-nrM"/>
@@ -489,15 +439,13 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="Ojh-N9-Mxp"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="375" height="285"/>
+                    <size key="freeformSize" width="375" height="230"/>
                     <connections>
-                        <outlet property="countdownButton" destination="xVt-i6-9Of" id="Jwy-jH-uMb"/>
-                        <outlet property="dateButton" destination="1eM-hi-3hc" id="7TQ-A4-GoB"/>
                         <outlet property="messageButton" destination="l6H-Kw-288" id="mZ1-DS-9wu"/>
-                        <outlet property="musicButton" destination="gbN-Qj-4ad" id="Xxm-J0-ZD3"/>
                         <outlet property="repeatButton" destination="S3G-bQ-eaK" id="O4p-tg-1eC"/>
                         <outlet property="snoozeButton" destination="KqE-Bn-D4p" id="woH-Sw-pzc"/>
                         <outlet property="soundButton" destination="IDT-cM-UAS" id="4sv-fQ-Kgc"/>
+                        <outlet property="vibrateButton" destination="gbN-Qj-4ad" id="s6w-gu-6x9"/>
                         <outlet property="weatherButton" destination="MhA-JY-UHK" id="MwY-Lf-9i0"/>
                     </connections>
                 </viewController>
@@ -1031,11 +979,11 @@
                         <viewControllerLayoutGuide type="bottom" id="Szi-Vb-Gen"/>
                     </layoutGuides>
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="fm3-li-pkK">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="196"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="216"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EKY-BC-dbc" customClass="DigitalTimeView" customModule="Modularm" customModuleProvider="target">
-                                <rect key="frame" x="45" y="55" width="230" height="85"/>
+                                <rect key="frame" x="45" y="65" width="230" height="85"/>
                                 <animations/>
                                 <color key="backgroundColor" red="0.1176470588" green="0.1176470588" blue="0.1176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -1048,22 +996,22 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mx4-E8-SRk">
-                                <rect key="frame" x="70" y="25" width="42" height="20"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mx4-E8-SRk">
+                                <rect key="frame" x="70" y="34.5" width="40" height="20.5"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alarm will go off in" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kvd-pe-z1H">
-                                <rect key="frame" x="70" y="0.0" width="132.5" height="20.5"/>
+                                <rect key="frame" x="70" y="10" width="132.5" height="20.5"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yM3-Gr-xAb">
-                                <rect key="frame" x="0.0" y="140" width="320" height="56"/>
+                                <rect key="frame" x="0.0" y="150" width="320" height="66"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
@@ -1217,12 +1165,9 @@
         <image name="icn-alarm-sound" width="24" height="24"/>
         <image name="icn-bar-settings" width="24" height="24"/>
         <image name="icn-countdown" width="24" height="24"/>
-        <image name="icn-date" width="24" height="24"/>
         <image name="icn-message" width="24" height="24"/>
         <image name="icn-music" width="24" height="24"/>
         <image name="icn-plus-alarm-sound" width="24" height="24"/>
-        <image name="icn-plus-countdown" width="24" height="24"/>
-        <image name="icn-plus-date" width="24" height="24"/>
         <image name="icn-plus-message" width="24" height="24"/>
         <image name="icn-plus-music" width="24" height="24"/>
         <image name="icn-plus-repeat" width="24" height="24"/>
@@ -1234,6 +1179,6 @@
         <image name="icn-x" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="pVt-5g-rQt"/>
+        <segue reference="0Mf-Vu-gB9"/>
     </inferredMetricsTieBreakers>
 </document>

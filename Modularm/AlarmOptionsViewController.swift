@@ -20,15 +20,14 @@ class AlarmOptionsViewController: UIViewController
    var optionsControllerDelegate: AlarmOptionsControllerDelegate?
    private var alarm: Alarm?
    private var vcForPresenting: UIViewController?
+   private var _alarmMusicPlayer: PAlarmMusicPlayer?
 
    @IBOutlet weak var snoozeButton: AlarmOptionButton!
    @IBOutlet weak var weatherButton: AlarmOptionButton!
    @IBOutlet weak var soundButton: AlarmOptionButton!
-   @IBOutlet weak var dateButton: AlarmOptionButton!
-   @IBOutlet weak var musicButton: AlarmOptionButton!
+   @IBOutlet weak var vibrateButton: AlarmOptionButton!
    @IBOutlet weak var repeatButton: AlarmOptionButton!
    @IBOutlet weak var messageButton: AlarmOptionButton!
-   @IBOutlet weak var countdownButton: AlarmOptionButton!
    
    // MARK: - Lifecycle
    override func viewWillAppear(animated: Bool)
@@ -58,14 +57,8 @@ class AlarmOptionsViewController: UIViewController
       case "configureSnooze":
          option = .Snooze
          break
-      case "configureWeather":
-         option = .Weather
-         break
       case "configureSound":
          option = .Sound
-         break
-      case "configureDate":
-         option = .Date
          break
       case "configureMusic":
          option = .Music
@@ -106,11 +99,33 @@ class AlarmOptionsViewController: UIViewController
    {
    }
    
+   @IBAction func gradualButtonPressed(sender: AnyObject)
+   {
+      if let soundModel = self.alarm?.sound
+      {
+         soundModel.gradual = !soundModel.gradual
+         updateButtonsWithAlarm(self.alarm)
+      }
+   }
+   
+   @IBAction func weatherButtonPressed(sender: AnyObject)
+   {
+      self.weatherButton.activated = !self.weatherButton.activated
+   }
+   
+   @IBAction func testAlarm()
+   {
+   }
+   
    @IBAction func resetAlarm()
    {
       for option in AlarmOption.validOptions
       {
-         self.alarm?.deleteOption(option)
+         if (option != .Sound)
+         {
+            self.alarm?.deleteOption(option)
+         }
+         self.alarm?.sound?.gradual = false
       }
       self.updateButtonsWithAlarm(self.alarm)
    }
@@ -121,13 +136,11 @@ class AlarmOptionsViewController: UIViewController
       if let alarmModel = alarm
       {
          self.snoozeButton.activated = alarmModel.snooze != nil
-         self.countdownButton.activated = alarmModel.countdown != nil
          self.weatherButton.activated = alarmModel.weather != nil
          self.soundButton.activated = alarmModel.sound != nil
-         self.dateButton.activated = alarmModel.date != nil
          self.repeatButton.activated = alarmModel.repeatModel != nil
          self.messageButton.activated = alarmModel.message != nil
-         self.countdownButton.activated = alarmModel.countdown != nil
+         self.vibrateButton.activated = alarmModel.sound!.gradual
       }
    }
 }

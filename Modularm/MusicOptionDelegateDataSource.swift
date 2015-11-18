@@ -17,7 +17,7 @@ class MusicOptionDelegateDataSource: AlarmOptionDelegateDataSource
    {
       super.init(tableView: tableView, delegate: delegate, alarm: alarm)
       self.option = .Music
-      self.cellLabelDictionary = [0 :["itunes", "spotify", "rdio", "fmetc"]]
+      self.cellLabelDictionary = [0 :["itunes", "spotify"]]
       self.settingsControllerDelegate.updateAuxViewWithOption(self.option, tempModel: nil)
    }
 }
@@ -42,16 +42,6 @@ extension MusicOptionDelegateDataSource
          self.musicPicker = nil
       })
    }
-
-   func rdioSwitchChanged(sender: UISwitch)
-   {
-      print("rdio switch changed")
-   }
-
-   func fmetcSwitchChanged(sender: UISwitch)
-   {
-      print("fmetc switch changed")
-   }
 }
 
 // MARK: - UITableView Delegate
@@ -73,13 +63,6 @@ extension MusicOptionDelegateDataSource
       case 1:
          selectorString = "spotifySwitchChanged:"
          break;
-      case 2:
-         selectorString = "rdioSwitchChanged:"
-         break;
-      case 3:
-         selectorString = "fmetcSwitchChanged:"
-         break;
-         
       default:
          break;
       }

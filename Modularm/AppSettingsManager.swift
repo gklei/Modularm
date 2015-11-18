@@ -10,6 +10,8 @@ import Foundation
 
 let kAlarmDisplaySettingsKey = "AlarmDisplaySettingsKey"
 let kTimeFormatSettingsKey = "TimeFormatSettingsKey"
+let kDateDisplaySettingsKey = "DateDisplaySettingsKey"
+let kWeatherDisplaySettingsKey = "WeatherDisplaySettingsKey"
 
 enum DisplayMode: Int {
    case Analog, Digital
@@ -22,17 +24,23 @@ enum TimeFormat: Int {
 struct AppSettingsManager
 {
    static var displayMode: DisplayMode {
-      get {
-         let displayValue = NSUserDefaults.standardUserDefaults().integerForKey(kAlarmDisplaySettingsKey) as Int
-         return DisplayMode(rawValue: displayValue)!
-      }
+      let displayValue = NSUserDefaults.standardUserDefaults().integerForKey(kAlarmDisplaySettingsKey) as Int
+      return DisplayMode(rawValue: displayValue)!
    }
    
    static var timeFormat: TimeFormat {
-      get {
-         let formatValue = NSUserDefaults.standardUserDefaults().integerForKey(kTimeFormatSettingsKey) as Int
-         return TimeFormat(rawValue: formatValue)!
-      }
+      let formatValue = NSUserDefaults.standardUserDefaults().integerForKey(kTimeFormatSettingsKey) as Int
+      return TimeFormat(rawValue: formatValue)!
+   }
+   
+   static var dateDisplay: DateDisplayType {
+      let dateDisplayValue = NSUserDefaults.standardUserDefaults().integerForKey(kDateDisplaySettingsKey) as Int
+      return DateDisplayType(rawValue: Int16(dateDisplayValue))!
+   }
+   
+   static var weatherDisplay: WeatherDisplayType {
+      let weatherDisplayValue = NSUserDefaults.standardUserDefaults().integerForKey(kWeatherDisplaySettingsKey) as Int
+      return WeatherDisplayType(rawValue: Int16(weatherDisplayValue))!
    }
 
    static func setDisplayMode(mode: DisplayMode)
@@ -43,6 +51,16 @@ struct AppSettingsManager
    static func setTimeFormat(format: TimeFormat)
    {
       NSUserDefaults.standardUserDefaults().setInteger(format.rawValue, forKey: kTimeFormatSettingsKey)
+   }
+   
+   static func setDateDisplay(type: DateDisplayType)
+   {
+      NSUserDefaults.standardUserDefaults().setInteger(Int(type.rawValue), forKey: kDateDisplaySettingsKey)
+   }
+   
+   static func setWeatherDisplay(type: WeatherDisplayType)
+   {
+      NSUserDefaults.standardUserDefaults().setInteger(Int(type.rawValue), forKey: kWeatherDisplaySettingsKey)
    }
 }
 

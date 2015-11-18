@@ -46,9 +46,7 @@
 		1FDE6C5A1BF1CAA20044A639 /* MusicSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDE6C591BF1CAA20044A639 /* MusicSupport.swift */; };
 		1FF8761B1BF047E00030B6C7 /* SpotifyPlaylistListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF8761A1BF047E00030B6C7 /* SpotifyPlaylistListVC.swift */; };
 		1FFF4D7C1BF08C1B00D32526 /* WebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FFF4D7B1BF08C1B00D32526 /* WebImage.framework */; };
-		5B1997AA1AE5765800D1522C /* WeatherOptionDelegateDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1997A91AE5765800D1522C /* WeatherOptionDelegateDataSource.swift */; };
 		5B1997AC1AE5B42700D1522C /* SoundOptionDelegateDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1997AB1AE5B42700D1522C /* SoundOptionDelegateDataSource.swift */; };
-		5B1997AE1AE5B58000D1522C /* DateOptionDelegateDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1997AD1AE5B58000D1522C /* DateOptionDelegateDataSource.swift */; };
 		5B1997B01AE5B64A00D1522C /* MusicOptionDelegateDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1997AF1AE5B64A00D1522C /* MusicOptionDelegateDataSource.swift */; };
 		5B1997B31AE5B98600D1522C /* RepeatOptionDelegateDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1997B21AE5B98600D1522C /* RepeatOptionDelegateDataSource.swift */; };
 		5B1997B71AE5F79C00D1522C /* AlarmMessageSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1997B61AE5F79C00D1522C /* AlarmMessageSettingsController.swift */; };
@@ -169,9 +167,7 @@
 		1FDE6C591BF1CAA20044A639 /* MusicSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicSupport.swift; sourceTree = "<group>"; };
 		1FF8761A1BF047E00030B6C7 /* SpotifyPlaylistListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotifyPlaylistListVC.swift; sourceTree = "<group>"; };
 		1FFF4D7B1BF08C1B00D32526 /* WebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebImage.framework; path = Carthage/Build/iOS/WebImage.framework; sourceTree = "<group>"; };
-		5B1997A91AE5765800D1522C /* WeatherOptionDelegateDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeatherOptionDelegateDataSource.swift; path = Modularm/WeatherOptionDelegateDataSource.swift; sourceTree = "<group>"; };
 		5B1997AB1AE5B42700D1522C /* SoundOptionDelegateDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SoundOptionDelegateDataSource.swift; path = Modularm/SoundOptionDelegateDataSource.swift; sourceTree = "<group>"; };
-		5B1997AD1AE5B58000D1522C /* DateOptionDelegateDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateOptionDelegateDataSource.swift; path = Modularm/DateOptionDelegateDataSource.swift; sourceTree = "<group>"; };
 		5B1997AF1AE5B64A00D1522C /* MusicOptionDelegateDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MusicOptionDelegateDataSource.swift; path = Modularm/MusicOptionDelegateDataSource.swift; sourceTree = "<group>"; };
 		5B1997B21AE5B98600D1522C /* RepeatOptionDelegateDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RepeatOptionDelegateDataSource.swift; path = Modularm/RepeatOptionDelegateDataSource.swift; sourceTree = "<group>"; };
 		5B1997B61AE5F79C00D1522C /* AlarmMessageSettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmMessageSettingsController.swift; sourceTree = "<group>"; };
@@ -355,9 +351,7 @@
 				5B6C126F1AFFB875009617A8 /* AlarmOptionDelegateDataSourceBuilder.swift */,
 				5B22182E1AE60A0700D56D31 /* AlarmOptionDelegateDataSource.swift */,
 				8E3BDC3A1AE430F400E1FCDC /* SnoozeOptionDelegateDataSource.swift */,
-				5B1997A91AE5765800D1522C /* WeatherOptionDelegateDataSource.swift */,
 				5B1997AB1AE5B42700D1522C /* SoundOptionDelegateDataSource.swift */,
-				5B1997AD1AE5B58000D1522C /* DateOptionDelegateDataSource.swift */,
 				5B1997AF1AE5B64A00D1522C /* MusicOptionDelegateDataSource.swift */,
 				5B1997B21AE5B98600D1522C /* RepeatOptionDelegateDataSource.swift */,
 			);
@@ -761,7 +755,6 @@
 				1F3D74B91BF32DDD0087FC23 /* PAlarm.swift in Sources */,
 				8E4511F01ADCF00B00A3E8EC /* UIColor+Additions.swift in Sources */,
 				1F1511AF1BF1D4AE0010AB1C /* ForecastAPI.swift in Sources */,
-				5B1997AA1AE5765800D1522C /* WeatherOptionDelegateDataSource.swift in Sources */,
 				5B6C12621AFF2841009617A8 /* Countdown.swift in Sources */,
 				5BD375431B0CF854000D380C /* TimelineCellAlarmViewModel.swift in Sources */,
 				1F8815BB1BF20ED400B737FD /* GCDUtil.swift in Sources */,
@@ -773,7 +766,6 @@
 				8E8228E21ADB679A00F9A26E /* UINavigationBar+Additions.swift in Sources */,
 				5B6C12681AFF2841009617A8 /* Weather.swift in Sources */,
 				1F851C2B1BF367D500D06383 /* NSDateExtension.swift in Sources */,
-				5B1997AE1AE5B58000D1522C /* DateOptionDelegateDataSource.swift in Sources */,
 				5B1997B71AE5F79C00D1522C /* AlarmMessageSettingsController.swift in Sources */,
 				1F1511AD1BF1CF0C0010AB1C /* WeatherSupport.swift in Sources */,
 				1F2CB5101BF03CF900589BF2 /* SpotifyMusicPickerVC.swift in Sources */,

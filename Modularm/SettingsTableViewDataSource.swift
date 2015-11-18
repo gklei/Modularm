@@ -9,19 +9,22 @@
 import UIKit
 
 let kSettingsCellIdentifier = "settingsCellIdentifier"
-let kDisplayStyleSectionIndex = 0
-let kTimeFormatSectionIndex = 1
-let kAnalogIndex = 0
-let kDigitalIndex = 1
-let kStandardTimeIndex = 0
-let kMilitaryTimeIndex = 1
+let kTimeFormatSectionIndex = 0
+let kClockDisplayStyleSectionIndex = 1
+let kDateDisplaySectionIndex = 2
+let kWeatherDisplaySectionIndex = 3
 
 class SettingsTableViewDataSource: NSObject
 {
    private var tableView: UITableView!
    
-   private let sectionTitleArray = ["Alarm Display Style", "Time Format"]
-   private let cellTitleDictionary: [Int : Array<String>] = [0 : ["Analog", "Digital"], 1 : ["12 Hour", "24 Hour"]]
+   private let sectionTitleArray = ["Time Format", "Alarm Display", "Date Display", "Weather Display"]
+   private let cellTitleDictionary: [Int : Array<String>] = [
+      kTimeFormatSectionIndex : ["12 Hour", "24 Hour"],
+      kClockDisplayStyleSectionIndex : ["Analog", "Digital"],
+      kDateDisplaySectionIndex : ["Tuesday 04/10", "10.04 Tuesday", "Tuesday"],
+      kWeatherDisplaySectionIndex : ["37.4˚ F partly cloudy", "3˚ C partly cloudy", "partly cloudy"]
+   ]
    
    init(tableView: UITableView)
    {
@@ -39,7 +42,7 @@ extension SettingsTableViewDataSource : UITableViewDataSource
 {
    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
    {
-      return sectionTitleArray.count
+      return cellTitleDictionary[section]!.count
    }
    
    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String?
@@ -49,7 +52,7 @@ extension SettingsTableViewDataSource : UITableViewDataSource
    
    func numberOfSectionsInTableView(tableView: UITableView) -> Int
    {
-      return 2
+      return sectionTitleArray.count
    }
    
    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
@@ -67,7 +70,7 @@ extension SettingsTableViewDataSource : UITableViewDataSource
       
       var accessoryImageName = "ic_radial"
       switch indexPath.section {
-      case kDisplayStyleSectionIndex:
+      case kClockDisplayStyleSectionIndex:
          if AppSettingsManager.displayMode == displayModeForCellIndex(indexPath.row)
          {
             accessoryImageName = "ic_radial_checked"
@@ -75,6 +78,18 @@ extension SettingsTableViewDataSource : UITableViewDataSource
          break
       case kTimeFormatSectionIndex:
          if AppSettingsManager.timeFormat == timeFormatForCellIndex(indexPath.row)
+         {
+            accessoryImageName = "ic_radial_checked"
+         }
+         break
+      case kWeatherDisplaySectionIndex:
+         if AppSettingsManager.weatherDisplay == weatherDisplayTypeForCellIndex(indexPath.row)
+         {
+            accessoryImageName = "ic_radial_checked"
+         }
+         break
+      case kDateDisplaySectionIndex:
+         if AppSettingsManager.dateDisplay == dateDisplayTypeForCellIndex(indexPath.row)
          {
             accessoryImageName = "ic_radial_checked"
          }
@@ -92,34 +107,22 @@ extension SettingsTableViewDataSource : UITableViewDataSource
    
    private func displayModeForCellIndex(index: Int) -> DisplayMode
    {
-      var mode: DisplayMode = .Analog
-      switch index {
-      case 0:
-         mode = .Analog
-         break
-      case 1:
-         mode = .Digital
-         break
-      default:
-         break
-      }
-      return mode
+      return DisplayMode(rawValue: index) ?? .Analog
    }
    
    private func timeFormatForCellIndex(index: Int) -> TimeFormat
    {
-      var format: TimeFormat = .Standard
-      switch index {
-      case 0:
-         format = .Standard
-         break
-      case 1:
-         format = .Military
-         break
-      default:
-         break
-      }
-      return format
+      return TimeFormat(rawValue: index) ?? .Standard
+   }
+   
+   private func weatherDisplayTypeForCellIndex(index: Int) -> WeatherDisplayType
+   {
+      return WeatherDisplayType(rawValue: Int16(index)) ?? .US
+   }
+   
+   private func dateDisplayTypeForCellIndex(index: Int) -> DateDisplayType
+   {
+      return DateDisplayType(rawValue: Int16(index)) ?? .US
    }
 }
 
@@ -146,7 +149,7 @@ extension SettingsTableViewDataSource: UITableViewDelegate
    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
    {
       switch indexPath.section {
-      case kDisplayStyleSectionIndex:
+      case kClockDisplayStyleSectionIndex:
          let mode = displayModeForCellIndex(indexPath.row)
          AppSettingsManager.setDisplayMode(mode)
          break
@@ -154,6 +157,13 @@ extension SettingsTableViewDataSource: UITableViewDelegate
          let format = timeFormatForCellIndex(indexPath.row)
          AppSettingsManager.setTimeFormat(format)
          break
+      case kDateDisplaySectionIndex:
+         let displayType = dateDisplayTypeForCellIndex(indexPath.row)
+         AppSettingsManager.setDateDisplay(displayType)
+         break
+      case kWeatherDisplaySectionIndex:
+         let displayType = weatherDisplayTypeForCellIndex(indexPath.row)
+         AppSettingsManager.setWeatherDisplay(displayType)
       default:
          break
       }

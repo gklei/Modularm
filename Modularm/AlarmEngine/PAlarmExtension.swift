@@ -29,7 +29,8 @@ func ==(rhs:PAlarm, lhs:PAlarm) -> Bool{
 }
 
 // MARK: - PAlarm Extension for building notifications
-extension PAlarm {
+extension PAlarm
+{
    func buildNotifications() -> [UILocalNotification] {
       if isEveryDayAlarm || isOnceAlarm{
          let notification = buildTemplateNotification(nextFireDate())

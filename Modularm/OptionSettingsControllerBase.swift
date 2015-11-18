@@ -57,12 +57,6 @@ class OptionSettingsControllerBase: UIViewController
       var title = ""
       switch (option)
       {
-      case .Countdown:
-         title = "set countdown display"
-         break
-      case .Date:
-         title = "set date display"
-         break
       case .Message:
          title = "set message"
          break
@@ -77,9 +71,6 @@ class OptionSettingsControllerBase: UIViewController
          break
       case .Sound:
          title = "set sound"
-         break
-      case .Weather:
-         title = "set weather display"
          break
          
       default:

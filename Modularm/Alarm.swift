@@ -113,31 +113,31 @@ class Alarm: NSManagedObject
 
 extension Alarm: PAlarm
 {
-   var alarmIdentifier:String {
+   var alarmIdentifier: String {
       return self.identifier
    }
    
-   var alarmBody:String {
+   var alarmBody: String {
       return self.message?.text ?? "No message"
    }
    
-   var alarmHour:Int {
+   var alarmHour: Int {
       return self.fireDate.hour
    }
    
-   var alarmMinute:Int {
+   var alarmMinute: Int {
       return self.fireDate.minute
    }
    
-   var alarmWeekDays:[Int]? {
+   var alarmWeekDays: [Int]? {
       return self.repeatModel?.intArray()
    }
    
-   var alarmSound:String {
-      return "ElectorAlarmPrint"
+   var alarmSound: String {
+      return "AlarmSound.caf"
    }
    
-   var snoozeMinute:Int {
+   var snoozeMinute: Int {
       var minute: Int = 0
       if let duration = self.snooze?.duration {
          minute = Int(duration.rawValue)

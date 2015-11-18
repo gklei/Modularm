@@ -33,23 +33,23 @@ class AlarmDetailViewController: UIViewController
       self.updateTimeLabels()
       self.updateUIForFiringState()
       
-      if let alarm = self.alarm
-      {
-         print("requesting weather!")
-         WeatherForecastAPI.requestFor(alarm, callback: { (result:PWeatherForecastResult?, error:ErrorType?) -> () in
-            
-            if let forecastResult = result
-            {
-               print("summary: \(forecastResult.summary)")
-               let images = forecastResult.summaryType.images
-               self._backgroundImageView.image = images[0]
-            }
-            else
-            {
-               print("error: \(error.debugDescription)")
-            }
-         })
-      }
+//      if let alarm = self.alarm
+//      {
+//         print("requesting weather!")
+//         WeatherForecastAPI.requestFor(alarm, callback: { (result:PWeatherForecastResult?, error:ErrorType?) -> () in
+//            
+//            if let forecastResult = result
+//            {
+//               print("summary: \(forecastResult.summary)")
+//               let images = forecastResult.summaryType.images
+//               self._backgroundImageView.image = images[0]
+//            }
+//            else
+//            {
+//               print("error: \(error.debugDescription)")
+//            }
+//         })
+//      }
    }
    
    // MARK: - Private
@@ -83,7 +83,11 @@ class AlarmDetailViewController: UIViewController
    private func setupTestButton()
    {
       let color = UIColor.lipstickRedColor()
-      self.navigationItem.rightBarButtonItem = UIBarButtonItem.rightBarButtonItemWithTitle("test", color: color)
+      let barButtonItem = UIBarButtonItem.rightBarButtonItemWithTitle("test", color: color)
+      barButtonItem.target = self
+      barButtonItem.action = "testButtonPressed:"
+      
+      self.navigationItem.rightBarButtonItem = barButtonItem
    }
    
    private func tearDownTestButton()
@@ -102,7 +106,7 @@ class AlarmDetailViewController: UIViewController
       }
       else
       {
-         if let soundName = self.alarm?.sound?.basicSoundURL
+         if let soundName = self.alarm?.sound?.soundURL
          {
             self.alarmMessageLabel.text = "Alarm sound: \(soundName)"
          }
@@ -129,6 +133,11 @@ class AlarmDetailViewController: UIViewController
    {
       self.alarm = alarm
       self.alarmIsFiring = isFiring
+   }
+   
+   func testButtonPressed(sender: UIBarButtonItem)
+   {
+      print("test button pressed")
    }
    
    // MARK: - IBActions
