@@ -112,6 +112,8 @@
 		F3E0ADE81BC6DD8200643B67 /* AnalogTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E0ADE71BC6DD8200643B67 /* AnalogTimeView.swift */; };
 		F3E0ADEE1BC6DDAB00643B67 /* BEMAnalogClockView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3E0ADEA1BC6DDAB00643B67 /* BEMAnalogClockView.m */; };
 		F3E0ADEF1BC6DDAB00643B67 /* KSMHand.m in Sources */ = {isa = PBXBuildFile; fileRef = F3E0ADEC1BC6DDAB00643B67 /* KSMHand.m */; };
+		F3E0DD6F1BFEAD7F008385E4 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3E0DD6D1BFEAD7F008385E4 /* Fabric.framework */; };
+		F3E0DD701BFEAD7F008385E4 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3E0DD6E1BFEAD7F008385E4 /* Crashlytics.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -240,6 +242,8 @@
 		F3E0ADEB1BC6DDAB00643B67 /* KSMHand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSMHand.h; path = Modularm/KSMHand.h; sourceTree = "<group>"; };
 		F3E0ADEC1BC6DDAB00643B67 /* KSMHand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KSMHand.m; path = Modularm/KSMHand.m; sourceTree = "<group>"; };
 		F3E0ADF01BC6DE1400643B67 /* Modularm-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Modularm-Bridging-Header.h"; sourceTree = "<group>"; };
+		F3E0DD6D1BFEAD7F008385E4 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		F3E0DD6E1BFEAD7F008385E4 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -248,8 +252,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F8815BD1BF21BB300B737FD /* SwiftyJSON.framework in Frameworks */,
+				F3E0DD701BFEAD7F008385E4 /* Crashlytics.framework in Frameworks */,
 				1F1511B31BF1E4A70010AB1C /* CoreLocation.framework in Frameworks */,
 				1FD973C41BEF420100C6DE38 /* MediaPlayer.framework in Frameworks */,
+				F3E0DD6F1BFEAD7F008385E4 /* Fabric.framework in Frameworks */,
 				1F9955FB1BEBCC8C0068C776 /* AVFoundation.framework in Frameworks */,
 				1F9955F91BEBCC760068C776 /* Spotify.framework in Frameworks */,
 				1F552A2A1BEBEA9200E7CAD6 /* SwiftHTTPServer.framework in Frameworks */,
@@ -334,6 +340,8 @@
 		1F9955F71BEBCC5E0068C776 /* ExternalFrameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F3E0DD6D1BFEAD7F008385E4 /* Fabric.framework */,
+				F3E0DD6E1BFEAD7F008385E4 /* Crashlytics.framework */,
 				1F8815BC1BF21BB300B737FD /* SwiftyJSON.framework */,
 				1F1511B21BF1E4A70010AB1C /* CoreLocation.framework */,
 				1FFF4D7B1BF08C1B00D32526 /* WebImage.framework */,
@@ -589,6 +597,7 @@
 				8EFACDAF1AD837EE00279956 /* Frameworks */,
 				8EFACDB01AD837EE00279956 /* Resources */,
 				1F552A2B1BEBEA9C00E7CAD6 /* ShellScript */,
+				F3E0DD6C1BFEAD3D008385E4 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -705,6 +714,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+		F3E0DD6C1BFEAD3D008385E4 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run f8adb97359f3be505eb37f857a45751f47fd970d 407866616ca285468c6460521feef426e433f90b9fb69faf01009c146bb9da62";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -933,6 +955,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/ios-sdk",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Modularm/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -957,6 +980,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/ios-sdk",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Modularm/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

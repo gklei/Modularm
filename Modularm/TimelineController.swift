@@ -103,8 +103,8 @@ class TimelineController: UIViewController
    // MARK: - Private
    private func setupFlowLayoutItemSize()
    {
-      let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-      layout.itemSize = CGSizeMake(CGRectGetWidth(view.bounds), 50)
+      let collectionViewLayout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+      collectionViewLayout.itemSize = CGSizeMake(CGRectGetWidth(view.bounds), 50)
    }
    
    private func registerCollectionViewNibs()
