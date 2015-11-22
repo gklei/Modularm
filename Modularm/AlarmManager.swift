@@ -36,7 +36,7 @@ struct AlarmManager
       return self.sharedInstance.fetchedResultsController.fetchedObjects as? [Alarm]
    }
    
-   static var activeAlarms: [Alarm]? {
+   static var activeAlarms: [Alarm] {
       var alarmArray = Array<Alarm>()
       if let alarms = self.alarms
       {
@@ -51,7 +51,7 @@ struct AlarmManager
       return alarmArray
    }
    
-   static var nonActiveAlarms: [Alarm]? {
+   static var nonActiveAlarms: [Alarm] {
       var alarmArray = Array<Alarm>()
       if let alarms = self.alarms
       {
@@ -64,6 +64,31 @@ struct AlarmManager
          }
       }
       return alarmArray
+   }
+   
+   static func removeIncompleteAlarms()
+   {
+      if let alarmArray = alarms
+      {
+         for alarm in alarmArray
+         {
+            if !alarm.completedSetup
+            {
+               CoreDataStack.delete(alarm)
+            }
+         }
+         CoreDataStack.save()
+      }
+   }
+   
+   static func deactivateAlarmsThatAreInThePast()
+   {
+      let rightNow = NSDate()
+      for alarm in activeAlarms {
+         if alarm.fireDate < rightNow {
+            disableAlarm(alarm)
+         }
+      }
    }
    
    static func disableAlarm(alarm: Alarm)

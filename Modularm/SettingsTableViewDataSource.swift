@@ -27,6 +27,8 @@ class SettingsTableViewDataSource: NSObject
       kWeatherDisplaySectionIndex : ["37.4˚ F partly cloudy", "3˚ C partly cloudy", "partly cloudy"]
    ]
    
+   private var _sectionTitleLabelDictionary = [Int : UILabel]()
+   
    init(tableView: UITableView)
    {
       super.init()
@@ -133,7 +135,7 @@ extension SettingsTableViewDataSource: UITableViewDelegate
    {
       let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 35))
       let headerLabel = UILabel()
-      headerLabel.textColor = UIColor.greenColor()
+      headerLabel.textColor = UIColor(red: 1, green: 0.1, blue: 0.8, alpha: 1)
       
       if section != sectionTitleArray.count - 1
       {
@@ -144,7 +146,7 @@ extension SettingsTableViewDataSource: UITableViewDelegate
       }
       else
       {
-         if let font = UIFont(name: "SnellRoundhand-Bold", size: 18)
+         if let font = UIFont(name: "ChalkboardSE-Regular", size: 18)
          {
             headerLabel.font = font
          }
@@ -195,6 +197,8 @@ extension SettingsTableViewDataSource: UITableViewDelegate
          headerView.addSubview(dividerView2)
       }
       
+      _sectionTitleLabelDictionary[section] = headerLabel
+      
       return headerView
    }
    
@@ -220,5 +224,9 @@ extension SettingsTableViewDataSource: UITableViewDelegate
          break
       }
       tableView.reloadData()
+   }
+   
+   func makeUIEvenMoreAmazing()
+   {
    }
 }

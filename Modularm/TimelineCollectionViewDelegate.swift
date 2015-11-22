@@ -22,21 +22,15 @@ extension TimelineCollectionViewDelegate: UICollectionViewDelegate
 {
    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath)
    {
-      if indexPath.section == 0 && AlarmManager.activeAlarms?.count > 0
+      if indexPath.section == 0 && AlarmManager.activeAlarms.count > 0
       {
-         if let alarms = AlarmManager.activeAlarms
-         {
-            let alarm = alarms[indexPath.row + 1]
-            self.timelineController.showDetailsForAlarm(alarm)
-         }
+         let alarm = AlarmManager.activeAlarms[indexPath.row + 1]
+         self.timelineController.showDetailsForAlarm(alarm)
       }
       else
       {
-         if let alarms = AlarmManager.nonActiveAlarms
-         {
-            let alarm = alarms[indexPath.row]
-            self.timelineController.showDetailsForAlarm(alarm)
-         }
+         let alarm = AlarmManager.nonActiveAlarms[indexPath.row]
+         self.timelineController.showDetailsForAlarm(alarm)
       }
    }
 }
@@ -45,7 +39,7 @@ extension TimelineCollectionViewDelegate: UICollectionViewDelegateFlowLayout
 {
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize
     {
-      if AlarmManager.activeAlarms?.count > 0 && section == 0
+      if AlarmManager.activeAlarms.count > 0 && section == 0
       {
          let height: CGFloat = AppSettingsManager.displayMode == .Analog ? kAnalogHeaderHeight : kDigitalHeaderHeight
          return CGSizeMake(CGRectGetWidth(self.collectionView.bounds), height)
@@ -56,7 +50,7 @@ extension TimelineCollectionViewDelegate: UICollectionViewDelegateFlowLayout
    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize
    {
       var size = CGSizeZero
-      if section != 0 || AlarmManager.nonActiveAlarms?.count == 0 || (section == 0 && AlarmManager.activeAlarms?.count == 0)
+      if section != 0 || AlarmManager.nonActiveAlarms.count == 0 || (section == 0 && AlarmManager.activeAlarms.count == 0)
       {
          var height: CGFloat = 70
          if let alarmCount = AlarmManager.alarms?.count, flowLayout = collectionViewLayout as? UICollectionViewFlowLayout
@@ -65,7 +59,7 @@ extension TimelineCollectionViewDelegate: UICollectionViewDelegateFlowLayout
             let headerHeight: CGFloat = AppSettingsManager.displayMode == .Analog ? kAnalogHeaderHeight : kDigitalHeaderHeight
             var contentHeight: CGFloat = (CGFloat(alarmCount) - 1.0) * cellHeight + headerHeight
             
-            if AlarmManager.activeAlarms?.count == 0 {
+            if AlarmManager.activeAlarms.count == 0 {
                contentHeight = CGFloat(alarmCount) * cellHeight
             }
             height = max(CGRectGetHeight(collectionView.bounds) - contentHeight + 1, height)

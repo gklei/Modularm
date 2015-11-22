@@ -13,41 +13,40 @@ import CoreData
 import CoreLocation
 
 let kModularmMinuteChangedNotification = "ModularmMinuteChangedNotification"
+let kModularmWillEnterForegroundNotification = "ModularmEnteredForegroundNotification"
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate
 {
    var window: UIWindow?
    var minuteChangedNotificationTimer: NSTimer?
-   private let _locationManager = CLLocationManager()
+   private var _locationManager = CLLocationManager() {
+      didSet {
+         _locationManager.delegate = self
+      }
+   }
 
    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
    {
       Fabric.with([Crashlytics.self])
       
-//      let notificationSettings = UIUserNotificationSettings(forTypes: [.Alert, .Sound], categories: nil)
-//      UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
       AlarmEngine.sharedInstance.registerAlarmNotificationSettings()
       
       self.startTimerForMinuteChangedNotification()
       
-      if let options = launchOptions
-      {
-         if let notification = options[UIApplicationLaunchOptionsLocalNotificationKey] as? UILocalNotification
-         {
-            if let userInfo = notification.userInfo, let alarmUUID = userInfo["UUID"] as? String
-            {
+      if let options = launchOptions {
+         if let notification = options[UIApplicationLaunchOptionsLocalNotificationKey] as? UILocalNotification {
+            if let userInfo = notification.userInfo, let alarmUUID = userInfo["UUID"] as? String {
                self.showFiredAlarmWithUUID(alarmUUID)
             }
          }
       }
       
-      _locationManager.delegate = self
-      if CLLocationManager.locationServicesEnabled() {
-         _locationManager.startUpdatingLocation()
-      }
       if CLLocationManager.authorizationStatus() == .NotDetermined {
          _locationManager.requestWhenInUseAuthorization()
+      }
+      if CLLocationManager.locationServicesEnabled() {
+         _locationManager.startUpdatingLocation()
       }
       
       return true
@@ -79,6 +78,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
    {
       // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
       self.startTimerForMinuteChangedNotification()
+      NSNotificationCenter.defaultCenter().postNotificationName(kModularmWillEnterForegroundNotification, object: nil);
    }
 
    func applicationDidBecomeActive(application: UIApplication)

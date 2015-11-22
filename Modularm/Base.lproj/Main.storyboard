@@ -117,7 +117,6 @@
                     <connections>
                         <outlet property="centerNavigationItem" destination="Quf-Is-AO7" id="Jeh-cf-4Id"/>
                         <outlet property="collectionView" destination="Wpd-SP-iM8" id="Acj-13-ocd"/>
-                        <outlet property="timelineDataSource" destination="893-Zi-iay" id="IY6-dh-6rr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pyx-cQ-o5I" userLabel="First Responder" sceneMemberID="firstResponder"/>

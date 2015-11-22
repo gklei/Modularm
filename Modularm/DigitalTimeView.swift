@@ -10,13 +10,13 @@ import UIKit
 
 class DigitalTimeView: TimeView
 {
-   private let hourLabel = UILabel.largeTimeDisplayLabelWithAlignment(.Left)
-   private let colonLabel = UILabel.largeTimeDisplayLabelWithAlignment(.Center)
-   private let minuteLabel = UILabel.largeTimeDisplayLabelWithAlignment(.Right)
-   private let amOrPmLabel = UILabel.amOrPmLabel()
+   private let _hourLabel = UILabel.largeTimeDisplayLabelWithAlignment(.Left)
+   private let _colonLabel = UILabel.largeTimeDisplayLabelWithAlignment(.Center)
+   private let _minuteLabel = UILabel.largeTimeDisplayLabelWithAlignment(.Right)
+   private let _amOrPmLabel = UILabel.amOrPmLabel()
    
    private var _labels: [UILabel] {
-      return [hourLabel, colonLabel, minuteLabel, amOrPmLabel]
+      return [_hourLabel, _colonLabel, _minuteLabel, _amOrPmLabel]
    }
    
    // MARK: - Init
@@ -35,21 +35,21 @@ class DigitalTimeView: TimeView
    // MARK: - Setup
    private func setupLabels()
    {
-      hourLabel.text = "12"
-      hourLabel.sizeToFit()
-      addSubview(hourLabel)
+      _hourLabel.text = "12"
+      _hourLabel.sizeToFit()
+      addSubview(_hourLabel)
       
-      colonLabel.text = ":"
-      colonLabel.sizeToFit()
-      addSubview(colonLabel)
+      _colonLabel.text = ":"
+      _colonLabel.sizeToFit()
+      addSubview(_colonLabel)
       
-      minuteLabel.text = "12"
-      minuteLabel.sizeToFit()
-      addSubview(minuteLabel)
+      _minuteLabel.text = "12"
+      _minuteLabel.sizeToFit()
+      addSubview(_minuteLabel)
       
-      amOrPmLabel.text = "am"
-      amOrPmLabel.sizeToFit()
-      addSubview(amOrPmLabel)
+      _amOrPmLabel.text = "am"
+      _amOrPmLabel.sizeToFit()
+      addSubview(_amOrPmLabel)
    }
    
    // MARK: - Lifecycle
@@ -57,23 +57,23 @@ class DigitalTimeView: TimeView
    {
       super.layoutSubviews()
       
-      colonLabel.center = CGPoint(x: CGRectGetMidX(bounds), y: CGRectGetMidY(bounds))
+      _colonLabel.center = CGPoint(x: CGRectGetMidX(bounds), y: CGRectGetMidY(bounds))
       
-      let hourLabelWidth = hourLabel.bounds.width
-      let hourLabelX: CGFloat = CGRectGetMinX(colonLabel.frame) - hourLabelWidth - 8.0
-      let hourLabelY: CGFloat = colonLabel.center.y - hourLabel.bounds.height * 0.5
+      let hourLabelWidth = _hourLabel.bounds.width
+      let hourLabelX: CGFloat = CGRectGetMinX(_colonLabel.frame) - hourLabelWidth - 8.0
+      let hourLabelY: CGFloat = _colonLabel.center.y - _hourLabel.bounds.height * 0.5
       
-      hourLabel.frame.origin = CGPoint(x: hourLabelX, y: hourLabelY)
+      _hourLabel.frame.origin = CGPoint(x: hourLabelX, y: hourLabelY)
       
-      let minuteLabelX = CGRectGetMaxX(colonLabel.frame)
-      let minuteLabelY = colonLabel.center.y - minuteLabel.bounds.height * 0.5
+      let minuteLabelX = CGRectGetMaxX(_colonLabel.frame)
+      let minuteLabelY = _colonLabel.center.y - _minuteLabel.bounds.height * 0.5
       
-      minuteLabel.frame.origin = CGPoint(x: minuteLabelX, y: minuteLabelY)
+      _minuteLabel.frame.origin = CGPoint(x: minuteLabelX, y: minuteLabelY)
       
-      let amPmLabelX = minuteLabel.frame.maxX + 6
-      let amPmLabelY = minuteLabel.frame.minY + 14
+      let amPmLabelX = _minuteLabel.frame.maxX + 6
+      let amPmLabelY = _minuteLabel.frame.minY + 14
       
-      amOrPmLabel.frame.origin = CGPoint(x: amPmLabelX, y: amPmLabelY)
+      _amOrPmLabel.frame.origin = CGPoint(x: amPmLabelX, y: amPmLabelY)
    }
    
    // MARK: - Public
@@ -82,20 +82,20 @@ class DigitalTimeView: TimeView
       super.updateTimeWithAlarm(alarm)
       
       let date = alarm.fireDate
-      hourLabel.text = TimeDisplayProvider.textForHourValue(date.hour)
-      minuteLabel.text = TimeDisplayProvider.textForMinuteValue(date.minute)
-      amOrPmLabel.text = date.hour < 12 ? "am" : "pm"
-      amOrPmLabel.sizeToFit()
+      _hourLabel.text = TimeDisplayProvider.textForHourValue(date.hour)
+      _minuteLabel.text = TimeDisplayProvider.textForMinuteValue(date.minute)
+      _amOrPmLabel.text = date.hour < 12 ? "am" : "pm"
+      _amOrPmLabel.sizeToFit()
    }
    
    override func updateTimeWithHour(hour: Int, minute: Int)
    {
       super.updateTimeWithHour(hour, minute: minute)
       
-      hourLabel.text = TimeDisplayProvider.textForHourValue(hour)
-      minuteLabel.text = TimeDisplayProvider.textForMinuteValue(minute)
-      amOrPmLabel.text = hour < 12 ? "am" : "pm"
-      amOrPmLabel.sizeToFit()
+      _hourLabel.text = TimeDisplayProvider.textForHourValue(hour)
+      _minuteLabel.text = TimeDisplayProvider.textForMinuteValue(minute)
+      _amOrPmLabel.text = hour < 12 ? "am" : "pm"
+      _amOrPmLabel.sizeToFit()
    }
    
    override func updateColor(color: UIColor)

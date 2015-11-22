@@ -17,38 +17,12 @@ class TimelineDataSource: NSObject
 {
    // MARK: - Instance Variables
    @IBOutlet weak var timelineController: TimelineController!
-   
-   private let _coreDataStack = CoreDataStack.defaultStack
    private lazy var _fetchedResultsController: NSFetchedResultsController =
    {
       let controller = AlarmManager.sharedInstance.fetchedResultsController
       controller.delegate = self
       return controller
    }()
-   private lazy var _dateFormatter: NSDateFormatter =
-   {
-      let formatter = NSDateFormatter()
-      return formatter
-   }()
-   
-   func removeIncompleteAlarms()
-   {
-      if let alarms = _fetchedResultsController.fetchedObjects as? [Alarm]
-      {
-         for alarm in alarms
-         {
-            if !alarm.completedSetup
-            {
-               CoreDataStack.deleteObject(alarm)
-            }
-         }
-      }
-   }
-   
-   func deactivateAlarmsThatAreInThePast()
-   {
-      
-   }
 }
 
 // MARK: - UICollectionView Data Source
@@ -63,7 +37,7 @@ extension TimelineDataSource: UICollectionViewDataSource
          {
             numberOfItems = section == kActiveAlarmSectionIndex ? max(0, sectionInfo.numberOfObjects - 1) : sectionInfo.numberOfObjects
             
-            if AlarmManager.activeAlarms?.count == 0 {
+            if AlarmManager.activeAlarms.count == 0 {
                numberOfItems = sectionInfo.numberOfObjects
             }
          }
@@ -77,7 +51,7 @@ extension TimelineDataSource: UICollectionViewDataSource
       let cell: TimelineCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier("timelineCell", forIndexPath: indexPath) as! TimelineCollectionViewCell
 
       var newIndexPath = indexPath
-      if indexPath.section == kActiveAlarmSectionIndex && AlarmManager.activeAlarms?.count != 0
+      if indexPath.section == kActiveAlarmSectionIndex && AlarmManager.activeAlarms.count != 0
       {
          // increment the row by one because the first alarm in the Active section is the header
          newIndexPath = NSIndexPath(forRow: indexPath.row + 1, inSection: indexPath.section)

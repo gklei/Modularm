@@ -12,7 +12,6 @@ class TimelineController: UIViewController
 {
    // MARK: - Instance Variables
    @IBOutlet weak var centerNavigationItem: UINavigationItem!
-   @IBOutlet weak var timelineDataSource: TimelineDataSource!
    @IBOutlet var collectionView: UICollectionView!
    
    lazy private var _settingsViewController: SettingsViewController = {
@@ -30,10 +29,15 @@ class TimelineController: UIViewController
    {
       super.viewDidLoad()
       navigationController?.makeNavigationBarTransparent()
-      navigationController?.setNavigationBarHairlineHidden(true)
+//      navigationController?.setNavigationBarHairlineHidden(true)
       
       registerCollectionViewNibs()
       setupFlowLayoutItemSize()
+      
+      NSNotificationCenter.defaultCenter().addObserverForName(kModularmWillEnterForegroundNotification, object: nil, queue: nil) { (notification) -> Void in
+         AlarmManager.deactivateAlarmsThatAreInThePast()
+         self.reloadData()
+      }
    }
 
    override func viewWillAppear(animated: Bool)
@@ -41,8 +45,9 @@ class TimelineController: UIViewController
       super.viewWillAppear(animated)
       navigationController?.setNavigationBarHidden(false, animated: true);
       
-      timelineDataSource.removeIncompleteAlarms()
-      timelineDataSource.deactivateAlarmsThatAreInThePast()
+      AlarmManager.removeIncompleteAlarms()
+      AlarmManager.deactivateAlarmsThatAreInThePast()
+      reloadData()
    }
 
    override func viewWillDisappear(animated: Bool)
@@ -106,8 +111,8 @@ class TimelineController: UIViewController
    
    private func updateBackBarButtonItemWithTitle(title: String)
    {
-      let barButtonItem = UIBarButtonItem(title: title, style: .Plain, target: nil, action: nil)
-      navigationItem.backBarButtonItem = barButtonItem
+      let updatedButtonItem = UIBarButtonItem(title: title, style: .Plain, target: nil, action: nil)
+      navigationItem.backBarButtonItem = updatedButtonItem
    }
 }
 
