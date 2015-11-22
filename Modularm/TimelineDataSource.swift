@@ -9,7 +9,6 @@
 import UIKit
 import CoreData
 
-let kTotalSectionsInTimelineCollectionView = 2
 let kActiveAlarmSectionIndex = 0
 let kNonActiveAlarmSectionIndex = 1
 

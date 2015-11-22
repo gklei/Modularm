@@ -29,12 +29,12 @@ class TimelineController: UIViewController
    {
       super.viewDidLoad()
       navigationController?.makeNavigationBarTransparent()
-//      navigationController?.setNavigationBarHairlineHidden(true)
       
       registerCollectionViewNibs()
       setupFlowLayoutItemSize()
       
       NSNotificationCenter.defaultCenter().addObserverForName(kModularmWillEnterForegroundNotification, object: nil, queue: nil) { (notification) -> Void in
+         
          AlarmManager.deactivateAlarmsThatAreInThePast()
          self.reloadData()
       }

@@ -85,7 +85,8 @@ struct AlarmManager
    {
       let rightNow = NSDate()
       for alarm in activeAlarms {
-         if alarm.fireDate < rightNow {
+         if alarm.fireDate < rightNow && alarm.repeatModel == nil && alarm.snooze == nil
+         {
             disableAlarm(alarm)
          }
       }
