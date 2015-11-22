@@ -15,7 +15,7 @@ protocol SettingsViewControllerDelegate
 
 class SettingsViewController: UIViewController
 {
-   var settingsDelegate: SettingsViewControllerDelegate?
+   private var _settingsDelegate: SettingsViewControllerDelegate?
    private var tableViewDataSource: SettingsTableViewDataSource?
    @IBOutlet weak var navigationBar: UINavigationBar!
    @IBOutlet weak var tableView: UITableView! {
@@ -28,7 +28,7 @@ class SettingsViewController: UIViewController
    convenience init(delegate: SettingsViewControllerDelegate)
    {
       self.init(nibName: nil, bundle: nil)
-      settingsDelegate = delegate
+      _settingsDelegate = delegate
    }
    
    // MARK: - Lifecycle
@@ -51,7 +51,7 @@ class SettingsViewController: UIViewController
    // MARK: - IBActions
    @IBAction func doneButtonPressed()
    {
-      settingsDelegate?.settingsWillClose()
+      _settingsDelegate?.settingsWillClose()
       dismiss()
    }
    

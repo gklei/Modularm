@@ -25,8 +25,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate
    {
       Fabric.with([Crashlytics.self])
       
-      let notificationSettings = UIUserNotificationSettings(forTypes: [.Alert, .Sound], categories: nil)
-      UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
+//      let notificationSettings = UIUserNotificationSettings(forTypes: [.Alert, .Sound], categories: nil)
+//      UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
+      AlarmEngine.sharedInstance.registerAlarmNotificationSettings()
       
       self.startTimerForMinuteChangedNotification()
       
@@ -40,9 +41,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate
             }
          }
       }
-      
-      //Added by Alex, start token service when app is launched.
-      SpotifyTokenRefresher.startTokenService()
       
       _locationManager.delegate = self
       if CLLocationManager.locationServicesEnabled() {

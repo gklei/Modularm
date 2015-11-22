@@ -23,24 +23,24 @@ class AlarmDetailViewController: UIViewController
    
    private var alarmIsFiring = false
    private var _timeDisplayViewController = TimeDisplayViewController()
+   private var _displayMode = AppSettingsManager.displayMode
    
    // MARK: - Lifecycle
    override func viewDidLoad()
    {
       super.viewDidLoad()
-      
       alarmTimeContainerView.addSubview(_timeDisplayViewController.view)
    }
    
    override func viewWillAppear(animated: Bool)
    {
       super.viewWillAppear(animated)
-      self.setupTitle()
-      self.updateTimeLabels()
-      self.updateUIForFiringState()
-      self.updateBackgroundImage()
+      updateTitle()
+      updateTimeLabels()
+      updateBackgroundImage()
+      updateUIForFiringState()
       
-      updateTimeContainerConstraintsWithDisplayMode(AppSettingsManager.displayMode)
+      updateTimeContainerConstraintsWithDisplayMode(_displayMode)
    }
    
    override func viewDidLayoutSubviews()
@@ -80,7 +80,7 @@ class AlarmDetailViewController: UIViewController
       }
    }
    
-   private func setupTitle()
+   private func updateTitle()
    {
       if let alarmDate = self.alarm?.fireDate
       {
@@ -159,7 +159,8 @@ class AlarmDetailViewController: UIViewController
    func configureWithAlarm(alarm: Alarm?, isFiring: Bool, displayMode: DisplayMode)
    {
       self.alarm = alarm
-      self.alarmIsFiring = isFiring
+      alarmIsFiring = isFiring
+      _displayMode = displayMode
       
       let time = alarm!.fireDate
       _timeDisplayViewController.updateDisplayMode(displayMode)
@@ -173,13 +174,12 @@ class AlarmDetailViewController: UIViewController
    // MARK: - IBActions
    @IBAction func editButtonPressed()
    {
-      let configurationController = UIStoryboard.controllerWithIdentifier("AlarmConfigurationController") as! AlarmConfigurationController
       if let alarm = self.alarm
       {
-         configurationController.configureWithAlarm(alarm)
+         let configurationController = UIStoryboard.configurationControllerForAlarm(alarm)
+         self.navigationController?.pushViewController(configurationController, animated: true)
+         self.updateBackBarButtonItemWithTitle("Back")
       }
-      self.navigationController?.pushViewController(configurationController, animated: true)
-      self.updateBackBarButtonItemWithTitle("Back")
    }
    
    @IBAction func cancelButtonPressed()

@@ -211,7 +211,7 @@ class TimeSetterViewController: UIViewController
    {
       if let hour = self.currentHourValue where hour >= 12
       {
-         self.hourScrollViewController?.scrollToNumber(hour - 12, animated: true)
+         self.hourScrollViewController?.scrollToNumber(hour - 12, animated: false)
          giveScrollViewFocus(hourScrollViewController!.infiniteScrollView!)
       }
    }
@@ -220,7 +220,7 @@ class TimeSetterViewController: UIViewController
    {
       if let hour = self.currentHourValue where hour < 12
       {
-         self.hourScrollViewController?.scrollToNumber(hour + 12, animated: true)
+         self.hourScrollViewController?.scrollToNumber(hour + 12, animated: false)
          giveScrollViewFocus(hourScrollViewController!.infiniteScrollView!)
       }
    }

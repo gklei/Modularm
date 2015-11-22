@@ -8,6 +8,24 @@
 
 import UIKit
 
+extension UINavigationController
+{
+   func makeNavigationBarTransparent()
+   {
+      navigationBar.makeTransparent()
+   }
+   
+   func setNavigationBarHairlineHidden(hidden: Bool)
+   {
+      if hidden {
+         navigationBar.hideBottomHairline()
+      }
+      else {
+         navigationBar.showBottomHairline()
+      }
+   }
+}
+
 extension UINavigationBar
 {
    func hideBottomHairline()

@@ -18,7 +18,8 @@ class SettingsTableViewDataSource: NSObject
 {
    private var tableView: UITableView!
    
-   private let sectionTitleArray = ["Time Format", "Alarm Display", "Date Display", "Weather Display"]
+   // the empty string at the end removes the bottom divider line for the last option in the last section
+   private let sectionTitleArray = ["Time Format", "Alarm Display", "Date Display", "Weather Display", "Settings UI designed by Gregory Klein"]
    private let cellTitleDictionary: [Int : Array<String>] = [
       kTimeFormatSectionIndex : ["12 Hour", "24 Hour"],
       kClockDisplayStyleSectionIndex : ["Analog", "Digital"],
@@ -42,7 +43,7 @@ extension SettingsTableViewDataSource : UITableViewDataSource
 {
    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
    {
-      return cellTitleDictionary[section]!.count
+      return cellTitleDictionary[section]?.count ?? 0
    }
    
    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String?
@@ -132,16 +133,67 @@ extension SettingsTableViewDataSource: UITableViewDelegate
    {
       let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 35))
       let headerLabel = UILabel()
-      headerLabel.textColor = UIColor.whiteColor()
-      if let font = UIFont(name: "HelveticaNeue-Bold", size: 16)
+      headerLabel.textColor = UIColor.greenColor()
+      
+      if section != sectionTitleArray.count - 1
       {
-         headerLabel.font = font
+         if let font = UIFont(name: "SnellRoundhand-Bold", size: 26)
+         {
+            headerLabel.font = font
+         }
+      }
+      else
+      {
+         if let font = UIFont(name: "SnellRoundhand-Bold", size: 18)
+         {
+            headerLabel.font = font
+         }
+         headerLabel.textColor = UIColor.cyanColor()
       }
       headerLabel.text = sectionTitleArray[section]
       headerLabel.sizeToFit()
       
       headerView.addSubview(headerLabel)
       headerLabel.center = CGPoint(x: 12 + (headerLabel.bounds.width * 0.5), y: headerView.center.y)
+      
+      let padding: CGFloat = 10.0
+      let width: CGFloat = headerView.bounds.width - headerLabel.bounds.width - (padding * 3)
+      let height: CGFloat = 0.5
+      
+      let x = headerLabel.frame.maxX + padding
+      let y = headerLabel.frame.midY - height * 0.5
+      
+      if section != sectionTitleArray.count - 1
+      {
+         let dividerFrame = CGRect(x: x, y: y, width: width, height: height)
+         let dividerView = UIView(frame: dividerFrame)
+         dividerView.backgroundColor = UIColor.magentaColor()
+         headerView.addSubview(dividerView)
+      }
+      if section == sectionTitleArray.count - 1
+      {
+         headerLabel.frame = CGRect(x: headerView.bounds.midX - (headerLabel.bounds.width * 0.5), y: headerLabel.frame.origin.y, width: headerLabel.bounds.width, height: headerLabel.bounds.height)
+         
+         let padding: CGFloat = 10.0
+         let width: CGFloat = (headerView.bounds.width - headerLabel.bounds.width - (padding * 3)) * 0.5
+         let height: CGFloat = 0.5
+         
+         let x1 = headerLabel.frame.maxX + padding
+         let x2 = padding
+         let y = headerLabel.frame.midY - height * 0.5
+         
+         let dividerFrame1 = CGRect(x: x1, y: y, width: width, height: height)
+         let dividerFrame2 = CGRect(x: x2, y: y, width: width, height: height)
+         
+         let dividerView1 = UIView(frame: dividerFrame1)
+         dividerView1.backgroundColor = UIColor.cyanColor()
+         
+         let dividerView2 = UIView(frame: dividerFrame2)
+         dividerView2.backgroundColor = UIColor.cyanColor()
+         
+         headerView.addSubview(dividerView1)
+         headerView.addSubview(dividerView2)
+      }
       
       return headerView
    }

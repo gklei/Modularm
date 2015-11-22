@@ -15,7 +15,9 @@ class TimelineController: UIViewController
    @IBOutlet weak var timelineDataSource: TimelineDataSource!
    @IBOutlet var collectionView: UICollectionView!
    
-   private var _settingsViewController: SettingsViewController?
+   lazy private var _settingsViewController: SettingsViewController = {
+      return SettingsViewController(delegate: self)
+   }()
    lazy private var _configurationController: AlarmConfigurationController = {
       return UIStoryboard.controllerWithIdentifier("AlarmConfigurationController") as! AlarmConfigurationController
    }()
@@ -27,10 +29,8 @@ class TimelineController: UIViewController
    override func viewDidLoad()
    {
       super.viewDidLoad()
-      navigationController?.navigationBar.makeTransparent()
-      
-      _settingsViewController = SettingsViewController(delegate: self)
-      timelineDataSource.removeIncompleteAlarms()
+      navigationController?.makeNavigationBarTransparent()
+      navigationController?.setNavigationBarHairlineHidden(true)
       
       registerCollectionViewNibs()
       setupFlowLayoutItemSize()
@@ -38,25 +38,16 @@ class TimelineController: UIViewController
 
    override func viewWillAppear(animated: Bool)
    {
+      super.viewWillAppear(animated)
       navigationController?.setNavigationBarHidden(false, animated: true);
+      
       timelineDataSource.removeIncompleteAlarms()
+      timelineDataSource.deactivateAlarmsThatAreInThePast()
    }
 
    override func viewWillDisappear(animated: Bool)
    {
       updateBackBarButtonItemWithTitle("Back")
-   }
-   
-   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
-   {
-      if segue.identifier == "addAlarmButtonPressed"
-      {
-         if let alarm = AlarmManager.createNewAlarm()
-         {
-            let configurationController = segue.destinationViewController as! AlarmConfigurationController
-            configurationController.configureWithAlarm(alarm)
-         }
-      }
    }
 
    // MARK: - IBActions
@@ -69,17 +60,17 @@ class TimelineController: UIViewController
       }
    }
    
-   @IBAction func logCurrentScheduledNotifications()
-   {
-//      AlarmScheduler.logCurrentScheduledNotifications()
-   }
-   
    @IBAction func settingsButtonPressed()
    {
-      if let settingsViewController = _settingsViewController
-      {
-         navigationController?.presentViewController(settingsViewController, animated: true, completion: nil)
-      }
+      navigationController?.presentViewController(_settingsViewController, animated: true, completion: nil)
+      
+      // For debugging
+      UIApplication.printAllAlarmsToConsole()
+   }
+   
+   @IBAction func clearAllAlarms()
+   {
+      UIApplication.sharedApplication().cancelAllLocalNotifications()
    }
    
    // MARK: - Public

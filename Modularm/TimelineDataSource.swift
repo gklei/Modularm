@@ -44,6 +44,11 @@ class TimelineDataSource: NSObject
          }
       }
    }
+   
+   func deactivateAlarmsThatAreInThePast()
+   {
+      
+   }
 }
 
 // MARK: - UICollectionView Data Source

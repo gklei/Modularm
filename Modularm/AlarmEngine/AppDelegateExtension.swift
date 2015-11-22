@@ -8,9 +8,24 @@
 
 import Foundation
 
+extension UIApplication
+{
+   static func printAllAlarmsToConsole()
+   {
+      if let notifications = sharedApplication().scheduledLocalNotifications
+      {
+         for notification in notifications
+         {
+            print(notification.fireDate?.prettyDateString())
+         }
+      }
+   }
+}
+
 // MARK: - AppDelegate extension for snooze action
 extension AppDelegate {
-   func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forLocalNotification notification: UILocalNotification, completionHandler: () -> Void) {
+   func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forLocalNotification notification: UILocalNotification, completionHandler: () -> Void)
+   {
       if identifier == kAlarmNotificationSnoozeActionIdentifier && notification.isSnoozeEnabled {
          AlarmEngine.sharedInstance.snoozeAlarm(notification, afterMinutes: notification.snoozeMinute)
       }

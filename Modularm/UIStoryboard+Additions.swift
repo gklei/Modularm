@@ -14,4 +14,17 @@ extension UIStoryboard
    {
       return UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier(identifier)
    }
+   
+   static func alarmConfigurationController() -> AlarmConfigurationController
+   {
+      return UIStoryboard.controllerWithIdentifier("AlarmConfigurationController") as! AlarmConfigurationController
+   }
+   
+   static func configurationControllerForAlarm(alarm: Alarm) -> AlarmConfigurationController
+   {
+      let controller = alarmConfigurationController()
+      controller.configureWithAlarm(alarm)
+      
+      return controller
+   }
 }

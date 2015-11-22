@@ -11,7 +11,7 @@ import CoreData
 
 enum RepeatDay: Int16
 {
-   case Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday
+   case Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
    
    static func valueArray() -> [RepeatDay]
    {
@@ -120,9 +120,9 @@ class Repeat: NSManagedObject
       var array = [Int]()
       for day in RepeatDay.valueArray()
       {
-         if self.dayIsEnabled(day) {
-            
-            array.append(Int(day.rawValue))
+         if self.dayIsEnabled(day)
+         {
+            array.append(Int(day.rawValue + 1 % 7) + 1)
          }
       }
       return array
