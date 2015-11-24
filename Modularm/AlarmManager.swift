@@ -21,6 +21,9 @@ struct AlarmManager
       let fetchRequest = NSFetchRequest(entityName: "Alarm")
       fetchRequest.sortDescriptors = [NSSortDescriptor(key: "active", ascending: false), NSSortDescriptor(key: "fireDateValue", ascending: true)];
       
+      // Do we want this?????
+      fetchRequest.predicate = NSPredicate(format: "completedSetup = true", argumentArray: nil)
+      
       let controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: coreDataStack.managedObjectContext!, sectionNameKeyPath: "active", cacheName: nil)
       
       do {
@@ -31,9 +34,33 @@ struct AlarmManager
       return controller
       }()
    
+   lazy var incompleteAlarmsFetchedResultsController: NSFetchedResultsController = {
+      
+      let coreDataStack = CoreDataStack.defaultStack
+      
+      let fetchRequest = NSFetchRequest(entityName: "Alarm")
+      fetchRequest.sortDescriptors = [NSSortDescriptor(key: "fireDateValue", ascending: true)];
+      
+      // Do we want this?????
+      fetchRequest.predicate = NSPredicate(format: "completedSetup = false", argumentArray: nil)
+      
+      let controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: coreDataStack.managedObjectContext!, sectionNameKeyPath: "active", cacheName: nil)
+      
+      do {
+         try controller.performFetch()
+      } catch _ {
+      }
+      
+      return controller
+   }()
+   
    // MARK: - Public
    static var alarms: [Alarm]? {
       return self.sharedInstance.fetchedResultsController.fetchedObjects as? [Alarm]
+   }
+   
+   static var incompleteAlarms: [Alarm]? {
+      return self.sharedInstance.incompleteAlarmsFetchedResultsController.fetchedObjects as? [Alarm]
    }
    
    static var activeAlarms: [Alarm] {
@@ -68,16 +95,10 @@ struct AlarmManager
    
    static func removeIncompleteAlarms()
    {
-      if let alarmArray = alarms
-      {
-         for alarm in alarmArray
-         {
-            if !alarm.completedSetup
-            {
-               CoreDataStack.delete(alarm)
-            }
+      if let alarms = incompleteAlarms {
+         for incompleteAlarm in alarms {
+            deleteAlarm(incompleteAlarm)
          }
-         CoreDataStack.save()
       }
    }
    
@@ -119,9 +140,11 @@ struct AlarmManager
    
    static func deleteAlarm(alarm: Alarm)
    {
-      AlarmEngine.sharedInstance.cancelAlarm(alarm)
-      CoreDataStack.deleteObject(alarm)
-      CoreDataStack.save()
+      GCDUtil.runOnMainSync { () -> () in
+         AlarmEngine.sharedInstance.cancelAlarm(alarm)
+         CoreDataStack.deleteObject(alarm)
+         CoreDataStack.save()
+      }
    }
    
    private static func scheduleAlarm(alarm: Alarm)

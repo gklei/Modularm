@@ -218,6 +218,18 @@ static CGPoint _midPoint(CGPoint point1, CGPoint point2)
     }
 }
 
+- (void)setHourHandColor:(UIColor *)hourHandColor
+{
+   _hourHandColor = hourHandColor;
+   _hourHand.color = hourHandColor;
+}
+
+- (void)setMinuteHandColor:(UIColor *)minuteHandColor
+{
+   _minuteHandColor = minuteHandColor;
+   _minuteHand.color = minuteHandColor;
+}
+
 #pragma mark - Real Time
 
 - (void)updateEverySecond {
@@ -245,6 +257,14 @@ static CGPoint _midPoint(CGPoint point1, CGPoint point2)
     shouldUpdateSubviews = YES;
     [self setNeedsLayout];
     [self setNeedsDisplay];
+}
+
+- (void)setNeedsDisplay
+{
+   [self.hourHand setNeedsDisplay];
+   [self.minuteHand setNeedsDisplay];
+   [self.secondHand setNeedsDisplay];
+   [super setNeedsDisplay];
 }
 
 - (void)updateTimeAnimated:(BOOL)animated {

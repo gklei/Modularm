@@ -43,6 +43,18 @@ class AlarmDetailViewController: UIViewController
       updateTimeContainerConstraintsWithDisplayMode(_displayMode)
    }
    
+   override func viewWillDisappear(animated: Bool)
+   {
+      super.viewWillDisappear(animated)
+      
+      let color = UIColor.whiteColor()
+      navigationController?.navigationBar.tintColor = color
+      navigationController?.navigationBar.barTintColor = color
+      navigationItem.leftBarButtonItem?.tintColor = color
+      
+      navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : color]
+   }
+   
    override func viewDidLayoutSubviews()
    {
       super.viewDidLayoutSubviews()
@@ -52,14 +64,22 @@ class AlarmDetailViewController: UIViewController
    // MARK: - Private
    private func updateBackgroundImage()
    {
-      if let alarm = self.alarm where alarm.weather != nil
+      var backgroundImageName = "clear-night"
+      if let weather = self.alarm?.weather
       {
-         _backgroundImageView.image = UIImage(named: alarm.weather!.readableTextSummary)
+         backgroundImageName = weather.readableTextSummary
       }
-      else
-      {
-         _backgroundImageView.image = UIImage(named: "clear-night")
-      }
+      _backgroundImageView.image = UIImage(named: backgroundImageName)
+      
+      let color = textColorForBackgroundImageName(backgroundImageName)
+      _timeDisplayViewController.updateMainColor(color)
+      alarmMessageLabel.textColor = color
+      
+      navigationController?.navigationBar.tintColor = color
+      navigationController?.navigationBar.barTintColor = color
+      navigationItem.leftBarButtonItem?.tintColor = color
+      
+      navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : color]
    }
    
    private func updateUIForFiringState()
@@ -153,6 +173,20 @@ class AlarmDetailViewController: UIViewController
    {
       let barButtonItem = UIBarButtonItem(title: title, style: .Plain, target: nil, action: nil)
       self.navigationItem.backBarButtonItem = barButtonItem
+   }
+   
+   private func textColorForBackgroundImageName(name: String) -> UIColor
+   {
+      var color = UIColor.blackColor()
+      switch name
+      {
+      case "wind", "thunderstorm", "clear-night":
+         color = UIColor.whiteColor()
+         break
+      default:
+         break
+      }
+      return color
    }
    
    // MARK: - Public

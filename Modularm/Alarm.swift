@@ -67,6 +67,7 @@ class Alarm: NSManagedObject
       self.fireDateValue = NSDate().timeIntervalSince1970
       self.identifier = NSUUID().UUIDString
       self.alarmType = .Date
+      self.completedSetup = false
    }
    
    func deleteOption(option: AlarmOption)
@@ -114,6 +115,7 @@ class Alarm: NSManagedObject
             {
                weather.readableTextSummary = forecastResult.readableTextSummary
                weather.fahrenheitTemperature = forecastResult.temperature.f
+               CoreDataStack.save()
             }
          })
       }
@@ -122,6 +124,57 @@ class Alarm: NSManagedObject
    func updateAlarmDate()
    {
       self.fireDate = NSDate.alarmDateWithHour(self.fireDate.hour, minute: self.fireDate.minute);
+   }
+   
+   func optionIsEnabled(option: AlarmOption) -> Bool
+   {
+      var enabled = false
+      switch option
+      {
+      case .Countdown:
+         if let _ = self.countdown {
+            enabled = true
+         }
+         break
+      case .Date:
+         if let _ = self.date {
+            enabled = true
+         }
+         break
+      case .Music:
+         if let soundModel = self.sound {
+            enabled = soundModel.gradual
+         }
+         break
+      case .Repeat:
+         if let _ = self.repeatModel {
+            enabled = true
+         }
+         break
+      case .Snooze:
+         if let _ = self.snooze {
+            enabled = true
+         }
+         break
+      case .Sound:
+         if let _ = self.sound {
+            enabled = true
+         }
+         break
+      case .Weather:
+         if let _ = self.weather {
+            enabled = true
+         }
+         break
+      case .Message:
+         if let _ = self.message {
+            enabled = true
+         }
+         break
+      default:
+         break
+      }
+      return enabled
    }
 }
 

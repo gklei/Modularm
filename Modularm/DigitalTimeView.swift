@@ -50,6 +50,11 @@ class DigitalTimeView: TimeView
       _amOrPmLabel.text = "am"
       _amOrPmLabel.sizeToFit()
       addSubview(_amOrPmLabel)
+
+      // For Debugging:
+//      for label in _labels {
+//         label.backgroundColor = UIColor.redColor().colorWithAlphaComponent(0.6)
+//      }
    }
    
    // MARK: - Lifecycle
@@ -74,6 +79,13 @@ class DigitalTimeView: TimeView
       let amPmLabelY = _minuteLabel.frame.minY + 14
       
       _amOrPmLabel.frame.origin = CGPoint(x: amPmLabelX, y: amPmLabelY)
+      
+      let leftSpacing = _hourLabel.frame.minX
+      if leftSpacing > 0 {
+         for label in _labels {
+            label.frame.origin = CGPoint(x: label.frame.minX - leftSpacing, y: label.frame.minY)
+         }
+      }
    }
    
    // MARK: - Public

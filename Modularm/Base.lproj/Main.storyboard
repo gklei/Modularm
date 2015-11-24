@@ -5,7 +5,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
-        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--Timeline Controller-->
@@ -94,18 +93,11 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Modularm" id="Quf-Is-AO7">
-                        <leftBarButtonItems>
-                            <barButtonItem image="icn-bar-settings" id="Ga3-f6-xVH">
-                                <connections>
-                                    <action selector="settingsButtonPressed" destination="5Wx-Mm-Iig" id="2wf-oT-UbO"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem title="Clear" id="9Jt-DB-tb6">
-                                <connections>
-                                    <action selector="clearAllAlarms" destination="5Wx-Mm-Iig" id="T9z-ca-SbO"/>
-                                </connections>
-                            </barButtonItem>
-                        </leftBarButtonItems>
+                        <barButtonItem key="leftBarButtonItem" image="icn-bar-settings" id="Ga3-f6-xVH">
+                            <connections>
+                                <action selector="settingsButtonPressed" destination="5Wx-Mm-Iig" id="2wf-oT-UbO"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="iyX-07-HgF">
                             <connections>
                                 <action selector="addNewAlarmButtonPressed" destination="5Wx-Mm-Iig" id="KDg-z9-jCB"/>
@@ -142,7 +134,7 @@
                         <viewControllerLayoutGuide type="top" id="wGw-x9-ycG"/>
                         <viewControllerLayoutGuide type="bottom" id="fau-nb-Kkl"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="nsS-fm-w7v">
+                    <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="nsS-fm-w7v">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -506,6 +498,8 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg-icn-plus-circle" translatesAutoresizingMaskIntoConstraints="NO" id="jMr-lg-9YG">
                                 <rect key="frame" x="16" y="13" width="24" height="24"/>
                                 <animations/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="24" id="1OC-TA-es6"/>
                                     <constraint firstAttribute="height" constant="24" id="jUw-jf-M9a"/>
@@ -514,6 +508,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="s1W-GH-idd">
                                 <rect key="frame" x="16" y="13" width="24" height="24"/>
                                 <animations/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="24" id="18U-iQ-Aqc"/>
                                     <constraint firstAttribute="height" constant="24" id="QYT-Uf-o7v"/>
@@ -541,6 +536,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="475"/>
                     <connections>
+                        <outlet property="circleImageView" destination="jMr-lg-9YG" id="kfb-cK-Okf"/>
                         <outlet property="iconImageView" destination="s1W-GH-idd" id="nXy-hZ-NzB"/>
                         <outlet property="setOptionButton" destination="OQu-v8-6lh" id="QKM-jd-hMy"/>
                         <outlet property="tableView" destination="o4L-lg-MXf" id="Tqq-Ze-IzP"/>
@@ -651,6 +647,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="300"/>
                     <connections>
+                        <outlet property="circleImageView" destination="Tw3-6J-RX0" id="NXb-sg-3Em"/>
                         <outlet property="iconImageView" destination="DD3-fl-jxD" id="eUh-eo-2wC"/>
                         <outlet property="messageTextView" destination="81P-kZ-NUE" id="f22-iq-AJs"/>
                         <outlet property="setOptionButton" destination="It7-lC-rDu" id="hB3-nb-4Q5"/>
@@ -1005,14 +1002,14 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mx4-E8-SRk">
-                                <rect key="frame" x="70" y="34.5" width="40" height="20.5"/>
+                                <rect key="frame" x="45" y="34.5" width="40" height="20.5"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alarm will go off in" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kvd-pe-z1H">
-                                <rect key="frame" x="70" y="10" width="132.5" height="20.5"/>
+                                <rect key="frame" x="45" y="10" width="132.5" height="20.5"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -1027,7 +1024,7 @@
                         <animations/>
                         <color key="backgroundColor" red="0.11859292328042326" green="0.11859292328042326" blue="0.11859292328042326" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="EKY-BC-dbc" firstAttribute="leading" secondItem="mx4-E8-SRk" secondAttribute="leading" constant="-25" id="3dz-tE-yku"/>
+                            <constraint firstItem="EKY-BC-dbc" firstAttribute="leading" secondItem="mx4-E8-SRk" secondAttribute="leading" id="3dz-tE-yku"/>
                             <constraint firstItem="yM3-Gr-xAb" firstAttribute="top" secondItem="EKY-BC-dbc" secondAttribute="bottom" id="8rz-vD-bRD"/>
                             <constraint firstItem="Szi-Vb-Gen" firstAttribute="top" secondItem="yM3-Gr-xAb" secondAttribute="bottom" id="E2Q-Y1-DKn"/>
                             <constraint firstAttribute="trailing" secondItem="yM3-Gr-xAb" secondAttribute="trailing" id="M05-gP-1dj"/>

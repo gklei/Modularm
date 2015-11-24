@@ -64,4 +64,9 @@ class TimeDisplayViewController: UIViewController
    {
       currentTimeView.updateTimeWithHour(hour, minute: minute)
    }
+   
+   func updateMainColor(color: UIColor)
+   {
+      currentTimeView.updateColor(color)
+   }
 }

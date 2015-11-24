@@ -67,6 +67,41 @@ struct TimelineCellAlarmViewModel
       }
    }
    
+   var smallTimeLabelText: String {
+      mutating get {
+         self.dateFormatter.dateFormat = "hh:mm"
+         var prettyAlarmDate = self.dateFormatter.stringFromDate(self.alarm.fireDate)
+         
+         self.dateFormatter.dateFormat = "aa"
+         let amOrPm = dateFormatter.stringFromDate(self.alarm.fireDate).lowercaseString
+         prettyAlarmDate += " \(amOrPm)"
+         
+         return prettyAlarmDate
+      }
+   }
+   
+   var messageLabelText: String {
+      get {
+         var messageText = ""
+         if let message = self.alarm.message?.text
+         {
+            messageText = message
+         }
+         else
+         {
+            if let soundName = self.alarm.sound?.alarmSound?.name
+            {
+               messageText = "Alarm sound: \(soundName)"
+            }
+            else
+            {
+               messageText = "No sound is set!"
+            }
+         }
+         return messageText
+      }
+   }
+   
    var alarmIconImage: UIImage {
       get {
          var imageName = "icn-alarm-sound"

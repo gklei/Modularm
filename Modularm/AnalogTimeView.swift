@@ -10,6 +10,7 @@ import UIKit
 
 class AnalogTimeView: TimeView
 {
+   private var _currentColor = UIColor.whiteColor()
    private let clockView: BEMAnalogClockView
 
    // MARK: - Init
@@ -86,6 +87,11 @@ class AnalogTimeView: TimeView
    {
       clockView.digitColor = color
       clockView.hubColor = color
+      clockView.hourHandColor = color
+      clockView.minuteHandColor = color
+      _currentColor = color
+      
+      clockView.setNeedsDisplay()
    }
 }
 
@@ -93,7 +99,7 @@ extension AnalogTimeView: BEMAnalogClockDelegate
 {
    func analogClock(clock: BEMAnalogClockView!, graduationColorForIndex index: Int) -> UIColor!
    {
-      return UIColor.whiteColor()
+      return _currentColor
    }
    
    func analogClock(clock: BEMAnalogClockView!, graduationLengthForIndex index: Int) -> CGFloat

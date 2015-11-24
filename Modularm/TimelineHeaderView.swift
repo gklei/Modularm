@@ -12,10 +12,41 @@ class TimelineHeaderView: UICollectionReusableView
 {
    @IBOutlet weak var timeContainerHeightConstraint: NSLayoutConstraint!
    @IBOutlet weak var timeContainerWidthConstraint: NSLayoutConstraint!
+   @IBOutlet weak var smallTimeLabelHeightConstraint: NSLayoutConstraint!
+   @IBOutlet weak var timeLabelLeadingSpaceConstraint: NSLayoutConstraint!
    
    @IBOutlet weak var alarmTimeContainerView: UIView!
    @IBOutlet weak var innerContentView: UIView!
    @IBOutlet weak var scrollView: TapScrollView!
+   @IBOutlet weak var smallTimeLabel: UILabel!
+   @IBOutlet weak var messageLabel: UILabel!
+   
+   @IBOutlet private weak var circleImageView1: UIImageView!
+   @IBOutlet private weak var circleImageView2: UIImageView!
+   @IBOutlet private weak var circleImageView3: UIImageView!
+   @IBOutlet private weak var circleImageView4: UIImageView!
+   
+   @IBOutlet private weak var iconImageView1: UIImageView!
+   @IBOutlet private weak var iconImageView2: UIImageView!
+   @IBOutlet private weak var iconImageView3: UIImageView!
+   @IBOutlet private weak var iconImageView4: UIImageView!
+   
+   private var orderedImageViews: ([(iconImageView: UIImageView, circleImageView: UIImageView)]) {
+      get {
+         return [
+            (iconImageView1, circleImageView1),
+            (iconImageView2, circleImageView2),
+            (iconImageView3, circleImageView3),
+            (iconImageView4, circleImageView4)
+         ]
+      }
+   }
+   
+   private var orderedOptions: [AlarmOption] {
+      get {
+         return [.Snooze, .Music, .Weather, .Repeat]
+      }
+   }
    
    private var deleteButton: UIButton = UIButton.timelineCellDeleteButton()
    private var toggleButton: UIButton = UIButton.timelineCellToggleButton()
@@ -23,6 +54,7 @@ class TimelineHeaderView: UICollectionReusableView
    private var isOpen: Bool = false
    
    private var timeDisplayViewController = TimeDisplayViewController()
+   private var originalTimeLabelHeight: CGFloat = 0
    
    var alarm: Alarm?
    weak var timelineController: TimelineController?
@@ -33,6 +65,8 @@ class TimelineHeaderView: UICollectionReusableView
       setupToggleAndDeleteButtons()
       setupButtonContainer()
       setupScrollViewWithButtonContainer(self.buttonContainer)
+      
+      originalTimeLabelHeight = smallTimeLabelHeightConstraint.constant
       
       alarmTimeContainerView.addSubview(timeDisplayViewController.view)
       
@@ -49,7 +83,22 @@ class TimelineHeaderView: UICollectionReusableView
       self.setupScrollViewWithButtonContainer(self.buttonContainer)
       self.repositionButtons()
       
+      smallTimeLabelHeightConstraint.constant = AppSettingsManager.displayMode == .Analog ? originalTimeLabelHeight : 0
       timeDisplayViewController.view.frame = alarmTimeContainerView.bounds
+      
+      
+      var leadingSpaceConstant: CGFloat = 4.0
+      var openSpaceAvailable = false // check to see if at least one icon image view is hidden
+      for imageViews in orderedImageViews {
+         if imageViews.iconImageView.hidden {
+            openSpaceAvailable = true
+         }
+      }
+      
+      if AppSettingsManager.displayMode == .Analog || openSpaceAvailable {
+         leadingSpaceConstant = -self.alarmTimeContainerView.frame.minX + 40.0
+      }
+      self.timeLabelLeadingSpaceConstraint.constant = leadingSpaceConstant
    }
    
    // MARK: - Setup
@@ -60,6 +109,12 @@ class TimelineHeaderView: UICollectionReusableView
       
       self.deleteButton.frame = CGRectMake(0, CGRectGetHeight(self.toggleButton.frame), 60, CGRectGetHeight(self.bounds) - CGRectGetHeight(self.toggleButton.frame))
       self.deleteButton.addTarget(self, action: "deletePressed", forControlEvents: .TouchDown)
+   }
+   
+   private func updateDeleteAndToggleButtonFrames()
+   {
+      self.toggleButton.frame = CGRectMake(0, 0, 60, CGRectGetHeight(self.bounds) * 0.6)
+      self.deleteButton.frame = CGRectMake(0, CGRectGetHeight(self.toggleButton.frame), 60, CGRectGetHeight(self.bounds) - CGRectGetHeight(self.toggleButton.frame))
    }
    
    private func setupScrollViewWithButtonContainer(container: UIView)
@@ -87,6 +142,8 @@ class TimelineHeaderView: UICollectionReusableView
       var frame = self.buttonContainer.frame;
       frame.origin.x = self.innerContentView.frame.size.width - CGRectGetWidth(self.buttonContainer.frame) + self.scrollView.contentOffset.x;
       self.buttonContainer.frame = frame;
+      
+      updateDeleteAndToggleButtonFrames()
    }
    
    private func animateContentOffset(position: CGPoint, withDuration duration: NSTimeInterval)
@@ -130,10 +187,38 @@ class TimelineHeaderView: UICollectionReusableView
          height = 230.0
          break
       case .Digital:
-         height = 85.0
+         height = 70.0
          break
       }
       timeContainerHeightConstraint.constant = height
+   }
+   
+   private func updateImageViewsWithAlarm(alarm: Alarm)
+   {
+      resetImageViewsVisibility()
+      
+      var imageViewsIndex = 0
+      for option in orderedOptions
+      {
+         if alarm.optionIsEnabled(option)
+         {
+            let imageViews = orderedImageViews[imageViewsIndex]
+            imageViews.circleImageView.hidden = false
+            imageViews.iconImageView.hidden = false
+            imageViews.iconImageView.image = UIImage(option: option)
+            
+            ++imageViewsIndex
+         }
+      }
+   }
+   
+   private func resetImageViewsVisibility()
+   {
+      for imageViews in orderedImageViews
+      {
+         imageViews.circleImageView.hidden = true
+         imageViews.iconImageView.hidden = true
+      }
    }
    
    // MARK: - Public
@@ -147,8 +232,13 @@ class TimelineHeaderView: UICollectionReusableView
       timeDisplayViewController.updateDisplayMode(displayMode)
       timeDisplayViewController.updateTimeWithHour(time.hour, minute: time.minute)
       
-      let viewModel = TimelineCellAlarmViewModel(alarm: alarm)
+      var viewModel = TimelineCellAlarmViewModel(alarm: alarm)
       self.setColorsWithViewModel(viewModel)
+      
+      smallTimeLabel.text = viewModel.smallTimeLabelText
+      messageLabel.text = viewModel.messageLabelText
+      
+      updateImageViewsWithAlarm(alarm)
       
       self.delay(0.1, closure: { () -> () in
          self.setNeedsLayout()

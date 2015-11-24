@@ -16,6 +16,12 @@ extension UIImage
       }
    }
    
+   var originalImage: UIImage {
+      get {
+         return self.imageWithRenderingMode(.AlwaysOriginal)
+      }
+   }
+   
    class func imageWithColor(color: UIColor) -> UIImage
    {
       let rect = CGRect(x: 0, y: 0, width: 1, height: 1)
@@ -37,5 +43,41 @@ extension UIImage
       let result = UIGraphicsGetImageFromCurrentImageContext()
       UIGraphicsEndImageContext()
       return result
+   }
+   
+   convenience init?(option: AlarmOption)
+   {
+      var imageName = ""
+      switch option
+      {
+      case .Countdown:
+         imageName = "icn-countdown"
+         break
+      case .Date:
+         imageName = "icn-date"
+         break
+      case .Music:
+         imageName = "icn-music"
+         break
+      case .Repeat:
+         imageName = "icn-repeat"
+         break
+      case .Snooze:
+         imageName = "icn-snooze"
+         break
+      case .Sound:
+         imageName = "icn-alarm-sound"
+         break
+      case .Weather:
+         imageName = "icn-weather"
+         break
+      case .Message:
+         imageName = "icn-message"
+         
+      default: // Unknown
+         break
+      }
+      
+      self.init(named: imageName)
    }
 }

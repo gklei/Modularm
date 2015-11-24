@@ -38,6 +38,9 @@ class TimelineController: UIViewController
          AlarmManager.deactivateAlarmsThatAreInThePast()
          self.reloadData()
       }
+      
+      AlarmManager.removeIncompleteAlarms()
+      reloadData()
    }
 
    override func viewWillAppear(animated: Bool)

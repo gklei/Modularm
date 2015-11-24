@@ -9,8 +9,8 @@
 import UIKit
 import CoreData
 
-let kAnalogHeaderHeight: CGFloat = 300.0
-let kDigitalHeaderHeight: CGFloat = 150.0
+let kAnalogHeaderHeight: CGFloat = 362.0
+let kDigitalHeaderHeight: CGFloat = 180.0
 
 class TimelineCollectionViewDelegate: NSObject
 {

@@ -10,6 +10,7 @@ import UIKit
 
 class OptionSettingsControllerBase: UIViewController
 {
+   @IBOutlet weak var circleImageView: UIImageView!
    @IBOutlet weak var iconImageView: UIImageView!
    @IBOutlet weak var setOptionButton: UIButton!
    
@@ -23,6 +24,7 @@ class OptionSettingsControllerBase: UIViewController
    {
       super.viewDidLoad()
       self.iconImageView.tintColor = UIColor.lipstickRedColor()
+      self.circleImageView.image = UIImage(named: "bg-icn-plus-circle")?.originalImage
    }
    
    override func viewWillAppear(animated: Bool)
