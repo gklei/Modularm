@@ -107,7 +107,7 @@ struct SnoozeOptionSettingButtonState: SnoozeOptionSettingState
    init(delegate: SnoozeOptionSettingStateDelegate)
    {
       self.delegate = delegate
-      self.delegate.cellLabelDictionary = [0 : ["snooze \(self.delegate.snoozeModel!.durationValue) minutes", "regular button", "big button", "shake your phone"]]
+      self.delegate.cellLabelDictionary = [0 : ["snooze \(self.delegate.snoozeModel!.durationValue) minutes", "regular button", "big button"]]
    }
    
    func configureCell(cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath)
@@ -157,8 +157,6 @@ struct SnoozeOptionSettingButtonState: SnoozeOptionSettingState
          break
       case .BigButton:
          index = 2
-      case .ShakePhone:
-         index = 3
       }
       return index
    }
@@ -172,8 +170,6 @@ struct SnoozeOptionSettingButtonState: SnoozeOptionSettingState
          snoozeType = .RegularButton
       case 2:
          snoozeType = .BigButton
-      case 3:
-         snoozeType = .ShakePhone
       default:
          break
       }

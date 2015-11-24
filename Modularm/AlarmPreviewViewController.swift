@@ -12,6 +12,7 @@ class AlarmPreviewViewController: UIViewController
 {
    // MARK: - Properties
    @IBOutlet weak var alarmTimeView: DigitalTimeView!
+   @IBOutlet weak var alarmWillGoOffInLabel: UILabel!
    @IBOutlet weak var informativeTimeLabel: UILabel!
    @IBOutlet weak var previewAuxiliaryView: UIView!
    
@@ -22,6 +23,21 @@ class AlarmPreviewViewController: UIViewController
    {
       super.viewDidLoad()
       self.view.backgroundColor = UIColor.clearColor()
+      
+      let leftRightEffect = UIInterpolatingMotionEffect(keyPath: "center.x", type: .TiltAlongHorizontalAxis)
+      leftRightEffect.minimumRelativeValue = 20.0
+      leftRightEffect.maximumRelativeValue = -20.0
+      
+      let upDownEffect = UIInterpolatingMotionEffect(keyPath: "center.y", type: .TiltAlongVerticalAxis)
+      upDownEffect.minimumRelativeValue = 14.0
+      upDownEffect.maximumRelativeValue = -14.0
+      
+      let effectGroup = UIMotionEffectGroup()
+      effectGroup.motionEffects = [leftRightEffect, upDownEffect]
+      
+      alarmTimeView.addMotionEffect(effectGroup)
+      alarmWillGoOffInLabel.addMotionEffect(effectGroup)
+      informativeTimeLabel.addMotionEffect(effectGroup)
    }
    
    override func viewWillAppear(animated: Bool)

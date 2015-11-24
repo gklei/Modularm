@@ -19,6 +19,7 @@ class AlarmConfigurationController: UIViewController
    @IBOutlet weak var alarmOptionsHeightConstraint: NSLayoutConstraint!
    @IBOutlet weak var alarmOptionsControllerBottomVerticalSpaceConstraint: NSLayoutConstraint!
    @IBOutlet weak var segmentedControl: UISegmentedControl!
+   @IBOutlet private weak var _backgroundImageView: UIImageView!
 
    private let customBackButton = UIButton(frame: CGRectMake(0, 0, 70, 40))
    
@@ -45,6 +46,19 @@ class AlarmConfigurationController: UIViewController
       _ = self.timeSetterController.view
       self.timeSetterController.delegate = self
       self.setupKeboardNotifications()
+      
+      let leftRightEffect = UIInterpolatingMotionEffect(keyPath: "center.x", type: .TiltAlongHorizontalAxis)
+      leftRightEffect.minimumRelativeValue = -55.0
+      leftRightEffect.maximumRelativeValue = 55.0
+      
+      let upDownEffect = UIInterpolatingMotionEffect(keyPath: "center.y", type: .TiltAlongVerticalAxis)
+      upDownEffect.minimumRelativeValue = -35.0
+      upDownEffect.maximumRelativeValue = 35.0
+      
+      let effectGroup = UIMotionEffectGroup()
+      effectGroup.motionEffects = [leftRightEffect, upDownEffect]
+      
+      _backgroundImageView.addMotionEffect(effectGroup)
    }
    
    override func viewWillAppear(animated: Bool)

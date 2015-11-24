@@ -17,7 +17,7 @@ enum SnoozeDuration: Int16 {
 }
 
 enum SnoozeType: Int16 {
-   case RegularButton, BigButton, ShakePhone
+   case RegularButton, BigButton
 }
 
 @objc(Snooze)
