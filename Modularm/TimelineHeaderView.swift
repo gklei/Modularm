@@ -71,6 +71,11 @@ class TimelineHeaderView: UICollectionReusableView
       alarmTimeContainerView.addSubview(timeDisplayViewController.view)
       
       NSNotificationCenter.defaultCenter().addObserver(self, selector: "onOpen:", name: RevealCellDidOpenNotification, object: nil)
+      
+      for imageViews in orderedImageViews {
+         imageViews.circleImageView.tintColor = UIColor.blackColor()
+         imageViews.circleImageView.image = UIImage(named: "bg-icn-plus-circle")?.templateImage
+      }
    }
    
    override func layoutSubviews()
@@ -164,10 +169,17 @@ class TimelineHeaderView: UICollectionReusableView
       })
    }
    
-   private func setColorsWithViewModel(model: TimelineCellAlarmViewModel)
+   private func setBackgroundColorsWithViewModel(model: TimelineCellAlarmViewModel)
    {
       self.innerContentView.backgroundColor = model.innerContentViewBackgroundColor
       self.scrollView.backgroundColor = model.scrollViewBackgroundColor
+   }
+   
+   private func setLabelTextWithViewModel(model: TimelineCellAlarmViewModel)
+   {
+      var viewModel = model
+      smallTimeLabel.text = viewModel.smallTimeLabelText
+      messageLabel.text = viewModel.messageLabelText
    }
    
    private func delay(delay: Double, closure: ()->()) {
@@ -193,7 +205,7 @@ class TimelineHeaderView: UICollectionReusableView
       timeContainerHeightConstraint.constant = height
    }
    
-   private func updateImageViewsWithAlarm(alarm: Alarm)
+   private func updateCirlceImageViewsWithAlarm(alarm: Alarm)
    {
       resetImageViewsVisibility()
       
@@ -232,13 +244,11 @@ class TimelineHeaderView: UICollectionReusableView
       timeDisplayViewController.updateDisplayMode(displayMode)
       timeDisplayViewController.updateTimeWithHour(time.hour, minute: time.minute)
       
-      var viewModel = TimelineCellAlarmViewModel(alarm: alarm)
-      self.setColorsWithViewModel(viewModel)
+      let viewModel = TimelineCellAlarmViewModel(alarm: alarm)
+      setBackgroundColorsWithViewModel(viewModel)
+      setLabelTextWithViewModel(viewModel)
       
-      smallTimeLabel.text = viewModel.smallTimeLabelText
-      messageLabel.text = viewModel.messageLabelText
-      
-      updateImageViewsWithAlarm(alarm)
+      updateCirlceImageViewsWithAlarm(alarm)
       
       self.delay(0.1, closure: { () -> () in
          self.setNeedsLayout()
