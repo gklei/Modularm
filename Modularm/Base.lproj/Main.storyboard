@@ -179,19 +179,6 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="BCm-6X-lrq">
                         <nil key="title"/>
-                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" id="zgV-jJ-HUe">
-                            <rect key="frame" x="121.5" y="7" width="77" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <animations/>
-                            <segments>
-                                <segment title="" image="icn-alarm-sound"/>
-                                <segment title="" image="icn-countdown"/>
-                            </segments>
-                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <action selector="segmentedControlPressed:" destination="yqY-cf-tnN" eventType="valueChanged" id="Hat-bl-EKp"/>
-                            </connections>
-                        </segmentedControl>
                         <barButtonItem key="rightBarButtonItem" title="Set " id="WoP-ku-0xM">
                             <connections>
                                 <action selector="setButtonPressed" destination="yqY-cf-tnN" id="Wl4-ej-dHn"/>
@@ -204,7 +191,6 @@
                         <outlet property="_backgroundImageView" destination="CjP-5p-saH" id="msa-88-UcO"/>
                         <outlet property="alarmOptionsControllerBottomVerticalSpaceConstraint" destination="jET-Dy-zoE" id="FVk-5c-Cb0"/>
                         <outlet property="alarmOptionsHeightConstraint" destination="FOO-Qt-PvE" id="49v-wY-Cd2"/>
-                        <outlet property="segmentedControl" destination="zgV-jJ-HUe" id="FxT-s8-jdu"/>
                         <outlet property="setBarButtonItem" destination="WoP-ku-0xM" id="4oY-6d-LEM"/>
                     </connections>
                 </viewController>
@@ -1193,7 +1179,6 @@
         <image name="bg-icn-plus-circle" width="24" height="24"/>
         <image name="icn-alarm-sound" width="24" height="24"/>
         <image name="icn-bar-settings" width="24" height="24"/>
-        <image name="icn-countdown" width="24" height="24"/>
         <image name="icn-message" width="24" height="24"/>
         <image name="icn-music" width="24" height="24"/>
         <image name="icn-plus-alarm-sound" width="24" height="24"/>
