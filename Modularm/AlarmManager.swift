@@ -35,7 +35,6 @@ struct AlarmManager
       }()
    
    lazy var incompleteAlarmsFetchedResultsController: NSFetchedResultsController = {
-      
       let coreDataStack = CoreDataStack.defaultStack
       
       let fetchRequest = NSFetchRequest(entityName: "Alarm")
@@ -65,12 +64,9 @@ struct AlarmManager
    
    static var activeAlarms: [Alarm] {
       var alarmArray = Array<Alarm>()
-      if let alarms = self.alarms
-      {
-         for alarm in alarms
-         {
-            if alarm.active && alarm.completedSetup
-            {
+      if let alarms = self.alarms {
+         for alarm in alarms {
+            if alarm.active && alarm.completedSetup {
                alarmArray.append(alarm)
             }
          }
@@ -80,12 +76,9 @@ struct AlarmManager
    
    static var nonActiveAlarms: [Alarm] {
       var alarmArray = Array<Alarm>()
-      if let alarms = self.alarms
-      {
-         for alarm in alarms
-         {
-            if alarm.active == false
-            {
+      if let alarms = self.alarms {
+         for alarm in alarms {
+            if alarm.active == false {
                alarmArray.append(alarm)
             }
          }

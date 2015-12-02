@@ -55,8 +55,16 @@ class SoundOptionDelegateDataSource: AlarmOptionDelegateDataSource
       self.deleteSettingsButton?.removeFromSuperview()
    }
    
-   override func saveSettings() {
+   override func saveSettings()
+   {
+      _currentMusicPlayer?.stop()
       self.alarm?.sound = self.soundModel!
+   }
+   
+   override func cancelSettings()
+   {
+      _currentMusicPlayer?.stop()
+      super.cancelSettings()
    }
    
    private func startPlayingSound(sound: PAlarmSound)

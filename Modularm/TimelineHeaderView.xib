@@ -33,7 +33,7 @@
                                         <constraint firstAttribute="width" constant="40" id="krG-Rx-Lw7"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="19"/>
-                                    <color key="tintColor" red="1" green="0.92776007401315785" blue="0.53053042763157898" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="tintColor" red="0.99853271245956421" green="0.99273291963290877" blue="0.76847943427601262" alpha="1" colorSpace="calibratedRGB"/>
                                     <state key="normal" title="edit">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>

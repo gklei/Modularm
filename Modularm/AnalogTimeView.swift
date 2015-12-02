@@ -41,18 +41,18 @@ class AnalogTimeView: TimeView
          clockView.digitFont = font
       }
       clockView.digitColor = UIColor.whiteColor()
-      clockView.digitOffset = 4
+      clockView.digitOffset = 0
       clockView.enableDigit = true
-      clockView.secondHandColor = UIColor.redColor()
+      clockView.secondHandColor = UIColor.lipstickRedColor()
       clockView.hubRadius = 10
       clockView.hubColor = UIColor.whiteColor()
       clockView.enableHub = true
-      clockView.minuteHandLength = 84
-      clockView.hourHandLength = 60
+      clockView.minuteHandLength = 92
+      clockView.hourHandLength = 65
       clockView.hourHandWidth = 5
       clockView.hourHandOffsideLength = 0
       clockView.secondHandOffsideLength = -10
-      clockView.secondHandLength = 95
+      clockView.secondHandLength = 107
       clockView.delegate = self
    }
    

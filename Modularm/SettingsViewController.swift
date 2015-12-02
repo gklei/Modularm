@@ -39,10 +39,6 @@ class SettingsViewController: UIViewController
       super.viewDidLoad()
       navigationBar.makeTransparent()
       
-      let date = NSDate()
-      _analogClockDisplayController.updateTimeWithHour(date.hour, minute: date.minute)
-      _digitalClockDisplayController.updateTimeWithHour(date.hour, minute: date.minute)
-      
       _analogClockDisplayController.updateDisplayMode(.Analog)
       _digitalClockDisplayController.updateDisplayMode(.Digital)
       
@@ -58,6 +54,13 @@ class SettingsViewController: UIViewController
       _digitalClockContainer.addGestureRecognizer(digitalTapRecognizer)
       
       updateRaidalButtons()
+   }
+   
+   override func viewDidAppear(animated: Bool)
+   {
+      let date = NSDate()
+      _analogClockDisplayController.updateTimeWithHour(date.hour, minute: date.minute)
+      _digitalClockDisplayController.updateTimeWithHour(date.hour, minute: date.minute)
    }
    
    override func viewDidLayoutSubviews()

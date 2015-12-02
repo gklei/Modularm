@@ -42,8 +42,7 @@ class TimelineController: UIViewController
       
       collectionView.emptyDataSetSource = self
       collectionView.emptyDataSetDelegate = self
-      
-      AlarmManager.removeIncompleteAlarms()
+
       reloadData()
    }
 
@@ -55,6 +54,8 @@ class TimelineController: UIViewController
       AlarmManager.removeIncompleteAlarms()
       AlarmManager.deactivateAlarmsThatAreInThePast()
       reloadData()
+      
+      UIApplication.sharedApplication().setStatusBarStyle(.LightContent, animated: true)
    }
 
    override func viewWillDisappear(animated: Bool)
@@ -160,7 +161,7 @@ extension TimelineController: DZNEmptyDataSetSource
    }
    
    func buttonTitleForEmptyDataSet(scrollView: UIScrollView!, forState state: UIControlState) -> NSAttributedString! {
-      let text = "Add alarm"
+      let text = "Create alarm"
       let attribs = [
          NSFontAttributeName: UIFont(name: "HelveticaNeue", size: 20)!,
          NSForegroundColorAttributeName: UIColor.lipstickRedColor()

@@ -18,7 +18,9 @@ class AlarmDetailViewController: UIViewController
    
    @IBOutlet weak var alarmMessageLabel: UILabel!
    @IBOutlet weak var cancelButton: UIButton!
+   @IBOutlet weak var _snoozeButton: UIButton!
    @IBOutlet private weak var _backgroundImageView: UIImageView!
+   @IBOutlet private weak var _visualEffectView: UIVisualEffectView!
    
    private var alarmIsFiring = false
    private var _timeDisplayViewController = TimeDisplayViewController()
@@ -31,6 +33,7 @@ class AlarmDetailViewController: UIViewController
    {
       super.viewDidLoad()
       alarmTimeContainerView.addSubview(_timeDisplayViewController.view)
+      _snoozeButton.hidden = true
    }
    
    override func viewWillAppear(animated: Bool)
@@ -76,6 +79,11 @@ class AlarmDetailViewController: UIViewController
       let color = textColorForBackgroundImageName(backgroundImageName)
       _timeDisplayViewController.updateMainColor(color)
       alarmMessageLabel.textColor = color
+      
+      let style = statusBarStyleForWeatherSummary(backgroundImageName)
+      UIApplication.sharedApplication().setStatusBarStyle(style, animated: true)
+      
+      _visualEffectView.effect = blurEffectForWeatherSummary(backgroundImageName)
       
       navigationController?.navigationBar.tintColor = color
       navigationController?.navigationBar.barTintColor = color
@@ -158,11 +166,6 @@ class AlarmDetailViewController: UIViewController
       _alarmTimeContainerHeightConstraint.constant = height
    }
    
-   override func preferredStatusBarStyle() -> UIStatusBarStyle
-   {
-      return .LightContent
-   }
-   
    private func updateBackBarButtonItemWithTitle(title: String)
    {
       let barButtonItem = UIBarButtonItem(title: title, style: .Plain, target: nil, action: nil)
@@ -183,6 +186,33 @@ class AlarmDetailViewController: UIViewController
       return color
    }
    
+   private func blurEffectForWeatherSummary(summary: String) -> UIBlurEffect
+   {
+      var style = UIBlurEffectStyle.ExtraLight
+      switch summary
+      {
+      case "wind", "thunderstorm", "clear-night":
+         style = .Dark
+         break
+      default:
+         break
+      }
+      return UIBlurEffect(style: style)
+   }
+   
+   private func statusBarStyleForWeatherSummary(summary: String) -> UIStatusBarStyle
+   {
+      var style = UIStatusBarStyle.Default
+      switch summary
+      {
+      case "wind", "thunderstorm", "clear-night":
+         style = .LightContent
+         break
+      default:
+         break
+      }
+      return style
+   }
    // MARK: - Public
    func configureWithAlarm(alarm: Alarm?, isFiring: Bool, displayMode: DisplayMode)
    {

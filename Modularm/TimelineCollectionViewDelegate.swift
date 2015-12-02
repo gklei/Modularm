@@ -73,3 +73,15 @@ extension TimelineCollectionViewDelegate: UICollectionViewDelegateFlowLayout
       return size
    }
 }
+
+extension TimelineCollectionViewDelegate: UIScrollViewDelegate
+{
+   func scrollViewDidScroll(scrollView: UIScrollView)
+   {
+      var backgroundColor = UIColor(white: 0.94, alpha: 1)
+      if scrollView.contentOffset.y < 0 {
+         backgroundColor = UIColor.clearColor()
+      }
+      collectionView.backgroundColor = backgroundColor
+   }
+}

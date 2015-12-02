@@ -53,7 +53,9 @@ class Alarm: NSManagedObject
       self.sound = CoreDataStack.newModelWithOption(.Sound) as? Sound
       self.snooze = CoreDataStack.newModelWithOption(.Snooze) as? Snooze
       
-      self.fireDateValue = NSDate().timeIntervalSince1970
+      // make default alarm schedule for 30 minutes from now
+      self.fireDateValue = NSDate().dateByAddingTimeInterval(60 * 30).timeIntervalSince1970
+      
       self.identifier = NSUUID().UUIDString
       self.completedSetup = false
    }
