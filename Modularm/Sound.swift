@@ -40,6 +40,6 @@ extension Sound: AlarmOptionModelProtocol
 {
    func humanReadableString() -> String
    {
-      return "SOUND"
+      return ""
    }
 }
