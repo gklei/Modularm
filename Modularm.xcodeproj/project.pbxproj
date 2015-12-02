@@ -105,6 +105,7 @@
 		8EFACDE11AD83A1E00279956 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFACDE01AD83A1E00279956 /* CoreDataStack.swift */; };
 		F30823D91BBDC2D80030155D /* AlarmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30823D81BBDC2D80030155D /* AlarmManager.swift */; };
 		F37CF32D1BC856E600938F50 /* TimeDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37CF32C1BC856E600938F50 /* TimeDisplayViewController.swift */; };
+		F38BF4461C08BE4B005A0862 /* DZNEmptyDataSet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F38BF4451C08BE4B005A0862 /* DZNEmptyDataSet.framework */; };
 		F3C11E3F1BC599F60094CE71 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C11E3D1BC599F60094CE71 /* SettingsViewController.swift */; };
 		F3C11E401BC599F60094CE71 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3C11E3E1BC599F60094CE71 /* SettingsViewController.xib */; };
 		F3C11E421BC5A51B0094CE71 /* SettingsTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C11E411BC5A51B0094CE71 /* SettingsTableViewDataSource.swift */; };
@@ -232,6 +233,7 @@
 		8EFACDE01AD83A1E00279956 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataStack.swift; path = Modularm/CoreDataStack.swift; sourceTree = "<group>"; };
 		F30823D81BBDC2D80030155D /* AlarmManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlarmManager.swift; path = Modularm/AlarmManager.swift; sourceTree = "<group>"; };
 		F37CF32C1BC856E600938F50 /* TimeDisplayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeDisplayViewController.swift; path = Modularm/TimeDisplayViewController.swift; sourceTree = "<group>"; };
+		F38BF4451C08BE4B005A0862 /* DZNEmptyDataSet.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DZNEmptyDataSet.framework; path = Carthage/Build/iOS/DZNEmptyDataSet.framework; sourceTree = "<group>"; };
 		F3C11E3D1BC599F60094CE71 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = Modularm/SettingsViewController.swift; sourceTree = "<group>"; };
 		F3C11E3E1BC599F60094CE71 /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SettingsViewController.xib; path = Modularm/SettingsViewController.xib; sourceTree = "<group>"; };
 		F3C11E411BC5A51B0094CE71 /* SettingsTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsTableViewDataSource.swift; path = Modularm/SettingsTableViewDataSource.swift; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 				1F9955FB1BEBCC8C0068C776 /* AVFoundation.framework in Frameworks */,
 				1F9955F91BEBCC760068C776 /* Spotify.framework in Frameworks */,
 				1F552A2A1BEBEA9200E7CAD6 /* SwiftHTTPServer.framework in Frameworks */,
+				F38BF4461C08BE4B005A0862 /* DZNEmptyDataSet.framework in Frameworks */,
 				1FFF4D7C1BF08C1B00D32526 /* WebImage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -340,6 +343,7 @@
 		1F9955F71BEBCC5E0068C776 /* ExternalFrameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F38BF4451C08BE4B005A0862 /* DZNEmptyDataSet.framework */,
 				F3E0DD6D1BFEAD7F008385E4 /* Fabric.framework */,
 				F3E0DD6E1BFEAD7F008385E4 /* Crashlytics.framework */,
 				1F8815BC1BF21BB300B737FD /* SwiftyJSON.framework */,
@@ -708,6 +712,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftHTTPServer.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/WebImage.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/DZNEmptyDataSet.framework",
 			);
 			outputPaths = (
 			);
