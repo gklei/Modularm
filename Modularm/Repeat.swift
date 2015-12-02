@@ -152,6 +152,6 @@ extension Repeat: AlarmOptionModelProtocol
          }
       }
       
-      return daysEnabledString.isEmpty ? "None" : daysEnabledString
+      return daysEnabledString.isEmpty ? "" : daysEnabledString
    }
 }
