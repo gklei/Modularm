@@ -13,6 +13,7 @@ class AlarmOptionSettingsController: OptionSettingsControllerBase
 {
    @IBOutlet weak var tableView: UITableView!
    var setOptionButtonClosure: (() -> ())?
+   var centerOptionButtonClosure: (() -> ())?
    var delegateDataSource: AlarmOptionDelegateDataSource?
 
    override func viewWillAppear(animated: Bool)
@@ -26,6 +27,13 @@ class AlarmOptionSettingsController: OptionSettingsControllerBase
    {
       super.viewDidAppear(animated)
       self.tableView.flashScrollIndicators()
+   }
+   
+   @IBAction func centerOptionButtonPressed()
+   {
+      if let closure = self.centerOptionButtonClosure {
+         closure()
+      }
    }
    
    @IBAction func setOptionButtonPressed()
@@ -61,6 +69,11 @@ extension AlarmOptionSettingsController: AlarmOptionSettingsControllerDelegate
       self.setOptionButtonClosure = closure
    }
    
+   func updateCenterOptionButtonClosure(closure: (() -> ())?)
+   {
+      self.centerOptionButtonClosure = closure
+   }
+   
    func updateSetOptionButtonTitle(title: String)
    {
       UIView.setAnimationsEnabled(false)
@@ -69,10 +82,24 @@ extension AlarmOptionSettingsController: AlarmOptionSettingsControllerDelegate
       UIView.setAnimationsEnabled(true);
    }
    
+   func updateCenterOptionButtonTitle(title: String)
+   {
+      UIView.setAnimationsEnabled(false)
+      self.centerOptionButton.setTitle(title, forState: .Normal)
+      self.centerOptionButton.layoutIfNeeded()
+      UIView.setAnimationsEnabled(true);
+   }
+   
    func resetSetOptionButtonTitle()
    {
       let title = self.titleForOption(self.option)
       self.updateSetOptionButtonTitle(title)
+   }
+   
+   func resetCenterOptionButtonTitle()
+   {
+      let title = self.centerButtonTitleForOption(self.option)
+      self.updateCenterOptionButtonTitle(title)
    }
    
    func updateAuxViewWithOption(option: AlarmOption, tempModel: AlarmOptionModelProtocol?)
