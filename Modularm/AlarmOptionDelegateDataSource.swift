@@ -12,9 +12,15 @@ protocol AlarmOptionSettingsControllerDelegate
 {
    func cancelButtonPressed()
    func deleteSettingsButtonPressedWithOption(option: AlarmOption)
+   
    func updateSetOptionButtonClosure(closure: (() -> ())?)
    func updateSetOptionButtonTitle(title: String)
    func resetSetOptionButtonTitle()
+   
+   func updateCenterOptionButtonClosure(closure: (() -> ())?)
+   func updateCenterOptionButtonTitle(title: String)
+   func resetCenterOptionButtonTitle()
+   
    func updateAuxViewWithOption(option: AlarmOption, tempModel: AlarmOptionModelProtocol?)
    func vcForPresenting() -> UIViewController?
 }
