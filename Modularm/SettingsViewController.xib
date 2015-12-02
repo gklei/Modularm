@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingsViewController" customModule="Modularm" customModuleProvider="target">
             <connections>
+                <outlet property="_analogClockContainer" destination="cAG-ZL-jK4" id="k07-kh-o4P"/>
+                <outlet property="_analogRadialButton" destination="uSi-C6-Qzz" id="T3g-rP-ITM"/>
+                <outlet property="_digitalClockContainer" destination="4Ic-mn-MO7" id="E9n-sx-SjF"/>
+                <outlet property="_digitalRadialButton" destination="Z6x-5p-vo4" id="FZG-9s-nrS"/>
                 <outlet property="navigationBar" destination="Om2-1b-ATA" id="7Uy-Jw-OqK"/>
-                <outlet property="tableView" destination="6f5-my-vIu" id="lcW-57-DJl"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -34,26 +37,80 @@
                         </navigationItem>
                     </items>
                 </navigationBar>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6f5-my-vIu">
-                    <rect key="frame" x="0.0" y="84" width="320" height="484"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qtb-Yi-GFc">
+                    <rect key="frame" x="45" y="89" width="250" height="350"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cAG-ZL-jK4">
+                            <rect key="frame" x="10" y="0.0" width="230" height="230"/>
+                            <animations/>
+                            <color key="backgroundColor" red="0.69709610544087008" green="0.84499971539178997" blue="0.93661221590909094" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="230" id="2F5-wN-Ceh"/>
+                                <constraint firstAttribute="height" constant="230" id="x9F-FB-GTe"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Ic-mn-MO7">
+                            <rect key="frame" x="20" y="280" width="230" height="70"/>
+                            <animations/>
+                            <color key="backgroundColor" red="0.51609414124812236" green="0.6487330133680933" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="230" id="O9U-6R-dJT"/>
+                                <constraint firstAttribute="height" constant="70" id="YLs-9u-xGp"/>
+                            </constraints>
+                        </view>
+                    </subviews>
                     <animations/>
                     <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <color key="separatorColor" red="0.23203843202097574" green="0.23384232954545459" blue="0.2318853295854931" alpha="1" colorSpace="calibratedRGB"/>
-                </tableView>
+                    <constraints>
+                        <constraint firstItem="cAG-ZL-jK4" firstAttribute="centerX" secondItem="qtb-Yi-GFc" secondAttribute="centerX" id="0g2-zE-ojZ"/>
+                        <constraint firstItem="cAG-ZL-jK4" firstAttribute="top" secondItem="qtb-Yi-GFc" secondAttribute="top" id="7Uq-19-yWh"/>
+                        <constraint firstAttribute="bottom" secondItem="cAG-ZL-jK4" secondAttribute="bottom" id="Nr9-TI-mbL"/>
+                        <constraint firstAttribute="height" constant="350" id="TXA-EA-knu"/>
+                        <constraint firstItem="4Ic-mn-MO7" firstAttribute="centerX" secondItem="qtb-Yi-GFc" secondAttribute="centerX" constant="10" id="TrU-RU-31p"/>
+                        <constraint firstAttribute="bottom" secondItem="4Ic-mn-MO7" secondAttribute="bottom" id="cgy-ie-dw2"/>
+                        <constraint firstAttribute="width" constant="250" id="fbh-7X-uQX"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="Nr9-TI-mbL"/>
+                        </mask>
+                    </variation>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uSi-C6-Qzz">
+                    <rect key="frame" x="9" y="192" width="24" height="24"/>
+                    <animations/>
+                    <state key="normal" image="ic_radial"/>
+                    <connections>
+                        <action selector="analogRadialButtonPressed" destination="-1" eventType="touchUpInside" id="ppc-Kq-SJ6"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z6x-5p-vo4">
+                    <rect key="frame" x="9" y="392" width="24" height="24"/>
+                    <animations/>
+                    <state key="normal" image="ic_radial"/>
+                    <connections>
+                        <action selector="digitalRadialButtonPressed" destination="-1" eventType="touchUpInside" id="TSd-EZ-tw5"/>
+                    </connections>
+                </button>
             </subviews>
             <animations/>
             <color key="backgroundColor" red="0.1176470588" green="0.1176470588" blue="0.1176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="Z6x-5p-vo4" firstAttribute="centerX" secondItem="uSi-C6-Qzz" secondAttribute="centerX" id="0uU-yP-4es"/>
                 <constraint firstItem="Om2-1b-ATA" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="1ld-9b-j1e"/>
-                <constraint firstAttribute="bottom" secondItem="6f5-my-vIu" secondAttribute="bottom" id="6s5-hT-XJH"/>
-                <constraint firstItem="6f5-my-vIu" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ZWU-cK-FDd"/>
-                <constraint firstAttribute="trailing" secondItem="6f5-my-vIu" secondAttribute="trailing" id="cJg-MW-2t2"/>
+                <constraint firstItem="Z6x-5p-vo4" firstAttribute="centerY" secondItem="4Ic-mn-MO7" secondAttribute="centerY" id="43h-wN-15A"/>
+                <constraint firstItem="uSi-C6-Qzz" firstAttribute="centerY" secondItem="cAG-ZL-jK4" secondAttribute="centerY" id="OPN-JX-FOn"/>
                 <constraint firstAttribute="trailing" secondItem="Om2-1b-ATA" secondAttribute="trailing" id="dNT-jj-PWK"/>
+                <constraint firstItem="qtb-Yi-GFc" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="-20" id="fAC-Gd-Gur"/>
+                <constraint firstItem="qtb-Yi-GFc" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" constant="10" id="jbe-Bh-GeX"/>
                 <constraint firstItem="Om2-1b-ATA" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="krS-oR-O8i"/>
-                <constraint firstItem="6f5-my-vIu" firstAttribute="top" secondItem="Om2-1b-ATA" secondAttribute="bottom" constant="20" id="wyr-91-blj"/>
+                <constraint firstItem="cAG-ZL-jK4" firstAttribute="leading" secondItem="uSi-C6-Qzz" secondAttribute="trailing" constant="22" id="sFw-KF-FEb"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
             <point key="canvasLocation" x="458" y="324"/>
         </view>
     </objects>
+    <resources>
+        <image name="ic_radial" width="24" height="24"/>
+    </resources>
 </document>

@@ -16,13 +16,15 @@ protocol SettingsViewControllerDelegate
 class SettingsViewController: UIViewController
 {
    private var _settingsDelegate: SettingsViewControllerDelegate?
-   private var tableViewDataSource: SettingsTableViewDataSource?
    @IBOutlet weak var navigationBar: UINavigationBar!
-   @IBOutlet weak var tableView: UITableView! {
-      didSet {
-         tableViewDataSource = SettingsTableViewDataSource(tableView: tableView)
-      }
-   }
+   @IBOutlet weak private var _analogClockContainer: UIView!
+   @IBOutlet weak private var _digitalClockContainer: UIView!
+   
+   @IBOutlet weak private var _analogRadialButton: UIButton!
+   @IBOutlet weak private var _digitalRadialButton: UIButton!
+   
+   private var _analogClockDisplayController = TimeDisplayViewController()
+   private var _digitalClockDisplayController = TimeDisplayViewController()
    
    // MARK: - Init
    convenience init(delegate: SettingsViewControllerDelegate)
@@ -36,26 +38,32 @@ class SettingsViewController: UIViewController
    {
       super.viewDidLoad()
       navigationBar.makeTransparent()
+      
+      let date = NSDate()
+      _analogClockDisplayController.updateTimeWithHour(date.hour, minute: date.minute)
+      _digitalClockDisplayController.updateTimeWithHour(date.hour, minute: date.minute)
+      
+      _analogClockDisplayController.updateDisplayMode(.Analog)
+      _digitalClockDisplayController.updateDisplayMode(.Digital)
+      
+      _analogClockContainer.addSubview(_analogClockDisplayController.view)
+      _digitalClockContainer.addSubview(_digitalClockDisplayController.view)
+      
+      _analogClockContainer.backgroundColor = UIColor.clearColor()
+      _digitalClockContainer.backgroundColor = UIColor.clearColor()
+      
+      let analogTapRecognizer = UITapGestureRecognizer(target: self, action: "analogRadialButtonPressed")
+      _analogClockContainer.addGestureRecognizer(analogTapRecognizer)
+      let digitalTapRecognizer = UITapGestureRecognizer(target: self, action: "digitalRadialButtonPressed")
+      _digitalClockContainer.addGestureRecognizer(digitalTapRecognizer)
+      
+      updateRaidalButtons()
    }
    
-   override func viewDidAppear(animated: Bool)
+   override func viewDidLayoutSubviews()
    {
-      super.viewDidAppear(animated)
-      self.tableViewDataSource?.makeUIEvenMoreAmazing()
-   }
-   
-   private func delay(delay: Double, closure: ()->()) {
-      dispatch_after(
-         dispatch_time(
-            DISPATCH_TIME_NOW,
-            Int64(delay * Double(NSEC_PER_SEC))
-         ),
-         dispatch_get_main_queue(), closure)
-   }
-   
-   override func viewWillDisappear(animated: Bool)
-   {
-      super.viewWillDisappear(animated)
+      _analogClockDisplayController.view.frame = _analogClockContainer.bounds
+      _digitalClockDisplayController.view.frame = _digitalClockContainer.bounds
    }
    
    override func preferredStatusBarStyle() -> UIStatusBarStyle
@@ -63,11 +71,38 @@ class SettingsViewController: UIViewController
       return .LightContent
    }
    
+   private func updateRaidalButtons()
+   {
+      switch AppSettingsManager.displayMode
+      {
+      case .Analog:
+         _analogRadialButton.setImage(UIImage(named: "ic_radial_checked"), forState: .Normal)
+         _digitalRadialButton.setImage(UIImage(named: "ic_radial"), forState: .Normal)
+         break
+      case .Digital:
+         _digitalRadialButton.setImage(UIImage(named: "ic_radial_checked"), forState: .Normal)
+         _analogRadialButton.setImage(UIImage(named: "ic_radial"), forState: .Normal)
+         break
+      }
+   }
+   
    // MARK: - IBActions
    @IBAction func doneButtonPressed()
    {
       _settingsDelegate?.settingsWillClose()
       dismiss()
+   }
+   
+   @IBAction func analogRadialButtonPressed()
+   {
+      AppSettingsManager.setDisplayMode(.Analog)
+      updateRaidalButtons()
+   }
+   
+   @IBAction func digitalRadialButtonPressed()
+   {
+      AppSettingsManager.setDisplayMode(.Digital)
+      updateRaidalButtons()
    }
    
    // MARK: - Private
