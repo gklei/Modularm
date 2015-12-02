@@ -11,6 +11,7 @@ import UIKit
 class RepeatOptionDelegateDataSource: AlarmOptionDelegateDataSource
 {
    var repeatModel: Repeat?
+   private let _checkImage = UIImage(named: "ic_check")!
    
    // MARK: - Init
    override init(tableView: UITableView, delegate: AlarmOptionSettingsControllerDelegate, alarm: Alarm?)
@@ -61,8 +62,7 @@ extension RepeatOptionDelegateDataSource
             accessoryImageTintColor = UIColor.lipstickRedColor()
          }
          
-         let accessoryViewImage = UIImage(named:"ic_check")!
-         let accessoryImageView = UIImageView(image: accessoryViewImage)
+         let accessoryImageView = UIImageView(image: _checkImage)
          cell.tintColor = accessoryImageTintColor
          cell.selectionStyle = .None
          cell.accessoryView = accessoryImageView
