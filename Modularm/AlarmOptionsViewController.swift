@@ -25,9 +25,9 @@ class AlarmOptionsViewController: UIViewController
    @IBOutlet weak var snoozeButton: AlarmOptionButton!
    @IBOutlet weak var weatherButton: AlarmOptionButton!
    @IBOutlet weak var soundButton: AlarmOptionButton!
-   @IBOutlet weak var vibrateButton: AlarmOptionButton!
    @IBOutlet weak var repeatButton: AlarmOptionButton!
    @IBOutlet weak var messageButton: AlarmOptionButton!
+   @IBOutlet weak var messageButtonTextLabel: UILabel!
    
    // MARK: - Lifecycle
    override func viewWillAppear(animated: Bool)
@@ -143,10 +143,10 @@ class AlarmOptionsViewController: UIViewController
          self.weatherButton.activated = alarmModel.weather != nil
          self.repeatButton.activated = alarmModel.repeatModel != nil
          self.messageButton.activated = alarmModel.message != nil
+         self.messageButtonTextLabel.text = alarmModel.message?.text
          
          // the sound button should always be activated because the sound model should never be nil
          self.soundButton.activated = alarmModel.sound != nil
-         self.vibrateButton.activated = alarmModel.sound!.gradual
       }
    }
 }
