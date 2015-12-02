@@ -49,7 +49,6 @@ class AlarmConfigurationController: UIViewController
       setupParallaxEffect()
       
       navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
-      title = "Configure"
    }
    
    func setupParallaxEffect()
@@ -99,7 +98,7 @@ class AlarmConfigurationController: UIViewController
       }
    }
    
-   // MARK: - Setup
+   // MARK: - Private
    private func setupAlarmPreviewControllerWithSegue(segue: UIStoryboardSegue)
    {
       self.alarmPreviewController = segue.destinationViewController as? AlarmPreviewViewController
@@ -141,7 +140,6 @@ class AlarmConfigurationController: UIViewController
       NSNotificationCenter.defaultCenter().addObserver(self, selector: "moveAlarmOptionsControllerDownForNotification:", name: UIKeyboardWillHideNotification, object: nil)
    }
    
-   // MARK: - Private
    private func configureControllersWithAlarm(alarm: Alarm?)
    {
       self.timeSetterController.configureWithAlarm(alarm)

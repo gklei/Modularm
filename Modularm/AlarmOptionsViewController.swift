@@ -92,19 +92,6 @@ class AlarmOptionsViewController: UIViewController
    }
    
    // MARK: - IBActions
-   @IBAction func toggleCountdown(sender: AnyObject)
-   {
-   }
-   
-   @IBAction func gradualButtonPressed(sender: AnyObject)
-   {
-      if let soundModel = self.alarm?.sound
-      {
-         soundModel.gradual = !soundModel.gradual
-         updateButtonsWithAlarm(self.alarm)
-      }
-   }
-   
    @IBAction func weatherButtonPressed(sender: AnyObject)
    {
       if let alarm = self.alarm {
@@ -116,10 +103,6 @@ class AlarmOptionsViewController: UIViewController
          }
       }
       updateButtonsWithAlarm(self.alarm)
-   }
-   
-   @IBAction func testAlarm()
-   {
    }
    
    @IBAction func resetAlarm()

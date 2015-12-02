@@ -39,9 +39,15 @@ class AlarmDetailViewController: UIViewController
    override func viewWillAppear(animated: Bool)
    {
       super.viewWillAppear(animated)
+      
+      var summary = "clear-night"
+      if let weather = self.alarm?.weather {
+         summary = weather.readableTextSummary
+         updateUIWithWeatherSummary(summary)
+      }
+      
       updateTitle()
       updateTimeLabels()
-      updateBackgroundImage()
       updateUIForFiringState()
       
       updateTimeContainerConstraintsWithDisplayMode(_displayMode)
@@ -67,7 +73,7 @@ class AlarmDetailViewController: UIViewController
    }
    
    // MARK: - Private
-   private func updateBackgroundImage()
+   private func updateUIWithWeatherSummary(summary: String)
    {
       var backgroundImageName = "clear-night"
       if let weather = self.alarm?.weather

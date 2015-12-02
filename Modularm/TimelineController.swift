@@ -42,8 +42,6 @@ class TimelineController: UIViewController
       
       collectionView.emptyDataSetSource = self
       collectionView.emptyDataSetDelegate = self
-
-      reloadData()
    }
 
    override func viewWillAppear(animated: Bool)

@@ -30,9 +30,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate
    {
       Fabric.with([Crashlytics.self])
       
-      AlarmEngine.sharedInstance.registerAlarmNotificationSettings()
+      startTimerForMinuteChangedNotification()
       
-      self.startTimerForMinuteChangedNotification()
+      // TODO: Onboarding
+      AlarmEngine.sharedInstance.registerAlarmNotificationSettings()
+      if CLLocationManager.authorizationStatus() == .NotDetermined {
+         _locationManager.requestWhenInUseAuthorization()
+      }
+      if CLLocationManager.locationServicesEnabled() {
+         _locationManager.startUpdatingLocation()
+      }
       
       if let options = launchOptions {
          if let notification = options[UIApplicationLaunchOptionsLocalNotificationKey] as? UILocalNotification {
@@ -40,13 +47,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate
                self.showFiredAlarmWithUUID(alarmUUID)
             }
          }
-      }
-      
-      if CLLocationManager.authorizationStatus() == .NotDetermined {
-         _locationManager.requestWhenInUseAuthorization()
-      }
-      if CLLocationManager.locationServicesEnabled() {
-         _locationManager.startUpdatingLocation()
       }
       
       return true
