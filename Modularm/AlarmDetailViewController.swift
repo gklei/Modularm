@@ -17,13 +17,14 @@ class AlarmDetailViewController: UIViewController
    @IBOutlet weak var alarmTimeContainerView: UIView!
    
    @IBOutlet weak var alarmMessageLabel: UILabel!
-   @IBOutlet weak var editButton: UIButton!
    @IBOutlet weak var cancelButton: UIButton!
    @IBOutlet private weak var _backgroundImageView: UIImageView!
    
    private var alarmIsFiring = false
    private var _timeDisplayViewController = TimeDisplayViewController()
    private var _displayMode = AppSettingsManager.displayMode
+   
+   private let _alarmConfigurationController = UIStoryboard.alarmConfigurationController()
    
    // MARK: - Lifecycle
    override func viewDidLoad()
@@ -41,6 +42,7 @@ class AlarmDetailViewController: UIViewController
       updateUIForFiringState()
       
       updateTimeContainerConstraintsWithDisplayMode(_displayMode)
+      let _ = _alarmConfigurationController.view
    }
    
    override func viewWillDisappear(animated: Bool)
@@ -86,17 +88,14 @@ class AlarmDetailViewController: UIViewController
    {
       if self.alarmIsFiring
       {
-         self.editButton.hidden = true
          self.cancelButton.hidden = false
          self.navigationController?.navigationBarHidden = true
-         self.tearDownTestButton()
       }
       else
       {
-         self.editButton.hidden = false
          self.cancelButton.hidden = true
          self.navigationController?.navigationBarHidden = false
-         self.setupTestButton()
+         self.setupEditButton()
       }
    }
    
@@ -109,19 +108,14 @@ class AlarmDetailViewController: UIViewController
       }
    }
    
-   private func setupTestButton()
+   private func setupEditButton()
    {
       let color = UIColor.lipstickRedColor()
-      let barButtonItem = UIBarButtonItem.rightBarButtonItemWithTitle("test", color: color)
+      let barButtonItem = UIBarButtonItem.rightBarButtonItemWithTitle("edit", color: color)
       barButtonItem.target = self
-      barButtonItem.action = "testButtonPressed:"
+      barButtonItem.action = "editButtonPressed"
       
       self.navigationItem.rightBarButtonItem = barButtonItem
-   }
-   
-   private func tearDownTestButton()
-   {
-      self.navigationItem.rightBarButtonItem = nil
    }
 
    private func updateTimeLabels()
@@ -201,17 +195,13 @@ class AlarmDetailViewController: UIViewController
       _timeDisplayViewController.updateTimeWithHour(time.hour, minute: time.minute)
    }
    
-   func testButtonPressed(sender: UIBarButtonItem)
-   {
-   }
-   
    // MARK: - IBActions
-   @IBAction func editButtonPressed()
+   func editButtonPressed()
    {
       if let alarm = self.alarm
       {
-         let configurationController = UIStoryboard.configurationControllerForAlarm(alarm)
-         self.navigationController?.pushViewController(configurationController, animated: true)
+         _alarmConfigurationController.configureWithAlarm(alarm)
+         self.navigationController?.pushViewController(_alarmConfigurationController, animated: true)
          self.updateBackBarButtonItemWithTitle("Back")
       }
    }
