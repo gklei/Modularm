@@ -10,7 +10,7 @@ import UIKit
 
 class TimeDisplayViewController: UIViewController
 {
-   private var mode: DisplayMode?
+   private var mode = AppSettingsManager.displayMode
    private var currentTimeView = TimeView()
    private var digitalTimeView = DigitalTimeView(frame: CGRect.zero)
    private var analogTimeView = AnalogTimeView(frame: CGRect.zero)
@@ -25,7 +25,7 @@ class TimeDisplayViewController: UIViewController
    override func viewDidLoad()
    {
       super.viewDidLoad()
-      updateUIForMode(AppSettingsManager.displayMode)
+      updateUIForMode(self.mode)
    }
    
    // MARK: - Overridden
@@ -55,7 +55,7 @@ class TimeDisplayViewController: UIViewController
    // MARK: - Public
    func updateDisplayMode(mode: DisplayMode)
    {
-      if let displayMode = self.mode where displayMode != mode {
+      if self.mode != mode {
          updateUIForMode(mode)
       }
    }
