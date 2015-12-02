@@ -53,6 +53,24 @@ class AlarmPreviewViewController: UIViewController
       self.alarm = alarm
    }
    
+   func setInformativeTimeLabelsHidden(hidden: Bool, animated: Bool)
+   {
+      let alpha: CGFloat = hidden ? 0.0 : 1.0
+      if animated
+      {
+         UIView.animateWithDuration(0.25, animations: { () -> Void in
+            
+            self.alarmWillGoOffInLabel.alpha = alpha
+            self.informativeTimeLabel.alpha = alpha
+         })
+      }
+      else
+      {
+         alarmWillGoOffInLabel.alpha = alpha
+         informativeTimeLabel.alpha = alpha
+      }
+   }
+   
    // MARK: - Private
    private func updateHourAndMinuteLabelsWithAlarm(alarm: Alarm?)
    {
