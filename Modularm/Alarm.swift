@@ -51,6 +51,8 @@ class Alarm: NSManagedObject
       super.awakeFromInsert()
       
       self.sound = CoreDataStack.newModelWithOption(.Sound) as? Sound
+      self.snooze = CoreDataStack.newModelWithOption(.Snooze) as? Snooze
+      
       self.fireDateValue = NSDate().timeIntervalSince1970
       self.identifier = NSUUID().UUIDString
       self.completedSetup = false
