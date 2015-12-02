@@ -16,10 +16,9 @@ class AlarmConfigurationController: UIViewController
 {
    // MARK: - Instance Variables
    @IBOutlet weak var setBarButtonItem: UIBarButtonItem!
-   @IBOutlet weak var alarmOptionsHeightConstraint: NSLayoutConstraint!
    @IBOutlet weak var alarmOptionsControllerBottomVerticalSpaceConstraint: NSLayoutConstraint!
-   @IBOutlet weak var segmentedControl: UISegmentedControl!
    @IBOutlet private weak var _backgroundImageView: UIImageView!
+   @IBOutlet private weak var _alarmTypeSegmentedControl: UISegmentedControl!
 
    private let customBackButton = UIButton(frame: CGRectMake(0, 0, 70, 40))
    
@@ -45,15 +44,23 @@ class AlarmConfigurationController: UIViewController
       // load the view as soon as possible
       _ = self.timeSetterController.view
       self.timeSetterController.delegate = self
-      self.setupKeboardNotifications()
       
+      setupKeboardNotifications()
+      setupParallaxEffect()
+      
+      navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
+      title = "Configure"
+   }
+   
+   func setupParallaxEffect()
+   {
       let leftRightEffect = UIInterpolatingMotionEffect(keyPath: "center.x", type: .TiltAlongHorizontalAxis)
-      leftRightEffect.minimumRelativeValue = -55.0
-      leftRightEffect.maximumRelativeValue = 55.0
+      leftRightEffect.minimumRelativeValue = -15.0
+      leftRightEffect.maximumRelativeValue = 15.0
       
       let upDownEffect = UIInterpolatingMotionEffect(keyPath: "center.y", type: .TiltAlongVerticalAxis)
-      upDownEffect.minimumRelativeValue = -35.0
-      upDownEffect.maximumRelativeValue = 35.0
+      upDownEffect.minimumRelativeValue = -5.0
+      upDownEffect.maximumRelativeValue = 5.0
       
       let effectGroup = UIMotionEffectGroup()
       effectGroup.motionEffects = [leftRightEffect, upDownEffect]
@@ -190,11 +197,7 @@ extension AlarmConfigurationController: AlarmOptionsControllerDelegate
       self.customBackButton.addTarget(self.alarmOptionsController, action: "returnToMainOptions", forControlEvents: .TouchUpInside)
       
       self.setBarButtonItem.enabled = false
-      
-      UIView.animateWithDuration(0.2, animations: { () -> Void in
-         self.segmentedControl.alpha = 0
-         self.setBarButtonItem.setTitlePositionAdjustment(UIOffset(horizontal: 0, vertical: -50), forBarMetrics: .Default)
-      })
+      self._alarmTypeSegmentedControl.enabled = false
    }
    
    func didDismissSettingsForOption()
@@ -203,11 +206,7 @@ extension AlarmConfigurationController: AlarmOptionsControllerDelegate
       self.customBackButton.addTarget(self, action: "dismissSelf", forControlEvents: .TouchUpInside)
       
       self.setBarButtonItem.enabled = true
-      
-      UIView.animateWithDuration(0.2, animations: { () -> Void in
-         self.segmentedControl.alpha = 1
-         self.setBarButtonItem.setTitlePositionAdjustment(UIOffsetZero, forBarMetrics: .Default)
-      })
+      self._alarmTypeSegmentedControl.enabled = true
    }
    
    func optionPreviewAuxiliaryView() -> UIView?
@@ -270,6 +269,8 @@ extension AlarmConfigurationController
             self.alarmOptionsControllerBottomVerticalSpaceConstraint.constant = height
             self.view.layoutIfNeeded()
          })
+         
+         alarmPreviewController?.setInformativeTimeLabelsHidden(true, animated: true)
       }
    }
    
@@ -279,5 +280,7 @@ extension AlarmConfigurationController
          self.alarmOptionsControllerBottomVerticalSpaceConstraint.constant = 0
          self.view.layoutIfNeeded()
       })
+      
+      alarmPreviewController?.setInformativeTimeLabelsHidden(false, animated: true)
    }
 }
