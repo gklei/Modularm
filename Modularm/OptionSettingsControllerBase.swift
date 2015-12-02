@@ -13,6 +13,7 @@ class OptionSettingsControllerBase: UIViewController
    @IBOutlet weak var circleImageView: UIImageView!
    @IBOutlet weak var iconImageView: UIImageView!
    @IBOutlet weak var setOptionButton: UIButton!
+   @IBOutlet weak var centerOptionButton: UIButton!
    
    internal var alarm: Alarm?
    internal var auxiliaryView: UIView?
@@ -33,6 +34,10 @@ class OptionSettingsControllerBase: UIViewController
       
       let title = self.titleForOption(self.option)
       self.setOptionButton.setTitle(title, forState: .Normal)
+      
+      let centerButtonTitle = self.centerButtonTitleForOption(self.option)
+      self.centerOptionButton.setTitle(centerButtonTitle, forState: .Normal)
+      
       self.iconImageView.image = self.option.plusIcon
    }
    
@@ -75,6 +80,19 @@ class OptionSettingsControllerBase: UIViewController
          title = "set sound"
          break
          
+      default:
+         break
+      }
+      return title
+   }
+   
+   internal func centerButtonTitleForOption(option: AlarmOption) -> String
+   {
+      var title = ""
+      switch (option)
+      {
+      case .Sound:
+         title = "play"
       default:
          break
       }
