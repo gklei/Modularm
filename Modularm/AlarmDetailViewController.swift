@@ -43,8 +43,8 @@ class AlarmDetailViewController: UIViewController
       var summary = "clear-night"
       if let weather = self.alarm?.weather {
          summary = weather.readableTextSummary
-         updateUIWithWeatherSummary(summary)
       }
+      updateUIWithWeatherSummary(summary)
       
       updateTitle()
       updateTimeLabels()
