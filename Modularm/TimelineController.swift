@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import DZNEmptyDataSet
 
 class TimelineController: UIViewController
 {
@@ -38,6 +39,9 @@ class TimelineController: UIViewController
          AlarmManager.deactivateAlarmsThatAreInThePast()
          self.reloadData()
       }
+      
+      collectionView.emptyDataSetSource = self
+      collectionView.emptyDataSetDelegate = self
       
       AlarmManager.removeIncompleteAlarms()
       reloadData()
@@ -124,5 +128,52 @@ extension TimelineController: SettingsViewControllerDelegate
    func settingsWillClose()
    {
       reloadData()
+   }
+}
+
+extension TimelineController: DZNEmptyDataSetSource
+{
+   func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+      let text = "You have no alarms"
+      let attribs = [
+         NSFontAttributeName: UIFont(name: "HelveticaNeue", size: 22)!,
+         NSForegroundColorAttributeName: UIColor.darkGrayColor()
+      ]
+      
+      return NSAttributedString(string: text, attributes: attribs)
+   }
+   
+   func descriptionForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+      let text = "Schedule alarms to keep track of your day. Add an alarm by tapping the + button."
+      
+      let para = NSMutableParagraphStyle()
+      para.lineBreakMode = NSLineBreakMode.ByWordWrapping
+      para.alignment = NSTextAlignment.Center
+      
+      let attribs = [
+         NSFontAttributeName: UIFont(name: "HelveticaNeue-Light", size: 16)!,
+         NSForegroundColorAttributeName: UIColor.lightGrayColor(),
+         NSParagraphStyleAttributeName: para
+      ]
+      
+      return NSAttributedString(string: text, attributes: attribs)
+   }
+   
+   func buttonTitleForEmptyDataSet(scrollView: UIScrollView!, forState state: UIControlState) -> NSAttributedString! {
+      let text = "Add alarm"
+      let attribs = [
+         NSFontAttributeName: UIFont(name: "HelveticaNeue", size: 20)!,
+         NSForegroundColorAttributeName: UIColor.lipstickRedColor()
+      ]
+      
+      return NSAttributedString(string: text, attributes: attribs)
+   }
+}
+
+extension TimelineController: DZNEmptyDataSetDelegate
+{
+   func emptyDataSetDidTapButton(scrollView: UIScrollView!)
+   {
+      addNewAlarmButtonPressed()
    }
 }
