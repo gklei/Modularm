@@ -12,6 +12,9 @@ class SoundOptionDelegateDataSource: AlarmOptionDelegateDataSource
 {
    var soundModel: Sound?
    let _alarmSounds = AlarmSoundStore.sharedInstance.fetchAlarmSounds()
+
+   private var _currentMusicPlayer: PAlarmMusicPlayer?
+   private var _isPreviewingSound = false
    
    // MARK: - Init
    override init(tableView: UITableView, delegate: AlarmOptionSettingsControllerDelegate, alarm: Alarm?)
@@ -33,10 +36,34 @@ class SoundOptionDelegateDataSource: AlarmOptionDelegateDataSource
       
       self.cellLabelDictionary = [0 : soundNames]
       self.settingsControllerDelegate.updateAuxViewWithOption(self.option, tempModel: self.soundModel)
+      
+      self.settingsControllerDelegate.updateCenterOptionButtonClosure { () -> () in
+         
+         self._isPreviewingSound = !self._isPreviewingSound
+         if self._isPreviewingSound, let sound = self.soundModel?.alarmSound {
+            self.startPlayingSound(sound)
+         }
+         else {
+            self._currentMusicPlayer?.stop()
+         }
+         
+         let title = self._isPreviewingSound ? "pause" : "play"
+         self.settingsControllerDelegate.updateCenterOptionButtonTitle(title)
+      }
+      
+      // we can't allow the user to delete the sound!
+      self.deleteSettingsButton?.removeFromSuperview()
    }
    
    override func saveSettings() {
       self.alarm?.sound = self.soundModel!
+   }
+   
+   private func startPlayingSound(sound: PAlarmSound)
+   {
+      self._currentMusicPlayer?.stop()
+      self._currentMusicPlayer = AlarmMusicPlayerFactory.createMusicPlayer(sound)
+      self._currentMusicPlayer?.play()
    }
    
    private func cellIndexForSoundString(string: String) -> Int
@@ -69,8 +96,11 @@ extension SoundOptionDelegateDataSource
    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
    {
       let alarmSound = _alarmSounds[indexPath.row]
-      
       self.soundModel!.soundURL = alarmSound.url.path!
       self.tableView.reloadData()
+      
+      if _isPreviewingSound {
+         startPlayingSound(alarmSound)
+      }
    }
 }
