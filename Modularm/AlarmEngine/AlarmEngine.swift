@@ -9,9 +9,9 @@
 import Foundation
 
 // MARK: - PAlarmEngine implementation
-class AlarmEngine :PAlarmEngine
+class AlarmEngine
 {
-   static let sharedInstance:PAlarmEngine = AlarmEngine()
+   static let sharedInstance:AlarmEngine = AlarmEngine()
    private let application = UIApplication.sharedApplication()
    
    // MARK: - Register User Notification Settings
@@ -41,14 +41,14 @@ class AlarmEngine :PAlarmEngine
    
    func scheduleAlarm(alarm:PAlarm)
    {
-      let alarmDate = NSDate.alarmDateWithHour(alarm.alarmHour, minute: alarm.alarmMinute)
-      print("AlarmEngine: scheduling alarm: \(alarmDate.prettyDateString())")
       //first, cancel alarm
       cancelAlarm(alarm)
       
       //Generate notification object and schedule alarm
       let notifications = alarm.buildNotifications()
       for notification in notifications {
+         
+         print("AlarmEngine -- scheduling alarm at: \(notification.fireDate?.prettyDateString())")
          application.scheduleLocalNotification(notification)
       }
    }
@@ -61,7 +61,7 @@ class AlarmEngine :PAlarmEngine
       {
          if let fireDate = notification.fireDate
          {
-            print("AlarmEngine: unscheduling notification with fireDate: \(fireDate.prettyDateString())")
+            print("AlarmEngine -- unscheduling notification with fireDate: \(fireDate.prettyDateString())")
          }
          application.cancelLocalNotification(notification)
       }
@@ -70,9 +70,7 @@ class AlarmEngine :PAlarmEngine
    func snoozeAlarm(alarm:PAlarm, afterMinutes minutes:Int)  //Snooze alarm after several minutes
    {
       //First check alarm identifier is available.
-      guard alarm.alarmIdentifier != "" else {
-         return
-      }
+      guard alarm.alarmIdentifier != "" else { return }
       
       let fireDate = NSDate().dateByAddingTimeInterval((NSTimeInterval)(minutes * 60))
       let notification = alarm.buildTemplateNotification(fireDate)
