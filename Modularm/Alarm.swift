@@ -9,6 +9,10 @@
 import Foundation
 import CoreData
 
+enum AlarmType: Int {
+   case Alert, Reminder
+}
+
 @objc(AlarmOptionModelProtocol)
 protocol AlarmOptionModelProtocol
 {
@@ -30,6 +34,15 @@ class Alarm: NSManagedObject
    @NSManaged var weather: Weather?
    @NSManaged var identifier: String
    @NSManaged var alarmTypeValue: Int16
+   
+   var alarmType: AlarmType {
+      get {
+         return AlarmType(rawValue: Int(self.alarmTypeValue))!
+      }
+      set {
+         alarmTypeValue = Int16(newValue.rawValue)
+      }
+   }
    
    var isValid: Bool {
       get {
@@ -58,6 +71,7 @@ class Alarm: NSManagedObject
       
       self.identifier = NSUUID().UUIDString
       self.completedSetup = false
+      alarmType = .Reminder
    }
    
    func deleteOption(option: AlarmOption)
