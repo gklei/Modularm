@@ -10,8 +10,9 @@ import Foundation
 
 // MARK: - PAlarm Extension
 // This extension is for check alarm property
-extension PAlarm {
-   private var isEveryDayAlarm : Bool{
+extension PAlarm
+{
+   private var isEveryDayAlarm : Bool {
       return (alarmWeekDays?.count ?? 0) == 7
    }
    
@@ -33,27 +34,37 @@ extension PAlarm
 {
    func buildNotifications() -> [UILocalNotification]
    {
+      var notifications: [UILocalNotification] = []
       if isEveryDayAlarm || isOnceAlarm
       {
          let notification = buildTemplateNotification(nextFireDate())
-         //let alarm repeat everyday
-         if isEveryDayAlarm{
+         if isEveryDayAlarm {
             notification.repeatInterval = .Day
          }
-         return [notification]
+         notifications.append(notification)
+      }
+      else
+      {
+         for day in alarmWeekDays!
+         {
+            let notification = buildTemplateNotification(nextFireDate(day))
+            notification.repeatInterval = .Weekday
+            notifications.append(notification)
+         }
       }
       
-      guard let weekDays = alarmWeekDays else {
-         fatalError("PAlarm:buildNotification ->  Should not be happened")
+      if alarmType == .Alert {
+         var additionalNotifications: [UILocalNotification] = []
+         for notification in notifications {
+            for i in 1 ..< 4 {
+               let date = notification.fireDate!.dateByAddingTimeInterval(Double(i) * 30)
+               let newNotification = buildTemplateNotification(date)
+               additionalNotifications.append(newNotification)
+            }
+         }
+         notifications.appendContentsOf(additionalNotifications)
       }
-      
-      var result:[UILocalNotification] = []
-      for day in weekDays {
-         let notification = buildTemplateNotification(nextFireDate(day))
-         notification.repeatInterval = .Weekday
-         result.append(notification)
-      }
-      return result
+      return notifications
    }
    
    // This function builds template notification with fire date.
@@ -68,23 +79,25 @@ extension PAlarm
       return notification
    }
    
-   private func nextFireDate() -> NSDate {
+   private func nextFireDate() -> NSDate
+   {
       let now = NSDate()
-      let date = now.changedHour(alarmHour, minute: alarmMinute)
+      let date = now.updateHour(alarmHour, minute: alarmMinute)
       return date < now ? date.nextDay() : date
    }
    
-   private func nextFireDate(weekDay:Int) -> NSDate{
+   private func nextFireDate(weekDay:Int) -> NSDate
+   {
       let now = NSDate()
-      var date = now.changedHour(alarmHour, minute: alarmMinute)
+      var date = now.updateHour(alarmHour, minute: alarmMinute)
       
       //If already passed today
-      if date < now{
+      if date < now {
          date = date.nextDay()
       }
       
       //repeat until weekDay is equal
-      while (weekDay != date.dayOfWeek()){
+      while (weekDay != date.dayOfWeek()) {
          date = date.nextDay()
       }
       return date
