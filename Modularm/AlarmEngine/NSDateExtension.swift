@@ -9,8 +9,10 @@
 import Foundation
 
 // MARK: - NSDate Extension for alarm utility
-extension NSDate{
-   func changedHour(hour:Int, minute:Int) -> NSDate{
+extension NSDate
+{
+   func updateHour(hour:Int, minute:Int) -> NSDate
+   {
       let calendar = NSCalendar.currentCalendar()
       let components = calendar.components([.Year, .Month, .Day, .Hour, .Minute], fromDate: self)
       components.hour = hour
@@ -19,12 +21,14 @@ extension NSDate{
       return calendar.dateFromComponents(components)!
    }
    
-   func dayOfWeek() -> Int{
+   func dayOfWeek() -> Int
+   {
       let calendar = NSCalendar.currentCalendar()
       return calendar.components([.Weekday], fromDate: self).weekday
    }
    
-   func nextDay() -> NSDate{
+   func nextDay() -> NSDate
+   {
       return self.dateByAddingTimeInterval(24 * 60 * 60)
    }
 }
