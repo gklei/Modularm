@@ -44,7 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
       if let options = launchOptions {
          if let notification = options[UIApplicationLaunchOptionsLocalNotificationKey] as? UILocalNotification {
             if let userInfo = notification.userInfo, let alarmUUID = userInfo["UUID"] as? String {
-               self.showFiredAlarmWithUUID(alarmUUID)
+               showFiredAlarmWithUUID(alarmUUID)
             }
          }
       }
@@ -56,7 +56,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
    {
       if let userInfo = notification.userInfo, let alarmUUID = userInfo["UUID"] as? String
       {
-         self.showFiredAlarmWithUUID(alarmUUID)
+         showFiredAlarmWithUUID(alarmUUID)
       }
    }
 
