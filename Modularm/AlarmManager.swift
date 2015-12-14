@@ -63,7 +63,7 @@ struct AlarmManager
    }
    
    static var activeAlarms: [Alarm] {
-      var alarmArray = Array<Alarm>()
+      var alarmArray: [Alarm] = []
       if let alarms = self.alarms {
          for alarm in alarms {
             if alarm.active && alarm.completedSetup {
@@ -75,7 +75,7 @@ struct AlarmManager
    }
    
    static var nonActiveAlarms: [Alarm] {
-      var alarmArray = Array<Alarm>()
+      var alarmArray: [Alarm] = []
       if let alarms = self.alarms {
          for alarm in alarms {
             if alarm.active == false {
@@ -99,7 +99,7 @@ struct AlarmManager
    {
       let rightNow = NSDate()
       for alarm in activeAlarms {
-         if alarm.fireDate < rightNow && alarm.repeatModel == nil && alarm.snooze == nil
+         if alarm.fireDate < rightNow && alarm.repeatModel == nil
          {
             disableAlarm(alarm)
          }
