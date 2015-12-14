@@ -23,7 +23,8 @@ extension UIApplication
 }
 
 // MARK: - AppDelegate extension for snooze action
-extension AppDelegate {
+extension AppDelegate
+{
    func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forLocalNotification notification: UILocalNotification, completionHandler: () -> Void)
    {
       if identifier == kAlarmNotificationSnoozeActionIdentifier && notification.isSnoozeEnabled {
@@ -34,7 +35,8 @@ extension AppDelegate {
 }
 
 // MARK: - UILocalNotification's extension can be only used here.
-extension UILocalNotification:PAlarm {
+extension UILocalNotification:PAlarm
+{
    internal var alarmIdentifier:String {
       return (userInfo?[kAlarmNotificationUserInfoAlarmUUIDKey] as? String) ?? ""
    }
@@ -46,6 +48,7 @@ extension UILocalNotification:PAlarm {
    internal var alarmHour:Int {return 0}
    internal var alarmMinute:Int {return 0}
    internal var alarmWeekDays:[Int]? {return nil}
+   internal var alarmType:AlarmType {return .Reminder}
    
    var snoozeMinute:Int {
       return userInfo?[kAlarmNotificationUserInfoSnoozeMinute] as? Int ?? 0
