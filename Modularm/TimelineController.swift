@@ -77,6 +77,7 @@ class TimelineController: UIViewController
       
       // For debugging
       UIApplication.printAllAlarmsToConsole()
+//      clearAllAlarms()
    }
    
    @IBAction func clearAllAlarms()
@@ -132,7 +133,8 @@ extension TimelineController: SettingsViewControllerDelegate
 
 extension TimelineController: DZNEmptyDataSetSource
 {
-   func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+   func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString!
+   {
       let text = "You have no alarms"
       let attribs = [
          NSFontAttributeName: UIFont(name: "HelveticaNeue", size: 22)!,
@@ -142,7 +144,8 @@ extension TimelineController: DZNEmptyDataSetSource
       return NSAttributedString(string: text, attributes: attribs)
    }
    
-   func descriptionForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+   func descriptionForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString!
+   {
       let text = "Schedule alarms to keep track of your day. Add an alarm by tapping the + button."
       
       let para = NSMutableParagraphStyle()
@@ -158,7 +161,8 @@ extension TimelineController: DZNEmptyDataSetSource
       return NSAttributedString(string: text, attributes: attribs)
    }
    
-   func buttonTitleForEmptyDataSet(scrollView: UIScrollView!, forState state: UIControlState) -> NSAttributedString! {
+   func buttonTitleForEmptyDataSet(scrollView: UIScrollView!, forState state: UIControlState) -> NSAttributedString!
+   {
       let text = "Create alarm"
       let attribs = [
          NSFontAttributeName: UIFont(name: "HelveticaNeue", size: 20)!,
