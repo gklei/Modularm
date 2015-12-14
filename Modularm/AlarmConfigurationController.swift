@@ -152,6 +152,8 @@ class AlarmConfigurationController: UIViewController
    {
       self.alarm = alarm
       self.originalAlarmFireDate = self.alarm?.fireDate.copy() as? NSDate
+      _alarmTypeSegmentedControl.selectedSegmentIndex = alarm.alarmType.rawValue
+      
       self.configureControllersWithAlarm(self.alarm)
    }
    
@@ -175,6 +177,11 @@ class AlarmConfigurationController: UIViewController
       self.alarm?.updateWeatherInfo()
       AlarmManager.enableAlarm(self.alarm!, withHour: alarmTime.hour, minute: alarmTime.minute)
       self.navigationController?.popToRootViewControllerAnimated(true)
+   }
+   
+   @IBAction private func alarmTypeSegmentedControlValueChanged(sender: UISegmentedControl)
+   {
+      self.alarm?.alarmType = AlarmType(rawValue: sender.selectedSegmentIndex)!
    }
    
    func dismissSelf()
