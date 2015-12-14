@@ -244,8 +244,11 @@ class AlarmDetailViewController: UIViewController
    
    @IBAction func cancelButtonPressed()
    {
-      self.alarm?.active = false
-      self.alarm?.updateAlarmDate()
+      if let alarm = self.alarm {
+         alarm.active = false
+         AlarmEngine.sharedInstance.cancelAlarm(alarm)
+         alarm.updateAlarmDate()
+      }
       self.navigationController?.popViewControllerAnimated(true)
    }
 }
