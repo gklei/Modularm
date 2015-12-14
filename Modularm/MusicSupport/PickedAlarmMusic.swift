@@ -15,9 +15,9 @@ enum PickedAlarmMusic{
    case iPodLibrary(name:String, url:NSURL)
 }
 
-extension PickedAlarmMusic : PAlarmMusic{
-   
-   var name:String{
+extension PickedAlarmMusic : PAlarmMusic
+{
+   var name:String {
       switch(self){
       case .Spotify(let name, _):
          return name
@@ -26,8 +26,8 @@ extension PickedAlarmMusic : PAlarmMusic{
       }
    }
    
-   var musicType:AlarmMusicType{
-      switch(self){
+   var musicType:AlarmMusicType {
+      switch(self) {
       case .Spotify(_, _):
          return .Spotify
       case .iPodLibrary(_, _):
@@ -35,8 +35,8 @@ extension PickedAlarmMusic : PAlarmMusic{
       }
    }
    
-   var url:NSURL{
-      switch(self){
+   var url:NSURL {
+      switch(self) {
       case .Spotify(_, let url):
          return url
       case .iPodLibrary(_, let url):

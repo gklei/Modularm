@@ -11,12 +11,14 @@ Exported classes & protocls & enum for music support
 import Foundation
 
 // MARK: - Common Enums & Protocols
-enum AlarmMusicType{
+enum AlarmMusicType
+{
    case Spotify
    case iPodLibrary
 }
 
-protocol PAlarmMusic {
+protocol PAlarmMusic
+{
    var name:String {get}
    var musicType:AlarmMusicType {get}
    var url:NSURL {get}
@@ -25,33 +27,38 @@ protocol PAlarmMusic {
 // MARK: - Music Pick
 typealias MusicPickerCallback = (PAlarmMusic?) -> ()
 
-protocol PAlarmMusicPicker:class{
+protocol PAlarmMusicPicker:class
+{
    func pickMusicFromVC(vc:UIViewController, callback:MusicPickerCallback)
 }
 
 class AlarmMusicPickerFactory{
-   class func createMusicPicker(type:AlarmMusicType) -> PAlarmMusicPicker{
-      switch type{
-      case .Spotify:
-         return SpotifyMusicPicker()
+   class func createMusicPicker(type:AlarmMusicType) -> PAlarmMusicPicker
+   {
+      switch type {
       case .iPodLibrary:
+         return IPodLibraryMusicPicker()
+      default:
          return IPodLibraryMusicPicker()
       }
    }
 }
 
 // MARK: - Music Play
-protocol PAlarmMusicPlayer:class{
+protocol PAlarmMusicPlayer: class
+{
    func play()
    func stop()
 }
 
-class AlarmMusicPlayerFactory{
-   class func createMusicPlayer(music:PAlarmMusic) -> PAlarmMusicPlayer{
-      switch (music.musicType){
-      case .Spotify:
-         return SpotifyMusicPlayer(url: music.url)
+class AlarmMusicPlayerFactory
+{
+   class func createMusicPlayer(music:PAlarmMusic) -> PAlarmMusicPlayer
+   {
+      switch (music.musicType) {
       case .iPodLibrary:
+         return IPodLibraryMusicPlayer(url: music.url)
+      default:
          return IPodLibraryMusicPlayer(url: music.url)
       }
    }

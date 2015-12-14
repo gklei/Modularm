@@ -113,7 +113,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background-clearnight" translatesAutoresizingMaskIntoConstraints="NO" id="CjP-5p-saH">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clear-night" translatesAutoresizingMaskIntoConstraints="NO" id="CjP-5p-saH">
                                 <rect key="frame" x="-50" y="-50" width="420" height="668"/>
                             </imageView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qvN-Rp-IZK">
@@ -613,7 +613,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background-clearnight" translatesAutoresizingMaskIntoConstraints="NO" id="CqH-XZ-nVH">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clear-night" translatesAutoresizingMaskIntoConstraints="NO" id="CqH-XZ-nVH">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CRq-3Z-tbf">
@@ -958,10 +958,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background-clearnight" translatesAutoresizingMaskIntoConstraints="NO" id="q9G-cO-wjl">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clear-night" translatesAutoresizingMaskIntoConstraints="NO" id="q9G-cO-wjl">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
-                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xFF-Jj-f2M">
+                            <visualEffectView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xFF-Jj-f2M">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="HYq-ZB-WSh">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -1084,12 +1084,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IrV-wc-th7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1082" y="-726"/>
+            <point key="canvasLocation" x="1297" y="-728"/>
         </scene>
     </scenes>
     <resources>
-        <image name="background-clearnight" width="375" height="667"/>
         <image name="bg-icn-plus-circle" width="24" height="24"/>
+        <image name="clear-night" width="375" height="667"/>
         <image name="icn-alarm-sound" width="24" height="24"/>
         <image name="icn-bar-settings" width="24" height="24"/>
         <image name="icn-message" width="24" height="24"/>
