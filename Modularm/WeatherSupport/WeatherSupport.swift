@@ -76,6 +76,24 @@ enum WeatherSummaryType
 // Extension for getting resources
 extension WeatherSummaryType
 {
+   static let allValues = [ClearDay, ClearNight, Rain, Snow, Sleet, Wind, Fog, Cloudy, PartlyCloudyDay, PartlyCloudyNight, Hail, Thunderstorm, Tornado, Unknown]
+   
+   static var allImages: [UIImage] {
+      var images: [UIImage] = []
+      for value in allValues {
+         images.appendContentsOf(value.images)
+      }
+      return images
+   }
+   
+   static var allImageNames: [String] {
+      var names: [String] = []
+      for value in allValues {
+         names.appendContentsOf(value.imageNames)
+      }
+      return names
+   }
+   
    var images:[UIImage] {
       var imageArray = [UIImage]()
       for name in self.imageNames
@@ -101,7 +119,7 @@ extension WeatherSummaryType
       case Sleet:
          return ["sleet"]
       case Wind:
-         return ["wind", "wind2"]
+         return ["wind"]
       case Fog:
          return ["fog"]
       case PartlyCloudyDay:

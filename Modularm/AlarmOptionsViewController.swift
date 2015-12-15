@@ -123,6 +123,14 @@ class AlarmOptionsViewController: UIViewController
       if let alarmModel = alarm
       {
          self.snoozeButton.activated = alarmModel.snooze != nil
+         
+         var snoozeButtonTitle = "Snooze"
+         if let _ = alarmModel.snooze {
+            snoozeButtonTitle = "\(alarmModel.snoozeMinute) minutes"
+         }
+         
+         self.snoozeButton.setTitle(snoozeButtonTitle, forState: .Normal)
+         
          self.weatherButton.activated = alarmModel.weather != nil
          self.repeatButton.activated = alarmModel.repeatModel != nil
          self.messageButton.activated = alarmModel.message != nil

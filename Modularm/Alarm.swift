@@ -119,6 +119,7 @@ class Alarm: NSManagedObject
             {
                weather.readableTextSummary = forecastResult.readableTextSummary
                weather.fahrenheitTemperature = forecastResult.temperature.f
+               weather.weatherDescription = forecastResult.summary
                CoreDataStack.save()
             }
          })

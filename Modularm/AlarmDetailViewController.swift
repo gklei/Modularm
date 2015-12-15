@@ -19,32 +19,36 @@ class AlarmDetailViewController: UIViewController
    @IBOutlet weak var alarmMessageLabel: UILabel!
    @IBOutlet weak var cancelButton: UIButton!
    @IBOutlet weak var _snoozeButton: UIButton!
+   @IBOutlet weak var _snoozeButtonHeightConstraint: NSLayoutConstraint!
    @IBOutlet private weak var _backgroundImageView: UIImageView!
-   @IBOutlet private weak var _visualEffectView: UIVisualEffectView!
+   @IBOutlet private weak var _weatherIconImageView: UIImageView!
+   @IBOutlet private weak var _weatherTextLabel: UILabel!
    
-   private var alarmIsFiring = false
+   private var _alarmIsFiring = false
    private var _timeDisplayViewController = TimeDisplayViewController()
    private var _displayMode = AppSettingsManager.displayMode
    
    private let _alarmConfigurationController = UIStoryboard.alarmConfigurationController()
+   
+   // FOR TESTING
+   private var _currentBackgroundImageIndex = 0
    
    // MARK: - Lifecycle
    override func viewDidLoad()
    {
       super.viewDidLoad()
       alarmTimeContainerView.addSubview(_timeDisplayViewController.view)
-      _snoozeButton.hidden = true
    }
    
    override func viewWillAppear(animated: Bool)
    {
       super.viewWillAppear(animated)
       
-      var summary = "clear-night"
+      var summaryType = WeatherSummaryType("clear-night")
       if let weather = self.alarm?.weather {
-         summary = weather.readableTextSummary
+         summaryType = weather.weatherSummaryType
       }
-      updateUIWithWeatherSummary(summary)
+      _updateUIWithWeatherSummaryType(summaryType)
       
       updateTitle()
       updateTimeLabels()
@@ -59,11 +63,7 @@ class AlarmDetailViewController: UIViewController
       super.viewWillDisappear(animated)
       
       let color = UIColor.whiteColor()
-      navigationController?.navigationBar.tintColor = color
-      navigationController?.navigationBar.barTintColor = color
-      navigationItem.leftBarButtonItem?.tintColor = color
-      
-      navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : color]
+      updateNavbarWithColor(color)
    }
    
    override func viewDidLayoutSubviews()
@@ -72,45 +72,66 @@ class AlarmDetailViewController: UIViewController
       _timeDisplayViewController.view.frame = alarmTimeContainerView.bounds
    }
    
-   // MARK: - Private
-   private func updateUIWithWeatherSummary(summary: String)
+   private func _updateUIWithWeatherSummaryType(summary: WeatherSummaryType)
    {
-      var backgroundImageName = "clear-night"
-      if let weather = self.alarm?.weather
-      {
-         backgroundImageName = weather.readableTextSummary
-      }
-      _backgroundImageView.image = UIImage(named: backgroundImageName)
+      _backgroundImageView.image = summary.images.first ?? UIImage(named: "clear-night")
+      let imageName = summary.imageNames.first ?? "clear-night"
       
-      let color = textColorForBackgroundImageName(backgroundImageName)
+      let color = textColorForBackgroundImageName(imageName)
       _timeDisplayViewController.updateMainColor(color)
       alarmMessageLabel.textColor = color
+      updateNavbarWithColor(color)
       
-      let style = statusBarStyleForWeatherSummary(backgroundImageName)
-      UIApplication.sharedApplication().setStatusBarStyle(style, animated: true)
+      let style = blurEffectStyleForBackgroundImageName(imageName)
+      _timeDisplayViewController.updateBlurEffectStyle(style)
       
-      _visualEffectView.effect = blurEffectForWeatherSummary(backgroundImageName)
+      let statusBarStyle = statusBarStyleForWeatherSummary(imageName)
+      UIApplication.sharedApplication().setStatusBarStyle(statusBarStyle, animated: true)
       
+      _weatherIconImageView.image = summary.icon
+      _weatherIconImageView.tintColor = color
+      _weatherTextLabel.textColor = color
+      
+      _updateWeatherIconAndLabel()
+   }
+   
+   private func _updateWeatherIconAndLabel()
+   {
+      var description = "No weather description"
+      if let weather = self.alarm?.weather {
+         description = "\(weather.fahrenheitTemperature)º F – \(weather.weatherDescription)"
+      }
+      _weatherTextLabel.text = description
+   }
+   
+   private func updateNavbarWithColor(color: UIColor)
+   {
       navigationController?.navigationBar.tintColor = color
       navigationController?.navigationBar.barTintColor = color
       navigationItem.leftBarButtonItem?.tintColor = color
-      
       navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : color]
    }
    
    private func updateUIForFiringState()
    {
-      if self.alarmIsFiring
-      {
+      if self._alarmIsFiring {
          self.cancelButton.hidden = false
          self.navigationController?.navigationBarHidden = true
       }
-      else
-      {
+      else {
          self.cancelButton.hidden = true
          self.navigationController?.navigationBarHidden = false
          self.setupEditButton()
       }
+      
+      var snoozeButtonHeightConstant: CGFloat = 0
+      var snoozeHidden = true
+      if let _ = self.alarm?.snooze {
+         snoozeButtonHeightConstant = 80
+         snoozeHidden = false
+      }
+      _snoozeButtonHeightConstraint.constant = snoozeButtonHeightConstant
+      _snoozeButton.hidden = snoozeHidden
    }
    
    private func updateTitle()
@@ -131,27 +152,22 @@ class AlarmDetailViewController: UIViewController
       
       self.navigationItem.rightBarButtonItem = barButtonItem
    }
-
+   
    private func updateTimeLabels()
    {
-      if let alarm = self.alarm
-      {
+      if let alarm = self.alarm {
          let time = alarm.fireDate
-         _timeDisplayViewController.updateDisplayMode(AppSettingsManager.displayMode)
+         _timeDisplayViewController.updateDisplayMode(_displayMode)
          _timeDisplayViewController.updateTimeWithHour(time.hour, minute: time.minute)
       }
-      if let message = self.alarm?.message?.text
-      {
+      if let message = self.alarm?.message?.text {
          self.alarmMessageLabel.text = message
       }
-      else
-      {
-         if let soundName = self.alarm?.sound?.alarmSound?.name
-         {
+      else {
+         if let soundName = self.alarm?.sound?.alarmSound?.name{
             self.alarmMessageLabel.text = "Alarm sound: \(soundName)"
          }
-         else
-         {
+         else {
             self.alarmMessageLabel.text = "No sound is set!"
          }
       }
@@ -192,18 +208,18 @@ class AlarmDetailViewController: UIViewController
       return color
    }
    
-   private func blurEffectForWeatherSummary(summary: String) -> UIBlurEffect
+   private func blurEffectStyleForBackgroundImageName(name: String) -> UIBlurEffectStyle
    {
-      var style = UIBlurEffectStyle.ExtraLight
-      switch summary
+      var style = UIBlurEffectStyle.Light
+      switch name
       {
       case "wind", "thunderstorm", "clear-night":
-         style = .Dark
+         style = UIBlurEffectStyle.Dark
          break
       default:
          break
       }
-      return UIBlurEffect(style: style)
+      return style
    }
    
    private func statusBarStyleForWeatherSummary(summary: String) -> UIStatusBarStyle
@@ -223,7 +239,7 @@ class AlarmDetailViewController: UIViewController
    func configureWithAlarm(alarm: Alarm?, isFiring: Bool, displayMode: DisplayMode)
    {
       self.alarm = alarm
-      alarmIsFiring = isFiring
+      _alarmIsFiring = isFiring
       _displayMode = displayMode
       
       let time = alarm!.fireDate
@@ -250,5 +266,24 @@ class AlarmDetailViewController: UIViewController
          alarm.updateAlarmDate()
       }
       self.navigationController?.popViewControllerAnimated(true)
+   }
+   
+   @IBAction private func _snoozeButtonPressed()
+   {
+      if let alarm = self.alarm,
+         let snooze = alarm.snooze where _alarmIsFiring {
+            let duration = Int(snooze.duration.rawValue)
+            AlarmEngine.sharedInstance.snoozeAlarm(alarm, afterMinutes: duration)
+      }
+      
+      if _alarmIsFiring == true {
+         self.navigationController?.popViewControllerAnimated(true)
+      }
+   }
+   
+   @IBAction func updateBackgroundImage()
+   {
+      let types = WeatherSummaryType.allValues
+      _updateUIWithWeatherSummaryType(types[_currentBackgroundImageIndex++ % types.count])
    }
 }

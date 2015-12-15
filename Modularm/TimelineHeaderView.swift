@@ -67,7 +67,6 @@ class TimelineHeaderView: UICollectionReusableView
       setupScrollViewWithButtonContainer(self.buttonContainer)
       
       originalTimeLabelHeight = smallTimeLabelHeightConstraint.constant
-      
       alarmTimeContainerView.addSubview(timeDisplayViewController.view)
       
       NSNotificationCenter.defaultCenter().addObserver(self, selector: "onOpen:", name: RevealCellDidOpenNotification, object: nil)
@@ -90,7 +89,6 @@ class TimelineHeaderView: UICollectionReusableView
       
       smallTimeLabelHeightConstraint.constant = AppSettingsManager.displayMode == .Analog ? originalTimeLabelHeight : 0
       timeDisplayViewController.view.frame = alarmTimeContainerView.bounds
-      
       
       var leadingSpaceConstant: CGFloat = 4.0
       var openSpaceAvailable = false // check to see if at least one icon image view is hidden
@@ -243,6 +241,7 @@ class TimelineHeaderView: UICollectionReusableView
       let time = alarm.fireDate
       timeDisplayViewController.updateDisplayMode(displayMode)
       timeDisplayViewController.updateTimeWithHour(time.hour, minute: time.minute)
+      timeDisplayViewController.useBlurEffect = false
       
       let viewModel = TimelineCellAlarmViewModel(alarm: alarm)
       setBackgroundColorsWithViewModel(viewModel)
@@ -328,14 +327,12 @@ extension TimelineHeaderView: TapScrollViewDelegate
 {
    func tapScrollView(scrollView: UIScrollView, touchesEnded touches: NSSet, withEvent event: UIEvent)
    {
-      if self.isOpen
-      {
+      if self.isOpen {
          self.animateContenteOffset(CGPointZero, withDuration: 0.1, completion: { (finished: Bool) -> Void in
             self.isOpen = false
          })
       }
-      else
-      {
+      else {
          if let controller = self.timelineController, alarm = self.alarm
          {
             controller.showDetailsForAlarm(alarm)

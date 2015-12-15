@@ -50,11 +50,8 @@ class DigitalTimeView: TimeView
       _amOrPmLabel.text = "am"
       _amOrPmLabel.sizeToFit()
       addSubview(_amOrPmLabel)
-
-      // For Debugging:
-//      for label in _labels {
-//         label.backgroundColor = UIColor.redColor().colorWithAlphaComponent(0.6)
-//      }
+      
+      _visualEffectView.layer.masksToBounds = true
    }
    
    // MARK: - Lifecycle
@@ -86,6 +83,9 @@ class DigitalTimeView: TimeView
             label.frame.origin = CGPoint(x: label.frame.minX - leftSpacing, y: label.frame.minY)
          }
       }
+      
+      _visualEffectView.frame = bounds.insetBy(dx: -10, dy: -10).offsetBy(dx: -5, dy: 0)
+      _visualEffectView.layer.cornerRadius = 10
    }
    
    // MARK: - Public

@@ -140,7 +140,6 @@
 		1F8815BC1BF21BB300B737FD /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		1F8815BE1BF24CF700B737FD /* WeatherImages.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = WeatherImages.xcassets; sourceTree = "<group>"; };
 		1F9955FA1BEBCC8C0068C776 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		1FD229771BF0D539006BFFA5 /* spotify.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = spotify.xcassets; sourceTree = "<group>"; };
 		1FD229791BF0F0F9006BFFA5 /* MusicPlayerImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicPlayerImpl.swift; sourceTree = "<group>"; };
 		1FDE6C591BF1CAA20044A639 /* MusicSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicSupport.swift; sourceTree = "<group>"; };
 		5B1997AB1AE5B42700D1522C /* SoundOptionDelegateDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SoundOptionDelegateDataSource.swift; path = Modularm/SoundOptionDelegateDataSource.swift; sourceTree = "<group>"; };
@@ -264,7 +263,6 @@
 				1FDE6C591BF1CAA20044A639 /* MusicSupport.swift */,
 				1F2CB4FC1BF03CF900589BF2 /* PickedAlarmMusic.swift */,
 				1F2CB4FE1BF03CF900589BF2 /* IPodLibraryMusicPicker.swift */,
-				1FD229771BF0D539006BFFA5 /* spotify.xcassets */,
 				1FD229791BF0F0F9006BFFA5 /* MusicPlayerImpl.swift */,
 			);
 			name = MusicSupport;
@@ -902,7 +900,6 @@
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/ios-sdk",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 					"$(PROJECT_DIR)",
 				);
@@ -927,7 +924,6 @@
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/ios-sdk",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 					"$(PROJECT_DIR)",
 				);

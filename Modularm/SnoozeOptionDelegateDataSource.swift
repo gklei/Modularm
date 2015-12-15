@@ -24,7 +24,7 @@ class SnoozeOptionDelegateDataSource: AlarmOptionDelegateDataSource
       }
       
       super.init(tableView: tableView, delegate: delegate, alarm: alarm)
-      self.state = SnoozeOptionSettingButtonState(delegate: self)
+      self.state = SnoozeOptionSettingTimeState(delegate: self)
       self.option = .Snooze
       self.settingsControllerDelegate.updateAuxViewWithOption(self.option, tempModel: self.snoozeModel)
    }
@@ -75,8 +75,9 @@ extension SnoozeOptionDelegateDataSource: SnoozeOptionSettingStateDelegate
          self.settingsControllerDelegate.updateSetOptionButtonTitle("set snooze time")
          self.settingsControllerDelegate.updateSetOptionButtonClosure({ () -> () in
             
-            let snoozeOptionSettingButtonState = SnoozeOptionSettingButtonState(delegate: self)
-            self.transitionToState(snoozeOptionSettingButtonState)
+//            let snoozeOptionSettingButtonState = SnoozeOptionSettingButtonState(delegate: self)
+//            self.transitionToState(snoozeOptionSettingButtonState)
+            self.settingsControllerDelegate.updateSetOptionButtonClosure(nil)
          })
       }
       

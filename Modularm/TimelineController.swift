@@ -76,8 +76,8 @@ class TimelineController: UIViewController
       navigationController?.presentViewController(_settingsViewController, animated: true, completion: nil)
       
       // For debugging
-      UIApplication.printAllAlarmsToConsole()
 //      clearAllAlarms()
+      UIApplication.printAllAlarmsToConsole()
    }
    
    @IBAction func clearAllAlarms()
@@ -166,7 +166,7 @@ extension TimelineController: DZNEmptyDataSetSource
       let text = "Create alarm"
       let attribs = [
          NSFontAttributeName: UIFont(name: "HelveticaNeue", size: 20)!,
-         NSForegroundColorAttributeName: UIColor.lipstickRedColor()
+         NSForegroundColorAttributeName: state == .Normal ? UIColor.lipstickRedColor() : UIColor.lipstickRedColor().colorWithAlphaComponent(0.6)
       ]
       
       return NSAttributedString(string: text, attributes: attribs)

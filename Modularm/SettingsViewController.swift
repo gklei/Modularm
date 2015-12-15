@@ -45,6 +45,9 @@ class SettingsViewController: UIViewController
       _analogClockContainer.addSubview(_analogClockDisplayController.view)
       _digitalClockContainer.addSubview(_digitalClockDisplayController.view)
       
+      _analogClockDisplayController.useBlurEffect = false
+      _digitalClockDisplayController.useBlurEffect = false
+      
       _analogClockContainer.backgroundColor = UIColor.clearColor()
       _digitalClockContainer.backgroundColor = UIColor.clearColor()
       

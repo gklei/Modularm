@@ -36,6 +36,8 @@ class AlarmPreviewViewController: UIViewController
       effectGroup.motionEffects = [leftRightEffect, upDownEffect]
       
       alarmTimeView.addMotionEffect(effectGroup)
+      alarmTimeView.useVisualEffectView = false
+      
       alarmWillGoOffInLabel.addMotionEffect(effectGroup)
       informativeTimeLabel.addMotionEffect(effectGroup)
    }

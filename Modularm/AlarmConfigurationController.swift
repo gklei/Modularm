@@ -18,9 +18,8 @@ class AlarmConfigurationController: UIViewController
    @IBOutlet weak var setBarButtonItem: UIBarButtonItem!
    @IBOutlet weak var alarmOptionsControllerBottomVerticalSpaceConstraint: NSLayoutConstraint!
    @IBOutlet private weak var _backgroundImageView: UIImageView!
-   @IBOutlet private weak var _alarmTypeSegmentedControl: UISegmentedControl!
 
-   private let customBackButton = UIButton(frame: CGRectMake(0, 0, 70, 40))
+   private let customBackButton = UIButton(frame: CGRectMake(0, 0, 120, 60))
    
    private var alarm: Alarm?
    private var originalAlarmFireDate: NSDate?
@@ -152,7 +151,6 @@ class AlarmConfigurationController: UIViewController
    {
       self.alarm = alarm
       self.originalAlarmFireDate = self.alarm?.fireDate.copy() as? NSDate
-      _alarmTypeSegmentedControl.selectedSegmentIndex = alarm.alarmType.rawValue
       
       self.configureControllersWithAlarm(self.alarm)
    }
@@ -179,11 +177,6 @@ class AlarmConfigurationController: UIViewController
       self.navigationController?.popToRootViewControllerAnimated(true)
    }
    
-   @IBAction private func alarmTypeSegmentedControlValueChanged(sender: UISegmentedControl)
-   {
-      self.alarm?.alarmType = AlarmType(rawValue: sender.selectedSegmentIndex)!
-   }
-   
    func dismissSelf()
    {
       self.alarm?.fireDate = self.originalAlarmFireDate!
@@ -203,7 +196,6 @@ extension AlarmConfigurationController: AlarmOptionsControllerDelegate
       self.customBackButton.addTarget(self.alarmOptionsController, action: "returnToMainOptions", forControlEvents: .TouchUpInside)
       
       self.setBarButtonItem.enabled = false
-      self._alarmTypeSegmentedControl.enabled = false
    }
    
    func didDismissSettingsForOption()
@@ -212,7 +204,6 @@ extension AlarmConfigurationController: AlarmOptionsControllerDelegate
       self.customBackButton.addTarget(self, action: "dismissSelf", forControlEvents: .TouchUpInside)
       
       self.setBarButtonItem.enabled = true
-      self._alarmTypeSegmentedControl.enabled = true
    }
    
    func optionPreviewAuxiliaryView() -> UIView?

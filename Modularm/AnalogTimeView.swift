@@ -18,18 +18,21 @@ class AnalogTimeView: TimeView
    {
       clockView = BEMAnalogClockView(frame: CGRect.zero)
       super.init(coder: aDecoder)
-      
-      setupClockView()
-      addSubview(clockView)
+      _commonInit()
    }
    
    override init(frame: CGRect)
    {
       clockView = BEMAnalogClockView(frame: frame)
       super.init(frame: frame)
-      
+      _commonInit()
+   }
+   
+   private func _commonInit()
+   {
       setupClockView()
       addSubview(clockView)
+      _visualEffectView.layer.masksToBounds = true
    }
    
    // MARK: - Setup
@@ -60,6 +63,7 @@ class AnalogTimeView: TimeView
    override func layoutSubviews()
    {
       clockView.frame = bounds
+      _visualEffectView.layer.cornerRadius = bounds.width * 0.5
       super.layoutSubviews()
    }
    

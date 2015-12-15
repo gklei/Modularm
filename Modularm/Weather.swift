@@ -19,6 +19,11 @@ class Weather: NSManagedObject
    @NSManaged var alarm: Alarm
    @NSManaged var readableTextSummary: String
    @NSManaged var fahrenheitTemperature: Double
+   @NSManaged var weatherDescription: String
+   
+   var weatherSummaryType: WeatherSummaryType {
+      return WeatherSummaryType(readableTextSummary)
+   }
    
    var celciusTemperature: Double {
       return (fahrenheitTemperature - 32) * 5 / 9

@@ -15,6 +15,15 @@ class TimeDisplayViewController: UIViewController
    private var digitalTimeView = DigitalTimeView(frame: CGRect.zero)
    private var analogTimeView = AnalogTimeView(frame: CGRect.zero)
    
+   var useBlurEffect: Bool {
+      get {
+         return currentTimeView.useVisualEffectView
+      }
+      set {
+         currentTimeView.useVisualEffectView = newValue
+      }
+   }
+   
    // MARK: - Init
    convenience init()
    {
@@ -68,5 +77,10 @@ class TimeDisplayViewController: UIViewController
    func updateMainColor(color: UIColor)
    {
       currentTimeView.updateColor(color)
+   }
+   
+   func updateBlurEffectStyle(style: UIBlurEffectStyle)
+   {
+      currentTimeView.updateBlurEffectStyle(style)
    }
 }
