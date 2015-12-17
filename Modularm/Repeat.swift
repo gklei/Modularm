@@ -122,7 +122,9 @@ class Repeat: NSManagedObject
       {
          if self.dayIsEnabled(day)
          {
-            array.append(Int(day.rawValue + 1 % 7) + 1)
+            var dayValue = Int(day.rawValue + 1 % 7) + 1
+            dayValue = (dayValue == 8) ? 1 : dayValue
+            array.append(dayValue)
          }
       }
       return array
