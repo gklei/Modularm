@@ -25,8 +25,11 @@ class AlarmDetailViewController: UIViewController
    @IBOutlet private weak var _weatherTextLabel: UILabel!
    
    private var _alarmIsFiring = false
+   private var _shouldPlaySound = false
    private var _timeDisplayViewController = TimeDisplayViewController()
    private var _displayMode = AppSettingsManager.displayMode
+   
+   private var _alarmSoundPlayer: PAlarmMusicPlayer?
    
    private let _alarmConfigurationController = UIStoryboard.alarmConfigurationController()
    private var _alarmViewTransformer: ViewTransformer?
@@ -59,10 +62,19 @@ class AlarmDetailViewController: UIViewController
       _alarmViewTransformer?.takeItEasy = _displayMode == .Analog
    }
    
+   override func viewDidAppear(animated: Bool)
+   {
+      super.viewDidAppear(animated)
+      if let sound = alarm?.sound?.alarmSound where _shouldPlaySound {
+         _startPlayingSound(sound)
+      }
+   }
+   
    override func viewWillDisappear(animated: Bool)
    {
       super.viewWillDisappear(animated)
       
+      _alarmSoundPlayer?.stop()
       let color = UIColor.whiteColor()
       updateNavbarWithColor(color)
    }
@@ -174,7 +186,6 @@ class AlarmDetailViewController: UIViewController
       }
    }
    
-   
    private func updateTimeContainerConstraintsWithDisplayMode(mode: DisplayMode)
    {
       var height: CGFloat = 0.0
@@ -236,8 +247,28 @@ class AlarmDetailViewController: UIViewController
       }
       return style
    }
+   
+   private func _startPlayingSound(sound: PAlarmSound)
+   {
+      _alarmSoundPlayer?.stop()
+      _alarmSoundPlayer = AlarmMusicPlayerFactory.createMusicPlayer(sound)
+      _alarmSoundPlayer?.play()
+   }
+   
+   private func _dismissSelf()
+   {
+      _shouldPlaySound = false
+      _alarmSoundPlayer?.stop()
+      self.navigationController?.popViewControllerAnimated(true)
+   }
+   
    // MARK: - Public
    func configureWithAlarm(alarm: Alarm?, isFiring: Bool, displayMode: DisplayMode)
+   {
+      configureWithAlarm(alarm, isFiring: isFiring, displayMode: displayMode, shouldPlaySound: false)
+   }
+   
+   func configureWithAlarm(alarm: Alarm?, isFiring: Bool, displayMode: DisplayMode, shouldPlaySound: Bool)
    {
       self.alarm = alarm
       _alarmIsFiring = isFiring
@@ -246,6 +277,7 @@ class AlarmDetailViewController: UIViewController
       let time = alarm!.fireDate
       _timeDisplayViewController.updateDisplayMode(displayMode)
       _timeDisplayViewController.updateTimeWithHour(time.hour, minute: time.minute)
+      _shouldPlaySound = shouldPlaySound
    }
    
    // MARK: - IBActions
@@ -266,7 +298,7 @@ class AlarmDetailViewController: UIViewController
          AlarmEngine.sharedInstance.cancelAlarm(alarm)
          alarm.updateAlarmDate()
       }
-      self.navigationController?.popViewControllerAnimated(true)
+      _dismissSelf()
    }
    
    @IBAction private func _snoozeButtonPressed()
@@ -278,7 +310,7 @@ class AlarmDetailViewController: UIViewController
       }
       
       if _alarmIsFiring == true {
-         self.navigationController?.popViewControllerAnimated(true)
+         _dismissSelf()
       }
    }
 }

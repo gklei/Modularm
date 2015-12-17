@@ -118,7 +118,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate
       {
          if let alarm = AlarmEngine.sharedInstance.alarmForUUID(uuid)
          {
-            alarmDetailViewController.configureWithAlarm(alarm, isFiring: true, displayMode: AppSettingsManager.displayMode)
+            let shouldPlaySound = UIApplication.sharedApplication().applicationState == .Active
+            alarmDetailViewController.configureWithAlarm(alarm, isFiring: true, displayMode: AppSettingsManager.displayMode, shouldPlaySound: shouldPlaySound)
          }
          navController.pushViewController(alarmDetailViewController, animated: false)
       }
