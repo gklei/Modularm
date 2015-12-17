@@ -29,15 +29,14 @@ class AlarmDetailViewController: UIViewController
    private var _displayMode = AppSettingsManager.displayMode
    
    private let _alarmConfigurationController = UIStoryboard.alarmConfigurationController()
-   
-   // FOR TESTING
-   private var _currentBackgroundImageIndex = 0
+   private var _alarmViewTransformer: ViewTransformer?
    
    // MARK: - Lifecycle
    override func viewDidLoad()
    {
       super.viewDidLoad()
       alarmTimeContainerView.addSubview(_timeDisplayViewController.view)
+      _alarmViewTransformer = ViewTransformer(view: alarmTimeContainerView)
    }
    
    override func viewWillAppear(animated: Bool)
@@ -56,6 +55,8 @@ class AlarmDetailViewController: UIViewController
       
       updateTimeContainerConstraintsWithDisplayMode(_displayMode)
       let _ = _alarmConfigurationController.view
+      
+      _alarmViewTransformer?.takeItEasy = _displayMode == .Analog
    }
    
    override func viewWillDisappear(animated: Bool)
@@ -280,10 +281,27 @@ class AlarmDetailViewController: UIViewController
          self.navigationController?.popViewControllerAnimated(true)
       }
    }
+}
+
+extension AlarmDetailViewController
+{
+   override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+      super.touchesBegan(touches, withEvent: event)
+      _alarmViewTransformer?.touchesBegan(touches, withEvent: event!)
+   }
    
-   @IBAction func updateBackgroundImage()
-   {
-      let types = WeatherSummaryType.allValues
-      _updateUIWithWeatherSummaryType(types[_currentBackgroundImageIndex++ % types.count])
+   override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+      super.touchesMoved(touches, withEvent: event)
+      _alarmViewTransformer?.touchesMoved(touches, withEvent: event!)
+   }
+   
+   override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+      super.touchesEnded(touches, withEvent: event)
+      _alarmViewTransformer?.resetViewWithDuration(0.4)
+   }
+   
+   override func touchesCancelled(touches: Set<UITouch>?, withEvent event: UIEvent?) {
+      super.touchesCancelled(touches, withEvent: event)
+      _alarmViewTransformer?.resetViewWithDuration(0.4)
    }
 }

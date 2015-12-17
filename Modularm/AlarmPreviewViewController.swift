@@ -17,6 +17,7 @@ class AlarmPreviewViewController: UIViewController
    @IBOutlet weak var previewAuxiliaryView: UIView!
    
    private weak var alarm: Alarm?
+   private var _alarmViewTransformer: ViewTransformer?
    
    // MARK: - Lifecycle
    override func viewDidLoad()
@@ -40,6 +41,8 @@ class AlarmPreviewViewController: UIViewController
       
       alarmWillGoOffInLabel.addMotionEffect(effectGroup)
       informativeTimeLabel.addMotionEffect(effectGroup)
+      
+      _alarmViewTransformer = ViewTransformer(view: view)
    }
    
    override func viewWillAppear(animated: Bool)
@@ -93,5 +96,28 @@ class AlarmPreviewViewController: UIViewController
       {
          self.informativeTimeLabel.text = AlarmCountdownUtility.countdownTextForAlarmDate(alarmDate)
       }
+   }
+}
+
+extension AlarmPreviewViewController
+{
+   override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+      super.touchesBegan(touches, withEvent: event)
+      _alarmViewTransformer?.touchesBegan(touches, withEvent: event!)
+   }
+   
+   override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+      super.touchesMoved(touches, withEvent: event)
+      _alarmViewTransformer?.touchesMoved(touches, withEvent: event!)
+   }
+   
+   override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+      super.touchesEnded(touches, withEvent: event)
+      _alarmViewTransformer?.resetViewWithDuration(0.4)
+   }
+   
+   override func touchesCancelled(touches: Set<UITouch>?, withEvent event: UIEvent?) {
+      super.touchesCancelled(touches, withEvent: event)
+      _alarmViewTransformer?.resetViewWithDuration(0.4)
    }
 }

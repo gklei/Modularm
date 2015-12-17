@@ -101,6 +101,7 @@
 		F3E0ADEF1BC6DDAB00643B67 /* KSMHand.m in Sources */ = {isa = PBXBuildFile; fileRef = F3E0ADEC1BC6DDAB00643B67 /* KSMHand.m */; };
 		F3E0DD6F1BFEAD7F008385E4 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3E0DD6D1BFEAD7F008385E4 /* Fabric.framework */; };
 		F3E0DD701BFEAD7F008385E4 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3E0DD6E1BFEAD7F008385E4 /* Crashlytics.framework */; };
+		F3E4E3F41C226EE2002AEAEF /* ViewTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E4E3F31C226EE2002AEAEF /* ViewTransformer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -218,6 +219,7 @@
 		F3E0ADF01BC6DE1400643B67 /* Modularm-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Modularm-Bridging-Header.h"; sourceTree = "<group>"; };
 		F3E0DD6D1BFEAD7F008385E4 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		F3E0DD6E1BFEAD7F008385E4 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		F3E4E3F31C226EE2002AEAEF /* ViewTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewTransformer.swift; path = Modularm/ViewTransformer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -340,6 +342,7 @@
 		5B49D74D1B43783B00896878 /* Alarm UI */ = {
 			isa = PBXGroup;
 			children = (
+				F3E4E3F31C226EE2002AEAEF /* ViewTransformer.swift */,
 				5BF33BB01B482F1A007A2C86 /* TimeView.swift */,
 				5BDC54941B405F460060DDFA /* AlarmDetailViewController.swift */,
 				8E5BD3261ADB930400C42FAA /* AlarmOptionButton.swift */,
@@ -717,6 +720,7 @@
 				5B4C10AB1B60A812006709B7 /* UIBarButtonItem+Additions.swift in Sources */,
 				1F851C2F1BF3686D00D06383 /* AlarmConstants.swift in Sources */,
 				F30823D91BBDC2D80030155D /* AlarmManager.swift in Sources */,
+				F3E4E3F41C226EE2002AEAEF /* ViewTransformer.swift in Sources */,
 				1F2CB5091BF03CF900589BF2 /* PickedAlarmMusic.swift in Sources */,
 				5B6C12701AFFB875009617A8 /* AlarmOptionDelegateDataSourceBuilder.swift in Sources */,
 				F3C11E3F1BC599F60094CE71 /* SettingsViewController.swift in Sources */,
