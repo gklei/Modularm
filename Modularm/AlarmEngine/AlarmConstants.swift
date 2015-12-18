@@ -14,3 +14,8 @@ let kAlarmNotificationUserInfoAlarmUUIDKey = "UUID"
 let kAlarmNotificationUserInfoSnoozeMinute = "Snooze"
 let kAlarmNotificationSnoozeActionIdentifier = "AlarmSnoozeActionIdentifier"
 let kAlarmNotificationSnoozeActionTitle = "Snooze"
+
+let FBEventAlarmFired = "AlarmFired"
+let FBEventAlarmCreated = "AlarmCreated"
+let FBEventAlarmEdited = "AlarmEdited"
+let FBEventAlarmSnoozed = "AlarmSnoozed"

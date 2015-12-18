@@ -11,6 +11,7 @@ import Fabric
 import Crashlytics
 import CoreData
 import CoreLocation
+import FBSDKCoreKit
 
 let kModularmMinuteChangedNotification = "ModularmMinuteChangedNotification"
 let kModularmWillEnterForegroundNotification = "ModularmEnteredForegroundNotification"
@@ -50,6 +51,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate
          }
       }
       
+      FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+      
       return true
    }
    
@@ -86,6 +89,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
    {
       // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
       self.startTimerForMinuteChangedNotification()
+      FBSDKAppEvents.activateApp()
    }
 
    func applicationWillTerminate(application: UIApplication)
@@ -130,6 +134,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate
          {
             let shouldPlaySound = UIApplication.sharedApplication().applicationState == .Active
             alarmDetailViewController.configureWithAlarm(alarm, isFiring: true, displayMode: AppSettingsManager.displayMode, shouldPlaySound: shouldPlaySound)
+            
+            var eventName = FBEventAlarmFired
+            if let sound = alarm.sound?.alarmSound {
+               eventName += "-\(sound.name)"
+            }
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { () -> Void in
+               FBSDKAppEvents.logEvent(eventName)
+            })
          }
          navController.pushViewController(alarmDetailViewController, animated: false)
       }

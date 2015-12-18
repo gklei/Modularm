@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import FBSDKCoreKit
 
 // MARK: - PAlarmEngine implementation
 class AlarmEngine
@@ -75,6 +76,11 @@ class AlarmEngine
       let fireDate = NSDate().dateByAddingTimeInterval((NSTimeInterval)(minutes * 60))
       let notification = alarm.buildTemplateNotification(fireDate)
       application.scheduleLocalNotification(notification)
+      
+      
+      dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { () -> Void in
+         FBSDKAppEvents.logEvent(FBEventAlarmSnoozed)
+      })
    }
    
    func alarmForUUID(uuid: String) -> Alarm?

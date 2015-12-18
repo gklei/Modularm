@@ -29,12 +29,15 @@ class AlarmSoundStore:PAlarmSoundStore {
    static let sharedInstance:PAlarmSoundStore = AlarmSoundStore()
    let alarms:[PAlarmSound] = {
       let array:[PAlarmSound] = [
-         AlarmSound("AlarmSound.caf", "Basic"),
-         AlarmSound("ElectroAlarmPrint.caf", "Electro"),
-         AlarmSound("HappyDay.caf", "Happy Day"),
-         AlarmSound("HipHopAlarm.caf", "Hip Hop"),
-         AlarmSound("HurryUpWakeUp.caf", "Hurry up Wake up"),
-         AlarmSound("SimpleAlarm.caf", "Simple")
+         AlarmSound("AlarmSound.caf", "Xylophone Anthem"),
+         AlarmSound("ElectroAlarmPrint.caf", "EDM Style"),
+         AlarmSound("HappyDay.caf", "Happy Days"),
+         AlarmSound("HipHopAlarm.caf", "Hip Hop Bop"),
+         AlarmSound("HurryUpWakeUp.caf", "Hurry up, Wake up!"),
+         AlarmSound("SimpleAlarm.caf", "Lullaby Tune"),
+         AlarmSound("Gongs.caf", "Morning Monk"),
+         AlarmSound("Sly.caf", "Sesame Street"),
+         AlarmSound("ThumbsUp.caf", "Jungle Jam")
       ]
       return array
    }()

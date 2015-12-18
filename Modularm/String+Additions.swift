@@ -12,7 +12,7 @@ extension String
 {
    var trimmedString: String {
       get {
-         let whitespaceCharacters = NSCharacterSet.whitespaceCharacterSet()
+         let whitespaceCharacters = NSCharacterSet.whitespaceAndNewlineCharacterSet()
          return self.stringByTrimmingCharactersInSet(whitespaceCharacters)
       }
    }

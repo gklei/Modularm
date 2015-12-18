@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import FBSDKCoreKit
 
 let kAlarmSegmentedIndex = 0
 let kTimerSegmentedIndex = 1
@@ -28,6 +29,8 @@ class AlarmConfigurationController: UIViewController
    private var alarmOptionsController: AlarmOptionsViewController?
    private var timeSetterController: TimeSetterViewController
    private var alarmPreviewController: AlarmPreviewViewController?
+   
+   private var _creatingNewAlarm = false
    
    required init?(coder aDecoder: NSCoder)
    {
@@ -149,10 +152,17 @@ class AlarmConfigurationController: UIViewController
    // MARK: - Public
    func configureWithAlarm(alarm: Alarm)
    {
+      _creatingNewAlarm = false
       self.alarm = alarm
       self.originalAlarmFireDate = self.alarm?.fireDate.copy() as? NSDate
       
       self.configureControllersWithAlarm(self.alarm)
+   }
+   
+   func configureWithNewAlarm(alarm: Alarm)
+   {
+      configureWithAlarm(alarm)
+      _creatingNewAlarm = true
    }
    
    func showTimeSetterController()
@@ -163,6 +173,11 @@ class AlarmConfigurationController: UIViewController
    // MARK: - IBActions
    @IBAction func setButtonPressed()
    {
+      dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { () -> Void in
+         let fbEventName = self._creatingNewAlarm ? FBEventAlarmCreated : FBEventAlarmEdited
+         FBSDKAppEvents.logEvent(fbEventName)
+      })
+      
       self.alarm?.completedSetup = true
       
       var alarmTime: (hour: Int, minute: Int) = (self.originalAlarmFireDate!.hour, self.originalAlarmFireDate!.minute)

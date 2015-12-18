@@ -90,6 +90,10 @@
 		8EFACDDD1AD8390F00279956 /* TimelineController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFACDDC1AD8390F00279956 /* TimelineController.swift */; };
 		8EFACDE11AD83A1E00279956 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFACDE01AD83A1E00279956 /* CoreDataStack.swift */; };
 		F30823D91BBDC2D80030155D /* AlarmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30823D81BBDC2D80030155D /* AlarmManager.swift */; };
+		F354EBCC1C23ADDE00AC7DA0 /* Gongs.caf in Resources */ = {isa = PBXBuildFile; fileRef = F354EBC91C23ADD700AC7DA0 /* Gongs.caf */; };
+		F354EBCD1C23ADDE00AC7DA0 /* Sly.caf in Resources */ = {isa = PBXBuildFile; fileRef = F354EBCA1C23ADD700AC7DA0 /* Sly.caf */; };
+		F354EBCE1C23ADDE00AC7DA0 /* ThumbsUp.caf in Resources */ = {isa = PBXBuildFile; fileRef = F354EBCB1C23ADD700AC7DA0 /* ThumbsUp.caf */; };
+		F356B1251C23967900471870 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F356B1241C23967900471870 /* FBSDKCoreKit.framework */; };
 		F37CF32D1BC856E600938F50 /* TimeDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37CF32C1BC856E600938F50 /* TimeDisplayViewController.swift */; };
 		F38BF4461C08BE4B005A0862 /* DZNEmptyDataSet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F38BF4451C08BE4B005A0862 /* DZNEmptyDataSet.framework */; };
 		F3C11E3F1BC599F60094CE71 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C11E3D1BC599F60094CE71 /* SettingsViewController.swift */; };
@@ -205,6 +209,10 @@
 		8EFACDDC1AD8390F00279956 /* TimelineController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimelineController.swift; path = Modularm/TimelineController.swift; sourceTree = "<group>"; };
 		8EFACDE01AD83A1E00279956 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataStack.swift; path = Modularm/CoreDataStack.swift; sourceTree = "<group>"; };
 		F30823D81BBDC2D80030155D /* AlarmManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlarmManager.swift; path = Modularm/AlarmManager.swift; sourceTree = "<group>"; };
+		F354EBC91C23ADD700AC7DA0 /* Gongs.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Gongs.caf; sourceTree = "<group>"; };
+		F354EBCA1C23ADD700AC7DA0 /* Sly.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sly.caf; sourceTree = "<group>"; };
+		F354EBCB1C23ADD700AC7DA0 /* ThumbsUp.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ThumbsUp.caf; sourceTree = "<group>"; };
+		F356B1241C23967900471870 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		F37CF32C1BC856E600938F50 /* TimeDisplayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeDisplayViewController.swift; path = Modularm/TimeDisplayViewController.swift; sourceTree = "<group>"; };
 		F38BF4451C08BE4B005A0862 /* DZNEmptyDataSet.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DZNEmptyDataSet.framework; path = Carthage/Build/iOS/DZNEmptyDataSet.framework; sourceTree = "<group>"; };
 		F3C11E3D1BC599F60094CE71 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = Modularm/SettingsViewController.swift; sourceTree = "<group>"; };
@@ -231,6 +239,7 @@
 				F3E0DD701BFEAD7F008385E4 /* Crashlytics.framework in Frameworks */,
 				1F1511B31BF1E4A70010AB1C /* CoreLocation.framework in Frameworks */,
 				F3E0DD6F1BFEAD7F008385E4 /* Fabric.framework in Frameworks */,
+				F356B1251C23967900471870 /* FBSDKCoreKit.framework in Frameworks */,
 				1F9955FB1BEBCC8C0068C776 /* AVFoundation.framework in Frameworks */,
 				F38BF4461C08BE4B005A0862 /* DZNEmptyDataSet.framework in Frameworks */,
 			);
@@ -288,6 +297,9 @@
 		1F851C321BF3744700D06383 /* AlarmSound */ = {
 			isa = PBXGroup;
 			children = (
+				F354EBC91C23ADD700AC7DA0 /* Gongs.caf */,
+				F354EBCA1C23ADD700AC7DA0 /* Sly.caf */,
+				F354EBCB1C23ADD700AC7DA0 /* ThumbsUp.caf */,
 				1F851C331BF3747700D06383 /* AlarmSound.caf */,
 				1F851C341BF3747700D06383 /* ElectroAlarmPrint.caf */,
 				1F851C351BF3747700D06383 /* HappyDay.caf */,
@@ -303,6 +315,7 @@
 		1F9955F71BEBCC5E0068C776 /* ExternalFrameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F356B1241C23967900471870 /* FBSDKCoreKit.framework */,
 				F38BF4451C08BE4B005A0862 /* DZNEmptyDataSet.framework */,
 				F3E0DD6D1BFEAD7F008385E4 /* Fabric.framework */,
 				F3E0DD6E1BFEAD7F008385E4 /* Crashlytics.framework */,
@@ -638,11 +651,14 @@
 				F3C11E401BC599F60094CE71 /* SettingsViewController.xib in Resources */,
 				8EFACDC51AD837EE00279956 /* LaunchScreen.xib in Resources */,
 				5B6C142C1B094B78009617A8 /* TimelineCollectionViewCell.xib in Resources */,
+				F354EBCD1C23ADDE00AC7DA0 /* Sly.caf in Resources */,
 				8E6094F31B08585E007F8D24 /* TimelineHeaderView.xib in Resources */,
 				1F851C3B1BF3747E00D06383 /* HappyDay.caf in Resources */,
 				1F851C3D1BF3747E00D06383 /* HurryUpWakeUp.caf in Resources */,
 				1F851C391BF3747E00D06383 /* AlarmSound.caf in Resources */,
 				1F851C3A1BF3747E00D06383 /* ElectroAlarmPrint.caf in Resources */,
+				F354EBCE1C23ADDE00AC7DA0 /* ThumbsUp.caf in Resources */,
+				F354EBCC1C23ADDE00AC7DA0 /* Gongs.caf in Resources */,
 				1F851C3C1BF3747E00D06383 /* HipHopAlarm.caf in Resources */,
 				8EFACDC21AD837EE00279956 /* Images.xcassets in Resources */,
 			);
@@ -908,11 +924,12 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Modularm/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.purevirtualstudios.Modularm;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "42fefc3d-807c-41dc-976e-74ec616f2c49";
+				PROVISIONING_PROFILE = "908e7a26-7a76-4aaf-a8c0-3ea1936ebd70";
 				SWIFT_OBJC_BRIDGING_HEADER = "Modularm-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -932,11 +949,12 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Modularm/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.purevirtualstudios.Modularm;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "42fefc3d-807c-41dc-976e-74ec616f2c49";
+				PROVISIONING_PROFILE = "fc3cc394-ab4b-4141-b701-0eb9a77ca2e0";
 				SWIFT_OBJC_BRIDGING_HEADER = "Modularm-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 			};

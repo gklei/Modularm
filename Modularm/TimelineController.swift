@@ -36,7 +36,12 @@ class TimelineController: UIViewController
       return UIStoryboard.controllerWithIdentifier("AlarmDetailViewController") as! AlarmDetailViewController
    }()
    
-   private let _randomTitleList = ["🤘","🤔","😶","🙃","😮","😐","😛","😑","👌"]
+   private let _randomTitleList = [
+      "🤘","🤔","😶","🙃","😮","😐","😛","😑","👌",
+      "🤕","🤑","😍","😜","🐱","🐶","🐯","🐼","🐤",
+      "🌝", "🌞","🌛","🌜","⛄️","☃️","🎃","🔥","👾","🔔"
+   ]
+   
    private var _previousTitleIndex = 0
    
    // MARK: - Lifecycle
@@ -87,7 +92,7 @@ class TimelineController: UIViewController
    {
       if let alarm = AlarmManager.createNewAlarm()
       {
-         _configurationController.configureWithAlarm(alarm)
+         _configurationController.configureWithNewAlarm(alarm)
          navigationController?.pushViewController(_configurationController, animated: true)
       }
    }
