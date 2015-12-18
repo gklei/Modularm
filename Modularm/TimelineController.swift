@@ -38,8 +38,8 @@ class TimelineController: UIViewController
    
    private let _randomTitleList = [
       "🤘","🤔","😶","🙃","😮","😐","😛","😑","👌",
-      "🤕","🤑","😍","😜","🐱","🐶","🐯","🐼","🐤",
-      "🌝", "🌞","🌛","🌜","⛄️","☃️","🎃","🔥","👾","🔔"
+      "🤕","🤑","🐱","🐶","🐯","🐼","🐤", "🌝", "🌞",
+      "🌛","🌜","⛄️","☃️","🎃","🔥","👾","🔔"
    ]
    
    private var _previousTitleIndex = 0
@@ -161,7 +161,7 @@ extension TimelineController: DZNEmptyDataSetSource
 {
    func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString!
    {
-      let text = "You have no reminders"
+      let text = "You have no reminders."
       let attribs = [
          NSFontAttributeName: UIFont(name: "HelveticaNeue", size: 22)!,
          NSForegroundColorAttributeName: UIColor.darkGrayColor()
@@ -172,7 +172,7 @@ extension TimelineController: DZNEmptyDataSetSource
    
    func descriptionForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString!
    {
-      let text = "Schedule reminders to keep track of your day. Add an alarm by tapping the + button."
+      let text = "Schedule reminders to keep track of your day. Add a reminder by tapping the + button."
       
       let para = NSMutableParagraphStyle()
       para.lineBreakMode = NSLineBreakMode.ByWordWrapping
@@ -189,7 +189,7 @@ extension TimelineController: DZNEmptyDataSetSource
    
    func buttonTitleForEmptyDataSet(scrollView: UIScrollView!, forState state: UIControlState) -> NSAttributedString!
    {
-      let text = "Create reminder"
+      let text = "Create a reminder"
       let attribs = [
          NSFontAttributeName: UIFont(name: "HelveticaNeue", size: 20)!,
          NSForegroundColorAttributeName: state == .Normal ? UIColor.lipstickRedColor() : UIColor.lipstickRedColor().colorWithAlphaComponent(0.6)
