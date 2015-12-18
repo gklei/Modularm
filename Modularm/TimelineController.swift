@@ -36,10 +36,16 @@ class TimelineController: UIViewController
       return UIStoryboard.controllerWithIdentifier("AlarmDetailViewController") as! AlarmDetailViewController
    }()
    
-   private let _randomTitleList = [
+   private let _ios91Emojis = [
       "🤘","🤔","😶","🙃","😮","😐","😛","😑","👌",
       "🤕","🤑","🐱","🐶","🐯","🐼","🐤", "🌝", "🌞",
       "🌛","🌜","⛄️","☃️","🎃","🔥","👾","🔔"
+   ]
+   
+   private let _ios9Emojis = [
+      "😶","😮","😐","😛","😑","👌",
+      "🐱","🐶","🐯","🐼","🐤", "🌝", "🌞",
+      "🌛","🌜","⛄️","🎃","🔥","👾","🔔"
    ]
    
    private var _previousTitleIndex = 0
@@ -70,16 +76,20 @@ class TimelineController: UIViewController
       
       AlarmManager.removeIncompleteAlarms()
       AlarmManager.deactivateAlarmsThatAreInThePast()
-      reloadData()
       
       UIApplication.sharedApplication().setStatusBarStyle(.LightContent, animated: true)
       
-      var newIndex = _randomTitleList.randomIndex
+      var emojiList = _ios9Emojis
+      if #available(iOS 9.1, *) {
+         emojiList = _ios91Emojis
+      }
+      var newIndex = emojiList.randomIndex
       while (newIndex == _previousTitleIndex) {
-         newIndex = _randomTitleList.randomIndex
+         newIndex = emojiList.randomIndex
       }
       _previousTitleIndex = newIndex
-      navigationItem.title = _randomTitleList[newIndex]
+      navigationItem.title = emojiList[newIndex]
+      reloadData()
    }
 
    override func viewWillDisappear(animated: Bool)
