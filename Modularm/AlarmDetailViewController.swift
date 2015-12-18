@@ -139,9 +139,10 @@ class AlarmDetailViewController: UIViewController
       
       var snoozeButtonHeightConstant: CGFloat = 0
       var snoozeHidden = true
-      if let _ = self.alarm?.snooze {
+      if let snooze = self.alarm?.snooze {
          snoozeButtonHeightConstant = 80
          snoozeHidden = false
+         _snoozeButton.setTitle("Snooze \(snooze.durationValue) minutes", forState: .Normal)
       }
       _snoozeButtonHeightConstraint.constant = snoozeButtonHeightConstant
       _snoozeButton.hidden = snoozeHidden
@@ -152,7 +153,7 @@ class AlarmDetailViewController: UIViewController
       if let alarmDate = self.alarm?.fireDate
       {
          let countdownTime = AlarmCountdownUtility.timeUntilAlarmHour(alarmDate.hour, minute: alarmDate.minute)
-         self.title = "Alarm in \(countdownTime.hour)h \(countdownTime.minute)m"
+         self.title = "Reminder in \(countdownTime.hour)h \(countdownTime.minute)m"
       }
    }
    
@@ -178,7 +179,7 @@ class AlarmDetailViewController: UIViewController
       }
       else {
          if let soundName = self.alarm?.sound?.alarmSound?.name{
-            self.alarmMessageLabel.text = "Alarm sound: \(soundName)"
+            self.alarmMessageLabel.text = "Reminder sound: \(soundName)"
          }
          else {
             self.alarmMessageLabel.text = "No sound is set!"

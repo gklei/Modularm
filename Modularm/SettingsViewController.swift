@@ -22,9 +22,11 @@ class SettingsViewController: UIViewController
    
    @IBOutlet weak private var _analogRadialButton: UIButton!
    @IBOutlet weak private var _digitalRadialButton: UIButton!
+   @IBOutlet weak private var _transformingContainerView: UIView!
    
    private var _analogClockDisplayController = TimeDisplayViewController()
    private var _digitalClockDisplayController = TimeDisplayViewController()
+   private var _viewTransformer: ViewTransformer?
    
    // MARK: - Init
    convenience init(delegate: SettingsViewControllerDelegate)
@@ -56,6 +58,7 @@ class SettingsViewController: UIViewController
       let digitalTapRecognizer = UITapGestureRecognizer(target: self, action: "digitalRadialButtonPressed")
       _digitalClockContainer.addGestureRecognizer(digitalTapRecognizer)
       
+      _viewTransformer = ViewTransformer(view: _transformingContainerView)
       updateRaidalButtons()
    }
    
@@ -115,5 +118,29 @@ class SettingsViewController: UIViewController
    private func dismiss()
    {
       dismissViewControllerAnimated(true, completion: nil)
+   }
+}
+
+
+extension SettingsViewController
+{
+   override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+      super.touchesBegan(touches, withEvent: event)
+      _viewTransformer?.touchesBegan(touches, withEvent: event!)
+   }
+   
+   override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+      super.touchesMoved(touches, withEvent: event)
+      _viewTransformer?.touchesMoved(touches, withEvent: event!)
+   }
+   
+   override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+      super.touchesEnded(touches, withEvent: event)
+      _viewTransformer?.resetViewWithDuration(0.4)
+   }
+   
+   override func touchesCancelled(touches: Set<UITouch>?, withEvent event: UIEvent?) {
+      super.touchesCancelled(touches, withEvent: event)
+      _viewTransformer?.resetViewWithDuration(0.4)
    }
 }

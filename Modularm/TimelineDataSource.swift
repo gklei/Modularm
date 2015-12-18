@@ -81,7 +81,7 @@ extension TimelineDataSource: UICollectionViewDataSource
       }
       else
       {
-         let footer = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "footer", forIndexPath: indexPath) 
+         let footer = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "footer", forIndexPath: indexPath)
          return footer
       }
    }

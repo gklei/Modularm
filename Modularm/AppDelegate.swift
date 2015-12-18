@@ -30,6 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
    {
       Fabric.with([Crashlytics.self])
       
+      _removeInitialKeyboardLag()
       startTimerForMinuteChangedNotification()
       
       // TODO: Onboarding
@@ -94,6 +95,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate
 
       let defaultStack = CoreDataStack.defaultStack
       defaultStack.saveContext()
+   }
+   
+   private func _removeInitialKeyboardLag()
+   {
+      let dummyTextField = UITextField()
+      window?.addSubview(dummyTextField)
+      dummyTextField.becomeFirstResponder()
+      dummyTextField.resignFirstResponder()
+      window?.removeFromSuperview()
    }
    
    private func startTimerForMinuteChangedNotification()

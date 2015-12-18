@@ -88,6 +88,7 @@ extension SnoozeOptionDelegateDataSource: SnoozeOptionSettingStateDelegate
    func reloadData()
    {
       self.tableView.reloadData()
+      self.settingsControllerDelegate.updateAuxViewWithOption(self.option, tempModel: self.snoozeModel)
    }
 }
 

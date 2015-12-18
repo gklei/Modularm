@@ -91,7 +91,7 @@ struct TimelineCellAlarmViewModel
          {
             if let soundName = self.alarm.sound?.alarmSound?.name
             {
-               messageText = "Alarm sound: \(soundName)"
+               messageText = "Reminder sound: \(soundName)"
             }
             else
             {

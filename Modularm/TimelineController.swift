@@ -9,6 +9,17 @@
 import UIKit
 import DZNEmptyDataSet
 
+extension Array {
+   var randomItem: Element {
+      let index = Int(arc4random_uniform(UInt32(self.count)))
+      return self[index]
+   }
+   
+   var randomIndex: Int {
+      return Int(arc4random_uniform(UInt32(self.count)))
+   }
+}
+
 class TimelineController: UIViewController
 {
    // MARK: - Instance Variables
@@ -24,6 +35,9 @@ class TimelineController: UIViewController
    lazy private var _alarmDetailViewController: AlarmDetailViewController = {
       return UIStoryboard.controllerWithIdentifier("AlarmDetailViewController") as! AlarmDetailViewController
    }()
+   
+   private let _randomTitleList = ["🤘","🤔","😶","🙃","😮","😐","😛","😑","👌"]
+   private var _previousTitleIndex = 0
    
    // MARK: - Lifecycle
    override func viewDidLoad()
@@ -54,6 +68,13 @@ class TimelineController: UIViewController
       reloadData()
       
       UIApplication.sharedApplication().setStatusBarStyle(.LightContent, animated: true)
+      
+      var newIndex = _randomTitleList.randomIndex
+      while (newIndex == _previousTitleIndex) {
+         newIndex = _randomTitleList.randomIndex
+      }
+      _previousTitleIndex = newIndex
+      navigationItem.title = _randomTitleList[newIndex]
    }
 
    override func viewWillDisappear(animated: Bool)
@@ -135,7 +156,7 @@ extension TimelineController: DZNEmptyDataSetSource
 {
    func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString!
    {
-      let text = "You have no alarms"
+      let text = "You have no reminders"
       let attribs = [
          NSFontAttributeName: UIFont(name: "HelveticaNeue", size: 22)!,
          NSForegroundColorAttributeName: UIColor.darkGrayColor()
@@ -146,7 +167,7 @@ extension TimelineController: DZNEmptyDataSetSource
    
    func descriptionForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString!
    {
-      let text = "Schedule alarms to keep track of your day. Add an alarm by tapping the + button."
+      let text = "Schedule reminders to keep track of your day. Add an alarm by tapping the + button."
       
       let para = NSMutableParagraphStyle()
       para.lineBreakMode = NSLineBreakMode.ByWordWrapping
@@ -163,7 +184,7 @@ extension TimelineController: DZNEmptyDataSetSource
    
    func buttonTitleForEmptyDataSet(scrollView: UIScrollView!, forState state: UIControlState) -> NSAttributedString!
    {
-      let text = "Create alarm"
+      let text = "Create reminder"
       let attribs = [
          NSFontAttributeName: UIFont(name: "HelveticaNeue", size: 20)!,
          NSForegroundColorAttributeName: state == .Normal ? UIColor.lipstickRedColor() : UIColor.lipstickRedColor().colorWithAlphaComponent(0.6)
